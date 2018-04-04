@@ -1,10 +1,11 @@
 import tensorflow as tf
+import importlib
 
-from txtgen import context
+import texar as tx
 
 from generator import Generator
 from discriminator import Discriminator
-from data_loader import GenDataLoader, DisDataLoader
+from dataloader import GenDataLoader, DisDataLoader
 from rollout import Rollout
 from utils import *
 
@@ -18,14 +19,15 @@ ADVER_BATCH = 20
 G_BATCH_SIZE = 2
 D_BATCH_SIZE = 2
 #
-# train_file = "../../data/small_sent.txt"
-# vocab_file = "../../data/vocab.txt"
-# word2vec_file = "./data/small.wordvec.bin"
-train_file = "../../data/coco.txt"
-vocab_file = "../../data/coco_vocab.txt"
-word2vec_file = "./data/coco.wordvec.bin"
+train_file = "../../data/small_sent.txt"
+vocab_file = "../../data/vocab.txt"
+# train_file = "../../data/coco.txt"
+# vocab_file = "../../data/coco_vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
+config_path = "config_small"
+
+config = importlib.import_module(config_path)
 
 
 def pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=1):
@@ -97,12 +99,10 @@ def update_generator_with_rollout(sess, generator, discriminator, update_step=1)
 if __name__ == "__main__":
     dataloader = GenDataLoader(text_file=train_file, vocab_file=vocab_file,
                                    max_len=MAX_SEQ_LEN, batch_size=G_BATCH_SIZE, epoch_num=1)
-    generator = Generator(batch_size=G_BATCH_SIZE, max_seq_length=MAX_SEQ_LEN,
-                          word2id=dataloader.word2id, bos=dataloader.bos_id,
-                          eos=dataloader.eos_id, pad=dataloader.pad_id,
-                          emb_dim=EMB_DIM, word2vec=word2vec_file)
-    discriminator = Discriminator(word2id=dataloader.word2id, max_seq_length=MAX_SEQ_LEN,
-                                  batch_size=D_BATCH_SIZE, emb_dim=EMB_DIM, word2vec=word2vec_file)
+    generator = Generator(config, word2id=dataloader.word2id, bos=dataloader.bos_id,
+                          eos=dataloader.eos_id, pad=dataloader.pad_id)
+    # discriminator = Discriminator(word2id=dataloader.word2id, max_seq_length=MAX_SEQ_LEN,
+    #                               batch_size=D_BATCH_SIZE, emb_dim=EMB_DIM, word2vec=word2vec_file)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -112,12 +112,12 @@ if __name__ == "__main__":
         pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=3)
         generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file, dst_path=negative_file)
 
-        pretrain_discriminator(sess, discriminator, positive_file=train_file,
-                               negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
-
-        for batch_cnt in range(ADVER_BATCH):
-            update_generator_with_rollout(sess, generator, discriminator, update_step=2)
-            generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file,
-                                      dst_path=negative_file)
-            pretrain_discriminator(sess, discriminator, positive_file=train_file,
-                                   negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
+        # pretrain_discriminator(sess, discriminator, positive_file=train_file,
+        #                        negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
+        #
+        # for batch_cnt in range(ADVER_BATCH):
+        #     update_generator_with_rollout(sess, generator, discriminator, update_step=2)
+        #     generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file,
+        #                               dst_path=negative_file)
+        #     pretrain_discriminator(sess, discriminator, positive_file=train_file,
+        #                            negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
