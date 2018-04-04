@@ -14,9 +14,9 @@ class Generator:
             self.reward_gamma = 0.9
 
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
-                                             shape=[self.batch_size, self.max_seq_length + 2])
+                                             shape=[None, self.max_seq_length + 2])
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
-                                          shape=[self.batch_size, self.max_seq_length])
+                                          shape=[None, self.max_seq_length])
             self.expected_reward = tf.Variable(tf.zeros([self.max_seq_length]))
             self.bos_id = bos
             self.eos_id = eos
@@ -53,7 +53,7 @@ class Generator:
 
             # build loss for updating with D predictions
             true_sample = self.data_batch[:, 1:self.max_seq_length + 1]  # [batch, max_len]
-            g_predictions = self.outputs.rnn_output[:, :self.max_seq_length, :]  # [batch, max_len, vocab_size]
+            g_predictions = self.outputs.logits[:, :self.max_seq_length, :]  # [batch, max_len, vocab_size]
 
             self.update_loss = -tf.reduce_sum(
                 tf.reduce_sum(
