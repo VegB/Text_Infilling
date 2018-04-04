@@ -9,11 +9,12 @@ from utils import pad_to_length, sent_to_ids
 
 
 class GenDataLoader:
-    def __init__(self, text_file, vocab_file, max_len, batch_size, epoch_num):
-        self.max_len = max_len
-        self.batch_size = batch_size
+    def __init__(self, config, text_file, vocab_file, epoch_num):
+        self.max_len = config.num_steps
+        self.batch_size = config.batch_size
         self.epoch_num = epoch_num
         self.trained_epoch = 0
+        self.step = 0
         self.eos = "<EOS>"
         self.bos = "<BOS>"
         self.unk = "<UNK>"
@@ -60,6 +61,7 @@ class GenDataLoader:
     def get_batch(self):
         tmp_pos = self.batch_ptr
         self.batch_ptr = self.batch_ptr + 1
+        self.step = self.step + 1
         if self.batch_ptr == self.batch_num:
             self.batch_ptr = 0
             self.trained_epoch += 1
@@ -79,6 +81,7 @@ class DisDataLoader:
         self.batch_size = batch_size
         self.epoch_num = epoch_num
         self.trained_epoch = 0
+        self.step = 0
         self.eos = "<EOS>"
         self.bos = "<BOS>"
         self.unk = "<UNK>"
@@ -143,6 +146,7 @@ class DisDataLoader:
     def get_batch(self):
         tmp_pos = self.batch_ptr
         self.batch_ptr = self.batch_ptr + 1
+        self.step = self.step + 1
         if self.batch_ptr == self.batch_num:
             self.batch_ptr = 0
             self.trained_epoch += 1
@@ -154,3 +158,4 @@ class DisDataLoader:
     def reset(self):
         self.trained_epoch = 0
         self.batch_ptr = 0
+        self.step = 0
