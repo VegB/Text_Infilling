@@ -28,6 +28,20 @@ __all__ = [
     "RNNDecoderBase"
 ]
 
+
+def compute_output_shape(units, input_shape):
+    """
+    added to fit into tf1.4
+    """
+    input_shape = tensor_shape.TensorShape(input_shape)
+    input_shape = input_shape.with_rank_at_least(2)
+    if input_shape[-1].value is None:
+        raise ValueError(
+            'The innermost dimension of input_shape must be defined, but saw: %s'
+            % input_shape)
+    return input_shape[:-1].concatenate(units)
+
+
 class RNNDecoderBase(ModuleBase, TFDecoder):
     """Base class inherited by all RNN decoder classes.
 
@@ -329,8 +343,9 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             output_shape_with_unknown_batch = nest.map_structure(
                 lambda s: tensor_shape.TensorShape([None]).concatenate(s),
                 size)
-            layer_output_shape = self._output_layer.compute_output_shape(
-                output_shape_with_unknown_batch)
+            # layer_output_shape = self._output_layer.compute_output_shape(
+            #     output_shape_with_unknown_batch)
+            layer_output_shape = compute_output_shape(self._output_layer.units, output_shape_with_unknown_batch)
             return nest.map_structure(lambda s: s[1:], layer_output_shape)
 
     @property
