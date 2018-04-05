@@ -73,12 +73,13 @@ class GenDataLoader:
     def reset(self):
         self.trained_epoch = 0
         self.batch_ptr = 0
+        self.step = 0
 
 
 class DisDataLoader:
-    def __init__(self, positive_file, negative_file, vocab_file, max_len, batch_size, epoch_num):
-        self.max_len = max_len
-        self.batch_size = batch_size
+    def __init__(self, config, positive_file, negative_file, vocab_file, epoch_num):
+        self.max_len = config.num_steps
+        self.batch_size = config.batch_size
         self.epoch_num = epoch_num
         self.trained_epoch = 0
         self.step = 0
