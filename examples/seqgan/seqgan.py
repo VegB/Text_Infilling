@@ -10,29 +10,26 @@ from rollout import Rollout
 from utils import *
 
 
-# train_file = "../../data/small_sent.txt"
-# vocab_file = "../../data/vocab.txt"
-train_file = "../../data/coco.txt"
-vocab_file = "../../data/coco_vocab.txt"
+train_file = "../../data/small_sent.txt"
+vocab_file = "../../data/vocab.txt"
+# train_file = "../../data/coco.txt"
+# vocab_file = "../../data/coco_vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
-config_path = "config_small"
+config_path = "config"
 
 config = importlib.import_module(config_path)
 
 ROLLOUT_NUM = 1
-EMB_DIM = 300
 PRE_EPOCH_NUM_T = 1
 PRE_EPOCH_NUM_G = 40
 PRE_EPOCH_NUM_D = 50
 ADVER_BATCH = 20
-G_BATCH_SIZE = 2
-D_BATCH_SIZE = 2
 
 
 def pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=1):
     dataloader = GenDataLoader(config, text_file=train_file,
-                                vocab_file=vocab_file, epoch_num=epoch_num)
+                               vocab_file=vocab_file, epoch_num=epoch_num)
 
     while not dataloader.should_stop():
         _, step, loss, outputs = sess.run([generator.train_op, generator.global_step,
@@ -61,17 +58,18 @@ def generate_negative_samples(sess, generator, train_file, vocab_file, dst_path)
 
 
 def pretrain_discriminator(sess, discriminator, positive_file, negative_file, vocab_file, epoch_num):
-    dataloader = DisDataLoader(positive_file=positive_file, negative_file=negative_file,
-                               vocab_file=vocab_file, max_len=MAX_SEQ_LEN,
-                               batch_size=D_BATCH_SIZE, epoch_num=epoch_num)
+    dataloader = DisDataLoader(config, epoch_num=epoch_num, positive_file=positive_file,
+                               negative_file=negative_file, vocab_file=vocab_file)
 
     while not dataloader.should_stop():
         ids, labels = dataloader.get_batch()
 
         _, step, loss = sess.run([discriminator.train_op, discriminator.global_step,
                                   discriminator.mle_loss],
-                                 feed_dict={discriminator.samples: ids, discriminator.labels: labels,
-                                            context.is_train(): True})
+                                 feed_dict={discriminator.samples: ids,
+                                            discriminator.labels: labels,
+                                            discriminator.global_step: dataloader.step,
+                                            tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 10 == 0:
             print("%d: %.6f" % (step, loss))
 
@@ -101,19 +99,18 @@ if __name__ == "__main__":
     dataloader = GenDataLoader(config, text_file=train_file, vocab_file=vocab_file, epoch_num=1)
     generator = Generator(config, word2id=dataloader.word2id, bos=dataloader.bos_id,
                           eos=dataloader.eos_id, pad=dataloader.pad_id)
-    # discriminator = Discriminator(word2id=dataloader.word2id, max_seq_length=MAX_SEQ_LEN,
-    #                               batch_size=D_BATCH_SIZE, emb_dim=EMB_DIM, word2vec=word2vec_file)
+    discriminator = Discriminator(config, word2id=dataloader.word2id)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=30)
+        pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=3)
         generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file, dst_path=negative_file)
 
-        # pretrain_discriminator(sess, discriminator, positive_file=train_file,
-        #                        negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
+        pretrain_discriminator(sess, discriminator, positive_file=train_file,
+                               negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
         #
         # for batch_cnt in range(ADVER_BATCH):
         #     update_generator_with_rollout(sess, generator, discriminator, update_step=2)
