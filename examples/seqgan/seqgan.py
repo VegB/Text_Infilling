@@ -10,10 +10,10 @@ from rollout import Rollout
 from utils import *
 
 
-# train_file = "../../data/small_sent.txt"
-# vocab_file = "../../data/vocab.txt"
-train_file = "../../data/coco.txt"
-vocab_file = "../../data/coco_vocab.txt"
+train_file = "../../data/small_sent.txt"
+vocab_file = "../../data/vocab.txt"
+# train_file = "../../data/coco.txt"
+# vocab_file = "../../data/coco_vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 config_path = "config_small"
@@ -109,7 +109,7 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=30)
+        pretrain_generator(sess, generator, train_file, vocab_file, epoch_num=2)
         generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file, dst_path=negative_file)
 
         # pretrain_discriminator(sess, discriminator, positive_file=train_file,
