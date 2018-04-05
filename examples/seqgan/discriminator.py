@@ -1,25 +1,26 @@
 import tensorflow as tf
 
-from txtgen.modules import HierarchicalEncoder
-from txtgen.losses import mle_losses
-from txtgen.core import optimization as opt
-from txtgen.core import layers
+import texar as tx
 
 from utils import *
 
 
 class Discriminator:
-    def __init__(self, word2id, max_seq_length, class_num=2, batch_size=10, emb_dim=None, word2vec=None):
-        with tf.variable_scope('discriminator'):
-            self.max_seq_len = max_seq_length
-            self.class_num = class_num
-            self.batch_size = batch_size
+    def __init__(self, config, word2id, class_num=2):
+        initializer = tf.random_uniform_initializer(
+            -config.init_scale, config.init_scale)
+        with tf.variable_scope('discriminator', initializer=initializer):
+            self.batch_size = config.batch_size
+            self.max_seq_length = config.num_steps
             self.vocab_size = len(word2id)
-            self.embedding = create_word_embedding(word2id, emb_dim, word2vec)
+            self.class_num = class_num
 
             self.labels = tf.placeholder(dtype=tf.int32, shape=(self.batch_size, 1), name="labels")
             self.samples = tf.placeholder(dtype=tf.int32, name="samples",
                                           shape=(self.batch_size, self.max_seq_len + 1))
+
+            self.embedder = tx.modules.WordEmbedder(
+                vocab_size=self.vocab_size, hparams=config.emb)
 
             # build Encoder
             hparams = {
