@@ -3,6 +3,7 @@ A RNN-Based Discriminator for SeqGAN.
 """
 import tensorflow as tf
 import texar as tx
+from texar.modules.classifiers.conv_classifiers import Conv1DClassifier
 from utils import *
 
 
@@ -19,7 +20,7 @@ class Discriminator:
             self.labels = tf.placeholder(dtype=tf.int32, shape=[self.batch_size, 1], name="labels")
             self.samples = tf.placeholder(dtype=tf.int32, name="samples",
                                           shape=[self.batch_size, self.max_seq_length + 1])
-
+            """
             self.embedder = tx.modules.WordEmbedder(
                 vocab_size=self.vocab_size, hparams=config.emb)
             self.encoder = tx.modules.UnidirectionalRNNEncoder(
@@ -41,12 +42,18 @@ class Discriminator:
             hidden_state = enc_last[1][0]
             self.scores = tf.nn.xw_plus_b(hidden_state, self.W, self.b, name="scores")
             self.ypred_for_auc = tf.nn.softmax(self.scores)
-            self.predictions = tf.argmax(self.ypred_for_auc, 1, name="predictions")
+            self.predictions = tf.argmax(self.ypred_for_auc, 1, name="predictions")"""
+
+            self.classifier = Conv1DClassifier()
+            self.embedder = tx.modules.WordEmbedder(
+                vocab_size=self.vocab_size, hparams=config.emb)
+            emb_inputs = self.embedder(self.samples)
+            self.ypred_for_auc, self.predictions = self.classifier(emb_inputs)
 
             # Calculate loss
             self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
                 labels=self.labels,  # [batch, 1]
-                logits=self.scores[:, tf.newaxis],  # [batch, 1, num_class]
+                logits=self.ypred_for_auc[:, tf.newaxis],  # [batch, 1, num_class]
                 sequence_length=[1] * self.batch_size)
 
             self.global_step = tf.placeholder(tf.int32)

@@ -35,38 +35,6 @@ cell = {
 emb = {
     "dim": hidden_size
 }
-# opt = {
-#     "optimizer": {
-#         "type": "GradientDescentOptimizer",
-#         "kwargs": {"learning_rate": 0.001}
-#     },
-#     "gradient_clip": {
-#         "type": "clip_by_global_norm",
-#         "kwargs": {"clip_norm": 5.}
-#     },
-#     "learning_rate_decay": {
-#         "type": "exponential_decay",
-#         "kwargs": {
-#             "decay_steps": 1,
-#             "decay_rate": 0.8,
-#             "staircase": True
-#         },
-#         "start_decay_step": 5
-#     }
-# }
-
-# opt = {
-#     "name": "optimizer",
-#     "optimizer": {
-#         "type":  "AdamOptimizer",
-#         "kwargs": {
-#             "learning_rate": 1e-4,
-#             "beta1": 0.9,
-#             "beta2": 0.999,
-#         },
-#     },
-# }
-
 opt = {
     "optimizer": {
         "type": "MomentumOptimizer",
