@@ -11,6 +11,9 @@ class Generator:
             self.batch_size = config.batch_size
             self.max_seq_length = config.num_steps
             self.vocab_size = len(word2id)
+            self.bos_id = bos
+            self.eos_id = eos
+            self.pad_id = pad
             self.reward_gamma = 0.9
 
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
@@ -18,26 +21,30 @@ class Generator:
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
                                           shape=[None, self.max_seq_length])
             self.expected_reward = tf.Variable(tf.zeros([self.max_seq_length]))
-            self.bos_id = bos
-            self.eos_id = eos
-            self.pad_id = pad
 
             self.embedder = tx.modules.WordEmbedder(
                 vocab_size=self.vocab_size, hparams=config.emb)
+            self.encoder = tx.modules.UnidirectionalRNNEncoder(
+                hparams={"rnn_cell": config.cell})
+            self.decoder = tx.modules.BasicRNNDecoder(
+                vocab_size=self.vocab_size,
+                hparams={"rnn_cell": config.cell,
+                         "max_decoding_length_train": 21,
+                         "max_decoding_length_infer": 20})
+            self.connector = tx.modules.ForwardConnector(
+                output_size=self.decoder.state_size)
+
             emb_inputs = self.embedder(self.data_batch[:, :-1])
             if config.keep_prob < 1:
                 emb_inputs = tf.nn.dropout(
                     emb_inputs, tx.utils.switch_dropout(config.keep_prob))
-
-            self.decoder = tx.modules.BasicRNNDecoder(
-                vocab_size=self.vocab_size, hparams={"rnn_cell": config.cell})
-            initial_state = self.decoder.zero_state(self.batch_size, tf.float32)
+            enc_outputs, enc_last = self.encoder(inputs=emb_inputs)
             self.outputs, final_state, seq_lengths = self.decoder(
                 decoding_strategy="train_greedy",
                 impute_finished=True,
                 inputs=emb_inputs,
                 sequence_length=[self.max_seq_length + 1] * self.batch_size,
-                initial_state=initial_state)
+                initial_state=self.connector(enc_last))
 
             # Losses & train ops
             self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
@@ -68,7 +75,8 @@ class Generator:
 
             # for generation
             self.generated_outputs, _, _ = self.decoder(
-                decoding_strategy="infer_sample",
+                decoding_strategy="infer_greedy",
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
-                embedding=self.embedder)
+                embedding=self.embedder,
+                initial_state=self.connector(enc_last))
