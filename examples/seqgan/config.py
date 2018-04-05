@@ -18,10 +18,10 @@
 
 init_scale = 0.1
 num_epochs = 13
-hidden_size = 200
+hidden_size = 400
 keep_prob = 1.0
 batch_size = 20
-num_steps = 20
+num_steps = 10
 
 cell = {
     "type": "LSTMBlockCell",
@@ -35,22 +35,44 @@ cell = {
 emb = {
     "dim": hidden_size
 }
+# opt = {
+#     "optimizer": {
+#         "type": "GradientDescentOptimizer",
+#         "kwargs": {"learning_rate": 0.001}
+#     },
+#     "gradient_clip": {
+#         "type": "clip_by_global_norm",
+#         "kwargs": {"clip_norm": 5.}
+#     },
+#     "learning_rate_decay": {
+#         "type": "exponential_decay",
+#         "kwargs": {
+#             "decay_steps": 1,
+#             "decay_rate": 0.8,
+#             "staircase": True
+#         },
+#         "start_decay_step": 5
+#     }
+# }
+
+# opt = {
+#     "name": "optimizer",
+#     "optimizer": {
+#         "type":  "AdamOptimizer",
+#         "kwargs": {
+#             "learning_rate": 1e-4,
+#             "beta1": 0.9,
+#             "beta2": 0.999,
+#         },
+#     },
+# }
+
 opt = {
     "optimizer": {
-        "type": "GradientDescentOptimizer",
-        "kwargs": {"learning_rate": 1.0}
-    },
-    "gradient_clip": {
-        "type": "clip_by_global_norm",
-        "kwargs": {"clip_norm": 5.}
-    },
-    "learning_rate_decay": {
-        "type": "exponential_decay",
+        "type": "MomentumOptimizer",
         "kwargs": {
-            "decay_steps": 1,
-            "decay_rate": 0.5,
-            "staircase": True
-        },
-        "start_decay_step": 3
+            "learning_rate": 0.01,
+            "momentum": 0.9
+        }
     }
 }

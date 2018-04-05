@@ -29,8 +29,8 @@ class Generator:
             self.decoder = tx.modules.BasicRNNDecoder(
                 vocab_size=self.vocab_size,
                 hparams={"rnn_cell": config.cell,
-                         "max_decoding_length_train": 21,
-                         "max_decoding_length_infer": 20})
+                         "max_decoding_length_train": self.max_seq_length + 1,
+                         "max_decoding_length_infer": self.max_seq_length})
             self.connector = tx.modules.ForwardConnector(
                 output_size=self.decoder.state_size)
 
@@ -75,7 +75,7 @@ class Generator:
 
             # for generation
             self.generated_outputs, _, _ = self.decoder(
-                decoding_strategy="infer_greedy",
+                decoding_strategy="infer_sample",
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
                 embedding=self.embedder,
