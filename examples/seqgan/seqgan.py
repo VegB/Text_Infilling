@@ -75,24 +75,25 @@ def pretrain_discriminator(sess, discriminator, positive_file, negative_file, vo
 
 
 def update_generator_with_rollout(sess, generator, discriminator, update_step=1):
-    data_loader = GenDataLoader(text_file=train_file, vocab_file=vocab_file,
-                                max_len=MAX_SEQ_LEN, batch_size=G_BATCH_SIZE, epoch_num=1)
-    rollout = Rollout(generator, update_rate=0.8)
+    dataloader = GenDataLoader(config, text_file=train_file,
+                               vocab_file=vocab_file, epoch_num=1)
+    rollout = Rollout(config, generator, update_rate=0.8)
 
     for step in range(update_step):
         print("step: ", step)
         decode_output = sess.run(generator.generated_outputs,
-                                 feed_dict={generator.data_batch: data_loader.get_batch(),
-                                            context.is_train(): False})
-        generated_samples = [pad_to_length(content, max_len=MAX_SEQ_LEN, bos=data_loader.bos_id,
-                                           eos=data_loader.eos_id, pad=data_loader.pad_id)
+                                 feed_dict={generator.data_batch: dataloader.get_batch(),
+                                            tx.global_mode(): tf.estimator.ModeKeys.EVAL})
+        generated_samples = [pad_to_length(content, max_len=config.num_steps,
+                                           bos=dataloader.bos_id,
+                                           eos=dataloader.eos_id, pad=dataloader.pad_id)
                              for content in decode_output.sample_id]  # [batch_size, max_len + 2]
         rewards = rollout.get_reward(sess, generated_samples=generated_samples,
                                      rollout_num=ROLLOUT_NUM, discriminator=discriminator)
         print("rewards:\n", rewards)
         _ = sess.run(generator.update_op, feed_dict={generator.data_batch: generated_samples,
                                                      generator.rewards: rewards,
-                                                     context.is_train(): True})
+                                                     tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
 
 if __name__ == "__main__":
@@ -111,10 +112,10 @@ if __name__ == "__main__":
 
         pretrain_discriminator(sess, discriminator, positive_file=train_file,
                                negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
-        #
-        # for batch_cnt in range(ADVER_BATCH):
-        #     update_generator_with_rollout(sess, generator, discriminator, update_step=2)
-        #     generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file,
-        #                               dst_path=negative_file)
-        #     pretrain_discriminator(sess, discriminator, positive_file=train_file,
-        #                            negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
+
+        for batch_cnt in range(ADVER_BATCH):
+            update_generator_with_rollout(sess, generator, discriminator, update_step=2)
+            generate_negative_samples(sess, generator, train_file=train_file, vocab_file=vocab_file,
+                                      dst_path=negative_file)
+            pretrain_discriminator(sess, discriminator, positive_file=train_file,
+                                   negative_file=negative_file, vocab_file=vocab_file, epoch_num=5)
