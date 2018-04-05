@@ -7,7 +7,7 @@ from utils import *
 
 
 class Rollout:
-    def __init__(self, generator, update_rate):
+    def __init__(self, config, generator, update_rate):
         with tf.variable_scope('rollout'):
             self.generator = generator
             self.update_rate = update_rate
