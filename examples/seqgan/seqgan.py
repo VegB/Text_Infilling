@@ -5,6 +5,7 @@ from shutil import copyfile
 
 import texar as tx
 
+from oracle import OracleLSTM
 from generator import Generator
 from discriminator import Discriminator
 from dataloader import GenDataLoader, DisDataLoader
@@ -17,19 +18,24 @@ config = importlib.import_module(config_path)
 log = open(config.log_file, "w")
 
 
-def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
+def pretrain_generator(sess, generator, input_file, vocab_file, epoch_id, epoch_num=1):
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=epoch_num)
-
+    nll = []
     while not dataloader.should_stop():
         _, step, loss, outputs = sess.run([generator.train_op, generator.global_step,
                                            generator.mle_loss, generator.outputs],
                                           feed_dict={generator.data_batch: dataloader.get_batch(),
                                                      generator.global_step: dataloader.step,
                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        nll.append(loss)
         if step % 200 == 0:
             print("%d: %.6f" % (step, loss))
             print_result(outputs.sample_id, dataloader.id2word, dataloader.max_len)
+
+    nll_test = np.mean(nll)
+    print("Pretrain epoch %d: nll_test = %f" % (epoch_id, nll_test))
+    log.write("Pretrain epoch %d: nll_test = %f\n" % (epoch_id, nll_test))
 
 
 def generate_samples(sess, generator, input_file, vocab_file, dst_path):
@@ -86,7 +92,7 @@ def update_generator_with_rollout(sess, generator, discriminator, update_step=1)
                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
 
-def calculate_nll(sess, target_generator, input_file, vocab_file):
+def calculate_nll(sess, target_generator, input_file, vocab_file, epoch_id):
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=1)
     nll = []
@@ -95,14 +101,16 @@ def calculate_nll(sess, target_generator, input_file, vocab_file):
                         feed_dict={target_generator.data_batch: dataloader.get_batch(),
                                    tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         nll.append(loss)
-    return np.mean(nll)
+    nll_oracle = np.mean(nll)
+    print("epoch %d: nll_oracle = %f" % (epoch_id, nll_oracle))
+    log.write("epoch %d: nll_oracle = %f\n" % (epoch_id, nll_oracle))
 
 
 if __name__ == "__main__":
     dataloader = GenDataLoader(config, text_file=config.train_file,
                                vocab_file=config.vocab_file, epoch_num=1)
-    target_generator = Generator(config, word2id=dataloader.word2id, bos=dataloader.bos_id,
-                                 eos=dataloader.eos_id, pad=dataloader.pad_id, scope_name="target")
+    target_generator = OracleLSTM(config, word2id=dataloader.word2id, bos=dataloader.bos_id,
+                                  eos=dataloader.eos_id, pad=dataloader.pad_id)
     generator = Generator(config, word2id=dataloader.word2id, bos=dataloader.bos_id,
                           eos=dataloader.eos_id, pad=dataloader.pad_id)
     discriminator = Discriminator(config, word2id=dataloader.word2id)
@@ -113,21 +121,17 @@ if __name__ == "__main__":
         sess.run(tf.tables_initializer())
 
         # Pretrain TargetGenerator
-        pretrain_generator(sess, target_generator, config.train_file, config.vocab_file,
-                           epoch_num=config.target_pretrain_epoch)
         generate_samples(sess, target_generator, input_file=config.train_file,
                          vocab_file=config.vocab_file, dst_path=config.positive_file)
 
         # Pretrain Generator
         for train_epoch in range(config.generator_pretrain_epoch):
             pretrain_generator(sess, generator, config.positive_file, config.vocab_file,
-                               epoch_num=1)
+                               epoch_id=train_epoch, epoch_num=1)
             generate_samples(sess, generator, input_file=config.train_file,
                              vocab_file=config.vocab_file, dst_path=config.negative_file)
-            nll = calculate_nll(sess, target_generator, input_file=config.negative_file,
-                                vocab_file=config.vocab_file)
-            print("Pretrain epoch %d: nll = %f" % (train_epoch, nll))
-            log.write("Pretrain epoch %d: nll = %f\n" % (train_epoch, nll))
+            calculate_nll(sess, target_generator, input_file=config.negative_file,
+                          vocab_file=config.vocab_file, epoch_id=train_epoch)
 
         # Pretrain Discriminator
         train_discriminator(sess, discriminator, positive_file=config.positive_file,
@@ -140,10 +144,8 @@ if __name__ == "__main__":
                                           update_step=config.adv_g_step)
             generate_samples(sess, generator, input_file=config.train_file,
                              vocab_file=config.vocab_file, dst_path=config.negative_file)
-            nll = calculate_nll(sess, target_generator, input_file=config.negative_file,
-                                vocab_file=config.vocab_file)
-            print("Adversial epoch %d: nll = %f" % (adv_epoch, nll))
-            log.write("Pretrain epoch %d: nll = %f\n" % (train_epoch, nll))
+            calculate_nll(sess, target_generator, input_file=config.negative_file,
+                          vocab_file=config.vocab_file, epoch_id=adv_epoch)
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=config.adv_d_epoch)

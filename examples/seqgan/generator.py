@@ -4,10 +4,10 @@ from utils import *
 
 
 class Generator:
-    def __init__(self, config, word2id, bos, eos, pad, scope_name='generator'):
+    def __init__(self, config, word2id, bos, eos, pad):
         initializer = tf.random_uniform_initializer(
             -config.init_scale, config.init_scale)
-        with tf.variable_scope(scope_name, initializer=initializer):
+        with tf.variable_scope('generator', initializer=initializer):
             self.batch_size = config.batch_size
             self.max_seq_length = config.num_steps
             self.vocab_size = len(word2id)
