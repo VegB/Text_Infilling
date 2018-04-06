@@ -1,8 +1,11 @@
-train_file = "../../data/sent.txt"
-vocab_file = "../../data/vocab.txt"
+train_file = "../../data/oracle.txt"
+vocab_file = "../../data/oracle_vocab.txt"
+# train_file = "../../data/small_sent.txt"
+# vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
+ckpt = "./checkpoint/"
 
 init_scale = 0.1
 num_epochs = 13
