@@ -94,7 +94,7 @@ def update_generator_with_rollout(sess, generator, discriminator, update_step=1)
         print("update loss: ", update_loss)
 
 
-def calculate_nll(sess, target_generator, input_file, vocab_file, epoch_id):
+def calculate_nll(sess, target_generator, input_file, vocab_file, epoch_id, type='nll_oracle'):
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=1)
     nll = []
@@ -104,8 +104,8 @@ def calculate_nll(sess, target_generator, input_file, vocab_file, epoch_id):
                                    tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         nll.append(loss)
     nll_oracle = np.mean(nll)
-    print("epoch %d: nll_oracle = %f" % (epoch_id, nll_oracle))
-    log.write("epoch %d: nll_oracle = %f\n" % (epoch_id, nll_oracle))
+    print("epoch %d: %s = %f" % (epoch_id, type, nll_oracle))
+    log.write("epoch %d: %s = %f\n" % (epoch_id, type, nll_oracle))
 
 
 if __name__ == "__main__":
@@ -146,6 +146,8 @@ if __name__ == "__main__":
                                           update_step=config.adv_g_step)
             generate_samples(sess, generator, input_file=config.train_file,
                              vocab_file=config.vocab_file, dst_path=config.negative_file)
+            calculate_nll(sess, target_generator, input_file=config.negative_file,
+                          vocab_file=config.vocab_file, epoch_id=adv_epoch, type='nll_test')
             calculate_nll(sess, target_generator, input_file=config.negative_file,
                           vocab_file=config.vocab_file, epoch_id=adv_epoch)
             train_discriminator(sess, discriminator, positive_file=config.train_file,
