@@ -14,6 +14,7 @@ from utils import print_result, store_output, pad_to_length
 
 config_path = "config_synthetic"
 config = importlib.import_module(config_path)
+log = open(config.log_file, "w")
 
 
 def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
@@ -26,7 +27,7 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
                                           feed_dict={generator.data_batch: dataloader.get_batch(),
                                                      generator.global_step: dataloader.step,
                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 10 == 0:
+        if step % 200 == 0:
             print("%d: %.6f" % (step, loss))
             print_result(outputs.sample_id, dataloader.id2word, dataloader.max_len)
 
@@ -59,7 +60,7 @@ def train_discriminator(sess, discriminator, positive_file, negative_file, vocab
                                             discriminator.labels: labels,
                                             discriminator.global_step: dataloader.step,
                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 10 == 0:
+        if step % 200 == 0:
             print("%d: %.6f" % (step, loss))
 
 
@@ -126,6 +127,7 @@ if __name__ == "__main__":
             nll = calculate_nll(sess, target_generator, input_file=config.negative_file,
                                 vocab_file=config.vocab_file)
             print("Pretrain epoch %d: nll = %f" % (train_epoch, nll))
+            log.write("Pretrain epoch %d: nll = %f\n" % (train_epoch, nll))
 
         # Pretrain Discriminator
         train_discriminator(sess, discriminator, positive_file=config.positive_file,
@@ -141,6 +143,9 @@ if __name__ == "__main__":
             nll = calculate_nll(sess, target_generator, input_file=config.negative_file,
                                 vocab_file=config.vocab_file)
             print("Adversial epoch %d: nll = %f" % (adv_epoch, nll))
+            log.write("Pretrain epoch %d: nll = %f\n" % (train_epoch, nll))
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=config.adv_d_epoch)
+
+    log.close()
