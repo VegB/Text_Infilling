@@ -27,17 +27,23 @@ class OracleLSTM:
             self.decoder = tx.modules.BasicRNNDecoder(
                 vocab_size=self.vocab_size, hparams={"rnn_cell": config.cell})
             initial_state = self.decoder.zero_state(self.batch_size, tf.float32)
-            outputs, final_state, seq_lengths = self.decoder(
+            self.outputs, final_state, seq_lengths = self.decoder(
                 decoding_strategy="train_greedy",
                 impute_finished=True,
                 inputs=emb_inputs,
                 sequence_length=[self.max_seq_length + 1] * self.batch_size,
                 initial_state=initial_state)
 
-            self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
-                labels=self.data_batch[:, 1:],
-                logits=outputs.logits,
-                sequence_length=seq_lengths)
+            # self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
+            #     labels=self.data_batch[:, 1:],
+            #     logits=outputs.logits,
+            #     sequence_length=seq_lengths)
+
+            self.mle_loss = -tf.reduce_sum(
+                tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
+                    tf.clip_by_value(tf.reshape(self.outputs.logits, [-1, self.vocab_size]), 1e-20, 1.0)
+                )
+            ) / (self.batch_size * (self.max_seq_length + 1))
 
             self.generated_outputs, _, _ = self.decoder(
                 decoding_strategy="infer_sample",

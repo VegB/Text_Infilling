@@ -87,9 +87,11 @@ def update_generator_with_rollout(sess, generator, discriminator, update_step=1)
         rewards = rollout.get_reward(sess, generated_samples=generated_samples,
                                      rollout_num=config.rollout_num, discriminator=discriminator)
         print("rewards:\n", rewards)
-        _ = sess.run(generator.update_op, feed_dict={generator.data_batch: generated_samples,
-                                                     generator.rewards: rewards,
-                                                     tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        _, update_loss = sess.run([generator.update_op, generator.update_loss],
+                                  feed_dict={generator.data_batch: generated_samples,
+                                             generator.rewards: rewards,
+                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        print("update loss: ", update_loss)
 
 
 def calculate_nll(sess, target_generator, input_file, vocab_file, epoch_id):
