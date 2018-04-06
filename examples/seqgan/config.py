@@ -16,11 +16,11 @@
 
 # pylint: disable=invalid-name, too-few-public-methods, missing-docstring
 
-train_file = "../../data/small_sent.txt"
-eval_file = "../../data/small_sent.txt"
-vocab_file = "../../data/vocab.txt"
-# train_file = "../../data/coco.txt"
-# vocab_file = "../../data/coco_vocab.txt"
+# train_file = "../../data/small_sent.txt"
+# eval_file = "../../data/small_sent.txt"
+# vocab_file = "../../data/vocab.txt"
+train_file = "../../data/coco.txt"
+vocab_file = "../../data/coco_vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 

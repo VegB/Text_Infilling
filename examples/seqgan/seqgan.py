@@ -103,8 +103,8 @@ if __name__ == "__main__":
             eval_rst_file = "./data/%d.eval.txt" % (i * 10)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=train_rst_file)
-            generate_negative_samples(sess, generator, input_file=config.eval_file,
-                                      vocab_file=config.vocab_file, dst_path=eval_rst_file)
+            # generate_negative_samples(sess, generator, input_file=config.eval_file,
+            #                           vocab_file=config.vocab_file, dst_path=eval_rst_file)
 
         train_discriminator(sess, discriminator, positive_file=config.train_file,
                             negative_file=config.negative_file, vocab_file=config.vocab_file,
@@ -122,5 +122,5 @@ if __name__ == "__main__":
                 train_rst_file = "./data/%d.txt" % (update_epoch + config.generator_pretrain_epoch)
                 eval_rst_file = "./data/%d.eval.txt" % (update_epoch + config.generator_pretrain_epoch)
                 copyfile(config.negative_file, train_rst_file)
-                generate_negative_samples(sess, generator, input_file=config.eval_file,
-                                          vocab_file=config.vocab_file, dst_path=eval_rst_file)
+                # generate_negative_samples(sess, generator, input_file=config.eval_file,
+                #                           vocab_file=config.vocab_file, dst_path=eval_rst_file)
