@@ -1,5 +1,6 @@
 import tensorflow as tf
 import texar as tx
+from texar.losses.mle_losses import _mask_sequences
 from utils import *
 
 
@@ -46,17 +47,11 @@ class Generator:
                 sequence_length=[self.max_seq_length + 1] * self.batch_size,
                 initial_state=self.connector(enc_last))
 
-            # # Losses & train ops
-            # self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
-            #     labels=self.data_batch[:, 1:],
-            #     logits=self.outputs.logits,
-            #     sequence_length=seq_lengths)
-
-            self.mle_loss = -tf.reduce_sum(
-                    tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
-                        tf.clip_by_value(tf.reshape(self.outputs.logits, [-1, self.vocab_size]), 1e-20, 1.0)
-                    )
-            ) / (self.batch_size * (self.max_seq_length + 1))
+            # Losses & train ops
+            self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
+                labels=self.data_batch[:, 1:],
+                logits=self.outputs.logits,
+                sequence_length=seq_lengths)
 
             # Use global_step to pass epoch, for lr decay
             self.global_step = tf.placeholder(tf.int32)
@@ -64,16 +59,13 @@ class Generator:
                 self.mle_loss, global_step=self.global_step, increment_global_step=False,
                 hparams=config.opt)
 
-            # build loss for updating with D predictions
-            true_sample = self.data_batch[:, 1:self.max_seq_length + 1]  # [batch, max_len]
-            g_predictions = self.outputs.logits[:, :self.max_seq_length, :]  # [batch, max_len, vocab_size]
+            probabilities = tf.nn.softmax(self.outputs.logits[:, :self.max_seq_length, :])  # [batch_size, seq_len, vocab_size]
+            # the probability of generating each position of the sample
+            word_probs = tf.reduce_max(probabilities, axis=-1)  # [batch, seq_len],
+            log_probs = _mask_sequences(tf.log(word_probs), seq_lengths)
+            self.update_loss = - tf.reduce_mean(
+                tf.reduce_sum(log_probs * self.rewards, axis=1) / tf.cast(seq_lengths, dtype=tf.float32))
 
-            self.update_loss = -tf.reduce_sum(
-                tf.reduce_sum(
-                    tf.one_hot(tf.to_int32(tf.reshape(true_sample, [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
-                        tf.clip_by_value(tf.reshape(g_predictions, [-1, self.vocab_size]), 1e-20, 1.0)
-                    ), 1) * tf.reshape(self.rewards, [-1])
-            )
             self.update_step = tf.placeholder(tf.int32)
             self.update_op = tx.core.get_train_op(
                 self.update_loss, global_step=self.update_step, increment_global_step=False,
