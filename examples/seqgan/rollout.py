@@ -74,7 +74,6 @@ class Rollout:
                     rewards[given_num - 1] += ypred
 
             # the last token reward
-            print(type(generated_samples))
             feed_dict_ = {discriminator.samples:
                           [sample[:self.max_seq_length+1] for sample in generated_samples],
                           tx.global_mode(): tf.estimator.ModeKeys.TRAIN}

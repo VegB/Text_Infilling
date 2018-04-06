@@ -16,12 +16,26 @@
 
 # pylint: disable=invalid-name, too-few-public-methods, missing-docstring
 
+train_file = "../../data/small_sent.txt"
+eval_file = "../../data/small_sent.txt"
+vocab_file = "../../data/vocab.txt"
+# train_file = "../../data/coco.txt"
+# vocab_file = "../../data/coco_vocab.txt"
+positive_file = "./data/positive.txt"
+negative_file = "./data/negative.txt"
+
 init_scale = 0.1
 num_epochs = 13
 hidden_size = 400
 keep_prob = 1.0
 batch_size = 20
-num_steps = 10
+num_steps = 20
+
+rollout_num = 16
+target_pretrain_epoch = 80
+generator_pretrain_epoch = 80
+discriminator_pretrain_epoch = 80
+adversial_epoch = 100
 
 cell = {
     "type": "LSTMBlockCell",
