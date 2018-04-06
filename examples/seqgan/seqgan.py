@@ -25,7 +25,7 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
                                           feed_dict={generator.data_batch: dataloader.get_batch(),
                                                      generator.global_step: dataloader.step,
                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 10 == 0:
+        if step % 200 == 0:
             print("%d: %.6f" % (step, loss))
             print_result(outputs.sample_id, dataloader.id2word, dataloader.max_len)
 
@@ -58,7 +58,7 @@ def train_discriminator(sess, discriminator, positive_file, negative_file, vocab
                                             discriminator.labels: labels,
                                             discriminator.global_step: dataloader.step,
                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 10 == 0:
+        if step % 200 == 0:
             print("%d: %.6f" % (step, loss))
 
 
@@ -96,9 +96,9 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        for i in range(2):
+        for i in range(8):
             pretrain_generator(sess, generator, config.train_file, config.vocab_file,
-                               epoch_num=int(config.generator_pretrain_epoch / 10))
+                               epoch_num=int(config.generator_pretrain_epoch / 8))
             train_rst_file = "./data/%d.txt" % (i * 10)
             eval_rst_file = "./data/%d.eval.txt" % (i * 10)
             generate_negative_samples(sess, generator, input_file=config.train_file,
