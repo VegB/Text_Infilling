@@ -45,7 +45,7 @@ class Rollout:
             # current index i >= given_num, start roll-out,
             # use the output at time step t as the input at time step t+1
             final_outputs, _, _ = self.decoder(
-                decoding_strategy="infer_greedy",
+                decoding_strategy="infer_sample",
                 start_tokens=self.data_batch[:, self.given_num - 1],
                 end_token=self.eos_id,
                 embedding=self.embedder,

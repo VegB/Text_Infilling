@@ -117,6 +117,8 @@ if __name__ == "__main__":
                           eos=dataloader.eos_id, pad=dataloader.pad_id)
     discriminator = Discriminator(config, word2id=dataloader.word2id)
 
+    saver = tf.train.Saver()
+
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
@@ -134,11 +136,15 @@ if __name__ == "__main__":
                              vocab_file=config.vocab_file, dst_path=config.negative_file)
             calculate_nll(sess, target_generator, input_file=config.negative_file,
                           vocab_file=config.vocab_file, epoch_id=train_epoch)
+            if train_epoch > 0 and train_epoch % 20 == 0:
+                saver.save(sess, config.ckpt, global_step=train_epoch)
 
         # Pretrain Discriminator
         train_discriminator(sess, discriminator, positive_file=config.positive_file,
                             negative_file=config.negative_file, vocab_file=config.vocab_file,
                             epoch_num=config.discriminator_pretrain_epoch)
+
+        saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch)
 
         # Adversial Training
         for adv_epoch in range(config.adversial_epoch):
@@ -153,5 +159,7 @@ if __name__ == "__main__":
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=config.adv_d_epoch)
+            if adv_epoch > 0 and adv_epoch % 10 == 0:
+                saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch + adv_epoch)
 
     log.close()
