@@ -36,6 +36,8 @@ target_pretrain_epoch = 80
 generator_pretrain_epoch = 80
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
+adv_g_step = 1
+adv_d_epoch = 15
 
 cell = {
     "type": "LSTMBlockCell",
