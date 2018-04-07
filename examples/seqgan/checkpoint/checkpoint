@@ -1,3 +1,2 @@
-model_checkpoint_path: "-10"
-all_model_checkpoint_paths: "-0"
-all_model_checkpoint_paths: "-10"
+model_checkpoint_path: "-3"
+all_model_checkpoint_paths: "-3"

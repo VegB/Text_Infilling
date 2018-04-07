@@ -117,12 +117,13 @@ class DisDataLoader:
             positive_data = fin.readlines()
         with open(negative_file, "rb") as fin:
             negative_data = fin.readlines()
-        labels = [1] * len(positive_data) + [0] * len(negative_data)
+        labels = []
+        labels = [[1, 0]] * len(positive_data) + [[0, 1]] * len(negative_data)
 
         random.shuffle(labels)
         data, p_pos, n_pos = [], 0, 0
         for label in labels:
-            if label == 1:
+            if label[0] == 1:
                 data.append(positive_data[p_pos])
                 p_pos += 1
             else:
@@ -139,7 +140,7 @@ class DisDataLoader:
     def create_batch(self):
         batch_num = int(len(self.ids) / self.batch_size)
         sent_ids = np.array(self.ids[:batch_num * self.batch_size], dtype=np.int32)
-        sent_labels = np.array(self.labels[:batch_num * self.batch_size], dtype=np.int32)[:, np.newaxis]
+        sent_labels = np.array(self.labels[:batch_num * self.batch_size], dtype=np.int32)
         id_batches = np.split(sent_ids, batch_num, axis=0)
         label_batches = np.split(sent_labels, batch_num, axis=0)
         return id_batches, label_batches, batch_num
