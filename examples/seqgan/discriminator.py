@@ -17,21 +17,19 @@ class Discriminator:
             self.vocab_size = len(word2id)
             self.class_num = class_num
 
-            self.labels = tf.placeholder(dtype=tf.int32, shape=[self.batch_size, 1], name="labels")
+            self.labels = tf.placeholder(dtype=tf.int32, shape=[self.batch_size, 2], name="labels")
             self.samples = tf.placeholder(dtype=tf.int32, name="samples",
                                           shape=[self.batch_size, self.max_seq_length + 1])
 
-            self.classifier = Conv1DClassifier()
+            self.classifier = tx.modules.classifiers.CNN(hparams=config.cnn)
             self.embedder = tx.modules.WordEmbedder(
                 vocab_size=self.vocab_size, hparams=config.emb)
             emb_inputs = self.embedder(self.samples)
-            self.ypred_for_auc, self.predictions = self.classifier(emb_inputs)
+            self.logits = self.classifier(emb_inputs)
+            self.ypred_for_auc = tf.nn.sigmoid(self.logits)
 
             # Calculate loss
-            self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
-                labels=self.labels,  # [batch, 1]
-                logits=self.ypred_for_auc[:, tf.newaxis],  # [batch, 1, num_class]
-                sequence_length=[1] * self.batch_size)
+            self.mle_loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=self.logits, labels=self.labels))
 
             self.global_step = tf.placeholder(tf.int32)
             self.train_op = tx.core.get_train_op(

@@ -21,16 +21,9 @@ class Rollout:
             self.eos_id = self.generator.eos_id
 
             self.embedder = self.generator.embedder
-            self.encoder = self.generator.encoder
             self.decoder = self.generator.decoder
-            self.connector = self.generator.connector
 
-            emb_inputs = self.embedder(self.data_batch[:, :-1])
-            if config.keep_prob < 1:
-                emb_inputs = tf.nn.dropout(
-                    emb_inputs, tx.utils.switch_dropout(config.keep_prob))
-
-            enc_outputs, enc_last = self.encoder(inputs=emb_inputs)
+            initial_state = self.decoder.zero_state(self.batch_size, tf.float32)
 
             # When current index i < given_num,
             # use the provided tokens as the input at each time step
@@ -40,7 +33,7 @@ class Rollout:
                 inputs=self.data_batch[:, :self.given_num],
                 sequence_length=[self.given_num] * self.batch_size,
                 embedding=self.embedder,
-                initial_state=self.connector(enc_last))
+                initial_state=initial_state)
 
             # current index i >= given_num, start roll-out,
             # use the output at time step t as the input at time step t+1
@@ -49,7 +42,7 @@ class Rollout:
                 start_tokens=self.data_batch[:, self.given_num - 1],
                 end_token=self.eos_id,
                 embedding=self.embedder,
-                initial_state=self.connector(final_state))
+                initial_state=initial_state)
 
             self.result = tf.concat([self.data_batch[:, 1:self.given_num + 1],
                                      final_outputs.sample_id[:,

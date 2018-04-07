@@ -27,12 +27,15 @@ class CNN(ModuleBase):
       with tf.variable_scope(self.variable_scope):
         self._gate_u = tf.get_variable("u", [self._hparams.attn_size])
     self._conv_layers = []
-    for k in self._hparams.kernel_sizes:
-      conv_layer = tf.layers.Conv1D(self._hparams.num_filter, k,
+    # for k in self._hparams.kernel_sizes:
+    #   conv_layer = tf.layers.Conv1D(self._hparams.num_filter, k,
+    #                                 padding='same')
+    #   self._conv_layers.append(conv_layer)
+    for filter_size, num_filter in zip(self._hparams.kernel_sizes, [100, 200]):
+      conv_layer = tf.layers.Conv1D(num_filter, filter_size,
                                     padding='same')
       self._conv_layers.append(conv_layer)
-
-    self._proj_layer = tf.layers.Dense(1)
+    self._proj_layer = tf.layers.Dense(2)
 
   @staticmethod
   def default_hparams():

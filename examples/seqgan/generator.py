@@ -25,33 +25,30 @@ class Generator:
 
             self.embedder = tx.modules.WordEmbedder(
                 vocab_size=self.vocab_size, hparams=config.emb)
-            self.encoder = tx.modules.UnidirectionalRNNEncoder(
-                hparams={"rnn_cell": config.cell})
             self.decoder = tx.modules.BasicRNNDecoder(
                 vocab_size=self.vocab_size,
                 hparams={"rnn_cell": config.cell,
                          "max_decoding_length_train": self.max_seq_length + 1,
                          "max_decoding_length_infer": self.max_seq_length})
-            self.connector = tx.modules.ForwardConnector(
-                output_size=self.decoder.state_size)
 
             emb_inputs = self.embedder(self.data_batch[:, :-1])
             if config.keep_prob < 1:
                 emb_inputs = tf.nn.dropout(
                     emb_inputs, tx.utils.switch_dropout(config.keep_prob))
-            enc_outputs, enc_last = self.encoder(inputs=emb_inputs)
+
+            initial_state = self.decoder.zero_state(self.batch_size, tf.float32)
             self.outputs, final_state, seq_lengths = self.decoder(
                 decoding_strategy="train_greedy",
                 impute_finished=True,
                 inputs=emb_inputs,
                 sequence_length=[self.max_seq_length + 1] * self.batch_size,
-                initial_state=self.connector(enc_last))
+                initial_state=initial_state)
 
-            # Losses & train ops
-            self.mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
-                labels=self.data_batch[:, 1:],
-                logits=self.outputs.logits,
-                sequence_length=seq_lengths)
+            self.mle_loss = -tf.reduce_sum(
+                tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
+                    tf.clip_by_value(tf.reshape(self.outputs.logits, [-1, self.vocab_size]), 1e-20, 1.0)
+                )
+            ) / ((self.max_seq_length + 1) * self.batch_size)
 
             # Use global_step to pass epoch, for lr decay
             self.global_step = tf.placeholder(tf.int32)
@@ -59,12 +56,12 @@ class Generator:
                 self.mle_loss, global_step=self.global_step, increment_global_step=False,
                 hparams=config.opt)
 
-            probabilities = tf.nn.softmax(self.outputs.logits[:, :self.max_seq_length, :])  # [batch_size, seq_len, vocab_size]
-            # the probability of generating each position of the sample
-            word_probs = tf.reduce_max(probabilities, axis=-1)  # [batch, seq_len],
-            log_probs = _mask_sequences(tf.log(word_probs), seq_lengths)
-            self.update_loss = - tf.reduce_mean(
-                tf.reduce_sum(log_probs * self.rewards, axis=1) / tf.cast(self.batch_size * seq_lengths, dtype=tf.float32))
+            self.update_loss = -tf.reduce_sum(
+                tf.reduce_sum(
+                    tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:self.max_seq_length + 1], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
+                        tf.clip_by_value(tf.reshape(self.outputs.logits[:, :self.max_seq_length, :], [-1, self.vocab_size]), 1e-20, 1.0)
+                    ), 1) * tf.reshape(self.rewards, [-1])
+            )
 
             self.update_step = tf.placeholder(tf.int32)
             self.update_op = tx.core.get_train_op(
@@ -77,4 +74,4 @@ class Generator:
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
                 embedding=self.embedder,
-                initial_state=self.connector(enc_last))
+                initial_state=initial_state)
