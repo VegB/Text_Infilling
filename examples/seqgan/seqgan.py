@@ -146,13 +146,15 @@ if __name__ == "__main__":
 
         saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch)
 
+        # saver.restore(sess, './checkpoint/-130')
+
         # Adversial Training
         for adv_epoch in range(config.adversial_epoch):
             update_generator_with_rollout(sess, generator, discriminator,
                                           update_step=config.adv_g_step)
             generate_samples(sess, generator, input_file=config.train_file,
                              vocab_file=config.vocab_file, dst_path=config.negative_file)
-            calculate_nll(sess, target_generator, input_file=config.negative_file,
+            calculate_nll(sess, generator, input_file=config.negative_file,
                           vocab_file=config.vocab_file, epoch_id=adv_epoch, type='nll_test')
             calculate_nll(sess, target_generator, input_file=config.negative_file,
                           vocab_file=config.vocab_file, epoch_id=adv_epoch)
