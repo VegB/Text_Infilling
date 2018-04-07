@@ -64,7 +64,7 @@ class Generator:
             word_probs = tf.reduce_max(probabilities, axis=-1)  # [batch, seq_len],
             log_probs = _mask_sequences(tf.log(word_probs), seq_lengths)
             self.update_loss = - tf.reduce_mean(
-                tf.reduce_sum(log_probs * self.rewards, axis=1) / tf.cast(seq_lengths, dtype=tf.float32))
+                tf.reduce_sum(log_probs * self.rewards, axis=1) / tf.cast(self.batch_size * seq_lengths, dtype=tf.float32))
 
             self.update_step = tf.placeholder(tf.int32)
             self.update_op = tx.core.get_train_op(
