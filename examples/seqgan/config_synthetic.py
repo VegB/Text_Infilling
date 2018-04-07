@@ -1,7 +1,7 @@
-# train_file = "../../data/oracle.txt"
-# vocab_file = "../../data/oracle_vocab.txt"
-train_file = "../../data/small_sent.txt"
-vocab_file = "../../data/vocab.txt"
+train_file = "../../data/oracle.txt"
+vocab_file = "../../data/oracle_vocab.txt"
+# train_file = "../../data/small_sent.txt"
+# vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
@@ -14,10 +14,10 @@ keep_prob = 1.0
 batch_size = 20
 num_steps = 20
 
-rollout_num = 1
-target_pretrain_epoch = 3
-generator_pretrain_epoch = 3
-discriminator_pretrain_epoch = 3
+rollout_num = 16
+target_pretrain_epoch = 80
+generator_pretrain_epoch = 80
+discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 adv_g_step = 1
 adv_d_epoch = 15
