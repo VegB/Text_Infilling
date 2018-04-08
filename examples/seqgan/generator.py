@@ -44,9 +44,11 @@ class Generator:
                 sequence_length=[self.max_seq_length + 1] * self.batch_size,
                 initial_state=initial_state)
 
+            preds = tf.nn.softmax(self.outputs.logits)
+
             self.mle_loss = -tf.reduce_sum(
                 tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
-                    tf.clip_by_value(tf.reshape(self.outputs.logits, [-1, self.vocab_size]), 1e-20, 1.0)
+                    tf.clip_by_value(tf.reshape(preds, [-1, self.vocab_size]), 1e-20, 1.0)
                 )
             ) / ((self.max_seq_length + 1) * self.batch_size)
 
@@ -59,7 +61,7 @@ class Generator:
             self.update_loss = -tf.reduce_sum(
                 tf.reduce_sum(
                     tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:self.max_seq_length + 1], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
-                        tf.clip_by_value(tf.reshape(self.outputs.logits[:, :self.max_seq_length, :], [-1, self.vocab_size]), 1e-20, 1.0)
+                        tf.clip_by_value(tf.reshape(preds[:, :self.max_seq_length, :], [-1, self.vocab_size]), 1e-20, 1.0)
                     ), 1) * tf.reshape(self.rewards, [-1])
             )
 

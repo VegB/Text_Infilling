@@ -146,8 +146,6 @@ if __name__ == "__main__":
 
         saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch)
 
-        # saver.restore(sess, './checkpoint/-130')
-
         # Adversial Training
         for adv_epoch in range(config.adversial_epoch):
             update_generator_with_rollout(sess, generator, discriminator,
