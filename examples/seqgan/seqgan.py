@@ -123,7 +123,7 @@ if __name__ == "__main__":
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
-
+        """
         # Pretrain TargetGenerator
         generate_samples(sess, target_generator, input_file=config.train_file,
                          vocab_file=config.vocab_file, dst_path=config.positive_file)
@@ -145,7 +145,7 @@ if __name__ == "__main__":
                             epoch_num=config.discriminator_pretrain_epoch)
 
         saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch)
-
+        
         # Adversial Training
         for adv_epoch in range(config.adversial_epoch):
             update_generator_with_rollout(sess, generator, discriminator,
@@ -160,6 +160,9 @@ if __name__ == "__main__":
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=config.adv_d_epoch)
             if adv_epoch > 0 and adv_epoch % 10 == 0:
-                saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch + adv_epoch)
+                saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch + adv_epoch)"""
 
+        saver.restore(sess, './checkpoint/-130')
+        calculate_nll(sess, generator, input_file=config.negative_file,
+                      vocab_file=config.vocab_file, epoch_id=0, type='nll_test')
     log.close()

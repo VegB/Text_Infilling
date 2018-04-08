@@ -1,6 +1,1 @@
-Pretrain epoch 0: nll_test = 3.175698
-epoch 0: nll_oracle = 3.178040
-Pretrain epoch 1: nll_test = 3.153155
-epoch 1: nll_oracle = 3.178050
-epoch 0: nll_test = 2.995014
-epoch 0: nll_oracle = 3.178184
+epoch 0: nll_test = 3.094783
