@@ -1,7 +1,7 @@
 train_file = "../../data/oracle.txt"
 vocab_file = "../../data/oracle_vocab.txt"
-# train_file = "../../data/small_sent.txt"
-# vocab_file = "../../data/vocab.txt"
+train_file = "../../data/small_sent.txt"
+vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
@@ -16,7 +16,7 @@ num_steps = 20
 
 rollout_num = 16
 target_pretrain_epoch = 80
-generator_pretrain_epoch = 80
+generator_pretrain_epoch = 2
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 adv_g_step = 1
@@ -29,7 +29,7 @@ cell = {
         "forget_bias": 0.
     },
     "dropout": {"output_keep_prob": keep_prob},
-    "num_layers": 2
+    "num_layers": 1
 }
 emb = {
     "dim": hidden_size
@@ -41,6 +41,14 @@ opt = {
             "learning_rate": 0.01
         }
     }
+}
+d_opt = { 
+    "optimizer": {
+        "type": "AdamOptimizer",
+        "kwargs": {
+            "learning_rate": 0.0001
+        }   
+    }   
 }
 cnn = {
       "kernel_sizes": [2, 3],

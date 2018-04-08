@@ -26,12 +26,12 @@ class Discriminator:
                 vocab_size=self.vocab_size, hparams=config.emb)
             emb_inputs = self.embedder(self.samples)
             self.logits = self.classifier(emb_inputs)
-            self.ypred_for_auc = tf.nn.sigmoid(self.logits)
+            self.ypred_for_auc = tf.nn.softmax(self.logits)
 
             # Calculate loss
-            self.mle_loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=self.logits, labels=self.labels))
+            self.mle_loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=self.logits, labels=self.labels))
 
             self.global_step = tf.placeholder(tf.int32)
             self.train_op = tx.core.get_train_op(
                 self.mle_loss, global_step=self.global_step, increment_global_step=False,
-                hparams=config.opt)
+                hparams=config.d_opt)
