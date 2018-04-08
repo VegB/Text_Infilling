@@ -1,7 +1,7 @@
 train_file = "../../data/oracle.txt"
 vocab_file = "../../data/oracle_vocab.txt"
-train_file = "../../data/small_sent.txt"
-vocab_file = "../../data/vocab.txt"
+# train_file = "../../data/small_sent.txt"
+# vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
@@ -16,7 +16,7 @@ num_steps = 20
 
 rollout_num = 16
 target_pretrain_epoch = 80
-generator_pretrain_epoch = 2
+generator_pretrain_epoch = 80
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 adv_g_step = 1
