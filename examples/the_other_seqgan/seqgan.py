@@ -17,6 +17,7 @@ log = open(config.log_file, "w")
 
 
 def pretrain_generator(sess, generator, input_file, vocab_file, epoch_id, epoch_num=1):
+    print("-------------Pretrain Generator----------------")
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=epoch_num)
 
@@ -37,6 +38,7 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_id, epoch_
 
 
 def generate_negative_samples(sess, generator, input_file, vocab_file, dst_path):
+    print("-------------Generate Negative Samples----------------")
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=1)
 
@@ -49,9 +51,11 @@ def generate_negative_samples(sess, generator, input_file, vocab_file, dst_path)
 
     store_output(output=generated_outputs, id2word=dataloader.id2word,
                  data_path=dst_path, max_len=dataloader.max_len)
+    print_result(generated_outputs[:10], dataloader.id2word, dataloader.max_len)
 
 
 def train_discriminator(sess, discriminator, positive_file, negative_file, vocab_file, epoch_num):
+    print("-------------Train Discriminator----------------")
     dataloader = DisDataLoader(config, epoch_num=epoch_num, positive_file=positive_file,
                                negative_file=negative_file, vocab_file=vocab_file)
 
@@ -68,7 +72,9 @@ def train_discriminator(sess, discriminator, positive_file, negative_file, vocab
             print("%d: %.6f" % (step, loss))
 
 
-def update_generator(sess, generator, discriminator, positive_file, negative_file, vocab_file, epoch_num):
+def update_generator(sess, generator, discriminator, positive_file, negative_file, vocab_file,
+                     epoch_num):
+    print("-------------Update Generator----------------")
     dataloader = DisDataLoader(config, epoch_num=epoch_num, positive_file=positive_file,
                                negative_file=negative_file, vocab_file=vocab_file)
 
@@ -85,14 +91,28 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                          discriminator.gen_samples: g_data,
                                          discriminator.global_step: dataloader.step,
                                          tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        # print(g_preds)
 
         _, _, step, update_loss = sess.run([generator.exp_op, generator.update_op,
                                             generator.update_step, generator.gen_loss],
                                            feed_dict={generator.rewards: g_preds[:, :-1, tf.newaxis],
                                                       generator.update_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        print("%d: %.6f" % (step, update_loss))
+        if step % 5:
+            print("%d: %.6f" % (step, update_loss))
+
+
+def calculate_nll(sess, generator, input_file, vocab_file, epoch_id):
+    dataloader = GenDataLoader(config, text_file=input_file,
+                               vocab_file=vocab_file, epoch_num=1)
+    nll = []
+    while not dataloader.should_stop():
+        loss = sess.run([generator.teacher_loss],
+                        feed_dict={generator.data_batch: dataloader.get_batch(),
+                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        nll.append(loss)
+    nll_oracle = np.mean(nll)
+    print("Adversial epoch %d: nll_test = %f" % (epoch_id, nll_oracle))
+    log.write("Adversial epoch %d: nll_test = %f\n" % (epoch_id, nll_oracle))
 
 
 if __name__ == "__main__":
@@ -108,24 +128,21 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        # for i in range(8):
-        #     pretrain_generator(sess, generator, config.train_file, config.vocab_file,
-        #                        epoch_id=i, epoch_num=int(config.generator_pretrain_epoch / 8))
-        #     train_rst_file = "./data/%d.txt" % (i * 10)
-        #     eval_rst_file = "./data/%d.eval.txt" % (i * 10)
-        #     generate_negative_samples(sess, generator, input_file=config.train_file,
-        #                               vocab_file=config.vocab_file, dst_path=train_rst_file)
-        #     generate_negative_samples(sess, generator, input_file=config.eval_file,
-        #                               vocab_file=config.vocab_file, dst_path=eval_rst_file)
-        #     if i > 0 and i % 2 == 0:
-        #         saver.save(sess, config.ckpt, global_step=i*10)
-        #
-        # generate_negative_samples(sess, generator, input_file=config.train_file,
-        #                           vocab_file=config.vocab_file, dst_path=config.negative_file)
-        #
-        # train_discriminator(sess, discriminator, positive_file=config.train_file,
-        #                     negative_file=config.negative_file, vocab_file=config.vocab_file,
-        #                     epoch_num=config.discriminator_pretrain_epoch)
+        for i in range(8):
+            pretrain_generator(sess, generator, config.train_file, config.vocab_file,
+                               epoch_id=i, epoch_num=int(config.generator_pretrain_epoch / 8))
+            train_rst_file = "./data/%d.txt" % (i * 10)
+            generate_negative_samples(sess, generator, input_file=config.train_file,
+                                      vocab_file=config.vocab_file, dst_path=train_rst_file)
+            if i > 0 and i % 2 == 0:
+                saver.save(sess, config.ckpt, global_step=i * 10)
+
+        generate_negative_samples(sess, generator, input_file=config.train_file,
+                                  vocab_file=config.vocab_file, dst_path=config.negative_file)
+
+        train_discriminator(sess, discriminator, positive_file=config.train_file,
+                            negative_file=config.negative_file, vocab_file=config.vocab_file,
+                            epoch_num=config.discriminator_pretrain_epoch)
 
         for update_epoch in range(config.adversial_epoch):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
@@ -133,16 +150,13 @@ if __name__ == "__main__":
                              epoch_num=1)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=config.negative_file)
-            # calculate_nll(sess, generator, input_file=config.negative_file,
-            #               vocab_file=config.vocab_file, epoch_id=update_epoch)
+            calculate_nll(sess, generator, input_file=config.negative_file,
+                          vocab_file=config.vocab_file, epoch_id=update_epoch)
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
-                                epoch_num=15)
+                                epoch_num=1)
             if update_epoch % 10 == 0 or update_epoch == config.adversial_epoch - 1:
-                print(update_epoch)
-                train_rst_file = "./data/%d.txt" % (update_epoch + config.generator_pretrain_epoch)
-                eval_rst_file = "./data/%d.eval.txt" % (update_epoch + config.generator_pretrain_epoch)
+                current_epoch = update_epoch + config.generator_pretrain_epoch
+                train_rst_file = "./data/%d.txt" % current_epoch
                 copyfile(config.negative_file, train_rst_file)
-                generate_negative_samples(sess, generator, input_file=config.eval_file,
-                                          vocab_file=config.vocab_file, dst_path=eval_rst_file)
-                saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch + update_epoch)
+                saver.save(sess, config.ckpt, global_step=current_epoch)
