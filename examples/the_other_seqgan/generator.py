@@ -55,15 +55,7 @@ class Generator:
                 self.teacher_loss, global_step=self.global_step, increment_global_step=False,
                 hparams=config.teacher_opt)
 
-            # reward
-            reward = self.rewards - self.expected_reward[:tf.shape(self.rewards)[1]]
-            self.mean_reward = tf.reduce_mean(reward)
-            exp_reward_loss = tf.reduce_mean(tf.abs(reward))
-            self.exp_op = tx.core.get_train_op(
-                exp_reward_loss, global_step=self.global_step, increment_global_step=False,
-                hparams=config.reward_opt)
-
-            # for generation
+            # text generation
             self.generated_outputs, _, _ = self.decoder(
                 decoding_strategy="infer_sample",
                 start_tokens=[self.bos_id] * self.batch_size,
@@ -71,14 +63,23 @@ class Generator:
                 embedding=self.embedder,
                 initial_state=initial_state)
 
+            self.update_step = tf.placeholder(tf.int32)
+
+            # reward
+            reward = self.rewards - self.expected_reward[:tf.shape(self.rewards)[1]]
+            self.mean_reward = tf.reduce_mean(reward)
+            exp_reward_loss = tf.reduce_mean(tf.abs(reward))
+            self.exp_op = tx.core.get_train_op(
+                exp_reward_loss, global_step=self.update_step, increment_global_step=False,
+                hparams=config.reward_opt)
+
             # gen loss
             reward = tf.expand_dims(tf.cumsum(reward, axis=1, reverse=True), -1)
-            g_sequence = tf.one_hot(self.generated_outputs.sample_id, self.vocab_size)
-            g_preds = tf.clip_by_value(self.generated_outputs.logits * g_sequence, 1e-20, 1)
+            g_sequence = tf.one_hot(self.generated_outputs.sample_id[:, :self.max_seq_length], self.vocab_size)
+            g_preds = tf.clip_by_value(self.generated_outputs.logits[:, :self.max_seq_length] * g_sequence, 1e-20, 1)
             gen_reward = tf.log(g_preds) * reward
             self.gen_loss = -tf.reduce_mean(gen_reward)
 
-            self.update_step = tf.placeholder(tf.int32)
             self.update_op = tx.core.get_train_op(
                 self.gen_loss, global_step=self.update_step, increment_global_step=False,
                 hparams=config.g_opt)
