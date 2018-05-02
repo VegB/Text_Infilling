@@ -39,10 +39,11 @@ class Discriminator:
             g_enc_outputs, g_enc_last = self.encoder(inputs=g_emb_inputs)
 
             # build classifying layer params
-            self.W = tf.Variable(tf.random_uniform([self.encoder_unit_num, class_num], -1.0, 1.0), name="W")
-            self.b = tf.Variable(tf.constant(0.1, shape=[class_num]), name="b")
-            self.r_preds = tf.sigmoid(tf.nn.xw_plus_b(r_enc_last[1][0], self.W, self.b, name="r_preds"))
-            self.g_preds = tf.sigmoid(tf.nn.xw_plus_b(g_enc_last[1][0], self.W, self.b, name="g_preds"))
+            self.W = tf.Variable(tf.random_uniform([self.encoder_unit_num, 1], -1.0, 1.0), name="W")
+            r_preds = tf.einsum('ijk,kl->ijl', r_enc_outputs, self.W)
+            self.r_preds = tf.sigmoid(tf.squeeze(r_preds, [2]))
+            g_preds = tf.einsum('ijk,kl->ijl', g_enc_outputs, self.W)
+            self.g_preds = tf.sigmoid(tf.squeeze(g_preds, [2]))
 
             eps = 1e-12
             r_loss = -tf.reduce_mean(tf.log(self.r_preds + eps))  # r_preds -> 1.
