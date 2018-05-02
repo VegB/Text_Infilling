@@ -1,30 +1,4 @@
 import numpy as np
-from gensim.models import KeyedVectors
-
-
-def create_word_embedding(vocabs, emb_dim=50, vecfile=None):
-    """
-    :param vocabs: a dictionary. {key: word, val: idx}
-    :param emb_dim:
-    :param vecfile:
-    :return:
-    """
-    emb = np.zeros(shape=(len(vocabs), emb_dim), dtype=np.float32)
-    if vecfile is None:
-        return emb
-
-    pretrained = KeyedVectors.load_word2vec_format(vecfile, binary=True)
-
-    def word_to_vec(word):
-        if word in pretrained.vocab:
-            return pretrained[word]
-        else:
-            print(word)
-            return np.random.normal(0, 1, emb_dim)
-
-    for word, i in vocabs.items():
-        emb[i] = word_to_vec(word)
-    return emb
 
 
 def print_result(output, id2word, max_len):

@@ -1,13 +1,11 @@
 # train_file = "../../data/coco.txt"
-# eval_file = "../../data/coco.eval.txt"
 # vocab_file = "../../data/coco_vocab.txt"
 train_file = "../../data/small_sent.txt"
-eval_file = "../../data/small_sent.txt"
 vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
-ckpt = "./checkpoint/"
+ckpt = "./checkpoint/ckpt"
 
 init_scale = 0.1
 rnn_dim = 128
