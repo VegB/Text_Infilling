@@ -30,6 +30,15 @@ cell = {
     "dropout": {"output_keep_prob": keep_prob},
     "num_layers": 3
 }
+d_cell = {
+    "type": "LSTMBlockCell",
+    "kwargs": {
+        "num_units": rnn_dim,
+        "forget_bias": 0.
+    },
+    "dropout": {"output_keep_prob": 1.0},
+    "num_layers": 3
+}
 emb = {
     "dim": rnn_dim
 }

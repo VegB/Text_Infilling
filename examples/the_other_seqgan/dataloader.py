@@ -87,8 +87,8 @@ class DisDataLoader:
         self.bos = "<BOS>"
         self.unk = "<UNK>"
         self.pad = "<PAD>"
-        self.ids, self.labels = self.load_data(positive_file, negative_file, vocab_file)
-        self.id_batches, self.label_batches, self.batch_num = self.create_batch()
+        self.r_ids, self.g_ids = self.load_data(positive_file, negative_file, vocab_file)
+        self.r_id_batches, self.g_id_batches, self.batch_num = self.create_batch()
         self.batch_ptr = 0
 
     def load_data(self, positive_file, negative_file, vocab_file):
@@ -117,33 +117,26 @@ class DisDataLoader:
             positive_data = fin.readlines()
         with open(negative_file, "rb") as fin:
             negative_data = fin.readlines()
-        labels = []
-        labels = [[1, 0]] * len(positive_data) + [[0, 1]] * len(negative_data)
 
-        random.shuffle(labels)
-        data, p_pos, n_pos = [], 0, 0
-        for label in labels:
-            if label[0] == 1:
-                data.append(positive_data[p_pos])
-                p_pos += 1
-            else:
-                data.append(negative_data[n_pos])
-                n_pos += 1
+        r_data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
+                                max_len=self.max_len) for sent in positive_data]
+        r_ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
+                 for sent in r_data]
 
-        data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
-                              max_len=self.max_len) for sent in data]
-        ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
-               for sent in data]
+        g_data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
+                                max_len=self.max_len) for sent in negative_data]
+        g_ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
+                 for sent in g_data]
 
-        return ids, labels
+        return r_ids, g_ids
 
     def create_batch(self):
-        batch_num = int(len(self.ids) / self.batch_size)
-        sent_ids = np.array(self.ids[:batch_num * self.batch_size], dtype=np.int32)
-        sent_labels = np.array(self.labels[:batch_num * self.batch_size], dtype=np.int32)
-        id_batches = np.split(sent_ids, batch_num, axis=0)
-        label_batches = np.split(sent_labels, batch_num, axis=0)
-        return id_batches, label_batches, batch_num
+        batch_num = int(len(self.r_ids) / self.batch_size)
+        r_sent_ids = np.array(self.r_ids[:batch_num * self.batch_size], dtype=np.int32)
+        r_id_batches = np.split(r_sent_ids, batch_num, axis=0)
+        g_sent_ids = np.array(self.g_ids[:batch_num * self.batch_size], dtype=np.int32)
+        g_id_batches = np.split(g_sent_ids, batch_num, axis=0)
+        return r_id_batches, g_id_batches, batch_num
 
     def get_batch(self):
         tmp_pos = self.batch_ptr
@@ -152,7 +145,7 @@ class DisDataLoader:
         if self.batch_ptr == self.batch_num:
             self.batch_ptr = 0
             self.trained_epoch += 1
-        return self.id_batches[tmp_pos], self.label_batches[tmp_pos]
+        return self.r_id_batches[tmp_pos], self.g_id_batches[tmp_pos]
 
     def should_stop(self):
         return self.epoch_num <= self.trained_epoch
