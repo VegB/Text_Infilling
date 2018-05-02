@@ -29,7 +29,7 @@ cell = {
         "forget_bias": 0.
     },
     "dropout": {"output_keep_prob": keep_prob},
-    "num_layers": 2
+    "num_layers": 1
 }
 emb = {
     "dim": hidden_size
@@ -41,6 +41,14 @@ opt = {
             "learning_rate": 0.01
         }
     }
+}
+d_opt = { 
+    "optimizer": {
+        "type": "AdamOptimizer",
+        "kwargs": {
+            "learning_rate": 0.0001
+        }   
+    }   
 }
 cnn = {
       "kernel_sizes": [2, 3],
