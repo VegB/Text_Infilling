@@ -19,7 +19,7 @@ class Generator:
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
                                              shape=[None, self.max_seq_length + 2])
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
-                                          shape=[None, self.max_seq_length])
+                                          shape=[None, self.max_seq_length, 1])
             self.expected_reward = tf.Variable(tf.zeros((self.max_seq_length,)))
 
             self.embedder = tx.modules.WordEmbedder(
@@ -56,7 +56,7 @@ class Generator:
                 hparams=config.teacher_opt)
 
             # reward
-            reward = self.rewards - self.expected_reward[:self.max_seq_length]
+            reward = self.rewards - self.expected_reward[:tf.shape(self.rewards)[1]]
             self.mean_reward = tf.reduce_mean(reward)
             exp_reward_loss = tf.reduce_mean(tf.abs(reward))
             self.exp_op = tx.core.get_train_op(
