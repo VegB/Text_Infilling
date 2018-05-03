@@ -92,8 +92,11 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                          discriminator.global_step: dataloader.step,
                                          tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
-        max_gen_len = np.shape(gen_data)[1]
+        max_gen_len = np.shape(gen_data.sample_id)[1]
+        print(np.shape(gen_data.sample_id))
+        print(np.shape(gen_data.logits))
         trunc_pos = max_gen_len if max_gen_len < config.num_steps else config.num_steps
+        print("max_gen_len: %d, trunc_pos: %d" % (max_gen_len, trunc_pos))
         _, _, step, update_loss = sess.run([generator.exp_op, generator.update_op,
                                             generator.update_step, generator.gen_loss],
                                            feed_dict={generator.trunc_pos: trunc_pos,
