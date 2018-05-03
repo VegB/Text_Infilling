@@ -4,7 +4,7 @@ import numpy as np
 def print_result(output, id2word, max_len):
     for sent in output:
         words = [id2word[id] for id in sent[:max_len]]
-        print(" ".join(words))
+        print(" ".join(words).encode("utf-8"))
 
 
 def store_output(output, id2word, data_path, max_len):
