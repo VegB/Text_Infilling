@@ -63,6 +63,12 @@ class Generator:
                 embedding=self.embedder,
                 initial_state=initial_state)
 
+            # padding
+            sample_id = tf.pad(self.generated_outputs.sample_id, paddings=tf.constant([[0, 0], [0, self.max_seq_length]]),
+                   mode='CONSTANT', constant_values=self.pad_id)
+            logits = tf.pad(self.generated_outputs.logits, paddings=tf.constant([[0, 0], [0, self.max_seq_length], [0, 0]]),
+                   mode='CONSTANT', constant_values=1.0/self.vocab_size)
+
             self.update_step = tf.placeholder(tf.int32)
 
             # reward
@@ -75,8 +81,8 @@ class Generator:
 
             # gen loss
             reward = tf.expand_dims(tf.cumsum(reward, axis=1, reverse=True), -1)
-            g_sequence = tf.one_hot(self.generated_outputs.sample_id[:, :self.max_seq_length], self.vocab_size)
-            g_preds = tf.clip_by_value(self.generated_outputs.logits[:, :self.max_seq_length] * g_sequence, 1e-20, 1)
+            g_sequence = tf.one_hot(sample_id[:, :self.max_seq_length], self.vocab_size)
+            g_preds = tf.clip_by_value(logits[:, :self.max_seq_length] * g_sequence, 1e-20, 1)
             gen_reward = tf.log(g_preds) * reward
             self.gen_loss = -tf.reduce_mean(gen_reward)
 

@@ -97,7 +97,7 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                            feed_dict={generator.rewards: g_preds[:, :-1, tf.newaxis],
                                                       generator.update_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 5:
+        if step % 50 == 0:
             print("%d: %.6f" % (step, update_loss))
 
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        for i in range(8):
+        """for i in range(7, 8):
             pretrain_generator(sess, generator, config.train_file, config.vocab_file,
                                epoch_id=i, epoch_num=int(config.generator_pretrain_epoch / 8))
             train_rst_file = "./data/%d.txt" % (i * 10)
@@ -143,6 +143,11 @@ if __name__ == "__main__":
         train_discriminator(sess, discriminator, positive_file=config.train_file,
                             negative_file=config.negative_file, vocab_file=config.vocab_file,
                             epoch_num=config.discriminator_pretrain_epoch)
+
+        saver.save(sess, config.ckpt, global_step=80)
+        """
+
+        saver.restore(sess, config.ckpt + "-80")
 
         for update_epoch in range(config.adversial_epoch):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
