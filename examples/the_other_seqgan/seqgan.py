@@ -72,13 +72,12 @@ def train_discriminator(sess, discriminator, positive_file, negative_file, vocab
             print("%d: %.6f" % (step, loss))
 
 
-def update_generator(sess, generator, discriminator, positive_file, negative_file, vocab_file,
-                     epoch_num):
+def update_generator(sess, generator, discriminator, positive_file, negative_file, vocab_file):
     print("-------------Update Generator----------------")
-    dataloader = DisDataLoader(config, epoch_num=epoch_num, positive_file=positive_file,
+    dataloader = DisDataLoader(config, epoch_num=1, positive_file=positive_file,
                                negative_file=negative_file, vocab_file=vocab_file)
 
-    while not dataloader.should_stop():
+    for i in range(config.g_update_batch):
         gen_data = sess.run(generator.generated_outputs,
                             feed_dict={tx.global_mode(): tf.estimator.ModeKeys.EVAL})
         g_data = [pad_to_length(sent, eos=dataloader.eos_id, pad=dataloader.pad_id,
@@ -99,11 +98,10 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                            feed_dict={generator.trunc_pos: trunc_pos,
                                                       generator.sample_id: g_data,
                                                       generator.logits: np.pad(gen_data.logits, ((0, 0), (0, config.num_steps + 1 - max_gen_len), (0, 0)), 'constant'),
-                                                      generator.rewards: g_preds[:, :-1, tf.newaxis],
+                                                      generator.rewards: g_preds[:, :, tf.newaxis],
                                                       generator.update_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 50 == 0:
-            print("%d: %.6f, reg_loss: %.6f" % (step, update_loss, reg_loss))
+        print("%d: %.6f, reg_loss: %.6f" % (step, update_loss, reg_loss))
 
 
 def calculate_nll(sess, generator, input_file, vocab_file, epoch_id):
@@ -157,8 +155,7 @@ if __name__ == "__main__":
 
         for update_epoch in range(config.adversial_epoch):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
-                             negative_file=config.negative_file, vocab_file=config.vocab_file,
-                             epoch_num=1)
+                             negative_file=config.negative_file, vocab_file=config.vocab_file)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=config.negative_file)
             calculate_nll(sess, generator, input_file=config.negative_file,

@@ -19,7 +19,7 @@ class Generator:
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
                                              shape=[None, self.max_seq_length + 2])
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
-                                          shape=[None, self.max_seq_length, 1])
+                                          shape=[None, self.max_seq_length + 1, 1])
             self.expected_reward = tf.Variable(tf.zeros((self.max_seq_length,)))
 
             self.embedder = tx.modules.WordEmbedder(
@@ -62,13 +62,6 @@ class Generator:
                 end_token=self.eos_id,
                 embedding=self.embedder,
                 initial_state=initial_state)
-
-            """# padding
-            sample_id = tf.pad(self.generated_outputs.sample_id, paddings=tf.constant([[0, 0], [0, self.max_seq_length]]),
-                   mode='CONSTANT', constant_values=self.pad_id)
-            logits = tf.pad(self.generated_outputs.logits, paddings=tf.constant([[0, 0], [0, self.max_seq_length], [0, 0]]),
-                   mode='CONSTANT', constant_values=1.0/self.vocab_size)
-            """
 
             self.update_step = tf.placeholder(tf.int32)
 
