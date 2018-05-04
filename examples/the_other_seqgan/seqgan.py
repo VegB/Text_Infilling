@@ -62,14 +62,14 @@ def train_discriminator(sess, discriminator, positive_file, negative_file, vocab
     while not dataloader.should_stop():
         r_ids, g_ids = dataloader.get_batch()
 
-        _, step, loss = sess.run([discriminator.train_op, discriminator.global_step,
-                                  discriminator.dis_loss],
+        _, step, loss, reg_loss = sess.run([discriminator.train_op, discriminator.global_step,
+                                  discriminator.dis_loss, discriminator.dis_reg_loss],
                                  feed_dict={discriminator.real_samples: r_ids,
                                             discriminator.gen_samples: g_ids,
                                             discriminator.global_step: dataloader.step,
                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 200 == 0:
-            print("%d: %.6f" % (step, loss))
+            print("%d: %.6f, reg_loss: %.6f" % (step, loss, reg_loss))
 
 
 def update_generator(sess, generator, discriminator, positive_file, negative_file, vocab_file):
@@ -98,7 +98,7 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                            feed_dict={generator.trunc_pos: trunc_pos,
                                                       generator.sample_id: g_data,
                                                       generator.logits: np.pad(gen_data.logits, ((0, 0), (0, config.num_steps + 1 - max_gen_len), (0, 0)), 'constant'),
-                                                      generator.rewards: g_preds[:, :, tf.newaxis],
+                                                      generator.rewards: g_preds[:, :-1, tf.newaxis],
                                                       generator.update_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         print("%d: %.6f, reg_loss: %.6f" % (step, update_loss, reg_loss))
