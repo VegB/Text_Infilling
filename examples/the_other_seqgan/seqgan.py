@@ -68,7 +68,7 @@ def train_discriminator(sess, discriminator, positive_file, negative_file, vocab
                                             discriminator.gen_samples: g_ids,
                                             discriminator.global_step: dataloader.step,
                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 20 == 0:
+        if step % 200 == 0:
             print("%d: %.6f" % (step, loss))
 
 
@@ -93,15 +93,12 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                          tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
         max_gen_len = np.shape(gen_data.sample_id)[1]
-        print(np.shape(gen_data.sample_id))
-        print(np.shape(gen_data.logits))
         trunc_pos = max_gen_len if max_gen_len < config.num_steps else config.num_steps
-        print("max_gen_len: %d, trunc_pos: %d" % (max_gen_len, trunc_pos))
         _, _, step, update_loss, reg_loss = sess.run([generator.exp_op, generator.update_op,
                                             generator.update_step, generator.gen_loss, generator.gen_reg_loss],
                                            feed_dict={generator.trunc_pos: trunc_pos,
-                                                      generator.sample_id: gen_data.sample_id,
-                                                      generator.logits: gen_data.logits,
+                                                      generator.sample_id: g_data,
+                                                      generator.logits: np.pad(gen_data.logits, ((0, 0), (0, config.num_steps + 1 - max_gen_len), (0, 0)), 'constant'),
                                                       generator.rewards: g_preds[:, :-1, tf.newaxis],
                                                       generator.update_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
@@ -155,7 +152,8 @@ if __name__ == "__main__":
         saver.save(sess, config.ckpt, global_step=80)
         """
 
-        saver.restore(sess, config.ckpt + "-80")
+        # saver.restore(sess, config.ckpt + "-80")
+        saver.restore(sess, "checkpoint/pretrained/ckpt-80")
 
         for update_epoch in range(config.adversial_epoch):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,

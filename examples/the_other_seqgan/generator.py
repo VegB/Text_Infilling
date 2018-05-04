@@ -87,7 +87,7 @@ class Generator:
             # gen loss
             self.sample_id = tf.placeholder(dtype=tf.int32, name="sample_ids",
                                             shape=[None, self.max_seq_length + 1])
-            self.logits = tf.placeholder(dtype=tf.int32, name="logits",
+            self.logits = tf.placeholder(dtype=tf.float32, name="logits",
                                          shape=[None, self.max_seq_length + 1, self.vocab_size])
             self.trunc_pos = tf.placeholder(tf.int32)  # min(self.max_seq_len, max_generated_seq_len)
             reward = tf.expand_dims(tf.cumsum(reward, axis=1, reverse=True), -1)
