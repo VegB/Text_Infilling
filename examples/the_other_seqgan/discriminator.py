@@ -50,7 +50,12 @@ class Discriminator:
             f_loss = -tf.reduce_mean(tf.log(1 - self.g_preds + eps))  # g_preds -> 0.
             self.dis_loss = r_loss + f_loss
 
+            # regularization
+            d_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='discriminator')
+            self.dis_reg_loss = tf.reduce_sum([tf.nn.l2_loss(w) for w in d_vars]) * 1e-5
+            self.total_loss = self.dis_loss + self.dis_reg_loss
+
             self.global_step = tf.placeholder(tf.int32)
             self.train_op = tx.core.get_train_op(
-                self.dis_loss, global_step=self.global_step, increment_global_step=False,
+                self.total_loss, global_step=self.global_step, increment_global_step=False,
                 hparams=config.d_opt)
