@@ -58,7 +58,7 @@ d_opt = {
 }
 reward_opt = {
     "optimizer": {
-        "type": "AdamOptimizer",
+        "type": "GradientDescentOptimizer",
         "kwargs": {
             "learning_rate": 0.001
         }
