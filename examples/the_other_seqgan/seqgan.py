@@ -97,14 +97,16 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
         print(np.shape(gen_data.logits))
         trunc_pos = max_gen_len if max_gen_len < config.num_steps else config.num_steps
         print("max_gen_len: %d, trunc_pos: %d" % (max_gen_len, trunc_pos))
-        _, _, step, update_loss = sess.run([generator.exp_op, generator.update_op,
-                                            generator.update_step, generator.gen_loss],
+        _, _, step, update_loss, reg_loss = sess.run([generator.exp_op, generator.update_op,
+                                            generator.update_step, generator.gen_loss, generator.gen_reg_loss],
                                            feed_dict={generator.trunc_pos: trunc_pos,
+                                                      generator.sample_id: gen_data.sample_id,
+                                                      generator.logits: gen_data.logits,
                                                       generator.rewards: g_preds[:, :-1, tf.newaxis],
                                                       generator.update_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 50 == 0:
-            print("%d: %.6f" % (step, update_loss))
+            print("%d: %.6f, reg_loss: %.6f" % (step, update_loss, reg_loss))
 
 
 def calculate_nll(sess, generator, input_file, vocab_file, epoch_id):
@@ -134,7 +136,7 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        """for i in range(7, 8):
+        """for i in range(8):
             pretrain_generator(sess, generator, config.train_file, config.vocab_file,
                                epoch_id=i, epoch_num=int(config.generator_pretrain_epoch / 8))
             train_rst_file = "./data/%d.txt" % (i * 10)

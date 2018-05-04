@@ -80,14 +80,23 @@ class Generator:
                 exp_reward_loss, global_step=self.update_step, increment_global_step=False,
                 hparams=config.reward_opt)
 
+            # regularization
+            g_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='generator')
+            self.gen_reg_loss = tf.reduce_sum([tf.nn.l2_loss(w) for w in g_vars]) * 1e-5
+
             # gen loss
+            self.sample_id = tf.placeholder(dtype=tf.int32, name="sample_ids",
+                                            shape=[None, self.max_seq_length + 1])
+            self.logits = tf.placeholder(dtype=tf.int32, name="logits",
+                                         shape=[None, self.max_seq_length + 1, self.vocab_size])
             self.trunc_pos = tf.placeholder(tf.int32)  # min(self.max_seq_len, max_generated_seq_len)
             reward = tf.expand_dims(tf.cumsum(reward, axis=1, reverse=True), -1)
-            g_sequence = tf.one_hot(self.generated_outputs.sample_id, self.vocab_size)
-            g_preds = tf.clip_by_value(self.generated_outputs.logits * g_sequence, 1e-20, 1)
+            g_sequence = tf.one_hot(self.sample_id, self.vocab_size)
+            g_preds = tf.clip_by_value(self.logits * g_sequence, 1e-20, 1)
             gen_reward = tf.log(g_preds[:, :self.trunc_pos]) * reward[:, :, :self.trunc_pos]
             self.gen_loss = -tf.reduce_mean(gen_reward)
+            self.total_loss = self.gen_loss + self.gen_reg_loss
 
             self.update_op = tx.core.get_train_op(
-                self.gen_loss, global_step=self.update_step, increment_global_step=False,
+                self.total_loss, global_step=self.update_step, increment_global_step=False,
                 hparams=config.g_opt)
