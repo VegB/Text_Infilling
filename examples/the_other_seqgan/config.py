@@ -8,7 +8,7 @@ log_file = "./data/log.txt"
 ckpt = "./checkpoint/ckpt"
 
 init_scale = 0.1
-rnn_dim = 128
+rnn_dim = 32
 latent_num = 100
 keep_prob = 0.7
 batch_size = 20

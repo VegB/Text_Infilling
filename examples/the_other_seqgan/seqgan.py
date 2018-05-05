@@ -131,7 +131,7 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        """for i in range(8):
+        for i in range(8):
             pretrain_generator(sess, generator, config.train_file, config.vocab_file,
                                epoch_id=i, epoch_num=int(config.generator_pretrain_epoch / 8))
             train_rst_file = "./data/%d.txt" % (i * 10)
@@ -148,12 +148,11 @@ if __name__ == "__main__":
                             epoch_num=config.discriminator_pretrain_epoch)
 
         saver.save(sess, config.ckpt, global_step=80)
-        """
 
         # saver.restore(sess, config.ckpt + "-80")
-        saver.restore(sess, "checkpoint/pretrained/ckpt-80")
+        # saver.restore(sess, "checkpoint/pretrained/ckpt-80")
 
-        for update_epoch in range(config.adversial_epoch):
+        for update_epoch in range(1, config.adversial_epoch + 1):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
                              negative_file=config.negative_file, vocab_file=config.vocab_file)
             generate_negative_samples(sess, generator, input_file=config.train_file,
@@ -163,7 +162,7 @@ if __name__ == "__main__":
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=1)
-            if update_epoch % 10 == 0 or update_epoch == config.adversial_epoch - 1:
+            if update_epoch % 10 == 0:
                 current_epoch = update_epoch + config.generator_pretrain_epoch
                 train_rst_file = "./data/%d.txt" % current_epoch
                 copyfile(config.negative_file, train_rst_file)
