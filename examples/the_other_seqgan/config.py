@@ -8,11 +8,12 @@ log_file = "./data/log.txt"
 ckpt = "./checkpoint/ckpt"
 
 init_scale = 0.1
-rnn_dim = 32
+rnn_dim = 128
 latent_num = 100
 keep_prob = 0.7
 batch_size = 20
 num_steps = 20
+print_num = 5
 
 target_pretrain_epoch = 80
 generator_pretrain_epoch = 80
