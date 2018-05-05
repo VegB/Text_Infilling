@@ -29,7 +29,7 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 200 == 0:
             print("%d: teacher_loss = %.6f" % (step, loss))
-            print_result(outputs.sample_id, dataloader.id2word, dataloader.max_len)
+            print_result(outputs.sample_id[:config.print_num], dataloader.id2word, dataloader.max_len)
 
 
 def generate_negative_samples(sess, generator, input_file, vocab_file, dst_path):
@@ -46,7 +46,7 @@ def generate_negative_samples(sess, generator, input_file, vocab_file, dst_path)
 
     store_output(output=generated_outputs, id2word=dataloader.id2word,
                  data_path=dst_path, max_len=dataloader.max_len)
-    print_result(generated_outputs[:10], dataloader.id2word, dataloader.max_len)
+    print_result(generated_outputs[:config.print_num], dataloader.id2word, dataloader.max_len)
 
 
 def train_discriminator(sess, discriminator, positive_file, negative_file, vocab_file, epoch_num):
@@ -111,8 +111,8 @@ def calculate_nll(sess, generator, oracle_file, gen_file, vocab_file, epoch_id, 
                                    tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         nll.append(loss)
     nll_oracle = np.mean(nll)
-    print("Adversial epoch %d: nll_oracle = %f" % (epoch_id, nll_oracle))
-    log.write("Adversial epoch %d: nll_oracle = %f\n" % (epoch_id, nll_oracle))
+    print("%s epoch %d: nll_oracle = %f" % (mode, epoch_id, nll_oracle))
+    log.write("%s epoch %d: nll_oracle = %f\n" % (mode, epoch_id, nll_oracle))
 
     # NLL Gen
     dataloader = GenDataLoader(config, text_file=gen_file,
@@ -155,11 +155,11 @@ if __name__ == "__main__":
                 train_rst_file = "./data/%d.txt" % pre_epoch
                 copyfile(config.negative_file, train_rst_file)
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
-
+        
         train_discriminator(sess, discriminator, positive_file=config.train_file,
                             negative_file=config.negative_file, vocab_file=config.vocab_file,
                             epoch_num=config.discriminator_pretrain_epoch)
-
+        
         for update_epoch in range(1, config.adversial_epoch + 1):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
                              negative_file=config.negative_file, vocab_file=config.vocab_file)
