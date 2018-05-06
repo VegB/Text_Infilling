@@ -75,29 +75,23 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
     for i in range(config.g_update_batch):
         gen_data = sess.run(generator.generated_outputs,
                             feed_dict={tx.global_mode(): tf.estimator.ModeKeys.EVAL})
-        g_data = [pad_to_length(sent, eos=dataloader.eos_id, pad=dataloader.pad_id,
+        g_data = [pad_to_length(sent.decode('utf-8').split(), bos=dataloader.bos_id,
+                                eos=dataloader.eos_id, pad=dataloader.pad_id,
                                 max_len=dataloader.max_len) for sent in gen_data.sample_id]
 
         r_ids, _ = dataloader.get_batch()
 
         _, g_preds = sess.run([discriminator.r_preds, discriminator.g_preds],
                               feed_dict={discriminator.real_samples: r_ids,
-                                         discriminator.gen_samples: g_data,
+                                         discriminator.gen_samples: g_data[:, 1:],
                                          discriminator.global_step: dataloader.step,
                                          tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
-        max_gen_len = np.shape(gen_data.sample_id)[1]
-        feed_dict = {generator.trunc_pos: max_gen_len if max_gen_len < config.num_steps else config.num_steps,
-                     generator.sample_id: g_data,
-                     generator.logits: np.pad(gen_data.logits, mode='constant',
-                                              pad_width=((0, 0), (0, config.num_steps + 1 - max_gen_len), (0, 0))),
-                     generator.rewards: g_preds[:, :-1, tf.newaxis],
-                     generator.update_step: dataloader.step,
-                     tx.global_mode(): tf.estimator.ModeKeys.TRAIN}
-        _, _, step, update_loss = sess.run([generator.exp_op, generator.update_op,
-                                            generator.update_step, generator.total_loss],
-                                           feed_dict=feed_dict)
-        print("%d: update_total_loss = %.6f" % (step, update_loss))
+        _, update_loss = sess.run([generator.update_op, generator.update_loss],
+                                  feed_dict={generator.data_batch: g_data,
+                                             generator.rewards: g_preds,
+                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        print("%d: update_total_loss = %.6f" % (i, update_loss))
 
 
 def calculate_nll(sess, generator, oracle_file, gen_file, vocab_file, epoch_id, mode):

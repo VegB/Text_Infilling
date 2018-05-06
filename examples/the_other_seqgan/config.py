@@ -44,11 +44,11 @@ d_cell = {
 emb = {
     "dim": rnn_dim
 }
-g_opt = {
+opt = {
     "optimizer": {
         "type": "AdamOptimizer",
         "kwargs": {
-            "learning_rate": 0.0001
+            "learning_rate": 0.01
         }
     }
 }
@@ -57,22 +57,6 @@ d_opt = {
         "type": "AdamOptimizer",
         "kwargs": {
             "learning_rate": 0.0001
-        }
-    }
-}
-reward_opt = {
-    "optimizer": {
-        "type": "GradientDescentOptimizer",
-        "kwargs": {
-            "learning_rate": 0.001
-        }
-    }
-}
-teacher_opt = {
-    "optimizer": {
-        "type": "AdamOptimizer",
-        "kwargs": {
-            "learning_rate": 0.001
         }
     }
 }
