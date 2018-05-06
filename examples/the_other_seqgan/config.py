@@ -8,9 +8,10 @@ log_file = "./data/log.txt"
 ckpt = "./checkpoint/ckpt"
 
 init_scale = 0.1
-rnn_dim = 128
+rnn_dim = 32
+rnn_layers = 1
 latent_num = 100
-keep_prob = 0.7
+keep_prob = 1.0
 batch_size = 20
 num_steps = 20
 print_num = 5
@@ -29,7 +30,7 @@ cell = {
         "forget_bias": 0.
     },
     "dropout": {"output_keep_prob": keep_prob},
-    "num_layers": 3
+    "num_layers": rnn_layers
 }
 d_cell = {
     "type": "LSTMBlockCell",
@@ -38,7 +39,7 @@ d_cell = {
         "forget_bias": 0.
     },
     "dropout": {"output_keep_prob": 1.0},
-    "num_layers": 3
+    "num_layers": rnn_layers
 }
 emb = {
     "dim": rnn_dim
