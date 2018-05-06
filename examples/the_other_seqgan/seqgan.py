@@ -135,24 +135,24 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        # generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
-        #                           dst_path="./data/0.txt")
-        #
-        # for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-        #     pretrain_generator(sess, generator, config.train_file, config.vocab_file)
-        #     generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
-        #                               dst_path=config.negative_file)
-        #     calculate_nll(sess, generator, epoch_id=pre_epoch, oracle_file=config.train_file,
-        #                   gen_file=config.negative_file, vocab_file=config.vocab_file,
-        #                   mode="Pretrain")
-        #     if pre_epoch % 10 == 0:
-        #         train_rst_file = "./data/%d.txt" % pre_epoch
-        #         copyfile(config.negative_file, train_rst_file)
-        #         saver.save(sess, config.ckpt, global_step=pre_epoch)
-        #
-        # train_discriminator(sess, discriminator, positive_file=config.train_file,
-        #                     negative_file=config.negative_file, vocab_file=config.vocab_file,
-        #                     epoch_num=config.discriminator_pretrain_epoch)
+        generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
+                                  dst_path="./data/0.txt")
+
+        for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
+            pretrain_generator(sess, generator, config.train_file, config.vocab_file)
+            generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
+                                      dst_path=config.negative_file)
+            calculate_nll(sess, generator, epoch_id=pre_epoch, oracle_file=config.train_file,
+                          gen_file=config.negative_file, vocab_file=config.vocab_file,
+                          mode="Pretrain")
+            if pre_epoch % 10 == 0:
+                train_rst_file = "./data/%d.txt" % pre_epoch
+                copyfile(config.negative_file, train_rst_file)
+                saver.save(sess, config.ckpt, global_step=pre_epoch)
+
+        train_discriminator(sess, discriminator, positive_file=config.train_file,
+                            negative_file=config.negative_file, vocab_file=config.vocab_file,
+                            epoch_num=config.discriminator_pretrain_epoch)
         
         for update_epoch in range(1, config.adversial_epoch + 1):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
