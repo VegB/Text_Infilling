@@ -15,12 +15,13 @@ class Generator:
             self.bos_id = bos
             self.eos_id = eos
             self.pad_id = pad
+            self.reward_gamma = 0.9
 
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
                                              shape=[None, self.max_seq_length + 2])
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
-                                          shape=[None, self.max_seq_length, 1])
-            self.expected_reward = tf.Variable(tf.zeros((self.max_seq_length,)))
+                                          shape=[None, self.max_seq_length])
+            self.expected_reward = tf.Variable(tf.zeros([self.max_seq_length]))
 
             self.embedder = tx.modules.WordEmbedder(
                 vocab_size=self.vocab_size, hparams=config.emb)
@@ -43,53 +44,36 @@ class Generator:
                 sequence_length=[self.max_seq_length + 1] * self.batch_size,
                 initial_state=initial_state)
 
-            # teacher forcing
-            self.teacher_loss = tf.contrib.seq2seq.sequence_loss(
-                logits=self.outputs.logits,
-                targets=self.data_batch[:, 1:],
-                weights=tf.ones((self.batch_size, self.max_seq_length + 1))
-            )
+            preds = tf.nn.softmax(self.outputs.logits)
 
+            self.teacher_loss = -tf.reduce_sum(
+                tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
+                    tf.clip_by_value(tf.reshape(preds, [-1, self.vocab_size]), 1e-20, 1.0)
+                )
+            ) / ((self.max_seq_length + 1) * self.batch_size)
+
+            # Use global_step to pass epoch, for lr decay
             self.global_step = tf.placeholder(tf.int32)
             self.train_op = tx.core.get_train_op(
                 self.teacher_loss, global_step=self.global_step, increment_global_step=False,
-                hparams=config.teacher_opt)
+                hparams=config.opt)
 
-            # text generation
+            self.update_loss = -tf.reduce_sum(
+                tf.reduce_sum(
+                    tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:self.max_seq_length + 1], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
+                        tf.clip_by_value(tf.reshape(preds[:, :self.max_seq_length, :], [-1, self.vocab_size]), 1e-20, 1.0)
+                    ), 1) * tf.reshape(self.rewards, [-1])
+            )
+
+            self.update_step = tf.placeholder(tf.int32)
+            self.update_op = tx.core.get_train_op(
+                self.update_loss, global_step=self.update_step, increment_global_step=False,
+                hparams=config.opt)
+
+            # for generation
             self.generated_outputs, _, _ = self.decoder(
                 decoding_strategy="infer_sample",
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
                 embedding=self.embedder,
                 initial_state=initial_state)
-
-            self.update_step = tf.placeholder(tf.int32)
-
-            # reward
-            reward = self.rewards - self.expected_reward[:tf.shape(self.rewards)[1]]
-            self.mean_reward = tf.reduce_mean(reward)
-            exp_reward_loss = tf.reduce_mean(tf.abs(reward))
-            self.exp_op = tx.core.get_train_op(
-                exp_reward_loss, global_step=self.update_step, increment_global_step=False,
-                hparams=config.reward_opt)
-
-            # regularization
-            g_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='generator')
-            self.gen_reg_loss = tf.reduce_sum([tf.nn.l2_loss(w) for w in g_vars]) * 1e-5
-
-            # gen loss
-            self.sample_id = tf.placeholder(dtype=tf.int32, name="sample_ids",
-                                            shape=[None, self.max_seq_length + 1])
-            self.logits = tf.placeholder(dtype=tf.float32, name="logits",
-                                         shape=[None, self.max_seq_length + 1, self.vocab_size])
-            self.trunc_pos = tf.placeholder(tf.int32)  # min(self.max_seq_len, max_generated_seq_len)
-            reward = tf.expand_dims(tf.cumsum(reward, axis=1, reverse=True), -1)
-            g_sequence = tf.one_hot(self.sample_id, self.vocab_size)
-            g_preds = tf.clip_by_value(self.logits * g_sequence, 1e-20, 1)
-            gen_reward = tf.log(g_preds[:, :self.trunc_pos]) * reward[:, :, :self.trunc_pos]
-            self.gen_loss = -tf.reduce_mean(gen_reward)
-            self.total_loss = self.gen_loss + self.gen_reg_loss
-
-            self.update_op = tx.core.get_train_op(
-                self.total_loss, global_step=self.update_step, increment_global_step=False,
-                hparams=config.g_opt)
