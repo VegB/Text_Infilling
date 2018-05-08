@@ -73,9 +73,12 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                negative_file=negative_file, vocab_file=vocab_file)
 
     for i in range(config.g_update_batch):
+        r_ids, _ = dataloader.get_batch()
+        g_input = [pad_to_length(sent, bos=dataloader.bos_id, eos=dataloader.eos_id,
+                                 pad=dataloader.pad_id, max_len=dataloader.max_len) for sent in r_ids]
         _, step, loss, gen_data = sess.run([generator.train_op, generator.global_step,
                                            generator.teacher_loss, generator.generated_outputs],
-                                           feed_dict={generator.data_batch: dataloader.get_batch(),
+                                           feed_dict={generator.data_batch: g_input,
                                                       generator.global_step: dataloader.step,
                                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         g_data = [pad_to_length(sent, bos=dataloader.bos_id, eos=dataloader.eos_id,
