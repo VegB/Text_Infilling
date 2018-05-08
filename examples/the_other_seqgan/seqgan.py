@@ -159,7 +159,7 @@ if __name__ == "__main__":
         train_discriminator(sess, discriminator, positive_file=config.train_file,
                             negative_file=config.negative_file, vocab_file=config.vocab_file,
                             epoch_num=config.discriminator_pretrain_epoch)
-        
+
         for update_epoch in range(1, config.adversial_epoch + 1):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
                              negative_file=config.negative_file, vocab_file=config.vocab_file)
