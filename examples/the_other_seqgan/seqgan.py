@@ -72,18 +72,21 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
     dataloader = DisDataLoader(config, epoch_num=1, positive_file=positive_file,
                                negative_file=negative_file, vocab_file=vocab_file)
 
+    gen_dataloader = GenDataLoader(config, text_file=positive_file,
+                                   vocab_file=vocab_file, epoch_num=1)
+
     for i in range(config.g_update_batch):
-        r_ids, _ = dataloader.get_batch()
-        g_input = [pad_to_length(sent, bos=dataloader.bos_id, eos=dataloader.eos_id,
-                                 pad=dataloader.pad_id, max_len=dataloader.max_len) for sent in r_ids]
-        _, step, loss, gen_data = sess.run([generator.train_op, generator.global_step,
-                                           generator.teacher_loss, generator.generated_outputs],
-                                           feed_dict={generator.data_batch: g_input,
-                                                      generator.global_step: dataloader.step,
-                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        # Teacher forcing
+        _, teacher_loss = sess.run([generator.train_op, generator.teacher_loss],
+                                   feed_dict={generator.data_batch: gen_dataloader.get_batch(),
+                                              generator.global_step: gen_dataloader.step,
+                                              tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+
+        gen_data = sess.run(generator.generated_outputs,
+                            feed_dict={tx.global_mode(): tf.estimator.ModeKeys.EVAL})
         g_data = [pad_to_length(sent, bos=dataloader.bos_id, eos=dataloader.eos_id,
                                 pad=dataloader.pad_id, max_len=dataloader.max_len)
-                                for sent in gen_data.sample_id]
+                  for sent in gen_data.sample_id]
 
         r_ids, _ = dataloader.get_batch()
 
@@ -97,7 +100,7 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
                                   feed_dict={generator.data_batch: g_data,
                                              generator.rewards: [preds[:-1] for preds in g_preds],
                                              tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        print("%d: update_total_loss = %.6f" % (i, update_loss))
+        print("%d: teacher_loss = %.6f, update_total_loss = %.6f" % (i, teacher_loss, update_loss))
 
 
 def calculate_nll(sess, generator, oracle_file, gen_file, vocab_file, epoch_id, mode):
