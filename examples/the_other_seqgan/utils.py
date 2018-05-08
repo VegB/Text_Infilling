@@ -56,3 +56,15 @@ def sent_to_ids(words, word2id, unk_id):
     :return:
     """
     return [word2id.get(word, unk_id) for word in words]
+
+
+def split_nll(filepath, dstpath):
+    with open(filepath, 'r') as fin:
+        data = fin.readlines()
+        data = [line.strip().split()[-1] for line in data]
+    with open(dstpath, 'w') as fout:
+        fout.write('oracle:\n' + '\n'.join(data[::2]) + '\n------------\ngen:\n')
+        fout.write('\n'.join(data[1::2]))
+
+
+# split_nll("./data/log.txt", "./data/nll.txt")
