@@ -103,10 +103,10 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
         print("%d: teacher_loss = %.6f, update_total_loss = %.6f" % (i, teacher_loss, update_loss))
 
 
-def calculate_nll(sess, generator, oracle_file, gen_file, vocab_file, epoch_id, mode):
+def calculate_nll(sess, generator, epoch_id, mode):
     # NLL Oracle
-    dataloader = GenDataLoader(config, text_file=oracle_file,
-                               vocab_file=vocab_file, epoch_num=1)
+    dataloader = GenDataLoader(config, text_file=config.train_file,
+                               vocab_file=config.vocab_file, epoch_num=1)
     nll = []
     for i in range(50):
         loss = sess.run([generator.teacher_loss],
@@ -114,12 +114,12 @@ def calculate_nll(sess, generator, oracle_file, gen_file, vocab_file, epoch_id, 
                                    tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         nll.append(loss)
     nll_oracle = np.mean(nll)
-    print("%s epoch %d: nll_oracle = %f" % (mode, epoch_id, nll_oracle))
-    log.write("%s epoch %d: nll_oracle = %f\n" % (mode, epoch_id, nll_oracle))
+    print("%s epoch %d: nll_oracle = %f, perplexity_oracle = %f" % (mode, epoch_id, nll_oracle, np.exp(nll_oracle)))
+    log.write("%s epoch %d: perplexity_oracle = %f\n" % (mode, epoch_id, np.exp(nll_oracle)))
 
     # NLL Gen
-    dataloader = GenDataLoader(config, text_file=gen_file,
-                               vocab_file=vocab_file, epoch_num=1)
+    dataloader = GenDataLoader(config, text_file=config.negative_file,
+                               vocab_file=config.vocab_file, epoch_num=1)
     nll = []
     for i in range(50):
         loss = sess.run([generator.teacher_loss],
@@ -127,8 +127,21 @@ def calculate_nll(sess, generator, oracle_file, gen_file, vocab_file, epoch_id, 
                                    tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         nll.append(loss)
     nll_gen = np.mean(nll)
-    print("%s epoch %d: nll_gen = %f" % (mode, epoch_id, nll_gen))
-    log.write("%s epoch %d: nll_gen = %f\n" % (mode, epoch_id, nll_gen))
+    print("%s epoch %d: nll_gen = %f, perplexity_gen = %f" % (mode, epoch_id, nll_gen, np.exp(nll_gen)))
+    log.write("%s epoch %d: perplexity_gen = %f\n" % (mode, epoch_id, np.exp(nll_gen)))
+
+    # NLL Test
+    dataloader = GenDataLoader(config, text_file=config.test_file,
+                               vocab_file=config.vocab_file, epoch_num=1)
+    nll = []
+    for i in range(50):
+        loss = sess.run([generator.teacher_loss],
+                        feed_dict={generator.data_batch: dataloader.get_batch(),
+                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        nll.append(loss)
+    nll_gen = np.mean(nll)
+    print("%s epoch %d: nll_test = %f, perplexity_test = %f" % (mode, epoch_id, nll_gen, np.exp(nll_gen)))
+    log.write("%s epoch %d: perplexity_test = %f\n" % (mode, epoch_id, np.exp(nll_gen)))
 
 
 if __name__ == "__main__":
@@ -151,9 +164,7 @@ if __name__ == "__main__":
             pretrain_generator(sess, generator, config.train_file, config.vocab_file)
             generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
                                       dst_path=config.negative_file)
-            calculate_nll(sess, generator, epoch_id=pre_epoch, oracle_file=config.train_file,
-                          gen_file=config.negative_file, vocab_file=config.vocab_file,
-                          mode="Pretrain")
+            calculate_nll(sess, generator, epoch_id=pre_epoch, mode="Pretrain")
             if pre_epoch % 10 == 0:
                 train_rst_file = "./data/%d.txt" % pre_epoch
                 copyfile(config.negative_file, train_rst_file)
@@ -168,9 +179,7 @@ if __name__ == "__main__":
                              negative_file=config.negative_file, vocab_file=config.vocab_file)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=config.negative_file)
-            calculate_nll(sess, generator, epoch_id=update_epoch, oracle_file=config.train_file,
-                          gen_file=config.negative_file, vocab_file=config.vocab_file,
-                          mode="Adversarial")
+            calculate_nll(sess, generator, epoch_id=update_epoch, mode="Adversarial")
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=1)

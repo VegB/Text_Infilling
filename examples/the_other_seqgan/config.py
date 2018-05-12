@@ -1,6 +1,7 @@
 # train_file = "../../data/coco.txt"
 # vocab_file = "../../data/coco_vocab.txt"
 train_file = "../../data/ptb.txt"
+test_file = "../../data/ptb_test.txt"
 vocab_file = "../../data/ptb_vocab.txt"
 # train_file = "../../data/small_sent.txt"
 # vocab_file = "../../data/vocab.txt"
