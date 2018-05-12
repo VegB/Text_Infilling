@@ -28,7 +28,7 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
                                                      generator.global_step: dataloader.step,
                                                      tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 200 == 0:
-            print("%d: teacher_loss = %.6f" % (step, loss))
+            print("%d: teacher_loss = %.6f, perplexity = %.6f" % (step, loss, np.exp(loss)))
             print_result(outputs.sample_id[:config.print_num], dataloader.id2word, dataloader.max_len)
 
 
