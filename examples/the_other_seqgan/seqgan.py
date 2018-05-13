@@ -156,7 +156,7 @@ if __name__ == "__main__":
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
-        
+
         generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
                                   dst_path="./data/0.txt")
 
