@@ -36,8 +36,9 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
         # calculate current ppl
         loss += mle_loss
         iters += config.num_steps
-        ppl = np.exp(loss / iters)
-        print('global step:', step, ' ' * 4, 'training ppl:', ppl)
+        if step % 20 == 0:
+            ppl = np.exp(loss / iters)
+            print('global step:', step, ' ' * 4, 'training ppl:', ppl)
 
         # calculate valid ppl, might change learning rate
         valid_ppl = calculate_ppl(sess, generator, mode="valid")
