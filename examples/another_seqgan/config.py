@@ -2,9 +2,11 @@
 # vocab_file = "../../data/coco_vocab.txt"
 # train_file = "../../data/ptb.txt"
 # test_file = "../../data/ptb_test.txt"
+# valid_file = "../../data/ptb_valid.txt"
 # vocab_file = "../../data/ptb_vocab.txt"
 train_file = "../../data/small_sent.txt"
 test_file = "../../data/small_sent.txt"
+valid_file = "../../data/small_sent.txt"
 vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
@@ -19,6 +21,9 @@ keep_prob = 1.0
 batch_size = 20
 num_steps = 20
 print_num = 5
+init_lr = 0.003
+l2_decay = 1e-5
+lr_decay = 0.1
 
 target_pretrain_epoch = 80
 generator_pretrain_epoch = 80

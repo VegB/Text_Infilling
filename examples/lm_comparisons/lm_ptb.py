@@ -38,7 +38,7 @@ flags.DEFINE_string("data_path", "./",
                     "E.g., ./simple-examples/data. If not exists, "
                     "the directory will be created and PTB raw data will "
                     "be downloaded.")
-flags.DEFINE_string("config", "config_small", "The config to use.")
+flags.DEFINE_string("config", "config_large", "The config to use.")
 
 FLAGS = flags.FLAGS
 
