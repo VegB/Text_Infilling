@@ -8,7 +8,6 @@ from __future__ import division
 from __future__ import print_function
 
 # pylint: disable=not-context-manager, too-many-arguments, too-many-locals
-# pylint: disable=protected-access
 
 import tensorflow as tf
 
@@ -20,9 +19,8 @@ __all__ = [
     "Conv1DClassifier"
 ]
 
-
 class Conv1DClassifier(ClassifierBase):
-    """Simple Conv-1D classifiers.
+    """Simple Conv-1D classifier.
     """
 
     def __init__(self, hparams=None):
@@ -30,11 +28,12 @@ class Conv1DClassifier(ClassifierBase):
 
         with tf.variable_scope(self.variable_scope):
             self._encoder = Conv1DEncoder(hparams=hparams)
+
             # Add an additional dense layer if needed
-            nclass = self._hparams.num_classes
-            if nclass > 0:
+            self._num_classes = self._hparams.num_classes
+            if self._num_classes > 0:
                 if self._hparams.num_dense_layers <= 0:
-                    self._encoder.nn._append_layer({"type": "Flatten"})
+                    self._encoder.append_layer({"type": "Flatten"})
 
                 logit_kwargs = {}
                 if self._hparams.logit_layer_kwargs is not None:
@@ -42,10 +41,10 @@ class Conv1DClassifier(ClassifierBase):
                         raise ValueError(
                             "hparams['logit_layer_kwargs'] must be a dict.")
                     logit_kwargs = self._hparams.logit_layer_kwargs
-                logit_kwargs.update({"units": nclass})
+                logit_kwargs.update({"units": self._num_classes})
                 if 'name' not in logit_kwargs:
                     logit_kwargs['name'] = "logit_layer"
-                self._encoder.nn._append_layer(
+                self._encoder.append_layer(
                     {"type": "Dense", "kwargs": logit_kwargs})
 
     @staticmethod
@@ -55,7 +54,7 @@ class Conv1DClassifier(ClassifierBase):
         hparams = Conv1DEncoder.default_hparams()
         hparams.update(
             {"name": "conv1d_classifier",
-             "num_classes": 2,
+             "num_classes": 2, #set to <=0 to avoid appending output layer
              "logit_layer_kwargs": None})
         return hparams
 
@@ -77,10 +76,16 @@ class Conv1DClassifier(ClassifierBase):
         return self._encoder.trainable_variables
 
     @property
-    def nn(self): # pylint: disable=invalid-name
-        """The neural network.
+    def num_classes(self):
+        """The number of classes.
         """
-        return self._encoder.nn
+        return self._num_classes
+
+    @property
+    def nn(self): # pylint: disable=invalid-name
+        """The neural network feature extractor.
+        """
+        return self._encoder
 
     def has_layer(self, layer_name):
         """Returns `True` if the network with the name exists. Returns `False`

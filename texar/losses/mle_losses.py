@@ -8,7 +8,8 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
-from tensorflow.python.ops import rnn          # pylint: disable=E0611
+
+from texar.losses.losses_utils import mask_and_reduce
 
 # pylint: disable=invalid-name, not-context-manager, protected-access,
 # pylint: disable=too-many-arguments
@@ -17,72 +18,6 @@ __all__ = [
     "sequence_softmax_cross_entropy",
     "sequence_sparse_softmax_cross_entropy"
 ]
-
-def _mask_sequences(sequence, sequence_length, dtype=None,
-                    time_major=False):
-    """Masks out sequence entries that are beyond the respective sequence
-    lengths.
-
-    Args:
-        sequence: A Tensor of sequence values.
-
-            If `time_major=False` (default), this must be a Tensor of shape:
-                `[batch_size, max_time, (...), num_classes]`.
-
-            If `time_major=True`, this must be a Tensor of shape:
-                `[max_time, batch_size, (...), num_classes].`
-        sequence_length: A Tensor of shape `[batch_size]`. Time steps beyond
-            the respective sequence lengths will be made zero.
-        time_major (bool): The shape format of the inputs. If `True`,
-            :attr:`sequence` must have shape `[max_time, batch_size, ...]`.
-            If `False` (default), :attr:`sequence` must have
-            shape `[batch_size, max_time, ...]`.
-        dtype (dtype): Type of :attr:`sequence`. If `None`, infer from
-            :attr:`sequence` automatically.
-
-    Returns:
-        The masked sequence, i.e., a Tensor of the same shape as
-        :attr:`sequence` but with masked-out entries (set to zero).
-    """
-    if time_major:
-        sequence = rnn._transpose_batch_time(sequence)
-    max_time = tf.to_int32(tf.shape(sequence)[1])
-    if dtype is None:
-        dtype = sequence.dtype
-    mask = tf.sequence_mask(
-        tf.to_int32(sequence_length), max_time, dtype=dtype)
-    sequence = sequence * mask
-    if time_major:
-        sequence = rnn._transpose_batch_time(sequence)
-    return sequence
-
-
-def _reduce_batch_time(tensor,
-                       sequence_length,
-                       average_across_batch=True,
-                       average_across_timesteps=False,
-                       sum_over_batch=False,
-                       sum_over_timesteps=True):
-    """Average or sum over the respective dimensions of :attr:`tensor`, which
-    is shape `[batch_size, max_dim]`.
-    """
-    if average_across_timesteps and sum_over_timesteps:
-        raise ValueError("Only one of `average_across_timesteps` and "
-                         "`sum_over_timesteps` can be set.")
-    if average_across_batch and sum_over_batch:
-        raise ValueError("Only one of `average_across_batch` and "
-                         "`sum_over_batch` can be set.")
-    reduce_time = average_across_timesteps or sum_over_timesteps
-    reduce_batch = average_across_batch or sum_over_batch
-    if reduce_time:
-        tensor = tf.reduce_sum(tensor, axis=[1])
-    if average_across_timesteps:
-        tensor = tensor / tf.to_float(sequence_length)
-    if reduce_batch:
-        tensor = tf.reduce_sum(tensor, axis=[0])
-    if average_across_batch:
-        tensor = tensor / tf.to_float(tf.shape(sequence_length)[0])
-    return tensor
 
 def sequence_softmax_cross_entropy(labels,
                                    logits,
@@ -127,10 +62,10 @@ def sequence_softmax_cross_entropy(labels,
         sum_over_batch (bool): If set, sum the loss across the
             batch dimension. Must not set :attr:`average_across_batch`
             and :attr:`sum_over_batch` at the same time.
-        time_major (bool): The shape format of the inputs. If True, `labels` and
-            `logits` must have shape `[max_time, batch_size, ...]`. If false
-            (default), `labels` and `logits` must have shape
-            `[batch_size, max_time, ...]`.
+        time_major (bool): The shape format of the inputs. If `True`,
+            :attr:`labels` and :attr:`logits` must have shape
+            `[max_time, batch_size, ...]`. If `False`
+            (default), they must have shape `[batch_size, max_time, ...]`.
         stop_gradient_to_label (bool): If set, gradient propagation to
             :attr:`labels` will be disabled.
         name (str, optional): A name for the operation.
@@ -144,24 +79,21 @@ def sequence_softmax_cross_entropy(labels,
         `False`, the return Tensor is of shape `[max_time]`.
     """
     with tf.name_scope(name, "sequence_softmax_cross_entropy"):
-        if time_major:
-            labels = rnn._transpose_batch_time(labels)
-            logits = rnn._transpose_batch_time(logits)
         if stop_gradient_to_label:
             labels = tf.stop_gradient(labels)
+
         losses = tf.nn.softmax_cross_entropy_with_logits_v2(
             labels=labels, logits=logits)
-        losses = _mask_sequences(losses, sequence_length, time_major=False)
 
-        losses = _reduce_batch_time(
-            losses, sequence_length,
-            average_across_batch, average_across_timesteps,
-            sum_over_batch, sum_over_timesteps)
-
-        reduce_time = average_across_timesteps or sum_over_timesteps
-        reduce_batch = average_across_batch or sum_over_batch
-        if not reduce_time and not reduce_batch and time_major:
-            losses = rnn._transpose_batch_time(losses)
+        losses = mask_and_reduce(
+            losses,
+            sequence_length,
+            rank=2,
+            average_across_batch=average_across_batch,
+            average_across_timesteps=average_across_timesteps,
+            sum_over_batch=sum_over_batch,
+            sum_over_timesteps=sum_over_timesteps,
+            time_major=time_major)
 
         return losses
 
@@ -204,10 +136,10 @@ def sequence_sparse_softmax_cross_entropy(labels,
         sum_over_batch (bool): If set, sum the loss across the
             batch dimension. Must not set :attr:`average_across_batch`
             and :attr:`sum_over_batch` at the same time.
-        time_major (bool): The shape format of the inputs. If True, `labels` and
-            `logits` must have shape `[max_time, batch_size, ...]`. If false
-            (default), `labels` and `logits` must have shape
-            `[batch_size, max_time, ...]`.
+        time_major (bool): The shape format of the inputs. If `True`,
+            :attr:`labels` and :attr:`logits` must have shape
+            `[max_time, batch_size, ...]`. If `False`
+            (default), they must have shape `[batch_size, max_time, ...]`.
         name (str, optional): A name for the operation.
 
     Returns:
@@ -219,75 +151,79 @@ def sequence_sparse_softmax_cross_entropy(labels,
         `False`, the return Tensor is of shape `[max_time]`.
     """
     with tf.name_scope(name, "sequence_sparse_softmax_cross_entropy"):
-        if time_major:
-            labels = rnn._transpose_batch_time(labels)
-            logits = rnn._transpose_batch_time(logits)
         losses = tf.nn.sparse_softmax_cross_entropy_with_logits(
             labels=labels, logits=logits)
-        losses = _mask_sequences(losses, sequence_length, time_major=False)
 
-        losses = _reduce_batch_time(
-            losses, sequence_length,
-            average_across_batch, average_across_timesteps,
-            sum_over_batch, sum_over_timesteps)
-
-        reduce_time = average_across_timesteps or sum_over_timesteps
-        reduce_batch = average_across_batch or sum_over_batch
-        if not reduce_time and not reduce_batch and time_major:
-            losses = rnn._transpose_batch_time(losses)
+        losses = mask_and_reduce(
+            losses,
+            sequence_length,
+            rank=2,
+            average_across_batch=average_across_batch,
+            average_across_timesteps=average_across_timesteps,
+            sum_over_batch=sum_over_batch,
+            sum_over_timesteps=sum_over_timesteps,
+            time_major=time_major)
 
         return losses
-
-#TODO(zhiting): add docs
-def label_smoothing(labels, total_class, smooth_rate, name=None):
-    """TODO
-    """
-    with tf.name_scope(name, 'label_smoothing'):
-        one_hot_labels = tf.one_hot(labels, depth=total_class)
-        return  (1-smooth_rate)*one_hot_labels + (smooth_rate)/total_class
 
 def smoothing_cross_entropy(logits,
                             labels,
                             vocab_size,
                             confidence,
-                            gaussian=False):
-  """Cross entropy with label smoothing to limit over-confidence.
-  Args:
-    logits: Tensor of size [batch_size, ?, ?, ?, vocab_size]
-    labels: Tensor of size [batch_size, ?, ?, ?]
-    vocab_size: Tensor representing the size of the vocabulary.
-    confidence: Used to determine on and off values for label smoothing.
-      If `gaussian` is true, `confidence` is the variance to the gaussian
-      distribution.
-    gaussian: Uses a gaussian distribution for label smoothing
-  Returns:
-  """
-  with tf.name_scope("smoothing_cross_entropy", values=[logits, labels]):
-    # Low confidence is given to all non-true labels, uniformly.
-    low_confidence = (1.0 - confidence) / tf.to_float(vocab_size - 1)
-    # Normalizing constant is the best cross-entropy value with soft targets.
-    # We subtract it just for readability, makes no difference on learning.
-    normalizing = -(
-        confidence * tf.log(confidence) + tf.to_float(vocab_size - 1) *
-        low_confidence * tf.log(low_confidence + 1e-20))
+                            gaussian=False,
+                            zero_pad=True):
+    """Cross entropy with label smoothing to limit over-confidence.
+    Args:
+        logits: Tensor of size [batch_size, ?, ?, ?, vocab_size]
+        labels: Tensor of size [batch_size, ?, ?, ?]
+        vocab_size: Tensor representing the size of the vocabulary.
+        confidence: Used to determine on and off values for label smoothing.
+        If `gaussian` is true, `confidence` is the variance to the gaussian
+        distribution.
+        gaussian: Uses a gaussian distribution for label smoothing
+    Returns:
+    """
+    with tf.name_scope("smoothing_cross_entropy", values=[logits, labels]):
+        # Low confidence is given to all non-true labels, uniformly.
+        if zero_pad:
+            low_confidence = (1.0 - confidence) / tf.to_float(vocab_size - 2)
+        else:
+            low_confidence = (1.0 - confidence) / tf.to_float(vocab_size - 1)
 
-    if gaussian and confidence > 0.0:
-      labels = tf.cast(labels, tf.float32)
+        if gaussian and confidence > 0.0:
+            labels = tf.cast(labels, tf.float32)
+            normal_dist = tf.distributions.Normal(loc=labels, scale=confidence)
+            # Locations to evaluate the probability distributions.
+            soft_targets = normal_dist.prob(
+                tf.cast(tf.range(vocab_size), tf.float32)\
+                    [:, None, None, None, None])
+            # Reordering soft_targets from [vocab_sizkje, batch_size, ?, ?, ?]
+            # to match logits: [batch_size, ?, ?, ?, vocab_size]
+            soft_targets = tf.transpose(soft_targets, perm=[1, 2, 3, 4, 0])
+        else:
+            if zero_pad:
+                soft_targets = tf.one_hot(
+                    tf.cast(labels, tf.int32),
+                    depth=vocab_size,
+                    on_value=confidence,
+                    off_value=low_confidence,
+                    dtype=logits.dtype)
+                print('labels shape:{}'.format(labels.shape))
+                print('soft_targets shape:{}'.format(soft_targets.shape))
+                soft_targets = tf.concat([tf.expand_dims(\
+                    tf.zeros_like(labels, dtype=tf.float32), 2),\
+                    soft_targets[:, :, 1:]], -1)
+            else:
+                soft_targets = tf.one_hot(
+                    tf.cast(labels, tf.int32),
+                    depth=vocab_size,
+                    on_value=confidence,
+                    off_value=low_confidence,
+                    dtype=logits.dtype)
 
-      normal_dist = tf.distributions.Normal(loc=labels, scale=confidence)
-      # Locations to evaluate the probability distributions.
-      soft_targets = normal_dist.prob(
-          tf.cast(tf.range(vocab_size), tf.float32)[:, None, None, None, None])
-      # Reordering soft_targets from [vocab_size, batch_size, ?, ?, ?] to match
-      # logits: [batch_size, ?, ?, ?, vocab_size]
-      soft_targets = tf.transpose(soft_targets, perm=[1, 2, 3, 4, 0])
-    else:
-      soft_targets = tf.one_hot(
-          tf.cast(labels, tf.int32),
-          depth=vocab_size,
-          on_value=confidence,
-          off_value=low_confidence)
-    xentropy = tf.nn.softmax_cross_entropy_with_logits(
+        if hasattr(tf.nn, 'softmax_cross_entropy_with_logits_v2'):
+            cross_entropy_fn = tf.nn.softmax_cross_entropy_with_logits_v2
+        else:
+            cross_entropy_fn = tf.nn.softmax_cross_entropy_with_logits
+    return cross_entropy_fn(
         logits=logits, labels=soft_targets)
-    return xentropy - normalizing
-

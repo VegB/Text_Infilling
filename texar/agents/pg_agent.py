@@ -1,136 +1,177 @@
-""" Policy Gradient Agent
+#
+"""Policy Gradient agent.
 """
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+# pylint: disable=too-many-instance-attributes, too-many-arguments
+
 import numpy as np
 
 import tensorflow as tf
 
-from texar.agents.agent_base import AgentBase
+from texar.agents.episodic_agent_base import EpisodicAgentBase
+from texar.utils import utils
 from texar.core import optimization as opt
-from texar.core import get_instance
-from texar.losses.pg_losses import pg_loss
+from texar.losses import pg_losses as losses
 
 
-class PGAgent(AgentBase): #pylint: disable=too-many-instance-attributes
+class PGAgent(EpisodicAgentBase):
+    """Policy gradient agent for episodic setting.
+
+    Args:
+        TODO
     """
-    Policy Gradient Agent
-    """
-    def __init__(self, actions, state_shape, hparams=None):
-        AgentBase.__init__(self, actions, state_shape, hparams=hparams)
-        self.discount_factor = self._hparams.discount_factor
+    def __init__(self,
+                 env_config,
+                 sess=None,
+                 policy=None,
+                 policy_kwargs=None,
+                 policy_caller_kwargs=None,
+                 learning_rate=None,
+                 hparams=None):
+        EpisodicAgentBase.__init__(self, env_config, hparams)
 
-        self.network = get_instance(
-            self._hparams.network.type,
-            {"hparams": self._hparams.network.hparams},
-            module_paths=['texar.modules', 'texar.custom']
-        )
+        self._sess = sess
+        self._lr = learning_rate
 
-        with tf.variable_scope(self.network.variable_scope):
-            self.state_input = tf.placeholder(
-                dtype=tf.float64, shape=[None, ] + list(state_shape))
+        with tf.variable_scope(self.variable_scope):
+            if policy is None:
+                kwargs = utils.get_instance_kwargs(
+                    policy_kwargs, self._hparams.policy_hparams)
+                policy = utils.check_or_get_instance(
+                    self._hparams.policy_type,
+                    kwargs,
+                    module_paths=['texar.modules', 'texar.custom'])
+            self._policy = policy
+            self._policy_caller_kwargs = policy_caller_kwargs or {}
 
-            self.action_inputs = tf.placeholder(dtype=tf.int32, shape=[None, ])
+        self._observs = []
+        self._actions = []
+        self._rewards = []
 
-            self.qvalues = tf.placeholder(
-                dtype=tf.float64, shape=[None, ])
+        self._train_outputs = None
 
-            self.outputs = self.network(self.state_input)
-            self.probs = tf.nn.softmax(self.outputs)
+        self._build_graph()
 
-            self.loss = self._hparams.trainer.loss_fn(
-                outputs=self.outputs,
-                action_inputs=self.action_inputs,
-                advantages=self.qvalues
-            )
-            self.trainer = opt.get_train_op(
-                loss=self.loss,
-                variables=None,
-                hparams=self._hparams.trainer.optimization_hparams
-            )
+    def _build_graph(self):
+        with tf.variable_scope(self.variable_scope):
+            self._observ_inputs = tf.placeholder(
+                dtype=self._env_config.observ_dtype,
+                shape=[None, ] + list(self._env_config.observ_shape),
+                name='observ_inputs')
+            self._action_inputs = tf.placeholder(
+                dtype=self._env_config.action_dtype,
+                shape=[None, ] + list(self._env_config.action_shape),
+                name='action_inputs')
+            self._qvalue_inputs = tf.placeholder(
+                dtype=tf.float32,
+                shape=[None, ],
+                name='qvalue_inputs')
 
-        self.record = list()
+            self._outputs = self._get_policy_outputs()
 
-        self.sess = tf.Session()
-        self.sess.run(tf.global_variables_initializer())
+            self._pg_loss = self._get_pg_loss()
+
+            self._train_op = self._get_train_op()
+
+    def _get_policy_outputs(self):
+        outputs = self._policy(
+            inputs=self._observ_inputs, **self._policy_caller_kwargs)
+        return outputs
+
+    def _get_pg_loss(self):
+        log_probs = self._outputs['dist'].log_prob(self._action_inputs)
+        pg_loss = losses.pg_loss_with_log_probs(
+            log_probs=log_probs,
+            advantages=self._qvalue_inputs,
+            average_across_timesteps=True,
+            sum_over_timesteps=False)
+        return pg_loss
+
+    def _get_train_op(self):
+        train_op = opt.get_train_op(
+            loss=self._pg_loss,
+            variables=self._policy.trainable_variables,
+            learning_rate=self._lr,
+            hparams=self._hparams.optimization.todict())
+        return train_op
 
     @staticmethod
     def default_hparams():
         return {
-            'name': 'pg_agent',
             'discount_factor': 0.95,
-            'network': {
-                'type': 'PGNet',
-                'hparams': None
-            },
-            'trainer': {
-                'loss_fn': pg_loss,
-                'optimization_hparams': opt.default_optimization_hparams(),
-            }
+            'policy_type': 'CategoricalPolicyNet',
+            'policy_hparams': None,
+            'optimization': opt.default_optimization_hparams(),
+            'name': 'pg_agent',
         }
 
-    def set_initial_state(self, observation):
-        self.current_state = np.array(observation)
+    def _reset(self):
+        self._observs = []
+        self._actions = []
+        self._rewards = []
 
-    def perceive(self, action_id, reward, is_terminal, next_observation):
-        self.record.append({
-            'state': self.current_state,
-            'action': action_id,
-            'reward': reward
-        })
+    def _get_action(self, observ, feed_dict):
+        fetches = dict(action=self._outputs['action'])
 
-        if is_terminal:
-            self.train_network()
-            self.record = list()
+        feed_dict_ = {self._observ_inputs: [observ, ]}
+        feed_dict_.update(feed_dict or {})
 
-        self.timestep += 1
-        self.current_state = np.array(next_observation)
+        vals = self._sess.run(fetches, feed_dict=feed_dict_)
+        action = vals['action']
 
-    def train_network(self):
+        self._observs.append(observ)
+        self._actions.append(action)
+
+        return action
+
+    def _observe(self, reward, terminal, train_policy, feed_dict):
+        self._rewards.append(reward)
+
+        if terminal and train_policy:
+            self._train_policy(feed_dict=feed_dict)
+
+    def _train_policy(self, feed_dict=None):
+        """Updates the policy.
+
+        Args:
+            TODO
         """
-        Train The Network
-        :return:
+        discount_factor = self._hparams.discount_factor
+        qvalues = list(self._rewards)
+        max_seq_length = len(qvalues)
+        if max_seq_length >= 2:
+            for i in range(max_seq_length - 2, -1, -1):
+                qvalues[i] += discount_factor * qvalues[i + 1]
+
+        q_mean = np.mean(qvalues)
+        q_std = np.std(qvalues)
+        qvalues = [(q - q_mean) / q_std for q in qvalues]
+
+        fetches = dict(loss=self._train_op)
+        feed_dict_ = {
+            self._observ_inputs: self._observs,
+            self._action_inputs: self._actions,
+            self._qvalue_inputs: qvalues
+        }
+        feed_dict_.update(feed_dict or {})
+
+        self._train_outputs = self._sess.run(fetches, feed_dict=feed_dict_)
+
+    @property
+    def sess(self):
+        """The tf session.
         """
-        qvalues = list()
-        action_inputs = list()
-        state_input = list()
-        for data in self.record:
-            state_input.append(data['state'])
-            action_inputs.append(data['action'])
-            qvalues.append(data['reward'])
-        for i in range(len(qvalues) - 2, -1, -1):
-            qvalues[i] += self.discount_factor * qvalues[i + 1]
+        return self._sess
 
-        t_mean = np.mean(qvalues)
-        t_std = np.std(qvalues)
-        for i, value in enumerate(qvalues):
-            qvalues[i] = (qvalues[i] - t_mean) / t_std
+    @sess.setter
+    def sess(self, session):
+        self._sess = session
 
-        self.sess.run(self.trainer, feed_dict={
-            self.state_input: state_input,
-            self.action_inputs: action_inputs,
-            self.qvalues: qvalues
-        })
-
-    def get_action(self, state=None, action_mask=None):
-        if state is None:
-            state = self.current_state
-        if action_mask is None:
-            action_mask = [True, ] * self.actions
-
-        probs = self.sess.run(self.probs,
-                              feed_dict={self.state_input: [state, ]})[0]
-
-        prob_sum = 0.
-        for i in range(self.actions):
-            if action_mask[i] is True:
-                prob_sum += probs[i]
-        for i in range(self.actions):
-            if action_mask[i] is True:
-                probs[i] /= prob_sum
-            else:
-                probs[i] = 0.
-
-        return np.random.choice(self.actions, p=probs)
+    @property
+    def policy(self):
+        """The policy model.
+        """
+        return self._policy

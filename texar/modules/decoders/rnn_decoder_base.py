@@ -7,9 +7,9 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-# pylint: disable=not-context-manager, too-many-arguments, no-name-in-module
+# pylint: disable=too-many-arguments, no-name-in-module
 # pylint: disable=too-many-branches, protected-access, too-many-locals
-# pylint: disable=arguments-differ
+# pylint: disable=arguments-differ, unused-argument
 
 import copy
 
@@ -66,6 +66,7 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             else:
                 self._cell = layers.get_rnn_cell(
                     self._hparams.rnn_cell, cell_dropout_mode)
+        self._beam_search_cell = None
 
         # Make the output layer
         self._vocab_size = vocab_size
@@ -102,12 +103,22 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             "name": "rnn_decoder"
         }
 
-    def _build(self, initial_state=None,
-               max_decoding_length=None, impute_finished=False,
-               output_time_major=False, decoding_strategy="train_greedy",
-               inputs=None, sequence_length=None, input_time_major=False,
-               embedding=None, start_tokens=None, end_token=None,
-               softmax_temperature=None, helper=None, mode=None, **kwargs):
+    def _build(self,
+               initial_state=None,
+               max_decoding_length=None,
+               impute_finished=False,
+               output_time_major=False,
+               decoding_strategy="train_greedy",
+               inputs=None,
+               sequence_length=None,
+               input_time_major=False,
+               embedding=None,
+               start_tokens=None,
+               end_token=None,
+               softmax_temperature=None,
+               helper=None,
+               mode=None,
+               **kwargs):
         """Performs decoding. The decoder provides 3 ways to specify the
         decoding strategy, with varying flexibility:
 
@@ -211,7 +222,7 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
                 Used when :attr:`decoding_strategy="train_greedy"` or
                 :attr:`hparams`-configured helper is used.
             embedding (optional): A callable that returns embedding vectors
-                of inputs, or the `params` argument of
+                of inputs, or the :attr:`params` argument of
                 :tf_main:`tf.nn.embedding_lookup <nn/embedding_lookup>`. In the
                 later case, :attr:`inputs` (if used) must be a int Tensor
                 containing the ids to be looked up in :attr:`embedding`.
@@ -271,15 +282,12 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
                 raise ValueError(
                     "Unknown decoding strategy: {}".format(decoding_strategy))
         else:
-            if mode is None or mode == tf.estimator.ModeKeys.TRAIN:
+            if utils.is_train_mode_py(mode):
                 kwargs_ = copy.copy(self._hparams.helper_train.kwargs.todict())
                 helper_type = self._hparams.helper_train.type
-            elif mode == tf.estimator.ModeKeys.EVAL or \
-                    mode == tf.estimator.ModeKeys.PREDICT:
+            else:
                 kwargs_ = copy.copy(self._hparams.helper_infer.kwargs.todict())
                 helper_type = self._hparams.helper_infer.type
-            else:
-                raise ValueError("Unknown mode: {}".format(mode))
             kwargs_.update({
                 "inputs": inputs,
                 "sequence_length": sequence_length,
@@ -325,9 +333,19 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             if isinstance(self._output_layer, tf.layers.Layer):
                 self._add_trainable_variable(
                     self._output_layer.trainable_variables)
+            # Add trainable variables of `self._beam_search_rnn_cell` which
+            # may already be constructed and used.
+            if self._beam_search_cell is not None:
+                self._add_trainable_variable(
+                    self._beam_search_cell.trainable_variables)
+
             self._built = True
 
         return outputs, final_state, sequence_lengths
+
+    def _get_beam_search_cell(self, **kwargs):
+        self._beam_search_cell = self._cell
+        return self._cell
 
     def _rnn_output_size(self):
         size = self._cell.output_size
@@ -406,3 +424,9 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
         """The vocab size.
         """
         return self._vocab_size
+
+    @property
+    def output_layer(self):
+        """The output layer.
+        """
+        return self._output_layer
