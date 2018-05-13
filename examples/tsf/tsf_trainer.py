@@ -22,6 +22,8 @@ from texar.models.tsf import TSF
 flags = tf.flags
 FLAGS = flags.FLAGS
 
+
+
 flags.DEFINE_string("expt_dir", "", "experiment dir")
 flags.DEFINE_string("log_dir", "", "log dir")
 flags.DEFINE_string("config", "", "config")
@@ -49,6 +51,8 @@ class TSFTrainer:
                 "batch_size": 64,
                 "num_epochs": 1,
                 "allow_smaller_final_batch": False,
+                "bucket_boundaries": np.arange(2, 20, 2).tolist(),
+                "bucket_length_fn": "len_pair",
                 "source_dataset": {
                     "files": "../../data/yelp/sentiment.train.sort.0",
                     "vocab_file": "../../data/yelp/vocab",
@@ -97,7 +101,8 @@ class TSFTrainer:
             "expt_dir": "../../expt",
             "log_dir": "log",
             "name": "tsf",
-            "rho": 1.,
+            "rho_adv": 0.,
+            "rho_f": 0.5,
             "gamma_init": 1,
             "gamma_decay": 0.5,
             "gamma_min": 0.001,
@@ -117,14 +122,18 @@ class TSFTrainer:
                 batch = sess.run(input_tensors,
                                  {tx.global_mode(): tf.estimator.ModeKeys.EVAL})
                 logits_ori, logits_tsf = model.decode_step(sess, batch)
-                loss, loss_g, ppl_g, loss_d, loss_d0, loss_d1 = model.eval_step(
-                    sess, batch, self._hparams.rho, self._hparams.gamma_min)
+                loss, loss_g, ppl_g, loss_d, loss_d0, loss_d1,\
+                    loss_ds, loss_df = model.eval_step(
+                        sess, batch, self._hparams.gamma_min)
+
                 batch_size = batch["enc_inputs"].shape[0]
-                word_size = np.sum(batch["weights"])
+                word_size = np.sum(batch["seq_len"])
                 losses.append(loss, loss_g, ppl_g, loss_d, loss_d0, loss_d1,
+                              loss_ds, loss_df, 
                               w_loss=batch_size, w_g=batch_size,
                               w_ppl=word_size, w_d=batch_size,
-                              w_d0=batch_size, w_d1=batch_size)
+                              w_d0=batch_size, w_d1=batch_size,
+                              w_ds=batch_size, w_df=batch_size)
                 ori = logits2word(logits_ori, id2word)
                 tsf = logits2word(logits_tsf, id2word)
                 half = self._hparams.batch_size // 2
@@ -166,9 +175,8 @@ class TSFTrainer:
         enc_inputs = tf.reverse_sequence(enc_inputs, inputs_len - 1, seq_dim=1)
         dec_inputs = enc_inputs
         enc_inputs = dec_inputs[:, 1:]
-        enc_inputs = tf.reverse(enc_inputs, [1])
+        enc_inputs = tf.reverse_sequence(enc_inputs, inputs_len - 2, seq_dim=1)
         targets = inputs[:, 1:]
-        weights =  tf.sequence_mask(inputs_len - 1, l - 1, tf.float32)
         labels = tf.concat([tf.zeros([batch_size]),
                             tf.ones([batch_size])],
                            axis=0)
@@ -176,15 +184,14 @@ class TSFTrainer:
             "enc_inputs": enc_inputs,
             "dec_inputs": dec_inputs,
             "targets": targets,
-            "weights": weights,
+            "seq_len": inputs_len - 1,
             "labels": labels,
         }
-
 
     def train(self):
         if "config" in self._hparams.keys():
             with open(self._hparams.config) as f:
-                self._hparams = HParams(pkl.load(f))
+                self._hparams = HParams(pkl.load(f), None)
 
         log_print("Start training with hparams:")
         log_print(json.dumps(self._hparams.todict(), indent=2))
@@ -206,12 +213,12 @@ class TSFTrainer:
         with tf.Session() as sess:
             losses = Stats()
             model = TSF(self._hparams)
-            if "model" in self._hparams.keys():
-                model.saver.restore(sess, self._hparams.model)
+            if FLAGS.model:
+                model.saver.restore(sess, FLAGS.model)
             else:
                 sess.run(tf.global_variables_initializer())
                 sess.run(tf.local_variables_initializer())
-                sess.run(tf.tables_initializer())
+            sess.run(tf.tables_initializer())
 
             log_print("finished building model")
 
@@ -229,21 +236,28 @@ class TSFTrainer:
                 iterator.switch_to_train_data(sess)
                 while True:
                     try:
-                        batch = sess.run(input_tensors,
-                                         {tx.global_mode(): tf.estimator.ModeKeys.EVAL})
-                        loss_d0 = model.train_d0_step(
-                            sess, batch, self._hparams.rho, gamma)
-                        loss_d1 = model.train_d1_step(
-                            sess, batch, self._hparams.rho, gamma)
+                        batch = sess.run(
+                            input_tensors,
+                            {tx.global_mode(): tf.estimator.ModeKeys.EVAL})
+                        loss_ds = model.train_ds_step(sess, batch, gamma)
+                        loss_d0 = model.train_d0_step(sess, batch, gamma)
+                        loss_d1 = model.train_d1_step(sess, batch, gamma)
 
-                        if loss_d0 < 1.2 and loss_d1 < 1.2:
-                            loss, loss_g, ppl_g, loss_d = model.train_g_step(
-                                sess, batch, self._hparams.rho, gamma)
+                        if loss_ds < 1.2 or (loss_d0 < 1.2 and loss_d1 < 1.2):
+                            try:
+                                loss, loss_g, ppl_g, loss_d, loss_df \
+                                    = model.train_g_step(sess, batch, gamma)
+                            except:
+                                print(batch)
+                                print(batch["seq_len"])
+                                print(batch["dec_inputs"].shape)
+                                print(batch["targets"].shape)
                         else:
-                            loss, loss_g, ppl_g, loss_d = model.train_ae_step(
-                                sess, batch, self._hparams.rho, gamma)
+                            loss, loss_g, ppl_g, loss_d, loss_df \
+                                = model.train_ae_step(sess, batch, gamma)
 
-                        losses.append(loss, loss_g, ppl_g, loss_d, loss_d0, loss_d1)
+                        losses.append(loss, loss_g, ppl_g, loss_d, loss_d0, loss_d1,
+                                      loss_ds, loss_df)
 
                         step += 1
                         if step % self._hparams.disp_interval == 0:

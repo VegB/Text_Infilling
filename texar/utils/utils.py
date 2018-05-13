@@ -1,6 +1,6 @@
 #
 """
-Utility functions
+Miscellaneous Utility functions.
 """
 
 from __future__ import absolute_import
@@ -13,7 +13,6 @@ from __future__ import division
 import inspect
 from pydoc import locate
 import copy
-import six
 import numpy as np
 
 import tensorflow as tf
@@ -22,6 +21,8 @@ from tensorflow.python.util import nest
 from tensorflow.python.ops import rnn
 
 from texar import context
+from texar.hyperparams import HParams
+from texar.utils.dtypes import is_str
 
 MAX_SEQ_LENGTH = np.iinfo(np.int32).max
 
@@ -33,29 +34,35 @@ MAX_SEQ_LENGTH = np.iinfo(np.int32).max
 #}
 
 __all__ = [
+    "check_or_get_class",
     "get_class",
+    "check_or_get_instance",
     "get_instance",
     "get_instance_with_redundant_kwargs",
     "get_function",
     "call_function_with_redundant_kwargs",
     "get_default_arg_values",
+    "get_instance_kwargs",
     "add_variable",
-    "is_callable",
+    "get_unique_named_variable_scope",
     "maybe_gloabl_mode",
     "is_train_mode",
     "is_eval_mode",
     "is_predict_mode",
+    "is_train_mode_py",
+    "is_eval_mode_py",
+    "is_predict_mode_py",
     "switch_dropout",
     "transpose_batch_time",
+    "get_batch_size",
     "default_string",
     "patch_dict",
-    "is_str",
+    "fetch_subdict",
     "uniquify_str",
     "_bucket_boundaries",
     "soft_sequence_embedding",
     "straight_through",
     "ceildiv",
-    "get_batch_size",
 ]
 
 
@@ -68,21 +75,52 @@ def _expand_name(name):
     """
     return name
 
+def check_or_get_class(class_or_name, module_path=None, superclass=None):
+    """Returns the class and checks if the class inherits :attr:`superclass`.
+
+    Args:
+        class_or_name: Name or full path to the class, or the class itself.
+        module_paths (list, optional): Paths to candidate modules to search
+            for the class. This is used if :attr:`class_or_name` is a string and
+            the class cannot be located solely based on :attr:`class_or_name`.
+            The first module in the list that contains the class
+            is used.
+        superclass (optional): A (list of) classes that the target class
+            must inherit.
+
+    Returns:
+        The target class.
+
+    Raises:
+        ValueError: If class is not found based on :attr:`class_or_name` and
+            :attr:`module_paths`.
+        TypeError: If class does not inherits :attr:`superclass`.
+    """
+    class_ = class_or_name
+    if is_str(class_):
+        class_ = get_class(class_, module_path)
+    if superclass is not None:
+        if not issubclass(class_, superclass):
+            raise TypeError(
+                "A subclass of {} is expected. Got: {}".format(
+                    superclass, class_))
+    return class_
+
 def get_class(class_name, module_paths=None):
     """Returns the class based on class name.
 
     Args:
-        class_name: Name or full path of the class to instantiate.
-        module_paths: A list of paths to candidate modules to search for the
+        class_name (str): Name or full path to the class.
+        module_paths (list): Paths to candidate modules to search for the
             class. This is used if the class cannot be located solely based on
             `class_name`. The first module in the list that contains the class
             is used.
 
     Returns:
-        A class.
+        The target class.
 
     Raises:
-        TypeError: If class is not found based on :attr:`class_name` and
+        ValueError: If class is not found based on :attr:`class_name` and
             :attr:`module_paths`.
     """
     class_ = locate(class_name)
@@ -106,29 +144,68 @@ def get_class(class_name, module_paths=None):
 
     return class_
 
-
-def get_instance(class_name, kwargs, module_paths=None):
-    """Creates a class instance.
+def check_or_get_instance(ins_or_class_or_name, kwargs, module_paths=None,
+                          classtype=None):
+    """Returns a class instance and checks types.
 
     Args:
-        class_name: Name or full path of the class to instantiate.
-        kwargs: A dictionary of arguments for the class constructor.
-        module_paths: A list of paths to candidate modules to search for the
-            class. This is used if the class cannot be located solely based on
-            `class_name`. The first module in the list that contains the class
-            is used.
+        ins_or_class_or_name: Can be of 3 types:
 
-    Returns:
-        A class instance.
+            - A string representing the name or full path to a class to \
+              instantiate.
+            - The class itself to instantiate.
+            - The class instance itself to check types.
+
+        kwargs (dict): Keyword arguments for the class constructor.
+        module_paths (list, optional): Paths to candidate modules to
+            search for the class. This is used if the class cannot be
+            located solely based on :attr:`class_name`. The first module
+            in the list that contains the class is used.
+        classtype (optional): A (list of) classes of which the instance must
+            be an instantiation.
 
     Raises:
         ValueError: If class is not found based on :attr:`class_name` and
             :attr:`module_paths`.
         ValueError: If :attr:`kwargs` contains arguments that are invalid
             for the class construction.
+        TypeError: If the instance is not an instantiation of
+            :attr:`classtype`.
+    """
+    ret = ins_or_class_or_name
+    if is_str(ret) or isinstance(ret, type):
+        ret = get_instance(ret, kwargs, module_paths)
+    if classtype is not None:
+        if not isinstance(ret, classtype):
+            raise TypeError(
+                "An instance of {} is expected. Got: {}".format(classtype, ret))
+    return ret
+
+def get_instance(class_or_name, kwargs, module_paths=None):
+    """Creates a class instance.
+
+    Args:
+        class_or_name: Name or full path to a class to instantiate, or the
+            class itself.
+        kwargs (dict): Keyword arguments for the class constructor.
+        module_paths (list, optional): Paths to candidate modules to
+            search for the class. This is used if the class cannot be
+            located solely based on :attr:`class_name`. The first module
+            in the list that contains the class is used.
+
+    Returns:
+        A class instance.
+
+    Raises:
+        ValueError: If class is not found based on :attr:`class_or_name` and
+            :attr:`module_paths`.
+        ValueError: If :attr:`kwargs` contains arguments that are invalid
+            for the class construction.
     """
     # Locate the class
-    class_ = get_class(class_name, module_paths)
+    class_ = class_or_name
+    if is_str(class_):
+        class_ = get_class(class_, module_paths)
     # Check validity of arguments
     class_args = set(inspect.getargspec(class_.__init__).args)
     for key in kwargs.keys():
@@ -250,6 +327,31 @@ def get_default_arg_values(fn):
     num_defaults = len(argspec.defaults)
     return dict(zip(argspec.args[-num_defaults:], argspec.defaults))
 
+def get_instance_kwargs(kwargs, hparams):
+    """Makes a dict of keyword arguments with the following structure:
+
+    `kwargs_ = {'hparams': dict(hparams), **kwargs}`.
+
+    This is typically used for constructing a module which takes a set of
+    arguments as well as a argument named `hparams`.
+
+    Args:
+        kwargs (dict): A dict of keyword arguments. Can be `None`.
+        hparams: A dict or an instance of :class:`~texar.HParams` Can be `None`.
+
+    Returns:
+        A `dict` that contains the keyword arguments in :attr:`kwargs`, and
+        an additional keyword argument named `hparams`.
+    """
+    if hparams is None or isinstance(hparams, dict):
+        kwargs_ = {'hparams': hparams}
+    elif isinstance(hparams, HParams):
+        kwargs_ = {'hparams': hparams.todict()}
+    else:
+        raise ValueError(
+            '`hparams` must be a dict, an instance of HParams, or a `None`.')
+    kwargs_.update(kwargs or {})
+    return kwargs_
 
 def add_variable(variable, var_list):
     """Adds variable to a given list.
@@ -265,15 +367,18 @@ def add_variable(variable, var_list):
         if variable not in var_list:
             var_list.append(variable)
 
+def get_unique_named_variable_scope(base_name):
+    """Returns a variable scope with a unique name.
 
-def is_callable(x):
-    """Return `True` if :attr:`x` is callable.
+    Args:
+        base_name (str): The base name to uniquified.
+
+    Returns:
+        An instance of :tf_main:`variable_scope <variable_scope>`.
     """
-    try:
-        _is_callable = callable(x)
-    except: # pylint: disable=bare-except
-        _is_callable = hasattr(x, '__call__')
-    return _is_callable
+    with tf.variable_scope(None, default_name=base_name) as vs:
+        return vs
+
 
 def maybe_gloabl_mode(mode):
     """Returns :func:`texar.contex.global_mode` if :attr:`mode` is `None`,
@@ -314,6 +419,63 @@ def is_predict_mode(mode):
     else:
         return tf.equal(mode, tf.estimator.ModeKeys.PREDICT)
 
+def is_train_mode_py(mode, default=True):
+    """Returns a python boolean indicating whether the mode is TRAIN.
+
+    Args:
+        mode: A string taking value in
+            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
+            Can be `None`.
+        default (bool): The return value when :attr:`mode` is `None`. Default
+            is `True`.
+
+    Returns:
+        A python boolean.
+    """
+    if mode is None:
+        return default
+    if mode not in context.valid_modes():
+        raise ValueError('Unknown mode: {}'.format(mode))
+    return mode == tf.estimator.ModeKeys.TRAIN
+
+def is_eval_mode_py(mode, default=False):
+    """Returns a python boolean indicating whether the mode is EVAL.
+
+    Args:
+        mode: A string taking value in
+            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
+            Can be `None`.
+        default (bool): The return value when :attr:`mode` is `None`. Default
+            is `False`.
+
+    Returns:
+        A python boolean.
+    """
+    if mode is None:
+        return default
+    if mode not in context.valid_modes():
+        raise ValueError('Unknown mode: {}'.format(mode))
+    return mode == tf.estimator.ModeKeys.EVAL
+
+def is_predict_mode_py(mode, default=False):
+    """Returns a python boolean indicating whether the mode is PREDICT.
+
+    Args:
+        mode: A string taking value in
+            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
+            Can be `None`.
+        default (bool): The return value when :attr:`mode` is `None`. Default
+            is `False`.
+
+    Returns:
+        A python boolean.
+    """
+    if mode is None:
+        return default
+    if mode not in context.valid_modes():
+        raise ValueError('Unknown mode: {}'.format(mode))
+    return mode == tf.estimator.ModeKeys.PREDICT
+
 def switch_dropout(dropout_keep_prob, mode=None):
     """Turns off dropout when not in training mode.
 
@@ -349,6 +511,11 @@ def transpose_batch_time(inputs):
     flat_input = [rnn._transpose_batch_time(input_) for input_ in flat_input]
     return nest.pack_sequence_as(structure=inputs, flat_sequence=flat_input)
 
+def get_batch_size(tensor):
+    """Returns a unit `Tensor` representing the batch size, i.e.,
+    the size of the 1st dimension of :attr:`tensor`.
+    """
+    return tf.shape(tensor)[0]
 
 def default_string(str_, default_str):
     """Returns :attr:`str_` if it is not `None` or empty, otherwise returns
@@ -388,15 +555,30 @@ def patch_dict(tgt_dict, src_dict):
             patched_dict[key] = patch_dict(patched_dict[key], value)
     return patched_dict
 
-def is_str(x):
-    """Returns `True` if :attr:`x` is either a str or unicode. Returns `False`
-    otherwise.
+def fetch_subdict(src_dict, tgt_dict_or_keys):
+    """Fetches a sub dict of :attr:`src_dict` with the keys in
+    :attr:`tgt_dict_or_keys`.
+
+    Args:
+        src_dict: A dict or instance of :class:`texar.HParams`.
+            The source dict to fetch values from.
+        tgt_dict_or_keys: A dict, instance of :class:`texar.HParams`,
+            or a list (or a dict_keys) of keys to be included in the output
+            dict.
+
+    Returns:
+        A new dict that is a subdict of :attr:`src_dict`.
     """
-    return isinstance(x, six.string_types)
-    #if sys.version_info[0] < 3:
-    #    return isinstance(x, str) or isinstance(x, unicode)
-    #else:
-    #    return isinstance(x, str)
+    if isinstance(tgt_dict_or_keys, HParams):
+        tgt_dict_or_keys = tgt_dict_or_keys.todict()
+    if isinstance(tgt_dict_or_keys, dict):
+        tgt_dict_or_keys = tgt_dict_or_keys.keys()
+    keys = list(tgt_dict_or_keys)
+
+    if isinstance(src_dict, HParams):
+        src_dict = src_dict.todict()
+
+    return {k: src_dict[k] for k in keys if k in src_dict}
 
 def uniquify_str(str_, str_set):
     """Uniquifies :attr:`str_` if :attr:`str_` is included in :attr:`str_set`.
@@ -481,8 +663,3 @@ def ceildiv(a, b):
     """
     return -(-a // b)
 
-def get_batch_size(tensor):
-    """Returns a unit `Tensor` representing the batch size, i.e.,
-    the size of the 1st dimension of :attr:`tensor`.
-    """
-    return tf.shape(tensor)[0]

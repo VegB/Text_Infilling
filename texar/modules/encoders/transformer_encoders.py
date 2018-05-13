@@ -8,12 +8,12 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from texar.core import layers
+from texar.core import layers, attentions
 from texar import context
 from texar.modules.encoders.encoder_base import EncoderBase
-from texar.modules.networks import FeedForwardNetwork
-from texar.modules.embedders import embedder_utils
+from texar.modules.networks.networks import FeedForwardNetwork
 from texar import utils
+
 class TransformerEncoder(EncoderBase):
     """Base class for all encoder classes.
     Args:
@@ -35,35 +35,31 @@ class TransformerEncoder(EncoderBase):
             :attr:`default_hparams` for the sturcture and default values.
     """
     def __init__(self,
-                 embedding=None,
+                 embedding,
                  vocab_size=None,
                  hparams=None):
         EncoderBase.__init__(self, hparams)
-
         self._vocab_size = vocab_size
         self._embedding = None
         self.enc = None
-        self.position_enc_embedding = None
+        with tf.variable_scope(self.variable_scope):
+            if self._hparams.initializer:
+                tf.get_variable_scope().set_initializer(
+                    layers.get_initializer(self._hparams.initializer))
+
         if self._hparams.use_embedding:
-            if embedding is None and self._vocab_size is None:
-                raise ValueError("If `embedding` is not provided, "
-                                 "`vocab_size` must be specified.")
             if isinstance(embedding, tf.Variable):
                 self._embedding = embedding
-            else:
-                self._embedding = embedder_utils.get_embedding(
-                    self._hparams.embedding, embedding, vocab_size,
-                    self.variable_scope)
             embed_dim = self._embedding.get_shape().as_list()[-1]
             if self._hparams.zero_pad: # TODO(zhiting): vocab has zero pad
                 if not self._hparams.bos_pad:
-                    self._embedding = tf.concat((tf.zeros(shape=[1, embed_dim]),
-                        self._embedding[1:, :]), 0)
+                    self._embedding = tf.concat(\
+                        (tf.zeros(shape=[1, embed_dim]),
+                         self._embedding[1:, :]), 0)
                 else:
-                    self._embedding = tf.concat((tf.zeros(shape=[2, embed_dim]),
-                        self._embedding[2:, :]), 0)
-            if self._hparams.embedding.trainable:
-                self._add_trainable_variable(self._embedding)
+                    self._embedding = tf.concat(\
+                        (tf.zeros(shape=[2, embed_dim]),
+                         self._embedding[2:, :]), 0)
             if self._vocab_size is None:
                 self._vocab_size = self._embedding.get_shape().as_list()[0]
         with tf.variable_scope(self.variable_scope):
@@ -72,6 +68,9 @@ class TransformerEncoder(EncoderBase):
                     [32, embed_dim])
                 self.target_symbol_embedding = tf.gather(space_embedding, \
                     self._hparams.target_space_id)
+            else:
+                self.target_symbol_embedding = None
+            self.stack_output = None
     @staticmethod
     def default_hparams():
         """Returns a dictionary of hyperparameters with default values.
@@ -106,90 +105,86 @@ class TransformerEncoder(EncoderBase):
             }
         """
         return {
+            'initializer':None,
             'multiply_embedding_mode': 'sqrt_depth',
             "use_embedding": True,
-            "embedding": embedder_utils.default_embedding_hparams(),
             "name":"encoder",
-            "zero_pad":True,
-            "bos_pad":True,
-            #https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/layers/common_attention.py
-            #Line678
-            "max_seq_length":100000000,
-            'sinusoid':False,
-            'dropout':0.1,
+            "zero_pad":False,
+            "bos_pad":False,
+            'sinusoid':True,
+            'embedding_dropout':0.1,
+            'attention_dropout':0.1,
+            'residual_dropout':0.1,
             'num_blocks':6,
             'num_heads':8,
             'poswise_feedforward':None,
-            'target_space_id': 1,
+            'target_space_id': None,
+            'num_units': 512,
         }
+    #pylint:disable=arguments-differ
+    def _build(self, inputs, encoder_padding, **kwargs):
+        #pylint:disable=too-many-locals
+        self.enc = tf.nn.embedding_lookup(self._embedding, inputs)
+        _, _, channels = layers.shape_list(self.enc)
+        if self._hparams.multiply_embedding_mode == 'sqrt_depth':
+            self.enc = self.enc * channels**0.5
 
-    def _build(self, inputs, inputs_length, **kwargs):
-        if self._embedding is not None:
-            self.enc = tf.nn.embedding_lookup(self._embedding, inputs)
-        else:
-            self.enc = inputs
-        encoder_padding = utils.embedding_to_padding(
-            self.enc)
-        if self._hparams.multiply_embedding_mode =='sqrt_depth':
-            self.enc = self.enc * (self._embedding.shape.as_list()[-1]**0.5)
+        ignore_padding = attentions.attention_bias_ignore_padding(
+            encoder_padding)
+        encoder_self_attention_bias = ignore_padding
+        encoder_decoder_attention_bias = ignore_padding
 
-        emb_target_space = tf.reshape(self.target_symbol_embedding, [1,1,-1])
-        self.enc = self.enc + emb_target_space
+        if self.target_symbol_embedding:
+            emb_target_space = tf.reshape(
+                self.target_symbol_embedding, [1, 1, -1])
+            self.enc = self.enc + emb_target_space
 
-        pad_remover = utils.PadRemover(inputs_length)
-        if self._hparams.sinusoid:
-            self.enc += layers.sinusoid_positional_encoding(
-                self.enc,
-                variable_scope='enc_pe')
-        else:
-            self.position_enc_embedding = embedder_utils.get_embedding(
-                hparams=self._hparams.embedding,
-                vocab_size=self._hparams.max_seq_length,
-                variable_scope='enc_pe')
-            self.enc += tf.nn.embedding_lookup(self.position_enc_embedding,\
-                tf.tile(tf.expand_dims(tf.range(tf.shape(inputs)[1]), 0), [tf.shape(inputs)[0], 1]))
+        input_embedding = layers.add_timing_signal_1d(self.enc)
 
-        self.enc = tf.layers.dropout(self.enc, \
-            rate=self._hparams.dropout, training=context.global_mode_train())
+        x = tf.layers.dropout(input_embedding,
+                              rate=self._hparams.embedding_dropout,
+                              training=context.global_mode_train())
         pad_remover = utils.padding_related.PadRemover(encoder_padding)
         for i in range(self._hparams.num_blocks):
             with tf.variable_scope("layer_{}".format(i)):
                 with tf.variable_scope('self_attention'):
                     selfatt_output = layers.multihead_attention(
-                        queries=layers.layer_normalize(self.enc),
-                        keys=None,
-                        keys_padding=encoder_padding,
+                        queries=layers.layer_normalize(x),
+                        memory=None,
+                        memory_attention_bias=encoder_self_attention_bias,
                         num_heads=self._hparams.num_heads,
-                        dropout_rate=self._hparams.dropout,
-                        num_units=self._hparams.embedding.dim,
-                        causality=False,
+                        dropout_rate=self._hparams.attention_dropout,
+                        num_units=self._hparams.num_units,
                         scope='multihead_attention'
                     )
-                    self.enc = self.enc + tf.layers.dropout(
+                    x = x + tf.layers.dropout(
                         selfatt_output,
-                        rate=self._hparams.dropout,
+                        rate=self._hparams.residual_dropout,
                         training=context.global_mode_train()
                     )
-                poswise_network = FeedForwardNetwork(hparams=self._hparams['poswise_feedforward'])
+                poswise_network = FeedForwardNetwork(
+                    hparams=self._hparams['poswise_feedforward'])
                 with tf.variable_scope(poswise_network.variable_scope):
-                    x = layers.layer_normalize(self.enc)
-                    original_shape = layers.shape_list(x)
-                    x = tf.reshape(x, tf.concat([[-1], original_shape[2:]], axis=0))
-                    x = tf.expand_dims(pad_remover.remove(x), axis=0)
+                    y = layers.layer_normalize(x)
+                    original_shape = layers.shape_list(y)
+                    y = tf.reshape(y, [-1, self._hparams.num_units])
+                    y = tf.expand_dims(pad_remover.remove(y), axis=0)
                     #[1, batch_size*seq_length, hidden_dim]
                     sub_output = tf.layers.dropout(
-                        poswise_network(x),
-                        rate=self._hparams.dropout,
+                        poswise_network(y),
+                        rate=self._hparams.residual_dropout,
                         training=context.global_mode_train()
                     )
                     sub_output = tf.reshape(pad_remover.restore(tf.squeeze(\
-                        sub_output, axis=0)), original_shape
+                        sub_output, axis=0)), original_shape \
                     )
-                    self.enc = self.enc + sub_output
+                    x = x + sub_output
 
-        self.enc = layers.layer_normalize(self.enc)
+        self.stack_output = x
+        encoder_output = layers.layer_normalize(x)
+
         if not self._built:
             self._add_internal_trainable_variables()
             self._built = True
 
-        return encoder_padding, self.enc
+        return encoder_output, encoder_decoder_attention_bias
