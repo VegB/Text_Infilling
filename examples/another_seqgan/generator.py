@@ -72,8 +72,7 @@ class Generator(tx.modules.ModuleBase):
                 embedding_matrix,
                 tx.utils.switch_dropout(1. - self.embedding_dropout))
 
-            initial_state = self.decoder.zero_state(
-                batch_size=tf.shape(self.data_batch[:, :-1])[0], dtype=tf.float32)
+            initial_state = self.decoder.zero_state(batch_size=self.batch_size, dtype=tf.float32)
             self.outputs, final_state, sequence_length = self.decoder(
                 inputs=tf.nn.embedding_lookup(self.embedding_matrix, self.data_batch[:, :-1]),
                 initial_state=initial_state,
@@ -100,6 +99,19 @@ class Generator(tx.modules.ModuleBase):
                 epsilon=1e-9)
             self.train_op = optimizer.minimize(
                 self.teacher_loss + config.l2_decay * l2_loss, global_step=self.global_step)
+
+            preds = tf.nn.softmax(self.outputs.logits)
+            self.update_loss = -tf.reduce_sum(
+                tf.reduce_sum(
+                    tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:self.max_seq_length + 1], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
+                        tf.clip_by_value(tf.reshape(preds[:, :self.max_seq_length, :], [-1, self.vocab_size]), 1e-20, 1.0)
+                    ), 1) * tf.reshape(self.rewards, [-1])
+            )
+
+            self.update_step = tf.Variable(0, dtype=tf.int32)
+            self.update_op = tx.core.get_train_op(
+                self.update_loss, global_step=self.update_step, increment_global_step=False,
+                hparams=config.opt)
 
             self.generated_outputs, _, _ = self.decoder(
                 decoding_strategy="infer_sample",
