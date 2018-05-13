@@ -1,6 +1,5 @@
 import tensorflow as tf
 import texar as tx
-from texar.losses.mle_losses import _mask_sequences
 from utils import *
 
 
