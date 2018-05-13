@@ -106,7 +106,8 @@ class Generator(tx.modules.ModuleBase):
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
                 embedding=self.embedding_matrix,
-                initial_state=initial_state)
+                initial_state=initial_state,
+                max_decoding_length=self.max_seq_length)
 
     @staticmethod
     def default_hparams():
