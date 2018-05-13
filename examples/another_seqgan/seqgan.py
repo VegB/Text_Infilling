@@ -10,26 +10,51 @@ from discriminator import Discriminator
 from dataloader import GenDataLoader, DisDataLoader
 from utils import print_result, store_output, pad_to_length
 
-
 config_path = "config"
 config = importlib.import_module(config_path)
 log = open(config.log_file, "w")
+
+opt_vars = {
+    'learning_rate': config.init_lr,
+    'best_valid_ppl': 1e100,
+    'steps_not_improved': 0
+}
 
 
 def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
     print("-------------Pretrain Generator----------------")
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=epoch_num)
-
+    loss = 0.
+    iters = 0
     while not dataloader.should_stop():
-        _, step, loss, outputs = sess.run([generator.train_op, generator.global_step,
-                                           generator.teacher_loss, generator.outputs],
-                                          feed_dict={generator.data_batch: dataloader.get_batch(),
-                                                     generator.global_step: dataloader.step,
-                                                     tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        _, step, mle_loss, outputs = sess.run([generator.train_op, generator.global_step,
+                                               generator.teacher_loss, generator.outputs],
+                                              feed_dict={generator.data_batch: dataloader.get_batch(),
+                                                         generator.learning_rate: opt_vars['learning_rate'],
+                                                         tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        # calculate current ppl
+        loss += mle_loss
+        iters += config.num_steps
+        ppl = np.exp(loss / iters)
+        print('global step:', step, ' ' * 4, 'training ppl:', ppl)
+
+        # calculate valid ppl, might change learning rate
+        valid_ppl = calculate_ppl(sess, generator, mode="valid")
+        if valid_ppl < opt_vars['best_valid_ppl']:
+            opt_vars['best_valid_ppl'] = valid_ppl
+            opt_vars['steps_not_improved'] = 0
+        else:
+            opt_vars['steps_not_improved'] += 1
+
+        if opt_vars['steps_not_improved'] >= 30:
+            opt_vars['steps_not_improved'] = 0
+            opt_vars['learning_rate'] *= config.lr_decay
+
         if step % 200 == 0:
-            print("%d: teacher_loss = %.6f, perplexity = %.6f" % (step, loss, np.exp(loss)))
             print_result(outputs.sample_id[:config.print_num], dataloader.id2word, dataloader.max_len)
+
+    return np.exp(loss / iters)
 
 
 def generate_negative_samples(sess, generator, input_file, vocab_file, dst_path):
@@ -79,7 +104,6 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
         # Teacher forcing
         _, teacher_loss = sess.run([generator.train_op, generator.teacher_loss],
                                    feed_dict={generator.data_batch: gen_dataloader.get_batch(),
-                                              generator.global_step: gen_dataloader.step,
                                               tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
         gen_data = sess.run(generator.generated_outputs,
@@ -103,45 +127,32 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
         print("%d: teacher_loss = %.6f, update_total_loss = %.6f" % (i, teacher_loss, update_loss))
 
 
-def calculate_nll(sess, generator, epoch_id, mode):
-    # NLL Oracle
-    dataloader = GenDataLoader(config, text_file=config.train_file,
+def calculate_ppl(sess, generator, mode):
+    dataloader = GenDataLoader(config, text_file=config.valid_file if mode == "valid" else config.test_file,
                                vocab_file=config.vocab_file, epoch_num=1)
-    nll = []
-    for i in range(50):
-        loss = sess.run([generator.teacher_loss],
-                        feed_dict={generator.data_batch: dataloader.get_batch(),
-                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        nll.append(loss)
-    nll_oracle = np.mean(nll)
-    print("%s epoch %d: nll_oracle = %f, perplexity_oracle = %f" % (mode, epoch_id, nll_oracle, np.exp(nll_oracle)))
-    log.write("%s epoch %d: perplexity_oracle = %f\n" % (mode, epoch_id, np.exp(nll_oracle)))
+    loss = 0.
+    iters = 0
+    for i in range(10):
+        if dataloader.should_stop():
+            break
+        mle_loss = sess.run(generator.teacher_loss,
+                            feed_dict={generator.data_batch: dataloader.get_batch(),
+                                       generator.learning_rate: opt_vars['learning_rate'],
+                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        loss += mle_loss
+        iters += config.num_steps
+    return np.exp(loss / iters)
 
-    # NLL Gen
-    dataloader = GenDataLoader(config, text_file=config.negative_file,
-                               vocab_file=config.vocab_file, epoch_num=1)
-    nll = []
-    for i in range(50):
-        loss = sess.run([generator.teacher_loss],
-                        feed_dict={generator.data_batch: dataloader.get_batch(),
-                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        nll.append(loss)
-    nll_gen = np.mean(nll)
-    print("%s epoch %d: nll_gen = %f, perplexity_gen = %f" % (mode, epoch_id, nll_gen, np.exp(nll_gen)))
-    log.write("%s epoch %d: perplexity_gen = %f\n" % (mode, epoch_id, np.exp(nll_gen)))
 
-    # NLL Test
-    dataloader = GenDataLoader(config, text_file=config.test_file,
-                               vocab_file=config.vocab_file, epoch_num=1)
-    nll = []
-    for i in range(50):
-        loss = sess.run([generator.teacher_loss],
-                        feed_dict={generator.data_batch: dataloader.get_batch(),
-                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        nll.append(loss)
-    nll_gen = np.mean(nll)
-    print("%s epoch %d: nll_test = %f, perplexity_test = %f" % (mode, epoch_id, nll_gen, np.exp(nll_gen)))
-    log.write("%s epoch %d: perplexity_test = %f\n" % (mode, epoch_id, np.exp(nll_gen)))
+def record_ppl(sess, generator, epoch_id, train_ppl=None):
+    if train_ppl:
+        print("epoch %d: train_ppl = %f" % (epoch_id, train_ppl))
+    valid_ppl = calculate_ppl(sess, generator, mode="valid")
+    test_ppl = calculate_ppl(sess, generator, mode="test")
+    rst = "epoch %d: learning_rate = %f, valid_ppl = %f, test_ppl = %f" % \
+          (epoch_id, opt_vars["learning_rate"], valid_ppl, test_ppl)
+    print(rst)
+    log.write(rst)
 
 
 if __name__ == "__main__":
@@ -156,16 +167,16 @@ if __name__ == "__main__":
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
-        
+
         generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
                                   dst_path="./data/0.txt")
 
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-            pretrain_generator(sess, generator, config.train_file, config.vocab_file)
-            generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
-                                      dst_path=config.negative_file)
-            calculate_nll(sess, generator, epoch_id=pre_epoch, mode="Pretrain")
+            train_ppl = pretrain_generator(sess, generator, config.train_file, config.vocab_file)
+            record_ppl(sess, generator, epoch_id=pre_epoch, train_ppl=train_ppl)
             if pre_epoch % 10 == 0:
+                generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
+                                          dst_path=config.negative_file)
                 train_rst_file = "./data/%d.txt" % pre_epoch
                 copyfile(config.negative_file, train_rst_file)
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
@@ -173,13 +184,13 @@ if __name__ == "__main__":
         train_discriminator(sess, discriminator, positive_file=config.train_file,
                             negative_file=config.negative_file, vocab_file=config.vocab_file,
                             epoch_num=config.discriminator_pretrain_epoch)
-        
+
         for update_epoch in range(1, config.adversial_epoch + 1):
             update_generator(sess, generator, discriminator, positive_file=config.train_file,
                              negative_file=config.negative_file, vocab_file=config.vocab_file)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=config.negative_file)
-            calculate_nll(sess, generator, epoch_id=update_epoch, mode="Adversarial")
+            record_ppl(sess, generator, epoch_id=update_epoch)
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=1)
