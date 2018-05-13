@@ -153,11 +153,11 @@ def calculate_ppl(sess, generator, mode):
     return np.exp(loss / iters)
 
 
-def record_ppl(sess, generator, epoch_id, train_ppl):
+def record_ppl(sess, generator, epoch_id, train_ppl, mode="Pretrain"):
     valid_ppl = calculate_ppl(sess, generator, mode="valid")
     test_ppl = calculate_ppl(sess, generator, mode="test")
-    rst = "epoch %d: learning_rate = %f, train_ppl = %f, valid_ppl = %f, test_ppl = %f" % \
-          (epoch_id, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
+    rst = "epoch %d(%s): learning_rate = %f, train_ppl = %f, valid_ppl = %f, test_ppl = %f" % \
+          (mode, epoch_id, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
     print(rst)
     log.write(rst)
 
@@ -197,7 +197,7 @@ if __name__ == "__main__":
                              negative_file=config.negative_file, vocab_file=config.vocab_file)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=config.negative_file)
-            record_ppl(sess, generator, epoch_id=update_epoch, train_ppl=train_ppl)
+            record_ppl(sess, generator, epoch_id=update_epoch, train_ppl=train_ppl, mode="Adversarial")
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=1)
