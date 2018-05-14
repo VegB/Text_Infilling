@@ -21,7 +21,7 @@ opt_vars = {
 }
 
 
-def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
+def pretrain_generator(sess, generator, valid_dataloader, input_file, vocab_file, epoch_num=1):
     print("-------------Pretrain Generator----------------")
     dataloader = GenDataLoader(config, text_file=input_file,
                                vocab_file=vocab_file, epoch_num=epoch_num)
@@ -36,23 +36,23 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
         # calculate current ppl
         loss += mle_loss
         iters += config.num_steps
-        if step % 50 == 0:
-            ppl = np.exp(loss / iters)
-            print('global step:', step, ' ' * 4, 'training ppl:', ppl)
 
         # calculate valid ppl, might change learning rate
-        valid_ppl = calculate_ppl(sess, generator, mode="valid")
-        if valid_ppl < opt_vars['best_valid_ppl']:
-            opt_vars['best_valid_ppl'] = valid_ppl
-            opt_vars['steps_not_improved'] = 0
-        else:
-            opt_vars['steps_not_improved'] += 1
+        if step % 100 == 0:
+            valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
+            if valid_ppl < opt_vars['best_valid_ppl']:
+                opt_vars['best_valid_ppl'] = valid_ppl
+                opt_vars['steps_not_improved'] = 0
+            else:
+                opt_vars['steps_not_improved'] += 1
 
-        if opt_vars['steps_not_improved'] >= 30:
-            opt_vars['steps_not_improved'] = 0
-            opt_vars['learning_rate'] *= config.lr_decay
+            if opt_vars['steps_not_improved'] >= 30:
+                opt_vars['steps_not_improved'] = 0
+                opt_vars['learning_rate'] *= config.lr_decay
 
         if step % 200 == 0:
+            ppl = np.exp(loss / iters)
+            print('global step:', step, ' ' * 4, 'training ppl:', ppl)
             print_result(outputs.sample_id[:config.print_num], dataloader.id2word, dataloader.max_len)
 
     return np.exp(loss / iters)
@@ -136,27 +136,20 @@ def update_generator(sess, generator, discriminator, positive_file, negative_fil
     return np.exp(loss / iters)
 
 
-def calculate_ppl(sess, generator, mode):
-    dataloader = GenDataLoader(config, text_file=config.valid_file if mode == "valid" else config.test_file,
-                               vocab_file=config.vocab_file, epoch_num=1)
-    loss = 0.
-    iters = 0
-    for i in range(10):
-        if dataloader.should_stop():
-            break
-        mle_loss = sess.run(generator.teacher_loss,
-                            feed_dict={generator.data_batch: dataloader.get_batch(),
-                                       generator.learning_rate: opt_vars['learning_rate'],
-                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        loss += mle_loss
-        iters += config.num_steps
-    return np.exp(loss / iters)
+def calculate_ppl(sess, generator, dataloader):
+    if dataloader.should_stop():
+        dataloader.reset()
+    mle_loss = sess.run(generator.teacher_loss,
+                        feed_dict={generator.data_batch: dataloader.get_batch(),
+                                   generator.learning_rate: opt_vars['learning_rate'],
+                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+    return np.exp(mle_loss / config.num_steps)
 
 
-def record_ppl(sess, generator, epoch_id, train_ppl, mode="Pretrain"):
-    valid_ppl = calculate_ppl(sess, generator, mode="valid")
-    test_ppl = calculate_ppl(sess, generator, mode="test")
-    rst = "epoch %d(%s): learning_rate = %f, train_ppl = %f, valid_ppl = %f, test_ppl = %f" % \
+def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, train_ppl, mode="Pretrain"):
+    valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
+    test_ppl = calculate_ppl(sess, generator, test_dataloader)
+    rst = "epoch %d(%s): learning_rate = %f, train_ppl = %f, valid_ppl = %f, test_ppl = %f\n" % \
           (epoch_id, mode, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
     print(rst)
     log.write(rst)
@@ -165,6 +158,10 @@ def record_ppl(sess, generator, epoch_id, train_ppl, mode="Pretrain"):
 if __name__ == "__main__":
     dataloader = GenDataLoader(config, text_file=config.train_file,
                                vocab_file=config.vocab_file, epoch_num=1)
+    valid_dataloader = GenDataLoader(config, text_file=config.valid_file,
+                                     vocab_file=config.vocab_file, epoch_num=1)
+    test_dataloader = GenDataLoader(config, text_file=config.test_file,
+                                    vocab_file=config.vocab_file, epoch_num=1)
     generator = Generator(config, word2id=dataloader.word2id, bos=dataloader.bos_id,
                           eos=dataloader.eos_id, pad=dataloader.pad_id)
     discriminator = Discriminator(config, word2id=dataloader.word2id)
@@ -179,8 +176,10 @@ if __name__ == "__main__":
                                   dst_path="./data/0.txt")
 
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-            train_ppl = pretrain_generator(sess, generator, config.train_file, config.vocab_file)
-            record_ppl(sess, generator, epoch_id=pre_epoch, train_ppl=train_ppl)
+            train_ppl = pretrain_generator(sess, generator, valid_dataloader,
+                                           config.train_file, config.vocab_file)
+            record_ppl(sess, generator, valid_dataloader, test_dataloader,
+                       epoch_id=pre_epoch, train_ppl=train_ppl)
             if pre_epoch % 10 == 0:
                 generate_negative_samples(sess, generator, config.train_file, config.vocab_file,
                                           dst_path=config.negative_file)
@@ -194,10 +193,11 @@ if __name__ == "__main__":
 
         for update_epoch in range(1, config.adversial_epoch + 1):
             train_ppl = update_generator(sess, generator, discriminator, positive_file=config.train_file,
-                             negative_file=config.negative_file, vocab_file=config.vocab_file)
+                                         negative_file=config.negative_file, vocab_file=config.vocab_file)
             generate_negative_samples(sess, generator, input_file=config.train_file,
                                       vocab_file=config.vocab_file, dst_path=config.negative_file)
-            record_ppl(sess, generator, epoch_id=update_epoch, train_ppl=train_ppl, mode="Adversarial")
+            record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id=update_epoch,
+                       train_ppl=train_ppl, mode="Adversarial")
             train_discriminator(sess, discriminator, positive_file=config.train_file,
                                 negative_file=config.negative_file, vocab_file=config.vocab_file,
                                 epoch_num=1)
