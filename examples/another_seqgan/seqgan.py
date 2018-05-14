@@ -172,9 +172,13 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
+        """
         generate_negative_samples(sess, generator, gen_dataloader, dst_path="./data/0.txt")
 
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
+        """
+        saver.restore(sess, config.ckpt + "-20")
+        for pre_epoch in range(21, config.generator_pretrain_epoch + 1):
             train_ppl = pretrain_generator(sess, generator, gen_dataloader, valid_dataloader)
             record_ppl(sess, generator, valid_dataloader, test_dataloader,
                        epoch_id=pre_epoch, train_ppl=train_ppl)
