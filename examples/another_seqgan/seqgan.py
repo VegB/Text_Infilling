@@ -36,7 +36,7 @@ def pretrain_generator(sess, generator, input_file, vocab_file, epoch_num=1):
         # calculate current ppl
         loss += mle_loss
         iters += config.num_steps
-        if step % 20 == 0:
+        if step % 50 == 0:
             ppl = np.exp(loss / iters)
             print('global step:', step, ' ' * 4, 'training ppl:', ppl)
 
@@ -157,7 +157,7 @@ def record_ppl(sess, generator, epoch_id, train_ppl, mode="Pretrain"):
     valid_ppl = calculate_ppl(sess, generator, mode="valid")
     test_ppl = calculate_ppl(sess, generator, mode="test")
     rst = "epoch %d(%s): learning_rate = %f, train_ppl = %f, valid_ppl = %f, test_ppl = %f" % \
-          (mode, epoch_id, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
+          (epoch_id, mode, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
     print(rst)
     log.write(rst)
 
