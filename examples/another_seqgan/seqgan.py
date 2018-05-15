@@ -16,6 +16,7 @@ log = open(config.log_file, "w")
 
 opt_vars = {
     'learning_rate': config.init_lr,
+    'min_learning_rate': config.min_lr,
     'best_valid_ppl': 1e100,
     'steps_not_improved': 0
 }
@@ -37,7 +38,7 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader):
         iters += config.num_steps
 
         # calculate valid ppl, might change learning rate
-        if step % 100 == 0:
+        if step % 100 == 0 and opt_vars['learning_rate'] > opt_vars['min_learning_rate']:
             valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
             if valid_ppl < opt_vars['best_valid_ppl']:
                 opt_vars['best_valid_ppl'] = valid_ppl
@@ -133,13 +134,18 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
 
 
 def calculate_ppl(sess, generator, dataloader):
-    if dataloader.should_stop():
-        dataloader.reset()
-    mle_loss = sess.run(generator.teacher_loss,
-                        feed_dict={generator.data_batch: dataloader.get_batch(),
-                                   generator.learning_rate: opt_vars['learning_rate'],
-                                   tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-    return np.exp(mle_loss / config.num_steps)
+    loss = 0.
+    iters = 0
+    for i in range(10):
+        if dataloader.should_stop():
+            dataloader.reset()
+        mle_loss = sess.run(generator.teacher_loss,
+                            feed_dict={generator.data_batch: dataloader.get_batch(),
+                                       generator.learning_rate: opt_vars['learning_rate'],
+                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        loss += mle_loss
+        iters += config.num_steps
+    return np.exp(loss / iters)
 
 
 def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, train_ppl, mode="Pretrain"):
@@ -172,21 +178,14 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        """
-        generate_negative_samples(sess, generator, gen_dataloader, dst_path="./data/0.txt")
-
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-        """
-        saver.restore(sess, config.ckpt + "-20")
-        for pre_epoch in range(21, config.generator_pretrain_epoch + 1):
             train_ppl = pretrain_generator(sess, generator, gen_dataloader, valid_dataloader)
             record_ppl(sess, generator, valid_dataloader, test_dataloader,
                        epoch_id=pre_epoch, train_ppl=train_ppl)
             if pre_epoch % 10 == 0:
-                generate_negative_samples(sess, generator, gen_dataloader, dst_path=config.negative_file)
-                train_rst_file = "./data/%d.txt" % pre_epoch
-                copyfile(config.negative_file, train_rst_file)
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
+
+        generate_negative_samples(sess, generator, gen_dataloader, dst_path=config.negative_file)
 
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
 
@@ -197,7 +196,4 @@ if __name__ == "__main__":
                        train_ppl=train_ppl, mode="Adversarial")
             train_discriminator(sess, discriminator, epoch_num=1)
             if update_epoch % 10 == 0:
-                current_epoch = update_epoch + config.generator_pretrain_epoch
-                train_rst_file = "./data/%d.txt" % current_epoch
-                copyfile(config.negative_file, train_rst_file)
-                saver.save(sess, config.ckpt, global_step=current_epoch)
+                saver.save(sess, config.ckpt, global_step=update_epoch + config.generator_pretrain_epoch)
