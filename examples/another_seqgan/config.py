@@ -2,7 +2,7 @@
 # coco_file = "../../data/coco.txt"
 # valid_file = "../../data/coco.txt"
 # vocab_file = "../../data/coco_vocab.txt"
-'''train_file = "../../data/ptb.txt"
+train_file = "../../data/ptb.txt"
 test_file = "../../data/ptb_test.txt"
 valid_file = "../../data/ptb_valid.txt"
 vocab_file = "../../data/ptb_vocab.txt"
@@ -11,7 +11,7 @@ train_file = "../../data/small_sent.txt"
 test_file = "../../data/small_sent.txt"
 valid_file = "../../data/small_sent.txt"
 vocab_file = "../../data/vocab.txt"
-
+'''
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
@@ -26,7 +26,7 @@ batch_size = 64
 num_steps = 20
 print_num = 3
 init_lr = 0.003
-min_lr = 0.00001
+min_lr = 0.0000001
 l2_decay = 1e-5
 lr_decay = 0.1
 
