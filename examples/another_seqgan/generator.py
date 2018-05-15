@@ -109,9 +109,10 @@ class Generator(tx.modules.ModuleBase):
             )
 
             self.update_step = tf.Variable(0, dtype=tf.int32)
-            self.update_op = tx.core.get_train_op(
+            self.update_op = optimizer.minimize(self.update_loss, global_step=self.update_step)
+            '''self.update_op = tx.core.get_train_op(
                 self.update_loss, global_step=self.update_step, increment_global_step=False,
-                hparams=config.opt)
+                hparams=config.opt)'''
 
             self.generated_outputs, _, _ = self.decoder(
                 decoding_strategy="infer_sample",
