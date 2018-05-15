@@ -180,7 +180,16 @@ if __name__ == "__main__":
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
+        stored = [10, 20, 30, 40, 50, 140, 150, 160, 170, 180]
+        for num in stored:
+            saver.restore(sess, config.ckpt + '-' + str(num))
+            generate_negative_samples(sess, generator, gen_dataloader, dst_path="./data/%d.txt" % num)
+            dataloader = GenDataLoader(config, text_file="./data/%d.txt" % num,
+                                       vocab_file=config.vocab_file, epoch_num=1)
+            ppl = calculate_ppl(sess, generator, dataloader)
+            print("epoch %d, ppl on generated data = %f" % (num, ppl))
 
+        '''
         saver.restore(sess, config.ckpt + '-50')
         opt_vars['learning_rate'] = 0.000003
         opt_vars['min_learning_rate'] = config.min_lr
@@ -205,3 +214,4 @@ if __name__ == "__main__":
             train_discriminator(sess, discriminator, epoch_num=1)
             if update_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=update_epoch + config.generator_pretrain_epoch)
+        '''
