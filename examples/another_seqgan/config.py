@@ -23,14 +23,14 @@ rnn_layers = 1
 latent_num = 100
 keep_prob = 1.0
 batch_size = 64
-num_steps = 20
+num_steps = 35
 print_num = 3
 init_lr = 0.003
 min_lr = 0.0000001
 l2_decay = 1e-5
 lr_decay = 0.1
 
-target_pretrain_epoch = 80
+target_pretrain_epoch = 110
 generator_pretrain_epoch = 80
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
