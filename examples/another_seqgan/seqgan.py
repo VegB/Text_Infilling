@@ -179,7 +179,7 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        '''for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
+        for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
             train_ppl = pretrain_generator(sess, generator, gen_dataloader, valid_dataloader)
             record_ppl(sess, generator, valid_dataloader, test_dataloader,
                        epoch_id=pre_epoch, train_ppl=train_ppl)
@@ -187,10 +187,9 @@ if __name__ == "__main__":
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
    
         generate_negative_samples(sess, generator, gen_dataloader, dst_path=config.negative_file)
-        '''
-        saver.restore(sess, config.ckpt+"-80")
+        
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
-        saver.save(sess, 'checkpoint/pretrained/ckpt', global_step=80)
+        saver.save(sess, './checkpoint/pretrained/ckpt', global_step=80)
 
         for update_epoch in range(1, config.adversial_epoch + 1):
             train_ppl = update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloader)
