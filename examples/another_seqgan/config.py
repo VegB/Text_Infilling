@@ -22,10 +22,11 @@ rnn_dim = 32
 rnn_layers = 1
 latent_num = 100
 keep_prob = 1.0
-batch_size = 20
+batch_size = 64
 num_steps = 20
 print_num = 3
 init_lr = 0.003
+min_lr = 0.00001
 l2_decay = 1e-5
 lr_decay = 0.1
 
