@@ -17,9 +17,9 @@ class Discriminator:
             self.class_num = class_num
 
             self.real_samples = tf.placeholder(dtype=tf.int32, name="samples",
-                                          shape=[self.batch_size, self.max_seq_length])
+                                          shape=[self.batch_size, self.max_seq_length + 1])
             self.gen_samples = tf.placeholder(dtype=tf.int32, name="samples",
-                                               shape=[self.batch_size, self.max_seq_length])
+                                               shape=[self.batch_size, self.max_seq_length + 1])
 
             self.embedder = tx.modules.WordEmbedder(
                 vocab_size=self.vocab_size, hparams=config.emb)
