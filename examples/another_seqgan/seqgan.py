@@ -26,25 +26,26 @@ opt_vars = {
 def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_dataloader):
     loss = 0.
     iters = 0
-    state = sess.run(generator.initial_state,
+    state = sess.run(initial_state,
                      feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
 
     fetches = {
-        "mle_loss": generator.teacher_loss,
-        "final_state": generator.final_state,
-        'global_step': generator.global_step,
-        "train_op": generator.train_op,
-        "sample_id": generator.train_sample_id
+        "mle_loss": mle_loss,
+        "final_state": final_state,
+        'global_step': global_step,
+        "train_op": train_op,
+        # "sample_id": generator.train_sample_id
     }
 
     gen_dataloader.reset()
     while not gen_dataloader.should_stop():
         feed_dict = {
+            batch_size: config.batch_size,
             generator.data_batch: gen_dataloader.get_batch(),
-            generator.learning_rate: opt_vars['learning_rate'],
+            learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
         }
-        for i, (c, h) in enumerate(generator.initial_state):
+        for i, (c, h) in enumerate(initial_state):
             feed_dict[c] = state[i].c
             feed_dict[h] = state[i].h
 
@@ -164,19 +165,20 @@ def calculate_ppl(sess, generator, dataloader):
                      feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
 
     fetches = {
-        "mle_loss": generator.teacher_loss,
-        "final_state": generator.final_state,
-        'global_step': generator.global_step
+        "mle_loss": mle_loss,
+        "final_state": final_state,
+        'global_step': global_step,
     }
 
     dataloader.reset()
     while not dataloader.should_stop():
         feed_dict = {
+            batch_size: 1,
             generator.data_batch: dataloader.get_batch(),
-            generator.learning_rate: opt_vars['learning_rate'],
+            learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
         }
-        for i, (c, h) in enumerate(generator.initial_state):
+        for i, (c, h) in enumerate(initial_state):
             feed_dict[c] = state[i].c
             feed_dict[h] = state[i].h
 
@@ -209,8 +211,34 @@ if __name__ == "__main__":
     generator = Generator(config, word2id=gen_dataloader.word2id, bos=gen_dataloader.bos_id,
                           eos=gen_dataloader.eos_id, pad=gen_dataloader.pad_id)
     discriminator = Discriminator(config, word2id=dis_dataloader.word2id)
-
     saver = tf.train.Saver()
+
+    #--------------
+    batch_size = tf.placeholder(dtype=tf.int32, shape=())
+
+    initial_state, logits, final_state = \
+        generator(text_ids=generator.data_batch[:, 1:-2], num_steps=(config.num_steps-1) * tf.ones((batch_size, ), dtype=tf.int32))
+
+    # Losses & train ops
+    mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
+        labels=generator.data_batch[:, 2:-1],
+        logits=logits,
+        sequence_length=(config.num_steps - 1) * tf.ones((batch_size, )))
+
+    l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])
+
+    # Use global_step to pass epoch, for lr decay
+    global_step = tf.Variable(0, dtype=tf.int32)
+    learning_rate = \
+        tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
+    optimizer = tf.train.AdamOptimizer(
+        learning_rate=learning_rate,
+        beta1=0.,
+        beta2=0.999,
+        epsilon=1e-9)
+
+    train_op = optimizer.minimize(
+        mle_loss + config.l2_decay * l2_loss, global_step=global_step)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
