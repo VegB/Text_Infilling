@@ -32,7 +32,9 @@ class GenDataLoader:
         with open(vocab_file, "rb") as fin:
             words = fin.readlines()
             words = [word.strip().decode('utf-8') for word in words]
-        words.extend([self.eos, self.bos, self.unk, self.pad])
+        for word in [self.eos, self.bos, self.unk, self.pad]:
+            if word not in words:
+                words.append(word)
         self.id2word, self.word2id = {}, {}
         for word, idx in zip(words, range(len(words))):
             self.word2id[word] = idx
@@ -45,8 +47,7 @@ class GenDataLoader:
 
         with open(text_file, "rb") as fin:
             data = fin.readlines()
-        data = [pad_to_length(sent.decode('utf-8').split(), bos=self.bos, eos=self.eos,
-                              pad=self.pad, max_len=self.max_len) for sent in data]
+        data = [pad_to_length(sent.decode('utf-8').split(), pad=self.pad, max_len=self.max_len) for sent in data]
         ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
                for sent in data]
 
@@ -102,7 +103,9 @@ class DisDataLoader:
         with open(vocab_file, "rb") as fin:
             words = fin.readlines()
             words = [word.strip().decode('utf-8') for word in words]
-        words.extend([self.eos, self.bos, self.unk, self.pad])
+        for word in [self.eos, self.bos, self.unk, self.pad]:
+            if word not in words:
+                words.append(word)
         self.id2word, self.word2id = {}, {}
         for word, idx in zip(words, range(len(words))):
             self.word2id[word] = idx
@@ -118,12 +121,12 @@ class DisDataLoader:
         with open(negative_file, "rb") as fin:
             negative_data = fin.readlines()
 
-        r_data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
+        r_data = [pad_to_length(sent.decode('utf-8').split(), pad=self.pad,
                                 max_len=self.max_len) for sent in positive_data]
         r_ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
                  for sent in r_data]
 
-        g_data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
+        g_data = [pad_to_length(sent.decode('utf-8').split(), pad=self.pad,
                                 max_len=self.max_len) for sent in negative_data]
         g_ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
                  for sent in g_data]
