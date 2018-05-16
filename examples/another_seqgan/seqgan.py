@@ -159,15 +159,33 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
 def calculate_ppl(sess, generator, dataloader):
     loss = 0.
     iters = 0
+    state = sess.run(generator.initial_state,
+                     feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
+
+    fetches = {
+        "mle_loss": generator.teacher_loss,
+        "final_state": generator.final_state,
+        'global_step': generator.global_step
+    }
+
     dataloader.reset()
     while not dataloader.should_stop():
-        mle_loss = sess.run(generator.teacher_loss,
-                            feed_dict={generator.data_batch: dataloader.get_batch(),
-                                       generator.learning_rate: opt_vars['learning_rate'],
-                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        loss += mle_loss
+        feed_dict = {
+            generator.data_batch: dataloader.get_batch(),
+            generator.learning_rate: opt_vars['learning_rate'],
+            tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
+        }
+        for i, (c, h) in enumerate(generator.initial_state):
+            feed_dict[c] = state[i].c
+            feed_dict[h] = state[i].h
+
+        rets = sess.run(fetches, feed_dict)
+        loss += rets["mle_loss"]
+        state = rets["final_state"]
         iters += config.num_steps
-    return np.exp(loss / iters)
+    ppl = np.exp(loss / iters)
+    return ppl
+
 
 
 def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, train_ppl, mode="Pretrain"):
