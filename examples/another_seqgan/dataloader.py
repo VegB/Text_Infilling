@@ -9,9 +9,12 @@ from utils import pad_to_length, sent_to_ids
 
 
 class GenDataLoader:
-    def __init__(self, config, text_file, vocab_file, epoch_num):
+    def __init__(self, config, text_file, vocab_file, epoch_num, batch_size=None):
         self.max_len = config.num_steps
-        self.batch_size = config.batch_size
+        if batch_size is not None:
+            self.batch_size = batch_size
+        else:
+            self.batch_size = config.batch_size
         self.epoch_num = epoch_num
         self.trained_epoch = 0
         self.step = 0
