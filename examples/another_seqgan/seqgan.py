@@ -56,7 +56,7 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_d
         ppl = np.exp(loss / iters)
 
         rst = "global step: %d, training ppl: %.6f\n" % (rets['global_step'], ppl)
-        print_and_write_to_file(rst, training_log)
+        print_and_write_to_file(rst, training_log, print_out=False)
 
         if rets['global_step'] % 100 == 0:
             valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
@@ -203,8 +203,8 @@ if __name__ == "__main__":
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
             train_ppl = pretrain_generator(sess, generator, gen_dataloader,
                                            valid_dataloader, test_dataloader)
-            record_ppl(sess, generator, valid_dataloader, test_dataloader,
-                       epoch_id=pre_epoch, train_ppl=train_ppl)
+            # record_ppl(sess, generator, valid_dataloader, test_dataloader,
+            #            epoch_id=pre_epoch, train_ppl=train_ppl)
             if pre_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
    

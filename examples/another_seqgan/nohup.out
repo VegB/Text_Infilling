@@ -7152,3 +7152,205 @@ epoch 100(Adversarial): learning_rate = 0.000000, train_ppl = 470.655837, valid_
 1800: dis_total_loss: 0.609461
 2000: dis_total_loss: 0.517610
 2200: dis_total_loss: 0.430630
+2018-05-16 22:27:16.516659: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-16 22:27:16.677849: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.7335
+pciBusID: 0000:03:00.0
+totalMemory: 7.92GiB freeMemory: 7.81GiB
+2018-05-16 22:27:16.677879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080, pci bus id: 0000:03:00.0, compute capability: 6.1)
+global step: 100, learning rate: 0.0030000, training ppl: 2916.159494, valid ppl: 3357.505575, test ppl: 2753.103716
+
+b'surely <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS>'
+b'surely <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS>'
+b'surely <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <EOS>'
+global step: 200, learning rate: 0.0030000, training ppl: 2737.959452, valid ppl: 2230.597336, test ppl: 1824.839064
+
+b'in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in'
+b'in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in'
+b'in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in'
+global step: 300, learning rate: 0.0030000, training ppl: 4640.002245, valid ppl: 4770.295862, test ppl: 3072.680260
+
+b'<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk>'
+b'<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk>'
+b'<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk>'
+global step: 400, learning rate: 0.0030000, training ppl: 3270.902214, valid ppl: 918.578052, test ppl: 846.411655
+
+b'the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+b'the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+b'the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+global step: 500, learning rate: 0.0030000, training ppl: 2455.550392, valid ppl: 806.402505, test ppl: 758.147447
+
+b'<unk> <unk> <EOS> N N <EOS> N N <EOS> N <EOS> <unk> <EOS> N N N <EOS> N the <EOS> N <EOS> <EOS> N N N <EOS> N N N N <unk> <EOS> the <EOS>'
+b'<unk> <EOS> <EOS> <EOS> <unk> <EOS> <EOS> <EOS> <EOS> <EOS> N N <EOS> the <EOS> the N N <EOS> <EOS> N N N N N <EOS> <EOS> <EOS> <EOS> N <EOS> <unk> <EOS> N <unk>'
+b'<unk> <EOS> <EOS> <unk> the <EOS> N N N N <unk> <EOS> N <EOS> <unk> <EOS> N <EOS> N N <unk> <EOS> <EOS> <EOS> N <EOS> <EOS> <EOS> <EOS> <EOS> <EOS> <unk> <EOS> <EOS> <EOS>'
+global step: 600, learning rate: 0.0030000, training ppl: 1997.155932, valid ppl: 761.781584, test ppl: 711.549105
+
+b'the <unk> the <EOS> N the <unk> the the the the the the <unk> the <EOS> the the the the the the the the the the the the <EOS> the the the the the <unk>'
+b'the the the the the the the the the the the <EOS> the the the the the the the the the <unk> the the the the <EOS> the the the the the the N <EOS>'
+b'the the the the the the the the <unk> the the <unk> the the the the the the the the the the the the the <unk> <EOS> the the the the the the the <EOS>'
+global step: 700, learning rate: 0.0030000, training ppl: 1695.480007, valid ppl: 755.700385, test ppl: 708.483988
+
+b'the the <unk> <EOS> the the <unk> <unk> the the the the the the the <unk> the the the the the the the the the the the the the the the the the the the'
+b'<unk> <EOS> the the <unk> <EOS> the the the the <unk> <unk> <unk> the the the <EOS> the <unk> the the the <unk> the the the the <unk> the the the the the <unk> <unk>'
+b'<unk> the the the the the the <unk> the the <unk> <unk> <unk> <unk> the the the the the the the the the <unk> the the the <unk> the the <unk> <EOS> the the the'
+global step: 800, learning rate: 0.0030000, training ppl: 1492.686561, valid ppl: 613.940978, test ppl: 587.336782
+
+b'<unk> the <EOS> the the the <EOS> the the the <unk> <EOS> the <unk> of <EOS> the <EOS> the the <EOS> the <unk> <unk> <EOS> <EOS> the <unk> of the <unk> of the <EOS> the'
+b'<unk> <unk> the the the <unk> the <EOS> <unk> <unk> <unk> <EOS> the <EOS> the <unk> <unk> <unk> <EOS> <unk> the <unk> the <unk> the the the <unk> <EOS> <unk> the the <unk> <EOS> the'
+b"<unk> <EOS> <EOS> <unk> the <unk> <unk> <EOS> the <unk> <unk> of the the <unk> the the the the <unk> 's <EOS> the <EOS> the the <unk> 's the <unk> <EOS> the <EOS> the the"
+global step: 900, learning rate: 0.0030000, training ppl: 539.484670, valid ppl: 564.945411, test ppl: 531.126672
+
+b"<EOS> <EOS> N <EOS> the <EOS> <unk> <EOS> the <EOS> <EOS> the <unk> <unk> <EOS> the <EOS> <unk> <EOS> the <EOS> <EOS> the <unk> <EOS> to <unk> <EOS> <EOS> 's <EOS> the <unk> <unk> <EOS>"
+b'<EOS> <unk> <EOS> the <EOS> the to the the the <EOS> <unk> the <EOS> <EOS> the to the the <EOS> the the <unk> <EOS> the <unk> to <EOS> the <EOS> the <unk> to the <EOS>'
+b'<EOS> <EOS> the <unk> <EOS> <EOS> the the to the <unk> <unk> <unk> <EOS> the <EOS> <EOS> <unk> the <unk> <EOS> <EOS> the <EOS> <EOS> N <EOS> the <unk> <EOS> <EOS> the <unk> <EOS> <unk>'
+global step: 1000, learning rate: 0.0030000, training ppl: 500.021886, valid ppl: 497.847997, test ppl: 459.358568
+
+b'<unk> the <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> N <unk> <unk> <unk> to $ <unk> <unk> <unk> <unk> the <unk> <EOS> N <unk> N N N <unk> <unk> <unk> <unk> N N'
+b'<unk> N <unk> <EOS> <unk> <unk> <unk> <unk> <unk> <unk> <unk> N N N <unk> <unk> <unk> <unk> <unk> <unk> <unk> <EOS> <unk> N <unk> <unk> <unk> <unk> to $ <EOS> <unk> <EOS> <unk> <unk>'
+b'<unk> <unk> <unk> <unk> <unk> <unk> N <unk> N the <unk> <unk> <unk> <unk> <unk> N <unk> <unk> <unk> <unk> <unk> $ <unk> <unk> <EOS> $ <unk> <unk> <unk> <EOS> <unk> <unk> <unk> <unk> <unk>'
+global step: 1100, learning rate: 0.0030000, training ppl: 481.896821, valid ppl: 466.122205, test ppl: 431.018630
+
+b'<EOS> <EOS> <EOS> the the <EOS> to the the <unk> <EOS> the <EOS> the <unk> of <unk> the <EOS> the N <unk> <unk> of <unk> to the <unk> of <unk> <unk> of the <unk> <unk>'
+b'<EOS> the <EOS> <unk> <EOS> <unk> <EOS> <EOS> <unk> <EOS> to <EOS> the <unk> <EOS> the <unk> <EOS> of the <unk> <EOS> <unk> <EOS> to <unk> <EOS> <EOS> the <unk> <EOS> the <EOS> to the'
+b"<EOS> <unk> of <unk> 's to the to N N <EOS> the the <unk> <EOS> the <EOS> <EOS> <EOS> the of <unk> 's the the was to <EOS> be be <EOS> <EOS> the <EOS> to"
+global step: 1200, learning rate: 0.0030000, training ppl: 467.245940, valid ppl: 425.657293, test ppl: 405.523421
+
+b"<unk> <unk> <EOS> <EOS> <unk> 's to <unk> the <unk> <EOS> of <EOS> <EOS> <unk> <unk> <EOS> <unk> <unk> of the <unk> <unk> <EOS> <unk> <EOS> <unk> to the N billion from N billion $"
+b"<unk> of <unk> of <EOS> <unk> the is <unk> <unk> years <EOS> <EOS> <unk> 's n't <unk> <EOS> <unk> <unk> <EOS> <unk> to 's <unk> <unk> <unk> <unk> <unk> <EOS> <EOS> <unk> york <unk> <unk>"
+b"<unk> francisco of <unk> <unk> <unk> <unk> <unk> <unk> <unk> 's to <EOS> the <unk> <EOS> <EOS> <unk> <unk> <unk> <unk> said <unk> said to is <EOS> <unk> <unk> <unk> <unk> <EOS> <unk> <unk> <EOS>"
+global step: 1300, learning rate: 0.0030000, training ppl: 449.444571, valid ppl: 424.992929, test ppl: 393.112332
+
+b'<unk> to $ <unk> of said <unk> the <unk> <unk> <unk> <unk> <unk> <unk> <unk> officer to be <unk> <unk> said <unk> <unk> of the <unk> of <unk> york <unk> <unk> be N N <unk>'
+b'<unk> <unk> the to <unk> to $ <unk> <EOS> <unk> N <unk> <EOS> <unk> to <EOS> <unk> <EOS> the <unk> <unk> the the <unk> to <unk> <EOS> to have be to <unk> to the <unk>'
+b'<unk> <unk> <unk> the <unk> <EOS> be to to the <unk> <unk> to $ <unk> <EOS> the the to <unk> $ <unk> <unk> <EOS> the <unk> <unk> <EOS> <unk> <unk> <EOS> to be to <unk>'
+global step: 1400, learning rate: 0.0030000, training ppl: 433.430854, valid ppl: 418.629100, test ppl: 394.926453
+
+b'<EOS> <EOS> N N N million <EOS> the N N N <unk> <EOS> the <unk> N million <EOS> the <EOS> <EOS> <EOS> the <EOS> to N <unk> <EOS> <unk> <unk> <EOS> <EOS> <unk> <unk> the'
+b'<unk> <EOS> <EOS> the the <EOS> <unk> <unk> the <unk> of <EOS> N the has <unk> <unk> <EOS> N million N <EOS> <unk> francisco <unk> <EOS> <EOS> the <unk> <EOS> <unk> <EOS> the <EOS> <unk>'
+b'<EOS> <EOS> the <unk> of <EOS> <unk> <EOS> the <unk> <unk> <EOS> <EOS> <EOS> <EOS> <EOS> <unk> <unk> york <EOS> the <unk> <EOS> the <unk> <unk> the <unk> <unk> <unk> <unk> <unk> <EOS> <unk> the'
+global step: 1500, learning rate: 0.0030000, training ppl: 423.229111, valid ppl: 488.179742, test ppl: 431.412361
+
+b'<EOS> the said <unk> to <unk> the N <unk> <EOS> <EOS> <unk> <EOS> <EOS> said <unk> <unk> <unk> <unk> <EOS> the <EOS> the <unk> <EOS> <unk> <EOS> the <unk> <unk> <EOS> <unk> <EOS> the N'
+b"<EOS> the 's <EOS> <unk> <EOS> <unk> N the <unk> <EOS> the <EOS> the <unk> <unk> <EOS> the <EOS> <EOS> <unk> <unk> <EOS> <EOS> <EOS> <unk> <unk> <unk> the is be <unk> <EOS> <unk> <unk>"
+b"N <EOS> <EOS> stock <unk> said <EOS> the <unk> 's <unk> <unk> <unk> <unk> <unk> <EOS> the <EOS> the <unk> <EOS> <unk> <unk> <EOS> <EOS> the the of <unk> <EOS> <EOS> the 's <unk> <unk>"
+global step: 1600, learning rate: 0.0030000, training ppl: 411.621135, valid ppl: 384.547780, test ppl: 355.983103
+
+b"<unk> the the <unk> year <EOS> patel has <EOS> N <unk> <EOS> the <EOS> the to the year <EOS> said to be the the lesk has n't the the <EOS> <EOS> ago <EOS> the said"
+b"<unk> <EOS> <EOS> <unk> be the <unk> <EOS> <EOS> <EOS> lesk said the <unk> <unk> of the <unk> stock <unk> <EOS> the <EOS> the can <unk> <unk> a the has n't <EOS> the <unk> <EOS>"
+b'the <EOS> <EOS> <EOS> <EOS> the <unk> <EOS> said been the <unk> N million <EOS> <EOS> <EOS> <EOS> the <EOS> kong stock $ <EOS> the york said said a <unk> N million <EOS> <EOS> <EOS>'
+global step: 1700, learning rate: 0.0030000, training ppl: 324.282806, valid ppl: 357.825863, test ppl: 341.144353
+
+b"<EOS> $ year <EOS> to $ 's <EOS> <EOS> the 's the <unk> 's <EOS> <unk> <unk> than <EOS> the the the <EOS> will <unk> the <EOS> year <EOS> <EOS> <unk> <EOS> the <EOS> 's"
+b"<EOS> <EOS> <EOS> the <unk> <EOS> <EOS> <unk> <EOS> <EOS> the angeles 's the the said to the <unk> <EOS> the <unk> of <EOS> <EOS> 's to <unk> the <EOS> <EOS> the <unk> 's <EOS>"
+b"<EOS> N <EOS> <EOS> the <unk> of <EOS> <EOS> <EOS> <EOS> the the said <unk> to <unk> <EOS> <unk> <EOS> the <unk> 's the <EOS> said to <unk> <EOS> <unk> 's <EOS> the <unk> <EOS>"
+global step: 1800, learning rate: 0.0030000, training ppl: 304.212535, valid ppl: 349.048797, test ppl: 320.941841
+
+b"<EOS> of of the new of <unk> <unk> <EOS> <unk> to be <EOS> the of year <EOS> <unk> <unk> of <unk> <unk> <EOS> <EOS> year <EOS> the 's it <unk> of sold by the <unk>"
+b"<unk> of was <unk> be the <unk> 's the the <unk> loss of <unk> be of the of the o'kicki said the said <EOS> the said the <unk> 's <unk> <unk> department <EOS> 's be"
+b"<EOS> said the <unk> of <unk> <unk> corp. <EOS> <unk> said be to <unk> quarter <EOS> <EOS> the <unk> 's be sold <EOS> the <unk> 's the <unk> <EOS> the <unk> quarter of n't of"
+global step: 1900, learning rate: 0.0030000, training ppl: 298.524881, valid ppl: 317.308115, test ppl: 301.227293
+
+b"the 's the to <unk> <EOS> <EOS> the <unk> <unk> <EOS> the is <unk> <unk> <EOS> be the <unk> <unk> <EOS> <unk> the n't be to be <unk> <EOS> <EOS> <EOS> the <EOS> <unk> <EOS>"
+b'the the the york <EOS> the <unk> <unk> <EOS> the the the <EOS> <unk> <EOS> the the the <EOS> it <unk> <EOS> <unk> of <unk> <EOS> <unk> the <unk> <EOS> <EOS> <EOS> york <unk> <EOS>'
+b"<EOS> the <unk> of the <unk> <unk> the the the <EOS> the <unk> <EOS> the 's <unk> <unk> <EOS> the <unk> <EOS> <unk> <unk> <unk> the to <EOS> <unk> <unk> <unk> the the to be"
+global step: 2000, learning rate: 0.0030000, training ppl: 291.262078, valid ppl: 314.156722, test ppl: 294.208138
+
+b"the <unk> <unk> the <unk> <unk> <unk> 's the <unk> the of the <unk> <unk> the <unk> the <unk> <unk> the <unk> 's <unk> <unk> <unk> <unk> <unk> <unk> the <unk> of the <unk> the"
+b"the <EOS> the the the the <unk> market <unk> the <unk> <unk> <unk> <unk> <unk> <EOS> the <unk> <unk> metals <EOS> the <unk> of the <unk> 's <unk> the <unk> <EOS> <unk> the <unk> <EOS>"
+b"the the <unk> house <unk> <unk> that the <unk> <unk> <unk> <unk> <EOS> the be <unk> the <unk> the <unk> 's the <unk> of the <unk> <unk> <EOS> the <unk> <unk> is the 's the"
+global step: 2100, learning rate: 0.0030000, training ppl: 284.358073, valid ppl: 341.939270, test ppl: 316.369847
+
+b"<unk> <unk> <unk> <unk> <unk> 's <unk> <unk> <unk> <unk> <EOS> <unk> the N <EOS> N N the <unk> N <unk> N the <unk> <unk> N N million the the <unk> the <unk> the <unk>"
+b"<unk> <unk> 's <unk> the <unk> <unk> the <unk> <unk> <EOS> <unk> <unk> <unk> <EOS> <unk> the <unk> of the N <unk> <unk> <EOS> the <unk> the <EOS> the <unk> <EOS> the <unk> <unk> <unk>"
+b"<unk> the years <EOS> <EOS> the <unk> <unk> the <unk> the <unk> 's n't <unk> <unk> the <unk> <unk> <EOS> <EOS> the <unk> <unk> <unk> <unk> than of the <unk> <unk> <unk> <EOS> the <unk>"
+global step: 2200, learning rate: 0.0030000, training ppl: 275.443100, valid ppl: 307.800631, test ppl: 284.730660
+
+b'the <EOS> the <unk> <unk> <unk> <unk> and the <unk> and by <unk> <EOS> the the <unk> <EOS> <EOS> the <EOS> the <unk> <unk> <unk> <unk> <unk> <unk> <EOS> <EOS> <unk> <EOS> the <unk> <unk>'
+b"<unk> n't be the <unk> <EOS> <unk> <EOS> <EOS> the the said <unk> to <EOS> of be <unk> <EOS> the years <EOS> the <EOS> <EOS> the the week the company the <unk> in the <unk>"
+b'N <EOS> N in the <EOS> the <unk> <unk> said inc said and the the company <unk> the to be <EOS> <unk> <EOS> <EOS> N <EOS> the the the company is the <unk> N of'
+global step: 2300, learning rate: 0.0030000, training ppl: 268.638717, valid ppl: 282.781360, test ppl: 266.304711
+
+b'the are <unk> <unk> the of be the <unk> <EOS> <EOS> <EOS> <EOS> to <unk> the the company association have <unk> <EOS> <unk> in the and the the <unk> N N <unk> said the <unk>'
+b"<EOS> in N N N million <EOS> been the <EOS> the <unk> <EOS> the are <EOS> <unk> are be the the <unk> <EOS> to the <unk> <unk> the 's <unk> the the <unk> fund will"
+b"<unk> <unk> 's <unk> <unk> of the <unk> <unk> hills & <EOS> the <unk> 's 's the 's the than N of <unk> <EOS> the <unk> <unk> <EOS> <unk> <EOS> <EOS> the <EOS> the <unk>"
+global step: 2400, learning rate: 0.0030000, training ppl: 262.692057, valid ppl: 300.515347, test ppl: 283.228838
+
+b"the <unk> <unk> <unk> the <unk> <unk> the the <unk> <unk> <unk> the <unk> the the <unk> <unk> <unk> <unk> <unk> <EOS> of to the the <unk> of the <unk> <EOS> the <unk> n't <unk>"
+b'<unk> the <unk> <unk> the <unk> N million <EOS> <EOS> the <unk> N <unk> N <EOS> year <EOS> N <EOS> <EOS> the <EOS> the <unk> of at the year a <unk> of N <unk> <unk>'
+b'N the the N N <unk> market <EOS> <EOS> the <unk> of to the the <unk> economy N <EOS> the N N N the N N N N year N of the N year <EOS>'
+global step: 2500, learning rate: 0.0030000, training ppl: 221.805274, valid ppl: 273.941182, test ppl: 255.483769
+
+b'the <unk> <unk> <EOS> the the <unk> of <EOS> <EOS> <EOS> <unk> the <unk> the <unk> <EOS> <unk> <EOS> the <unk> <unk> <unk> is <unk> of are be a <unk> the <unk> <EOS> the <unk>'
+b'<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <EOS> yeargin <unk> <EOS> <unk> the <EOS> the <EOS> the says to <EOS> than the <EOS> <EOS> the can to <EOS> <EOS> the years <EOS>'
+b"the quarter <EOS> gulf 's $ N million in $ N million share <EOS> N $ N million <EOS> $ N million share <EOS> the than <EOS> <EOS> the of N yield N million <EOS>"
+global step: 2600, learning rate: 0.0030000, training ppl: 213.041834, valid ppl: 263.910340, test ppl: 242.558301
+
+b"<unk> a <unk> in the N of the past of the <unk> community <EOS> mcgovern said it the <unk> said <unk> <unk> the mcgovern said the the <EOS> the <unk> <unk> 's said <unk> said"
+b"said it 's been by <unk> of the of the <unk> <unk> <EOS> to the company maker said it <unk> to a in the with the <unk> gain <EOS> said said said the analyst to"
+b'<EOS> least <unk> <unk> of the they the <unk> of the <unk> company <EOS> the been a <unk> <unk> <unk> the <unk> <EOS> the the <unk> line <EOS> the of N million are a be'
+global step: 2700, learning rate: 0.0030000, training ppl: 208.951107, valid ppl: 257.740123, test ppl: 238.068585
+
+b'<unk> <unk> <unk> <EOS> <EOS> the said the average N of in the sales in the N <EOS> the company <unk> the are the is a N <EOS> <EOS> in the are <unk> a the'
+b"<unk> <EOS> <unk> the u.s. <EOS> the <unk> <unk> <unk> president of the <unk> <unk> the york <EOS> the do n't <unk> that is be to the will the they be the the <unk> in"
+b"<EOS> the as the the <unk> rate in <unk> <unk> of of the u.s. <EOS> in the do n't be the is <unk> <unk> <unk> in said <EOS> the the <unk> indicators in <unk> <unk>"
+global step: 2800, learning rate: 0.0030000, training ppl: 207.115620, valid ppl: 255.511421, test ppl: 235.812237
+
+b"<unk> the the <unk> in the the <unk> <unk> <EOS> <EOS> the up <unk> to the <EOS> <unk> <EOS> the york <EOS> <EOS> york <unk> <unk> <EOS> the york <unk> 's the <unk> is <unk>"
+b"<unk> has <unk> in the drabinsky said be <unk> the <unk> of the <unk> director of the 's <unk> of it is been in <unk> and <EOS> in <EOS> the <unk> <unk> <EOS> to the"
+b"<unk> 's been N of trading <EOS> the <unk> officer of <unk> index N to in <unk> at the <unk> stock exchange composite <unk> at <EOS> <EOS> the the <unk> of <unk> in <unk> at"
+global step: 2900, learning rate: 0.0030000, training ppl: 204.367487, valid ppl: 253.182161, test ppl: 232.419872
+
+b"<EOS> the 's a <unk> time <EOS> the <unk> 's be the the the <unk> <unk> of the <unk> of n't <EOS> the and the pont 's <unk> <unk> with the <unk> <EOS> the <EOS>"
+b"the <EOS> the to the the <unk> <unk> 's for <EOS> <EOS> the <EOS> a <unk> <unk> <unk> but the <EOS> the <EOS> says to the the a <EOS> in the <unk> <EOS> <EOS> but"
+b"the <unk> of the <unk> co. of <unk> <unk> who <unk> said <EOS> <unk> 's <unk> the <unk> of the <EOS> but 's a a that much and <unk> <unk> said n't to the <unk>"
+global step: 3000, learning rate: 0.0030000, training ppl: 199.718087, valid ppl: 244.954913, test ppl: 226.852717
+
+b'the <unk> <EOS> of the <unk> a former <unk> and in the <unk> of that <unk> of the <unk> <unk> the the <unk> <unk> of the the <unk> <EOS> the the <unk> <EOS> <unk> <unk>'
+b'to N N N the earnings N net of $ N million or the <unk> N million of profit of in to the <unk> <unk> and and <EOS> the paso <unk> chairman avenue national <unk>'
+b'and the <unk> of the of in <unk> <unk> and the of the <unk> <unk> of the <unk> <unk> of the <unk> intelligence bailout <EOS> the <unk> <unk> <unk> <EOS> <EOS> the <unk> the the'
+global step: 3100, learning rate: 0.0030000, training ppl: 195.173993, valid ppl: 240.692276, test ppl: 227.129619
+
+b"the 's <unk> and are the a to <EOS> the 's of 's <EOS> <unk> and N to to the <EOS> year section in the N of the year 's the company market <EOS> <EOS>"
+b"year to the <EOS> <EOS> the <EOS> and spencer <EOS> the 's the the <EOS> the to the 's to <unk> 's the 's a a <unk> cruz <unk> <EOS> <EOS> the <unk> of <unk>"
+b"the <unk> of of the of the <unk> <EOS> the past <EOS> the <unk> <EOS> the and and the 's a to of the <EOS> <EOS> <EOS> the a the <EOS> of the <EOS> N"
+global step: 3200, learning rate: 0.0030000, training ppl: 192.216775, valid ppl: 242.570618, test ppl: 225.134404
+
+b'<unk> <unk> <unk> of <unk> <unk> the is a much <unk> <unk> <unk> <unk> <EOS> <unk> <unk> <EOS> <unk> <unk> <unk> <EOS> <EOS> <unk> <unk> <unk> <EOS> the <unk> the <unk> is a by <EOS>'
+b"vice of a and <unk> vice of the N <EOS> the 's the york 's 's it will been the with the <unk> <EOS> <unk> the york and the 's N the to a <unk>"
+b'the <EOS> <EOS> year N N the <unk> half of the <unk> N N the in in the <unk> year <EOS> the <EOS> <unk> <EOS> have the have a <unk> to <EOS> the the as'
+global step: 3300, learning rate: 0.0030000, training ppl: 184.519164, valid ppl: 232.155559, test ppl: 214.869896
+
+b"N N N N average of N N N N N the morgan 's president of the <unk> sales co. said was $ N N N rate the N <unk> <EOS> priced a <unk> of"
+b'<EOS> the <unk> has has is <unk> <unk> of in the <unk> N N N had the <unk> in the <unk> <unk> <unk> <unk> <EOS> the have that <unk> <unk> <unk> a <unk> of the'
+b'<EOS> said N estimated <unk> of <EOS> <unk> sales maker said the officials <unk> said the earnings inc. said $ N N industrial <unk> said the N million share a $ N N a a'
+global step: 3400, learning rate: 0.0030000, training ppl: 173.367331, valid ppl: 228.653290, test ppl: 211.591375
+
+b"to the the <unk> to <unk> the <unk> <EOS> <EOS> <unk> <unk> and <EOS> the the years <unk> are will <unk> 's 's <unk> will be a the the <unk> and <EOS> <EOS> a <unk>"
+b'<unk> the company <unk> are to the N the is the york and financial and <unk> at the stock york stock exchange composite the stock are the stocks are fargo the and <unk> a the'
+b'<unk> and the <unk> <EOS> the the <unk> <EOS> <unk> are the <unk> <unk> <unk> <EOS> the a than to <unk> the the <unk> in the <unk> of the <unk> <unk> in are a <unk>'
+global step: 3500, learning rate: 0.0030000, training ppl: 167.609245, valid ppl: 226.665040, test ppl: 210.280698
+
+b'N in the <EOS> N <unk> time the <unk> N of of the <EOS> <unk> department said <EOS> the the the the <unk> <unk> of in the and the gains <EOS> the and and <EOS>'
+b'<unk> the and of <EOS> the and <unk> sales of the by sales N of the <unk> <unk> a a third-quarter <EOS> N million of net of of $ N dividend of <EOS> the a'
+b'N N N the <unk> and the N the and are the <unk> of the <EOS> <EOS> <EOS> <unk> N <EOS> the is a <unk> N N <unk> <EOS> the <EOS> <EOS> <EOS> <EOS> of'
+global step: 3600, learning rate: 0.0030000, training ppl: 166.489387, valid ppl: 231.442245, test ppl: 214.411650
+
+b"<unk> <EOS> a <unk> of of a of the <unk> night <EOS> <unk> <unk> <EOS> the 's <unk> a <unk> of the <unk> of and <unk> <unk> the the <unk> <unk> the <unk> <EOS> the"
+b"<unk> 's <unk> <unk> <EOS> it motor inc. been in affairs <EOS> the <EOS> <EOS> the N the motor a to <unk> of in the <EOS> the <unk> and <EOS> <EOS> <EOS> the <unk> <unk>"
+b"the 's the <EOS> to the <unk> of the the arbitrage <EOS> <unk> of <unk> of the takeover-stock trading <EOS> the to be the <unk> with the <EOS> the <EOS> the york stock exchange <unk>"
+global step: 3700, learning rate: 0.0030000, training ppl: 166.272619, valid ppl: 223.935785, test ppl: 207.855481
+
+b'<EOS> the out <EOS> the <EOS> <EOS> the in the <unk> N bonds in to the N million from the year year <EOS> N N million from the the <unk> in the the bonds <EOS>'
+b'<EOS> the to the of the high <EOS> the in the korea <EOS> the <unk> the <unk> and <unk> <EOS> <unk> <EOS> <EOS> the say that is the a <unk> <EOS> the <unk> <EOS> the'
+b'<EOS> <EOS> the <unk> of to N N <EOS> the <unk> was to the the next the york the exchange <unk> was the the N in N N <EOS> with the N <EOS> N N'
+global step: 3800, learning rate: 0.0030000, training ppl: 163.650747, valid ppl: 224.808786, test ppl: 206.417274
+
+b'<unk> of the <unk> <unk> <unk> said <unk> to N to $ research <EOS> year <EOS> he the research <unk> said <unk> reached to N to but the <unk> research <unk> <unk> <unk> vice <unk>'
+b'<unk> <unk> in the <unk> to <unk> the the <unk> <unk> <unk> a the <EOS> <unk> <unk> <unk> <unk> <unk> <unk> <EOS> are <unk> the <unk> <EOS> <unk> <unk> <unk> <unk> <unk> <EOS> to <unk>'
+b'the the are <unk> the than to <unk> the <unk> <EOS> the N <EOS> the out the are <unk> for to be a the <unk> <EOS> the past of the <unk> of is the the'
+global step: 3900, learning rate: 0.0030000, training ppl: 160.049810, valid ppl: 219.954398, test ppl: 203.243940
+
+b"the market to the <unk> <EOS> the <unk> to the past market the the the months with the first ' <unk> spokesman store said the the is a much to the the the the be"
+b"the the said n't be about the of the <unk> of the <EOS> the <unk> men companies firms are to the the have been been the a to the of of a <unk> for to"
+b"the of the the the the first <EOS> the & poor 's stock index <EOS> N points of the of than <EOS> stock <EOS> the the nasdaq N index at at the trading the <EOS>"
+global step: 4000, learning rate: 0.0030000, training ppl: 158.661901, valid ppl: 222.230624, test ppl: 207.988123
