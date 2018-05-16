@@ -2,7 +2,7 @@
 # coco_file = "../../data/coco.txt"
 # valid_file = "../../data/coco.txt"
 # vocab_file = "../../data/coco_vocab.txt"
-train_file = "../../data/ptb.txt"
+train_file = "../../data/ptb_train.txt"
 test_file = "../../data/ptb_test.txt"
 valid_file = "../../data/ptb_valid.txt"
 vocab_file = "../../data/ptb_vocab.txt"
