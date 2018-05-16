@@ -24,7 +24,7 @@ def store_output(output, id2word, data_path, max_len):
             fout.write(rst.encode('utf-8'))
 
 
-def pad_to_length(content, max_len, pad):
+def pad_to_length(content, max_len, pad, bos=None, eos=None):
     """
     Pad sentence with <BOS>, <EOS>, <PAD>.
     if self.max_len = 3,
@@ -43,8 +43,12 @@ def pad_to_length(content, max_len, pad):
     if isinstance(content, np.ndarray):
         content = content.tolist()
         is_np_array = True
-    rst = content + [pad] * max_len
-    rtn = rst[: max_len]
+    rst = content + [eos] + [pad] * max_len
+    if bos is not None:
+        rst = [bos] + rst
+        rtn = rst[: max_len + 2]
+    else:
+        rtn = rst[: max_len + 1]
     if is_np_array:
         return np.array(rtn)
     return rtn

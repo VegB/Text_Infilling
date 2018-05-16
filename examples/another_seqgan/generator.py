@@ -33,7 +33,7 @@ class Generator(tx.modules.ModuleBase):
             self.variational_recurrent = self.hparams.variational_recurrent
 
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
-                                             shape=[None, self.max_seq_length])
+                                             shape=[None, self.max_seq_length + 2])
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
                                           shape=[None, self.max_seq_length])
 
@@ -74,7 +74,7 @@ class Generator(tx.modules.ModuleBase):
 
             self.initial_state = self.decoder.zero_state(batch_size=self.batch_size, dtype=tf.float32)
             train_outputs, self.final_state, sequence_length = self.decoder(
-                inputs=tf.nn.embedding_lookup(self.embedding_matrix, self.data_batch[:, :-1]),
+                inputs=tf.nn.embedding_lookup(self.embedding_matrix, self.data_batch[:, 1:-2]),
                 initial_state=self.initial_state,
                 impute_finished=True,
                 decoding_strategy="train_greedy",
@@ -84,9 +84,9 @@ class Generator(tx.modules.ModuleBase):
 
             # Losses & train ops
             self.teacher_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
-                labels=self.data_batch[:, 1:],
+                labels=self.data_batch[:, 2:-1],
                 logits=train_logits,
-                sequence_length=config.num_steps * tf.ones((self.batch_size,)))
+                sequence_length=(config.num_steps-1) * tf.ones((self.batch_size,)))
 
             l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])
 

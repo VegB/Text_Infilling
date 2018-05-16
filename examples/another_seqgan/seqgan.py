@@ -136,20 +136,21 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
 
         gen_data = sess.run(generator.generated_sample_id,
                             feed_dict={tx.global_mode(): tf.estimator.ModeKeys.EVAL})
-        g_data = [pad_to_length(sent, pad=dis_dataloader.pad_id, max_len=dis_dataloader.max_len)
+        g_data = [pad_to_length(sent, bos=dis_dataloader.bos_id, eos=dis_dataloader.eos_id,
+                                pad=dis_dataloader.pad_id, max_len=dis_dataloader.max_len)
                   for sent in gen_data]
 
         r_ids, _ = dis_dataloader.get_batch()
 
         _, g_preds = sess.run([discriminator.r_preds, discriminator.g_preds],
                               feed_dict={discriminator.real_samples: r_ids,
-                                         discriminator.gen_samples: g_data,
+                                         discriminator.gen_samples: [line[1:] for line in g_data],
                                          discriminator.global_step: dis_dataloader.step,
                                          tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
         _, update_loss = sess.run([generator.update_op, generator.update_loss],
                                   feed_dict={generator.data_batch: g_data,
-                                             generator.rewards: [preds for preds in g_preds],
+                                             generator.rewards: [preds[:-1] for preds in g_preds],
                                              generator.learning_rate: opt_vars['learning_rate'],
                                              tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
 
@@ -185,7 +186,6 @@ def calculate_ppl(sess, generator, dataloader):
         iters += config.num_steps
     ppl = np.exp(loss / iters)
     return ppl
-
 
 
 def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, train_ppl, mode="Pretrain"):
