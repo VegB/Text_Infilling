@@ -38,7 +38,7 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader):
         iters += config.num_steps
 
         # calculate valid ppl, might change learning rate
-        if step % 100 == 0 and opt_vars['learning_rate'] > opt_vars['min_learning_rate']:
+        if step % 100 == 0:
             valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
             if valid_ppl < opt_vars['best_valid_ppl']:
                 opt_vars['best_valid_ppl'] = valid_ppl
@@ -49,8 +49,6 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader):
             if opt_vars['steps_not_improved'] >= 30:
                 opt_vars['steps_not_improved'] = 0
                 opt_vars['learning_rate'] *= config.lr_decay
-        elif opt_vars['learning_rate'] < opt_vars['min_learning_rate']:
-            opt_vars['learning_rate'] = opt_vars['min_learning_rate']
 
         if step % 200 == 0:
             ppl = np.exp(loss / iters)
@@ -154,7 +152,7 @@ def calculate_ppl(sess, generator, dataloader):
 def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, train_ppl, mode="Pretrain"):
     valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
     test_ppl = calculate_ppl(sess, generator, test_dataloader)
-    rst = "epoch %d(%s): learning_rate = %.7f, train_ppl = %f, valid_ppl = %f, test_ppl = %f\n" % \
+    rst = "epoch %d(%s): learning_rate = %.10f, train_ppl = %f, valid_ppl = %f, test_ppl = %f\n" % \
           (epoch_id, mode, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
     print(rst)
     log.write(rst)
