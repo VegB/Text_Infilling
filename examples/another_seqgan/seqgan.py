@@ -162,7 +162,7 @@ def calculate_ppl(sess, generator, dataloader):
     loss = 0.
     iters = 0
     state = sess.run(initial_state,
-                     feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
+                     feed_dict={generator.data_batch: np.ones((dataloader.batch_size, config.num_steps + 2))})
 
     fetches = {
         "mle_loss": mle_loss,
@@ -173,7 +173,7 @@ def calculate_ppl(sess, generator, dataloader):
     dataloader.reset()
     while not dataloader.should_stop():
         feed_dict = {
-            batch_size: 1,
+            batch_size: dataloader.batch_size,
             generator.data_batch: dataloader.get_batch(),
             learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
