@@ -1,6 +1,12 @@
 import numpy as np
 
 
+def print_and_write_to_file(rst, fout):
+    print(rst)
+    fout.write(rst)
+    fout.flush()
+
+
 def print_result(output, id2word, max_len):
     for sent in output:
         words = [id2word[id] for id in sent[:max_len]]
