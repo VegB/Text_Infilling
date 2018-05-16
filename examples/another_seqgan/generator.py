@@ -72,10 +72,10 @@ class Generator(tx.modules.ModuleBase):
                 embedding_matrix,
                 tx.utils.switch_dropout(1. - self.embedding_dropout))
 
-            initial_state = self.decoder.zero_state(batch_size=self.batch_size, dtype=tf.float32)
-            self.outputs, final_state, sequence_length = self.decoder(
+            self.initial_state = self.decoder.zero_state(batch_size=self.batch_size, dtype=tf.float32)
+            self.outputs, self.final_state, sequence_length = self.decoder(
                 inputs=tf.nn.embedding_lookup(self.embedding_matrix, self.data_batch[:, :-1]),
-                initial_state=initial_state,
+                initial_state=self.initial_state,
                 impute_finished=True,
                 decoding_strategy="train_greedy",
                 sequence_length=[self.max_seq_length + 1] * self.batch_size)
@@ -119,7 +119,7 @@ class Generator(tx.modules.ModuleBase):
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
                 embedding=self.embedding_matrix,
-                initial_state=initial_state,
+                initial_state=self.initial_state,
                 max_decoding_length=self.max_seq_length)
 
     @staticmethod

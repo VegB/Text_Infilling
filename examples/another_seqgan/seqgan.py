@@ -13,6 +13,8 @@ from utils import print_result, store_output, pad_to_length
 config_path = "config"
 config = importlib.import_module(config_path)
 log = open(config.log_file, "a+")
+training_log = open(config.train_log_file, "w")
+eval_log = open(config.eval_log_file, "w")
 
 opt_vars = {
     'learning_rate': config.init_lr,
@@ -22,24 +24,51 @@ opt_vars = {
 }
 
 
-def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader):
-    print("-------------Pretrain Generator----------------")
-    gen_dataloader.reset()
+def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_dataloader):
     loss = 0.
     iters = 0
+    state = sess.run(generator.initial_state,
+                     feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
+
+    fetches = {
+        "mle_loss": generator.teacher_loss,
+        "final_state": generator.final_state,
+        'global_step': generator.global_step,
+        "train_op": generator.train_op
+    }
+
+    gen_dataloader.reset()
     while not gen_dataloader.should_stop():
-        _, step, mle_loss, outputs = sess.run([generator.train_op, generator.global_step,
-                                               generator.teacher_loss, generator.outputs],
-                                              feed_dict={generator.data_batch: gen_dataloader.get_batch(),
-                                                         generator.learning_rate: opt_vars['learning_rate'],
-                                                         tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        # calculate current ppl
-        loss += mle_loss
+        feed_dict = {
+            generator.data_batch: gen_dataloader.get_batch(),
+            generator.learning_rate: opt_vars['learning_rate'],
+            tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
+        }
+        for i, (c, h) in enumerate(generator.initial_state):
+            feed_dict[c] = state[i].c
+            feed_dict[h] = state[i].h
+
+        rets = sess.run(fetches, feed_dict)
+        loss += rets["mle_loss"]
+        state = rets["final_state"]
         iters += config.num_steps
 
-        # calculate valid ppl, might change learning rate
-        if step % 100 == 0:
+        ppl = np.exp(loss / iters)
+
+        print('global step:', rets['global_step'], ' ' * 4, 'training ppl:', ppl,
+              file=training_log)
+        training_log.flush()
+
+        if rets['global_step'] % 100 == 0:
             valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
+            test_ppl = calculate_ppl(sess, generator, test_dataloader)
+            print('global step:', rets['global_step'], ' ' * 4,
+                  'learning rate:', opt_vars['learning_rate'], ' ' * 4,
+                  'valid ppl:', valid_ppl, ' ' * 4,
+                  'test ppl:', test_ppl,
+                  file=eval_log)
+            eval_log.flush()
+
             if valid_ppl < opt_vars['best_valid_ppl']:
                 opt_vars['best_valid_ppl'] = valid_ppl
                 opt_vars['steps_not_improved'] = 0
@@ -50,12 +79,8 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader):
                 opt_vars['steps_not_improved'] = 0
                 opt_vars['learning_rate'] *= config.lr_decay
 
-        if step % 200 == 0:
-            ppl = np.exp(loss / iters)
-            print('global step:', step, ' ' * 4, 'training ppl:', ppl)
-            print_result(outputs.sample_id[:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
-
-    return np.exp(loss / iters)
+    ppl = np.exp(loss / iters)
+    return ppl
 
 
 def generate_negative_samples(sess, generator, gen_dataloader, dst_path):
@@ -179,7 +204,8 @@ if __name__ == "__main__":
         sess.run(tf.tables_initializer())
 
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-            train_ppl = pretrain_generator(sess, generator, gen_dataloader, valid_dataloader)
+            train_ppl = pretrain_generator(sess, generator, gen_dataloader,
+                                           valid_dataloader, test_dataloader)
             record_ppl(sess, generator, valid_dataloader, test_dataloader,
                        epoch_id=pre_epoch, train_ppl=train_ppl)
             if pre_epoch % 10 == 0:
