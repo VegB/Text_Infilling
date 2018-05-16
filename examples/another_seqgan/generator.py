@@ -65,7 +65,7 @@ class Generator(tx.modules.ModuleBase):
                 input_size=self.embedding_dim,
                 dtype=tf.float32)
             self.decoder = tx.modules.BasicRNNDecoder(
-                cell=cell, vocab_size=self.vocab_size)#self.embedding_dim)
+                cell=cell, vocab_size=self.embedding_dim)
 
             embedding_matrix = tf.transpose(self.output_layer.weights[0])
             self.embedding_matrix = embedding_drop(
@@ -83,7 +83,7 @@ class Generator(tx.modules.ModuleBase):
             # Losses & train ops
             self.teacher_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
                 labels=self.data_batch[:, 1:],
-                logits=self.outputs.logits,
+                logits=self.output_layer(self.outputs.logits),
                 sequence_length=config.num_steps * tf.ones((self.batch_size,)))
 
             l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])

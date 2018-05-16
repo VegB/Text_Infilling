@@ -137,9 +137,8 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
 def calculate_ppl(sess, generator, dataloader):
     loss = 0.
     iters = 0
-    for i in range(30):
-        if dataloader.should_stop():
-            dataloader.reset()
+    dataloader.reset()
+    while not dataloader.should_stop():
         mle_loss = sess.run(generator.teacher_loss,
                             feed_dict={generator.data_batch: dataloader.get_batch(),
                                        generator.learning_rate: opt_vars['learning_rate'],
@@ -160,9 +159,9 @@ def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, tra
 
 if __name__ == "__main__":
     gen_dataloader = GenDataLoader(config, text_file=config.train_file,
-                               vocab_file=config.vocab_file, epoch_num=1)
+                                   vocab_file=config.vocab_file, epoch_num=1)
     dis_dataloader = DisDataLoader(config, epoch_num=1, positive_file=config.train_file,
-                               negative_file=config.train_file, vocab_file=config.vocab_file)
+                                   negative_file=config.train_file, vocab_file=config.vocab_file)
     valid_dataloader = GenDataLoader(config, text_file=config.valid_file,
                                      vocab_file=config.vocab_file, epoch_num=1)
     test_dataloader = GenDataLoader(config, text_file=config.test_file,
