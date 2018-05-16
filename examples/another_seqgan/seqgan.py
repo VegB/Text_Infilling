@@ -34,7 +34,8 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_d
         "mle_loss": generator.teacher_loss,
         "final_state": generator.final_state,
         'global_step': generator.global_step,
-        "train_op": generator.train_op
+        "train_op": generator.train_op,
+        "sample_id": generator.train_sample_id
     }
 
     gen_dataloader.reset()
@@ -69,6 +70,8 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_d
                   file=eval_log)
             eval_log.flush()
 
+            print_result(rets['sample_id'][:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
+
             if valid_ppl < opt_vars['best_valid_ppl']:
                 opt_vars['best_valid_ppl'] = valid_ppl
                 opt_vars['steps_not_improved'] = 0
@@ -88,10 +91,10 @@ def generate_negative_samples(sess, generator, gen_dataloader, dst_path):
     gen_dataloader.reset()
     generated_outputs = []
     while not gen_dataloader.should_stop():
-        decode_output = sess.run(generator.generated_outputs,
+        decode_output = sess.run(generator.generated_sample_id,
                                  feed_dict={generator.data_batch: gen_dataloader.get_batch(),
                                             tx.global_mode(): tf.estimator.ModeKeys.EVAL})
-        generated_outputs.extend(decode_output.sample_id)
+        generated_outputs.extend(decode_output)
 
     store_output(output=generated_outputs, id2word=gen_dataloader.id2word,
                  data_path=dst_path, max_len=gen_dataloader.max_len)
@@ -136,11 +139,11 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
         ppl = np.exp(loss / iters)
         print('global step:', step, ' ' * 4, 'training ppl:', ppl)
 
-        gen_data = sess.run(generator.generated_outputs,
+        gen_data = sess.run(generator.generated_sample_id,
                             feed_dict={tx.global_mode(): tf.estimator.ModeKeys.EVAL})
         g_data = [pad_to_length(sent, bos=dis_dataloader.bos_id, eos=dis_dataloader.eos_id,
                                 pad=dis_dataloader.pad_id, max_len=dis_dataloader.max_len)
-                  for sent in gen_data.sample_id]
+                  for sent in gen_data]
 
         r_ids, _ = dis_dataloader.get_batch()
 

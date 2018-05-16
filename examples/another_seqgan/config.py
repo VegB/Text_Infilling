@@ -16,6 +16,8 @@ vocab_file = "../../data/vocab.txt"
 positive_file = "./data/positive.txt"
 negative_file = "./data/negative.txt"
 log_file = "./data/log.txt"
+train_log_file = "./data/training_log.txt"
+eval_log_file = "./data/eval_log.txt"
 ckpt = "./checkpoint/ckpt"
 
 init_scale = 0.1

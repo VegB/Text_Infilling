@@ -73,17 +73,19 @@ class Generator(tx.modules.ModuleBase):
                 tx.utils.switch_dropout(1. - self.embedding_dropout))
 
             self.initial_state = self.decoder.zero_state(batch_size=self.batch_size, dtype=tf.float32)
-            self.outputs, self.final_state, sequence_length = self.decoder(
+            train_outputs, self.final_state, sequence_length = self.decoder(
                 inputs=tf.nn.embedding_lookup(self.embedding_matrix, self.data_batch[:, :-1]),
                 initial_state=self.initial_state,
                 impute_finished=True,
                 decoding_strategy="train_greedy",
                 sequence_length=[self.max_seq_length + 1] * self.batch_size)
+            train_logits = self.output_layer(train_outputs.logits)
+            self.train_sample_id = tf.argmax(train_logits, 2)
 
             # Losses & train ops
             self.teacher_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
                 labels=self.data_batch[:, 1:],
-                logits=self.output_layer(self.outputs.logits),
+                logits=train_logits,
                 sequence_length=config.num_steps * tf.ones((self.batch_size,)))
 
             l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])
@@ -100,7 +102,7 @@ class Generator(tx.modules.ModuleBase):
             self.train_op = optimizer.minimize(
                 self.teacher_loss + config.l2_decay * l2_loss, global_step=self.global_step)
 
-            preds = tf.nn.softmax(self.outputs.logits)
+            preds = tf.nn.softmax(train_logits)
             self.update_loss = -tf.reduce_sum(
                 tf.reduce_sum(
                     tf.one_hot(tf.to_int32(tf.reshape(self.data_batch[:, 1:self.max_seq_length + 1], [-1])), self.vocab_size, 1.0, 0.0) * tf.log(
@@ -114,13 +116,15 @@ class Generator(tx.modules.ModuleBase):
                 self.update_loss, global_step=self.update_step, increment_global_step=False,
                 hparams=config.opt)
 
-            self.generated_outputs, _, _ = self.decoder(
+            generated_outputs, _, _ = self.decoder(
                 decoding_strategy="infer_sample",
                 start_tokens=[self.bos_id] * self.batch_size,
                 end_token=self.eos_id,
                 embedding=self.embedding_matrix,
                 initial_state=self.initial_state,
                 max_decoding_length=self.max_seq_length)
+            generated_logits = self.output_layer(generated_outputs.logits)
+            self.generated_sample_id = tf.argmax(generated_logits, 2)
 
     @staticmethod
     def default_hparams():
