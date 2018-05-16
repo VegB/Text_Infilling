@@ -161,7 +161,7 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
 def calculate_ppl(sess, generator, dataloader):
     loss = 0.
     iters = 0
-    state = sess.run(generator.initial_state,
+    state = sess.run(initial_state,
                      feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
 
     fetches = {
@@ -204,9 +204,9 @@ if __name__ == "__main__":
     dis_dataloader = DisDataLoader(config, epoch_num=1, positive_file=config.train_file,
                                    negative_file=config.train_file, vocab_file=config.vocab_file)
     valid_dataloader = GenDataLoader(config, text_file=config.valid_file,
-                                     vocab_file=config.vocab_file, epoch_num=1)
+                                     vocab_file=config.vocab_file, epoch_num=1, batch_size=1)
     test_dataloader = GenDataLoader(config, text_file=config.test_file,
-                                    vocab_file=config.vocab_file, epoch_num=1)
+                                    vocab_file=config.vocab_file, epoch_num=1, batch_size=1)
 
     generator = Generator(config, word2id=gen_dataloader.word2id, bos=gen_dataloader.bos_id,
                           eos=gen_dataloader.eos_id, pad=gen_dataloader.pad_id)
