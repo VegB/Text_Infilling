@@ -1,14 +1,13 @@
 import tensorflow as tf
 import numpy as np
 import importlib
-from shutil import copyfile
 
 import texar as tx
 
 from generator import Generator
 from discriminator import Discriminator
 from dataloader import GenDataLoader, DisDataLoader
-from utils import print_result, store_output, pad_to_length
+from utils import print_result, store_output, pad_to_length, print_and_write_to_file
 
 config_path = "config"
 config = importlib.import_module(config_path)
@@ -56,19 +55,15 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_d
 
         ppl = np.exp(loss / iters)
 
-        print('global step:', rets['global_step'], ' ' * 4, 'training ppl:', ppl,
-              file=training_log)
-        training_log.flush()
+        rst = "global step: %d, training ppl: %.6f\n" % (rets['global_step'], ppl)
+        print_and_write_to_file(rst, training_log)
 
         if rets['global_step'] % 100 == 0:
             valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
             test_ppl = calculate_ppl(sess, generator, test_dataloader)
-            print('global step:', rets['global_step'], ' ' * 4,
-                  'learning rate:', opt_vars['learning_rate'], ' ' * 4,
-                  'valid ppl:', valid_ppl, ' ' * 4,
-                  'test ppl:', test_ppl,
-                  file=eval_log)
-            eval_log.flush()
+            rst = "global step: %d, learning rate: %.7f, training ppl: %.6f, valid ppl: %.6f, test ppl: %.6f\n" % \
+                  (rets['global_step'], opt_vars['learning_rate'], ppl, valid_ppl, test_ppl)
+            print_and_write_to_file(rst, eval_log)
 
             print_result(rets['sample_id'][:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
 
@@ -181,9 +176,8 @@ def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, tra
     test_ppl = calculate_ppl(sess, generator, test_dataloader)
     rst = "epoch %d(%s): learning_rate = %.10f, train_ppl = %f, valid_ppl = %f, test_ppl = %f\n" % \
           (epoch_id, mode, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
-    print(rst)
-    log.write(rst)
-    log.flush()
+    print_and_write_to_file(rst, log)
+
 
 if __name__ == "__main__":
     gen_dataloader = GenDataLoader(config, text_file=config.train_file,
