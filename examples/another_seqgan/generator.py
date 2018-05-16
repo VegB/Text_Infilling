@@ -33,7 +33,7 @@ class Generator(tx.modules.ModuleBase):
             self.variational_recurrent = self.hparams.variational_recurrent
 
             self.data_batch = tf.placeholder(dtype=tf.int32, name="data_batch",
-                                             shape=[None, self.max_seq_length + 2])
+                                             shape=[None, self.max_seq_length])
             self.rewards = tf.placeholder(dtype=tf.float32, name='rewards',
                                           shape=[None, self.max_seq_length])
 
@@ -78,7 +78,7 @@ class Generator(tx.modules.ModuleBase):
                 initial_state=self.initial_state,
                 impute_finished=True,
                 decoding_strategy="train_greedy",
-                sequence_length=[self.max_seq_length + 1] * self.batch_size)
+                sequence_length=[self.max_seq_length - 1] * self.batch_size)
             train_logits = self.output_layer(train_outputs.logits)
             self.train_sample_id = tf.argmax(train_logits, 2)
 
