@@ -15,13 +15,6 @@ log = open(config.log_file, "a+")
 training_log = open(config.train_log_file, "w")
 eval_log = open(config.eval_log_file, "w")
 
-opt_vars = {
-    'learning_rate': config.init_lr,
-    'min_learning_rate': config.min_lr,
-    'best_valid_ppl': 1e100,
-    'steps_not_improved': 0
-}
-
 
 def pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader):
     loss = 0.
@@ -36,7 +29,7 @@ def pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader):
         'train_op': train_op
     }
 
-    for step, (x, y) in enumerate(gen_dataloader):
+    for step, (x, y) in enumerate(gen_dataloader.iter()):
         feed_dict = {
             batch_size: config.batch_size,
             inputs: x, targets: y,
@@ -168,7 +161,7 @@ def calculate_ppl(sess, dataloader):
         'global_step': global_step,
     }
 
-    for step, (x, y) in enumerate(dataloader):
+    for step, (x, y) in enumerate(dataloader.iter()):
         feed_dict = {
             batch_size: config.batch_size,
             inputs: x, targets: y,
