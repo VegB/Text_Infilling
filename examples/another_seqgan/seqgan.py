@@ -57,7 +57,7 @@ def pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader):
                   (rets['global_step'], opt_vars['learning_rate'], ppl, valid_ppl, test_ppl)
             print_and_write_to_file(rst, eval_log)
 
-            print_result(rets['sample_id'][:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
+            # print_result(rets['sample_id'][:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
 
             if valid_ppl < opt_vars['best_valid_ppl']:
                 opt_vars['best_valid_ppl'] = valid_ppl
