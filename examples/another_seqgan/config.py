@@ -31,6 +31,7 @@ batch_size = 64
 num_steps = 35
 print_num = 3
 init_lr = 0.003
+min_lr = 0.0000001
 l2_decay = 1e-5
 lr_decay = 0.1
 
