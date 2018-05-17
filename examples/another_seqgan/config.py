@@ -3,10 +3,13 @@
 # valid_file = "../../data/coco.txt"
 # vocab_file = "../../data/coco_vocab.txt"
 # '''
-train_file = "../../data/ptb_train.txt"
-test_file = "../../data/ptb_test.txt"
-valid_file = "../../data/ptb_valid.txt"
-vocab_file = "../../data/ptb_vocab.txt"
+# train_file = "../../data/ptb_train.txt"
+# test_file = "../../data/ptb_test.txt"
+# valid_file = "../../data/ptb_valid.txt"
+# vocab_file = "../../data/ptb_vocab.txt"
+train_file = "./data/ptb.train.txt"
+test_file = "./data/ptb.test.txt"
+valid_file = "./data/ptb.valid.txt"
 '''
 train_file = "../../data/small_sent.txt"
 test_file = "../../data/small_sent.txt"
