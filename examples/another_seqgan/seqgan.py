@@ -96,7 +96,7 @@ def generate_negative_samples(sess, gen_dataloader, dst_path):
 def train_discriminator(sess, discriminator, epoch_num):
     print("-------------Train Discriminator----------------")
     dataloader = DisDataLoader(config, positive_file=config.train_file,
-                                   negative_file=config.train_file, word2id=word2id)
+                               negative_file=config.train_file, word2id=word2id)
 
     for step, (r_ids, g_ids) in enumerate(dataloader.iter()):
         _, loss = sess.run([discriminator.train_op, discriminator.total_loss],
@@ -108,47 +108,65 @@ def train_discriminator(sess, discriminator, epoch_num):
             print("%d: dis_total_loss: %.6f" % (step, loss))
 
 
-def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloader):
+def update_generator(sess, gen_dataloader):
     print("-------------Update Generator----------------")
-    loss = 0.
+    loss, epoch_update_loss = 0., 0.
     iters = 0
-    for i in range(config.g_update_batch):
-        if gen_dataloader.should_stop():
-            gen_dataloader.reset()
-        if dis_dataloader.should_stop():
-            dis_dataloader.reset()
-        # Teacher forcing
-        _, mle_loss, step = sess.run([generator.train_op, generator.teacher_loss, generator.global_step],
-                                   feed_dict={generator.data_batch: gen_dataloader.get_batch(),
-                                              generator.learning_rate: opt_vars['learning_rate'],
-                                              tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        # calculate current ppl
-        loss += mle_loss
+    state = sess.run(initial_state, feed_dict={
+        inputs: np.ones((config.batch_size, config.num_steps))})
+
+    fetches = {
+        "mle_loss": mle_loss,
+        'update_loss': update_loss,
+        "final_state": final_state,
+        'global_step': global_step,
+        'train_op': train_op,
+        'update_op': update_op
+    }
+
+    for step, (x, y) in enumerate(gen_dataloader.iter()):
+        feed_dict = {
+            batch_size: config.batch_size,
+            inputs: x, targets: y,
+            learning_rate: opt_vars['learning_rate'],
+            tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
+        }
+        for i, (c, h) in enumerate(initial_state):
+            feed_dict[c] = state[i].c
+            feed_dict[h] = state[i].h
+
+        rets = sess.run(fetches, feed_dict)
+        loss += rets["mle_loss"]
+        epoch_update_loss += rets['update_loss']
+        state = rets["final_state"]
         iters += config.num_steps
+
         ppl = np.exp(loss / iters)
-        print('global step:', step, ' ' * 4, 'training ppl:', ppl)
 
-        gen_data = sess.run(generator.generated_sample_id,
-                            feed_dict={tx.global_mode(): tf.estimator.ModeKeys.EVAL})
-        g_data = [pad_to_length(sent, bos=dis_dataloader.bos_id, eos=dis_dataloader.eos_id,
-                                pad=dis_dataloader.pad_id, max_len=dis_dataloader.max_len)
-                  for sent in gen_data]
+        rst = "global step: %d, training ppl: %.6f, update loss: %.6f\n" % \
+              (rets['global_step'], ppl, rets['update_loss'])
+        print_and_write_to_file(rst, training_log, print_out=False)
 
-        r_ids, _ = dis_dataloader.get_batch()
+        if rets['global_step'] % 100 == 0:
+            valid_ppl = calculate_ppl(sess, valid_dataloader)
+            test_ppl = calculate_ppl(sess, test_dataloader)
+            rst = "global step: %d, learning rate: %.7f, training ppl: %.6f," \
+                  " valid ppl: %.6f, test ppl: %.6f, update_loss: %.6f\n " % \
+                  (rets['global_step'], opt_vars['learning_rate'], ppl, valid_ppl, test_ppl, epoch_update_loss/iters)
+            print_and_write_to_file(rst, eval_log)
 
-        _, g_preds = sess.run([discriminator.r_preds, discriminator.g_preds],
-                              feed_dict={discriminator.real_samples: r_ids,
-                                         discriminator.gen_samples: [line[1:] for line in g_data],
-                                         discriminator.global_step: dis_dataloader.step,
-                                         tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+            if valid_ppl < opt_vars['best_valid_ppl']:
+                opt_vars['best_valid_ppl'] = valid_ppl
+                opt_vars['steps_not_improved'] = 0
+            else:
+                opt_vars['steps_not_improved'] += 1
 
-        _, update_loss = sess.run([generator.update_op, generator.update_loss],
-                                  feed_dict={generator.data_batch: g_data,
-                                             generator.rewards: [preds[:-1] for preds in g_preds],
-                                             generator.learning_rate: opt_vars['learning_rate'],
-                                             tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+            if opt_vars['steps_not_improved'] >= 30:
+                opt_vars['steps_not_improved'] = 0
+                opt_vars['learning_rate'] *= config.lr_decay
 
-    return np.exp(loss / iters)
+    ppl = np.exp(loss / iters)
+    return ppl
 
 
 def calculate_ppl(sess, dataloader):
@@ -259,19 +277,18 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        # for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-        #     train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
-        #     if pre_epoch % 10 == 0:
-        #         saver.save(sess, config.ckpt, global_step=pre_epoch)
+        for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
+            train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
+            if pre_epoch % 10 == 0:
+                saver.save(sess, config.ckpt, global_step=pre_epoch)
 
         generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
-        
+
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
-        saver.save(sess, './checkpoint/pretrained/ckpt', global_step=80)
 
         for update_epoch in range(1, config.adversial_epoch + 1):
-            train_ppl = update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloader)
-            generate_negative_samples(sess, generator, gen_dataloader, dst_path=config.negative_file)
+            train_ppl = update_generator(sess, gen_dataloader)
+            generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
             record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id=update_epoch,
                        train_ppl=train_ppl, mode="Adversarial")
             train_discriminator(sess, discriminator, epoch_num=1)
