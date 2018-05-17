@@ -24,9 +24,8 @@ eval_log_file = "./data/eval_log.txt"
 ckpt = "./checkpoint/ckpt"
 
 init_scale = 0.1
-rnn_dim = 32
+rnn_dim = 400
 rnn_layers = 1
-latent_num = 100
 keep_prob = 1.0
 batch_size = 64
 num_steps = 35
@@ -42,15 +41,6 @@ adversial_epoch = 100
 g_update_batch = 1
 d_update_batch = 1
 
-cell = {
-    "type": "LSTMBlockCell",
-    "kwargs": {
-        "num_units": rnn_dim,
-        "forget_bias": 0.
-    },
-    "dropout": {"output_keep_prob": keep_prob},
-    "num_layers": rnn_layers
-}
 d_cell = {
     "type": "LSTMBlockCell",
     "kwargs": {
