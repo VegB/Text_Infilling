@@ -200,14 +200,6 @@ def calculate_ppl(sess, dataloader):
     return ppl
 
 
-def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, train_ppl, mode="Pretrain"):
-    valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
-    test_ppl = calculate_ppl(sess, generator, test_dataloader)
-    rst = "epoch %d(%s): learning_rate = %.10f, train_ppl = %f, valid_ppl = %f, test_ppl = %f\n" % \
-          (epoch_id, mode, opt_vars["learning_rate"], train_ppl, valid_ppl, test_ppl)
-    print_and_write_to_file(rst, log)
-
-
 if __name__ == "__main__":
     word2id = tx.data.make_vocab(config.train_file, newline_token="<EOS>", return_type="dict")
     vocab_size = len(word2id)
@@ -232,8 +224,8 @@ if __name__ == "__main__":
     inputs = tf.placeholder(tf.int32, [None, num_steps])
     targets = tf.placeholder(tf.int32, [None, num_steps])
 
-    initial_state, logits, final_state, sample_id, generated_sample_id = \
-        generator(text_ids=inputs, num_steps=config.num_steps * tf.ones((batch_size,), dtype=tf.int32), eos_id=word2id["<EOS>"])
+    initial_state, logits, final_state, sample_id = \
+        generator(text_ids=inputs, num_steps=config.num_steps * tf.ones((batch_size,), dtype=tf.int32))
 
     # Losses & train ops
     mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
@@ -254,6 +246,16 @@ if __name__ == "__main__":
         epsilon=1e-9)
     train_op = optimizer.minimize(
         mle_loss + config.l2_decay * l2_loss, global_step=global_step)
+
+    generated_outputs, _, _ = generator.decoder(
+        decoding_strategy="infer_sample",
+        start_tokens=inputs[:, 0],
+        end_token=word2id["<EOS>"],
+        embedding=generator.embedding_matrix,
+        initial_state=initial_state,
+        max_decoding_length=num_steps)
+    generated_logits = generator.output_layer(generated_outputs.logits)
+    generated_sample_id = tf.argmax(generated_logits, 2)
 
     # ----------------Adversarial------------------
     rewards = discriminator(data=sample_id)
@@ -289,8 +291,6 @@ if __name__ == "__main__":
         for update_epoch in range(1, config.adversial_epoch + 1):
             train_ppl = update_generator(sess, gen_dataloader)
             generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
-            record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id=update_epoch,
-                       train_ppl=train_ppl, mode="Adversarial")
             train_discriminator(sess, discriminator, epoch_num=1)
             if update_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=update_epoch + config.generator_pretrain_epoch)

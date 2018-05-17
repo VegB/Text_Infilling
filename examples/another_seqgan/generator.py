@@ -73,7 +73,7 @@ class Generator(tx.modules.ModuleBase):
             'variational_recurrent': True,
         }
 
-    def _build(self, text_ids, num_steps, eos_id):
+    def _build(self, text_ids, num_steps):
         embedding_matrix = tf.transpose(self.output_layer.weights[0])
         embedding_matrix = embedding_drop(
             embedding_matrix,
@@ -90,18 +90,8 @@ class Generator(tx.modules.ModuleBase):
         logits = self.output_layer(outputs.logits)
         sample_id = tf.argmax(logits, 2)
 
-        generated_outputs, _, _ = self.decoder(
-            decoding_strategy="infer_sample",
-            start_tokens=text_ids[:, 0],
-            end_token=eos_id,
-            embedding=embedding_matrix,
-            initial_state=initial_state,
-            max_decoding_length=self.config.num_steps)
-        generated_logits = self.output_layer(generated_outputs.logits)
-        generated_sample_id = tf.argmax(generated_logits, 2)
-
         if not self._built:
             self._add_internal_trainable_variables()
             self._built = True
 
-        return initial_state, logits, final_state, sample_id, generated_sample_id
+        return initial_state, logits, final_state, sample_id
