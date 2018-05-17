@@ -9,30 +9,32 @@ import texar as tx
 from utils import pad_to_length, sent_to_ids
 
 
-def GenDataLoader(config, text_file, word2id):
-    batch_size = config.batch_size
-    num_steps = config.num_steps
+class GenDataLoader:
+    def __init__(self, config, text_file, word2id):
+        self.batch_size = config.batch_size
+        self.num_steps = config.num_steps
 
-    word_to_id = word2id
+        self.word_to_id = word2id
 
-    text = tx.data.read_words(
-        text_file, newline_token="<EOS>")
-    text_id = [word_to_id[w] for w in text if w in word_to_id]
+        self.text = tx.data.read_words(
+            text_file, newline_token="<EOS>")
+        self.text_id = [self.word_to_id[w] for w in self.text if w in self.word_to_id]
 
-    data_length = len(text_id)
-    batch_length = data_length // batch_size
+        data_length = len(self.text_id)
+        batch_length = data_length // self.batch_size
 
-    data = np.asarray(text_id[:batch_size * batch_length])
-    data = data.reshape([batch_size, batch_length])
+        data = np.asarray(self.text_id[:self.batch_size * batch_length])
+        self.data = data.reshape([self.batch_size, batch_length])
 
-    epoch_size = (batch_length - 1) // num_steps
-    if epoch_size == 0:
-        raise ValueError("epoch_size == 0, decrease batch_size or num_steps")
+        self.epoch_size = (batch_length - 1) // self.num_steps
+        if self.epoch_size == 0:
+            raise ValueError("epoch_size == 0, decrease batch_size or num_steps")
 
-    for i in range(epoch_size):
-        x = data[:, i * num_steps: (i + 1) * num_steps]
-        y = data[:, i * num_steps + 1: (i + 1) * num_steps + 1]
-        yield (x, y)
+    def iter(self):
+        for i in range(self.epoch_size):
+            x = self.data[:, i * self.num_steps: (i + 1) * self.num_steps]
+            y = self.data[:, i * self.num_steps + 1: (i + 1) * self.num_steps + 1]
+            yield (x, y)
 
 
 class DisDataLoader:
