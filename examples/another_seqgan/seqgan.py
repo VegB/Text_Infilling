@@ -89,8 +89,8 @@ def generate_negative_samples(sess, gen_dataloader, dst_path):
         generated_outputs.extend(rets['generated_sample_id'])
 
     store_output(output=generated_outputs, id2word=gen_dataloader.id2word,
-                 data_path=dst_path, max_len=gen_dataloader.max_len)
-    print_result(generated_outputs[:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
+                 data_path=dst_path, max_len=config.num_steps)
+    print_result(generated_outputs[:config.print_num], gen_dataloader.id2word, config.num_steps)
 
 
 def train_discriminator(sess, discriminator, epoch_num):
