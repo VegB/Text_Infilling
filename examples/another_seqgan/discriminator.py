@@ -6,14 +6,15 @@ import texar as tx
 from utils import *
 
 
-class Discriminator:
-    def __init__(self, config, word2id, class_num=2):
+class Discriminator(tx.modules.ModuleBase):
+    def __init__(self, config, vocab_size, class_num=2, hparams=None):
+        tx.ModuleBase.__init__(self, hparams)
         initializer = tf.random_uniform_initializer(
             -config.init_scale, config.init_scale)
         with tf.variable_scope('discriminator', initializer=initializer):
             self.batch_size = config.batch_size
             self.max_seq_length = config.num_steps
-            self.vocab_size = len(word2id)
+            self.vocab_size = vocab_size
             self.class_num = class_num
 
             self.real_samples = tf.placeholder(dtype=tf.int32, name="samples",
@@ -26,7 +27,7 @@ class Discriminator:
             self.encoder = tx.modules.UnidirectionalRNNEncoder(
                 hparams={"rnn_cell": config.d_cell})
 
-            self.encoder_unit_num = config.cell["kwargs"]["num_units"]
+            self.encoder_unit_num = config.d_cell["kwargs"]["num_units"]
 
             r_emb_inputs = self.embedder(self.real_samples)
             g_emb_inputs = self.embedder(self.gen_samples)
@@ -59,3 +60,15 @@ class Discriminator:
             self.train_op = tx.core.get_train_op(
                 self.total_loss, global_step=self.global_step, increment_global_step=False,
                 hparams=config.d_opt)
+
+    def _build(self, data):
+        emb_inputs = self.embedder(data)
+        enc_outputs, enc_last = self.encoder(inputs=emb_inputs)
+        preds = tf.einsum('ijk,kl->ijl', enc_outputs, self.W)
+        preds = tf.sigmoid(tf.squeeze(preds, [2]))
+
+        if not self._built:
+            self._add_internal_trainable_variables()
+            self._built = True
+
+        return preds

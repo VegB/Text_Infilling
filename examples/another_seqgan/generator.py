@@ -12,8 +12,9 @@ def embedding_drop(embedding_matrix, keep_prob):
 
 
 class Generator(tx.modules.ModuleBase):
-    def __init__(self, vocab_size, hparams=None):
+    def __init__(self, config, vocab_size, hparams=None):
         tx.ModuleBase.__init__(self, hparams)
+        self.config = config
         self.vocab_size = vocab_size
         self.embedding_dim = self.hparams.embedding_dim
         self.num_layers = self.hparams.num_layers
@@ -72,7 +73,7 @@ class Generator(tx.modules.ModuleBase):
             'variational_recurrent': True,
         }
 
-    def _build(self, text_ids, num_steps):
+    def _build(self, text_ids, num_steps, eos_id):
         embedding_matrix = tf.transpose(self.output_layer.weights[0])
         embedding_matrix = embedding_drop(
             embedding_matrix,
@@ -86,9 +87,21 @@ class Generator(tx.modules.ModuleBase):
             impute_finished=True,
             decoding_strategy="train_greedy",
             sequence_length=num_steps)
+        logits = self.output_layer(outputs.logits)
+        sample_id = tf.argmax(logits, 2)
+
+        generated_outputs, _, _ = self.decoder(
+            decoding_strategy="infer_sample",
+            start_tokens=text_ids[:, 0],
+            end_token=eos_id,
+            embedding=embedding_matrix,
+            initial_state=initial_state,
+            max_decoding_length=self.config.num_steps)
+        generated_logits = self.output_layer(generated_outputs.logits)
+        generated_sample_id = tf.argmax(generated_logits, 2)
 
         if not self._built:
             self._add_internal_trainable_variables()
             self._built = True
 
-        return initial_state, self.output_layer(outputs.logits), final_state
+        return initial_state, logits, final_state, sample_id, generated_sample_id

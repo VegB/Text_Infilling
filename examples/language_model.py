@@ -16,7 +16,7 @@ train_data_hparams = {
     "num_epochs": 1,
     "seed": 123,
     "dataset": {
-        "files": 'data/sent.txt'
+        "files": 'data/sent.txt',
         "vocab_file": 'data/vocab.txt'
     }
 }

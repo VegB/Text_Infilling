@@ -14,11 +14,11 @@ class GenDataLoader:
         self.batch_size = config.batch_size
         self.num_steps = config.num_steps
 
-        self.word_to_id = word2id
+        self.word2id = word2id
 
         self.text = tx.data.read_words(
             text_file, newline_token="<EOS>")
-        self.text_id = [self.word_to_id[w] for w in self.text if w in self.word_to_id]
+        self.text_id = [self.word2id[w] for w in self.text if w in self.word2id]
 
         data_length = len(self.text_id)
         batch_length = data_length // self.batch_size
@@ -38,80 +38,35 @@ class GenDataLoader:
 
 
 class DisDataLoader:
-    def __init__(self, config, positive_file, negative_file, vocab_file, epoch_num):
-        self.max_len = config.num_steps
+    def __init__(self, config, positive_file, negative_file, word2id):
         self.batch_size = config.batch_size
-        self.epoch_num = epoch_num
-        self.trained_epoch = 0
-        self.step = 0
-        self.eos = "<EOS>"
-        self.bos = "<BOS>"
-        self.unk = "<UNK>"
-        self.pad = "<PAD>"
-        self.r_ids, self.g_ids = self.load_data(positive_file, negative_file, vocab_file)
-        self.r_id_batches, self.g_id_batches, self.batch_num = self.create_batch()
-        self.batch_ptr = 0
+        self.num_steps = config.num_steps
 
-    def load_data(self, positive_file, negative_file, vocab_file):
-        """
-        :param positive_file:
-        :param negative_file:
-        :param vocab_file:
-        :return: ids: [sent_num, max_len + 1] (no <BOS>)
-                labels: [sent_num, 1]
-        """
-        with open(vocab_file, "rb") as fin:
-            words = fin.readlines()
-            words = [word.strip().decode('utf-8') for word in words]
-        words.extend([self.eos, self.bos, self.unk, self.pad])
-        self.id2word, self.word2id = {}, {}
-        for word, idx in zip(words, range(len(words))):
-            self.word2id[word] = idx
-            self.id2word[idx] = word
+        self.word2id = word2id
 
-        self.bos_id = self.word2id[self.bos]
-        self.eos_id = self.word2id[self.eos]
-        self.unk_id = self.word2id[self.unk]
-        self.pad_id = self.word2id[self.pad]
+        self.pos_text = tx.data.read_words(
+            positive_file, newline_token="<EOS>")
+        self.pos_text_id = [self.word2id[w] for w in self.pos_text if w in self.word2id]
 
-        with open(positive_file, "rb") as fin:
-            positive_data = fin.readlines()
-        with open(negative_file, "rb") as fin:
-            negative_data = fin.readlines()
+        self.neg_text = tx.data.read_words(
+            negative_file, newline_token="<EOS>")
+        self.neg_text_id = [self.word2id[w] for w in self.neg_text if w in self.word2id]
 
-        r_data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
-                                max_len=self.max_len) for sent in positive_data]
-        r_ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
-                 for sent in r_data]
+        data_length = len(self.neg_text_id) if len(self.pos_text_id) > len(self.neg_text_id) else len(self.pos_text_id)
+        batch_length = data_length // self.batch_size
 
-        g_data = [pad_to_length(sent.decode('utf-8').split(), eos=self.eos, pad=self.pad,
-                                max_len=self.max_len) for sent in negative_data]
-        g_ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
-                 for sent in g_data]
+        pos_data = np.asarray(self.pos_text_id[:self.batch_size * batch_length])
+        self.pos_data = pos_data.reshape([self.batch_size, batch_length])
 
-        return r_ids, g_ids
+        neg_data = np.asarray(self.neg_text_id[:self.batch_size * batch_length])
+        self.neg_data = neg_data.reshape([self.batch_size, batch_length])
 
-    def create_batch(self):
-        batch_num = int(len(self.r_ids) / self.batch_size)
-        r_sent_ids = np.array(self.r_ids[:batch_num * self.batch_size], dtype=np.int32)
-        r_id_batches = np.split(r_sent_ids, batch_num, axis=0)
-        g_sent_ids = np.array(self.g_ids[:batch_num * self.batch_size], dtype=np.int32)
-        g_id_batches = np.split(g_sent_ids, batch_num, axis=0)
-        return r_id_batches, g_id_batches, batch_num
+        self.epoch_size = (batch_length - 1) // self.num_steps
+        if self.epoch_size == 0:
+            raise ValueError("epoch_size == 0, decrease batch_size or num_steps")
 
-    def get_batch(self):
-        tmp_pos = self.batch_ptr
-        self.batch_ptr = self.batch_ptr + 1
-        self.step = self.step + 1
-        if self.batch_ptr == self.batch_num:
-            self.batch_ptr = 0
-            self.trained_epoch += 1
-        return self.r_id_batches[tmp_pos], self.g_id_batches[tmp_pos]
-
-    def should_stop(self):
-        return self.epoch_num <= self.trained_epoch
-
-    def reset(self):
-        self.trained_epoch = 0
-        self.batch_ptr = 0
-        self.step = 0
+    def iter(self):
+        for i in range(self.epoch_size):
+            pos = self.pos_data[:, i * self.num_steps: (i + 1) * self.num_steps]
+            neg = self.neg_data[:, i * self.num_steps: (i + 1) * self.num_steps]
+            yield (pos, neg)
