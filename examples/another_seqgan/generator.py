@@ -16,7 +16,7 @@ class Generator(tx.modules.ModuleBase):
         tx.ModuleBase.__init__(self, hparams)
 
         with tf.variable_scope("generator"):
-            self.batch_size = tf.placeholder(dtype=tf.int32, shape=())
+            self.batch_size = config.batch_size
             self.max_seq_length = config.num_steps
             self.vocab_size = len(word2id)
             self.bos_id = bos
@@ -148,7 +148,7 @@ class Generator(tx.modules.ModuleBase):
             tx.utils.switch_dropout(1. - self.embedding_dropout))
 
         initial_state = self.decoder.zero_state(
-            batch_size=tf.shape(text_ids)[0], dtype=tf.float32)
+            batch_size=self.batch_size, dtype=tf.float32)
         outputs, final_state, sequence_length = self.decoder(
             inputs=tf.nn.embedding_lookup(embedding_matrix, text_ids),
             initial_state=initial_state,

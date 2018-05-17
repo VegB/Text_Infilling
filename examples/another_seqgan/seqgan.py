@@ -40,7 +40,6 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_d
     gen_dataloader.reset()
     while not gen_dataloader.should_stop():
         feed_dict = {
-            batch_size: config.batch_size,
             generator.data_batch: gen_dataloader.get_batch(),
             learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
@@ -173,7 +172,6 @@ def calculate_ppl(sess, generator, dataloader):
     dataloader.reset()
     while not dataloader.should_stop():
         feed_dict = {
-            batch_size: dataloader.batch_size,
             generator.data_batch: dataloader.get_batch(),
             learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
@@ -204,9 +202,9 @@ if __name__ == "__main__":
     dis_dataloader = DisDataLoader(config, epoch_num=1, positive_file=config.train_file,
                                    negative_file=config.train_file, vocab_file=config.vocab_file)
     valid_dataloader = GenDataLoader(config, text_file=config.valid_file,
-                                     vocab_file=config.vocab_file, epoch_num=1, batch_size=1)
+                                     vocab_file=config.vocab_file, epoch_num=1)
     test_dataloader = GenDataLoader(config, text_file=config.test_file,
-                                    vocab_file=config.vocab_file, epoch_num=1, batch_size=1)
+                                    vocab_file=config.vocab_file, epoch_num=1)
 
     generator = Generator(config, word2id=gen_dataloader.word2id, bos=gen_dataloader.bos_id,
                           eos=gen_dataloader.eos_id, pad=gen_dataloader.pad_id)
@@ -214,16 +212,14 @@ if __name__ == "__main__":
     saver = tf.train.Saver()
 
     #--------------
-    batch_size = tf.placeholder(dtype=tf.int32, shape=())
-
     initial_state, logits, final_state = \
-        generator(text_ids=generator.data_batch[:, 1:-2], num_steps=(config.num_steps-1) * tf.ones((batch_size, ), dtype=tf.int32))
+        generator(text_ids=generator.data_batch[:, 1:-2], num_steps=(config.num_steps-1) * tf.ones((config.batch_size, ), dtype=tf.int32))
 
     # Losses & train ops
     mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
         labels=generator.data_batch[:, 2:-1],
         logits=logits,
-        sequence_length=(config.num_steps - 1) * tf.ones((batch_size, )))
+        sequence_length=(config.num_steps - 1) * tf.ones((config.batch_size, )))
 
     l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])
 
