@@ -23,24 +23,23 @@ opt_vars = {
 }
 
 
-def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_dataloader):
+def pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader):
     loss = 0.
     iters = 0
-    state = sess.run(initial_state,
-                     feed_dict={generator.data_batch: np.ones((config.batch_size, config.num_steps + 2))})
+    state = sess.run(initial_state, feed_dict={
+        inputs: np.ones((config.batch_size, config.num_steps))})
 
     fetches = {
         "mle_loss": mle_loss,
         "final_state": final_state,
         'global_step': global_step,
-        "train_op": train_op,
-        # "sample_id": generator.train_sample_id
+        'train_op': train_op
     }
 
-    gen_dataloader.reset()
-    while not gen_dataloader.should_stop():
+    for step, (x, y) in enumerate(gen_dataloader):
         feed_dict = {
-            generator.data_batch: gen_dataloader.get_batch(),
+            batch_size: config.batch_size,
+            inputs: x, targets: y,
             learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
         }
@@ -59,8 +58,8 @@ def pretrain_generator(sess, generator, gen_dataloader, valid_dataloader, test_d
         print_and_write_to_file(rst, training_log, print_out=False)
 
         if rets['global_step'] % 100 == 0:
-            valid_ppl = calculate_ppl(sess, generator, valid_dataloader)
-            test_ppl = calculate_ppl(sess, generator, test_dataloader)
+            valid_ppl = calculate_ppl(sess, valid_dataloader)
+            test_ppl = calculate_ppl(sess, test_dataloader)
             rst = "global step: %d, learning rate: %.7f, training ppl: %.6f, valid ppl: %.6f, test ppl: %.6f\n" % \
                   (rets['global_step'], opt_vars['learning_rate'], ppl, valid_ppl, test_ppl)
             print_and_write_to_file(rst, eval_log)
@@ -157,11 +156,11 @@ def update_generator(sess, generator, discriminator, gen_dataloader, dis_dataloa
     return np.exp(loss / iters)
 
 
-def calculate_ppl(sess, generator, dataloader):
+def calculate_ppl(sess, dataloader):
     loss = 0.
     iters = 0
-    state = sess.run(initial_state,
-                     feed_dict={generator.data_batch: np.ones((dataloader.batch_size, config.num_steps + 2))})
+    state = sess.run(initial_state, feed_dict={
+        inputs: np.ones((config.batch_size, config.num_steps))})
 
     fetches = {
         "mle_loss": mle_loss,
@@ -169,10 +168,10 @@ def calculate_ppl(sess, generator, dataloader):
         'global_step': global_step,
     }
 
-    dataloader.reset()
-    while not dataloader.should_stop():
+    for step, (x, y) in enumerate(dataloader):
         feed_dict = {
-            generator.data_batch: dataloader.get_batch(),
+            batch_size: config.batch_size,
+            inputs: x, targets: y,
             learning_rate: opt_vars['learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
         }
@@ -197,29 +196,38 @@ def record_ppl(sess, generator, valid_dataloader, test_dataloader, epoch_id, tra
 
 
 if __name__ == "__main__":
-    gen_dataloader = GenDataLoader(config, text_file=config.train_file,
-                                   vocab_file=config.vocab_file, epoch_num=1)
-    dis_dataloader = DisDataLoader(config, epoch_num=1, positive_file=config.train_file,
-                                   negative_file=config.train_file, vocab_file=config.vocab_file)
-    valid_dataloader = GenDataLoader(config, text_file=config.valid_file,
-                                     vocab_file=config.vocab_file, epoch_num=1)
-    test_dataloader = GenDataLoader(config, text_file=config.test_file,
-                                    vocab_file=config.vocab_file, epoch_num=1)
+    word2id = tx.data.make_vocab(config.train_file, newline_token="<EOS>", return_type="dict")
+    gen_dataloader = GenDataLoader(config, config.train_file, word2id)
+    valid_dataloader = GenDataLoader(config, config.valid_file, word2id)
+    test_dataloader = GenDataLoader(config, config.test_file, word2id)
+    # dis_dataloader = DisDataLoader(config, epoch_num=1, positive_file=config.train_file,
+    #                                negative_file=config.train_file, vocab_file=config.vocab_file)
 
-    generator = Generator(config, word2id=gen_dataloader.word2id, bos=gen_dataloader.bos_id,
-                          eos=gen_dataloader.eos_id, pad=gen_dataloader.pad_id)
-    discriminator = Discriminator(config, word2id=dis_dataloader.word2id)
+    generator = Generator(vocab_size=len(word2id))
+    # discriminator = Discriminator(config, word2id=dis_dataloader.word2id)
     saver = tf.train.Saver()
 
-    #--------------
+    # ------------Pretrain---------------
+    batch_size = tf.placeholder(dtype=tf.int32, shape=())
+    num_steps = config.num_steps
+
+    opt_vars = {
+        'learning_rate': 0.003,
+        'best_valid_ppl': 1e100,
+        'steps_not_improved': 0
+    }
+
+    inputs = tf.placeholder(tf.int32, [None, num_steps])
+    targets = tf.placeholder(tf.int32, [None, num_steps])
+
     initial_state, logits, final_state = \
-        generator(text_ids=generator.data_batch[:, 1:-2], num_steps=(config.num_steps-1) * tf.ones((config.batch_size, ), dtype=tf.int32))
+        generator(text_ids=inputs, num_steps=config.num_steps * tf.ones((batch_size,), dtype=tf.int32))
 
     # Losses & train ops
     mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
-        labels=generator.data_batch[:, 2:-1],
+        labels=targets,
         logits=logits,
-        sequence_length=(config.num_steps - 1) * tf.ones((config.batch_size, )))
+        sequence_length=num_steps * tf.ones((batch_size,)))
 
     l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])
 
@@ -232,7 +240,6 @@ if __name__ == "__main__":
         beta1=0.,
         beta2=0.999,
         epsilon=1e-9)
-
     train_op = optimizer.minimize(
         mle_loss + config.l2_decay * l2_loss, global_step=global_step)
 
@@ -242,13 +249,11 @@ if __name__ == "__main__":
         sess.run(tf.tables_initializer())
 
         for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-            train_ppl = pretrain_generator(sess, generator, gen_dataloader,
-                                           valid_dataloader, test_dataloader)
-            # record_ppl(sess, generator, valid_dataloader, test_dataloader,
-            #            epoch_id=pre_epoch, train_ppl=train_ppl)
+            train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
             if pre_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
-   
+
+        ''' 
         generate_negative_samples(sess, generator, gen_dataloader, dst_path=config.negative_file)
         
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
@@ -262,3 +267,4 @@ if __name__ == "__main__":
             train_discriminator(sess, discriminator, epoch_num=1)
             if update_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=update_epoch + config.generator_pretrain_epoch)
+        '''

@@ -4,79 +4,35 @@ Data loader for SeqGAN.
 
 import numpy as np
 import random
+import texar as tx
 
 from utils import pad_to_length, sent_to_ids
 
 
-class GenDataLoader:
-    def __init__(self, config, text_file, vocab_file, epoch_num, batch_size=None):
-        self.max_len = config.num_steps
-        if batch_size is not None:
-            self.batch_size = batch_size
-        else:
-            self.batch_size = config.batch_size
-        self.epoch_num = epoch_num
-        self.trained_epoch = 0
-        self.step = 0
-        self.eos = "<EOS>"
-        self.bos = "<BOS>"
-        self.unk = "<UNK>"
-        self.pad = "<PAD>"
-        self.ids = self.load_data(text_file, vocab_file)
-        self.batches, self.batch_num = self.create_batch()
-        self.batch_ptr = 0
+def GenDataLoader(config, text_file, word2id):
+    batch_size = config.batch_size
+    num_steps = config.num_steps
 
-    def load_data(self, text_file, vocab_file):
-        """
-        :param text_file:
-        :param vocab_file:
-        :return: ids: a list of int. [sent_num, max_len + 2]
-        """
-        with open(vocab_file, "rb") as fin:
-            words = fin.readlines()
-            words = [word.strip().decode('utf-8') for word in words]
-        words.extend([self.eos, self.bos, self.unk, self.pad])
-        self.id2word, self.word2id = {}, {}
-        for word, idx in zip(words, range(len(words))):
-            self.word2id[word] = idx
-            self.id2word[idx] = word
+    word_to_id = word2id
 
-        self.bos_id = self.word2id[self.bos]
-        self.eos_id = self.word2id[self.eos]
-        self.unk_id = self.word2id[self.unk]
-        self.pad_id = self.word2id[self.pad]
+    text = tx.data.read_words(
+        text_file, newline_token="<EOS>")
+    text_id = [word_to_id[w] for w in text if w in word_to_id]
 
-        with open(text_file, "rb") as fin:
-            data = fin.readlines()
-        data = [pad_to_length(sent.decode('utf-8').split(), bos=self.bos, eos=self.eos,
-                              pad=self.pad, max_len=self.max_len) for sent in data]
-        ids = [sent_to_ids(sent, word2id=self.word2id, unk_id=self.word2id[self.unk])
-               for sent in data]
+    data_length = len(text_id)
+    batch_length = data_length // batch_size
 
-        return ids
+    data = np.asarray(text_id[:batch_size * batch_length])
+    data = data.reshape([batch_size, batch_length])
 
-    def create_batch(self):
-        batch_num = int(len(self.ids) / self.batch_size)
-        sent_ids = np.array(self.ids[:batch_num * self.batch_size], dtype=np.int32)
-        batches = np.split(sent_ids, batch_num, axis=0)
-        return batches, batch_num
+    epoch_size = (batch_length - 1) // num_steps
+    if epoch_size == 0:
+        raise ValueError("epoch_size == 0, decrease batch_size or num_steps")
 
-    def get_batch(self):
-        tmp_pos = self.batch_ptr
-        self.batch_ptr = self.batch_ptr + 1
-        self.step = self.step + 1
-        if self.batch_ptr == self.batch_num:
-            self.batch_ptr = 0
-            self.trained_epoch += 1
-        return self.batches[tmp_pos]
-
-    def should_stop(self):
-        return self.epoch_num <= self.trained_epoch
-
-    def reset(self):
-        self.trained_epoch = 0
-        self.batch_ptr = 0
-        self.step = 0
+    for i in range(epoch_size):
+        x = data[:, i * num_steps: (i + 1) * num_steps]
+        y = data[:, i * num_steps + 1: (i + 1) * num_steps + 1]
+        yield (x, y)
 
 
 class DisDataLoader:
