@@ -1,6 +1,13 @@
 import numpy as np
 
 
+def reverse_dict(d):
+    rst = {}
+    for key, val in d.items():
+        rst[val] = key
+    return rst
+
+
 def print_and_write_to_file(rst, fout, print_out=True):
     if print_out:
         print(rst)

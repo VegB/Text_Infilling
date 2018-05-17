@@ -6,7 +6,7 @@ import numpy as np
 import random
 import texar as tx
 
-from utils import pad_to_length, sent_to_ids
+from utils import pad_to_length, sent_to_ids, reverse_dict
 
 
 class GenDataLoader:
@@ -15,6 +15,7 @@ class GenDataLoader:
         self.num_steps = config.num_steps
 
         self.word2id = word2id
+        self.id2word = reverse_dict(self.word2id)
 
         self.text = tx.data.read_words(
             text_file, newline_token="<EOS>")
