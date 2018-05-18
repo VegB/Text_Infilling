@@ -1,12 +1,3 @@
-# train_file = "../../data/coco.txt"
-# coco_file = "../../data/coco.txt"
-# valid_file = "../../data/coco.txt"
-# vocab_file = "../../data/coco_vocab.txt"
-# '''
-# train_file = "../../data/ptb_train.txt"
-# test_file = "../../data/ptb_test.txt"
-# valid_file = "../../data/ptb_valid.txt"
-# vocab_file = "../../data/ptb_vocab.txt"
 train_file = "./data/ptb.train.txt"
 test_file = "./data/ptb.test.txt"
 valid_file = "./data/ptb.valid.txt"
@@ -35,12 +26,9 @@ min_lr = 0.0000001
 l2_decay = 1e-5
 lr_decay = 0.1
 
-target_pretrain_epoch = 80
 generator_pretrain_epoch = 130
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
-g_update_batch = 1
-d_update_batch = 1
 
 d_cell = {
     "type": "LSTMBlockCell",
