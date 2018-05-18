@@ -53,11 +53,10 @@ def pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader):
         if rets['global_step'] % 100 == 0:
             valid_ppl = calculate_ppl(sess, valid_dataloader)
             test_ppl = calculate_ppl(sess, test_dataloader)
-            rst = "global step: %d, learning rate: %.7f, training ppl: %.6f, valid ppl: %.6f, test ppl: %.6f\n" % \
-                  (rets['global_step'], opt_vars['learning_rate'], ppl, valid_ppl, test_ppl)
+            rst = "global step: %d, training ppl: %.6f, valid ppl: %.6f," \
+                  " test ppl: %.6f, learning rate: %.7f\n" % \
+                  (rets['global_step'], ppl, valid_ppl, test_ppl, opt_vars['learning_rate'])
             print_and_write_to_file(rst, eval_log)
-
-            # print_result(rets['sample_id'][:config.print_num], gen_dataloader.id2word, gen_dataloader.max_len)
 
             if valid_ppl < opt_vars['best_valid_ppl']:
                 opt_vars['best_valid_ppl'] = valid_ppl
@@ -129,6 +128,7 @@ def update_generator(sess, gen_dataloader):
             batch_size: config.batch_size,
             inputs: x, targets: y,
             learning_rate: opt_vars['learning_rate'],
+            update_learning_rate: opt_vars['update_learning_rate'],
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
         }
         for i, (c, h) in enumerate(initial_state):
@@ -150,9 +150,11 @@ def update_generator(sess, gen_dataloader):
         if rets['global_step'] % 100 == 0:
             valid_ppl = calculate_ppl(sess, valid_dataloader)
             test_ppl = calculate_ppl(sess, test_dataloader)
-            rst = "global step: %d, learning rate: %.7f, training ppl: %.6f," \
-                  " valid ppl: %.6f, test ppl: %.6f, update_loss: %.6f\n " % \
-                  (rets['global_step'], opt_vars['learning_rate'], ppl, valid_ppl, test_ppl, epoch_update_loss/iters)
+            rst = "global step: %d, training ppl: %.6f, valid ppl: %.6f, " \
+                  "test ppl: %.6f, update_loss: %.6f, learning rate: %.7f, " \
+                  "update learning rate: %.7f\n" % \
+                  (rets['global_step'], ppl, valid_ppl, test_ppl, epoch_update_loss/iters,
+                   opt_vars['learning_rate'], opt_vars['update_learning_rate'])
             print_and_write_to_file(rst, eval_log)
 
             if valid_ppl < opt_vars['best_valid_ppl']:
@@ -272,8 +274,10 @@ if __name__ == "__main__":
     )
 
     update_step = tf.Variable(0, dtype=tf.int32)
+    update_learning_rate = \
+        tf.placeholder(dtype=tf.float32, shape=(), name='update_learning_rate')
     update_optimizer = tf.train.AdamOptimizer(
-        learning_rate=opt_vars['update_learning_rate'],
+        learning_rate=update_learning_rate,
         beta1=0.,
         beta2=0.999,
         epsilon=1e-9)
