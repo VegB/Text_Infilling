@@ -279,9 +279,7 @@ if __name__ == "__main__":
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        saver.restore(sess, config.ckpt + '-70')
-
-        for pre_epoch in range(71, config.generator_pretrain_epoch + 1):
+        for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
             train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
             if pre_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
