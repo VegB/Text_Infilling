@@ -186,7 +186,7 @@ def calculate_ppl(sess, dataloader):
             batch_size: config.batch_size,
             inputs: x, targets: y,
             learning_rate: opt_vars['learning_rate'],
-            tx.global_mode(): tf.estimator.ModeKeys.TRAIN,
+            tx.global_mode(): tf.estimator.ModeKeys.EVAL,
         }
         for i, (c, h) in enumerate(initial_state):
             feed_dict[c] = state[i].c
@@ -207,7 +207,7 @@ if __name__ == "__main__":
     valid_dataloader = GenDataLoader(config, config.valid_file, word2id)
     test_dataloader = GenDataLoader(config, config.test_file, word2id)
 
-    generator = Generator(config, vocab_size=vocab_size)
+    generator = Generator(vocab_size=vocab_size)
     discriminator = Discriminator(config, vocab_size=vocab_size)
     saver = tf.train.Saver()
 
@@ -273,7 +273,7 @@ if __name__ == "__main__":
     update_op = tx.core.get_train_op(
         update_loss, global_step=update_step, increment_global_step=False,
         hparams=config.opt)
-
+    
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
@@ -283,7 +283,7 @@ if __name__ == "__main__":
             train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
             if pre_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=pre_epoch)
-
+        
         generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
 
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)

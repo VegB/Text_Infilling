@@ -12,9 +12,8 @@ def embedding_drop(embedding_matrix, keep_prob):
 
 
 class Generator(tx.modules.ModuleBase):
-    def __init__(self, config, vocab_size, hparams=None):
+    def __init__(self, vocab_size, hparams=None):
         tx.ModuleBase.__init__(self, hparams)
-        self.config = config
         self.vocab_size = vocab_size
         self.embedding_dim = self.hparams.embedding_dim
         self.num_layers = self.hparams.num_layers
@@ -75,14 +74,14 @@ class Generator(tx.modules.ModuleBase):
 
     def _build(self, text_ids, num_steps):
         embedding_matrix = tf.transpose(self.output_layer.weights[0])
-        embedding_matrix = embedding_drop(
+        self.embedding_matrix = embedding_drop(
             embedding_matrix,
             tx.utils.switch_dropout(1. - self.embedding_dropout))
 
         initial_state = self.decoder.zero_state(
             batch_size=tf.shape(text_ids)[0], dtype=tf.float32)
         outputs, final_state, sequence_length = self.decoder(
-            inputs=tf.nn.embedding_lookup(embedding_matrix, text_ids),
+            inputs=tf.nn.embedding_lookup(self.embedding_matrix, text_ids),
             initial_state=initial_state,
             impute_finished=True,
             decoding_strategy="train_greedy",
