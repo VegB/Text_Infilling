@@ -22,11 +22,12 @@ batch_size = 64
 num_steps = 35
 print_num = 3
 init_lr = 0.003
-min_lr = 0.0000001
+update_init_lr = 0.0003
+update_lr = 0.00003
 l2_decay = 1e-5
 lr_decay = 0.1
 
-generator_pretrain_epoch = 130
+generator_pretrain_epoch = 110
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 

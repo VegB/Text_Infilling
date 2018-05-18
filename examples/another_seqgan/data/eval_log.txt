@@ -1,559 +1,567 @@
-global step: 100, learning rate: 0.0030000, training ppl: 3235.176055, valid ppl: 2107.907598, test ppl: 1867.784041
-global step: 200, learning rate: 0.0030000, training ppl: 2311.324095, valid ppl: 817.282331, test ppl: 753.560177
-global step: 300, learning rate: 0.0030000, training ppl: 1769.884440, valid ppl: 758.876185, test ppl: 701.130036
-global step: 400, learning rate: 0.0030000, training ppl: 1444.927936, valid ppl: 622.495759, test ppl: 589.040742
-global step: 500, learning rate: 0.0030000, training ppl: 762.747681, valid ppl: 632.471512, test ppl: 590.661852
-global step: 600, learning rate: 0.0030000, training ppl: 685.449853, valid ppl: 550.099115, test ppl: 518.148068
-global step: 700, learning rate: 0.0030000, training ppl: 645.831059, valid ppl: 449.145176, test ppl: 419.889651
-global step: 800, learning rate: 0.0030000, training ppl: 613.758276, valid ppl: 427.812978, test ppl: 405.007445
-global step: 900, learning rate: 0.0030000, training ppl: 495.696767, valid ppl: 393.250741, test ppl: 368.347856
-global step: 1000, learning rate: 0.0030000, training ppl: 455.240762, valid ppl: 375.900079, test ppl: 355.337647
-global step: 1100, learning rate: 0.0030000, training ppl: 442.882611, valid ppl: 358.657677, test ppl: 336.862918
-global step: 1200, learning rate: 0.0030000, training ppl: 426.682908, valid ppl: 327.497410, test ppl: 309.322792
-global step: 1300, learning rate: 0.0030000, training ppl: 368.189261, valid ppl: 322.401888, test ppl: 297.586414
-global step: 1400, learning rate: 0.0030000, training ppl: 353.372146, valid ppl: 296.528846, test ppl: 279.581571
-global step: 1500, learning rate: 0.0030000, training ppl: 341.361805, valid ppl: 269.948800, test ppl: 254.092374
-global step: 1600, learning rate: 0.0030000, training ppl: 330.703216, valid ppl: 268.813852, test ppl: 254.554846
-global step: 1700, learning rate: 0.0030000, training ppl: 290.163052, valid ppl: 254.782109, test ppl: 240.570215
-global step: 1800, learning rate: 0.0030000, training ppl: 279.089336, valid ppl: 243.857539, test ppl: 226.433030
-global step: 1900, learning rate: 0.0030000, training ppl: 271.016462, valid ppl: 230.457983, test ppl: 219.730967
-global step: 2000, learning rate: 0.0030000, training ppl: 264.610040, valid ppl: 223.751271, test ppl: 210.092274
-global step: 2100, learning rate: 0.0030000, training ppl: 276.555955, valid ppl: 218.563293, test ppl: 206.455253
-global step: 2200, learning rate: 0.0030000, training ppl: 241.256273, valid ppl: 210.155154, test ppl: 195.239568
-global step: 2300, learning rate: 0.0030000, training ppl: 226.772787, valid ppl: 202.858517, test ppl: 191.220025
-global step: 2400, learning rate: 0.0030000, training ppl: 222.529871, valid ppl: 194.604922, test ppl: 185.731101
-global step: 2500, learning rate: 0.0030000, training ppl: 219.110842, valid ppl: 188.045759, test ppl: 178.930022
-global step: 2600, learning rate: 0.0030000, training ppl: 199.075558, valid ppl: 183.570299, test ppl: 173.090363
-global step: 2700, learning rate: 0.0030000, training ppl: 190.359387, valid ppl: 178.718977, test ppl: 166.550456
-global step: 2800, learning rate: 0.0030000, training ppl: 189.548510, valid ppl: 178.488686, test ppl: 167.813754
-global step: 2900, learning rate: 0.0030000, training ppl: 229.224024, valid ppl: 173.628137, test ppl: 163.538929
-global step: 3000, learning rate: 0.0030000, training ppl: 180.704342, valid ppl: 166.980631, test ppl: 156.999219
-global step: 3100, learning rate: 0.0030000, training ppl: 170.570868, valid ppl: 165.912951, test ppl: 155.808838
-global step: 3200, learning rate: 0.0030000, training ppl: 170.734345, valid ppl: 160.535905, test ppl: 151.160795
-global step: 3300, learning rate: 0.0030000, training ppl: 169.872007, valid ppl: 155.628237, test ppl: 149.016950
-global step: 3400, learning rate: 0.0030000, training ppl: 163.882616, valid ppl: 154.262499, test ppl: 145.298572
-global step: 3500, learning rate: 0.0030000, training ppl: 155.615910, valid ppl: 152.900534, test ppl: 143.862966
-global step: 3600, learning rate: 0.0030000, training ppl: 156.583495, valid ppl: 152.371659, test ppl: 143.413081
-global step: 3700, learning rate: 0.0030000, training ppl: 156.610163, valid ppl: 148.776845, test ppl: 141.592878
-global step: 3800, learning rate: 0.0030000, training ppl: 152.747022, valid ppl: 144.491603, test ppl: 135.129098
-global step: 3900, learning rate: 0.0030000, training ppl: 145.288596, valid ppl: 145.923524, test ppl: 139.310224
-global step: 4000, learning rate: 0.0030000, training ppl: 146.324067, valid ppl: 141.794084, test ppl: 133.081089
-global step: 4100, learning rate: 0.0030000, training ppl: 145.950712, valid ppl: 138.922211, test ppl: 132.066195
-global step: 4200, learning rate: 0.0030000, training ppl: 143.631901, valid ppl: 139.474647, test ppl: 130.506315
-global step: 4300, learning rate: 0.0030000, training ppl: 138.431562, valid ppl: 133.437491, test ppl: 126.553206
-global step: 4400, learning rate: 0.0030000, training ppl: 137.349101, valid ppl: 135.093785, test ppl: 128.478301
-global step: 4500, learning rate: 0.0030000, training ppl: 137.688818, valid ppl: 132.168800, test ppl: 125.077764
-global step: 4600, learning rate: 0.0030000, training ppl: 139.064478, valid ppl: 131.847434, test ppl: 124.820531
-global step: 4700, learning rate: 0.0030000, training ppl: 133.171722, valid ppl: 131.003833, test ppl: 123.694141
-global step: 4800, learning rate: 0.0030000, training ppl: 130.341882, valid ppl: 128.621569, test ppl: 121.476239
-global step: 4900, learning rate: 0.0030000, training ppl: 130.475471, valid ppl: 126.863585, test ppl: 119.436992
-global step: 5000, learning rate: 0.0030000, training ppl: 135.652032, valid ppl: 126.509910, test ppl: 120.362684
-global step: 5100, learning rate: 0.0030000, training ppl: 128.929334, valid ppl: 126.545858, test ppl: 118.813356
-global step: 5200, learning rate: 0.0030000, training ppl: 124.163573, valid ppl: 123.317573, test ppl: 117.294129
-global step: 5300, learning rate: 0.0030000, training ppl: 124.566224, valid ppl: 124.020074, test ppl: 118.111008
-global step: 5400, learning rate: 0.0030000, training ppl: 137.554175, valid ppl: 124.177330, test ppl: 118.597140
-global step: 5500, learning rate: 0.0030000, training ppl: 124.289406, valid ppl: 121.268500, test ppl: 114.759671
-global step: 5600, learning rate: 0.0030000, training ppl: 119.469526, valid ppl: 120.646763, test ppl: 113.044281
-global step: 5700, learning rate: 0.0030000, training ppl: 120.401655, valid ppl: 120.566713, test ppl: 114.224501
-global step: 5800, learning rate: 0.0030000, training ppl: 135.565954, valid ppl: 118.597897, test ppl: 113.091422
-global step: 5900, learning rate: 0.0030000, training ppl: 119.757978, valid ppl: 118.294779, test ppl: 111.814370
-global step: 6000, learning rate: 0.0030000, training ppl: 114.566228, valid ppl: 120.131224, test ppl: 113.310215
-global step: 6100, learning rate: 0.0030000, training ppl: 115.884520, valid ppl: 116.844706, test ppl: 110.471187
-global step: 6200, learning rate: 0.0030000, training ppl: 116.575911, valid ppl: 116.134270, test ppl: 110.544354
-global step: 6300, learning rate: 0.0030000, training ppl: 116.417387, valid ppl: 115.844791, test ppl: 109.139878
-global step: 6400, learning rate: 0.0030000, training ppl: 111.374586, valid ppl: 115.855610, test ppl: 109.678765
-global step: 6500, learning rate: 0.0030000, training ppl: 112.246185, valid ppl: 115.305684, test ppl: 108.801022
-global step: 6600, learning rate: 0.0030000, training ppl: 113.103477, valid ppl: 115.682669, test ppl: 110.388343
-global step: 6700, learning rate: 0.0030000, training ppl: 112.584830, valid ppl: 114.766493, test ppl: 108.472065
-global step: 6800, learning rate: 0.0030000, training ppl: 108.293706, valid ppl: 113.368809, test ppl: 107.794377
-global step: 6900, learning rate: 0.0030000, training ppl: 109.762701, valid ppl: 112.702935, test ppl: 106.656654
-global step: 7000, learning rate: 0.0030000, training ppl: 110.508849, valid ppl: 113.156220, test ppl: 107.066152
-global step: 7100, learning rate: 0.0030000, training ppl: 112.409463, valid ppl: 113.262092, test ppl: 106.505089
-global step: 7200, learning rate: 0.0030000, training ppl: 107.455879, valid ppl: 112.012711, test ppl: 105.812273
-global step: 7300, learning rate: 0.0030000, training ppl: 106.878393, valid ppl: 110.651396, test ppl: 105.005718
-global step: 7400, learning rate: 0.0030000, training ppl: 107.337757, valid ppl: 110.261636, test ppl: 104.213048
-global step: 7500, learning rate: 0.0030000, training ppl: 108.999401, valid ppl: 110.543750, test ppl: 104.697456
-global step: 7600, learning rate: 0.0030000, training ppl: 105.849599, valid ppl: 109.763798, test ppl: 104.009956
-global step: 7700, learning rate: 0.0030000, training ppl: 104.460403, valid ppl: 109.865722, test ppl: 104.037761
-global step: 7800, learning rate: 0.0030000, training ppl: 104.823629, valid ppl: 109.057332, test ppl: 102.949554
-global step: 7900, learning rate: 0.0030000, training ppl: 109.457808, valid ppl: 107.685727, test ppl: 102.556094
-global step: 8000, learning rate: 0.0030000, training ppl: 104.766502, valid ppl: 108.917127, test ppl: 102.318794
-global step: 8100, learning rate: 0.0030000, training ppl: 101.232187, valid ppl: 107.951946, test ppl: 102.210068
-global step: 8200, learning rate: 0.0030000, training ppl: 101.737309, valid ppl: 107.632309, test ppl: 102.198368
-global step: 8300, learning rate: 0.0030000, training ppl: 111.695835, valid ppl: 107.856532, test ppl: 103.037001
-global step: 8400, learning rate: 0.0030000, training ppl: 102.795649, valid ppl: 106.693099, test ppl: 101.159461
-global step: 8500, learning rate: 0.0030000, training ppl: 98.876383, valid ppl: 107.962675, test ppl: 101.228422
-global step: 8600, learning rate: 0.0030000, training ppl: 99.714051, valid ppl: 107.052430, test ppl: 101.352108
-global step: 8700, learning rate: 0.0030000, training ppl: 111.995599, valid ppl: 105.364510, test ppl: 100.155113
-global step: 8800, learning rate: 0.0030000, training ppl: 101.988648, valid ppl: 104.673093, test ppl: 98.903647
-global step: 8900, learning rate: 0.0030000, training ppl: 97.114948, valid ppl: 105.510922, test ppl: 99.974938
-global step: 9000, learning rate: 0.0030000, training ppl: 98.184207, valid ppl: 105.333846, test ppl: 99.544618
-global step: 9100, learning rate: 0.0030000, training ppl: 99.037899, valid ppl: 108.228982, test ppl: 102.375731
-global step: 9200, learning rate: 0.0030000, training ppl: 99.350102, valid ppl: 105.391264, test ppl: 98.856929
-global step: 9300, learning rate: 0.0030000, training ppl: 95.294463, valid ppl: 104.776354, test ppl: 99.232716
-global step: 9400, learning rate: 0.0030000, training ppl: 96.192944, valid ppl: 104.414962, test ppl: 98.076528
-global step: 9500, learning rate: 0.0030000, training ppl: 96.920533, valid ppl: 105.594820, test ppl: 99.658960
-global step: 9600, learning rate: 0.0030000, training ppl: 96.519296, valid ppl: 103.549789, test ppl: 97.072680
-global step: 9700, learning rate: 0.0030000, training ppl: 92.856459, valid ppl: 103.289652, test ppl: 97.953532
-global step: 9800, learning rate: 0.0030000, training ppl: 94.027865, valid ppl: 104.069154, test ppl: 97.710600
-global step: 9900, learning rate: 0.0030000, training ppl: 94.947230, valid ppl: 105.797465, test ppl: 98.982751
-global step: 10000, learning rate: 0.0030000, training ppl: 97.237284, valid ppl: 102.135053, test ppl: 95.876374
-global step: 10100, learning rate: 0.0030000, training ppl: 93.085990, valid ppl: 101.710754, test ppl: 96.688283
-global step: 10200, learning rate: 0.0030000, training ppl: 92.804731, valid ppl: 102.448759, test ppl: 96.389748
-global step: 10300, learning rate: 0.0030000, training ppl: 93.238135, valid ppl: 101.211036, test ppl: 95.667440
-global step: 10400, learning rate: 0.0030000, training ppl: 95.203459, valid ppl: 101.068717, test ppl: 95.927455
-global step: 10500, learning rate: 0.0030000, training ppl: 92.332183, valid ppl: 101.113292, test ppl: 95.100604
-global step: 10600, learning rate: 0.0030000, training ppl: 90.953899, valid ppl: 100.958669, test ppl: 95.782542
-global step: 10700, learning rate: 0.0030000, training ppl: 91.620541, valid ppl: 101.960231, test ppl: 95.802932
-global step: 10800, learning rate: 0.0030000, training ppl: 96.287668, valid ppl: 99.560982, test ppl: 94.573307
-global step: 10900, learning rate: 0.0030000, training ppl: 92.135860, valid ppl: 99.326676, test ppl: 93.688589
-global step: 11000, learning rate: 0.0030000, training ppl: 89.569338, valid ppl: 100.325199, test ppl: 94.569730
-global step: 11100, learning rate: 0.0030000, training ppl: 89.880689, valid ppl: 99.702610, test ppl: 94.384249
-global step: 11200, learning rate: 0.0030000, training ppl: 100.489026, valid ppl: 98.734814, test ppl: 94.162596
-global step: 11300, learning rate: 0.0030000, training ppl: 92.153646, valid ppl: 99.442937, test ppl: 93.516017
-global step: 11400, learning rate: 0.0030000, training ppl: 88.057287, valid ppl: 102.244680, test ppl: 95.607519
-global step: 11500, learning rate: 0.0030000, training ppl: 88.946640, valid ppl: 99.626804, test ppl: 93.979547
-global step: 11600, learning rate: 0.0030000, training ppl: 101.365808, valid ppl: 97.349437, test ppl: 92.910731
-global step: 11700, learning rate: 0.0030000, training ppl: 90.218869, valid ppl: 99.182817, test ppl: 93.008769
-global step: 11800, learning rate: 0.0030000, training ppl: 86.749276, valid ppl: 99.359333, test ppl: 93.644986
-global step: 11900, learning rate: 0.0030000, training ppl: 87.852253, valid ppl: 99.298816, test ppl: 93.689826
-global step: 12000, learning rate: 0.0030000, training ppl: 88.498406, valid ppl: 98.228339, test ppl: 92.585025
-global step: 12100, learning rate: 0.0030000, training ppl: 89.607991, valid ppl: 98.066523, test ppl: 91.407012
-global step: 12200, learning rate: 0.0030000, training ppl: 85.550384, valid ppl: 99.583985, test ppl: 93.735623
-global step: 12300, learning rate: 0.0030000, training ppl: 86.516768, valid ppl: 98.320545, test ppl: 92.173707
-global step: 12400, learning rate: 0.0030000, training ppl: 87.356412, valid ppl: 98.064549, test ppl: 92.494774
-global step: 12500, learning rate: 0.0030000, training ppl: 87.803474, valid ppl: 96.958877, test ppl: 91.328359
-global step: 12600, learning rate: 0.0030000, training ppl: 84.572330, valid ppl: 97.928921, test ppl: 92.298922
-global step: 12700, learning rate: 0.0030000, training ppl: 85.419454, valid ppl: 97.924713, test ppl: 91.766910
-global step: 12800, learning rate: 0.0030000, training ppl: 86.077997, valid ppl: 97.440007, test ppl: 91.550296
-global step: 12900, learning rate: 0.0030000, training ppl: 87.179156, valid ppl: 96.869555, test ppl: 90.960104
-global step: 13000, learning rate: 0.0030000, training ppl: 83.913467, valid ppl: 96.090263, test ppl: 90.672185
-global step: 13100, learning rate: 0.0030000, training ppl: 84.264031, valid ppl: 95.766937, test ppl: 90.200338
-global step: 13200, learning rate: 0.0030000, training ppl: 85.094861, valid ppl: 96.230844, test ppl: 90.468374
-global step: 13300, learning rate: 0.0030000, training ppl: 86.161563, valid ppl: 96.396019, test ppl: 90.648884
-global step: 13400, learning rate: 0.0030000, training ppl: 85.000461, valid ppl: 96.220460, test ppl: 90.751768
-global step: 13500, learning rate: 0.0030000, training ppl: 83.581726, valid ppl: 97.368081, test ppl: 91.497380
-global step: 13600, learning rate: 0.0030000, training ppl: 84.137804, valid ppl: 97.265676, test ppl: 91.364753
-global step: 13700, learning rate: 0.0030000, training ppl: 87.052117, valid ppl: 95.038163, test ppl: 89.795483
-global step: 13800, learning rate: 0.0030000, training ppl: 84.800869, valid ppl: 95.215040, test ppl: 89.139510
-global step: 13900, learning rate: 0.0030000, training ppl: 82.266738, valid ppl: 95.425631, test ppl: 89.882772
-global step: 14000, learning rate: 0.0030000, training ppl: 82.905391, valid ppl: 96.861769, test ppl: 91.245512
-global step: 14100, learning rate: 0.0030000, training ppl: 91.453706, valid ppl: 94.100418, test ppl: 89.817359
-global step: 14200, learning rate: 0.0030000, training ppl: 84.897460, valid ppl: 94.761136, test ppl: 89.151193
-global step: 14300, learning rate: 0.0030000, training ppl: 81.430962, valid ppl: 95.508653, test ppl: 89.650326
-global step: 14400, learning rate: 0.0030000, training ppl: 81.875523, valid ppl: 95.231410, test ppl: 89.591131
-global step: 14500, learning rate: 0.0030000, training ppl: 95.478926, valid ppl: 94.705383, test ppl: 89.764313
-global step: 14600, learning rate: 0.0030000, training ppl: 83.766035, valid ppl: 94.546971, test ppl: 88.894643
-global step: 14700, learning rate: 0.0030000, training ppl: 80.378150, valid ppl: 95.604043, test ppl: 90.389456
-global step: 14800, learning rate: 0.0030000, training ppl: 81.501126, valid ppl: 94.436070, test ppl: 89.076192
-global step: 14900, learning rate: 0.0030000, training ppl: 82.149530, valid ppl: 94.950767, test ppl: 89.233891
-global step: 15000, learning rate: 0.0030000, training ppl: 81.919923, valid ppl: 93.384680, test ppl: 87.755600
-global step: 15100, learning rate: 0.0030000, training ppl: 78.498914, valid ppl: 94.663924, test ppl: 89.180966
-global step: 15200, learning rate: 0.0030000, training ppl: 79.864486, valid ppl: 94.678958, test ppl: 89.521730
-global step: 15300, learning rate: 0.0030000, training ppl: 80.905935, valid ppl: 94.107446, test ppl: 88.973292
-global step: 15400, learning rate: 0.0030000, training ppl: 81.876988, valid ppl: 94.030328, test ppl: 88.273483
-global step: 15500, learning rate: 0.0030000, training ppl: 78.348592, valid ppl: 94.042790, test ppl: 88.744331
-global step: 15600, learning rate: 0.0030000, training ppl: 79.348445, valid ppl: 94.386170, test ppl: 88.670354
-global step: 15700, learning rate: 0.0030000, training ppl: 80.216796, valid ppl: 94.656574, test ppl: 89.089628
-global step: 15800, learning rate: 0.0030000, training ppl: 81.838539, valid ppl: 92.579934, test ppl: 87.109895
-global step: 15900, learning rate: 0.0030000, training ppl: 78.816273, valid ppl: 92.415336, test ppl: 87.332243
-global step: 16000, learning rate: 0.0030000, training ppl: 78.738920, valid ppl: 93.095534, test ppl: 87.642715
-global step: 16100, learning rate: 0.0030000, training ppl: 79.383447, valid ppl: 92.811133, test ppl: 87.479388
-global step: 16200, learning rate: 0.0030000, training ppl: 80.240547, valid ppl: 93.472173, test ppl: 87.433309
-global step: 16300, learning rate: 0.0030000, training ppl: 79.229453, valid ppl: 93.447223, test ppl: 87.772039
-global step: 16400, learning rate: 0.0030000, training ppl: 78.116011, valid ppl: 94.254879, test ppl: 88.524397
-global step: 16500, learning rate: 0.0030000, training ppl: 78.688846, valid ppl: 93.279734, test ppl: 87.607626
-global step: 16600, learning rate: 0.0030000, training ppl: 82.440432, valid ppl: 92.669596, test ppl: 87.451490
-global step: 16700, learning rate: 0.0030000, training ppl: 79.057285, valid ppl: 92.894961, test ppl: 86.832545
-global step: 16800, learning rate: 0.0030000, training ppl: 77.408623, valid ppl: 92.202448, test ppl: 86.902009
-global step: 16900, learning rate: 0.0030000, training ppl: 77.783652, valid ppl: 94.392470, test ppl: 88.482959
-global step: 17000, learning rate: 0.0030000, training ppl: 84.724094, valid ppl: 91.808792, test ppl: 87.156406
-global step: 17100, learning rate: 0.0030000, training ppl: 79.692231, valid ppl: 92.778535, test ppl: 86.481567
-global step: 17200, learning rate: 0.0030000, training ppl: 76.501701, valid ppl: 93.428820, test ppl: 87.224204
-global step: 17300, learning rate: 0.0030000, training ppl: 76.823583, valid ppl: 93.282888, test ppl: 87.504876
-global step: 17400, learning rate: 0.0030000, training ppl: 87.396046, valid ppl: 91.388577, test ppl: 86.548282
-global step: 17500, learning rate: 0.0030000, training ppl: 78.880694, valid ppl: 91.684350, test ppl: 86.023831
-global step: 17600, learning rate: 0.0030000, training ppl: 75.745870, valid ppl: 92.189563, test ppl: 86.861028
-global step: 17700, learning rate: 0.0030000, training ppl: 76.778075, valid ppl: 91.850678, test ppl: 86.422567
-global step: 17800, learning rate: 0.0030000, training ppl: 77.391789, valid ppl: 91.750139, test ppl: 86.518446
-global step: 17900, learning rate: 0.0030000, training ppl: 77.909364, valid ppl: 91.646128, test ppl: 85.815792
-global step: 18000, learning rate: 0.0030000, training ppl: 74.970987, valid ppl: 92.944548, test ppl: 87.032081
-global step: 18100, learning rate: 0.0030000, training ppl: 76.194241, valid ppl: 91.296346, test ppl: 85.730992
-global step: 18200, learning rate: 0.0030000, training ppl: 76.986241, valid ppl: 93.044318, test ppl: 87.622207
-global step: 18300, learning rate: 0.0030000, training ppl: 77.870977, valid ppl: 90.492166, test ppl: 84.998984
-global step: 18400, learning rate: 0.0030000, training ppl: 74.427704, valid ppl: 91.682494, test ppl: 86.218351
-global step: 18500, learning rate: 0.0030000, training ppl: 75.049685, valid ppl: 91.352157, test ppl: 85.871776
-global step: 18600, learning rate: 0.0030000, training ppl: 75.966625, valid ppl: 91.303718, test ppl: 85.617080
-global step: 18700, learning rate: 0.0030000, training ppl: 77.624674, valid ppl: 90.537272, test ppl: 84.703209
-global step: 18800, learning rate: 0.0030000, training ppl: 74.722717, valid ppl: 90.962472, test ppl: 85.285868
-global step: 18900, learning rate: 0.0030000, training ppl: 74.918524, valid ppl: 91.022075, test ppl: 85.153207
-global step: 19000, learning rate: 0.0030000, training ppl: 75.468934, valid ppl: 90.534738, test ppl: 84.951694
-global step: 19100, learning rate: 0.0030000, training ppl: 77.350729, valid ppl: 90.817706, test ppl: 85.475669
-global step: 19200, learning rate: 0.0030000, training ppl: 75.492892, valid ppl: 90.392568, test ppl: 85.146773
-global step: 19300, learning rate: 0.0030000, training ppl: 74.571939, valid ppl: 90.774811, test ppl: 85.397048
-global step: 19400, learning rate: 0.0030000, training ppl: 75.126091, valid ppl: 91.221967, test ppl: 85.723372
-global step: 19500, learning rate: 0.0030000, training ppl: 77.201819, valid ppl: 90.735668, test ppl: 85.537652
-global step: 19600, learning rate: 0.0030000, training ppl: 75.287788, valid ppl: 90.354124, test ppl: 84.478893
-global step: 19700, learning rate: 0.0030000, training ppl: 73.599225, valid ppl: 90.152745, test ppl: 85.004660
-global step: 19800, learning rate: 0.0030000, training ppl: 73.941027, valid ppl: 89.856734, test ppl: 84.349770
-global step: 19900, learning rate: 0.0030000, training ppl: 81.624430, valid ppl: 89.749322, test ppl: 84.831444
-global step: 20000, learning rate: 0.0030000, training ppl: 76.136429, valid ppl: 90.719166, test ppl: 84.705085
-global step: 20100, learning rate: 0.0030000, training ppl: 72.917956, valid ppl: 91.102609, test ppl: 84.927589
-global step: 20200, learning rate: 0.0030000, training ppl: 73.153338, valid ppl: 90.948246, test ppl: 85.000892
-global step: 20300, learning rate: 0.0030000, training ppl: 83.362305, valid ppl: 91.420882, test ppl: 85.801564
-global step: 20400, learning rate: 0.0030000, training ppl: 75.351172, valid ppl: 90.376364, test ppl: 84.541098
-global step: 20500, learning rate: 0.0030000, training ppl: 72.323492, valid ppl: 89.649431, test ppl: 84.451605
-global step: 20600, learning rate: 0.0030000, training ppl: 73.368500, valid ppl: 90.296259, test ppl: 84.722916
-global step: 20700, learning rate: 0.0030000, training ppl: 73.991306, valid ppl: 90.323424, test ppl: 84.846475
-global step: 20800, learning rate: 0.0030000, training ppl: 75.547094, valid ppl: 89.672456, test ppl: 83.704480
-global step: 20900, learning rate: 0.0030000, training ppl: 71.859393, valid ppl: 90.536824, test ppl: 84.962724
-global step: 21000, learning rate: 0.0030000, training ppl: 72.772312, valid ppl: 89.754761, test ppl: 83.912910
-global step: 21100, learning rate: 0.0030000, training ppl: 73.569983, valid ppl: 89.712358, test ppl: 84.291571
-global step: 21200, learning rate: 0.0030000, training ppl: 74.250098, valid ppl: 89.319502, test ppl: 83.979475
-global step: 21300, learning rate: 0.0030000, training ppl: 71.074562, valid ppl: 90.055989, test ppl: 84.461504
-global step: 21400, learning rate: 0.0030000, training ppl: 71.851061, valid ppl: 90.385524, test ppl: 84.566578
-global step: 21500, learning rate: 0.0030000, training ppl: 72.901795, valid ppl: 89.877083, test ppl: 84.296530
-global step: 21600, learning rate: 0.0030000, training ppl: 73.502529, valid ppl: 88.893995, test ppl: 83.337870
-global step: 21700, learning rate: 0.0030000, training ppl: 70.692671, valid ppl: 90.382335, test ppl: 84.744521
-global step: 21800, learning rate: 0.0030000, training ppl: 71.507759, valid ppl: 89.387965, test ppl: 83.739159
-global step: 21900, learning rate: 0.0030000, training ppl: 72.183489, valid ppl: 89.464723, test ppl: 83.670250
-global step: 22000, learning rate: 0.0030000, training ppl: 73.924766, valid ppl: 88.859949, test ppl: 83.129183
-global step: 22100, learning rate: 0.0030000, training ppl: 71.967651, valid ppl: 88.848387, test ppl: 83.274492
-global step: 22200, learning rate: 0.0030000, training ppl: 71.576310, valid ppl: 90.005451, test ppl: 84.169444
-global step: 22300, learning rate: 0.0030000, training ppl: 72.168889, valid ppl: 88.939908, test ppl: 83.520005
-global step: 22400, learning rate: 0.0030000, training ppl: 73.259954, valid ppl: 88.841050, test ppl: 83.755714
-global step: 22500, learning rate: 0.0030000, training ppl: 72.046907, valid ppl: 88.807092, test ppl: 83.428816
-global step: 22600, learning rate: 0.0030000, training ppl: 70.741044, valid ppl: 88.792272, test ppl: 83.560569
-global step: 22700, learning rate: 0.0030000, training ppl: 71.281523, valid ppl: 89.204613, test ppl: 83.869413
-global step: 22800, learning rate: 0.0030000, training ppl: 77.643926, valid ppl: 88.952817, test ppl: 83.800733
-global step: 22900, learning rate: 0.0030000, training ppl: 73.279781, valid ppl: 89.251933, test ppl: 83.244222
-global step: 23000, learning rate: 0.0030000, training ppl: 70.339870, valid ppl: 89.283924, test ppl: 83.424938
-global step: 23100, learning rate: 0.0030000, training ppl: 70.640608, valid ppl: 89.252640, test ppl: 83.493566
-global step: 23200, learning rate: 0.0030000, training ppl: 78.442048, valid ppl: 87.873153, test ppl: 82.827454
-global step: 23300, learning rate: 0.0030000, training ppl: 72.628984, valid ppl: 89.560802, test ppl: 83.628287
-global step: 23400, learning rate: 0.0030000, training ppl: 69.584668, valid ppl: 89.454096, test ppl: 83.384138
-global step: 23500, learning rate: 0.0030000, training ppl: 70.361419, valid ppl: 89.008166, test ppl: 83.103917
-global step: 23600, learning rate: 0.0030000, training ppl: 87.213179, valid ppl: 87.932634, test ppl: 82.889856
-global step: 23700, learning rate: 0.0030000, training ppl: 72.318114, valid ppl: 88.131613, test ppl: 82.796996
-global step: 23800, learning rate: 0.0030000, training ppl: 69.024484, valid ppl: 88.953904, test ppl: 83.494063
-global step: 23900, learning rate: 0.0030000, training ppl: 69.999637, valid ppl: 89.688311, test ppl: 83.833347
-global step: 24000, learning rate: 0.0030000, training ppl: 71.002950, valid ppl: 88.158644, test ppl: 82.931034
-global step: 24100, learning rate: 0.0030000, training ppl: 71.768268, valid ppl: 88.179359, test ppl: 82.618762
-global step: 24200, learning rate: 0.0030000, training ppl: 68.803328, valid ppl: 88.252068, test ppl: 82.997574
-global step: 24300, learning rate: 0.0030000, training ppl: 69.670340, valid ppl: 88.003273, test ppl: 82.541174
-global step: 24400, learning rate: 0.0030000, training ppl: 70.683128, valid ppl: 88.781144, test ppl: 83.535668
-global step: 24500, learning rate: 0.0030000, training ppl: 71.497102, valid ppl: 87.790298, test ppl: 82.773544
-global step: 24600, learning rate: 0.0030000, training ppl: 68.757039, valid ppl: 87.731723, test ppl: 82.609608
-global step: 24700, learning rate: 0.0030000, training ppl: 69.444205, valid ppl: 88.158740, test ppl: 82.611260
-global step: 24800, learning rate: 0.0030000, training ppl: 70.269199, valid ppl: 88.409218, test ppl: 83.163192
-global step: 24900, learning rate: 0.0030000, training ppl: 70.730757, valid ppl: 86.966758, test ppl: 81.917033
-global step: 25000, learning rate: 0.0030000, training ppl: 69.229530, valid ppl: 87.777775, test ppl: 82.234028
-global step: 25100, learning rate: 0.0030000, training ppl: 68.694538, valid ppl: 88.640074, test ppl: 83.108723
-global step: 25200, learning rate: 0.0030000, training ppl: 69.298634, valid ppl: 87.983627, test ppl: 82.626344
-global step: 25300, learning rate: 0.0030000, training ppl: 71.623295, valid ppl: 87.220051, test ppl: 82.070992
-global step: 25400, learning rate: 0.0030000, training ppl: 70.267051, valid ppl: 88.215410, test ppl: 82.408071
-global step: 25500, learning rate: 0.0030000, training ppl: 68.778999, valid ppl: 87.994174, test ppl: 82.473408
-global step: 25600, learning rate: 0.0030000, training ppl: 69.360872, valid ppl: 87.907556, test ppl: 82.350577
-global step: 25700, learning rate: 0.0030000, training ppl: 73.206858, valid ppl: 87.328470, test ppl: 82.514840
-global step: 25800, learning rate: 0.0030000, training ppl: 70.448108, valid ppl: 87.507582, test ppl: 82.044629
-global step: 25900, learning rate: 0.0030000, training ppl: 68.225650, valid ppl: 88.392676, test ppl: 82.809347
-global step: 26000, learning rate: 0.0030000, training ppl: 68.555086, valid ppl: 87.839891, test ppl: 82.128601
-global step: 26100, learning rate: 0.0030000, training ppl: 76.888133, valid ppl: 86.883538, test ppl: 82.145669
-global step: 26200, learning rate: 0.0030000, training ppl: 70.713939, valid ppl: 88.054979, test ppl: 82.401143
-global step: 26300, learning rate: 0.0030000, training ppl: 67.866137, valid ppl: 87.525379, test ppl: 81.727456
-global step: 26400, learning rate: 0.0030000, training ppl: 68.496238, valid ppl: 87.700195, test ppl: 81.873823
-global step: 26500, learning rate: 0.0030000, training ppl: 77.295013, valid ppl: 87.733491, test ppl: 82.593991
-global step: 26600, learning rate: 0.0030000, training ppl: 70.177150, valid ppl: 88.103887, test ppl: 82.298756
-global step: 26700, learning rate: 0.0030000, training ppl: 67.068832, valid ppl: 88.483958, test ppl: 82.704616
-global step: 26800, learning rate: 0.0030000, training ppl: 68.031730, valid ppl: 87.748769, test ppl: 82.101195
-global step: 26900, learning rate: 0.0030000, training ppl: 68.877205, valid ppl: 87.506213, test ppl: 81.955279
-global step: 27000, learning rate: 0.0030000, training ppl: 70.107208, valid ppl: 87.386136, test ppl: 81.332567
-global step: 27100, learning rate: 0.0030000, training ppl: 67.128972, valid ppl: 87.816115, test ppl: 81.989260
-global step: 27200, learning rate: 0.0030000, training ppl: 67.940186, valid ppl: 87.488138, test ppl: 81.857043
-global step: 27300, learning rate: 0.0030000, training ppl: 68.924549, valid ppl: 87.978822, test ppl: 82.554929
-global step: 27400, learning rate: 0.0030000, training ppl: 69.919020, valid ppl: 87.603147, test ppl: 82.117575
-global step: 27500, learning rate: 0.0030000, training ppl: 67.319706, valid ppl: 87.436359, test ppl: 82.081680
-global step: 27600, learning rate: 0.0030000, training ppl: 67.682140, valid ppl: 87.776162, test ppl: 81.900155
-global step: 27700, learning rate: 0.0030000, training ppl: 68.442688, valid ppl: 88.045294, test ppl: 82.112762
-global step: 27800, learning rate: 0.0030000, training ppl: 69.853516, valid ppl: 86.817179, test ppl: 81.435655
-global step: 27900, learning rate: 0.0030000, training ppl: 67.568556, valid ppl: 87.213761, test ppl: 81.283053
-global step: 28000, learning rate: 0.0030000, training ppl: 67.381617, valid ppl: 87.870203, test ppl: 82.070748
-global step: 28100, learning rate: 0.0030000, training ppl: 67.986975, valid ppl: 87.570188, test ppl: 82.008674
-global step: 28200, learning rate: 0.0030000, training ppl: 69.818617, valid ppl: 86.265373, test ppl: 81.097934
-global step: 28300, learning rate: 0.0030000, training ppl: 68.385859, valid ppl: 88.044176, test ppl: 81.733244
-global step: 28400, learning rate: 0.0030000, training ppl: 66.941297, valid ppl: 87.264905, test ppl: 81.418758
-global step: 28500, learning rate: 0.0030000, training ppl: 67.497772, valid ppl: 86.968127, test ppl: 81.359916
-global step: 28600, learning rate: 0.0030000, training ppl: 73.148878, valid ppl: 86.281531, test ppl: 81.355474
-global step: 28700, learning rate: 0.0030000, training ppl: 68.827038, valid ppl: 87.472349, test ppl: 81.324804
-global step: 28800, learning rate: 0.0030000, training ppl: 66.465678, valid ppl: 87.041674, test ppl: 81.185357
-global step: 28900, learning rate: 0.0030000, training ppl: 66.811695, valid ppl: 86.831792, test ppl: 81.311129
-global step: 29000, learning rate: 0.0030000, training ppl: 75.597881, valid ppl: 85.942669, test ppl: 81.195798
-global step: 29100, learning rate: 0.0030000, training ppl: 69.110178, valid ppl: 86.966122, test ppl: 81.144481
-global step: 29200, learning rate: 0.0030000, training ppl: 66.121140, valid ppl: 86.802215, test ppl: 81.267212
-global step: 29300, learning rate: 0.0030000, training ppl: 66.839739, valid ppl: 86.903843, test ppl: 81.175083
-global step: 29400, learning rate: 0.0030000, training ppl: 74.099895, valid ppl: 86.146095, test ppl: 81.305276
-global step: 29500, learning rate: 0.0030000, training ppl: 68.277250, valid ppl: 86.530639, test ppl: 80.865806
-global step: 29600, learning rate: 0.0030000, training ppl: 65.729755, valid ppl: 86.984973, test ppl: 81.444534
-global step: 29700, learning rate: 0.0030000, training ppl: 66.633439, valid ppl: 87.037361, test ppl: 81.340407
-global step: 29800, learning rate: 0.0030000, training ppl: 67.478453, valid ppl: 87.445018, test ppl: 81.742120
-global step: 29900, learning rate: 0.0030000, training ppl: 69.093543, valid ppl: 86.397212, test ppl: 80.696155
-global step: 30000, learning rate: 0.0030000, training ppl: 65.862745, valid ppl: 87.078700, test ppl: 81.805578
-global step: 30100, learning rate: 0.0030000, training ppl: 66.565672, valid ppl: 86.726961, test ppl: 81.076564
-global step: 30200, learning rate: 0.0030000, training ppl: 67.332886, valid ppl: 86.816059, test ppl: 81.714656
-global step: 30300, learning rate: 0.0030000, training ppl: 67.336486, valid ppl: 86.163706, test ppl: 80.891013
-global step: 30400, learning rate: 0.0030000, training ppl: 64.894890, valid ppl: 87.117676, test ppl: 81.753500
-global step: 30500, learning rate: 0.0030000, training ppl: 65.695362, valid ppl: 86.693541, test ppl: 80.995459
-global step: 30600, learning rate: 0.0030000, training ppl: 66.429434, valid ppl: 87.639446, test ppl: 81.935275
-global step: 30700, learning rate: 0.0030000, training ppl: 68.185434, valid ppl: 85.841470, test ppl: 80.549957
-global step: 30800, learning rate: 0.0030000, training ppl: 66.036855, valid ppl: 86.526785, test ppl: 81.100140
-global step: 30900, learning rate: 0.0030000, training ppl: 65.932637, valid ppl: 86.667674, test ppl: 81.063401
-global step: 31000, learning rate: 0.0030000, training ppl: 66.408832, valid ppl: 86.438898, test ppl: 81.055412
-global step: 31100, learning rate: 0.0030000, training ppl: 67.742560, valid ppl: 87.045128, test ppl: 81.562727
-global step: 31200, learning rate: 0.0030000, training ppl: 66.799084, valid ppl: 86.920068, test ppl: 81.275641
-global step: 31300, learning rate: 0.0030000, training ppl: 65.644012, valid ppl: 86.707033, test ppl: 81.158305
-global step: 31400, learning rate: 0.0030000, training ppl: 66.163716, valid ppl: 86.689804, test ppl: 81.210190
-global step: 31500, learning rate: 0.0030000, training ppl: 68.846220, valid ppl: 85.969165, test ppl: 81.088606
-global step: 31600, learning rate: 0.0030000, training ppl: 66.499076, valid ppl: 86.638066, test ppl: 80.794362
-global step: 31700, learning rate: 0.0030000, training ppl: 64.963676, valid ppl: 86.450542, test ppl: 80.578836
-global step: 31800, learning rate: 0.0030000, training ppl: 65.457379, valid ppl: 86.796467, test ppl: 81.120615
-global step: 31900, learning rate: 0.0030000, training ppl: 72.752034, valid ppl: 85.962055, test ppl: 80.861146
-global step: 32000, learning rate: 0.0030000, training ppl: 67.544843, valid ppl: 86.548552, test ppl: 80.585781
-global step: 32100, learning rate: 0.0030000, training ppl: 64.809187, valid ppl: 87.190188, test ppl: 81.157939
-global step: 32200, learning rate: 0.0030000, training ppl: 65.322540, valid ppl: 86.633072, test ppl: 80.934587
-global step: 32300, learning rate: 0.0030000, training ppl: 72.632528, valid ppl: 85.651538, test ppl: 80.450511
-global step: 32400, learning rate: 0.0030000, training ppl: 66.823961, valid ppl: 86.054750, test ppl: 80.236819
-global step: 32500, learning rate: 0.0030000, training ppl: 64.410986, valid ppl: 86.162503, test ppl: 80.833909
-global step: 32600, learning rate: 0.0030000, training ppl: 65.303089, valid ppl: 86.894849, test ppl: 81.108487
-global step: 32700, learning rate: 0.0030000, training ppl: 65.954895, valid ppl: 86.430450, test ppl: 81.144838
-global step: 32800, learning rate: 0.0030000, training ppl: 67.215313, valid ppl: 86.259824, test ppl: 80.252167
-global step: 32900, learning rate: 0.0030000, training ppl: 64.279952, valid ppl: 86.979585, test ppl: 81.292892
-global step: 33000, learning rate: 0.0030000, training ppl: 65.108236, valid ppl: 86.342504, test ppl: 80.610789
-global step: 33100, learning rate: 0.0030000, training ppl: 65.776829, valid ppl: 86.658505, test ppl: 81.191436
-global step: 33200, learning rate: 0.0030000, training ppl: 66.635400, valid ppl: 86.089007, test ppl: 80.317934
-global step: 33300, learning rate: 0.0030000, training ppl: 64.072443, valid ppl: 87.076242, test ppl: 81.354626
-global step: 33400, learning rate: 0.0030000, training ppl: 64.771144, valid ppl: 86.947615, test ppl: 80.912388
-global step: 33500, learning rate: 0.0030000, training ppl: 65.495223, valid ppl: 87.471369, test ppl: 81.337163
-global step: 33600, learning rate: 0.0030000, training ppl: 66.590986, valid ppl: 85.897388, test ppl: 80.374725
-global step: 33700, learning rate: 0.0030000, training ppl: 64.871271, valid ppl: 86.543897, test ppl: 80.845149
-global step: 33800, learning rate: 0.0030000, training ppl: 64.714331, valid ppl: 86.607213, test ppl: 80.819829
-global step: 33900, learning rate: 0.0030000, training ppl: 65.368786, valid ppl: 87.327832, test ppl: 81.319282
-global step: 34000, learning rate: 0.0030000, training ppl: 66.059688, valid ppl: 86.210053, test ppl: 80.572414
-global step: 34100, learning rate: 0.0030000, training ppl: 64.722270, valid ppl: 86.623855, test ppl: 80.573779
-global step: 34200, learning rate: 0.0030000, training ppl: 63.890772, valid ppl: 87.329627, test ppl: 80.917042
-global step: 34300, learning rate: 0.0030000, training ppl: 64.482412, valid ppl: 86.835761, test ppl: 81.219140
-global step: 34400, learning rate: 0.0030000, training ppl: 68.131374, valid ppl: 86.827127, test ppl: 81.141387
-global step: 34500, learning rate: 0.0030000, training ppl: 65.613254, valid ppl: 85.592406, test ppl: 79.758475
-global step: 34600, learning rate: 0.0030000, training ppl: 64.009856, valid ppl: 86.753299, test ppl: 81.074860
-global step: 34700, learning rate: 0.0030000, training ppl: 64.366219, valid ppl: 86.770823, test ppl: 80.912075
-global step: 34800, learning rate: 0.0030000, training ppl: 71.085817, valid ppl: 85.717446, test ppl: 80.679506
-global step: 34900, learning rate: 0.0030000, training ppl: 66.336409, valid ppl: 86.394813, test ppl: 80.500431
-global step: 35000, learning rate: 0.0030000, training ppl: 63.883812, valid ppl: 86.916015, test ppl: 81.054581
-global step: 35100, learning rate: 0.0030000, training ppl: 64.493453, valid ppl: 86.640110, test ppl: 80.668293
-global step: 35200, learning rate: 0.0030000, training ppl: 72.528553, valid ppl: 86.443697, test ppl: 80.846377
-global step: 35300, learning rate: 0.0030000, training ppl: 65.759305, valid ppl: 86.172313, test ppl: 80.064653
-global step: 35400, learning rate: 0.0030000, training ppl: 63.117139, valid ppl: 86.439015, test ppl: 80.940036
-global step: 35500, learning rate: 0.0030000, training ppl: 64.207884, valid ppl: 86.297781, test ppl: 80.766041
-global step: 35600, learning rate: 0.0030000, training ppl: 64.902831, valid ppl: 86.601475, test ppl: 80.980457
-global step: 35700, learning rate: 0.0030000, training ppl: 65.724589, valid ppl: 86.071887, test ppl: 80.061075
-global step: 35800, learning rate: 0.0030000, training ppl: 62.995001, valid ppl: 86.954283, test ppl: 81.471500
-global step: 35900, learning rate: 0.0030000, training ppl: 63.691086, valid ppl: 86.099559, test ppl: 80.755696
-global step: 36000, learning rate: 0.0030000, training ppl: 64.580043, valid ppl: 86.403971, test ppl: 80.988813
-global step: 36100, learning rate: 0.0030000, training ppl: 65.403956, valid ppl: 85.555659, test ppl: 80.246271
-global step: 36200, learning rate: 0.0030000, training ppl: 62.937780, valid ppl: 85.820428, test ppl: 80.492996
-global step: 36300, learning rate: 0.0030000, training ppl: 63.699247, valid ppl: 86.165885, test ppl: 80.583296
-global step: 36400, learning rate: 0.0030000, training ppl: 64.428446, valid ppl: 86.235691, test ppl: 80.782760
-global step: 36500, learning rate: 0.0030000, training ppl: 66.458039, valid ppl: 86.021177, test ppl: 80.527460
-global step: 36600, learning rate: 0.0030000, training ppl: 63.858590, valid ppl: 85.859292, test ppl: 80.131624
-global step: 36700, learning rate: 0.0030000, training ppl: 63.971794, valid ppl: 86.433584, test ppl: 80.677682
-global step: 36800, learning rate: 0.0030000, training ppl: 64.371983, valid ppl: 86.590354, test ppl: 80.977080
-global step: 36900, learning rate: 0.0030000, training ppl: 65.074236, valid ppl: 85.665031, test ppl: 80.144941
-global step: 37000, learning rate: 0.0030000, training ppl: 63.787174, valid ppl: 85.443620, test ppl: 79.698349
-global step: 37100, learning rate: 0.0030000, training ppl: 63.023954, valid ppl: 85.963596, test ppl: 80.331885
-global step: 37200, learning rate: 0.0030000, training ppl: 63.562265, valid ppl: 85.853294, test ppl: 80.168080
-global step: 37300, learning rate: 0.0030000, training ppl: 66.650604, valid ppl: 84.904749, test ppl: 79.953087
-global step: 37400, learning rate: 0.0030000, training ppl: 65.142530, valid ppl: 85.678219, test ppl: 80.083304
-global step: 37500, learning rate: 0.0030000, training ppl: 63.194292, valid ppl: 86.326784, test ppl: 80.543853
-global step: 37600, learning rate: 0.0030000, training ppl: 63.458334, valid ppl: 85.774577, test ppl: 80.180101
-global step: 37700, learning rate: 0.0030000, training ppl: 69.568297, valid ppl: 85.400143, test ppl: 80.270781
-global step: 37800, learning rate: 0.0030000, training ppl: 65.518306, valid ppl: 85.364838, test ppl: 79.565219
-global step: 37900, learning rate: 0.0030000, training ppl: 62.866065, valid ppl: 86.421290, test ppl: 80.511867
-global step: 38000, learning rate: 0.0030000, training ppl: 63.268258, valid ppl: 85.938181, test ppl: 80.395859
-global step: 38100, learning rate: 0.0030000, training ppl: 72.435510, valid ppl: 85.169780, test ppl: 80.141667
-global step: 38200, learning rate: 0.0030000, training ppl: 65.032387, valid ppl: 85.738201, test ppl: 80.119469
-global step: 38300, learning rate: 0.0030000, training ppl: 62.533945, valid ppl: 85.267885, test ppl: 80.372921
-global step: 38400, learning rate: 0.0030000, training ppl: 63.423059, valid ppl: 85.813770, test ppl: 80.442244
-global step: 38500, learning rate: 0.0030000, training ppl: 64.013980, valid ppl: 86.205670, test ppl: 80.893790
-global step: 38600, learning rate: 0.0030000, training ppl: 64.514714, valid ppl: 85.284808, test ppl: 79.954841
-global step: 38700, learning rate: 0.0030000, training ppl: 61.860377, valid ppl: 85.484802, test ppl: 80.446251
-global step: 38800, learning rate: 0.0030000, training ppl: 62.824243, valid ppl: 85.243202, test ppl: 80.174146
-global step: 38900, learning rate: 0.0030000, training ppl: 63.533684, valid ppl: 86.013302, test ppl: 80.949735
-global step: 39000, learning rate: 0.0030000, training ppl: 64.226251, valid ppl: 84.857632, test ppl: 79.954851
-global step: 39100, learning rate: 0.0030000, training ppl: 62.145655, valid ppl: 85.854758, test ppl: 80.765466
-global step: 39200, learning rate: 0.0030000, training ppl: 62.839303, valid ppl: 85.758764, test ppl: 80.639432
-global step: 39300, learning rate: 0.0030000, training ppl: 63.546152, valid ppl: 86.309843, test ppl: 80.933819
-global step: 39400, learning rate: 0.0030000, training ppl: 64.871098, valid ppl: 85.331954, test ppl: 80.354122
-global step: 39500, learning rate: 0.0030000, training ppl: 62.571199, valid ppl: 86.032722, test ppl: 80.742944
-global step: 39600, learning rate: 0.0030000, training ppl: 62.724782, valid ppl: 85.556959, test ppl: 80.141133
-global step: 39700, learning rate: 0.0030000, training ppl: 63.437341, valid ppl: 86.200589, test ppl: 80.477951
-global step: 39800, learning rate: 0.0030000, training ppl: 64.456585, valid ppl: 85.392726, test ppl: 80.038002
-global step: 39900, learning rate: 0.0030000, training ppl: 62.923059, valid ppl: 85.486902, test ppl: 79.873637
-global step: 40000, learning rate: 0.0030000, training ppl: 62.373058, valid ppl: 86.351240, test ppl: 80.948532
-global step: 40100, learning rate: 0.0030000, training ppl: 62.911284, valid ppl: 85.365392, test ppl: 80.369363
-global step: 40200, learning rate: 0.0030000, training ppl: 64.487513, valid ppl: 85.047214, test ppl: 80.085767
-global step: 40300, learning rate: 0.0030000, training ppl: 63.297008, valid ppl: 85.204436, test ppl: 80.112287
-global step: 40400, learning rate: 0.0030000, training ppl: 61.996424, valid ppl: 85.743013, test ppl: 80.199086
-global step: 40500, learning rate: 0.0030000, training ppl: 62.589725, valid ppl: 86.332472, test ppl: 80.638681
-global step: 40600, learning rate: 0.0030000, training ppl: 69.013118, valid ppl: 85.447628, test ppl: 80.162206
-global step: 40700, learning rate: 0.0030000, training ppl: 64.504397, valid ppl: 84.934293, test ppl: 79.267106
-global step: 40800, learning rate: 0.0030000, training ppl: 62.104630, valid ppl: 86.121677, test ppl: 79.994869
-global step: 40900, learning rate: 0.0030000, training ppl: 62.468143, valid ppl: 85.716955, test ppl: 80.098078
-global step: 41000, learning rate: 0.0030000, training ppl: 68.924736, valid ppl: 85.301173, test ppl: 79.903646
-global step: 41100, learning rate: 0.0030000, training ppl: 63.856264, valid ppl: 85.788252, test ppl: 79.906699
-global step: 41200, learning rate: 0.0030000, training ppl: 61.585040, valid ppl: 85.844243, test ppl: 80.202023
-global step: 41300, learning rate: 0.0030000, training ppl: 62.456720, valid ppl: 85.364756, test ppl: 79.585255
-global step: 41400, learning rate: 0.0030000, training ppl: 63.105274, valid ppl: 85.662966, test ppl: 80.168313
-global step: 41500, learning rate: 0.0030000, training ppl: 63.662742, valid ppl: 85.019906, test ppl: 79.570414
-global step: 41600, learning rate: 0.0030000, training ppl: 61.214241, valid ppl: 85.961233, test ppl: 80.385580
-global step: 41700, learning rate: 0.0030000, training ppl: 62.000150, valid ppl: 85.362123, test ppl: 79.888828
-global step: 41800, learning rate: 0.0030000, training ppl: 62.760496, valid ppl: 85.554775, test ppl: 80.225587
-global step: 41900, learning rate: 0.0030000, training ppl: 63.223155, valid ppl: 85.029798, test ppl: 79.580247
-global step: 42000, learning rate: 0.0030000, training ppl: 60.748395, valid ppl: 85.711427, test ppl: 80.168744
-global step: 42100, learning rate: 0.0003000, training ppl: 61.954318, valid ppl: 83.582289, test ppl: 78.269769
-global step: 42200, learning rate: 0.0003000, training ppl: 62.086160, valid ppl: 82.713348, test ppl: 77.465162
-global step: 42300, learning rate: 0.0003000, training ppl: 57.629389, valid ppl: 82.398009, test ppl: 77.166973
-global step: 42400, learning rate: 0.0003000, training ppl: 53.272874, valid ppl: 82.595467, test ppl: 77.264112
-global step: 42500, learning rate: 0.0003000, training ppl: 55.042959, valid ppl: 82.309056, test ppl: 76.941865
-global step: 42600, learning rate: 0.0003000, training ppl: 56.073967, valid ppl: 82.017930, test ppl: 76.655296
-global step: 42700, learning rate: 0.0003000, training ppl: 55.351184, valid ppl: 81.938843, test ppl: 76.631114
-global step: 42800, learning rate: 0.0003000, training ppl: 52.802212, valid ppl: 82.112672, test ppl: 76.661686
-global step: 42900, learning rate: 0.0003000, training ppl: 53.306913, valid ppl: 82.008387, test ppl: 76.606437
-global step: 43000, learning rate: 0.0003000, training ppl: 54.451458, valid ppl: 81.915351, test ppl: 76.508885
-global step: 43100, learning rate: 0.0003000, training ppl: 54.818115, valid ppl: 81.698242, test ppl: 76.384777
-global step: 43200, learning rate: 0.0003000, training ppl: 52.568344, valid ppl: 81.893161, test ppl: 76.444082
-global step: 43300, learning rate: 0.0003000, training ppl: 52.065485, valid ppl: 81.902670, test ppl: 76.385263
-global step: 43400, learning rate: 0.0003000, training ppl: 53.225577, valid ppl: 81.755938, test ppl: 76.255766
-global step: 43500, learning rate: 0.0003000, training ppl: 56.808582, valid ppl: 81.697549, test ppl: 76.242254
-global step: 43600, learning rate: 0.0003000, training ppl: 52.844757, valid ppl: 81.686813, test ppl: 76.134510
-global step: 43700, learning rate: 0.0003000, training ppl: 51.113773, valid ppl: 81.789691, test ppl: 76.243933
-global step: 43800, learning rate: 0.0003000, training ppl: 52.016748, valid ppl: 81.598856, test ppl: 76.027698
-global step: 43900, learning rate: 0.0003000, training ppl: 57.133487, valid ppl: 81.545086, test ppl: 76.136098
-global step: 44000, learning rate: 0.0003000, training ppl: 52.333592, valid ppl: 81.488781, test ppl: 76.040381
-global step: 44100, learning rate: 0.0003000, training ppl: 50.117482, valid ppl: 81.758780, test ppl: 76.294856
-global step: 44200, learning rate: 0.0003000, training ppl: 51.519077, valid ppl: 81.535715, test ppl: 76.013056
-global step: 44300, learning rate: 0.0003000, training ppl: 64.055614, valid ppl: 81.492033, test ppl: 76.025222
-global step: 44400, learning rate: 0.0003000, training ppl: 52.053916, valid ppl: 81.280197, test ppl: 75.848026
-global step: 44500, learning rate: 0.0003000, training ppl: 49.398755, valid ppl: 81.770849, test ppl: 76.278943
-global step: 44600, learning rate: 0.0003000, training ppl: 50.999800, valid ppl: 81.411849, test ppl: 75.932298
-global step: 44700, learning rate: 0.0003000, training ppl: 51.899499, valid ppl: 81.508428, test ppl: 76.046737
-global step: 44800, learning rate: 0.0003000, training ppl: 50.792183, valid ppl: 81.435006, test ppl: 75.860416
-global step: 44900, learning rate: 0.0003000, training ppl: 48.351753, valid ppl: 81.753892, test ppl: 76.068951
-global step: 45000, learning rate: 0.0003000, training ppl: 49.962931, valid ppl: 81.544713, test ppl: 75.932596
-global step: 45100, learning rate: 0.0003000, training ppl: 50.917367, valid ppl: 81.593597, test ppl: 75.914038
-global step: 45200, learning rate: 0.0003000, training ppl: 50.956613, valid ppl: 81.361195, test ppl: 75.823953
-global step: 45300, learning rate: 0.0003000, training ppl: 48.713000, valid ppl: 81.630069, test ppl: 75.959820
-global step: 45400, learning rate: 0.0003000, training ppl: 49.990167, valid ppl: 81.471199, test ppl: 75.733917
-global step: 45500, learning rate: 0.0003000, training ppl: 50.737500, valid ppl: 81.400998, test ppl: 75.741992
-global step: 45600, learning rate: 0.0003000, training ppl: 50.642129, valid ppl: 81.366174, test ppl: 75.811459
-global step: 45700, learning rate: 0.0003000, training ppl: 48.980636, valid ppl: 81.413617, test ppl: 75.796441
-global step: 45800, learning rate: 0.0003000, training ppl: 49.281853, valid ppl: 81.612095, test ppl: 75.882835
-global step: 45900, learning rate: 0.0003000, training ppl: 50.095784, valid ppl: 81.637564, test ppl: 75.871759
-global step: 46000, learning rate: 0.0003000, training ppl: 50.836242, valid ppl: 81.566601, test ppl: 75.878507
-global step: 46100, learning rate: 0.0003000, training ppl: 49.671726, valid ppl: 81.649680, test ppl: 75.839845
-global step: 46200, learning rate: 0.0003000, training ppl: 49.055874, valid ppl: 81.787901, test ppl: 75.922745
-global step: 46300, learning rate: 0.0003000, training ppl: 49.638620, valid ppl: 81.558925, test ppl: 75.757371
-global step: 46400, learning rate: 0.0003000, training ppl: 52.500733, valid ppl: 81.402918, test ppl: 75.690138
-global step: 46500, learning rate: 0.0003000, training ppl: 49.688203, valid ppl: 81.472200, test ppl: 75.689032
-global step: 46600, learning rate: 0.0003000, training ppl: 48.462989, valid ppl: 81.723118, test ppl: 75.924963
-global step: 46700, learning rate: 0.0003000, training ppl: 49.007263, valid ppl: 81.392319, test ppl: 75.605465
-global step: 46800, learning rate: 0.0003000, training ppl: 54.534402, valid ppl: 81.557854, test ppl: 75.830552
-global step: 46900, learning rate: 0.0003000, training ppl: 49.485677, valid ppl: 81.460402, test ppl: 75.649811
-global step: 47000, learning rate: 0.0003000, training ppl: 47.634022, valid ppl: 81.601679, test ppl: 75.796585
-global step: 47100, learning rate: 0.0003000, training ppl: 48.649744, valid ppl: 81.595817, test ppl: 75.730944
-global step: 47200, learning rate: 0.0003000, training ppl: 56.963419, valid ppl: 81.445165, test ppl: 75.720550
-global step: 47300, learning rate: 0.0003000, training ppl: 49.288619, valid ppl: 81.383856, test ppl: 75.607867
-global step: 47400, learning rate: 0.0003000, training ppl: 46.938077, valid ppl: 81.685889, test ppl: 75.814042
-global step: 47500, learning rate: 0.0000300, training ppl: 48.231588, valid ppl: 81.623973, test ppl: 75.761616
-global step: 47600, learning rate: 0.0000300, training ppl: 48.949097, valid ppl: 81.585218, test ppl: 75.713446
-global step: 47700, learning rate: 0.0000300, training ppl: 48.052073, valid ppl: 81.520742, test ppl: 75.664331
-global step: 47800, learning rate: 0.0000300, training ppl: 45.630964, valid ppl: 81.508384, test ppl: 75.649616
-global step: 47900, learning rate: 0.0000300, training ppl: 47.429795, valid ppl: 81.486836, test ppl: 75.642348
-global step: 48000, learning rate: 0.0000300, training ppl: 48.411902, valid ppl: 81.468199, test ppl: 75.628292
-global step: 48100, learning rate: 0.0000300, training ppl: 48.123095, valid ppl: 81.469180, test ppl: 75.628886
-global step: 48200, learning rate: 0.0000300, training ppl: 46.038599, valid ppl: 81.507455, test ppl: 75.639458
-global step: 48300, learning rate: 0.0000300, training ppl: 47.360554, valid ppl: 81.492603, test ppl: 75.643571
-global step: 48400, learning rate: 0.0000300, training ppl: 48.200476, valid ppl: 81.471131, test ppl: 75.613403
-global step: 48500, learning rate: 0.0000300, training ppl: 47.994719, valid ppl: 81.447937, test ppl: 75.576929
-global step: 48600, learning rate: 0.0000300, training ppl: 46.149144, valid ppl: 81.407328, test ppl: 75.543792
-global step: 48700, learning rate: 0.0000300, training ppl: 46.629785, valid ppl: 81.424010, test ppl: 75.565584
-global step: 48800, learning rate: 0.0000300, training ppl: 47.699008, valid ppl: 81.394673, test ppl: 75.546254
-global step: 48900, learning rate: 0.0000300, training ppl: 48.484657, valid ppl: 81.363367, test ppl: 75.534641
-global step: 49000, learning rate: 0.0000300, training ppl: 47.096733, valid ppl: 81.386713, test ppl: 75.544716
-global step: 49100, learning rate: 0.0000300, training ppl: 46.711846, valid ppl: 81.437545, test ppl: 75.580952
-global step: 49200, learning rate: 0.0000300, training ppl: 47.645205, valid ppl: 81.411039, test ppl: 75.545185
-global step: 49300, learning rate: 0.0000300, training ppl: 50.705100, valid ppl: 81.407072, test ppl: 75.550469
-global step: 49400, learning rate: 0.0000300, training ppl: 47.698968, valid ppl: 81.403986, test ppl: 75.548538
-global step: 49500, learning rate: 0.0000300, training ppl: 46.447123, valid ppl: 81.428802, test ppl: 75.574753
-global step: 49600, learning rate: 0.0000300, training ppl: 47.447309, valid ppl: 81.389796, test ppl: 75.549333
-global step: 49700, learning rate: 0.0000300, training ppl: 53.614209, valid ppl: 81.396816, test ppl: 75.563720
-global step: 49800, learning rate: 0.0000300, training ppl: 48.201626, valid ppl: 81.381706, test ppl: 75.545841
-global step: 49900, learning rate: 0.0000300, training ppl: 46.124436, valid ppl: 81.407851, test ppl: 75.573183
-global step: 50000, learning rate: 0.0000300, training ppl: 47.233186, valid ppl: 81.410989, test ppl: 75.569559
-global step: 50100, learning rate: 0.0000300, training ppl: 52.715687, valid ppl: 81.424277, test ppl: 75.565227
-global step: 50200, learning rate: 0.0000300, training ppl: 48.173348, valid ppl: 81.404486, test ppl: 75.557559
-global step: 50300, learning rate: 0.0000300, training ppl: 46.135780, valid ppl: 81.479535, test ppl: 75.620411
-global step: 50400, learning rate: 0.0000300, training ppl: 47.387331, valid ppl: 81.428454, test ppl: 75.573270
-global step: 50500, learning rate: 0.0000030, training ppl: 48.124211, valid ppl: 81.425169, test ppl: 75.568913
-global step: 50600, learning rate: 0.0000030, training ppl: 48.006468, valid ppl: 81.422223, test ppl: 75.567526
-global step: 50700, learning rate: 0.0000030, training ppl: 45.475303, valid ppl: 81.426313, test ppl: 75.570354
-global step: 50800, learning rate: 0.0000030, training ppl: 47.053620, valid ppl: 81.424035, test ppl: 75.568514
-global step: 50900, learning rate: 0.0000030, training ppl: 47.974001, valid ppl: 81.422587, test ppl: 75.568400
-global step: 51000, learning rate: 0.0000030, training ppl: 47.675976, valid ppl: 81.421216, test ppl: 75.565330
-global step: 51100, learning rate: 0.0000030, training ppl: 45.762162, valid ppl: 81.423956, test ppl: 75.568546
-global step: 51200, learning rate: 0.0000030, training ppl: 47.201360, valid ppl: 81.426421, test ppl: 75.571783
-global step: 51300, learning rate: 0.0000030, training ppl: 48.030055, valid ppl: 81.423469, test ppl: 75.569491
-global step: 51400, learning rate: 0.0000030, training ppl: 48.911516, valid ppl: 81.420131, test ppl: 75.566838
-global step: 51500, learning rate: 0.0000030, training ppl: 46.446446, valid ppl: 81.421043, test ppl: 75.566735
-global step: 51600, learning rate: 0.0000030, training ppl: 46.882822, valid ppl: 81.425748, test ppl: 75.570335
-global step: 51700, learning rate: 0.0000030, training ppl: 47.666665, valid ppl: 81.421259, test ppl: 75.566709
-global step: 51800, learning rate: 0.0000030, training ppl: 48.629740, valid ppl: 81.420308, test ppl: 75.565525
-global step: 51900, learning rate: 0.0000030, training ppl: 47.068455, valid ppl: 81.420989, test ppl: 75.566319
-global step: 52000, learning rate: 0.0000030, training ppl: 46.595485, valid ppl: 81.422622, test ppl: 75.568330
-global step: 52100, learning rate: 0.0000030, training ppl: 47.569918, valid ppl: 81.418579, test ppl: 75.566381
-global step: 52200, learning rate: 0.0000030, training ppl: 49.529975, valid ppl: 81.416209, test ppl: 75.563501
-global step: 52300, learning rate: 0.0000030, training ppl: 47.444877, valid ppl: 81.415349, test ppl: 75.561590
-global step: 52400, learning rate: 0.0000030, training ppl: 46.401371, valid ppl: 81.418408, test ppl: 75.565270
-global step: 52500, learning rate: 0.0000030, training ppl: 47.184129, valid ppl: 81.413826, test ppl: 75.562559
-global step: 52600, learning rate: 0.0000030, training ppl: 51.972716, valid ppl: 81.412504, test ppl: 75.562357
-global step: 52700, learning rate: 0.0000030, training ppl: 48.014449, valid ppl: 81.412879, test ppl: 75.561953
-global step: 52800, learning rate: 0.0000030, training ppl: 46.014496, valid ppl: 81.416357, test ppl: 75.564754
-global step: 52900, learning rate: 0.0000030, training ppl: 46.970272, valid ppl: 81.411791, test ppl: 75.561458
-global step: 53000, learning rate: 0.0000030, training ppl: 52.768819, valid ppl: 81.407207, test ppl: 75.558077
-global step: 53100, learning rate: 0.0000030, training ppl: 47.783017, valid ppl: 81.405490, test ppl: 75.556661
-global step: 53200, learning rate: 0.0000030, training ppl: 45.561243, valid ppl: 81.409399, test ppl: 75.560387
-global step: 53300, learning rate: 0.0000030, training ppl: 47.018383, valid ppl: 81.410969, test ppl: 75.560959
-global step: 53400, learning rate: 0.0000030, training ppl: 47.779840, valid ppl: 81.407311, test ppl: 75.557095
-global step: 53500, learning rate: 0.0000003, training ppl: 47.904952, valid ppl: 81.407139, test ppl: 75.556952
-global step: 53600, learning rate: 0.0000003, training ppl: 45.511909, valid ppl: 81.407211, test ppl: 75.557035
-global step: 53700, learning rate: 0.0000003, training ppl: 46.885310, valid ppl: 81.407194, test ppl: 75.556897
-global step: 53800, learning rate: 0.0000003, training ppl: 47.870283, valid ppl: 81.407035, test ppl: 75.556892
-global step: 53900, learning rate: 0.0000003, training ppl: 48.141681, valid ppl: 80.736351, test ppl: 75.113396, update_loss: 202.548842
- global step: 54000, learning rate: 0.0000003, training ppl: 46.419461, valid ppl: 80.885008, test ppl: 75.299481, update_loss: 107.947170
- global step: 54100, learning rate: 0.0000003, training ppl: 48.012505, valid ppl: 81.036890, test ppl: 75.481084, update_loss: 75.941943
- global step: 54200, learning rate: 0.0000003, training ppl: 49.081249, valid ppl: 81.183086, test ppl: 75.669489, update_loss: 59.286339
- global step: 54300, learning rate: 0.0000003, training ppl: 51.244008, valid ppl: 84.369647, test ppl: 78.951013, update_loss: 206.396350
- global step: 54400, learning rate: 0.0000003, training ppl: 52.404826, valid ppl: 87.149306, test ppl: 81.638277, update_loss: 116.163240
- global step: 54500, learning rate: 0.0000003, training ppl: 53.946235, valid ppl: 87.575922, test ppl: 82.052162, update_loss: 75.727675
- global step: 54600, learning rate: 0.0000003, training ppl: 55.526579, valid ppl: 87.942011, test ppl: 82.410116, update_loss: 56.816954
- global step: 54700, learning rate: 0.0000003, training ppl: 59.338767, valid ppl: 92.184076, test ppl: 86.534700, update_loss: 116.829051
- global step: 54800, learning rate: 0.0000003, training ppl: 59.625701, valid ppl: 93.526173, test ppl: 87.830312, update_loss: 47.029743
- global step: 54900, learning rate: 0.0000003, training ppl: 60.344142, valid ppl: 94.153832, test ppl: 88.428341, update_loss: 30.877188
- global step: 55000, learning rate: 0.0000003, training ppl: 62.032149, valid ppl: 94.695590, test ppl: 88.951995, update_loss: 23.496226
- global step: 55100, learning rate: 0.0000003, training ppl: 66.449482, valid ppl: 100.296491, test ppl: 94.351205, update_loss: 121.205928
- global step: 55200, learning rate: 0.0000003, training ppl: 68.538681, valid ppl: 104.155608, test ppl: 98.044107, update_loss: 43.744439
- global step: 55300, learning rate: 0.0000003, training ppl: 68.869770, valid ppl: 105.234420, test ppl: 99.068617, update_loss: 27.559383
- global step: 55400, learning rate: 0.0000003, training ppl: 70.892307, valid ppl: 106.160924, test ppl: 99.959131, update_loss: 20.647536
- global step: 55500, learning rate: 0.0000003, training ppl: 80.279181, valid ppl: 112.371997, test ppl: 105.897448, update_loss: 121.170326
- global step: 55600, learning rate: 0.0000003, training ppl: 84.490377, valid ppl: 125.533077, test ppl: 118.426593, update_loss: 46.333540
- global step: 55700, learning rate: 0.0000003, training ppl: 84.943967, valid ppl: 127.537657, test ppl: 120.319385, update_loss: 27.613834
- global step: 55800, learning rate: 0.0000003, training ppl: 88.214434, valid ppl: 129.272674, test ppl: 121.966127, update_loss: 20.182846
+global step: 100, learning rate: 0.0030000, training ppl: 3017.037610, valid ppl: 1051.363366, test ppl: 956.080984
+global step: 200, learning rate: 0.0030000, training ppl: 2164.582152, valid ppl: 888.321377, test ppl: 820.340321
+global step: 300, learning rate: 0.0030000, training ppl: 1627.318077, valid ppl: 845.263002, test ppl: 757.839086
+global step: 400, learning rate: 0.0030000, training ppl: 1357.213413, valid ppl: 664.008863, test ppl: 624.945847
+global step: 500, learning rate: 0.0030000, training ppl: 702.294870, valid ppl: 590.905200, test ppl: 548.185829
+global step: 600, learning rate: 0.0030000, training ppl: 649.074827, valid ppl: 554.473670, test ppl: 506.605678
+global step: 700, learning rate: 0.0030000, training ppl: 617.041807, valid ppl: 466.895209, test ppl: 432.455893
+global step: 800, learning rate: 0.0030000, training ppl: 592.312543, valid ppl: 422.981270, test ppl: 393.639186
+global step: 900, learning rate: 0.0030000, training ppl: 487.095514, valid ppl: 418.756985, test ppl: 391.438858
+global step: 1000, learning rate: 0.0030000, training ppl: 447.200814, valid ppl: 379.867460, test ppl: 360.383988
+global step: 1100, learning rate: 0.0030000, training ppl: 437.919899, valid ppl: 334.718493, test ppl: 312.917124
+global step: 1200, learning rate: 0.0030000, training ppl: 418.772698, valid ppl: 315.484545, test ppl: 295.546320
+global step: 1300, learning rate: 0.0030000, training ppl: 354.971465, valid ppl: 313.533802, test ppl: 292.158545
+global step: 1400, learning rate: 0.0030000, training ppl: 333.969542, valid ppl: 278.011735, test ppl: 260.969966
+global step: 1500, learning rate: 0.0030000, training ppl: 327.200991, valid ppl: 275.401908, test ppl: 256.262961
+global step: 1600, learning rate: 0.0030000, training ppl: 317.961095, valid ppl: 250.615866, test ppl: 236.769910
+global step: 1700, learning rate: 0.0030000, training ppl: 279.899576, valid ppl: 247.773002, test ppl: 232.419696
+global step: 1800, learning rate: 0.0030000, training ppl: 263.835403, valid ppl: 230.997286, test ppl: 215.881392
+global step: 1900, learning rate: 0.0030000, training ppl: 254.996767, valid ppl: 222.434224, test ppl: 209.444009
+global step: 2000, learning rate: 0.0030000, training ppl: 249.566407, valid ppl: 211.039258, test ppl: 199.468003
+global step: 2100, learning rate: 0.0030000, training ppl: 239.200351, valid ppl: 209.954833, test ppl: 199.253028
+global step: 2200, learning rate: 0.0030000, training ppl: 221.018570, valid ppl: 198.658985, test ppl: 184.862531
+global step: 2300, learning rate: 0.0030000, training ppl: 210.209990, valid ppl: 189.512990, test ppl: 178.003481
+global step: 2400, learning rate: 0.0030000, training ppl: 207.039481, valid ppl: 184.644340, test ppl: 174.259194
+global step: 2500, learning rate: 0.0030000, training ppl: 208.934219, valid ppl: 182.426185, test ppl: 170.171200
+global step: 2600, learning rate: 0.0030000, training ppl: 188.313201, valid ppl: 178.050432, test ppl: 167.710412
+global step: 2700, learning rate: 0.0030000, training ppl: 179.964339, valid ppl: 171.880718, test ppl: 160.553677
+global step: 2800, learning rate: 0.0030000, training ppl: 180.137025, valid ppl: 167.829143, test ppl: 157.688722
+global step: 2900, learning rate: 0.0030000, training ppl: 213.973026, valid ppl: 162.732905, test ppl: 153.084528
+global step: 3000, learning rate: 0.0030000, training ppl: 168.845429, valid ppl: 164.009970, test ppl: 154.238830
+global step: 3100, learning rate: 0.0030000, training ppl: 160.667117, valid ppl: 158.519383, test ppl: 148.627299
+global step: 3200, learning rate: 0.0030000, training ppl: 161.298524, valid ppl: 154.171927, test ppl: 144.267484
+global step: 3300, learning rate: 0.0030000, training ppl: 160.858004, valid ppl: 150.351698, test ppl: 142.971917
+global step: 3400, learning rate: 0.0030000, training ppl: 184.081825, valid ppl: 151.487442, test ppl: 140.990007
+global step: 3500, learning rate: 0.0030000, training ppl: 163.056347, valid ppl: 149.543890, test ppl: 141.322257
+global step: 3600, learning rate: 0.0030000, training ppl: 159.749120, valid ppl: 144.451771, test ppl: 136.266463
+global step: 3700, learning rate: 0.0030000, training ppl: 157.274849, valid ppl: 143.246456, test ppl: 136.336519
+global step: 3800, learning rate: 0.0030000, training ppl: 147.117416, valid ppl: 140.582804, test ppl: 131.538886
+global step: 3900, learning rate: 0.0030000, training ppl: 139.740987, valid ppl: 137.075370, test ppl: 130.974467
+global step: 4000, learning rate: 0.0030000, training ppl: 140.661445, valid ppl: 135.816997, test ppl: 128.018519
+global step: 4100, learning rate: 0.0030000, training ppl: 140.546570, valid ppl: 136.732036, test ppl: 128.411292
+global step: 4200, learning rate: 0.0030000, training ppl: 138.801120, valid ppl: 134.983054, test ppl: 126.522877
+global step: 4300, learning rate: 0.0030000, training ppl: 132.825519, valid ppl: 129.788885, test ppl: 123.094193
+global step: 4400, learning rate: 0.0030000, training ppl: 131.787745, valid ppl: 130.842199, test ppl: 124.703076
+global step: 4500, learning rate: 0.0030000, training ppl: 131.876144, valid ppl: 128.701775, test ppl: 121.192194
+global step: 4600, learning rate: 0.0030000, training ppl: 131.987508, valid ppl: 129.185948, test ppl: 120.972665
+global step: 4700, learning rate: 0.0030000, training ppl: 127.948043, valid ppl: 126.444283, test ppl: 119.384080
+global step: 4800, learning rate: 0.0030000, training ppl: 125.471658, valid ppl: 124.755001, test ppl: 117.943245
+global step: 4900, learning rate: 0.0030000, training ppl: 125.419996, valid ppl: 124.691272, test ppl: 117.063628
+global step: 5000, learning rate: 0.0030000, training ppl: 130.681295, valid ppl: 124.448897, test ppl: 118.217542
+global step: 5100, learning rate: 0.0030000, training ppl: 123.922887, valid ppl: 122.608729, test ppl: 115.245511
+global step: 5200, learning rate: 0.0030000, training ppl: 119.534856, valid ppl: 121.947211, test ppl: 114.986098
+global step: 5300, learning rate: 0.0030000, training ppl: 119.883192, valid ppl: 121.651854, test ppl: 114.152419
+global step: 5400, learning rate: 0.0030000, training ppl: 130.655159, valid ppl: 119.338617, test ppl: 113.247150
+global step: 5500, learning rate: 0.0030000, training ppl: 119.614267, valid ppl: 122.070296, test ppl: 114.765470
+global step: 5600, learning rate: 0.0030000, training ppl: 114.613494, valid ppl: 118.181384, test ppl: 110.905062
+global step: 5700, learning rate: 0.0030000, training ppl: 115.295997, valid ppl: 117.750882, test ppl: 110.757933
+global step: 5800, learning rate: 0.0030000, training ppl: 133.730475, valid ppl: 117.526844, test ppl: 111.401125
+global step: 5900, learning rate: 0.0030000, training ppl: 116.073322, valid ppl: 116.569530, test ppl: 109.712124
+global step: 6000, learning rate: 0.0030000, training ppl: 111.090053, valid ppl: 116.167783, test ppl: 109.883948
+global step: 6100, learning rate: 0.0030000, training ppl: 112.031744, valid ppl: 115.870371, test ppl: 109.413718
+global step: 6200, learning rate: 0.0030000, training ppl: 112.675650, valid ppl: 114.671608, test ppl: 108.848940
+global step: 6300, learning rate: 0.0030000, training ppl: 113.219266, valid ppl: 114.943973, test ppl: 107.593175
+global step: 6400, learning rate: 0.0030000, training ppl: 107.602372, valid ppl: 113.541645, test ppl: 106.869245
+global step: 6500, learning rate: 0.0030000, training ppl: 108.631631, valid ppl: 114.563659, test ppl: 107.785893
+global step: 6600, learning rate: 0.0030000, training ppl: 109.688883, valid ppl: 112.591920, test ppl: 106.664578
+global step: 6700, learning rate: 0.0030000, training ppl: 109.168058, valid ppl: 112.789012, test ppl: 105.852211
+global step: 6800, learning rate: 0.0030000, training ppl: 105.225630, valid ppl: 111.383179, test ppl: 105.410830
+global step: 6900, learning rate: 0.0030000, training ppl: 106.253688, valid ppl: 111.616430, test ppl: 104.649296
+global step: 7000, learning rate: 0.0030000, training ppl: 106.813830, valid ppl: 110.645605, test ppl: 104.087372
+global step: 7100, learning rate: 0.0030000, training ppl: 108.742885, valid ppl: 109.312589, test ppl: 103.037597
+global step: 7200, learning rate: 0.0030000, training ppl: 104.846195, valid ppl: 109.448447, test ppl: 102.880700
+global step: 7300, learning rate: 0.0030000, training ppl: 103.972268, valid ppl: 108.239311, test ppl: 102.763916
+global step: 7400, learning rate: 0.0030000, training ppl: 104.477030, valid ppl: 109.733344, test ppl: 103.567315
+global step: 7500, learning rate: 0.0030000, training ppl: 105.308564, valid ppl: 108.197488, test ppl: 101.494891
+global step: 7600, learning rate: 0.0030000, training ppl: 102.406948, valid ppl: 108.707541, test ppl: 102.218657
+global step: 7700, learning rate: 0.0030000, training ppl: 100.656198, valid ppl: 107.986368, test ppl: 102.058472
+global step: 7800, learning rate: 0.0030000, training ppl: 101.293678, valid ppl: 108.355708, test ppl: 102.178051
+global step: 7900, learning rate: 0.0030000, training ppl: 107.948286, valid ppl: 106.867632, test ppl: 100.803105
+global step: 8000, learning rate: 0.0030000, training ppl: 101.748317, valid ppl: 107.561374, test ppl: 100.650023
+global step: 8100, learning rate: 0.0030000, training ppl: 98.423831, valid ppl: 105.071186, test ppl: 99.230608
+global step: 8200, learning rate: 0.0030000, training ppl: 98.818628, valid ppl: 106.240364, test ppl: 100.429294
+global step: 8300, learning rate: 0.0030000, training ppl: 111.364630, valid ppl: 105.903266, test ppl: 100.927713
+global step: 8400, learning rate: 0.0030000, training ppl: 101.059859, valid ppl: 104.958366, test ppl: 98.126419
+global step: 8500, learning rate: 0.0030000, training ppl: 96.722209, valid ppl: 106.083454, test ppl: 99.314031
+global step: 8600, learning rate: 0.0030000, training ppl: 97.353293, valid ppl: 104.859935, test ppl: 98.546876
+global step: 8700, learning rate: 0.0030000, training ppl: 109.506434, valid ppl: 102.455549, test ppl: 96.932064
+global step: 8800, learning rate: 0.0030000, training ppl: 98.590358, valid ppl: 104.994001, test ppl: 97.950653
+global step: 8900, learning rate: 0.0030000, training ppl: 94.631211, valid ppl: 104.341434, test ppl: 98.350728
+global step: 9000, learning rate: 0.0030000, training ppl: 95.443441, valid ppl: 103.556708, test ppl: 97.719840
+global step: 9100, learning rate: 0.0030000, training ppl: 95.867707, valid ppl: 103.883581, test ppl: 98.034264
+global step: 9200, learning rate: 0.0030000, training ppl: 96.257187, valid ppl: 103.045598, test ppl: 96.013952
+global step: 9300, learning rate: 0.0030000, training ppl: 92.196520, valid ppl: 102.444103, test ppl: 96.381943
+global step: 9400, learning rate: 0.0030000, training ppl: 93.234691, valid ppl: 102.924179, test ppl: 96.474492
+global step: 9500, learning rate: 0.0030000, training ppl: 94.414755, valid ppl: 102.846672, test ppl: 96.785593
+global step: 9600, learning rate: 0.0030000, training ppl: 94.460950, valid ppl: 101.930291, test ppl: 95.506460
+global step: 9700, learning rate: 0.0030000, training ppl: 91.059244, valid ppl: 101.893788, test ppl: 95.743067
+global step: 9800, learning rate: 0.0030000, training ppl: 92.239308, valid ppl: 102.319000, test ppl: 95.727373
+global step: 9900, learning rate: 0.0030000, training ppl: 92.939492, valid ppl: 101.535726, test ppl: 95.141158
+global step: 10000, learning rate: 0.0030000, training ppl: 93.739488, valid ppl: 101.674869, test ppl: 94.670755
+global step: 10100, learning rate: 0.0030000, training ppl: 90.438621, valid ppl: 101.221364, test ppl: 94.876332
+global step: 10200, learning rate: 0.0030000, training ppl: 90.360415, valid ppl: 100.457511, test ppl: 93.960185
+global step: 10300, learning rate: 0.0030000, training ppl: 90.975751, valid ppl: 100.617189, test ppl: 94.404622
+global step: 10400, learning rate: 0.0030000, training ppl: 93.451534, valid ppl: 100.545138, test ppl: 94.547855
+global step: 10500, learning rate: 0.0030000, training ppl: 90.846568, valid ppl: 100.299125, test ppl: 94.369394
+global step: 10600, learning rate: 0.0030000, training ppl: 89.033407, valid ppl: 100.281261, test ppl: 93.682909
+global step: 10700, learning rate: 0.0030000, training ppl: 89.824004, valid ppl: 100.752169, test ppl: 94.270250
+global step: 10800, learning rate: 0.0030000, training ppl: 94.319936, valid ppl: 99.181756, test ppl: 93.753761
+global step: 10900, learning rate: 0.0030000, training ppl: 90.182534, valid ppl: 99.257781, test ppl: 92.817642
+global step: 11000, learning rate: 0.0030000, training ppl: 87.554264, valid ppl: 98.259957, test ppl: 92.245528
+global step: 11100, learning rate: 0.0030000, training ppl: 88.080857, valid ppl: 100.246397, test ppl: 94.068926
+global step: 11200, learning rate: 0.0030000, training ppl: 96.794106, valid ppl: 97.496380, test ppl: 92.381862
+global step: 11300, learning rate: 0.0030000, training ppl: 89.799784, valid ppl: 99.433909, test ppl: 92.814224
+global step: 11400, learning rate: 0.0030000, training ppl: 85.842538, valid ppl: 98.466559, test ppl: 91.950474
+global step: 11500, learning rate: 0.0030000, training ppl: 86.543906, valid ppl: 99.295648, test ppl: 92.980578
+global step: 11600, learning rate: 0.0030000, training ppl: 96.877934, valid ppl: 98.445885, test ppl: 92.784719
+global step: 11700, learning rate: 0.0030000, training ppl: 88.292385, valid ppl: 98.168418, test ppl: 91.390592
+global step: 11800, learning rate: 0.0030000, training ppl: 84.497607, valid ppl: 98.598137, test ppl: 92.351494
+global step: 11900, learning rate: 0.0030000, training ppl: 85.673619, valid ppl: 98.961091, test ppl: 92.691899
+global step: 12000, learning rate: 0.0030000, training ppl: 86.567676, valid ppl: 97.428813, test ppl: 91.551183
+global step: 12100, learning rate: 0.0030000, training ppl: 87.510446, valid ppl: 96.645273, test ppl: 90.101236
+global step: 12200, learning rate: 0.0030000, training ppl: 83.618599, valid ppl: 98.491723, test ppl: 92.289102
+global step: 12300, learning rate: 0.0030000, training ppl: 84.732555, valid ppl: 97.236865, test ppl: 91.474559
+global step: 12400, learning rate: 0.0030000, training ppl: 85.634341, valid ppl: 96.483085, test ppl: 90.739257
+global step: 12500, learning rate: 0.0030000, training ppl: 85.628304, valid ppl: 98.248713, test ppl: 91.630999
+global step: 12600, learning rate: 0.0030000, training ppl: 82.526292, valid ppl: 96.465998, test ppl: 90.623162
+global step: 12700, learning rate: 0.0030000, training ppl: 83.431970, valid ppl: 96.305085, test ppl: 90.308223
+global step: 12800, learning rate: 0.0030000, training ppl: 84.240834, valid ppl: 96.409772, test ppl: 90.504632
+global step: 12900, learning rate: 0.0030000, training ppl: 85.782492, valid ppl: 96.609883, test ppl: 90.637861
+global step: 13000, learning rate: 0.0030000, training ppl: 82.540942, valid ppl: 96.169563, test ppl: 90.084953
+global step: 13100, learning rate: 0.0030000, training ppl: 82.629016, valid ppl: 96.230601, test ppl: 89.830767
+global step: 13200, learning rate: 0.0030000, training ppl: 83.557434, valid ppl: 97.164524, test ppl: 90.487439
+global step: 13300, learning rate: 0.0030000, training ppl: 85.059987, valid ppl: 96.610112, test ppl: 89.838924
+global step: 13400, learning rate: 0.0030000, training ppl: 83.236204, valid ppl: 97.350881, test ppl: 90.678266
+global step: 13500, learning rate: 0.0030000, training ppl: 82.021606, valid ppl: 95.796389, test ppl: 89.633016
+global step: 13600, learning rate: 0.0030000, training ppl: 82.621567, valid ppl: 95.653932, test ppl: 89.588725
+global step: 13700, learning rate: 0.0030000, training ppl: 85.732414, valid ppl: 94.596729, test ppl: 88.780260
+global step: 13800, learning rate: 0.0030000, training ppl: 83.499889, valid ppl: 95.095905, test ppl: 88.463353
+global step: 13900, learning rate: 0.0030000, training ppl: 81.073449, valid ppl: 95.264727, test ppl: 89.501748
+global step: 14000, learning rate: 0.0030000, training ppl: 81.492357, valid ppl: 96.173209, test ppl: 89.837846
+global step: 14100, learning rate: 0.0030000, training ppl: 89.361748, valid ppl: 94.855215, test ppl: 89.392410
+global step: 14200, learning rate: 0.0030000, training ppl: 83.528590, valid ppl: 94.990216, test ppl: 88.303518
+global step: 14300, learning rate: 0.0030000, training ppl: 80.083881, valid ppl: 95.742003, test ppl: 88.819528
+global step: 14400, learning rate: 0.0030000, training ppl: 80.424227, valid ppl: 94.995335, test ppl: 88.729934
+global step: 14500, learning rate: 0.0030000, training ppl: 91.531057, valid ppl: 94.089634, test ppl: 88.232721
+global step: 14600, learning rate: 0.0030000, training ppl: 81.791307, valid ppl: 94.124499, test ppl: 87.726758
+global step: 14700, learning rate: 0.0030000, training ppl: 78.660179, valid ppl: 94.452925, test ppl: 88.511517
+global step: 14800, learning rate: 0.0030000, training ppl: 79.791441, valid ppl: 94.146572, test ppl: 87.814664
+global step: 14900, learning rate: 0.0030000, training ppl: 80.588304, valid ppl: 94.433839, test ppl: 88.406791
+global step: 15000, learning rate: 0.0030000, training ppl: 81.540611, valid ppl: 93.962848, test ppl: 87.290724
+global step: 15100, learning rate: 0.0030000, training ppl: 77.816445, valid ppl: 94.255528, test ppl: 88.264616
+global step: 15200, learning rate: 0.0030000, training ppl: 78.870304, valid ppl: 93.661179, test ppl: 87.487843
+global step: 15300, learning rate: 0.0030000, training ppl: 80.001953, valid ppl: 94.101869, test ppl: 88.171499
+global step: 15400, learning rate: 0.0030000, training ppl: 80.412587, valid ppl: 93.121237, test ppl: 86.864255
+global step: 15500, learning rate: 0.0030000, training ppl: 77.297214, valid ppl: 93.744529, test ppl: 88.027232
+global step: 15600, learning rate: 0.0030000, training ppl: 78.244133, valid ppl: 93.796980, test ppl: 87.661931
+global step: 15700, learning rate: 0.0030000, training ppl: 79.080681, valid ppl: 93.534058, test ppl: 87.538928
+global step: 15800, learning rate: 0.0030000, training ppl: 80.485354, valid ppl: 92.588342, test ppl: 86.335316
+global step: 15900, learning rate: 0.0030000, training ppl: 77.681001, valid ppl: 93.710083, test ppl: 87.229146
+global step: 16000, learning rate: 0.0030000, training ppl: 77.858018, valid ppl: 93.474302, test ppl: 86.844607
+global step: 16100, learning rate: 0.0030000, training ppl: 78.503852, valid ppl: 94.127507, test ppl: 87.401916
+global step: 16200, learning rate: 0.0030000, training ppl: 79.507711, valid ppl: 93.613418, test ppl: 86.987336
+global step: 16300, learning rate: 0.0030000, training ppl: 77.897052, valid ppl: 92.788985, test ppl: 86.608392
+global step: 16400, learning rate: 0.0030000, training ppl: 76.906404, valid ppl: 93.492641, test ppl: 87.011645
+global step: 16500, learning rate: 0.0030000, training ppl: 77.541667, valid ppl: 92.612683, test ppl: 86.630008
+global step: 16600, learning rate: 0.0030000, training ppl: 80.227535, valid ppl: 92.050732, test ppl: 85.888124
+global step: 16700, learning rate: 0.0030000, training ppl: 78.323262, valid ppl: 92.667480, test ppl: 86.201398
+global step: 16800, learning rate: 0.0030000, training ppl: 76.123806, valid ppl: 92.339648, test ppl: 86.045386
+global step: 16900, learning rate: 0.0030000, training ppl: 76.706064, valid ppl: 92.864819, test ppl: 86.655658
+global step: 17000, learning rate: 0.0030000, training ppl: 84.592428, valid ppl: 91.401498, test ppl: 85.951347
+global step: 17100, learning rate: 0.0030000, training ppl: 78.556780, valid ppl: 92.510843, test ppl: 86.128153
+global step: 17200, learning rate: 0.0030000, training ppl: 75.372406, valid ppl: 93.088414, test ppl: 86.496883
+global step: 17300, learning rate: 0.0030000, training ppl: 75.818546, valid ppl: 92.939966, test ppl: 86.842334
+global step: 17400, learning rate: 0.0030000, training ppl: 86.836585, valid ppl: 90.718914, test ppl: 85.594493
+global step: 17500, learning rate: 0.0030000, training ppl: 77.178902, valid ppl: 91.831504, test ppl: 85.721085
+global step: 17600, learning rate: 0.0030000, training ppl: 74.424222, valid ppl: 92.257660, test ppl: 86.203494
+global step: 17700, learning rate: 0.0030000, training ppl: 75.459673, valid ppl: 92.009517, test ppl: 85.983870
+global step: 17800, learning rate: 0.0030000, training ppl: 76.330439, valid ppl: 91.255805, test ppl: 85.692140
+global step: 17900, learning rate: 0.0030000, training ppl: 77.259245, valid ppl: 90.534625, test ppl: 84.352284
+global step: 18000, learning rate: 0.0030000, training ppl: 74.195679, valid ppl: 91.997555, test ppl: 85.943117
+global step: 18100, learning rate: 0.0030000, training ppl: 75.267261, valid ppl: 92.135376, test ppl: 85.454541
+global step: 18200, learning rate: 0.0030000, training ppl: 76.110846, valid ppl: 91.888638, test ppl: 86.041948
+global step: 18300, learning rate: 0.0030000, training ppl: 76.203494, valid ppl: 91.805068, test ppl: 85.218409
+global step: 18400, learning rate: 0.0030000, training ppl: 73.495463, valid ppl: 91.672537, test ppl: 85.917084
+global step: 18500, learning rate: 0.0030000, training ppl: 74.536643, valid ppl: 92.581603, test ppl: 85.824791
+global step: 18600, learning rate: 0.0030000, training ppl: 75.570797, valid ppl: 91.748052, test ppl: 85.906687
+global step: 18700, learning rate: 0.0030000, training ppl: 76.353174, valid ppl: 90.981443, test ppl: 84.917919
+global step: 18800, learning rate: 0.0030000, training ppl: 74.132404, valid ppl: 90.836053, test ppl: 84.968728
+global step: 18900, learning rate: 0.0030000, training ppl: 74.153967, valid ppl: 91.858823, test ppl: 85.405032
+global step: 19000, learning rate: 0.0030000, training ppl: 74.826510, valid ppl: 91.377889, test ppl: 85.146474
+global step: 19100, learning rate: 0.0030000, training ppl: 76.381257, valid ppl: 90.903433, test ppl: 85.011716
+global step: 19200, learning rate: 0.0030000, training ppl: 74.284723, valid ppl: 91.002519, test ppl: 84.941022
+global step: 19300, learning rate: 0.0030000, training ppl: 73.563264, valid ppl: 91.627087, test ppl: 85.268765
+global step: 19400, learning rate: 0.0030000, training ppl: 74.174074, valid ppl: 91.595464, test ppl: 85.410806
+global step: 19500, learning rate: 0.0030000, training ppl: 77.351836, valid ppl: 90.120036, test ppl: 84.198739
+global step: 19600, learning rate: 0.0030000, training ppl: 74.723137, valid ppl: 91.001848, test ppl: 84.812176
+global step: 19700, learning rate: 0.0030000, training ppl: 72.923048, valid ppl: 90.387948, test ppl: 84.648631
+global step: 19800, learning rate: 0.0030000, training ppl: 73.472912, valid ppl: 90.298792, test ppl: 84.405916
+global step: 19900, learning rate: 0.0030000, training ppl: 79.320749, valid ppl: 90.307913, test ppl: 84.892037
+global step: 20000, learning rate: 0.0030000, training ppl: 74.835032, valid ppl: 90.518022, test ppl: 84.220194
+global step: 20100, learning rate: 0.0030000, training ppl: 71.981415, valid ppl: 91.220565, test ppl: 84.540258
+global step: 20200, learning rate: 0.0030000, training ppl: 72.359916, valid ppl: 92.331675, test ppl: 85.642614
+global step: 20300, learning rate: 0.0030000, training ppl: 81.196216, valid ppl: 89.611383, test ppl: 84.016958
+global step: 20400, learning rate: 0.0030000, training ppl: 74.533777, valid ppl: 90.231108, test ppl: 83.878781
+global step: 20500, learning rate: 0.0030000, training ppl: 71.380083, valid ppl: 90.273191, test ppl: 84.025889
+global step: 20600, learning rate: 0.0030000, training ppl: 72.350038, valid ppl: 90.229187, test ppl: 83.636946
+global step: 20700, learning rate: 0.0030000, training ppl: 73.062791, valid ppl: 89.983386, test ppl: 83.882221
+global step: 20800, learning rate: 0.0030000, training ppl: 74.040287, valid ppl: 89.608753, test ppl: 83.110512
+global step: 20900, learning rate: 0.0030000, training ppl: 70.890461, valid ppl: 89.943545, test ppl: 84.161475
+global step: 21000, learning rate: 0.0030000, training ppl: 71.972617, valid ppl: 90.622665, test ppl: 84.127564
+global step: 21100, learning rate: 0.0030000, training ppl: 72.833714, valid ppl: 89.576714, test ppl: 84.223137
+global step: 21200, learning rate: 0.0030000, training ppl: 73.291856, valid ppl: 89.776486, test ppl: 83.603838
+global step: 21300, learning rate: 0.0030000, training ppl: 70.753087, valid ppl: 90.022212, test ppl: 84.157017
+global step: 21400, learning rate: 0.0030000, training ppl: 71.661197, valid ppl: 90.142130, test ppl: 84.071112
+global step: 21500, learning rate: 0.0030000, training ppl: 72.508224, valid ppl: 90.515701, test ppl: 84.507599
+global step: 21600, learning rate: 0.0030000, training ppl: 73.167659, valid ppl: 88.992140, test ppl: 83.398834
+global step: 21700, learning rate: 0.0030000, training ppl: 70.640984, valid ppl: 90.527281, test ppl: 84.563726
+global step: 21800, learning rate: 0.0030000, training ppl: 70.991152, valid ppl: 90.380676, test ppl: 84.013609
+global step: 21900, learning rate: 0.0030000, training ppl: 71.806334, valid ppl: 90.220627, test ppl: 84.242277
+global step: 22000, learning rate: 0.0030000, training ppl: 73.503262, valid ppl: 89.679652, test ppl: 83.483671
+global step: 22100, learning rate: 0.0030000, training ppl: 71.542231, valid ppl: 89.538667, test ppl: 83.352569
+global step: 22200, learning rate: 0.0030000, training ppl: 70.979372, valid ppl: 90.378015, test ppl: 84.204833
+global step: 22300, learning rate: 0.0030000, training ppl: 71.662027, valid ppl: 89.999846, test ppl: 83.820261
+global step: 22400, learning rate: 0.0030000, training ppl: 73.392452, valid ppl: 89.596101, test ppl: 83.904657
+global step: 22500, learning rate: 0.0030000, training ppl: 71.779978, valid ppl: 88.666759, test ppl: 82.637593
+global step: 22600, learning rate: 0.0030000, training ppl: 70.252137, valid ppl: 89.101762, test ppl: 83.254821
+global step: 22700, learning rate: 0.0030000, training ppl: 70.757973, valid ppl: 89.967138, test ppl: 83.856503
+global step: 22800, learning rate: 0.0030000, training ppl: 76.892467, valid ppl: 88.647343, test ppl: 83.527388
+global step: 22900, learning rate: 0.0030000, training ppl: 72.478866, valid ppl: 88.836756, test ppl: 82.750693
+global step: 23000, learning rate: 0.0030000, training ppl: 69.650687, valid ppl: 88.797038, test ppl: 82.973828
+global step: 23100, learning rate: 0.0030000, training ppl: 70.133928, valid ppl: 90.030537, test ppl: 83.828801
+global step: 23200, learning rate: 0.0030000, training ppl: 77.985130, valid ppl: 88.796490, test ppl: 83.258174
+global step: 23300, learning rate: 0.0030000, training ppl: 71.739300, valid ppl: 89.196545, test ppl: 83.092342
+global step: 23400, learning rate: 0.0030000, training ppl: 69.045061, valid ppl: 90.134047, test ppl: 83.544312
+global step: 23500, learning rate: 0.0030000, training ppl: 70.068251, valid ppl: 90.176127, test ppl: 83.762280
+global step: 23600, learning rate: 0.0030000, training ppl: 83.356923, valid ppl: 89.214367, test ppl: 83.349586
+global step: 23700, learning rate: 0.0030000, training ppl: 71.796969, valid ppl: 88.150387, test ppl: 82.231211
+global step: 23800, learning rate: 0.0030000, training ppl: 68.499574, valid ppl: 89.105175, test ppl: 83.171180
+global step: 23900, learning rate: 0.0030000, training ppl: 69.485549, valid ppl: 89.919967, test ppl: 83.631371
+global step: 24000, learning rate: 0.0030000, training ppl: 70.404906, valid ppl: 88.496745, test ppl: 82.541757
+global step: 24100, learning rate: 0.0030000, training ppl: 71.250331, valid ppl: 89.004061, test ppl: 82.430671
+global step: 24200, learning rate: 0.0030000, training ppl: 68.538165, valid ppl: 89.269584, test ppl: 83.426833
+global step: 24300, learning rate: 0.0030000, training ppl: 69.642610, valid ppl: 88.457420, test ppl: 82.610547
+global step: 24400, learning rate: 0.0030000, training ppl: 70.413863, valid ppl: 89.019957, test ppl: 83.470748
+global step: 24500, learning rate: 0.0030000, training ppl: 70.595226, valid ppl: 88.513868, test ppl: 82.710440
+global step: 24600, learning rate: 0.0030000, training ppl: 68.114146, valid ppl: 88.531916, test ppl: 82.484979
+global step: 24700, learning rate: 0.0030000, training ppl: 68.860585, valid ppl: 88.871582, test ppl: 82.823373
+global step: 24800, learning rate: 0.0030000, training ppl: 69.731890, valid ppl: 89.040349, test ppl: 83.034554
+global step: 24900, learning rate: 0.0030000, training ppl: 70.963613, valid ppl: 88.575860, test ppl: 82.410166
+global step: 25000, learning rate: 0.0030000, training ppl: 69.169427, valid ppl: 88.572573, test ppl: 82.352882
+global step: 25100, learning rate: 0.0030000, training ppl: 68.557088, valid ppl: 88.668605, test ppl: 82.918250
+global step: 25200, learning rate: 0.0030000, training ppl: 69.300787, valid ppl: 89.283124, test ppl: 83.141126
+global step: 25300, learning rate: 0.0030000, training ppl: 71.170420, valid ppl: 88.070150, test ppl: 82.216049
+global step: 25400, learning rate: 0.0030000, training ppl: 69.889081, valid ppl: 87.981601, test ppl: 82.103134
+global step: 25500, learning rate: 0.0030000, training ppl: 68.525108, valid ppl: 88.911534, test ppl: 82.861296
+global step: 25600, learning rate: 0.0030000, training ppl: 68.887519, valid ppl: 88.119442, test ppl: 82.425180
+global step: 25700, learning rate: 0.0030000, training ppl: 73.342013, valid ppl: 88.285711, test ppl: 82.813018
+global step: 25800, learning rate: 0.0030000, training ppl: 70.176118, valid ppl: 87.956334, test ppl: 81.948140
+global step: 25900, learning rate: 0.0030000, training ppl: 67.505447, valid ppl: 88.018834, test ppl: 82.117643
+global step: 26000, learning rate: 0.0030000, training ppl: 67.907896, valid ppl: 88.812647, test ppl: 82.687860
+global step: 26100, learning rate: 0.0030000, training ppl: 77.307398, valid ppl: 87.098670, test ppl: 82.094979
+global step: 26200, learning rate: 0.0030000, training ppl: 70.366581, valid ppl: 88.294962, test ppl: 81.995018
+global step: 26300, learning rate: 0.0030000, training ppl: 67.452988, valid ppl: 88.551105, test ppl: 82.056181
+global step: 26400, learning rate: 0.0030000, training ppl: 68.435064, valid ppl: 88.468312, test ppl: 82.390724
+global step: 26500, learning rate: 0.0030000, training ppl: 75.008125, valid ppl: 87.189668, test ppl: 81.782021
+global step: 26600, learning rate: 0.0030000, training ppl: 69.238727, valid ppl: 87.722953, test ppl: 81.938681
+global step: 26700, learning rate: 0.0030000, training ppl: 66.840042, valid ppl: 88.455867, test ppl: 82.608637
+global step: 26800, learning rate: 0.0030000, training ppl: 67.500354, valid ppl: 88.615613, test ppl: 82.384738
+global step: 26900, learning rate: 0.0030000, training ppl: 68.508757, valid ppl: 87.335525, test ppl: 82.269880
+global step: 27000, learning rate: 0.0030000, training ppl: 69.464419, valid ppl: 87.315081, test ppl: 81.524178
+global step: 27100, learning rate: 0.0030000, training ppl: 66.628521, valid ppl: 87.703758, test ppl: 82.045610
+global step: 27200, learning rate: 0.0030000, training ppl: 67.288967, valid ppl: 87.977859, test ppl: 82.340583
+global step: 27300, learning rate: 0.0030000, training ppl: 68.241937, valid ppl: 87.356352, test ppl: 81.911330
+global step: 27400, learning rate: 0.0030000, training ppl: 68.730909, valid ppl: 87.553546, test ppl: 81.769744
+global step: 27500, learning rate: 0.0030000, training ppl: 66.100498, valid ppl: 87.131977, test ppl: 81.466772
+global step: 27600, learning rate: 0.0030000, training ppl: 66.844366, valid ppl: 87.638687, test ppl: 81.679385
+global step: 27700, learning rate: 0.0030000, training ppl: 67.789927, valid ppl: 88.102600, test ppl: 82.381452
+global step: 27800, learning rate: 0.0030000, training ppl: 68.819164, valid ppl: 87.534961, test ppl: 81.794377
+global step: 27900, learning rate: 0.0030000, training ppl: 66.917500, valid ppl: 87.506215, test ppl: 81.552939
+global step: 28000, learning rate: 0.0030000, training ppl: 66.929014, valid ppl: 87.798969, test ppl: 82.159729
+global step: 28100, learning rate: 0.0030000, training ppl: 67.550176, valid ppl: 87.365686, test ppl: 81.684027
+global step: 28200, learning rate: 0.0030000, training ppl: 70.052514, valid ppl: 86.790773, test ppl: 81.312055
+global step: 28300, learning rate: 0.0030000, training ppl: 67.820784, valid ppl: 86.980216, test ppl: 81.503437
+global step: 28400, learning rate: 0.0030000, training ppl: 66.604451, valid ppl: 87.487604, test ppl: 81.895195
+global step: 28500, learning rate: 0.0030000, training ppl: 67.197788, valid ppl: 87.500144, test ppl: 81.874880
+global step: 28600, learning rate: 0.0030000, training ppl: 71.527710, valid ppl: 86.765641, test ppl: 81.495562
+global step: 28700, learning rate: 0.0030000, training ppl: 68.059756, valid ppl: 87.019237, test ppl: 81.288057
+global step: 28800, learning rate: 0.0030000, training ppl: 65.946696, valid ppl: 87.770293, test ppl: 82.223008
+global step: 28900, learning rate: 0.0030000, training ppl: 66.510788, valid ppl: 87.418172, test ppl: 81.936908
+global step: 29000, learning rate: 0.0030000, training ppl: 74.232456, valid ppl: 86.224138, test ppl: 81.408519
+global step: 29100, learning rate: 0.0030000, training ppl: 68.316777, valid ppl: 87.478318, test ppl: 81.491719
+global step: 29200, learning rate: 0.0030000, training ppl: 65.655739, valid ppl: 87.603749, test ppl: 81.418913
+global step: 29300, learning rate: 0.0030000, training ppl: 66.355566, valid ppl: 87.435523, test ppl: 81.558630
+global step: 29400, learning rate: 0.0030000, training ppl: 76.819102, valid ppl: 86.472767, test ppl: 80.931466
+global step: 29500, learning rate: 0.0030000, training ppl: 68.325569, valid ppl: 86.599662, test ppl: 80.603869
+global step: 29600, learning rate: 0.0030000, training ppl: 65.604075, valid ppl: 87.145883, test ppl: 81.372951
+global step: 29700, learning rate: 0.0030000, training ppl: 66.312015, valid ppl: 86.913806, test ppl: 81.132476
+global step: 29800, learning rate: 0.0030000, training ppl: 66.993330, valid ppl: 86.857880, test ppl: 81.302641
+global step: 29900, learning rate: 0.0030000, training ppl: 67.872703, valid ppl: 86.572338, test ppl: 80.600008
+global step: 30000, learning rate: 0.0030000, training ppl: 64.735305, valid ppl: 87.027512, test ppl: 81.064386
+global step: 30100, learning rate: 0.0030000, training ppl: 65.616272, valid ppl: 87.001681, test ppl: 81.120512
+global step: 30200, learning rate: 0.0030000, training ppl: 66.498020, valid ppl: 87.408084, test ppl: 81.791178
+global step: 30300, learning rate: 0.0030000, training ppl: 67.171793, valid ppl: 86.422027, test ppl: 80.829273
+global step: 30400, learning rate: 0.0030000, training ppl: 65.157899, valid ppl: 86.497875, test ppl: 80.930570
+global step: 30500, learning rate: 0.0030000, training ppl: 65.836812, valid ppl: 87.067680, test ppl: 81.290479
+global step: 30600, learning rate: 0.0030000, training ppl: 66.577362, valid ppl: 86.862725, test ppl: 81.385066
+global step: 30700, learning rate: 0.0030000, training ppl: 67.805533, valid ppl: 86.264816, test ppl: 80.687536
+global step: 30800, learning rate: 0.0030000, training ppl: 65.410285, valid ppl: 86.436354, test ppl: 80.527894
+global step: 30900, learning rate: 0.0030000, training ppl: 65.445168, valid ppl: 86.487329, test ppl: 80.846225
+global step: 31000, learning rate: 0.0030000, training ppl: 66.090568, valid ppl: 86.621329, test ppl: 80.913099
+global step: 31100, learning rate: 0.0030000, training ppl: 67.662986, valid ppl: 86.067421, test ppl: 80.732333
+global step: 31200, learning rate: 0.0030000, training ppl: 66.353766, valid ppl: 86.703573, test ppl: 80.920113
+global step: 31300, learning rate: 0.0030000, training ppl: 65.230199, valid ppl: 87.420989, test ppl: 81.543312
+global step: 31400, learning rate: 0.0030000, training ppl: 65.801263, valid ppl: 86.665424, test ppl: 81.236830
+global step: 31500, learning rate: 0.0030000, training ppl: 69.446212, valid ppl: 86.174583, test ppl: 80.591201
+global step: 31600, learning rate: 0.0030000, training ppl: 66.723151, valid ppl: 87.098896, test ppl: 80.821679
+global step: 31700, learning rate: 0.0030000, training ppl: 64.855353, valid ppl: 87.005698, test ppl: 80.964597
+global step: 31800, learning rate: 0.0030000, training ppl: 65.147525, valid ppl: 87.471513, test ppl: 81.662155
+global step: 31900, learning rate: 0.0030000, training ppl: 72.361466, valid ppl: 86.356906, test ppl: 80.878500
+global step: 32000, learning rate: 0.0030000, training ppl: 66.640760, valid ppl: 86.019052, test ppl: 80.081637
+global step: 32100, learning rate: 0.0030000, training ppl: 64.039183, valid ppl: 86.995989, test ppl: 80.878865
+global step: 32200, learning rate: 0.0030000, training ppl: 64.631372, valid ppl: 87.413538, test ppl: 81.126563
+global step: 32300, learning rate: 0.0030000, training ppl: 74.041767, valid ppl: 86.224172, test ppl: 80.807851
+global step: 32400, learning rate: 0.0030000, training ppl: 66.487587, valid ppl: 86.765173, test ppl: 80.751565
+global step: 32500, learning rate: 0.0030000, training ppl: 63.752333, valid ppl: 86.929140, test ppl: 81.231068
+global step: 32600, learning rate: 0.0030000, training ppl: 64.958941, valid ppl: 86.896353, test ppl: 81.098685
+global step: 32700, learning rate: 0.0030000, training ppl: 65.710507, valid ppl: 86.847441, test ppl: 81.263487
+global step: 32800, learning rate: 0.0030000, training ppl: 66.641619, valid ppl: 85.952483, test ppl: 79.756387
+global step: 32900, learning rate: 0.0030000, training ppl: 63.732959, valid ppl: 86.745431, test ppl: 80.758899
+global step: 33000, learning rate: 0.0030000, training ppl: 64.517901, valid ppl: 86.104021, test ppl: 80.792549
+global step: 33100, learning rate: 0.0030000, training ppl: 65.453550, valid ppl: 86.858389, test ppl: 81.036468
+global step: 33200, learning rate: 0.0030000, training ppl: 66.260435, valid ppl: 85.566137, test ppl: 79.928136
+global step: 33300, learning rate: 0.0030000, training ppl: 63.816327, valid ppl: 87.331133, test ppl: 81.199173
+global step: 33400, learning rate: 0.0030000, training ppl: 64.610433, valid ppl: 87.320079, test ppl: 81.184276
+global step: 33500, learning rate: 0.0030000, training ppl: 65.273811, valid ppl: 86.752676, test ppl: 80.806939
+global step: 33600, learning rate: 0.0030000, training ppl: 66.415504, valid ppl: 86.448561, test ppl: 80.548457
+global step: 33700, learning rate: 0.0030000, training ppl: 63.985080, valid ppl: 86.979257, test ppl: 80.824178
+global step: 33800, learning rate: 0.0030000, training ppl: 63.850908, valid ppl: 86.566880, test ppl: 80.587968
+global step: 33900, learning rate: 0.0030000, training ppl: 64.627162, valid ppl: 87.039452, test ppl: 80.771624
+global step: 34000, learning rate: 0.0030000, training ppl: 66.063959, valid ppl: 86.225179, test ppl: 80.483401
+global step: 34100, learning rate: 0.0030000, training ppl: 64.859377, valid ppl: 86.402688, test ppl: 80.254093
+global step: 34200, learning rate: 0.0030000, training ppl: 63.829905, valid ppl: 86.164059, test ppl: 80.248006
+global step: 34300, learning rate: 0.0030000, training ppl: 64.504307, valid ppl: 86.860654, test ppl: 80.517825
+global step: 34400, learning rate: 0.0030000, training ppl: 68.207040, valid ppl: 86.063649, test ppl: 80.391570
+global step: 34500, learning rate: 0.0030000, training ppl: 65.666783, valid ppl: 86.756360, test ppl: 80.323270
+global step: 34600, learning rate: 0.0030000, training ppl: 63.747696, valid ppl: 86.463608, test ppl: 80.408810
+global step: 34700, learning rate: 0.0030000, training ppl: 64.246652, valid ppl: 88.524887, test ppl: 82.199222
+global step: 34800, learning rate: 0.0030000, training ppl: 70.666441, valid ppl: 85.630887, test ppl: 80.165441
+global step: 34900, learning rate: 0.0030000, training ppl: 65.918882, valid ppl: 86.110201, test ppl: 79.858003
+global step: 35000, learning rate: 0.0030000, training ppl: 63.401760, valid ppl: 86.328941, test ppl: 80.305262
+global step: 35100, learning rate: 0.0030000, training ppl: 63.815546, valid ppl: 86.857286, test ppl: 80.588929
+global step: 35200, learning rate: 0.0030000, training ppl: 73.705301, valid ppl: 85.945265, test ppl: 80.309187
+global step: 35300, learning rate: 0.0030000, training ppl: 65.192573, valid ppl: 86.037242, test ppl: 79.830565
+global step: 35400, learning rate: 0.0030000, training ppl: 62.846407, valid ppl: 85.815173, test ppl: 80.182420
+global step: 35500, learning rate: 0.0030000, training ppl: 63.769572, valid ppl: 86.275579, test ppl: 80.506833
+global step: 35600, learning rate: 0.0030000, training ppl: 64.457729, valid ppl: 86.056147, test ppl: 80.119281
+global step: 35700, learning rate: 0.0030000, training ppl: 64.998053, valid ppl: 85.623057, test ppl: 79.410254
+global step: 35800, learning rate: 0.0030000, training ppl: 62.705659, valid ppl: 86.358804, test ppl: 80.493502
+global step: 35900, learning rate: 0.0030000, training ppl: 63.525355, valid ppl: 85.722703, test ppl: 80.008796
+global step: 36000, learning rate: 0.0030000, training ppl: 64.330554, valid ppl: 86.241308, test ppl: 80.740817
+global step: 36100, learning rate: 0.0030000, training ppl: 64.739946, valid ppl: 85.242013, test ppl: 79.296204
+global step: 36200, learning rate: 0.0030000, training ppl: 62.635248, valid ppl: 86.075577, test ppl: 80.353267
+global step: 36300, learning rate: 0.0030000, training ppl: 63.264211, valid ppl: 85.901187, test ppl: 80.166101
+global step: 36400, learning rate: 0.0030000, training ppl: 64.121142, valid ppl: 86.299911, test ppl: 80.455620
+global step: 36500, learning rate: 0.0030000, training ppl: 65.632422, valid ppl: 85.522378, test ppl: 79.660037
+global step: 36600, learning rate: 0.0030000, training ppl: 63.087547, valid ppl: 86.035924, test ppl: 79.834190
+global step: 36700, learning rate: 0.0030000, training ppl: 62.973872, valid ppl: 86.016871, test ppl: 79.840691
+global step: 36800, learning rate: 0.0030000, training ppl: 63.789008, valid ppl: 86.009936, test ppl: 79.770581
+global step: 36900, learning rate: 0.0030000, training ppl: 65.091186, valid ppl: 85.620052, test ppl: 79.987211
+global step: 37000, learning rate: 0.0030000, training ppl: 63.798903, valid ppl: 86.246651, test ppl: 80.088917
+global step: 37100, learning rate: 0.0030000, training ppl: 62.720851, valid ppl: 85.888353, test ppl: 80.080522
+global step: 37200, learning rate: 0.0030000, training ppl: 63.333822, valid ppl: 85.607807, test ppl: 79.993759
+global step: 37300, learning rate: 0.0030000, training ppl: 65.651896, valid ppl: 85.763223, test ppl: 80.138699
+global step: 37400, learning rate: 0.0030000, training ppl: 64.247629, valid ppl: 85.953613, test ppl: 79.807104
+global step: 37500, learning rate: 0.0030000, training ppl: 62.763677, valid ppl: 85.486120, test ppl: 79.634192
+global step: 37600, learning rate: 0.0030000, training ppl: 63.122879, valid ppl: 86.324208, test ppl: 80.297252
+global step: 37700, learning rate: 0.0030000, training ppl: 69.459275, valid ppl: 84.927355, test ppl: 79.719360
+global step: 37800, learning rate: 0.0030000, training ppl: 65.259000, valid ppl: 85.597460, test ppl: 79.511287
+global step: 37900, learning rate: 0.0030000, training ppl: 62.659675, valid ppl: 86.394053, test ppl: 80.155483
+global step: 38000, learning rate: 0.0030000, training ppl: 62.906949, valid ppl: 86.272393, test ppl: 80.148675
+global step: 38100, learning rate: 0.0030000, training ppl: 72.416009, valid ppl: 85.297921, test ppl: 79.961169
+global step: 38200, learning rate: 0.0030000, training ppl: 64.222654, valid ppl: 85.650255, test ppl: 79.670077
+global step: 38300, learning rate: 0.0030000, training ppl: 61.825885, valid ppl: 86.061248, test ppl: 80.353596
+global step: 38400, learning rate: 0.0030000, training ppl: 62.867792, valid ppl: 86.114898, test ppl: 80.170184
+global step: 38500, learning rate: 0.0030000, training ppl: 63.620516, valid ppl: 85.852163, test ppl: 80.085106
+global step: 38600, learning rate: 0.0030000, training ppl: 63.781951, valid ppl: 85.273215, test ppl: 79.629639
+global step: 38700, learning rate: 0.0030000, training ppl: 61.718786, valid ppl: 86.412946, test ppl: 80.906961
+global step: 38800, learning rate: 0.0030000, training ppl: 62.568548, valid ppl: 85.407050, test ppl: 79.827225
+global step: 38900, learning rate: 0.0030000, training ppl: 63.390818, valid ppl: 85.641933, test ppl: 80.252173
+global step: 39000, learning rate: 0.0030000, training ppl: 64.382109, valid ppl: 84.893984, test ppl: 79.449538
+global step: 39100, learning rate: 0.0030000, training ppl: 61.623675, valid ppl: 86.002074, test ppl: 80.176761
+global step: 39200, learning rate: 0.0030000, training ppl: 62.339761, valid ppl: 85.572476, test ppl: 80.073837
+global step: 39300, learning rate: 0.0030000, training ppl: 63.165926, valid ppl: 85.593061, test ppl: 80.161742
+global step: 39400, learning rate: 0.0030000, training ppl: 64.473006, valid ppl: 84.991039, test ppl: 79.764326
+global step: 39500, learning rate: 0.0030000, training ppl: 62.297312, valid ppl: 85.503885, test ppl: 80.115994
+global step: 39600, learning rate: 0.0030000, training ppl: 62.516931, valid ppl: 85.682221, test ppl: 79.543111
+global step: 39700, learning rate: 0.0030000, training ppl: 63.145649, valid ppl: 85.875405, test ppl: 80.158676
+global step: 39800, learning rate: 0.0030000, training ppl: 64.808774, valid ppl: 85.340831, test ppl: 79.755990
+global step: 39900, learning rate: 0.0030000, training ppl: 63.196375, valid ppl: 85.310961, test ppl: 79.632136
+global step: 40000, learning rate: 0.0030000, training ppl: 62.446273, valid ppl: 85.666941, test ppl: 80.141568
+global step: 40100, learning rate: 0.0030000, training ppl: 62.877648, valid ppl: 85.527742, test ppl: 80.012572
+global step: 40200, learning rate: 0.0030000, training ppl: 65.218704, valid ppl: 84.540054, test ppl: 79.415106
+global step: 40300, learning rate: 0.0030000, training ppl: 63.323459, valid ppl: 84.904998, test ppl: 79.214014
+global step: 40400, learning rate: 0.0030000, training ppl: 61.893219, valid ppl: 85.140482, test ppl: 79.646504
+global step: 40500, learning rate: 0.0030000, training ppl: 62.216480, valid ppl: 85.557543, test ppl: 79.466827
+global step: 40600, learning rate: 0.0030000, training ppl: 67.972255, valid ppl: 84.691810, test ppl: 79.624275
+global step: 40700, learning rate: 0.0030000, training ppl: 64.021360, valid ppl: 85.397979, test ppl: 79.369151
+global step: 40800, learning rate: 0.0030000, training ppl: 61.770573, valid ppl: 85.099224, test ppl: 79.419749
+global step: 40900, learning rate: 0.0030000, training ppl: 62.116970, valid ppl: 85.467031, test ppl: 79.813412
+global step: 41000, learning rate: 0.0030000, training ppl: 68.516957, valid ppl: 84.418423, test ppl: 79.326535
+global step: 41100, learning rate: 0.0030000, training ppl: 63.385292, valid ppl: 84.992897, test ppl: 79.294863
+global step: 41200, learning rate: 0.0030000, training ppl: 61.349746, valid ppl: 85.767040, test ppl: 80.099873
+global step: 41300, learning rate: 0.0030000, training ppl: 62.143571, valid ppl: 85.393864, test ppl: 79.686546
+global step: 41400, learning rate: 0.0030000, training ppl: 62.731213, valid ppl: 84.974846, test ppl: 79.513721
+global step: 41500, learning rate: 0.0030000, training ppl: 63.646514, valid ppl: 84.230399, test ppl: 78.880049
+global step: 41600, learning rate: 0.0030000, training ppl: 60.851526, valid ppl: 85.325849, test ppl: 79.911415
+global step: 41700, learning rate: 0.0030000, training ppl: 61.749239, valid ppl: 85.572401, test ppl: 79.575706
+global step: 41800, learning rate: 0.0030000, training ppl: 62.558251, valid ppl: 85.276704, test ppl: 79.709915
+global step: 41900, learning rate: 0.0030000, training ppl: 63.857389, valid ppl: 84.940338, test ppl: 79.397561
+global step: 42000, learning rate: 0.0030000, training ppl: 61.186452, valid ppl: 85.597502, test ppl: 80.370374
+global step: 42100, learning rate: 0.0030000, training ppl: 61.960719, valid ppl: 85.182966, test ppl: 79.667908
+global step: 42200, learning rate: 0.0030000, training ppl: 62.654602, valid ppl: 85.569332, test ppl: 79.892787
+global step: 42300, learning rate: 0.0030000, training ppl: 63.516949, valid ppl: 84.145673, test ppl: 79.282449
+global step: 42400, learning rate: 0.0030000, training ppl: 61.337461, valid ppl: 85.474622, test ppl: 80.106187
+global step: 42500, learning rate: 0.0030000, training ppl: 61.554596, valid ppl: 85.244101, test ppl: 79.551267
+global step: 42600, learning rate: 0.0030000, training ppl: 62.114353, valid ppl: 85.130590, test ppl: 79.426619
+global step: 42700, learning rate: 0.0030000, training ppl: 63.927628, valid ppl: 84.771992, test ppl: 79.201789
+global step: 42800, learning rate: 0.0030000, training ppl: 62.380967, valid ppl: 84.879886, test ppl: 79.109100
+global step: 42900, learning rate: 0.0030000, training ppl: 61.752340, valid ppl: 85.640494, test ppl: 79.999199
+global step: 43000, learning rate: 0.0030000, training ppl: 62.219912, valid ppl: 85.225951, test ppl: 79.786601
+global step: 43100, learning rate: 0.0030000, training ppl: 63.916770, valid ppl: 84.026840, test ppl: 79.003390
+global step: 43200, learning rate: 0.0030000, training ppl: 62.606154, valid ppl: 84.564403, test ppl: 78.970939
+global step: 43300, learning rate: 0.0030000, training ppl: 61.132453, valid ppl: 84.992743, test ppl: 79.579340
+global step: 43400, learning rate: 0.0030000, training ppl: 61.724406, valid ppl: 85.664984, test ppl: 79.887191
+global step: 43500, learning rate: 0.0030000, training ppl: 65.672988, valid ppl: 84.597684, test ppl: 79.403188
+global step: 43600, learning rate: 0.0030000, training ppl: 63.021813, valid ppl: 84.802318, test ppl: 78.944258
+global step: 43700, learning rate: 0.0030000, training ppl: 60.845508, valid ppl: 85.020452, test ppl: 79.241252
+global step: 43800, learning rate: 0.0030000, training ppl: 61.294408, valid ppl: 85.924669, test ppl: 80.011031
+global step: 43900, learning rate: 0.0030000, training ppl: 68.884091, valid ppl: 84.367459, test ppl: 79.153291
+global step: 44000, learning rate: 0.0030000, training ppl: 62.826415, valid ppl: 84.986892, test ppl: 79.223422
+global step: 44100, learning rate: 0.0030000, training ppl: 60.374111, valid ppl: 84.938531, test ppl: 79.299295
+global step: 44200, learning rate: 0.0030000, training ppl: 61.169198, valid ppl: 85.318378, test ppl: 79.767395
+global step: 44300, learning rate: 0.0030000, training ppl: 77.654544, valid ppl: 85.198129, test ppl: 79.774795
+global step: 44400, learning rate: 0.0030000, training ppl: 62.788430, valid ppl: 84.281878, test ppl: 78.913541
+global step: 44500, learning rate: 0.0030000, training ppl: 60.318155, valid ppl: 85.578839, test ppl: 80.130325
+global step: 44600, learning rate: 0.0030000, training ppl: 61.035085, valid ppl: 85.312715, test ppl: 79.513523
+global step: 44700, learning rate: 0.0030000, training ppl: 61.848441, valid ppl: 85.132689, test ppl: 79.362125
+global step: 44800, learning rate: 0.0030000, training ppl: 62.869167, valid ppl: 84.935901, test ppl: 78.968282
+global step: 44900, learning rate: 0.0030000, training ppl: 60.183202, valid ppl: 85.455856, test ppl: 79.862155
+global step: 45000, learning rate: 0.0030000, training ppl: 60.896950, valid ppl: 85.298742, test ppl: 79.451645
+global step: 45100, learning rate: 0.0030000, training ppl: 61.646981, valid ppl: 85.538679, test ppl: 79.923502
+global step: 45200, learning rate: 0.0030000, training ppl: 62.842318, valid ppl: 84.772645, test ppl: 79.260000
+global step: 45300, learning rate: 0.0030000, training ppl: 60.502598, valid ppl: 85.557200, test ppl: 79.760223
+global step: 45400, learning rate: 0.0030000, training ppl: 60.944992, valid ppl: 84.828494, test ppl: 79.137865
+global step: 45500, learning rate: 0.0030000, training ppl: 61.742309, valid ppl: 85.309013, test ppl: 79.381495
+global step: 45600, learning rate: 0.0030000, training ppl: 66.244156, valid ppl: 84.493981, test ppl: 79.073027, update_loss: 254.045526
+ global step: 45700, learning rate: 0.0030000, training ppl: 62.415038, valid ppl: 84.455682, test ppl: 78.656391, update_loss: 257.703521
+ global step: 45800, learning rate: 0.0030000, training ppl: 63.097593, valid ppl: 84.512413, test ppl: 78.610244, update_loss: 257.352499
+ global step: 45900, learning rate: 0.0030000, training ppl: 60.275966, valid ppl: 85.081227, test ppl: 79.570490, update_loss: 258.039340
+ global step: 46000, learning rate: 0.0030000, training ppl: 60.755961, valid ppl: 84.960415, test ppl: 79.224110, update_loss: 258.050514
+ global step: 46100, learning rate: 0.0030000, training ppl: 60.861845, valid ppl: 84.469330, test ppl: 79.044777, update_loss: 258.345615
+ global step: 46200, learning rate: 0.0003000, training ppl: 61.013856, valid ppl: 83.401002, test ppl: 77.947406, update_loss: 257.958493
+ global step: 46300, learning rate: 0.0003000, training ppl: 61.642547, valid ppl: 82.828837, test ppl: 77.453704, update_loss: 256.909193
+ global step: 46400, learning rate: 0.0003000, training ppl: 65.538179, valid ppl: 82.333149, test ppl: 77.078475, update_loss: 249.572030
+ global step: 47100, learning rate: 0.0003000, training ppl: 55.452611, valid ppl: 81.580879, test ppl: 76.237794, update_loss: 244.464857
+ global step: 47200, learning rate: 0.0003000, training ppl: 65.387796, valid ppl: 81.366585, test ppl: 76.106564, update_loss: 243.018620
+ global step: 47300, learning rate: 0.0003000, training ppl: 56.647303, valid ppl: 81.248543, test ppl: 76.024807, update_loss: 237.526770
+ global step: 47400, learning rate: 0.0003000, training ppl: 56.265058, valid ppl: 81.102678, test ppl: 75.850713, update_loss: 237.214851
+ global step: 47500, learning rate: 0.0003000, training ppl: 54.766519, valid ppl: 81.244332, test ppl: 75.911705, update_loss: 236.353807
+ global step: 47600, learning rate: 0.0003000, training ppl: 53.031923, valid ppl: 81.293418, test ppl: 76.010503, update_loss: 236.291004
+ global step: 48000, learning rate: 0.0003000, training ppl: 54.428443, valid ppl: 81.267839, test ppl: 75.910934, update_loss: 235.115385
+ global step: 48100, learning rate: 0.0003000, training ppl: 56.665384, valid ppl: 81.090703, test ppl: 75.779296, update_loss: 232.633778
+ global step: 48200, learning rate: 0.0003000, training ppl: 55.248563, valid ppl: 80.956259, test ppl: 75.589523, update_loss: 232.234265
+ global step: 48300, learning rate: 0.0003000, training ppl: 54.261511, valid ppl: 81.079983, test ppl: 75.686354, update_loss: 231.211703
+ global step: 48400, learning rate: 0.0003000, training ppl: 52.132206, valid ppl: 81.087105, test ppl: 75.765444, update_loss: 230.853082
+ global step: 48500, learning rate: 0.0003000, training ppl: 52.048221, valid ppl: 81.317141, test ppl: 75.911616, update_loss: 230.634267
+ global step: 48600, learning rate: 0.0003000, training ppl: 51.854586, valid ppl: 81.393452, test ppl: 75.970288, update_loss: 229.943201
+ global step: 48700, learning rate: 0.0003000, training ppl: 52.544982, valid ppl: 81.204320, test ppl: 75.786515, update_loss: 229.793231
+ global step: 48800, learning rate: 0.0003000, training ppl: 53.436212, valid ppl: 81.089663, test ppl: 75.745522, update_loss: 229.529924
+ global step: 48900, learning rate: 0.0003000, training ppl: 58.874607, valid ppl: 81.042662, test ppl: 75.733827, update_loss: 226.322737
+ global step: 49000, learning rate: 0.0003000, training ppl: 53.960485, valid ppl: 80.942616, test ppl: 75.581677, update_loss: 227.342833
+ global step: 49100, learning rate: 0.0003000, training ppl: 54.146617, valid ppl: 81.011960, test ppl: 75.606978, update_loss: 226.956433
+ global step: 49200, learning rate: 0.0003000, training ppl: 51.584964, valid ppl: 81.077633, test ppl: 75.684992, update_loss: 226.366785
+ global step: 49300, learning rate: 0.0003000, training ppl: 51.334525, valid ppl: 81.251207, test ppl: 75.817366, update_loss: 225.976751
+ global step: 49400, learning rate: 0.0003000, training ppl: 51.043185, valid ppl: 81.401048, test ppl: 75.901136, update_loss: 225.660109
+ global step: 49500, learning rate: 0.0003000, training ppl: 51.568315, valid ppl: 81.403480, test ppl: 75.909809, update_loss: 225.422769
+ global step: 49600, learning rate: 0.0003000, training ppl: 52.546644, valid ppl: 81.249554, test ppl: 75.784817, update_loss: 225.440346
+ global step: 51200, learning rate: 0.0003000, training ppl: 51.019318, valid ppl: 81.421940, test ppl: 75.807527, update_loss: 218.708649
+ global step: 52600, learning rate: 0.0003000, training ppl: 49.307802, valid ppl: 81.454098, test ppl: 75.883289, update_loss: 214.716371
+ global step: 52700, learning rate: 0.0003000, training ppl: 49.431032, valid ppl: 81.288953, test ppl: 75.746129, update_loss: 214.343869
+ global step: 52800, learning rate: 0.0003000, training ppl: 49.747695, valid ppl: 81.260621, test ppl: 75.706767, update_loss: 214.336814
+ global step: 52900, learning rate: 0.0003000, training ppl: 50.613174, valid ppl: 81.097983, test ppl: 75.554544, update_loss: 214.375281
+ global step: 53000, learning rate: 0.0003000, training ppl: 59.096806, valid ppl: 81.110966, test ppl: 75.641431, update_loss: 209.655577
+ global step: 53100, learning rate: 0.0003000, training ppl: 52.356250, valid ppl: 81.113238, test ppl: 75.594188, update_loss: 212.579866
+ global step: 53200, learning rate: 0.0003000, training ppl: 51.900739, valid ppl: 81.021538, test ppl: 75.502679, update_loss: 211.823927
+ global step: 53300, learning rate: 0.0003000, training ppl: 50.514604, valid ppl: 81.058958, test ppl: 75.546906, update_loss: 212.211003
+ global step: 53400, learning rate: 0.0003000, training ppl: 49.119573, valid ppl: 81.325074, test ppl: 75.766243, update_loss: 212.389940
+ global step: 53500, learning rate: 0.0003000, training ppl: 49.372090, valid ppl: 81.445059, test ppl: 75.874359, update_loss: 212.274922
+ global step: 53600, learning rate: 0.0003000, training ppl: 49.617829, valid ppl: 81.330561, test ppl: 75.724433, update_loss: 212.178696
+ global step: 53700, learning rate: 0.0003000, training ppl: 50.184311, valid ppl: 81.304302, test ppl: 75.640348, update_loss: 212.066055
+ global step: 54200, learning rate: 0.0003000, training ppl: 48.791305, valid ppl: 81.320211, test ppl: 75.688720, update_loss: 210.312444
+ global step: 54300, learning rate: 0.0003000, training ppl: 48.945424, valid ppl: 81.358910, test ppl: 75.717520, update_loss: 210.257017
+ global step: 54400, learning rate: 0.0003000, training ppl: 48.948109, valid ppl: 81.391792, test ppl: 75.731527, update_loss: 210.474311
+ global step: 54500, learning rate: 0.0003000, training ppl: 49.471459, valid ppl: 81.279829, test ppl: 75.597554, update_loss: 210.470062
+ global step: 54600, learning rate: 0.0003000, training ppl: 50.172610, valid ppl: 81.387533, test ppl: 75.691334, update_loss: 209.904650
+ global step: 54700, learning rate: 0.0003000, training ppl: 54.158105, valid ppl: 81.289191, test ppl: 75.658943, update_loss: 208.575989
+ global step: 54800, learning rate: 0.0003000, training ppl: 50.635008, valid ppl: 81.223485, test ppl: 75.592615, update_loss: 209.218480
+ global step: 54900, learning rate: 0.0003000, training ppl: 50.913858, valid ppl: 81.247500, test ppl: 75.551434, update_loss: 208.688463
+ global step: 55000, learning rate: 0.0003000, training ppl: 48.552698, valid ppl: 81.351688, test ppl: 75.709671, update_loss: 208.287845
+ global step: 55100, learning rate: 0.0003000, training ppl: 48.726978, valid ppl: 81.496561, test ppl: 75.818239, update_loss: 208.416319
+ global step: 55200, learning rate: 0.0003000, training ppl: 48.540098, valid ppl: 81.434230, test ppl: 75.723136, update_loss: 208.955794
+ global step: 55300, learning rate: 0.0000300, training ppl: 48.982353, valid ppl: 81.361966, test ppl: 75.681352, update_loss: 208.616639
+ global step: 55400, learning rate: 0.0000300, training ppl: 49.733414, valid ppl: 81.401751, test ppl: 75.707254, update_loss: 207.762706
+ global step: 55500, learning rate: 0.0000300, training ppl: 56.737154, valid ppl: 81.435082, test ppl: 75.771672, update_loss: 199.964766
+ global step: 55600, learning rate: 0.0000300, training ppl: 51.483426, valid ppl: 81.518382, test ppl: 75.864179, update_loss: 197.089828
+ global step: 55700, learning rate: 0.0000300, training ppl: 50.749495, valid ppl: 81.645456, test ppl: 75.987214, update_loss: 195.079273
+ global step: 55800, learning rate: 0.0000300, training ppl: 49.301060, valid ppl: 81.796576, test ppl: 76.158853, update_loss: 192.720089
+ global step: 55900, learning rate: 0.0000300, training ppl: 48.545230, valid ppl: 82.027280, test ppl: 76.388955, update_loss: 191.300449
+ global step: 56000, learning rate: 0.0000300, training ppl: 48.794410, valid ppl: 82.215939, test ppl: 76.587743, update_loss: 189.869519
+ global step: 56100, learning rate: 0.0000300, training ppl: 49.256115, valid ppl: 82.451557, test ppl: 76.811962, update_loss: 188.625070
+ global step: 56200, learning rate: 0.0000300, training ppl: 50.163270, valid ppl: 82.638629, test ppl: 77.010372, update_loss: 187.307600
+ global step: 56300, learning rate: 0.0000300, training ppl: 62.678939, valid ppl: 82.849436, test ppl: 77.230957, update_loss: 172.229771
+ global step: 56400, learning rate: 0.0000300, training ppl: 53.478383, valid ppl: 83.050345, test ppl: 77.433233, update_loss: 173.907743
+ global step: 56500, learning rate: 0.0000300, training ppl: 53.385529, valid ppl: 83.245222, test ppl: 77.633869, update_loss: 172.920237
+ global step: 56600, learning rate: 0.0000300, training ppl: 52.406058, valid ppl: 83.540231, test ppl: 77.902824, update_loss: 170.959396
+ global step: 56700, learning rate: 0.0000300, training ppl: 50.995305, valid ppl: 83.802656, test ppl: 78.165306, update_loss: 169.728097
+ global step: 56800, learning rate: 0.0000300, training ppl: 51.023652, valid ppl: 84.091507, test ppl: 78.440121, update_loss: 168.864242
+ global step: 56900, learning rate: 0.0000300, training ppl: 51.259885, valid ppl: 84.332782, test ppl: 78.676367, update_loss: 167.816007
+ global step: 57000, learning rate: 0.0000300, training ppl: 52.092678, valid ppl: 84.647130, test ppl: 78.963893, update_loss: 167.004726
+ global step: 57100, learning rate: 0.0000300, training ppl: 52.855488, valid ppl: 84.910299, test ppl: 79.226531, update_loss: 166.089411
+ global step: 57200, learning rate: 0.0000300, training ppl: 57.540972, valid ppl: 85.164722, test ppl: 79.476697, update_loss: 157.971362
+ global step: 57300, learning rate: 0.0000300, training ppl: 55.397083, valid ppl: 85.469240, test ppl: 79.759384, update_loss: 156.489767
+ global step: 57400, learning rate: 0.0000300, training ppl: 55.135685, valid ppl: 85.762492, test ppl: 80.035526, update_loss: 154.879809
+ global step: 57500, learning rate: 0.0000300, training ppl: 53.040779, valid ppl: 86.091023, test ppl: 80.339725, update_loss: 153.659122
+ global step: 57600, learning rate: 0.0000300, training ppl: 53.281736, valid ppl: 86.461401, test ppl: 80.674396, update_loss: 152.926256
+ global step: 57700, learning rate: 0.0000300, training ppl: 53.499572, valid ppl: 86.733641, test ppl: 80.941072, update_loss: 152.048305
+ global step: 57800, learning rate: 0.0000300, training ppl: 54.269207, valid ppl: 87.051165, test ppl: 81.254578, update_loss: 151.335162
+ global step: 57900, learning rate: 0.0000300, training ppl: 55.208069, valid ppl: 87.401504, test ppl: 81.586056, update_loss: 150.804546
+ global step: 58000, learning rate: 0.0000300, training ppl: 61.205594, valid ppl: 87.723513, test ppl: 81.888635, update_loss: 144.397035
+ global step: 58100, learning rate: 0.0000300, training ppl: 57.158098, valid ppl: 88.065608, test ppl: 82.205536, update_loss: 143.312514
+ global step: 58200, learning rate: 0.0000300, training ppl: 57.517306, valid ppl: 88.431466, test ppl: 82.526984, update_loss: 142.423147
+ global step: 58300, learning rate: 0.0000030, training ppl: 55.471125, valid ppl: 89.407523, test ppl: 83.422781, update_loss: 140.392217
+ global step: 58400, learning rate: 0.0000030, training ppl: 55.832202, valid ppl: 90.455691, test ppl: 84.403349, update_loss: 139.371144
+ global step: 58500, learning rate: 0.0000030, training ppl: 56.161605, valid ppl: 91.611262, test ppl: 85.469164, update_loss: 138.028975
+ global step: 58600, learning rate: 0.0000030, training ppl: 56.999419, valid ppl: 92.852893, test ppl: 86.621515, update_loss: 136.946085
+ global step: 58700, learning rate: 0.0000030, training ppl: 58.503540, valid ppl: 94.162868, test ppl: 87.832058, update_loss: 135.714698
+ global step: 58800, learning rate: 0.0000030, training ppl: 71.258963, valid ppl: 95.635184, test ppl: 89.193949, update_loss: 126.728494
+ global step: 58900, learning rate: 0.0000030, training ppl: 65.191356, valid ppl: 97.173871, test ppl: 90.610482, update_loss: 122.575036
+ global step: 59000, learning rate: 0.0000030, training ppl: 65.782483, valid ppl: 98.803644, test ppl: 92.114446, update_loss: 120.804896
+ global step: 59100, learning rate: 0.0000030, training ppl: 64.838250, valid ppl: 100.597871, test ppl: 93.761761, update_loss: 119.025742
+ global step: 59200, learning rate: 0.0000030, training ppl: 64.001270, valid ppl: 102.481721, test ppl: 95.507891, update_loss: 117.994069
+ global step: 59300, learning rate: 0.0000030, training ppl: 65.076624, valid ppl: 104.549555, test ppl: 97.410582, update_loss: 116.833647
+ global step: 59400, learning rate: 0.0000030, training ppl: 66.285830, valid ppl: 106.814124, test ppl: 99.493734, update_loss: 115.729642
+ global step: 59500, learning rate: 0.0000030, training ppl: 67.942364, valid ppl: 109.228653, test ppl: 101.705552, update_loss: 114.748909
+ global step: 59600, learning rate: 0.0000030, training ppl: 69.290615, valid ppl: 111.840048, test ppl: 104.108264, update_loss: 113.658315
+ global step: 59700, learning rate: 0.0000030, training ppl: 80.857170, valid ppl: 114.597318, test ppl: 106.647694, update_loss: 104.020369
+ global step: 59800, learning rate: 0.0000030, training ppl: 80.423244, valid ppl: 117.453320, test ppl: 109.279563, update_loss: 101.917709
+ global step: 59900, learning rate: 0.0000030, training ppl: 80.875170, valid ppl: 120.527396, test ppl: 112.116766, update_loss: 100.545572
+ global step: 60000, learning rate: 0.0000030, training ppl: 79.248430, valid ppl: 123.901066, test ppl: 115.199137, update_loss: 99.351950
+ global step: 60100, learning rate: 0.0000030, training ppl: 80.751657, valid ppl: 127.445443, test ppl: 118.464147, update_loss: 98.290357
+ global step: 60200, learning rate: 0.0000030, training ppl: 82.223141, valid ppl: 131.234539, test ppl: 121.960904, update_loss: 97.451906
+ global step: 60300, learning rate: 0.0000030, training ppl: 84.467438, valid ppl: 135.354252, test ppl: 125.740670, update_loss: 96.559633
+ global step: 60400, learning rate: 0.0000030, training ppl: 86.857196, valid ppl: 139.718832, test ppl: 129.770584, update_loss: 95.822752
+ global step: 60500, learning rate: 0.0000030, training ppl: 108.679436, valid ppl: 144.314911, test ppl: 134.011196, update_loss: 87.702857
+ global step: 60600, learning rate: 0.0000030, training ppl: 104.678191, valid ppl: 149.413312, test ppl: 138.686974, update_loss: 86.515764
+ global step: 60700, learning rate: 0.0000030, training ppl: 106.698336, valid ppl: 154.753531, test ppl: 143.602786, update_loss: 85.348337
  
