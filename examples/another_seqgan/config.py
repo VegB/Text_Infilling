@@ -36,7 +36,7 @@ l2_decay = 1e-5
 lr_decay = 0.1
 
 target_pretrain_epoch = 80
-generator_pretrain_epoch = 150
+generator_pretrain_epoch = 130
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 g_update_batch = 1
