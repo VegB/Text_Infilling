@@ -164,6 +164,7 @@ def update_generator(sess, gen_dataloader):
             if opt_vars['steps_not_improved'] >= 30:
                 opt_vars['steps_not_improved'] = 0
                 opt_vars['learning_rate'] *= config.lr_decay
+                opt_vars['update_learning_rate'] *= config.lr_decay
 
     ppl = np.exp(loss / iters)
     return ppl
@@ -216,7 +217,8 @@ if __name__ == "__main__":
     num_steps = config.num_steps
 
     opt_vars = {
-        'learning_rate': 0.003,
+        'learning_rate': config.init_lr,
+        'update_learning_rate': config.update_lr,
         'best_valid_ppl': 1e100,
         'steps_not_improved': 0
     }
@@ -270,9 +272,15 @@ if __name__ == "__main__":
     )
 
     update_step = tf.Variable(0, dtype=tf.int32)
-    update_op = tx.core.get_train_op(
+    update_optimizer = tf.train.AdamOptimizer(
+        learning_rate=opt_vars['update_learning_rate'],
+        beta1=0.,
+        beta2=0.999,
+        epsilon=1e-9)
+    update_op = update_optimizer.minimize(update_loss, global_step=global_step)
+    '''update_op = tx.core.get_train_op(
         update_loss, global_step=update_step, increment_global_step=False,
-        hparams=config.opt)
+        hparams=config.opt)'''
     
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -287,6 +295,8 @@ if __name__ == "__main__":
         generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
 
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
+
+        opt_vars['learning_rate'] = config.update_init_lr if config.update_init_lr > opt_vars['learning_rate'] else opt_vars['learning_rate']
 
         for update_epoch in range(1, config.adversial_epoch + 1):
             train_ppl = update_generator(sess, gen_dataloader)
