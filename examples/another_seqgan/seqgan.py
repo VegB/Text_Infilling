@@ -299,7 +299,7 @@ if __name__ == "__main__":
         generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
 
         train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
-
+        
         opt_vars['learning_rate'] = config.update_init_lr if config.update_init_lr > opt_vars['learning_rate'] else opt_vars['learning_rate']
 
         for update_epoch in range(1, config.adversial_epoch + 1):
