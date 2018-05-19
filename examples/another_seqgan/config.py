@@ -27,7 +27,7 @@ update_lr = 0.00003
 l2_decay = 1e-5
 lr_decay = 0.1
 
-generator_pretrain_epoch = 110
+generator_pretrain_epoch = 120
 discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 
