@@ -93,4 +93,4 @@ class Generator(tx.modules.ModuleBase):
             self._add_internal_trainable_variables()
             self._built = True
 
-        return initial_state, logits, final_state, sample_id
+        return initial_state, logits, final_state, sample_id, sequence_length

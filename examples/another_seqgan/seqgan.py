@@ -5,7 +5,6 @@ import importlib
 import texar as tx
 
 from generator import Generator
-from discriminator import Discriminator
 from dataloader import GenDataLoader, DisDataLoader
 from utils import print_result, store_output, pad_to_length, print_and_write_to_file
 
@@ -92,17 +91,17 @@ def generate_negative_samples(sess, gen_dataloader, dst_path):
     print_result(generated_outputs[:config.print_num], gen_dataloader.id2word, config.num_steps)
 
 
-def train_discriminator(sess, discriminator, epoch_num):
+def train_discriminator(sess):
     print("-------------Train Discriminator----------------")
     dataloader = DisDataLoader(config, positive_file=config.train_file,
                                negative_file=config.train_file, word2id=word2id)
 
     for step, (r_ids, g_ids) in enumerate(dataloader.iter()):
-        _, loss = sess.run([discriminator.train_op, discriminator.total_loss],
-                                 feed_dict={discriminator.real_samples: r_ids,
-                                            discriminator.gen_samples: g_ids,
-                                            discriminator.global_step: step,
-                                            tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
+        _, loss = sess.run([dis_train_op, dis_loss],
+                            feed_dict={real_samples: r_ids,
+                                       fake_samples: g_ids,
+                                       dis_global_step: step,
+                                       tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 200 == 0:
             print("%d: dis_total_loss: %.6f" % (step, loss))
 
@@ -211,10 +210,10 @@ if __name__ == "__main__":
     test_dataloader = GenDataLoader(config, config.test_file, word2id)
 
     generator = Generator(vocab_size=vocab_size)
-    discriminator = Discriminator(config, vocab_size=vocab_size)
+    discriminator = tx.modules.UnidirectionalRNNClassifier(hparams={"clas_strategy": "time_wise"})
     saver = tf.train.Saver()
 
-    # ------------Pretrain---------------
+    # ------------Pretrain Generator---------------
     batch_size = tf.placeholder(dtype=tf.int32, shape=())
     num_steps = config.num_steps
 
@@ -228,7 +227,7 @@ if __name__ == "__main__":
     inputs = tf.placeholder(tf.int32, [None, num_steps])
     targets = tf.placeholder(tf.int32, [None, num_steps])
 
-    initial_state, logits, final_state, sample_id = \
+    initial_state, logits, final_state, sample_id, sequence_length = \
         generator(text_ids=inputs, num_steps=config.num_steps * tf.ones((batch_size,), dtype=tf.int32))
 
     # Losses & train ops
@@ -251,6 +250,7 @@ if __name__ == "__main__":
     train_op = optimizer.minimize(
         mle_loss + config.l2_decay * l2_loss, global_step=global_step)
 
+    # -------------Generate Text-------------------
     generated_outputs, _, _ = generator.decoder(
         decoding_strategy="infer_sample",
         start_tokens=inputs[:, 0],
@@ -261,8 +261,26 @@ if __name__ == "__main__":
     generated_logits = generator.output_layer(generated_outputs.logits)
     generated_sample_id = tf.argmax(generated_logits, 2)
 
+    # --------------Pretrain Discriminator-----------------
+    embedder = tx.modules.WordEmbedder(vocab_size=vocab_size, hparams=config.emb)
+
+    dis_global_step = tf.Variable(0, dtype=tf.int32)
+    real_samples = tf.placeholder(tf.int32, [None, num_steps])
+    fake_samples = tf.placeholder(tf.int32, [None, num_steps])
+
+    print(embedder(real_samples).get_shape())
+    _, r_preds = discriminator(embedder(real_samples))
+    _, f_preds = discriminator(embedder(fake_samples))
+
+    eps = 1e-12
+    r_loss = -tf.reduce_mean(tf.log(r_preds + eps))  # r_preds -> 1.
+    f_loss = -tf.reduce_mean(tf.log(1 - f_preds + eps))  # f_preds -> 0.
+    dis_loss = r_loss + f_loss
+
+    dis_train_op = optimizer.minimize(dis_loss, global_step=dis_global_step)
+
     # ----------------Adversarial------------------
-    rewards = discriminator(data=sample_id)
+    rewards = discriminator(inputs=embedder(sample_id), sequence_length=sequence_length)
 
     preds = tf.nn.softmax(logits)
     update_loss = -tf.reduce_sum(
@@ -273,6 +291,9 @@ if __name__ == "__main__":
             ), 1) * tf.reshape(rewards, [-1])
     )
 
+    # reward = tx.losses.discount_reward(reward=rewards, sequence_length=sequence_length)
+    # update_loss = -tf.reduce_mean(tf.log(preds) * reward)
+
     update_step = tf.Variable(0, dtype=tf.int32)
     update_learning_rate = \
         tf.placeholder(dtype=tf.float32, shape=(), name='update_learning_rate')
@@ -282,29 +303,26 @@ if __name__ == "__main__":
         beta2=0.999,
         epsilon=1e-9)
     update_op = update_optimizer.minimize(update_loss, global_step=global_step)
-    '''update_op = tx.core.get_train_op(
-        update_loss, global_step=update_step, increment_global_step=False,
-        hparams=config.opt)'''
     
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
-            train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
-            if pre_epoch % 10 == 0:
-                saver.save(sess, config.ckpt, global_step=pre_epoch)
-        
-        generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
+        # for pre_epoch in range(1, config.generator_pretrain_epoch + 1):
+        #     train_ppl = pretrain_generator(sess, gen_dataloader, valid_dataloader, test_dataloader)
+        #     if pre_epoch % 10 == 0:
+        #         saver.save(sess, config.ckpt, global_step=pre_epoch)
+        #
+        # generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
 
-        train_discriminator(sess, discriminator, epoch_num=config.discriminator_pretrain_epoch)
+        train_discriminator(sess)
         
         opt_vars['learning_rate'] = config.update_init_lr if config.update_init_lr > opt_vars['learning_rate'] else opt_vars['learning_rate']
 
         for update_epoch in range(1, config.adversial_epoch + 1):
             train_ppl = update_generator(sess, gen_dataloader)
             generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
-            train_discriminator(sess, discriminator, epoch_num=1)
+            train_discriminator(sess)
             if update_epoch % 10 == 0:
                 saver.save(sess, config.ckpt, global_step=update_epoch + config.generator_pretrain_epoch)
