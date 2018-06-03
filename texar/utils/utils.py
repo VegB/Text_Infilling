@@ -7,7 +7,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
 
-# pylint: disable=invalid-name, no-member, no-name-in-module
+# pylint: disable=invalid-name, no-member, no-name-in-module, protected-access
 
 #import importlib
 import inspect
@@ -16,13 +16,10 @@ import copy
 import numpy as np
 
 import tensorflow as tf
-from tensorflow.python.framework import ops
-from tensorflow.python.util import nest
-from tensorflow.python.ops import rnn
 
 from texar import context
 from texar.hyperparams import HParams
-from texar.utils.dtypes import is_str
+from texar.utils.dtypes import is_str, is_callable
 
 MAX_SEQ_LENGTH = np.iinfo(np.int32).max
 
@@ -53,13 +50,10 @@ __all__ = [
     "is_eval_mode_py",
     "is_predict_mode_py",
     "switch_dropout",
-    "transpose_batch_time",
-    "get_batch_size",
     "default_string",
     "patch_dict",
     "fetch_subdict",
     "uniquify_str",
-    "_bucket_boundaries",
     "soft_sequence_embedding",
     "straight_through",
     "ceildiv",
@@ -253,24 +247,28 @@ def get_instance_with_redundant_kwargs(
     return class_(**selected_kwargs)
 
 
-def get_function(fn_name, module_paths=None):
+def get_function(fn_or_name, module_paths=None):
     """Returns the function of specified name and module.
 
     Args:
-        fn_name (str): Name of the function.
-        module_paths (list of str): A list of paths to candidate modules to
-            search for the function. This is used when the function cannot be
-            located solely based on `fn_name`. The first module in the list
-            that contains the function is used.
+        fn_or_name (str or callable): Name or full path to a function, or the
+            function itself.
+        module_paths (list, optional): A list of paths to candidate modules to
+            search for the function. This is used only when the function
+            cannot be located solely based on :attr:`fn_or_name`. The first
+            module in the list that contains the function is used.
 
     Returns:
         A function.
     """
-    fn = locate(fn_name)
+    if is_callable(fn_or_name):
+        return fn_or_name
+
+    fn = locate(fn_or_name)
     if (fn is None) and (module_paths is not None):
         for module_path in module_paths:
             #if module_path in _unimportable_modules:
-            fn = locate('.'.join([module_path, fn_name]))
+            fn = locate('.'.join([module_path, fn_or_name]))
             if fn is not None:
                 break
             #module = importlib.import_module(module_path)
@@ -280,7 +278,7 @@ def get_function(fn_name, module_paths=None):
 
     if fn is None:
         raise ValueError(
-            "Method not found in {}: {}".format(module_paths, fn_name))
+            "Method not found in {}: {}".format(module_paths, fn_or_name))
 
     return fn
 
@@ -494,29 +492,6 @@ def switch_dropout(dropout_keep_prob, mode=None):
     return 1. - (1. - dropout_keep_prob) * tf.to_float(is_train_mode(mode))
 
 
-def transpose_batch_time(inputs):
-    """Transposes inputs between time-major and batch-major.
-
-    Args:
-        inputs: A Tensor of shape `[batch_size, max_time, ...]` (batch-major)
-            or `[max_time, batch_size, ...]` (time-major), or a (possibly
-            nested) tuple of such elements.
-
-    Returns:
-        A Tensor with transposed batch and time dimensions of inputs.
-    """
-    flat_input = nest.flatten(inputs)
-    flat_input = [ops.convert_to_tensor(input_) for input_ in flat_input]
-    # pylint: disable=protected-access
-    flat_input = [rnn._transpose_batch_time(input_) for input_ in flat_input]
-    return nest.pack_sequence_as(structure=inputs, flat_sequence=flat_input)
-
-def get_batch_size(tensor):
-    """Returns a unit `Tensor` representing the batch size, i.e.,
-    the size of the 1st dimension of :attr:`tensor`.
-    """
-    return tf.shape(tensor)[0]
-
 def default_string(str_, default_str):
     """Returns :attr:`str_` if it is not `None` or empty, otherwise returns
     :attr:`default_str`.
@@ -569,6 +544,9 @@ def fetch_subdict(src_dict, tgt_dict_or_keys):
     Returns:
         A new dict that is a subdict of :attr:`src_dict`.
     """
+    if src_dict is None:
+        return src_dict
+
     if isinstance(tgt_dict_or_keys, HParams):
         tgt_dict_or_keys = tgt_dict_or_keys.todict()
     if isinstance(tgt_dict_or_keys, dict):
@@ -604,16 +582,6 @@ def uniquify_str(str_, str_set):
             if unique_str not in str_set:
                 return unique_str
     raise ValueError("Fails to uniquify string: " + str_)
-
-def _bucket_boundaries(max_length, min_length=8, length_bucket_step=1.1):
-    if length_bucket_step <= 1.0:
-        raise ValueError("length_bucket_step must > 1.0")
-    x = min_length
-    boundaries = []
-    while x < max_length:
-        boundaries.append(x)
-        x = max(x+1, int(x*length_bucket_step))
-    return boundaries
 
 def soft_sequence_embedding(embedding, soft_sequence):
     """Mixes sequences of soft vectors with a embedding tensor.
@@ -663,3 +631,19 @@ def ceildiv(a, b):
     """
     return -(-a // b)
 
+#TODO(haoran):is it appropriate to put shape_list function here?
+def shape_list(x):
+    """Return list of dims, statically where possible."""
+    x = tf.convert_to_tensor(x)
+    # If unknown rank, return dynamic shape
+    if x.get_shape().dims is None:
+        return tf.shape(x)
+    static = x.get_shape().as_list()
+    shape = tf.shape(x)
+    ret = []
+    for i in range(len(static)):
+        dim = static[i]
+        if dim is None:
+            dim = shape[i]
+        ret.append(dim)
+    return ret

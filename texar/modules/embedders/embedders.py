@@ -9,21 +9,18 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from texar.module_base import ModuleBase
+from texar.modules.embedders.embedder_base import EmbedderBase
 from texar.modules.embedders import embedder_utils
+from texar.utils import utils
 
 __all__ = [
-    #"EmbedderBase",
     "WordEmbedder"
 ]
 
-#TODO(zhiting): add soft-embedder, position-embedder, embedder combiner
+#TODO(zhiting): add soft-embedder, embedder combiner
 
-#class EmbedderBase(ModuleBase):
-#    """TODO
-#    """
 
-class WordEmbedder(ModuleBase):
+class WordEmbedder(EmbedderBase):
     """Simple word embedder that maps indexes into embeddings via lookup.
 
     Either :attr:`init_value` or :attr:`vocab_size` is required. If both are
@@ -32,7 +29,8 @@ class WordEmbedder(ModuleBase):
     Args:
         init_value (optional): A `Tensor` or numpy array that contains the
             initial value of embeddings. It is typically of shape
-            `[vocab_size, embedding dim]`
+            `[vocab_size] + embedding dim`. Embedding can have dimensionality
+            > 1.
 
             If `None`, embedding is initialized as specified in
             :attr:`hparams["initializer"]`. Otherwise, the
@@ -46,25 +44,22 @@ class WordEmbedder(ModuleBase):
     """
 
     def __init__(self, init_value=None, vocab_size=None, hparams=None):
-        ModuleBase.__init__(self, hparams)
+        EmbedderBase.__init__(self, hparams=hparams)
 
         if init_value is None and vocab_size is None:
             raise ValueError(
                 "Either `init_value` or `vocab_size` is required.")
 
+        self._init_parameterized_embedding(init_value, vocab_size,
+                                           self._hparams)
+
         self._vocab_size = vocab_size
-        self._embedding = embedder_utils.get_embedding(
-            self._hparams, init_value, self._vocab_size,
-            self.variable_scope)
-        if self._hparams.trainable:
-            self._add_trainable_variable(self._embedding)
-
-        if self._vocab_size is None:
-            self._vocab_size = self._embedding.get_shape().as_list()[0]
-
-        self._dim = self._embedding.get_shape().as_list()[1:]
-        if len(self._dim) == 1:
-            self._dim = self._dim[0]
+        if vocab_size is None:
+            self._vocab_size = self._num_embeds
+        if self._vocab_size != self._num_embeds:
+            raise ValueError(
+                'vocab_size must equal to init_value.shape[0].'
+                'Got %d and %d' % (self._vocab_size, self._num_embeds))
 
         self._built = True
 
@@ -94,7 +89,9 @@ class WordEmbedder(ModuleBase):
                             "l1": 0.,
                             "l2": 0.
                         }
-                    }
+                    },
+                    "dropout_rate": 0,
+                    "dropout_strategy": 'element',
                     "trainable": True,
                 }
 
@@ -105,12 +102,15 @@ class WordEmbedder(ModuleBase):
         hparams["name"] = "word_embedder"
         return hparams
 
-    def _build(self, inputs, **kwargs):
+    def _build(self, inputs, mode=None, **kwargs):
         """Embeds inputs with look-up.
 
         Args:
-            inputs (Tensor): A `Tensor` with type `int32` or `int64`
-                containing the ids to be looked up.
+            inputs: An integer tensor containing the ids to be looked up.
+            mode (optional): A tensor taking value in
+                :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`, including
+                `TRAIN`, `EVAL`, and `PREDICT`. If `None`, dropout will be
+                controlled by :func:`texar.context.global_mode`.
             kwargs: Additional keyword arguments for
                 :tf_main:`tf.nn.embedding_lookup <nn/embedding_lookup>` besides
                 :attr:`params` and :attr:`ids`.
@@ -118,7 +118,20 @@ class WordEmbedder(ModuleBase):
         Returns:
             A `Tensor` of shape `shape(inputs) + embedding dimension`.
         """
-        outputs = tf.nn.embedding_lookup(self._embedding, inputs, **kwargs)
+        embedding = self._embedding
+        dropout_layer = self._get_dropout_layer(self._hparams, inputs)
+        if dropout_layer:
+            is_training = utils.is_train_mode(mode)
+            if self._hparams.dropout_strategy == 'item_type':
+                embedding = dropout_layer.apply(
+                    inputs=embedding, training=is_training)
+
+        outputs = tf.nn.embedding_lookup(embedding, inputs, **kwargs)
+
+        if dropout_layer and self._hparams.dropout_strategy != 'item_type':
+            outputs = dropout_layer.apply(
+                inputs=outputs, training=is_training)
+
         return outputs
 
     @property
