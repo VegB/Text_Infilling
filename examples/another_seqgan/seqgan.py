@@ -294,7 +294,7 @@ if __name__ == "__main__":
     #         ), 1) * tf.reshape(rewards, [-1])
     # )
 
-    reward = tx.losses.discount_reward(reward=rewards, sequence_length=sequence_length)
+    reward = tx.losses.discount_reward(reward=tf.reduce_sum(tf.squeeze(rewards), 1), sequence_length=sequence_length)
     update_loss = -tf.reduce_mean(tf.log(preds) * reward)
 
     update_step = tf.Variable(0, dtype=tf.int32)

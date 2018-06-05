@@ -95,7 +95,7 @@ def _forward_single_output_layer(inputs, input_size, output_layer):
     # Feed to the layer
     output_flat = output_layer(inputs_flat)
     # output_size = output_layer.compute_output_shape([1, dim]).as_list()[1:]
-    output_size = compute_output_shape([1, dim]).as_list()[1:]
+    output_size = compute_output_shape(output_layer.units, [1, dim]).as_list()[1:]
     output_size = np.array(output_size)
     # Reshape output to [batch_size/max_time, max_time/batch_size] + output_size
     output_shape = tf.concat([tf.shape(inputs)[:2], output_size], axis=0)
