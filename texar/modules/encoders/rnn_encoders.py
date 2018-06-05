@@ -19,6 +19,7 @@ from texar.core import layers
 from texar.utils import utils
 from texar.utils.shapes import mask_sequences
 from texar.hyperparams import HParams
+from texar.modules.decoders.rnn_decoder_base import compute_output_shape
 
 # pylint: disable=too-many-arguments, too-many-locals, invalid-name, no-member
 
@@ -93,7 +94,8 @@ def _forward_single_output_layer(inputs, input_size, output_layer):
     inputs_flat = tf.reshape(inputs_flat, [-1, dim])
     # Feed to the layer
     output_flat = output_layer(inputs_flat)
-    output_size = output_layer.compute_output_shape([1, dim]).as_list()[1:]
+    # output_size = output_layer.compute_output_shape([1, dim]).as_list()[1:]
+    output_size = compute_output_shape([1, dim]).as_list()[1:]
     output_size = np.array(output_size)
     # Reshape output to [batch_size/max_time, max_time/batch_size] + output_size
     output_shape = tf.concat([tf.shape(inputs)[:2], output_size], axis=0)
