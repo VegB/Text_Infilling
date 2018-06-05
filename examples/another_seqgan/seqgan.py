@@ -227,13 +227,13 @@ if __name__ == "__main__":
     inputs = tf.placeholder(tf.int32, [None, num_steps])
     targets = tf.placeholder(tf.int32, [None, num_steps])
 
-    initial_state, logits, final_state, sample_id, sequence_length = \
+    initial_state, gen_logits, final_state, sample_id, sequence_length = \
         generator(text_ids=inputs, num_steps=config.num_steps * tf.ones((batch_size,), dtype=tf.int32))
 
     # Losses & train ops
     mle_loss = tx.losses.sequence_sparse_softmax_cross_entropy(
         labels=targets,
-        logits=logits,
+        logits=gen_logits,
         sequence_length=num_steps * tf.ones((batch_size,)))
 
     l2_loss = sum([tf.nn.l2_loss(t) for t in tf.trainable_variables()])
@@ -268,31 +268,34 @@ if __name__ == "__main__":
     real_samples = tf.placeholder(tf.int32, [None, num_steps])
     fake_samples = tf.placeholder(tf.int32, [None, num_steps])
 
-    print(embedder(real_samples).get_shape())
-    _, r_preds = discriminator(embedder(real_samples))
-    _, f_preds = discriminator(embedder(fake_samples))
+    r_logits, r_preds = discriminator(embedder(real_samples))
+    f_logits, f_preds = discriminator(embedder(fake_samples))
+    r_preds = r_logits * tf.one_hot(r_preds, 2, 1.0, 0.0)
+    f_preds = f_logits * tf.one_hot(f_preds, 2, 1.0, 0.0)
 
-    eps = 1e-12
-    r_loss = -tf.reduce_mean(tf.log(r_preds + eps))  # r_preds -> 1.
-    f_loss = -tf.reduce_mean(tf.log(1 - f_preds + eps))  # f_preds -> 0.
+    r_loss = -tf.reduce_mean(r_preds)  # r_preds -> 1.
+    f_loss = -tf.reduce_mean(1 - f_preds)  # f_preds -> 0.
     dis_loss = r_loss + f_loss
 
-    dis_train_op = optimizer.minimize(dis_loss, global_step=dis_global_step)
+    dis_train_op = tx.core.get_train_op(
+        dis_loss, global_step=global_step, increment_global_step=False,
+        hparams=config.opt)
 
     # ----------------Adversarial------------------
-    rewards = discriminator(inputs=embedder(sample_id), sequence_length=sequence_length)
+    reward_logits, reward_preds = discriminator(inputs=embedder(sample_id), sequence_length=sequence_length)
+    rewards = reward_logits * tf.one_hot(reward_preds, 2, 1.0, 0.0)
 
-    preds = tf.nn.softmax(logits)
-    update_loss = -tf.reduce_sum(
-        tf.reduce_sum(
-            tf.one_hot(tf.to_int32(tf.reshape(inputs, [-1])), vocab_size,
-                       1.0, 0.0) * tf.log(
-                tf.clip_by_value(tf.reshape(preds[:, :config.num_steps, :], [-1, vocab_size]), 1e-20, 1.0)
-            ), 1) * tf.reshape(rewards, [-1])
-    )
+    preds = tf.nn.softmax(gen_logits)
+    # update_loss = -tf.reduce_sum(
+    #     tf.reduce_sum(
+    #         tf.one_hot(tf.to_int32(tf.reshape(inputs, [-1])), vocab_size,
+    #                    1.0, 0.0) * tf.log(
+    #             tf.clip_by_value(tf.reshape(preds[:, :config.num_steps, :], [-1, vocab_size]), 1e-20, 1.0)
+    #         ), 1) * tf.reshape(rewards, [-1])
+    # )
 
-    # reward = tx.losses.discount_reward(reward=rewards, sequence_length=sequence_length)
-    # update_loss = -tf.reduce_mean(tf.log(preds) * reward)
+    reward = tx.losses.discount_reward(reward=rewards, sequence_length=sequence_length)
+    update_loss = -tf.reduce_mean(tf.log(preds) * reward)
 
     update_step = tf.Variable(0, dtype=tf.int32)
     update_learning_rate = \
