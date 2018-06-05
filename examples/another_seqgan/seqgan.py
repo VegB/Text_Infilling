@@ -102,7 +102,7 @@ def train_discriminator(sess):
                                        fake_samples: g_ids,
                                        dis_global_step: step,
                                        tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
-        if step % 200 == 0:
+        if step % 20 == 0:
             print("%d: dis_total_loss: %.6f" % (step, loss))
             # print(r_preds_new_)
 
@@ -271,8 +271,8 @@ if __name__ == "__main__":
 
     r_logits, r_preds = discriminator(embedder(real_samples))
     f_logits, f_preds = discriminator(embedder(fake_samples))
-    r_preds_new = tf.nn.softmax(r_logits) * tf.one_hot(r_preds, 2, 1.0, 0.0)
-    f_preds_new = tf.nn.softmax(f_logits) * tf.one_hot(f_preds, 2, 1.0, 0.0)
+    r_preds_new = tf.reduce_sum(tf.nn.softmax(r_logits) * tf.one_hot(r_preds, 2, 1.0, 0.0), 2)
+    f_preds_new = tf.reduce_sum(tf.nn.softmax(f_logits) * tf.one_hot(f_preds, 2, 1.0, 0.0), 2)
 
     eps = 1e-12
     r_loss = -tf.reduce_mean(tf.log(r_preds_new + eps))  # r_preds -> 1.
