@@ -273,9 +273,12 @@ if __name__ == "__main__":
 
     r_logits, r_preds = discriminator(embedder(real_samples))
     f_logits, f_preds = discriminator(embedder(fake_samples))
-    r_preds_new = tf.nn.sigmoid(r_logits)
-    f_preds_new = tf.nn.sigmoid(f_logits)
-
+    real_label = tf.Variable(np.ones(shape=(config.batch_size, config.num_steps), dtype=np.float32), dtype=tf.float32)
+    fake_label = tf.Variable(np.zeros(shape=(config.batch_size, config.num_steps), dtype=np.float32), dtype=tf.float32)
+    r_preds_new = tf.nn.sigmoid_cross_entropy_with_logits(logits=tf.squeeze(r_logits),
+                                                          labels=real_label)
+    f_preds_new = tf.nn.sigmoid_cross_entropy_with_logits(logits=tf.squeeze(f_logits),
+                                                          labels=fake_label)
     eps = 1e-12
     r_loss = -tf.reduce_mean(tf.log(r_preds_new + eps))  # r_preds -> 1.
     f_loss = -tf.reduce_mean(tf.log(1 - f_preds_new + eps))  # g_preds -> 0.
