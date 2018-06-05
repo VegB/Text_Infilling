@@ -97,13 +97,14 @@ def train_discriminator(sess):
                                negative_file=config.train_file, word2id=word2id)
 
     for step, (r_ids, g_ids) in enumerate(dataloader.iter()):
-        _, loss = sess.run([dis_train_op, dis_loss],
+        _, loss, r_preds_, r_preds_new_, r_logits_ = sess.run([dis_train_op, dis_loss, r_preds, r_preds_new, r_logits],
                             feed_dict={real_samples: r_ids,
                                        fake_samples: g_ids,
                                        dis_global_step: step,
                                        tx.global_mode(): tf.estimator.ModeKeys.TRAIN})
         if step % 200 == 0:
             print("%d: dis_total_loss: %.6f" % (step, loss))
+            # print(r_preds_new_)
 
 
 def update_generator(sess, gen_dataloader):
@@ -270,31 +271,25 @@ if __name__ == "__main__":
 
     r_logits, r_preds = discriminator(embedder(real_samples))
     f_logits, f_preds = discriminator(embedder(fake_samples))
-    r_preds = r_logits * tf.one_hot(r_preds, 2, 1.0, 0.0)
-    f_preds = f_logits * tf.one_hot(f_preds, 2, 1.0, 0.0)
+    r_preds_new = tf.nn.softmax(r_logits) * tf.one_hot(r_preds, 2, 1.0, 0.0)
+    f_preds_new = tf.nn.softmax(f_logits) * tf.one_hot(f_preds, 2, 1.0, 0.0)
 
-    r_loss = -tf.reduce_mean(r_preds)  # r_preds -> 1.
-    f_loss = -tf.reduce_mean(1 - f_preds)  # f_preds -> 0.
+    eps = 1e-12
+    r_loss = -tf.reduce_mean(tf.log(r_preds_new + eps))  # r_preds -> 1.
+    f_loss = -tf.reduce_mean(tf.log(1 - f_preds_new + eps))  # g_preds -> 0.
     dis_loss = r_loss + f_loss
 
     dis_train_op = tx.core.get_train_op(
         dis_loss, global_step=global_step, increment_global_step=False,
-        hparams=config.opt)
+        hparams=config.d_opt)
 
     # ----------------Adversarial------------------
     reward_logits, reward_preds = discriminator(inputs=embedder(sample_id), sequence_length=sequence_length)
     rewards = reward_logits * tf.one_hot(reward_preds, 2, 1.0, 0.0)
 
     preds = tf.nn.softmax(gen_logits)
-    # update_loss = -tf.reduce_sum(
-    #     tf.reduce_sum(
-    #         tf.one_hot(tf.to_int32(tf.reshape(inputs, [-1])), vocab_size,
-    #                    1.0, 0.0) * tf.log(
-    #             tf.clip_by_value(tf.reshape(preds[:, :config.num_steps, :], [-1, vocab_size]), 1e-20, 1.0)
-    #         ), 1) * tf.reshape(rewards, [-1])
-    # )
-
-    reward = tx.losses.discount_reward(reward=tf.reduce_sum(tf.squeeze(rewards), 1), sequence_length=sequence_length)
+    print(sequence_length.get_shape())
+    reward = tx.losses.discount_reward(reward=tf.reduce_sum(rewards, 2), sequence_length=sequence_length)#um_steps * tf.ones((batch_size,)))
     update_loss = -tf.reduce_mean(tf.log(preds) * reward)
 
     update_step = tf.Variable(0, dtype=tf.int32)
@@ -319,7 +314,8 @@ if __name__ == "__main__":
         #
         # generate_negative_samples(sess, gen_dataloader, dst_path=config.negative_file)
 
-        train_discriminator(sess)
+        for dis_epoch in range(config.discriminator_pretrain_epoch):
+            train_discriminator(sess)
         
         opt_vars['learning_rate'] = config.update_init_lr if config.update_init_lr > opt_vars['learning_rate'] else opt_vars['learning_rate']
 
