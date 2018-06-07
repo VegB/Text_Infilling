@@ -287,10 +287,13 @@ if __name__ == "__main__":
     r_loss = tf.reduce_sum(r_preds_new)
     f_loss = tf.reduce_sum(f_preds_new)
     dis_loss = r_loss + f_loss
+    dis_loss.set_shape(())
+    print(type(r_preds_new))
+    print(dis_global_step.get_shape())
 
     dis_train_op = tx.core.get_train_op(
-        dis_loss, global_step=global_step, increment_global_step=False,
-        hparams=config.d_opt)
+        dis_loss, global_step=global_step, increment_global_step=False)
+        # hparams=config.d_opt)
 
     # ----------------Adversarial------------------
     reward_logits, reward_preds = discriminator(inputs=embedder(sample_id), sequence_length=sequence_length)
