@@ -106,11 +106,8 @@ def train_discriminator(sess):
         if step % 20 == 0:
             print("%d: dis_total_loss: %.6f" % (step, loss))
             print("r_loss: %f, f_loss: %f" % (r_loss_, f_loss_))
-            print(r_logits_)
-            print(real_label_)
-            # print(r_preds_)
-            # print(r_preds_new_)
-            # print(f_preds_new_)
+            # print(r_logits_)
+            # print(real_label_)
 
 
 def update_generator(sess, gen_dataloader):
@@ -278,21 +275,22 @@ if __name__ == "__main__":
     r_logits, r_preds = discriminator(embedder(real_samples))
     f_logits, f_preds = discriminator(embedder(fake_samples))
     real_label = tf.Variable(
-        np.ones(shape=(config.batch_size, config.num_steps, 1), dtype=np.float32),
+        np.ones(shape=(config.batch_size, config.num_steps), dtype=np.float32),
         dtype=tf.float32)
     fake_label = tf.Variable(
-        np.zeros(shape=(config.batch_size, config.num_steps, 1), dtype=np.float32),
+        np.zeros(shape=(config.batch_size, config.num_steps), dtype=np.float32),
         dtype=tf.float32)
 
     r_loss = tx.losses.sequence_sigmoid_cross_entropy(
         labels=real_label,
-        logits=r_logits,
+        logits=tf.squeeze(r_logits),
         sequence_length=num_steps * tf.ones((batch_size,)))  # r_preds -> 1.
     f_loss = tx.losses.sequence_sigmoid_cross_entropy(
         labels=fake_label,
-        logits=f_logits,
+        logits=tf.squeeze(f_logits),
         sequence_length=num_steps * tf.ones((batch_size,)))  # g_preds -> 0.
     dis_loss = r_loss + f_loss
+    dis_loss.set_shape(())
 
     dis_train_op = tx.core.get_train_op(
         dis_loss, global_step=global_step, increment_global_step=False,
