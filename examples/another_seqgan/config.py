@@ -55,7 +55,7 @@ d_opt = {
     "optimizer": {
         "type": "AdamOptimizer",
         "kwargs": {
-            "learning_rate": 0.0001
+            "learning_rate": 0.001
         }
     }
 }

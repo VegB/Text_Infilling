@@ -97,7 +97,7 @@ def train_discriminator(sess):
                                negative_file=config.train_file, word2id=word2id)
 
     for step, (r_ids, g_ids) in enumerate(dataloader.iter()):
-        _, loss, r_preds_, r_preds_new_, r_logits_ = sess.run([dis_train_op, dis_loss, r_preds, r_preds_new, r_logits],
+        _, loss, r_preds_, r_preds_new_, r_logits_, r_loss_, f_preds_, f_preds_new_, f_logits_, f_loss_ = sess.run([dis_train_op, dis_loss, r_preds, r_preds_new, r_logits, r_loss, f_preds, f_preds_new, f_logits, f_loss],
                             feed_dict={real_samples: r_ids,
                                        fake_samples: g_ids,
                                        dis_global_step: step,
@@ -106,7 +106,9 @@ def train_discriminator(sess):
             print("%d: dis_total_loss: %.6f" % (step, loss))
             # print(r_logits_)
             # print(r_preds_)
+            print("r_loss: %f, f_loss: %f" % (r_loss_, f_loss_))
             # print(r_preds_new_)
+            # print(f_preds_new_)
 
 
 def update_generator(sess, gen_dataloader):
@@ -280,8 +282,10 @@ if __name__ == "__main__":
     f_preds_new = tf.nn.sigmoid_cross_entropy_with_logits(logits=tf.squeeze(f_logits),
                                                           labels=fake_label)
     eps = 1e-12
-    r_loss = -tf.reduce_mean(tf.log(r_preds_new + eps))  # r_preds -> 1.
-    f_loss = -tf.reduce_mean(tf.log(1 - f_preds_new + eps))  # g_preds -> 0.
+    # r_loss = -tf.reduce_mean(tf.log(r_preds_new + eps))  # r_preds -> 1.
+    # f_loss = -tf.reduce_mean(tf.log(1 - f_preds_new + eps))  # g_preds -> 0.
+    r_loss = tf.reduce_sum(r_preds_new)
+    f_loss = tf.reduce_sum(f_preds_new)
     dis_loss = r_loss + f_loss
 
     dis_train_op = tx.core.get_train_op(
