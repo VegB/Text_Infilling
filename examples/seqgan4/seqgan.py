@@ -43,17 +43,17 @@ def g_run_epoch(sess, mode_string):
             feed_dict[c] = state[i].c
             feed_dict[h] = state[i].h
 
-        rets = sess.run(fetches, feed_dict)
-        loss += rets["mle_loss"]
-        state = rets["final_state"]
+        rtns = sess.run(fetches, feed_dict)
+        loss += rtns["mle_loss"]
+        state = rtns["final_state"]
         iters += num_steps
         ppl = np.exp(loss / iters)
 
-        if mode_string == 'train' and rets['global_step'] % 100 == 0:
+        if mode_string == 'train' and rtns['global_step'] % 100 == 0:
             valid_ppl = g_run_epoch(sess, 'valid')
             test_ppl = g_run_epoch(sess, 'test')
             rst = "step: %d, tr_ppl: %.6f, v_ppl: %.6f, tst_ppl: %.6f, lr: %.7f\n" % \
-                  (rets['global_step'], ppl, valid_ppl, test_ppl, opt_vars['learning_rate'])
+                  (rtns['global_step'], ppl, valid_ppl, test_ppl, opt_vars['learning_rate'])
             print_and_write_to_file(rst, eval_log)
 
             if valid_ppl < opt_vars['best_valid_ppl']:
@@ -82,10 +82,10 @@ def d_run_epoch(sess):
             inputs: x, targets: y,
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN
         }
-        rets = sess.run(fetches, feed_dict)
+        rtns = sess.run(fetches, feed_dict)
         if step % 1 == 0:
             print("%d: dis_total_loss: %.6f, r_loss: %.6f, f_loss: %.6f" %
-                  (step, rets['mle_loss'], rets['r_loss'], rets['f_loss']))
+                  (step, rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
 
 
 def g_update_epoch(sess):
@@ -93,17 +93,19 @@ def g_update_epoch(sess):
         "mean_reward": mean_reward,
         "exp_reward_loss": exp_reward_loss,
         "update_loss": update_loss,
-        "train_op": update_op
+        "train_op": update_op,
+        "expected_reward": expected_reward
     }
     for step, (x, y) in enumerate(train_dataloader.iter()):
         feed_dict = {
             inputs: x, targets: y,
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN
         }
-        rets = sess.run(fetches, feed_dict)
+        rtns = sess.run(fetches, feed_dict)
         if step % 1 == 0:
             print("%d: mean_reward: %.6f, exp_reward_loss: %.6f, update_loss: %.6f" %
-                  (step, rets['mean_reward'], rets['exp_reward_loss'], rets['update_loss']))
+                  (step, rtns['mean_reward'], rtns['exp_reward_loss'], rtns['update_loss']))
+            # print(rtns['expected_reward'])
 
 
 if __name__ == "__main__":
@@ -176,7 +178,7 @@ if __name__ == "__main__":
 
     # ------------Adeversarial---------------
     infer_logits = \
-        tf.clip_by_value(tf.nn.softmax(infer_logits) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)  # [batch_size, num_steps, vocab_size]
+        tf.clip_by_value(tf.nn.softmax(infer_logits, axis=-1) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
 
     expected_reward = tf.Variable(tf.zeros((num_steps,)))  # (num_step,), exp_reward at each step
     reward = tf.squeeze(f_logits) - expected_reward[:tf.shape(f_logits)[1]]
@@ -185,9 +187,8 @@ if __name__ == "__main__":
     exp_op = tx.core.get_train_op(exp_reward_loss, global_step=global_step,
                                   increment_global_step=False, hparams=config.update_opt_hparams)
 
-    reward = tx.losses.discount_reward(reward, sequence_length=tf.squeeze(sequence_length), tensor_rank=2)  # [batch_size, num_steps]
+    reward = tx.losses.discount_reward(reward, sequence_length=tf.squeeze(sequence_length), tensor_rank=2)
     update_loss = -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
-    update_loss.set_shape(())
     gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
                                   increment_global_step=False, hparams=config.update_opt_hparams)
     update_op = tf.group(gen_op, exp_op)
@@ -199,10 +200,10 @@ if __name__ == "__main__":
 
         saver = tf.train.Saver()
 
-        # for g_epoch in range(config.training_hparams['generator_pretrain_epoch']):
-        #     train_ppl = g_run_epoch(sess, 'train')
+        for g_epoch in range(config.training_hparams['generator_pretrain_epoch']):
+            train_ppl = g_run_epoch(sess, 'train')
 
-        # for d_epoch in range(config.training_hparams['discriminator_pretrain_epoch']):
+        for d_epoch in range(config.training_hparams['discriminator_pretrain_epoch']):
         #     d_run_epoch(sess)
 
         for update_epoch in range(config.training_hparams['adversial_epoch']):
