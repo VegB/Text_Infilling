@@ -72,7 +72,7 @@ class EmbeddingTiedLanguageModel(tx.modules.ModuleBase):
             'variational_recurrent': True,
         }
 
-    def _build(self, text_ids, num_steps):
+    def _build(self, text_ids, num_steps, infer=False, end_token=None):
         embedding_matrix = tf.transpose(self.output_layer.weights[0])
         embedding_matrix = embedding_drop(
             embedding_matrix,
@@ -80,41 +80,28 @@ class EmbeddingTiedLanguageModel(tx.modules.ModuleBase):
 
         initial_state = self.decoder.zero_state(
             batch_size=tf.shape(text_ids)[0], dtype=tf.float32)
-        outputs, final_state, sequence_length = self.decoder(
-            inputs=tf.nn.embedding_lookup(embedding_matrix, text_ids),
-            initial_state=initial_state,
-            impute_finished=True,
-            decoding_strategy="train_greedy",
-            sequence_length=num_steps)
+        if not infer:
+            outputs, final_state, _ = self.decoder(
+                inputs=tf.nn.embedding_lookup(embedding_matrix, text_ids),
+                initial_state=initial_state,
+                impute_finished=True,
+                decoding_strategy="train_greedy",
+                sequence_length=num_steps)
+            rtn = (initial_state, self.output_layer(outputs.logits), final_state)
+        else:
+            infer_outputs, _, sequence_length = self.decoder(
+                decoding_strategy="infer_sample",
+                start_tokens=text_ids[:, 0],
+                end_token=end_token,
+                embedding=embedding_matrix,
+                initial_state=initial_state,
+                max_decoding_length=num_steps[0])
+            infer_logits = self.output_layer(infer_outputs.logits)
+            infer_sample_id = tf.argmax(infer_logits, 2)
+            rtn = (infer_logits, infer_sample_id, sequence_length)
 
         if not self._built:
             self._add_internal_trainable_variables()
             self._built = True
 
-        return initial_state, self.output_layer(outputs.logits), final_state
-
-
-if __name__ == '__main__':
-    lm = EmbeddingTiedLanguageModel(vocab_size=10)
-
-    text_ids = tf.ones((32, 25), dtype=tf.int64)
-    num_steps = [15] * 32
-
-    a, b, c = lm(text_ids, num_steps)
-
-    inputs = tf.placeholder(dtype=tf.float32, shape=[None, None, 50])
-    length = tf.placeholder(dtype=tf.int32, shape=[None])
-    #
-    # decoder = tx.modules.BasicRNNDecoder(vocab_size=200)
-    # decoder(inputs=inputs,
-    #         initial_state=decoder.zero_state(batch_size=)
-    #         impute_finished=True,
-    #         decoding_strategy="train_greedy",
-    #         sequence_length=num_steps)
-
-    print(a)
-    print(b)
-    print(c)
-
-    for element in lm.trainable_variables:
-        print(element)
+        return rtn

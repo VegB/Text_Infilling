@@ -30,3 +30,14 @@ log_hparams = {
     'train_log_file': "./data/training_log.txt",
     'eval_log_file': "./data/eval_log.txt"
 }
+emb_hparams = {
+    "dim": 400
+}
+opt_hparams = {
+    "optimizer": {
+        "type": "AdamOptimizer",
+        "kwargs": {
+            "learning_rate": 0.001
+        }
+    }
+}
