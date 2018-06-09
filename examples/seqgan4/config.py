@@ -33,7 +33,15 @@ log_hparams = {
 emb_hparams = {
     "dim": 400
 }
-opt_hparams = {
+d_opt_hparams = {
+    "optimizer": {
+        "type": "AdamOptimizer",
+        "kwargs": {
+            "learning_rate": 0.001
+        }
+    }
+}
+update_opt_hparams = {
     "optimizer": {
         "type": "AdamOptimizer",
         "kwargs": {
