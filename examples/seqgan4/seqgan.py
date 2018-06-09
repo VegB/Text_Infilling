@@ -204,7 +204,7 @@ if __name__ == "__main__":
             train_ppl = g_run_epoch(sess, 'train')
 
         for d_epoch in range(config.training_hparams['discriminator_pretrain_epoch']):
-        #     d_run_epoch(sess)
+            d_run_epoch(sess)
 
         for update_epoch in range(config.training_hparams['adversial_epoch']):
             g_update_epoch(sess)
