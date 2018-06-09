@@ -20,8 +20,7 @@ def g_run_epoch(sess, mode_string):
     else:
         sys.exit("INVALID MODE %s, expecting one of ['train', 'valid', 'test']" % mode_string)
 
-    loss = 0.
-    iters = 0
+    loss, iters = 0., 0
     state = sess.run(initial_state, feed_dict={inputs: np.ones((batch_size, num_steps))})
 
     fetches = {
@@ -31,7 +30,7 @@ def g_run_epoch(sess, mode_string):
         'global_step': global_step
     }
     if mode_string == 'train':
-        fetches["train_op"] = g_train_op
+        fetches["train_op"] = gen_train_op
 
     for step, (x, y) in enumerate(dataloader.iter()):
         feed_dict = {
@@ -74,6 +73,8 @@ def g_run_epoch(sess, mode_string):
 def d_run_epoch(sess):
     fetches = {
         "mle_loss": dis_loss,
+        "r_loss": r_loss,
+        "f_loss": f_loss,
         "train_op": dis_train_op
     }
     for step, (x, y) in enumerate(train_dataloader.iter()):
@@ -83,20 +84,39 @@ def d_run_epoch(sess):
         }
         rets = sess.run(fetches, feed_dict)
         if step % 1 == 0:
-            print("%d: dis_total_loss: %.6f" % (step, rets['mle_loss']))
+            print("%d: dis_total_loss: %.6f, r_loss: %.6f, f_loss: %.6f" %
+                  (step, rets['mle_loss'], rets['r_loss'], rets['f_loss']))
+
+
+def g_update_epoch(sess):
+    fetches = {
+        "mean_reward": mean_reward,
+        "exp_reward_loss": exp_reward_loss,
+        "update_loss": update_loss,
+        "train_op": update_op
+    }
+    for step, (x, y) in enumerate(train_dataloader.iter()):
+        feed_dict = {
+            inputs: x, targets: y,
+            tx.global_mode(): tf.estimator.ModeKeys.TRAIN
+        }
+        rets = sess.run(fetches, feed_dict)
+        if step % 1 == 0:
+            print("%d: mean_reward: %.6f, exp_reward_loss: %.6f, update_loss: %.6f" %
+                  (step, rets['mean_reward'], rets['exp_reward_loss'], rets['update_loss']))
 
 
 if __name__ == "__main__":
     config_path = "config"
     config = importlib.import_module(config_path)
-    batch_size = config.training_hparams['batch_size']
-    num_steps = config.training_hparams['num_steps']
     opt_vars = config.opt_vars
     eval_log = open(config.log_hparams['eval_log_file'], "w")
 
     word2id = tx.data.make_vocab(config.data_hparams["train"], newline_token="<EOS>",
                                  return_type="dict")
     vocab_size = len(word2id)
+    batch_size = config.training_hparams['batch_size']
+    num_steps = config.training_hparams['num_steps']
     train_dataloader = DataLoader(config, config.data_hparams["train"], word2id)
     valid_dataloader = DataLoader(config, config.data_hparams["valid"], word2id)
     test_dataloader = DataLoader(config, config.data_hparams["test"], word2id)
@@ -126,19 +146,19 @@ if __name__ == "__main__":
         beta1=0.,
         beta2=0.999,
         epsilon=1e-9)
-    g_train_op = optimizer.minimize(
+    gen_train_op = optimizer.minimize(
         mle_loss + config.l2_hparams['l2_decay'] * l2_loss, global_step=global_step)
 
     # -------------Generator Infer-------------------
-    infer_logits, infer_sample_id, sequence_length = \
+    infer_logits, infer_sample_ids, sequence_length = \
         generator(inputs, num_steps=num_steps * tf.ones((batch_size,), dtype=tf.int32),
                   infer=True, end_token=word2id["<EOS>"])
 
     # ------------Pretrain Discriminator---------------
     embedder = tx.modules.WordEmbedder(vocab_size=vocab_size, hparams=config.emb_hparams)
 
-    r_logits, r_preds = discriminator(embedder(inputs))
-    f_logits, f_preds = discriminator(embedder(infer_sample_id))
+    r_logits, _ = discriminator(embedder(inputs))
+    f_logits, _ = discriminator(embedder(infer_sample_ids))
 
     r_loss = tx.losses.sequence_sigmoid_cross_entropy(
         labels=tf.ones(shape=(batch_size, num_steps), dtype=tf.float32),
@@ -147,12 +167,30 @@ if __name__ == "__main__":
     f_loss = tx.losses.sequence_sigmoid_cross_entropy(
         labels=tf.zeros(shape=(batch_size, num_steps), dtype=tf.float32),
         logits=tf.squeeze(f_logits),
-        sequence_length=sequence_length)  # g_preds -> 0.
+        sequence_length=sequence_length)  # infer_logits -> 0.
     dis_loss = r_loss + f_loss
     dis_loss.set_shape(())
 
     dis_train_op = tx.core.get_train_op(dis_loss, global_step=global_step,
-                                        increment_global_step=False, hparams=config.opt_hparams)
+                                        increment_global_step=False, hparams=config.d_opt_hparams)
+
+    # ------------Adeversarial---------------
+    infer_logits = \
+        tf.clip_by_value(tf.nn.softmax(infer_logits) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)  # [batch_size, num_steps, vocab_size]
+
+    expected_reward = tf.Variable(tf.zeros((num_steps,)))  # (num_step,), exp_reward at each step
+    reward = tf.squeeze(f_logits) - expected_reward[:tf.shape(f_logits)[1]]
+    mean_reward = tf.reduce_mean(reward)
+    exp_reward_loss = tf.reduce_mean(tf.abs(reward))
+    exp_op = tx.core.get_train_op(exp_reward_loss, global_step=global_step,
+                                  increment_global_step=False, hparams=config.update_opt_hparams)
+
+    reward = tx.losses.discount_reward(reward, sequence_length=tf.squeeze(sequence_length), tensor_rank=2)  # [batch_size, num_steps]
+    update_loss = -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
+    update_loss.set_shape(())
+    gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
+                                  increment_global_step=False, hparams=config.update_opt_hparams)
+    update_op = tf.group(gen_op, exp_op)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -161,8 +199,11 @@ if __name__ == "__main__":
 
         saver = tf.train.Saver()
 
-        for g_epoch in range(1, config.training_hparams['generator_pretrain_epoch'] + 1):
-            train_ppl = g_run_epoch(sess, 'train')
+        # for g_epoch in range(config.training_hparams['generator_pretrain_epoch']):
+        #     train_ppl = g_run_epoch(sess, 'train')
 
-        for d_epoch in range(1, config.training_hparams['discriminator_pretrain_epoch'] + 1):
-            d_run_epoch(sess)
+        # for d_epoch in range(config.training_hparams['discriminator_pretrain_epoch']):
+        #     d_run_epoch(sess)
+
+        for update_epoch in range(config.training_hparams['adversial_epoch']):
+            g_update_epoch(sess)
