@@ -274,23 +274,18 @@ if __name__ == "__main__":
 
     r_logits, r_preds = discriminator(embedder(real_samples))
     f_logits, f_preds = discriminator(embedder(fake_samples))
-    real_label = tf.Variable(
-        np.ones(shape=(config.batch_size, config.num_steps), dtype=np.float32),
-        dtype=tf.float32)
-    fake_label = tf.Variable(
-        np.zeros(shape=(config.batch_size, config.num_steps), dtype=np.float32),
-        dtype=tf.float32)
 
     r_loss = tx.losses.sequence_sigmoid_cross_entropy(
-        labels=real_label,
+        labels=tf.ones((config.batch_size, config.num_steps), dtype=tf.float32),
         logits=tf.squeeze(r_logits),
         sequence_length=num_steps * tf.ones((batch_size,)))  # r_preds -> 1.
+    r_loss.set_shape(())
     f_loss = tx.losses.sequence_sigmoid_cross_entropy(
-        labels=fake_label,
+        labels=tf.zeros((config.batch_size, config.num_steps), dtype=tf.float32),
         logits=tf.squeeze(f_logits),
         sequence_length=num_steps * tf.ones((batch_size,)))  # g_preds -> 0.
+    f_loss.set_shape(())
     dis_loss = r_loss + f_loss
-    dis_loss.set_shape(())
 
     dis_train_op = tx.core.get_train_op(
         dis_loss, global_step=global_step, increment_global_step=False,
