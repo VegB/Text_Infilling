@@ -64,11 +64,11 @@ def g_run_epoch(sess, mode_string):
             iters += num_steps
             ppl = np.exp(loss / iters)
 
-        if mode_string in ['train', 'update'] and rtns['step'] % 1 == 0:
+        if mode_string in ['train', 'update'] and rtns['step'] % 100 == 0:
             valid_ppl = g_run_epoch(sess, 'valid')
             test_ppl = g_run_epoch(sess, 'test')
             if mode_string == 'train':
-                rst = "step: %d, v_ppl: %.6f, tst_ppl: %.6f, tr_ppl: %.6f, lr: %.7f\n" % \
+                rst = "step: %d, v_ppl: %.6f, tst_ppl: %.6f, tr_ppl: %.6f, lr: %.7f" % \
                       (rtns['step'], valid_ppl, test_ppl, ppl, opt_vars['learning_rate'])
             else:
                 rst = "step: %d, v_ppl: %.6f, tst_ppl: %.6f, mean_rwd: %.6f, exp_rwd_loss:" \
@@ -103,7 +103,7 @@ def d_run_epoch(sess):
             tx.global_mode(): tf.estimator.ModeKeys.TRAIN
         }
         rtns = sess.run(fetches, feed_dict)
-        if step % 1 == 0:
+        if step % 200 == 0:
             print("%d: dis_total_loss: %.6f, r_loss: %.6f, f_loss: %.6f" %
                   (step, rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
 
@@ -174,12 +174,13 @@ if __name__ == "__main__":
 
     # ------------Adeversarial---------------
     infer_logits = \
-        tf.clip_by_value(tf.nn.softmax(infer_logits, axis=-1) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
+        tf.clip_by_value(tf.nn.softmax(infer_logits) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
 
     expected_reward = tf.Variable(tf.zeros((num_steps,)))  # (num_step,), exp_reward at each step
     reward = tf.squeeze(f_logits) - expected_reward[:tf.shape(f_logits)[1]]
     mean_reward = tf.reduce_mean(reward)
     exp_reward_loss = tf.reduce_mean(tf.abs(reward))
+    exp_reward_loss.set_shape(())
     exp_op = tx.core.get_train_op(exp_reward_loss, global_step=global_step,
                                   increment_global_step=False, hparams=config.update_opt_hparams)
 
@@ -199,7 +200,7 @@ if __name__ == "__main__":
 
         for g_epoch in range(config.training_hparams['generator_pretrain_epoch']):
             train_ppl = g_run_epoch(sess, 'train')
-            if (g_epoch + 1) % 20:
+            if (g_epoch + 1) % 20 == 0:
                 saver.save(sess, config.log_hparams['ckpt'], global_step=g_epoch + 1)
 
         for d_epoch in range(config.training_hparams['discriminator_pretrain_epoch']):
@@ -209,5 +210,5 @@ if __name__ == "__main__":
         opt_vars['learning_rate'] = config.lr_hparams['update_init_lr']
         for update_epoch in range(config.training_hparams['adversial_epoch']):
             update_ppl = g_run_epoch(sess, 'update')
-            if (update_epoch + 1) % 20:
+            if (update_epoch + 1) % 20 == 0:
                 saver.save(sess, config.log_hparams['ckpt'], global_step=config.training_hparams['generator_pretrain_epoch'] + update_epoch + 1)
