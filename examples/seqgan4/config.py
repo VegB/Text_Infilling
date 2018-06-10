@@ -24,7 +24,7 @@ training_hparams = {
     'generator_pretrain_epoch': 120,
     'discriminator_pretrain_epoch': 80,
     'adversial_epoch': 100,
-    'valid_step': 20
+    'valid_step': 30
 }
 log_hparams = {
     'log_file': "./data/log.txt",
