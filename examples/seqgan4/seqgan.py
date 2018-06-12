@@ -40,7 +40,8 @@ def g_run_epoch(sess, mode_string):
             fetches["train_op"] = gen_train_op
     
     loss, iters = 0., 0
-    state = sess.run(initial_state, feed_dict={inputs: np.ones((batch_size, num_steps))})
+    # state = sess.run(initial_state, feed_dict={inputs: np.ones((batch_size, num_steps))})
+    state = sess.run(generator.decoder.zero_state(batch_size=batch_size, dtype=tf.float32))
 
     for step, (x, y) in enumerate(dataloader.iter()):
         if step == config.training_hparams['valid_step'] and mode_string in ['valid', 'test']:
@@ -104,8 +105,7 @@ def d_run_epoch(sess):
         }
         rtns = sess.run(fetches, feed_dict)
         if step % 200 == 0:
-            print("%d: dis_total_loss: %.6f, r_loss: %.6f, f_loss: %.6f" %
-                  (step, rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
+            print("{0:3d}: dis_total_loss: {1:6f}, r_loss: {2:6f}, f_loss: {3:6f}".format(step, rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
 
 
 if __name__ == "__main__":
@@ -197,12 +197,13 @@ if __name__ == "__main__":
         sess.run(tf.tables_initializer())
 
         saver = tf.train.Saver()
-
+        
         for g_epoch in range(config.training_hparams['generator_pretrain_epoch']):
             train_ppl = g_run_epoch(sess, 'train')
             if (g_epoch + 1) % 20 == 0:
                 saver.save(sess, config.log_hparams['ckpt'], global_step=g_epoch + 1)
-
+        
+        saver.restore(sess,  config.log_hparams['ckpt'] + '-121')
         for d_epoch in range(config.training_hparams['discriminator_pretrain_epoch']):
             d_run_epoch(sess)
         saver.save(sess, config.log_hparams['ckpt'], global_step=config.training_hparams['generator_pretrain_epoch'] + 1)
