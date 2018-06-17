@@ -3,7 +3,7 @@ discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 hidden_size = 256
 batch_size = 64
-num_steps = 64  # ???
+max_num_steps = 64  # ???
 embed_dim = 256
 
 dec_keep_prob_in = 0.5

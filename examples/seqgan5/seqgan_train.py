@@ -60,8 +60,8 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
 
-    batch_size = data_batch["text_ids"].get_shape()[0]  # config.batch_size
-    num_steps = data_batch["text_ids"].get_shape()[1]  # config.num_steps
+    batch_size = tf.shape(data_batch["text_ids"])[0]
+    num_steps = tf.shape(data_batch["text_ids"])[1]
     vocab_size = train_data.vocab.size
     opt_vars = {
         'learning_rate': config.lr_hparams['init_lr'],
@@ -83,7 +83,6 @@ def _main(_):
     initial_state = decoder.zero_state(batch_size=batch_size, dtype=tf.float32)
 
     # ------------Pretrain Generator---------------
-    # input_embed.set_shape((batch_size, num_steps, config.embed_dim))
     outputs, _, _ = decoder(
         initial_state=initial_state,
         decoding_strategy="train_greedy",
@@ -102,15 +101,13 @@ def _main(_):
     gen_train_op = optimizer.minimize(mle_loss, global_step=global_step)
 
     # -------------Generator Infer-------------------
-    start_tokens = tf.cast(data_batch["text_ids"][:, 0], dtype=tf.int32)
-    start_tokens.set_shape((batch_size))
     infer_outputs, _, sequence_length = decoder(
         decoding_strategy="infer_sample",
-        start_tokens=start_tokens,
+        start_tokens=tf.cast(data_batch["text_ids"][:, 0], dtype=tf.int32),
         end_token=train_data.vocab.eos_token_id,
         embedding=g_embedder,
         initial_state=initial_state,
-        max_decoding_length=num_steps)
+        max_decoding_length=config.max_num_steps)
 
     infer_logits = infer_outputs.logits
     infer_sample_ids = infer_outputs.sample_id
@@ -141,7 +138,7 @@ def _main(_):
     infer_logits = \
         tf.clip_by_value(tf.nn.softmax(infer_logits) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
 
-    expected_reward = tf.Variable(tf.zeros((num_steps,)))  # (num_step,), exp_reward at each step
+    expected_reward = tf.Variable(tf.zeros((config.max_num_steps,)))  # (num_step,), exp_reward at each step
     reward = tf.squeeze(f_logits) - expected_reward[:tf.shape(f_logits)[1]]
     mean_reward = tf.reduce_mean(reward)
     exp_reward_loss = tf.reduce_mean(tf.abs(reward))
@@ -174,12 +171,14 @@ def _main(_):
                 "update_loss": update_loss,
                 "train_op": update_op,
                 "exp_rwd": expected_reward,
-                'step': global_step
+                'step': global_step,
+                "num_steps": num_steps
             }
         else:
             fetches = {
                 "mle_loss": mle_loss,
-                'step': global_step
+                'step': global_step,
+                "num_steps": num_steps
             }
             if mode_string == 'train':
                 fetches["train_op"] = gen_train_op
@@ -195,7 +194,7 @@ def _main(_):
                 }
 
                 rtns = sess.run(fetches, feed_dict)
-                iters += num_steps
+                iters += rtns["num_steps"]
                 ppl = np.exp(loss / iters)
 
                 if mode_string != 'update':
