@@ -5,6 +5,7 @@ from __future__ import print_function
 # pylint: disable=invalid-name, no-member, too-many-locals
 
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import sys
 import time
 import importlib
@@ -20,6 +21,7 @@ flags.DEFINE_string("config", "config", "The config to use.")
 FLAGS = flags.FLAGS
 
 config = importlib.import_module(FLAGS.config)
+log = open(config.log_file, 'w')
 
 def prepare_data(train_path):
     """Download the PTB or Yahoo dataset
@@ -31,7 +33,7 @@ def prepare_data(train_path):
     if not tf.gfile.Exists(train_path):
         url = ptb_url
         tx.data.maybe_download(url, data_path, extract=True)
-        os.remove('%s_data.tgz' % FLAGS.dataset)
+        os.remove('ptb_data.tgz')
 
         data_path = os.path.join(data_path, '%s_data' % FLAGS.dataset)
 
@@ -210,7 +212,8 @@ def _main(_):
                         rst = "step: %d, v_ppl: %.6f, tst_ppl: %.6f, mean_rwd: %.6f, exp_rwd_loss:" \
                               " %.6f, update_loss: %.6f" % (rtns['step'], valid_ppl, test_ppl,
                                                             rtns['mean_rwd'], rtns['exp_rwd_loss'], rtns['update_loss'])
-                    print_and_write_to_file(rst, eval_log)
+                    log.write(rst + '\n')
+                    print(rst)
 
                     if valid_ppl < opt_vars['best_valid_ppl']:
                         opt_vars['best_valid_ppl'] = valid_ppl
@@ -253,22 +256,24 @@ def _main(_):
         sess.run(tf.tables_initializer())
 
         saver = tf.train.Saver()
-
+        
         for g_epoch in range(config.generator_pretrain_epoch):
             _g_run_epoch(sess, 'train')
             if (g_epoch + 1) % 20 == 0:
-                saver.save(sess, config.log_hparams['ckpt'], global_step=g_epoch + 1)
-
+                saver.save(sess, config.ckpt, global_step=g_epoch + 1)
+        
         for d_epoch in range(config.discriminator_pretrain_epoch):
             _d_run_epoch(sess)
-        saver.save(sess, config.log_hparams['ckpt'], global_step=config.generator_pretrain_epoch + 1)
+        saver.save(sess, config.ckpt, global_step=config.generator_pretrain_epoch + 1)
 
         opt_vars['learning_rate'] = config.lr_hparams['update_init_lr']
         for update_epoch in range(config.adversial_epoch):
             _g_run_epoch(sess, 'update')
             if (update_epoch + 1) % 20 == 0:
-                saver.save(sess, config.log_hparams['ckpt'],
+                saver.save(sess, config.ckpt,
                            global_step=config.generator_pretrain_epoch + update_epoch + 1)
+
+    log.close()
 
 
 if __name__ == '__main__':

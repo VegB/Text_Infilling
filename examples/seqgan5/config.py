@@ -3,15 +3,17 @@ discriminator_pretrain_epoch = 80
 adversial_epoch = 100
 hidden_size = 256
 batch_size = 64
-max_num_steps = 64  # ???
+max_num_steps = 64
 embed_dim = 256
+latent_dims = 32
 
 dec_keep_prob_in = 0.5
 dec_keep_prob_out = 0.5
 enc_keep_prob_in = 1.0
 enc_keep_prob_out = 1.0
 
-latent_dims = 32
+log_file = './log.txt'
+ckpt = './checkpoint/ckpt'
 
 lr_hparams = {
     'init_lr': 0.003,
