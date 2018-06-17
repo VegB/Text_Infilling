@@ -220,9 +220,9 @@ def _main(_):
                     else:
                         opt_vars['steps_not_improved'] += 1
 
-                    if opt_vars['steps_not_improved'] >= 30:
+                    if opt_vars['steps_not_improved'] >= config.lr_hparams['threshold']:
                         opt_vars['steps_not_improved'] = 0
-                        opt_vars['learning_rate'] *= config.lr_hparams['lr_decay']
+                        opt_vars['learning_rate'] *= config.lr_hparams['decay_rate']
 
             except tf.errors.OutOfRangeError:
                 ppl = np.exp(loss / iters)

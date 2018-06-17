@@ -1,6 +1,6 @@
-generator_pretrain_epoch = 120
-discriminator_pretrain_epoch = 80
-adversial_epoch = 100
+generator_pretrain_epoch = 20
+discriminator_pretrain_epoch = 15
+adversial_epoch = 20
 hidden_size = 256
 batch_size = 64
 max_num_steps = 64
@@ -19,7 +19,8 @@ lr_hparams = {
     'init_lr': 0.003,
     'update_init_lr': 0.0003,
     'update_lr': 0.00003,
-    'decay_rate': 0.1
+    'decay_rate': 0.1,
+    'threshold': 5
 }
 
 decoder_hparams = {
