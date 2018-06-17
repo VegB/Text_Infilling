@@ -18,11 +18,12 @@
 # pylint: disable=invalid-name, too-few-public-methods, missing-docstring
 
 num_epochs = 50
-hidden_size = 256
+hidden_size = 512
 enc_keep_prob_in = 1.0
 enc_keep_prob_out = 1.0
+dec_keep_prob_in = 0.5
 batch_size = 32
-embed_dim = 256
+embed_dim = 512
 
 latent_dims = 32
 
@@ -36,7 +37,7 @@ lr_decay_hparams = {
 relu_dropout = 0.2
 embedding_dropout = 0.2
 attention_dropout = 0.2
-residual_dropout = 0.5
+residual_dropout = 0.2
 num_blocks = 3
 
 decoder_hparams = {
@@ -74,6 +75,10 @@ trans_hparams = {
     'embedding_dropout': embedding_dropout,
     'attention_dropout': attention_dropout,
     'residual_dropout': residual_dropout,
+    'position_embedder': {
+        'name': 'sinusoids',
+        'hparams': None,
+    },
     'sinusoid': True,
     'num_heads': 8,
     'num_blocks': num_blocks,
@@ -129,8 +134,8 @@ train_data_hparams = {
     "batch_size": batch_size,
     "seed": 123,
     "dataset": {
-        "files": 'data/ptb.train.txt',
-        "vocab_file": 'data/vocab.txt'
+        "files": 'yahoo_data/yahoo.train.txt',
+        "vocab_file": 'yahoo_data/vocab.txt'
     }
 }
 
@@ -139,8 +144,8 @@ val_data_hparams = {
     "batch_size": batch_size,
     "seed": 123,
     "dataset": {
-        "files": 'data/ptb.valid.txt',
-        "vocab_file": 'data/vocab.txt'
+        "files": 'yahoo_data/yahoo.valid.txt',
+        "vocab_file": 'yahoo_data/vocab.txt'
     }
 }
 
@@ -148,7 +153,8 @@ test_data_hparams = {
     "num_epochs": 1,
     "batch_size": batch_size,
     "dataset": {
-        "files": 'data/ptb.test.txt',
-        "vocab_file": 'data/vocab.txt'
+        "files": 'yahoo_data/yahoo.test.txt',
+        "vocab_file": 'yahoo_data/vocab.txt'
     }
 }
+
