@@ -57,9 +57,7 @@ def _main(_):
     train_data = tx.data.MonoTextData(config.train_data_hparams)
     val_data = tx.data.MonoTextData(config.val_data_hparams)
     test_data = tx.data.MonoTextData(config.test_data_hparams)
-    iterator = tx.data.TrainTestDataIterator(train=train_data,
-                                             val=val_data,
-                                             test=test_data)
+    iterator = tx.data.TrainTestDataIterator(train=train_data, val=val_data, test=test_data)
     data_batch = iterator.get_next()
 
     batch_size = tf.shape(data_batch["text_ids"])[0]
@@ -134,21 +132,22 @@ def _main(_):
     dis_loss.set_shape(())
 
     dis_train_op = tx.core.get_train_op(dis_loss, global_step=global_step,
-                                        increment_global_step=False, hparams=config.d_opt_hparams)
+                       increment_global_step=False, hparams=config.d_opt_hparams)
 
     # ------------Adeversarial---------------
-    infer_logits = \
-        tf.clip_by_value(tf.nn.softmax(infer_logits) * tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
+    infer_logits = tf.clip_by_value(tf.nn.softmax(infer_logits) * 
+                                    tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
 
-    expected_reward = tf.Variable(tf.zeros((config.max_num_steps,)))  # (num_step,), exp_reward at each step
+    expected_reward = tf.Variable(tf.zeros((config.max_num_steps,)))
     reward = tf.squeeze(f_logits) - expected_reward[:tf.shape(f_logits)[1]]
     mean_reward = tf.reduce_mean(reward)
     exp_reward_loss = tf.reduce_mean(tf.abs(reward))
     exp_reward_loss.set_shape(())
     exp_op = tx.core.get_train_op(exp_reward_loss, global_step=global_step,
-                                  increment_global_step=False, hparams=config.update_opt_hparams)
+                 increment_global_step=False, hparams=config.update_opt_hparams)
 
-    reward = tx.losses.discount_reward(reward, sequence_length=tf.squeeze(sequence_length), tensor_rank=2)
+    reward = tx.losses.discount_reward(reward, 
+                  sequence_length=tf.squeeze(sequence_length), tensor_rank=2)
     update_loss = -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
     update_optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                               beta1=0., beta2=0.999, epsilon=1e-9)
@@ -198,7 +197,6 @@ def _main(_):
                 rtns = sess.run(fetches, feed_dict)
                 iters += rtns["num_steps"]
                 ppl = np.exp(loss / iters)
-
                 if mode_string != 'update':
                     loss += rtns["mle_loss"]
 
@@ -211,8 +209,9 @@ def _main(_):
                     else:
                         rst = "step: %d, v_ppl: %.6f, tst_ppl: %.6f, mean_rwd: %.6f, exp_rwd_loss:" \
                               " %.6f, update_loss: %.6f" % (rtns['step'], valid_ppl, test_ppl,
-                                                            rtns['mean_rwd'], rtns['exp_rwd_loss'], rtns['update_loss'])
+                              rtns['mean_rwd'], rtns['exp_rwd_loss'], rtns['update_loss'])
                     log.write(rst + '\n')
+                    log.flush()
                     print(rst)
 
                     if valid_ppl < opt_vars['best_valid_ppl']:
@@ -232,6 +231,8 @@ def _main(_):
         return ppl
 
     def _d_run_epoch(sess):
+        iterator.switch_to_train_data(sess)
+
         fetches = {
             "mle_loss": dis_loss,
             "r_loss": r_loss,
@@ -243,7 +244,7 @@ def _main(_):
             try:
                 feed_dict = {tx.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = sess.run(fetches, feed_dict)
-                if step % 200 == 0:
+                if step % 50 == 0:
                     print("{0:3d}: dis_total_loss: {1:6f}, r_loss: {2:6f}, f_loss: {3:6f}"
                           .format(step, rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
                 step += 1
