@@ -60,8 +60,8 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
 
-    batch_size = config.batch_size
-    num_steps = config.num_steps
+    batch_size = data_batch["text_ids"].get_shape()[0]  # config.batch_size
+    num_steps = data_batch["text_ids"].get_shape()[1]  # config.num_steps
     vocab_size = train_data.vocab.size
     opt_vars = {
         'learning_rate': config.lr_hparams['init_lr'],
@@ -262,14 +262,14 @@ def _main(_):
 
         for d_epoch in range(config.discriminator_pretrain_epoch):
             _d_run_epoch(sess)
-        saver.save(sess, config.log_hparams['ckpt'], global_step=config.training_hparams['generator_pretrain_epoch'] + 1)
+        saver.save(sess, config.log_hparams['ckpt'], global_step=config.generator_pretrain_epoch + 1)
 
         opt_vars['learning_rate'] = config.lr_hparams['update_init_lr']
         for update_epoch in range(config.adversial_epoch):
             _g_run_epoch(sess, 'update')
             if (update_epoch + 1) % 20 == 0:
                 saver.save(sess, config.log_hparams['ckpt'],
-                           global_step=config.training_hparams['generator_pretrain_epoch'] + update_epoch + 1)
+                           global_step=config.generator_pretrain_epoch + update_epoch + 1)
 
 
 if __name__ == '__main__':
