@@ -8,6 +8,15 @@ from __future__ import division
 
 import tensorflow as tf
 
+__all__ = [
+    "PadRemover",
+    "embedding_to_padding",
+    "_bucket_boundaries",
+    "_batching_scheme",
+    "smoothing_cross_entropy",
+]
+
+
 class PadRemover(object):
     """Helper to remove padding from a tensor before sending to the experts.
     The padding is computed for one reference tensor containing the padding mask

@@ -21,12 +21,14 @@ from __future__ import print_function
 import os
 import sys
 import time
+import codecs
 import importlib
 import numpy as np
 import tensorflow as tf
 import texar as tx
 
 from data_utils import prepare_data_batch
+import bleu_tool
 
 flags = tf.flags
 flags.DEFINE_string("dataset", "yahoo",
@@ -60,6 +62,10 @@ def prepare_data(train_path):
         test_path = os.path.join(data_path, "%s.test.txt" % FLAGS.dataset)
         vocab_path = os.path.join(data_path, "vocab.txt")
 
+        # add mask token <m>
+        with open(vocab_path, 'ab+') as fin:
+            fin.write('<m>\n'.encode('utf-8'))
+
         config.train_data_hparams['dataset'] = {'files': train_path,
                                                 'vocab_file': vocab_path}
 
@@ -82,17 +88,12 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     masks, encoder_inputs, decoder_inputs, labels = \
-        prepare_data_batch(config, data_batch)
+        prepare_data_batch(config, data_batch,
+                           train_data.vocab.token_to_id_map_py['<m>'])
+
     enc_paddings = tf.to_float(tf.equal(encoder_inputs, 0))
     dec_paddings = tf.to_float(tf.equal(decoder_inputs, 0))
     is_target = tf.to_float(tf.not_equal(labels, 0))
-
-    opt_vars = {
-        'learning_rate': config.lr_decay_hparams["init_lr"],
-        'best_valid_nll': 1e100,
-        'steps_not_improved': 0,
-        'kl_weight': config.kl_anneal_hparams["start"]
-    }
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(
@@ -101,7 +102,7 @@ def _main(_):
     encoder = tx.modules.TransformerEncoder(embedding=embedder._embedding,
         hparams=config.encoder_hparams)
     encoder_outputs, encoder_decoder_attention_bias = \
-        encoder(encoder_inputs, enc_paddings)
+        encoder(encoder_inputs, enc_paddings, None)
 
     decoder = tx.modules.TransformerDecoder(embedding=embedder._embedding,
         hparams=config.decoder_hparams)
@@ -118,7 +119,96 @@ def _main(_):
     mle_loss = tx.utils.smoothing_cross_entropy(
         logits,
         labels,
-        train_database.target_vocab.size,
-        loss_hparams['label_confidence'],
+        train_data.vocab.size,
+        config.loss_hparams['label_confidence'],
     )
     mle_loss = tf.reduce_sum(mle_loss * is_target) / tf.reduce_sum(is_target)
+
+    global_step = tf.Variable(0, trainable=False)
+    fstep = tf.to_float(global_step)
+    if config.opt_hparams['learning_rate_schedule'] == 'static':
+        learning_rate = 1e-3
+    else:
+        learning_rate = config.opt_hparams['lr_constant'] \
+            * tf.minimum(1.0, (fstep / config.opt_hparams['warmup_steps'])) \
+            * tf.rsqrt(tf.maximum(fstep, config.opt_hparams['warmup_steps'])) \
+            * config.hidden_size**-0.5
+    optimizer = tf.train.AdamOptimizer(
+        learning_rate=learning_rate,
+        beta1=config.opt_hparams['Adam_beta1'],
+        beta2=config.opt_hparams['Adam_beta2'],
+        epsilon=config.opt_hparams['Adam_epsilon'],
+    )
+    train_op = optimizer.minimize(mle_loss, global_step)
+
+    def _run_epoch(sess, mode):
+        if mode is 'train':
+            iterator.switch_to_train_data(sess)
+        elif mode is 'valid':
+            iterator.switch_to_val_data(sess)
+        elif mode is 'test':
+            iterator.switch_to_test_data(sess)
+        else:
+            sys.exit("INVALID MODE %s, expecting one of "
+                     "['train', 'valid', 'test']" % mode)
+
+        sources_list, targets_list, hypothesis_list = [], [], []
+        eloss = []
+
+        fetches = {
+            'mle_loss': mle_loss,
+            'step': global_step,
+            'masks': masks,
+            'predictions': predictions
+        }
+        if mode is 'train':
+            fetches['train_op'] = train_op
+
+        while True:
+            try:
+                feed_dict = {
+                    tx.global_mode(): tf.estimator.ModeKeys.TRAIN if mode is 'train'
+                    else tf.estimator.ModeKeys.EVAL
+                }
+                rtns = sess.run(fetches, feed_dict)
+                if mode is 'train' and rtns['step'] % 100 == 0:
+                    rst = "step: %d, train_ppl: %.6f" % (rtns['step'], rtns['mle_loss'])
+                    print(rst)
+                elif mode is 'test':
+                    def _id2word_map(id_arrays):
+                        return [' '.join([train_data.vocab.id_to_token_map_py[i] \
+                                          for i in sent]) for sent in id_arrays]
+
+                    sources, targets, dwords = _id2word_map(decoder_inputs), \
+                                               _id2word_map(labels), \
+                                               _id2word_map(predictions['sampled_ids'])
+                    for source, target, pred in zip(sources, targets, dwords):
+                        source = source.split('<EOS>')[0].strip().split()
+                        target = target.split('<EOS>')[0].strip().split()
+                        got = pred.split('<EOS>')[0].strip().split()
+                        sources_list.append(source)
+                        targets_list.append(target)
+                        hypothesis_list.append(got)
+                        eloss.append(rtns['mle_loss'])
+            except tf.errors.OutOfRangeError:
+                break
+
+            if mode is 'test':
+                outputs_tmp_filename = config.log_dir + \
+                                       'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.format( \
+                                       rtns['step'], config.beam_width, config.alpha)
+                refer_tmp_filename = os.path.join(config.log_dir, 'eval_reference.tmp')
+                with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
+                        codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+                    for hyp, tgt in zip(hypothesis_list, targets_list):
+                        tmpfile.write(' '.join(hyp) + '\n')
+                        tmpreffile.write(' '.join(tgt) + '\n')
+                eval_bleu = float(100 * bleu_tool.bleu_wrapper( \
+                    refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
+                eloss = float(np.average(np.array(eloss)))
+                print('epoch:{} eval_bleu:{} eval_loss:{}'.format(rtns['step'], \
+                                                                  eval_bleu, eloss))
+
+
+if __name__ == '__main__':
+    tf.app.run(main=_main)
