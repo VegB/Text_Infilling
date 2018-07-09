@@ -4,26 +4,23 @@ import numpy as np
 FLAGS = tf.app.flags.FLAGS
 
 
-def prepare_data_batch(config, data_batch, mask_id):
+def prepare_data_batch(data_batch, mask_id, is_present_rate):
     """
     :param data_batch["text_ids"]: (batch_size, seq_len)
     :return: mask, encoder_input, decoder_input,
             decoder_output: (batch_size, seq_len-1)
     """
-    batch_size = config.batch_size
-    sequence_length = config.max_seq_length
-
     real_ids = data_batch["text_ids"]
-    mask = generate_mask(batch_size, sequence_length, config.is_present_rate)
+    return None, real_ids[:, :-1], real_ids[:, :-1], real_ids[:, 1:]
+    mask = generate_mask(real_ids, is_present_rate)
     real_inputs = real_ids[:, :-1]
     masked_inputs = \
-        transform_input_with_is_missing_token(batch_size, sequence_length,
-                                              real_inputs, mask, mask_id)
+        transform_input_with_is_missing_token(real_inputs, mask, mask_id)
 
     return mask, masked_inputs, real_inputs, real_ids[:, 1:]
 
 
-def generate_mask(batch_size, sequence_length, is_present_rate):
+def generate_mask(real_ids, is_present_rate):
     """
     Generate the mask to be fed into the model.
     """
@@ -49,8 +46,7 @@ def generate_mask(batch_size, sequence_length, is_present_rate):
     return p
 
 
-def transform_input_with_is_missing_token(batch_size, sequence_length, inputs,
-                                          targets_present, mask_id):
+def transform_input_with_is_missing_token(inputs, targets_present, mask_id):
     """
     Transforms the inputs to have missing tokens when it's masked out.  The
     mask is for the targets, so therefore, to determine if an input at time t is
@@ -72,11 +68,10 @@ def transform_input_with_is_missing_token(batch_size, sequence_length, inputs,
       value=vocab_size to indicate a missing token.
     """
     # To fill in if the input is missing.
-    input_missing = tf.constant(mask_id, dtype=tf.int64,
-                                shape=[batch_size, sequence_length])
+    input_missing = tf.fill(tf.shape(inputs), mask_id)
 
     # The 0th input will always be present.
-    zeroth_input_present = tf.constant(True, tf.bool, shape=[batch_size, 1])
+    zeroth_input_present = tf.zeros_like(inputs)[:, 0]
 
     # Input present mask.
     inputs_present = tf.concat(
