@@ -49,7 +49,7 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     masks, encoder_inputs, decoder_inputs, labels = \
-        prepare_data_batch(data_batch,
+        prepare_data_batch(args, data_batch,
                            train_data.vocab.token_to_id_map_py['<m>'],
                            args.present_rate)
 
@@ -111,18 +111,20 @@ def _main(_):
                            'dec_in': decoder_inputs,
                            'target': labels,
                            'predict': preds,
+                           'mask': masks,
                            'train_op': train_op,
                            'step': global_step,
                            'loss': mle_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
-                _fetches = session.run(fetches, feed_dict=feed)
-                step, source, target, loss = _fetches['step'], \
-                    _fetches['source'], _fetches['target'], \
-                    _fetches['loss']
+                rtns = session.run(fetches, feed_dict=feed)
+                step, source, target, loss = rtns['step'], \
+                    rtns['source'], rtns['target'], \
+                    rtns['loss']
                 if step % 1 == 0:
                     rst = 'step:%s source:%s targets:%s loss:%s' % \
                           (step, source.shape, target.shape, loss)
                     print(rst)
+                    # print(rtns['mask'])
             except tf.errors.OutOfRangeError:
                 break
         return
@@ -142,14 +144,14 @@ def _main(_):
                     'mle_loss': mle_loss,
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
-                _fetches = cur_sess.run(fetches, feed_dict=feed)
+                rtns = cur_sess.run(fetches, feed_dict=feed)
                 sources, sampled_ids, targets = \
-                    _fetches['source'].tolist(), \
-                    _fetches['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                    _fetches['target'].tolist()
-                eloss.append(_fetches['mle_loss'])
+                    rtns['source'].tolist(), \
+                    rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
+                    rtns['target'].tolist()
+                eloss.append(rtns['mle_loss'])
                 if args.verbose:
-                    print('cur loss:{}'.format(_fetches['mle_loss']))
+                    print('cur loss:{}'.format(rtns['mle_loss']))
 
                 def _id2word_map(id_arrays):
                     return [' '.join([train_data.vocab._id_to_token_map_py[i]
@@ -215,19 +217,19 @@ def _main(_):
                 'predictions': predictions,
             }
             feed = {tx.context.global_mode(): tf.estimator.ModeKeys.PREDICT}
-            _fetches = cur_sess.run(fetches, feed_dict=feed)
-            print('source:{}'.format(_fetches['source']))
-            print('target:{}'.format(_fetches['target']))
-            print('encoder_padding:{}'.format(_fetches['encoder_padding']))
-            print('encoder_embedding:{}'.format(_fetches['encoder_embedding']))
-            print('encoder_attout:{}'.format(_fetches['encoder_attout']))
-            print('encoder_output:{}'.format(_fetches['encoder_output']))
-            print('decoder_embedding:{}'.format(_fetches['decoder_embedding']))
-            print('predictions:{}'.format(_fetches['predictions']))
+            rtns = cur_sess.run(fetches, feed_dict=feed)
+            print('source:{}'.format(rtns['source']))
+            print('target:{}'.format(rtns['target']))
+            print('encoder_padding:{}'.format(rtns['encoder_padding']))
+            print('encoder_embedding:{}'.format(rtns['encoder_embedding']))
+            print('encoder_attout:{}'.format(rtns['encoder_attout']))
+            print('encoder_output:{}'.format(rtns['encoder_output']))
+            print('decoder_embedding:{}'.format(rtns['decoder_embedding']))
+            print('predictions:{}'.format(rtns['predictions']))
             sources, sampled_ids, targets = \
-                _fetches['source'].tolist(), \
-                _fetches['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                _fetches['target'].tolist()
+                rtns['source'].tolist(), \
+                rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
+                rtns['target'].tolist()
             exit()
 
         while True:
@@ -246,12 +248,12 @@ def _main(_):
                     'logits': logits,
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.PREDICT}
-                _fetches = cur_sess.run(fetches, feed_dict=feed)
+                rtns = cur_sess.run(fetches, feed_dict=feed)
                 sources, sampled_ids, targets = \
-                    _fetches['source'].tolist(), \
-                    _fetches['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                    _fetches['target'].tolist()
-                test_loss.append(_fetches['mle_loss'])
+                    rtns['source'].tolist(), \
+                    rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
+                    rtns['target'].tolist()
+                test_loss.append(rtns['mle_loss'])
                 def _id2word_map(id_arrays):
                     return [' '.join([train_data.vocab._id_to_token_map_py[i] \
                             for i in sent]) for sent in id_arrays]
@@ -259,10 +261,10 @@ def _main(_):
                     print('source_ids:%s\ntargets_ids:%s\nsampled_ids:%s', \
                         sources, targets, sampled_ids)
                     print('encoder_output:%s %s', \
-                        _fetches['encoder_output'].shape, \
-                        _fetches['encoder_output'])
-                    print('logits:%s %s', _fetches['logits'].shape, \
-                        _fetches['logits'])
+                        rtns['encoder_output'].shape, \
+                        rtns['encoder_output'])
+                    print('logits:%s %s', rtns['logits'].shape, \
+                        rtns['logits'])
                     exit()
                 sources, targets, dwords = _id2word_map(sources), \
                                            _id2word_map(targets), \

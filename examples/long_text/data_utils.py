@@ -4,31 +4,37 @@ import numpy as np
 FLAGS = tf.app.flags.FLAGS
 
 
-def prepare_data_batch(data_batch, mask_id, is_present_rate):
+def prepare_data_batch(args, data_batch, mask_id, is_present_rate):
     """
     :param data_batch["text_ids"]: (batch_size, seq_len)
     :return: mask, encoder_input, decoder_input,
             decoder_output: (batch_size, seq_len-1)
     """
     real_ids = data_batch["text_ids"]
-    return None, real_ids[:, :-1], real_ids[:, :-1], real_ids[:, 1:]
-    mask = generate_mask(real_ids, is_present_rate)
-    real_inputs = real_ids[:, :-1]
+    mask = generate_mask(args, real_ids, is_present_rate)
     masked_inputs = \
-        transform_input_with_is_missing_token(real_inputs, mask, mask_id)
+        transform_input_with_is_missing_token(real_ids, mask, mask_id)
 
-    return mask, masked_inputs, real_inputs, real_ids[:, 1:]
+    return mask, masked_inputs[:, :-1], real_ids[:, :-1], real_ids[:, 1:]
 
 
-def generate_mask(real_ids, is_present_rate):
+def generate_mask(args, real_ids, is_present_rate):
     """
     Generate the mask to be fed into the model.
     """
-    if FLAGS.mask_strategy == 'random':
-        p = np.random.choice([True, False], size=(batch_size, sequence_length),
-            p=[is_present_rate, 1. - is_present_rate])
+    # TODO(wanrong): set for normal distribution according to present_rate
 
-    elif FLAGS.mask_strategy == 'contiguous':
+    if args.mask_strategy == 'random':
+        ones = tf.ones_like(real_ids)
+        zeros = tf.zeros_like(real_ids)
+        p_ = tf.random_normal(shape=tf.shape(real_ids), mean=0.0,
+                              stddev=1.0, dtype=tf.float32)
+        p = tf.where(tf.greater(p_, 0), ones, zeros)
+
+    elif args.mask_strategy == 'contiguous':
+        # TODO(wanrong): infer size from tensor
+        batch_size = args.batch_size
+        sequence_length = args.max_seq_length
         masked_length = int((1 - is_present_rate) * sequence_length) - 1
 
         # Determine location to start masking.
@@ -71,11 +77,14 @@ def transform_input_with_is_missing_token(inputs, targets_present, mask_id):
     input_missing = tf.fill(tf.shape(inputs), mask_id)
 
     # The 0th input will always be present.
-    zeroth_input_present = tf.zeros_like(inputs)[:, 0]
+    zeroth_input_present = tf.zeros_like(inputs)[:, 0][:, tf.newaxis]
+    print(zeroth_input_present.shape)
+    print(targets_present.shape)
 
     # Input present mask.
     inputs_present = tf.concat(
         [zeroth_input_present, targets_present[:, :-1]], axis=1)
 
-    transformed_input = tf.where(inputs_present, inputs, input_missing)
+    transformed_input = tf.where(tf.equal(inputs_present, tf.ones_like(inputs)),
+                                 inputs, input_missing)
     return transformed_input
