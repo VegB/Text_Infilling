@@ -16,6 +16,8 @@
 
 import copy
 
+log_dir = './log/'
+
 num_epochs = 50
 hidden_size = 512
 enc_keep_prob_in = 1.0
@@ -25,11 +27,15 @@ batch_size = 32
 embed_dim = 512
 latent_dims = 32
 
-beam_width = 5
+beam_width = 1
 max_decode_len = 256
 max_seq_length = 256
 
 is_present_rate = 0.5
+
+lr_constant = 2.0
+warmup_steps = 16000
+max_training_steps = 250000
 
 lr_decay_hparams = {
     "init_lr": 0.001,
@@ -113,6 +119,21 @@ decoder_hparams['transform_with_bias'] = False
 decoder_hparams['maximum_decode_length'] = max_decode_len
 decoder_hparams['beam_width'] = beam_width
 decoder_hparams['sampling_method'] = 'argmax'
+
+loss_hparams = {
+    'label_confidence': 0.9,
+}
+
+opt_hparams = {
+    'learning_rate_schedule':
+        'constant.linear_warmup.rsqrt_decay.rsqrt_depth',
+    'lr_constant': lr_constant,
+    'warmup_steps': warmup_steps,
+    'max_training_steps': max_training_steps,
+    'Adam_beta1': 0.9,
+    'Adam_beta2': 0.997,
+    'Adam_epsilon': 1e-9,
+}
 
 train_data_hparams = {
     "num_epochs": 1,

@@ -37,6 +37,7 @@ class TransformerDecoder(ModuleBase):
         ModuleBase.__init__(self, hparams)
         self._vocab_size = vocab_size
         self._embedding = None
+        self.sampling_method = self._hparams.sampling_method
         with tf.variable_scope(self.variable_scope):
             if self._hparams.initializer:
                 tf.get_variable_scope().set_initializer( \
