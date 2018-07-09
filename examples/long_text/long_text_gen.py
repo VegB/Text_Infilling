@@ -158,7 +158,6 @@ def _main(_):
         fetches = {
             'mle_loss': mle_loss,
             'step': global_step,
-            'masks': masks,
             'predictions': predictions
         }
         if mode is 'train':
@@ -193,21 +192,34 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
-            if mode is 'test':
-                outputs_tmp_filename = config.log_dir + \
-                                       'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.format( \
-                                       rtns['step'], config.beam_width, config.alpha)
-                refer_tmp_filename = os.path.join(config.log_dir, 'eval_reference.tmp')
-                with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-                        codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-                    for hyp, tgt in zip(hypothesis_list, targets_list):
-                        tmpfile.write(' '.join(hyp) + '\n')
-                        tmpreffile.write(' '.join(tgt) + '\n')
-                eval_bleu = float(100 * bleu_tool.bleu_wrapper( \
-                    refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
-                eloss = float(np.average(np.array(eloss)))
-                print('epoch:{} eval_bleu:{} eval_loss:{}'.format(rtns['step'], \
-                                                                  eval_bleu, eloss))
+        if mode is 'test':
+            outputs_tmp_filename = config.log_dir + \
+                                   'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.format(
+                                   rtns['step'], config.beam_width, config.alpha)
+            refer_tmp_filename = os.path.join(config.log_dir, 'eval_reference.tmp')
+            with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
+                    codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+                for hyp, tgt in zip(hypothesis_list, targets_list):
+                    tmpfile.write(' '.join(hyp) + '\n')
+                    tmpreffile.write(' '.join(tgt) + '\n')
+            eval_bleu = float(100 * bleu_tool.bleu_wrapper(\
+                refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
+            eloss = float(np.average(np.array(eloss)))
+            print('epoch:{} eval_bleu:{} eval_loss:{}'.format(rtns['step'],
+                                                              eval_bleu, eloss))
+
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
+        sess.run(tf.local_variables_initializer())
+        sess.run(tf.tables_initializer())
+
+        saver = tf.train.Saver()
+
+        for g_epoch in range(config.num_epochs):
+            _run_epoch(sess, 'train')
+            if g_epoch % 20 == 0:
+                _run_epoch(sess, 'test')
+                # saver.save(sess, config.ckpt, global_step=g_epoch + 1)
 
 
 if __name__ == '__main__':
