@@ -136,7 +136,6 @@ def _main(_):
                            'dec_in': labels[:, :-1],
                            'target': labels[:, 1:],
                            'mask': mask,
-                           'output': outputs,
                            'train_op': train_op,
                            'step': global_step,
                            'loss': mle_loss}
@@ -151,7 +150,7 @@ def _main(_):
                     # print(rtns['mask'])
                 if step == opt_hparams['max_training_steps']:
                     print('reach max steps:{} loss:{}'.format(step, loss))
-                    logging.info('reached max training steps')
+                    print('reached max training steps')
                     return 'finished'
             except tf.errors.OutOfRangeError:
                 break
@@ -165,7 +164,7 @@ def _main(_):
         while True:
             try:
                 fetches = {
-                    'predictions': outputs_infer.sample_id,
+                    'outputs': outputs_infer,
                     'source': all_masked,
                     'target': labels,
                     'step': global_step,
@@ -175,7 +174,7 @@ def _main(_):
                 rtns = cur_sess.run(fetches, feed_dict=feed)
                 sources, sampled_ids, targets = \
                     rtns['source'].tolist(), \
-                    rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
+                    rtns['outputs'].sample_id[:, 0, :].tolist(), \
                     rtns['target'].tolist()
                 eloss.append(rtns['mle_loss'])
                 if args.verbose:
@@ -230,102 +229,6 @@ def _main(_):
                 'bleu': eval_bleu
                 }
 
-    def _test_epoch(cur_sess, cur_mname):
-        # pylint:disable=too-many-locals
-        iterator.switch_to_test_data(sess)
-        sources_list, targets_list, hypothesis_list = [], [], []
-        test_loss, test_bleu = [], 0
-        if args.debug:
-            fetches = {
-                'source': encoder_inputs,
-                'target': labels,
-                'encoder_padding': enc_paddings,
-                'encoder_embedding': encoder._embedding,
-                'encoder_attout': encoder.stack_output,
-                'encoder_output': encoder_outputs,
-                'decoder_embedding': decoder._embedding,
-                'predictions': predictions,
-            }
-            feed = {tx.context.global_mode(): tf.estimator.ModeKeys.PREDICT}
-            rtns = cur_sess.run(fetches, feed_dict=feed)
-            print('source:{}'.format(rtns['source']))
-            print('target:{}'.format(rtns['target']))
-            print('encoder_padding:{}'.format(rtns['encoder_padding']))
-            print('encoder_embedding:{}'.format(rtns['encoder_embedding']))
-            print('encoder_attout:{}'.format(rtns['encoder_attout']))
-            print('encoder_output:{}'.format(rtns['encoder_output']))
-            print('decoder_embedding:{}'.format(rtns['decoder_embedding']))
-            print('predictions:{}'.format(rtns['predictions']))
-            sources, sampled_ids, targets = \
-                rtns['source'].tolist(), \
-                rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                rtns['target'].tolist()
-            exit()
-
-        while True:
-            try:
-                fetches = {
-                    'predictions': predictions,
-                    'source': encoder_inputs,
-                    'target': labels,
-                    'step': global_step,
-                    'mle_loss': mle_loss,
-                    'encoder_output': encoder_outputs,
-                    'decoder_input': decoder_inputs,
-                    'embedding': encoder._embedding,
-                    'encoder_decoder_attention_bias':
-                        encoder_decoder_attention_bias,
-                    'logits': logits,
-                }
-                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.PREDICT}
-                rtns = cur_sess.run(fetches, feed_dict=feed)
-                sources, sampled_ids, targets = \
-                    rtns['source'].tolist(), \
-                    rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                    rtns['target'].tolist()
-                test_loss.append(rtns['mle_loss'])
-
-                def _id2word_map(id_arrays):
-                    return [' '.join([train_data.vocab._id_to_token_map_py[i] \
-                                      for i in sent]) for sent in id_arrays]
-
-                if args.debug:
-                    print('source_ids:%s\ntargets_ids:%s\nsampled_ids:%s', \
-                          sources, targets, sampled_ids)
-                    print('encoder_output:%s %s', \
-                          rtns['encoder_output'].shape, \
-                          rtns['encoder_output'])
-                    print('logits:%s %s', rtns['logits'].shape, \
-                          rtns['logits'])
-                    exit()
-                sources, targets, dwords = _id2word_map(sources), \
-                                           _id2word_map(targets), \
-                                           _id2word_map(sampled_ids)
-                for source, target, pred in zip(sources, targets, dwords):
-                    source = source.split('<EOS>')[0].strip().split()
-                    target = target.split('<EOS>')[0].strip().split()
-                    got = pred.split('<EOS>')[0].strip().split()
-                    sources_list.append(source)
-                    targets_list.append(target)
-                    hypothesis_list.append(got)
-            except tf.errors.OutOfRangeError:
-                break
-        outputs_tmp_filename = args.model_dir + \
-                               '{}.test.beam{}alpha{}.outputs.decodes'.format( \
-                                   cur_mname, args.beam_width, args.alpha)
-        refer_tmp_filename = args.model_dir + 'test_reference.tmp'
-        with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-                codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-            for hyp, tgt in zip(hypothesis_list, targets_list):
-                tmpfile.write(' '.join(hyp) + '\n')
-                tmpreffile.write(' '.join(tgt) + '\n')
-        test_bleu = float(100 * bleu_tool.bleu_wrapper(refer_tmp_filename, \
-                                                       outputs_tmp_filename, case_sensitive=True))
-        test_loss = float(np.sum(np.array(test_loss)))
-        print('test_bleu:%s test_loss:%s' % (test_bleu, test_loss))
-        return {'loss': test_loss,
-                'bleu': test_bleu}
-
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
@@ -335,7 +238,6 @@ def _main(_):
             for var in var_list:
                 outfile.write('var:{} shape:{} dtype:{}\n'.format( \
                     var.name, var.shape, var.dtype))
-                logging.info('var:%s shape:%s', var.name, var.shape)
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
@@ -346,24 +248,25 @@ def _main(_):
                 eval_loss, eval_score = eval_result['loss'], eval_result['bleu']
                 if args.eval_criteria == 'loss':
                     if lowest_loss < 0 or eval_loss < lowest_loss:
-                        logging.info('the %s epoch got lowest loss %s', \
-                                     epoch, eval_loss)
+                        print('the %s epoch got lowest loss %s', \
+                              epoch, eval_loss)
                         eval_saver.save(sess, \
                                         args.log_dir + 'my-model-lowest_loss.ckpt')
                         lowest_loss = eval_loss
                 elif args.eval_criteria == 'bleu':
                     if highest_bleu < 0 or eval_score > highest_bleu:
-                        logging.info('the %s epoch, highest bleu %s',
-                                     epoch, eval_score)
-                        eval_saver.save(sess,
+                        print('the %s epoch, highest bleu %s', \
+                              epoch, eval_score)
+                        eval_saver.save(sess, \
                                         args.log_dir + 'my-model-highest_bleu.ckpt')
                         highest_bleu = eval_score
                 if status == 'finished':
-                    logging.info('saving model for max training steps')
+                    print('saving model for max training steps')
                     os.makedirs(args.log_dir + '/max/')
-                    eval_saver.save(sess,
+                    eval_saver.save(sess, \
                                     args.log_dir + '/max/my-model-highest_bleu.ckpt')
                     break
+                sys.stdout.flush()
 
 
 if __name__ == '__main__':
