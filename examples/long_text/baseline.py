@@ -26,6 +26,7 @@ import logging
 import numpy as np
 import tensorflow as tf
 import texar as tx
+from texar.data import SpecialTokens
 
 from data_utils import prepare_data_batch
 import baseline_hyperparams
@@ -113,11 +114,14 @@ def _main(_):
 
     dcdr_states_uncond = connector(ecdr_states_uncond)
 
+    bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
+    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
     outputs_infer, _, _ = decoder(
-        initial_state=dcdr_states_uncond,
         decoding_strategy="infer_sample",
-        inputs=all_masked_embed,
-        sequence_length=data_batch["length"] - 1)
+        start_tokens=tf.cast(tf.fill(tf.shape(all_masked), bos_id)[:, 0], tf.int32),
+        end_token=eos_id,
+        embedding=embedder,
+        initial_state=dcdr_states_uncond)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -138,14 +142,8 @@ def _main(_):
                            'loss': mle_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
-                step, source, target, loss = rtns['step'], \
-                                             rtns['source'], rtns['target'], \
-                                             rtns['loss']
-                print(len(rtns['target'][0]))
-                print(len(rtns['dec_in'][0]))
-                print(rtns['source'])
-                print(rtns['target'])
-                print(len(rtns['output'].sample_id[0]))
+                step, source, target, loss = rtns['step'], rtns['source'], \
+                                             rtns['target'], rtns['loss']
                 if step % 100 == 0:
                     rst = 'step:%s source:%s targets:%s loss:%s' % \
                           (step, source.shape, target.shape, loss)
