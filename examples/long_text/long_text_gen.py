@@ -22,6 +22,7 @@ import os
 import sys
 import time
 import codecs
+import logging
 import numpy as np
 import tensorflow as tf
 import texar as tx
@@ -103,6 +104,11 @@ def _main(_):
     )
     train_op = optimizer.minimize(mle_loss, global_step)
 
+    eval_saver = tf.train.Saver(max_to_keep=5)
+
+    config = tf.ConfigProto(allow_soft_placement=True)
+    config.gpu_options.allow_growth = True
+
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
         while True:
@@ -120,14 +126,18 @@ def _main(_):
                 step, source, target, loss = rtns['step'], \
                     rtns['source'], rtns['target'], \
                     rtns['loss']
-                if step % 1 == 0:
+                if step % 100 == 0:
                     rst = 'step:%s source:%s targets:%s loss:%s' % \
                           (step, source.shape, target.shape, loss)
                     print(rst)
                     # print(rtns['mask'])
+                if step == opt_hparams['max_training_steps']:
+                    print('reach max steps:{} loss:{}'.format(step, loss))
+                    logging.info('reached max training steps')
+                    return 'finished'
             except tf.errors.OutOfRangeError:
                 break
-        return
+        return 'done'
 
     def _eval_epoch(cur_sess, cur_epoch):
         # pylint:disable=too-many-locals
@@ -298,11 +308,41 @@ def _main(_):
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
+        var_list = tf.trainable_variables()
+        with open(args.log_dir + 'var.list', 'w+') as outfile:
+            for var in var_list:
+                outfile.write('var:{} shape:{} dtype:{}\n'.format( \
+                    var.name, var.shape, var.dtype))
+                logging.info('var:%s shape:%s', var.name, var.shape)
+        lowest_loss, highest_bleu, best_epoch = -1, -1, -1
+        if args.running_mode == 'train_and_evaluate':
+            for epoch in range(args.max_train_epoch):
+                if epoch % args.eval_interval_epoch != 0:
+                    continue
+                status = _train_epochs(sess, epoch)
+                eval_result = _eval_epoch(sess, epoch)
+                eval_loss, eval_score = eval_result['loss'], eval_result['bleu']
+                if args.eval_criteria == 'loss':
+                    if lowest_loss < 0 or eval_loss < lowest_loss:
+                        logging.info('the %s epoch got lowest loss %s', \
+                                     epoch, eval_loss)
+                        eval_saver.save(sess, \
+                                        args.log_dir + 'my-model-lowest_loss.ckpt')
+                        lowest_loss = eval_loss
+                elif args.eval_criteria == 'bleu':
+                    if highest_bleu < 0 or eval_score > highest_bleu:
+                        logging.info('the %s epoch, highest bleu %s', \
+                                     epoch, eval_score)
+                        eval_saver.save(sess, \
+                                        args.log_dir + 'my-model-highest_bleu.ckpt')
+                        highest_bleu = eval_score
+                if status == 'finished':
+                    logging.info('saving model for max training steps')
+                    os.makedirs(args.log_dir + '/max/')
+                    eval_saver.save(sess, \
+                                    args.log_dir + '/max/my-model-highest_bleu.ckpt')
+                    break
 
-        saver = tf.train.Saver()
-
-        for i in range(args.max_train_epoch):
-            _train_epochs(sess, i)
 
 if __name__ == '__main__':
     tf.app.run(main=_main)
