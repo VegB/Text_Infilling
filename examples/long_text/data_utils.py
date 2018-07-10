@@ -14,8 +14,7 @@ def prepare_data_batch(args, data_batch, mask_id, is_present_rate):
     mask = generate_mask(args, real_ids, is_present_rate)
     masked_inputs = \
         transform_input_with_is_missing_token(real_ids, mask, mask_id)
-
-    return mask, masked_inputs[:, :-1], real_ids[:, :-1], real_ids[:, 1:]
+    return mask, masked_inputs, real_ids
 
 
 def generate_mask(args, real_ids, is_present_rate):
