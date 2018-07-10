@@ -49,10 +49,9 @@ def _main(_):
                                              val=valid_data,
                                              test=test_data)
     data_batch = iterator.get_next()
+    mask_id = train_data.vocab.token_to_id_map_py['<m>']
     masks, encoder_inputs, decoder_inputs, labels = \
-        prepare_data_batch(args, data_batch,
-                           train_data.vocab.token_to_id_map_py['<m>'],
-                           args.present_rate)
+        prepare_data_batch(args, data_batch, mask_id, args.present_rate)
 
     enc_paddings = tf.to_float(tf.equal(encoder_inputs, 0))
     dec_paddings = tf.to_float(tf.equal(decoder_inputs, 0))
@@ -61,14 +60,15 @@ def _main(_):
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
                                        hparams=args.word_embedding_hparams)
-
     encoder = tx.modules.TransformerEncoder(embedding=embedder._embedding,
                                             hparams=encoder_hparams)
+    decoder = tx.modules.TransformerDecoder(embedding=embedder._embedding,
+                                            hparams=decoder_hparams)
+
+    # ---conditional---
     encoder_outputs, encoder_decoder_attention_bias = \
         encoder(encoder_inputs, enc_paddings, None)
 
-    decoder = tx.modules.TransformerDecoder(embedding=embedder._embedding,
-                                            hparams=decoder_hparams)
     logits, preds = decoder(
         decoder_inputs,
         encoder_outputs,
@@ -86,6 +86,18 @@ def _main(_):
         loss_hparams['label_confidence'],
     )
     mle_loss = tf.reduce_sum(mle_loss * is_target) / tf.reduce_sum(is_target)
+
+    # ---unconditional---
+    all_masked = tf.fill(tf.shape(encoder_inputs), mask_id)
+    all_masked_paddings = tf.to_float(tf.equal(all_masked, 0))
+
+    encoder_outputs_uncond, encoder_decoder_attention_bias_uncond = \
+        encoder(all_masked, all_masked_paddings, None)
+
+    predictions_infer = decoder.dynamic_decode(
+        encoder_outputs_uncond,
+        encoder_decoder_attention_bias_uncond,
+    )
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
@@ -133,7 +145,7 @@ def _main(_):
                     # print(rtns['mask'])
                 if step == opt_hparams['max_training_steps']:
                     print('reach max steps:{} loss:{}'.format(step, loss))
-                    logging.info('reached max training steps')
+                    print('reached max training steps')
                     return 'finished'
             except tf.errors.OutOfRangeError:
                 break
@@ -149,6 +161,8 @@ def _main(_):
                 fetches = {
                     'predictions': predictions,
                     'source': encoder_inputs,
+                    # 'predictions': predictions_infer,
+                    # 'source': all_masked,
                     'target': labels,
                     'step': global_step,
                     'mle_loss': mle_loss,
@@ -313,7 +327,6 @@ def _main(_):
             for var in var_list:
                 outfile.write('var:{} shape:{} dtype:{}\n'.format( \
                     var.name, var.shape, var.dtype))
-                logging.info('var:%s shape:%s', var.name, var.shape)
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
@@ -324,24 +337,25 @@ def _main(_):
                 eval_loss, eval_score = eval_result['loss'], eval_result['bleu']
                 if args.eval_criteria == 'loss':
                     if lowest_loss < 0 or eval_loss < lowest_loss:
-                        logging.info('the %s epoch got lowest loss %s', \
+                        print('the %s epoch got lowest loss %s', \
                                      epoch, eval_loss)
                         eval_saver.save(sess, \
                                         args.log_dir + 'my-model-lowest_loss.ckpt')
                         lowest_loss = eval_loss
                 elif args.eval_criteria == 'bleu':
                     if highest_bleu < 0 or eval_score > highest_bleu:
-                        logging.info('the %s epoch, highest bleu %s', \
+                        print('the %s epoch, highest bleu %s', \
                                      epoch, eval_score)
                         eval_saver.save(sess, \
                                         args.log_dir + 'my-model-highest_bleu.ckpt')
                         highest_bleu = eval_score
                 if status == 'finished':
-                    logging.info('saving model for max training steps')
+                    print('saving model for max training steps')
                     os.makedirs(args.log_dir + '/max/')
                     eval_saver.save(sess, \
                                     args.log_dir + '/max/my-model-highest_bleu.ckpt')
                     break
+                sys.stdout.flush()
 
 
 if __name__ == '__main__':
