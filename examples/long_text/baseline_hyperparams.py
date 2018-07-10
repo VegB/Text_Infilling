@@ -77,7 +77,7 @@ def load_hyperparams():
     args.test_file = os.path.join(args.data_dir,
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    log_params_dir = 'log_dir/bsize{}.epoch{}.lr_c{}warm{}/'.format(
+    log_params_dir = 'log_dir/bsize{}.epoch{}.lr_c{}warm{}.baseline/'.format(
         args.batch_size, args.max_train_epoch, args.lr_constant, args.warmup_steps)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
     batching_scheme = _batching_scheme(
