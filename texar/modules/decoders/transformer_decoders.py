@@ -155,6 +155,9 @@ class TransformerDecoder(ModuleBase):
         channels = utils.shape_list(target_inputs)[2]
         pos_embeds = self.position_embedder(lengths, channels)
         inputs = target_inputs + pos_embeds
+        print(1, target_inputs.shape)
+        print(2, pos_embeds.shape)
+        print(3, inputs.shape)
         self.decoder_output = self._self_attention_stack(
             inputs,
             encoder_output,

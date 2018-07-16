@@ -66,7 +66,8 @@ def _main(_):
                                 template_input=template_embedded,
                                 encoder_decoder_attention_bias=None,
                                 segment_ids=hole['segment_ids'],
-                                offsets=hole['offsets'])
+                                offsets=hole['offsets'],
+                                args=args)
 
         cur_loss = tx.utils.smoothing_cross_entropy(
             logits,

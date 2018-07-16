@@ -374,6 +374,7 @@ def prepare_template(data_batch, mask_num, mask_length, mask_id):
     """
     inputs = data_batch['text_ids']
     lengths = data_batch['length']
+    batch_size = inputs.shape[0]
     masks, answers = generate_mask(inputs, lengths, mask_num, mask_length)
     template_segment_ids, template_offsets = parse_segment(lengths, masks)
     all_masked_out = tf.fill(tf.shape(inputs), mask_id)
@@ -390,6 +391,7 @@ def prepare_template(data_batch, mask_num, mask_length, mask_id):
         answer_segment_ids, answer_offsets =\
             parse_segment(tf.fill(tf.shape(lengths), mask_length),
                           tf.zeros_like(answer))
+        # tf.reshape(answer, shape=[batch_size, mask_num, mask_length])
         answer_packs.append({
             'text_ids': answer,
             'segment_ids': answer_segment_ids,
