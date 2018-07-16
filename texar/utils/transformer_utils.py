@@ -290,15 +290,28 @@ def generate_mask(inputs, lengths, mask_num, min_mask_length):
         print(masks)
         return mask_not_generated - 1, mask_length, cur_end_pos, lengths, masks
 
-    mask_num = 3
-    mask_length = 2
-    mask_not_generated = np.array(mask_num)  # tf.constant()
-    prev_end_pos = np.array([1, 1, 1, 1])
-    lengths = np.array([11, 20, 15, 12])
-    masks = 0 * np.ndarray(shape=(4, 20), dtype=np.int32)
+    mask_not_generated = tf.Variable(mask_num, dtype=tf.int64)
+    mask_length = tf.Variable(min_mask_length, dtype=tf.int64)
+    prev_end_pos = tf.ones_like(inputs)[:, 0]
+    masks = tf.zeros_like(inputs)
     for i in range(mask_num):
         mask_not_generated, _, prev_end_pos, _, masks = \
-            _fill_mask(mask_not_generated, mask_length, prev_end_pos, lengths, masks)
+            tf.py_func(_fill_mask,
+                       [mask_not_generated, mask_length, prev_end_pos, lengths, masks],
+                       [tf.int64, tf.int64, prev_end_pos.dtype, lengths.dtype, mask_length.dtype])
+    return masks
+
+
+def test_generate_mask():
+    min_mask_length = 2
+    mask_num = 3
+    inputs = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
+    lengths = tf.Variable([11, 11], dtype=tf.int64)
+
+    masks = generate_mask(inputs, lengths, mask_num, min_mask_length)
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
+        sess.run(masks)
 
 
 def parse_segment(data_batch, mask_num, min_mask_length, mask_id, pad_id):
@@ -333,3 +346,6 @@ def get_offset(segment_ids):
     :return: offsets
     """
     return segment_ids
+
+
+test_generate_mask()
