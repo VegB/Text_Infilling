@@ -50,7 +50,7 @@ def _main(_):
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
     template_pack, answer_packs = \
         tx.utils.prepare_template(data_batch, args.mask_num, args.min_mask_length, mask_id)
-    print(len(answer_packs))
+
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
                                        hparams=args.word_embedding_hparams)
@@ -65,8 +65,8 @@ def _main(_):
         logits, preds = decoder(decoder_input=hole['text_ids'][:, :-1],
                                 template_input=template_embedded,
                                 encoder_decoder_attention_bias=None,
-                                segment_ids=hole['segment_ids'],
-                                offsets=hole['offsets'],
+                                segment_ids=hole['segment_ids'][:, :-1],
+                                offsets=hole['offsets'][:, :-1],
                                 args=args)
 
         cur_loss = tx.utils.smoothing_cross_entropy(
@@ -96,13 +96,13 @@ def _main(_):
     train_op = optimizer.minimize(mle_loss, global_step)
 
     # ---unconditional---
-    all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
-    all_masked_paddings = tf.to_float(tf.equal(all_masked, 0))
-
-    predictions_infer = decoder.dynamic_decode(
-        encoder_outputs_uncond,
-        encoder_decoder_attention_bias_uncond,
-    )
+    # all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
+    # all_masked_paddings = tf.to_float(tf.equal(all_masked, 0))
+    #
+    # predictions_infer = decoder.dynamic_decode(
+    #     encoder_outputs_uncond,
+    #     encoder_decoder_attention_bias_uncond,
+    # )
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -122,7 +122,7 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 1 == 0:
+                if step % 100 == 0:
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)

@@ -143,12 +143,10 @@ class TemplateTransformerDecoder(ModuleBase):
         if self._hparams.multiply_embedding_mode == 'sqrt_depth':
             target_inputs = target_inputs * \
                 (self._embedding.shape.as_list()[-1]**0.5)
-        lengths = utils.shape_list(target_inputs)[1]
+        length = utils.shape_list(target_inputs)[1]
         channels = utils.shape_list(target_inputs)[2]
-        pos_embeds = self.position_embedder(lengths, channels, segment_ids, offsets)
+        pos_embeds = self.position_embedder(length, channels, segment_ids, offsets)
         inputs = target_inputs + pos_embeds
-        # tf.reshape(inputs, shape=[inputs.shape[0], args.min_mask_length-1, args.hidden_dim])
-        # inputs.set_shape((tf.shape(inputs)[0], args.min_mask_length-1, args.hidden_dim))
         self.decoder_output = self._self_attention_stack(
             inputs,
             template_input,
