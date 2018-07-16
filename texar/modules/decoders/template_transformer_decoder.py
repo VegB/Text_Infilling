@@ -94,9 +94,9 @@ class TemplateTransformerDecoder(ModuleBase):
         token_emb = tf.nn.embedding_lookup(self._embedding, tokens)
         return token_emb
 
-    def _symbols_to_logits_fn(self, embedding_fn, max_length, segment_id):
+    def _symbols_to_logits_fn(self, embedding_fn, max_length, segment_ids, offsets):
         channels = utils.shape_list(self._embedding)[-1]
-        timing_signal = self.position_embedder(max_length, channels, segment_id)
+        timing_signal = self.position_embedder(max_length, channels, segment_ids, offsets)
 
         """ the function is normally called in dynamic decoding mode.
                 the ids should be `next_id` with the shape [batch_size, 1]
@@ -124,13 +124,13 @@ class TemplateTransformerDecoder(ModuleBase):
         return _impl
     #pylint:disable=arguments-differ
     def _build(self, decoder_input, template_input, encoder_decoder_attention_bias,
-               segment_id=None):
+               segment_ids, offsets):
         """
             this function is called on training generally.
             Args:
                 targets: [bath_size, target_length], generally begins with [bos] token
                 template_input: [batch_size, source_length, channels]
-                segment_id: [batch_size, source_length], which segment this word belongs to
+                segment_ids: [batch_size, source_length], which segment this word belongs to
             outputs:
                 logits: [batch_size, target_length, vocab_size]
                 preds: [batch_size, target_length]
@@ -145,8 +145,11 @@ class TemplateTransformerDecoder(ModuleBase):
                 (self._embedding.shape.as_list()[-1]**0.5)
         lengths = utils.shape_list(target_inputs)[1]
         channels = utils.shape_list(target_inputs)[2]
-        pos_embeds = self.position_embedder(lengths, channels, segment_id)
+        pos_embeds = self.position_embedder(lengths, channels, segment_ids, offsets)
         inputs = target_inputs + pos_embeds
+        print(target_inputs.shape)
+        print(pos_embeds.shape)
+        print(inputs.shape)
         self.decoder_output = self._self_attention_stack(
             inputs,
             template_input,
@@ -164,7 +167,7 @@ class TemplateTransformerDecoder(ModuleBase):
         return logits, preds
 
     def dynamic_decode(self, template_input, encoder_decoder_attention_bias,
-                       segment_id):
+                       segment_ids, offsets):
         """
             this function is called on in test mode, without the target input.
         """
@@ -182,7 +185,8 @@ class TemplateTransformerDecoder(ModuleBase):
                     memory=template_input,
                     encoder_decoder_attention_bias=\
                         encoder_decoder_attention_bias,
-                    segment_id=segment_id,
+                    segment_ids=segment_ids,
+                    offsets=offsets,
                 )
             else:
                 sampled_ids, log_probs = self.beam_decode(
@@ -194,7 +198,8 @@ class TemplateTransformerDecoder(ModuleBase):
                     memory=template_input,
                     encoder_decoder_attention_bias=\
                         encoder_decoder_attention_bias,
-                    segment_id=segment_id,
+                    segment_ids=segment_ids,
+                    offsets=offsets
                 )
             predictions = {
                 'sampled_ids':sampled_ids,
@@ -333,7 +338,8 @@ class TemplateTransformerDecoder(ModuleBase):
                       decode_length,
                       memory,
                       encoder_decoder_attention_bias,
-                      segment_id):
+                      segment_ids,
+                      offsets):
         batch_size = tf.shape(start_tokens)[0]
         finished = tf.fill([batch_size], False)
         step = tf.constant(0)
@@ -344,7 +350,8 @@ class TemplateTransformerDecoder(ModuleBase):
 
         cache = self._init_cache(memory, encoder_decoder_attention_bias)
         symbols_to_logits_fn = self._symbols_to_logits_fn(embedding_fn,
-            max_length=decode_length+1, segment_id=segment_id)
+            max_length=decode_length+1, segment_ids=segment_ids,
+            offsets=offsets)
 
         def _body(step, finished, next_id, decoded_ids, cache, log_prob):
 
@@ -395,12 +402,14 @@ class TemplateTransformerDecoder(ModuleBase):
                     EOS,
                     memory,
                     encoder_decoder_attention_bias,
-                    segment_id,
+                    segment_ids,
+                    offsets,
                     decode_length=256,
                     beam_width=5,):
         cache = self._init_cache(memory, encoder_decoder_attention_bias)
         symbols_to_logits_fn = self._symbols_to_logits_fn(embedding_fn, \
-            max_length=decode_length+1, segment_id=segment_id)
+            max_length=decode_length+1, segment_ids=segment_ids,
+            offsets=offsets)
         outputs, log_probs = beam_search.beam_search(
             symbols_to_logits_fn,
             start_tokens,

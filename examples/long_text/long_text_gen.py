@@ -27,7 +27,6 @@ import numpy as np
 import tensorflow as tf
 import texar as tx
 
-from data_utils import prepare_data_batch
 import hyperparams
 import bleu_tool
 
@@ -35,10 +34,9 @@ import bleu_tool
 def _main(_):
     hparams = hyperparams.load_hyperparams()
     train_dataset_hparams, valid_dataset_hparams, test_dataset_hparams, \
-    encoder_hparams, decoder_hparams, opt_hparams, loss_hparams, args = \
+    decoder_hparams, opt_hparams, loss_hparams, args = \
         hparams['train_dataset_hparams'], hparams['eval_dataset_hparams'], \
-        hparams['test_dataset_hparams'], \
-        hparams['encoder_hparams'], hparams['decoder_hparams'], \
+        hparams['test_dataset_hparams'], hparams['decoder_hparams'], \
         hparams['opt_hparams'], hparams['loss_hparams'], hparams['args']
 
     # Data
@@ -50,42 +48,34 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    mask, masked_inputs, labels = \
-        prepare_data_batch(args, data_batch, mask_id, args.present_rate)
-
-    enc_paddings = tf.to_float(tf.equal(masked_inputs, 0))
-    dec_paddings = tf.to_float(tf.equal(labels[:, :-1], 0))
-    is_target = tf.to_float(tf.not_equal(labels[:, 1:], 0))
-
+    template_pack, answer_packs = \
+        tx.utils.prepare_template(data_batch, args.mask_num, args.min_mask_length, mask_id)
+    print(len(answer_packs))
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
                                        hparams=args.word_embedding_hparams)
-    encoder = tx.modules.TransformerEncoder(embedding=embedder._embedding,
-                                            hparams=encoder_hparams)
     decoder = tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
                                             hparams=decoder_hparams)
 
     # ---conditional---
-    input_embedded = embedder(masked_inputs)
+    template_embedded = embedder(template_pack['text_ids'])
 
-    # for loop here
-    logits, preds = decoder(
-        labels[:, :-1],
-        input_embedded,
-        None,
-    )
-    predictions = decoder.dynamic_decode(
-        input_embedded,
-        None,
-    )
+    mle_loss = None
+    for hole in answer_packs:
+        logits, preds = decoder(decoder_input=hole['text_ids'][:, :-1],
+                                template_input=template_embedded,
+                                encoder_decoder_attention_bias=None,
+                                segment_ids=hole['segment_ids'],
+                                offsets=hole['offsets'])
 
-    mle_loss = tx.utils.smoothing_cross_entropy(
-        logits,
-        labels[:, 1:],
-        train_data.vocab.size,
-        loss_hparams['label_confidence'],
-    )
-    mle_loss = tf.reduce_sum(mle_loss * is_target) / tf.reduce_sum(is_target)
+        cur_loss = tx.utils.smoothing_cross_entropy(
+            logits,
+            hole['text_ids'][:, 1:],
+            train_data.vocab.size,
+            loss_hparams['label_confidence'])
+        mle_loss = cur_loss if mle_loss is None else tf.concat([mle_loss, cur_loss], -1)
+
+    mle_loss = tf.reduce_sum(mle_loss)
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
@@ -108,9 +98,6 @@ def _main(_):
     all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
     all_masked_paddings = tf.to_float(tf.equal(all_masked, 0))
 
-    encoder_outputs_uncond, encoder_decoder_attention_bias_uncond = \
-        encoder(all_masked, all_masked_paddings, None)
-
     predictions_infer = decoder.dynamic_decode(
         encoder_outputs_uncond,
         encoder_decoder_attention_bias_uncond,
@@ -125,24 +112,19 @@ def _main(_):
         iterator.switch_to_train_data(session)
         while True:
             try:
-                fetches = {'source': masked_inputs,
-                           'dec_in': labels[:, :-1],
-                           'target': labels[:, 1:],
-                           'predict': preds,
-                           'mask': mask,
+                fetches = {'template': template_pack,
+                           'holes': answer_packs,
                            'train_op': train_op,
                            'step': global_step,
                            'loss': mle_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
-                step, source, target, loss = rtns['step'], \
-                    rtns['source'], rtns['target'], \
-                    rtns['loss']
-                if step % 100 == 0:
-                    rst = 'step:%s source:%s targets:%s loss:%s' % \
-                          (step, source.shape, target.shape, loss)
+                step, template_, holes_, loss = rtns['step'], \
+                    rtns['template'], rtns['holes'], rtns['loss']
+                if step % 1 == 0:
+                    rst = 'step:%s source:%s loss:%s' % \
+                          (step, template_['text_ids'].shape, loss)
                     print(rst)
-                    # print(rtns['mask'])
                 if step == opt_hparams['max_training_steps']:
                     print('reach max steps:{} loss:{}'.format(step, loss))
                     print('reached max training steps')
@@ -242,10 +224,6 @@ def _main(_):
             rtns = cur_sess.run(fetches, feed_dict=feed)
             print('source:{}'.format(rtns['source']))
             print('target:{}'.format(rtns['target']))
-            print('encoder_padding:{}'.format(rtns['encoder_padding']))
-            print('encoder_embedding:{}'.format(rtns['encoder_embedding']))
-            print('encoder_attout:{}'.format(rtns['encoder_attout']))
-            print('encoder_output:{}'.format(rtns['encoder_output']))
             print('decoder_embedding:{}'.format(rtns['decoder_embedding']))
             print('predictions:{}'.format(rtns['predictions']))
             sources, sampled_ids, targets = \
