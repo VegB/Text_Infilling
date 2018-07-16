@@ -124,7 +124,7 @@ class TemplateTransformerDecoder(ModuleBase):
         return _impl
     #pylint:disable=arguments-differ
     def _build(self, decoder_input, template_input, encoder_decoder_attention_bias,
-               segment_ids, offsets):
+               segment_ids, offsets, args):
         """
             this function is called on training generally.
             Args:
@@ -147,9 +147,8 @@ class TemplateTransformerDecoder(ModuleBase):
         channels = utils.shape_list(target_inputs)[2]
         pos_embeds = self.position_embedder(lengths, channels, segment_ids, offsets)
         inputs = target_inputs + pos_embeds
-        print(target_inputs.shape)
-        print(pos_embeds.shape)
-        print(inputs.shape)
+        # tf.reshape(inputs, shape=[inputs.shape[0], args.min_mask_length-1, args.hidden_dim])
+        # inputs.set_shape((tf.shape(inputs)[0], args.min_mask_length-1, args.hidden_dim))
         self.decoder_output = self._self_attention_stack(
             inputs,
             template_input,

@@ -67,7 +67,7 @@ def load_hyperparams():
     argparser.add_argument('--mask_strategy', type=str, default='random')  # contiguous
     argparser.add_argument('--present_rate', type=float, default=0.5)
     argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--min_mask_length', type=int, default=4)
+    argparser.add_argument('--min_mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
 
     args.data_dir = os.path.abspath(args.data_dir)
