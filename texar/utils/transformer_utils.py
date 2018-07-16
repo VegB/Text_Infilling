@@ -303,7 +303,7 @@ def generate_mask(inputs, lengths, mask_num, mask_length):
         for i in range(batch_size):
             tmp_answer = inputs[i, start_pos[i]:end_pos[i]][np.newaxis, :]
             rst = tmp_answer if rst is None else np.concatenate((rst, tmp_answer), axis=0)
-        return rst[:, np.newaxis, :]
+        return rst
 
     # TODO(wanrong): OUT-OF-RANGE bound check, tf.argmin(length) >= masknum * (1 + mask_length)
     def _fill_mask(mask_not_generated, mask_length, prev_end_pos, lengths, masks):
@@ -339,7 +339,6 @@ def generate_mask(inputs, lengths, mask_num, mask_length):
                                 [inputs, prev_end_pos - mask_length, prev_end_pos],
                                 inputs.dtype)
         answers.append(cur_answer)
-        # answers = cur_answer if answer is None else tf.concat([answer, cur_answer], 1)
     return masks, answers
 
 
@@ -374,7 +373,6 @@ def prepare_template(data_batch, mask_num, mask_length, mask_id):
     """
     inputs = data_batch['text_ids']
     lengths = data_batch['length']
-    batch_size = inputs.shape[0]
     masks, answers = generate_mask(inputs, lengths, mask_num, mask_length)
     template_segment_ids, template_offsets = parse_segment(lengths, masks)
     all_masked_out = tf.fill(tf.shape(inputs), mask_id)
@@ -391,7 +389,7 @@ def prepare_template(data_batch, mask_num, mask_length, mask_id):
         answer_segment_ids, answer_offsets =\
             parse_segment(tf.fill(tf.shape(lengths), mask_length),
                           tf.zeros_like(answer))
-        # tf.reshape(answer, shape=[batch_size, mask_num, mask_length])
+        answer = tf.reshape(answer, shape=tf.stack([-1, mask_length]))
         answer_packs.append({
             'text_ids': answer,
             'segment_ids': answer_segment_ids,
