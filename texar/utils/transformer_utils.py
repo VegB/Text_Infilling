@@ -275,11 +275,8 @@ def generate_mask(inputs, lengths, mask_num, min_mask_length):
         :return: cur_end_pos, updated masks
         """
         cur_start_pos = np.full_like(prev_end_pos, 1)
-        cur_end_pos = np.full_like(prev_end_pos, 0)
         batch_size = cur_start_pos.shape[0]
         for i in range(batch_size):
-            print("prev_end_pos[%d]: %d" % (i, prev_end_pos[i]))
-            print("upper_bound: %d" % (lengths[i] - mask_not_generated * (1 + mask_length)))
             cur_start_pos[i] = \
                 np.random.randint(prev_end_pos[i] + 1,
                                   lengths[i] - mask_not_generated * (1 + mask_length) + 1,
@@ -287,8 +284,33 @@ def generate_mask(inputs, lengths, mask_num, min_mask_length):
         cur_end_pos = cur_start_pos + mask_length
         for i in range(batch_size):
             masks[i, cur_start_pos[i]: cur_end_pos[i]] = 1
-        print(masks)
         return mask_not_generated - 1, mask_length, cur_end_pos, lengths, masks
+
+    def _parse_segment(lengths, masks):
+        """
+        mask:        [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0],
+                      [0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0]] <- 1 is masked out
+        segment_ids: [[1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5],
+                      [1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5]]
+        offsets:     [[0, 1, 2, 0, 1, 0, 1, 2, 0, 1, 0],
+                      [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0]]
+        :param masks:
+        :return: segment_ids, offsets
+        """
+        segment_ids = np.full_like(masks, 0)
+        offsets = np.full_like(masks, 0)
+        batch_size = masks.shape[0]
+        for i in range(batch_size):
+            mask = masks[i]
+            segment_ids[i][0] = 1
+            for j in range(1, lengths[i]):
+                if mask[j] == mask[j-1]:
+                    segment_ids[i][j] = segment_ids[i][j-1]
+                    offsets[i][j] = offsets[i][j-1] + 1
+                else:
+                    segment_ids[i][j] = segment_ids[i][j-1] + 1
+                    offsets[i][j] = 0
+        return segment_ids, offsets
 
     mask_not_generated = tf.Variable(mask_num, dtype=tf.int64)
     mask_length = tf.Variable(min_mask_length, dtype=tf.int64)
@@ -299,22 +321,26 @@ def generate_mask(inputs, lengths, mask_num, min_mask_length):
             tf.py_func(_fill_mask,
                        [mask_not_generated, mask_length, prev_end_pos, lengths, masks],
                        [tf.int64, tf.int64, prev_end_pos.dtype, lengths.dtype, mask_length.dtype])
-    return masks
+    segment_ids, offsets = tf.py_func(_parse_segment, [lengths, masks], [masks.dtype, masks.dtype])
+    return masks, segment_ids, offsets
 
 
 def test_generate_mask():
     min_mask_length = 2
-    mask_num = 3
+    mask_num = 2
     inputs = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
     lengths = tf.Variable([11, 11], dtype=tf.int64)
 
-    masks = generate_mask(inputs, lengths, mask_num, min_mask_length)
+    masks, segment_ids, offsets = generate_mask(inputs, lengths, mask_num, min_mask_length)
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
-        sess.run(masks)
+        masks_, segment_ids_, offsets_ = sess.run([masks, segment_ids, offsets])
+        print(masks_)
+        print(segment_ids_)
+        print(offsets_)
 
 
-def parse_segment(data_batch, mask_num, min_mask_length, mask_id, pad_id):
+def parse_segment(data_batch, mask_num, min_mask_length, mask_id):
     """
     mask_id = 7
     pad_id = 6
@@ -329,23 +355,12 @@ def parse_segment(data_batch, mask_num, min_mask_length, mask_id, pad_id):
     :return: masked_inputs, segment_ids, answers
     """
     inputs = data_batch['text_ids']
-    lengths = data_batch['length']  # TODO(wanrong): length not fixed, numpy can not use tensor.
+    lengths = data_batch['length']
     masks, segment_ids, segment_offsets = generate_mask(inputs, lengths, mask_num, min_mask_length)
     all_masked_out = tf.fill(tf.shape(inputs), mask_id)
     masked_inputs = tf.where(tf.equal(masks, tf.zeros_like(inputs)),
                              inputs, all_masked_out)
     answers = None
     return masked_inputs, segment_ids, segment_offsets, answers
-
-
-def get_offset(segment_ids):
-    """
-    segment_ids: [[1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5], [1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5]]
-    offsets:     [[0, 1, 2, 0, 1, 0, 1, 2, 0, 1, 0], [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0]]
-    :param segment_ids:
-    :return: offsets
-    """
-    return segment_ids
-
 
 test_generate_mask()

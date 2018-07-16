@@ -11,7 +11,7 @@ import tensorflow as tf
 
 from texar.modules.embedders.embedder_base import EmbedderBase
 from texar.modules.embedders import embedder_utils
-from texar.utils import utils
+from texar.utils import utils, transformer_utils
 from texar.utils.shapes import get_batch_size, mask_sequences
 
 import math
@@ -230,3 +230,48 @@ class SinusoidsPositionEmbedder(EmbedderBase):
         signal = tf.reshape(signal, [1, length, channels])
         return signal
 
+
+class SinusoidsSegmentalPositionEmbedder(EmbedderBase):
+    def __init__(self, hparams=None):
+        EmbedderBase.__init__(self, hparams=hparams)
+
+    def default_hparams(self):
+        """returns a dictionary of hyperparameters with default values
+        We use a geometric sequence of timescales starting with
+        min_timescale and ending with max_timescale. The number of different
+        timescales is equal to channels/2.
+        """
+        hparams = {
+            'name':'sinusoid_segmental_posisiton_embedder',
+            'min_timescale': 1.0,
+            'max_timescale': 1.0e4,
+            'trainable': False,
+            'base': 256,
+        }
+        return hparams
+
+    def _build(self, length, channels, segment_ids):
+        """
+        :param length: an int
+        :param channels: an int
+        :param segment_id: [batch_size, length]
+        :param segment_offset: [batch_size, length]
+        :return:
+        """
+        segment_offsets = transformer_utils.get_offset(segment_ids)
+        position = tf.to_float(tf.add(tf.multiply(self._hparams.base, segment_ids),
+                                      segment_offsets))
+        num_timescales = channels // 2
+        min_timescale = self._hparams.min_timescale
+        max_timescale = self._hparams.max_timescale
+        log_timescale_increment = (
+            math.log(float(max_timescale) / float(min_timescale)) /
+            (tf.to_float(num_timescales) - 1))
+        inv_timescales = min_timescale * tf.exp(
+            tf.to_float(tf.range(num_timescales)) * -log_timescale_increment)
+        scaled_time = tf.expand_dims(position, 1) \
+            * tf.expand_dims(inv_timescales, 0)
+        signal = tf.concat([tf.sin(scaled_time), tf.cos(scaled_time)], axis=1)
+        signal = tf.pad(signal, [[0, 0], [0, tf.mod(channels, 2)]])
+        signal = tf.reshape(signal, [1, length, channels])
+        return signal
