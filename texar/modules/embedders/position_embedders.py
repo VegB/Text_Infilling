@@ -250,7 +250,7 @@ class SinusoidsSegmentalPositionEmbedder(EmbedderBase):
         }
         return hparams
 
-    def _build(self, length, channels, segment_ids):
+    def _build(self, length, channels, segment_ids, offsets):
         """
         :param length: an int
         :param channels: an int
@@ -258,9 +258,8 @@ class SinusoidsSegmentalPositionEmbedder(EmbedderBase):
         :param segment_offset: [batch_size, length]
         :return:
         """
-        segment_offsets = transformer_utils.get_offset(segment_ids)
-        position = tf.to_float(tf.add(tf.multiply(self._hparams.base, segment_ids),
-                                      segment_offsets))
+        position = tf.to_float(tf.add(tf.multiply(tf.cast(self._hparams.base, tf.int64), segment_ids),
+                                      offsets))
         num_timescales = channels // 2
         min_timescale = self._hparams.min_timescale
         max_timescale = self._hparams.max_timescale
