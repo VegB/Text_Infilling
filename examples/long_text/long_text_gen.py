@@ -44,14 +44,12 @@ def _main(_):
     # Data
     train_data = tx.data.MonoTextData(train_dataset_hparams)
     valid_data = tx.data.MonoTextData(valid_dataset_hparams)
-    test_data = tx.data.MonoTextData(test_dataset_hparams)
+    test_data = tx.data.MonoTextData(test_dataset_hparams)  # ['text', 'length', 'text_ids']
     iterator = tx.data.TrainTestDataIterator(train=train_data,
                                              val=valid_data,
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    # masks, encoder_inputs, decoder_inputs, labels = \
-    #     prepare_data_batch(args, data_batch, mask_id, args.present_rate)
     mask, masked_inputs, labels = \
         prepare_data_batch(args, data_batch, mask_id, args.present_rate)
 
@@ -64,21 +62,21 @@ def _main(_):
                                        hparams=args.word_embedding_hparams)
     encoder = tx.modules.TransformerEncoder(embedding=embedder._embedding,
                                             hparams=encoder_hparams)
-    decoder = tx.modules.TransformerDecoder(embedding=embedder._embedding,
+    decoder = tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
                                             hparams=decoder_hparams)
 
     # ---conditional---
-    encoder_outputs, encoder_decoder_attention_bias = \
-        encoder(masked_inputs, enc_paddings, None)
+    input_embedded = embedder(masked_inputs)
 
+    # for loop here
     logits, preds = decoder(
         labels[:, :-1],
-        encoder_outputs,
-        encoder_decoder_attention_bias,
+        input_embedded,
+        None,
     )
     predictions = decoder.dynamic_decode(
-        encoder_outputs,
-        encoder_decoder_attention_bias,
+        input_embedded,
+        None,
     )
 
     mle_loss = tx.utils.smoothing_cross_entropy(
