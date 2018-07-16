@@ -7,6 +7,7 @@ from __future__ import print_function
 from __future__ import division
 
 import tensorflow as tf
+import numpy as np
 
 __all__ = [
     "PadRemover",
@@ -252,3 +253,83 @@ def smoothing_cross_entropy(logits,
     return cross_entropy_fn(
         logits=logits, labels=soft_targets)
 
+
+def generate_mask(inputs, lengths, mask_num, min_mask_length):
+    """
+    inputs and lengths are numpy arrays!
+    mask_num = 2, having two masked out segment
+    min_mask_length = 2, min length of each masked out segment
+    inputs:[[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]]
+    mask:  [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0], [0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0]] <- 1 is masked out
+    :param inputs: 
+    :param mask_num: 
+    :param min_mask_length: 
+    :return: 
+    """
+    # TODO(wanrong): OUT-OF-RANGE bound check, tf.argmin(length) >= masknum * (1 + mask_length)
+    def _fill_mask(mask_not_generated, mask_length, prev_end_pos, lengths, masks):
+        """
+        :param mask_not_generated: number of mask not generated(excluding this one)
+        :param prev_end_pos: open range
+        :param masks:
+        :return: cur_end_pos, updated masks
+        """
+        cur_start_pos = np.full_like(prev_end_pos, 1)
+        cur_end_pos = np.full_like(prev_end_pos, 0)
+        batch_size = cur_start_pos.shape[0]
+        for i in range(batch_size):
+            print("prev_end_pos[%d]: %d" % (i, prev_end_pos[i]))
+            print("upper_bound: %d" % (lengths[i] - mask_not_generated * (1 + mask_length)))
+            cur_start_pos[i] = \
+                np.random.randint(prev_end_pos[i] + 1,
+                                  lengths[i] - mask_not_generated * (1 + mask_length) + 1,
+                                  size=1)
+        cur_end_pos = cur_start_pos + mask_length
+        for i in range(batch_size):
+            masks[i, cur_start_pos[i]: cur_end_pos[i]] = 1
+        print(masks)
+        return mask_not_generated - 1, mask_length, cur_end_pos, lengths, masks
+
+    mask_num = 3
+    mask_length = 2
+    mask_not_generated = np.array(mask_num)  # tf.constant()
+    prev_end_pos = np.array([1, 1, 1, 1])
+    lengths = np.array([11, 20, 15, 12])
+    masks = 0 * np.ndarray(shape=(4, 20), dtype=np.int32)
+    for i in range(mask_num):
+        mask_not_generated, _, prev_end_pos, _, masks = \
+            _fill_mask(mask_not_generated, mask_length, prev_end_pos, lengths, masks)
+
+
+def parse_segment(data_batch, mask_num, min_mask_length, mask_id, pad_id):
+    """
+    mask_id = 7
+    pad_id = 6
+    inputs:        [[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]] <- a tensor
+    mask:          [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0], [0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0]] <- 1 is masked out
+    masked_inputs: [[3, 5, 4, 7, 7, 1, 3, 3, 7, 7, 1], [2, 1, 7, 7, 7, 7, 5, 4, 7, 7, 5]] <- template
+    segment_ids:   [[1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5], [1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5]]
+    answers:       [[[4, 2, 6, 6], [2, 5, 6, 6]], 
+                    [[4, 3, 5, 1], [3, 1, 6, 6]]] <- used as decode outputs(targets) in training
+    :param masked_inputs:
+    :param mask_id:
+    :return: masked_inputs, segment_ids, answers
+    """
+    inputs = data_batch['text_ids']
+    lengths = data_batch['length']  # TODO(wanrong): length not fixed, numpy can not use tensor.
+    masks, segment_ids, segment_offsets = generate_mask(inputs, lengths, mask_num, min_mask_length)
+    all_masked_out = tf.fill(tf.shape(inputs), mask_id)
+    masked_inputs = tf.where(tf.equal(masks, tf.zeros_like(inputs)),
+                             inputs, all_masked_out)
+    answers = None
+    return masked_inputs, segment_ids, segment_offsets, answers
+
+
+def get_offset(segment_ids):
+    """
+    segment_ids: [[1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5], [1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5]]
+    offsets:     [[0, 1, 2, 0, 1, 0, 1, 2, 0, 1, 0], [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0]]
+    :param segment_ids:
+    :return: offsets
+    """
+    return segment_ids
