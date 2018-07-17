@@ -20,9 +20,7 @@ from __future__ import print_function
 
 import os
 import sys
-import time
 import codecs
-import logging
 import numpy as np
 import tensorflow as tf
 import texar as tx
@@ -42,22 +40,23 @@ def _main(_):
     # Data
     train_data = tx.data.MonoTextData(train_dataset_hparams)
     valid_data = tx.data.MonoTextData(valid_dataset_hparams)
-    test_data = tx.data.MonoTextData(test_dataset_hparams)  # ['text', 'length', 'text_ids']
+    test_data = tx.data.MonoTextData(test_dataset_hparams)
     iterator = tx.data.TrainTestDataIterator(train=train_data,
                                              val=valid_data,
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args.mask_num, args.min_mask_length, mask_id)
+        tx.utils.prepare_template(data_batch, args.mask_num,
+                                  args.min_mask_length, mask_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
                                        hparams=args.word_embedding_hparams)
-    decoder = tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
+    decoder = \
+        tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
                                             hparams=decoder_hparams)
 
-    # ---conditional---
     template_embedded = embedder(template_pack['text_ids'])
 
     mle_loss = None
@@ -74,7 +73,8 @@ def _main(_):
             hole['text_ids'][:, 1:],
             train_data.vocab.size,
             loss_hparams['label_confidence'])
-        mle_loss = cur_loss if mle_loss is None else tf.concat([mle_loss, cur_loss], -1)
+        mle_loss = cur_loss if mle_loss is None \
+            else tf.concat([mle_loss, cur_loss], -1)
 
     mle_loss = tf.reduce_sum(mle_loss)
 
@@ -87,22 +87,20 @@ def _main(_):
                         * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
                         * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
                         * args.hidden_dim ** -0.5
-    optimizer = tf.train.AdamOptimizer(
-        learning_rate=learning_rate,
-        beta1=opt_hparams['Adam_beta1'],
-        beta2=opt_hparams['Adam_beta2'],
-        epsilon=opt_hparams['Adam_epsilon'],
-    )
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
+                                       beta1=opt_hparams['Adam_beta1'],
+                                       beta2=opt_hparams['Adam_beta2'],
+                                       epsilon=opt_hparams['Adam_epsilon'])
     train_op = optimizer.minimize(mle_loss, global_step)
 
-    # ---unconditional---
-    # all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
-    # all_masked_paddings = tf.to_float(tf.equal(all_masked, 0))
-    #
-    # predictions_infer = decoder.dynamic_decode(
-    #     encoder_outputs_uncond,
-    #     encoder_decoder_attention_bias_uncond,
-    # )
+    predictions = []
+    for hole in answer_packs:
+        preds = decoder.dynamic_decode(
+            template_input=template_embedded,
+            encoder_decoder_attention_bias=None,
+            segment_ids=hole['segment_ids'],
+            offsets=hole['offsets'])
+        predictions.append(preds)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -204,96 +202,6 @@ def _main(_):
         return {'loss': eloss,
                 'bleu': eval_bleu
                }
-
-    def _test_epoch(cur_sess, cur_mname):
-        # pylint:disable=too-many-locals
-        iterator.switch_to_test_data(sess)
-        sources_list, targets_list, hypothesis_list = [], [], []
-        test_loss, test_bleu = [], 0
-        if args.debug:
-            fetches = {
-                'source': encoder_inputs,
-                'target': labels,
-                'encoder_padding': enc_paddings,
-                'encoder_embedding': encoder._embedding,
-                'encoder_attout': encoder.stack_output,
-                'encoder_output': encoder_outputs,
-                'decoder_embedding': decoder._embedding,
-                'predictions': predictions,
-            }
-            feed = {tx.context.global_mode(): tf.estimator.ModeKeys.PREDICT}
-            rtns = cur_sess.run(fetches, feed_dict=feed)
-            print('source:{}'.format(rtns['source']))
-            print('target:{}'.format(rtns['target']))
-            print('decoder_embedding:{}'.format(rtns['decoder_embedding']))
-            print('predictions:{}'.format(rtns['predictions']))
-            sources, sampled_ids, targets = \
-                rtns['source'].tolist(), \
-                rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                rtns['target'].tolist()
-            exit()
-
-        while True:
-            try:
-                fetches = {
-                    'predictions': predictions,
-                    'source': encoder_inputs,
-                    'target': labels,
-                    'step': global_step,
-                    'mle_loss': mle_loss,
-                    'encoder_output': encoder_outputs,
-                    'decoder_input': decoder_inputs,
-                    'embedding': encoder._embedding,
-                    'encoder_decoder_attention_bias':
-                        encoder_decoder_attention_bias,
-                    'logits': logits,
-                }
-                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.PREDICT}
-                rtns = cur_sess.run(fetches, feed_dict=feed)
-                sources, sampled_ids, targets = \
-                    rtns['source'].tolist(), \
-                    rtns['predictions']['sampled_ids'][:, 0, :].tolist(), \
-                    rtns['target'].tolist()
-                test_loss.append(rtns['mle_loss'])
-                def _id2word_map(id_arrays):
-                    return [' '.join([train_data.vocab._id_to_token_map_py[i] \
-                            for i in sent]) for sent in id_arrays]
-                if args.debug:
-                    print('source_ids:%s\ntargets_ids:%s\nsampled_ids:%s', \
-                        sources, targets, sampled_ids)
-                    print('encoder_output:%s %s', \
-                        rtns['encoder_output'].shape, \
-                        rtns['encoder_output'])
-                    print('logits:%s %s', rtns['logits'].shape, \
-                        rtns['logits'])
-                    exit()
-                sources, targets, dwords = _id2word_map(sources), \
-                                           _id2word_map(targets), \
-                                           _id2word_map(sampled_ids)
-                for source, target, pred in zip(sources, targets, dwords):
-                    source = source.split('<EOS>')[0].strip().split()
-                    target = target.split('<EOS>')[0].strip().split()
-                    got = pred.split('<EOS>')[0].strip().split()
-                    sources_list.append(source)
-                    targets_list.append(target)
-                    hypothesis_list.append(got)
-            except tf.errors.OutOfRangeError:
-                break
-        outputs_tmp_filename = args.model_dir + \
-            '{}.test.beam{}alpha{}.outputs.decodes'.format(\
-            cur_mname, args.beam_width, args.alpha)
-        refer_tmp_filename = args.model_dir + 'test_reference.tmp'
-        with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-                codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-            for hyp, tgt in zip(hypothesis_list, targets_list):
-                tmpfile.write(' '.join(hyp) + '\n')
-                tmpreffile.write(' '.join(tgt) + '\n')
-        test_bleu = float(100 * bleu_tool.bleu_wrapper(refer_tmp_filename, \
-            outputs_tmp_filename, case_sensitive=True))
-        test_loss = float(np.sum(np.array(test_loss)))
-        print('test_bleu:%s test_loss:%s' % (test_bleu, test_loss))
-        return {'loss': test_loss,
-                'bleu': test_bleu}
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())

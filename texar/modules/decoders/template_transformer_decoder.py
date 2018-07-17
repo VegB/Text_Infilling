@@ -104,6 +104,9 @@ class TemplateTransformerDecoder(ModuleBase):
         """
         def _impl(ids, step, cache):
             ids = ids[:, -1:]
+            decoder_self_attention_bias = (
+                attentions.attention_bias_lower_triangle(
+                    utils.shape_list(ids)[1]))
             inputs = embedding_fn(ids)
             if self._hparams.multiply_embedding_mode == 'sqrt_depth':
                 inputs *= self._embedding.shape.as_list()[-1]**0.5
@@ -115,6 +118,7 @@ class TemplateTransformerDecoder(ModuleBase):
                 inputs,
                 template_input=cache['memory'],
                 cache=cache,
+                decoder_self_attention_bias=decoder_self_attention_bias,
             )
             logits = self.output_layer(outputs)
             logits = tf.squeeze(logits, axis=[1])
@@ -151,7 +155,6 @@ class TemplateTransformerDecoder(ModuleBase):
             inputs,
             template_input,
             decoder_self_attention_bias=decoder_self_attention_bias,
-            encoder_decoder_attention_bias=encoder_decoder_attention_bias,
         )
 
         logits = self.output_layer(self.decoder_output)
@@ -169,7 +172,7 @@ class TemplateTransformerDecoder(ModuleBase):
             this function is called on in test mode, without the target input.
         """
         with tf.variable_scope(self.variable_scope, reuse=True):
-            batch_size = tf.shape(encoder_decoder_attention_bias)[0]
+            batch_size = tf.shape(template_input)[0]
             beam_width = self._hparams.beam_width
             maximum_decode_length = self.hparams.maximum_decode_length
             start_tokens = tf.fill([batch_size], 1)
@@ -216,7 +219,7 @@ class TemplateTransformerDecoder(ModuleBase):
         inputs = tf.layers.dropout(inputs,
                                    rate=self._hparams.embedding_dropout,
                                    training=context.global_mode_train())
-        if cache is not None:
+        if cache is not None and 'encoder_decoder_attention_bias' in cache.keys():
             encoder_decoder_attention_bias = \
                 cache['encoder_decoder_attention_bias']
         else:
@@ -313,10 +316,10 @@ class TemplateTransformerDecoder(ModuleBase):
             output_logits=dtypes.float32, sample_id=dtypes.int32)
 
     def _init_cache(self, memory, encoder_decoder_attention_bias):
-        cache = {
-            'memory': memory,
-            'encoder_decoder_attention_bias': encoder_decoder_attention_bias,
-        }
+        cache = {'memory': memory}
+        if encoder_decoder_attention_bias is not None:
+            cache['encoder_decoder_attention_bias'] = \
+                encoder_decoder_attention_bias
         batch_size = tf.shape(memory)[0]
         depth = memory.get_shape().as_list()[-1]
         for l in range(self._hparams.num_blocks):
@@ -404,7 +407,7 @@ class TemplateTransformerDecoder(ModuleBase):
                     decode_length=256,
                     beam_width=5,):
         cache = self._init_cache(memory, encoder_decoder_attention_bias)
-        symbols_to_logits_fn = self._symbols_to_logits_fn(embedding_fn, \
+        symbols_to_logits_fn = self._symbols_to_logits_fn(embedding_fn,
             max_length=decode_length+1, segment_ids=segment_ids,
             offsets=offsets)
         outputs, log_probs = beam_search.beam_search(
