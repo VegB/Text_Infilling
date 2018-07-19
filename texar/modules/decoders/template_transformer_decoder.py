@@ -202,7 +202,7 @@ class TemplateTransformerDecoder(ModuleBase):
                     offsets=offsets
                 )
             predictions = {
-                'sampled_ids':sampled_ids,
+                'sampled_ids': sampled_ids,
                 'log_probs': log_probs
             }
         return predictions
@@ -396,6 +396,16 @@ class TemplateTransformerDecoder(ModuleBase):
         log_prob = tf.expand_dims(log_prob, 1)
         return (outputs, log_prob)
 
+    def _expand_to_beam_width(self, tensor, beam_width):
+        """
+        :param tensor: [batch_size, max_len]
+        :param beam_width:
+        :return: [batch_size*beam_width, max_len]
+        """
+        batch_size = utils.shape_list(tensor)[0]
+        expanded = tf.tile(tf.expand_dims(tensor, axis=1), [1, beam_width, 1])
+        return tf.reshape(expanded, [batch_size * beam_width, -1])
+
     def beam_decode(self,
                     embedding_fn,
                     start_tokens,
@@ -408,8 +418,9 @@ class TemplateTransformerDecoder(ModuleBase):
                     beam_width=5,):
         cache = self._init_cache(memory, encoder_decoder_attention_bias)
         symbols_to_logits_fn = self._symbols_to_logits_fn(embedding_fn,
-            max_length=decode_length+1, segment_ids=segment_ids,
-            offsets=offsets)
+            max_length=decode_length+1,
+            segment_ids=self._expand_to_beam_width(segment_ids, beam_width),
+            offsets=self._expand_to_beam_width(offsets, beam_width))
         outputs, log_probs = beam_search.beam_search(
             symbols_to_logits_fn,
             start_tokens,

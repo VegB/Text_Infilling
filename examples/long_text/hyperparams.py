@@ -63,7 +63,7 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    argparser.add_argument('--max_decode_len', type=int, default=256)
+    argparser.add_argument('--max_decode_len', type=int, default=5)
     argparser.add_argument('--mask_strategy', type=str, default='random')  # contiguous
     argparser.add_argument('--present_rate', type=float, default=0.5)
     argparser.add_argument('--mask_num', type=int, default=3)
