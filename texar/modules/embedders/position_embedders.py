@@ -11,7 +11,7 @@ import tensorflow as tf
 
 from texar.modules.embedders.embedder_base import EmbedderBase
 from texar.modules.embedders import embedder_utils
-from texar.utils import utils, transformer_utils
+from texar.utils import utils
 from texar.utils.shapes import get_batch_size, mask_sequences
 
 import math
@@ -258,6 +258,7 @@ class SinusoidsSegmentalPositionEmbedder(EmbedderBase):
         :param segment_offset: [batch_size, length]
         :return:
         """
+        # TODO(wanrong): check if segment_ids is of shape [batch_size, length]
         position = tf.to_float(tf.add(tf.multiply(tf.cast(256, tf.int64), segment_ids),
                                       offsets))
         num_timescales = channels // 2
