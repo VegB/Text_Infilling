@@ -47,7 +47,7 @@ def load_hyperparams():
     argparser.add_argument('--test_batch_size', type=int, default=10)
     argparser.add_argument('--min_length_bucket', type=int, default=9)
     argparser.add_argument('--length_bucket_step', type=float, default=1.1)
-    argparser.add_argument('--max_training_steps', type=int, default=250000)
+    argparser.add_argument('--max_training_steps', type=int, default=2500000)
     argparser.add_argument('--warmup_steps', type=int, default=16000)
     argparser.add_argument('--lr_constant', type=float, default=2)
     argparser.add_argument('--max_train_epoch', type=int, default=70)
@@ -63,9 +63,11 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    argparser.add_argument('--max_decode_len', type=int, default=256)
+    argparser.add_argument('--max_decode_len', type=int, default=15)
     argparser.add_argument('--mask_strategy', type=str, default='random')  # contiguous
     argparser.add_argument('--present_rate', type=float, default=0.5)
+    argparser.add_argument('--mask_num', type=int, default=3)
+    argparser.add_argument('--min_mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
 
     args.data_dir = os.path.abspath(args.data_dir)
