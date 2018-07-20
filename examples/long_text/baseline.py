@@ -51,9 +51,9 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    mask, masked_inputs, labels = \
-        prepare_data_batch(args, data_batch, mask_id, args.present_rate)
-    is_target = tf.to_float(tf.not_equal(labels[:, 1:], 0))
+    template_pack, answer_packs = \
+        tx.utils.prepare_template(data_batch, args.mask_num,
+                                  args.min_mask_length, mask_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
@@ -64,11 +64,11 @@ def _main(_):
     decoder_initial_state_size = decoder.cell.state_size
     connector = tx.modules.connectors.ForwardConnector(decoder_initial_state_size)
 
-    enc_input_embed = embedder(masked_inputs)
-    dec_input_embed = embedder(labels)
+    enc_input_embedded = embedder(template_pack['text_ids'])  # template
+    dec_input_embedded = embedder(data_batch['text_ids'][:, :-1])
 
     _, ecdr_states = encoder(
-        enc_input_embed,
+        enc_input_embedded,
         sequence_length=data_batch["length"])
 
     dcdr_states = connector(ecdr_states)
@@ -76,16 +76,16 @@ def _main(_):
     outputs, _, _ = decoder(
         initial_state=dcdr_states,
         decoding_strategy="train_greedy",
-        inputs=dec_input_embed,
+        inputs=dec_input_embedded,
         sequence_length=data_batch["length"]-1)
 
     mle_loss = tx.utils.smoothing_cross_entropy(
         outputs.logits,
-        labels[:, 1:],
+        data_batch['text_ids'][:, 1:],
         train_data.vocab.size,
         loss_hparams['label_confidence'],
     )
-    mle_loss = tf.reduce_sum(mle_loss * is_target) / tf.reduce_sum(is_target)
+    mle_loss = tf.reduce_sum(mle_loss * tf.cast(template_pack['masks'][:, 1:], tf.float32))
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
@@ -104,24 +104,24 @@ def _main(_):
     )
     train_op = optimizer.minimize(mle_loss, global_step)
 
-    # ---unconditional---
-    all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
-    all_masked_embed = embedder(all_masked)
-
-    _, ecdr_states_uncond = encoder(
-        all_masked_embed,
-        sequence_length=data_batch["length"])
-
-    dcdr_states_uncond = connector(ecdr_states_uncond)
-
-    bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
-    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
-    outputs_infer, _, _ = decoder(
-        decoding_strategy="infer_sample",
-        start_tokens=tf.cast(tf.fill(tf.shape(all_masked), bos_id)[:, 0], tf.int32),
-        end_token=eos_id,
-        embedding=embedder,
-        initial_state=dcdr_states_uncond)
+    # # ---unconditional---
+    # all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
+    # all_masked_embed = embedder(all_masked)
+    #
+    # _, ecdr_states_uncond = encoder(
+    #     all_masked_embed,
+    #     sequence_length=data_batch["length"])
+    #
+    # dcdr_states_uncond = connector(ecdr_states_uncond)
+    #
+    # bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
+    # eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
+    # outputs_infer, _, _ = decoder(
+    #     decoding_strategy="infer_sample",
+    #     start_tokens=tf.cast(tf.fill(tf.shape(all_masked), bos_id)[:, 0], tf.int32),
+    #     end_token=eos_id,
+    #     embedding=embedder,
+    #     initial_state=dcdr_states_uncond)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -132,22 +132,19 @@ def _main(_):
         iterator.switch_to_train_data(session)
         while True:
             try:
-                fetches = {'source': masked_inputs,
-                           'dec_in': labels[:, :-1],
-                           'target': labels[:, 1:],
-                           'mask': mask,
+                fetches = {'template': template_pack,
+                           'holes': answer_packs,
                            'train_op': train_op,
                            'step': global_step,
                            'loss': mle_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
-                step, source, target, loss = rtns['step'], rtns['source'], \
-                                             rtns['target'], rtns['loss']
-                if step % 100 == 0:
-                    rst = 'step:%s source:%s targets:%s loss:%s' % \
-                          (step, source.shape, target.shape, loss)
+                step, template_, holes_, loss = rtns['step'], \
+                    rtns['template'], rtns['holes'], rtns['loss']
+                if step % 1 == 0:
+                    rst = 'step:%s source:%s loss:%s' % \
+                          (step, template_['text_ids'].shape, loss)
                     print(rst)
-                    # print(rtns['mask'])
                 if step == opt_hparams['max_training_steps']:
                     print('reach max steps:{} loss:{}'.format(step, loss))
                     print('reached max training steps')
@@ -156,95 +153,74 @@ def _main(_):
                 break
         return 'done'
 
-    def _eval_epoch(cur_sess, cur_epoch):
-        # pylint:disable=too-many-locals
-        iterator.switch_to_val_data(cur_sess)
-        sources_list, targets_list, hypothesis_list = [], [], []
-        eloss = []
+    def _test_epoch(cur_sess, cur_epoch):
+        def _id2word_map(id_arrays):
+            return [' '.join([train_data.vocab._id_to_token_map_py[i]
+                              for i in sent]) for sent in id_arrays]
+
+        iterator.switch_to_test_data(cur_sess)
+        targets_list, hypothesis_list = [], []
         while True:
             try:
                 fetches = {
-                    'outputs': outputs_infer,
-                    'source': all_masked,
-                    'target': labels,
+                    'data_batch': data_batch,
+                    'predictions': predictions,
+                    'template': template_pack,
                     'step': global_step,
-                    'mle_loss': mle_loss,
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
-                sources, sampled_ids, targets = \
-                    rtns['source'].tolist(), \
-                    rtns['outputs'].sample_id[:, 0, :].tolist(), \
-                    rtns['target'].tolist()
-                eloss.append(rtns['mle_loss'])
-                if args.verbose:
-                    print('cur loss:{}'.format(rtns['mle_loss']))
+                templates_, targets_, predictions_ = rtns['template']['text_ids'], \
+                                                    rtns['data_batch']['text_ids'],\
+                                                    rtns['predictions']
+                filled_templates = tx.utils.fill_template(templates_, predictions_, mask_id)
 
-                def _id2word_map(id_arrays):
-                    return [' '.join([train_data.vocab._id_to_token_map_py[i]
-                                      for i in sent]) for sent in id_arrays]
-
-                sources, targets, dwords = _id2word_map(sources), \
-                                           _id2word_map(targets), \
-                                           _id2word_map(sampled_ids)
-                for source, target, pred in zip(sources, targets, dwords):
-                    source = source.split('<EOS>')[0].strip().split()
+                targets, generateds = _id2word_map(targets_), _id2word_map(filled_templates)
+                for target, generated in zip(targets, generateds):
                     target = target.split('<EOS>')[0].strip().split()
-                    got = pred.split('<EOS>')[0].strip().split()
-                    sources_list.append(source)
+                    got = generated.split('<EOS>')[0].strip().split()
                     targets_list.append(target)
                     hypothesis_list.append(got)
             except tf.errors.OutOfRangeError:
                 break
+
         outputs_tmp_filename = args.log_dir + \
-                               'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.format( \
-                                   cur_epoch, args.beam_width, args.alpha)
+            'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
+                format(cur_epoch, args.beam_width, args.alpha)
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
         with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-                codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+             codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
             for hyp, tgt in zip(hypothesis_list, targets_list):
                 tmpfile.write(' '.join(hyp) + '\n')
                 tmpreffile.write(' '.join(tgt) + '\n')
-        eval_bleu = float(100 * bleu_tool.bleu_wrapper( \
+        eval_bleu = float(100 * bleu_tool.bleu_wrapper(\
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
-        eloss = float(np.average(np.array(eloss)))
-        print('epoch:{} eval_bleu:{} eval_loss:{}'.format(cur_epoch, \
-                                                          eval_bleu, eloss))
+        print('epoch:{} eval_bleu:{}'.format(cur_epoch, eval_bleu))
         if args.save_eval_output:
-            with codecs.open(args.log_dir + \
-                                     'my_model_epoch{}.beam{}alpha{}.outputs.bleu{:.3f}'.format( \
-                                             cur_epoch, args.beam_width, args.alpha, eval_bleu), \
-                             'w+', 'utf-8') as outputfile, codecs.open(args.log_dir + \
-                                                                               'my_model_epoch{}.beam{}alpha{}.results.bleu{:.3f}'.format( \
-                                                                                       cur_epoch, args.beam_width,
-                                                                                   args.alpha, eval_bleu), \
-                                                                       'w+', 'utf-8') as resultfile:
-                for src, tgt, hyp in zip(sources_list, targets_list, \
-                                         hypothesis_list):
+            output_filename = \
+                args.log_dir + 'my_model_epoch{}.beam{}alpha{}.outputs.bleu{:.3f}'\
+                    .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
+            result_filename = \
+                args.log_dir + 'my_model_epoch{}.beam{}alpha{}.results.bleu{:.3f}'\
+                    .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
+            with codecs.open(output_filename, 'w+', 'utf-8') as outputfile, \
+                 codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
+                for tgt, hyp in zip(targets_list, hypothesis_list):
                     outputfile.write(' '.join(hyp) + '\n')
-                    resultfile.write("- source: " + ' '.join(src) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                     resultfile.write('- got: ' + ' '.join(hyp) + '\n\n')
-        return {'loss': eloss,
-                'bleu': eval_bleu
-                }
+        return eval_bleu
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
-        var_list = tf.trainable_variables()
-        with open(args.log_dir + 'var.list', 'w+') as outfile:
-            for var in var_list:
-                outfile.write('var:{} shape:{} dtype:{}\n'.format( \
-                    var.name, var.shape, var.dtype))
+
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                if epoch % args.eval_interval_epoch != 0:
-                    continue
                 status = _train_epochs(sess, epoch)
-                eval_result = _eval_epoch(sess, epoch)
+                eval_result = _test_epoch(sess, epoch)
                 eval_loss, eval_score = eval_result['loss'], eval_result['bleu']
                 if args.eval_criteria == 'loss':
                     if lowest_loss < 0 or eval_loss < lowest_loss:

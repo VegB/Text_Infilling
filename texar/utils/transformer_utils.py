@@ -383,7 +383,8 @@ def prepare_template(data_batch, mask_num, mask_length, mask_id):
     template_pack = {
         'text_ids': masked_inputs,
         'segment_ids': template_segment_ids,
-        'offsets': template_offsets
+        'offsets': template_offsets,
+        'masks': masks
     }
 
     answer_packs = []
