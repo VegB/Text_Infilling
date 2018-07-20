@@ -220,28 +220,17 @@ def _main(_):
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 status = _train_epochs(sess, epoch)
-                eval_result = _test_epoch(sess, epoch)
-                eval_loss, eval_score = eval_result['loss'], eval_result['bleu']
-                if args.eval_criteria == 'loss':
-                    if lowest_loss < 0 or eval_loss < lowest_loss:
-                        print('the %s epoch got lowest loss %s', \
-                              epoch, eval_loss)
-                        eval_saver.save(sess, \
-                                        args.log_dir + 'my-model-lowest_loss.ckpt')
-                        lowest_loss = eval_loss
-                elif args.eval_criteria == 'bleu':
-                    if highest_bleu < 0 or eval_score > highest_bleu:
-                        print('the %s epoch, highest bleu %s', \
-                              epoch, eval_score)
-                        eval_saver.save(sess, \
-                                        args.log_dir + 'my-model-highest_bleu.ckpt')
-                        highest_bleu = eval_score
-                if status == 'finished':
-                    print('saving model for max training steps')
-                    os.makedirs(args.log_dir + '/max/')
-                    eval_saver.save(sess, \
-                                    args.log_dir + '/max/my-model-highest_bleu.ckpt')
-                    break
+                # test_score = _test_epoch(sess, epoch)
+                # if highest_bleu < 0 or test_score > highest_bleu:
+                #     print('the %d epoch, highest bleu %f' % (epoch, test_score))
+                #     eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
+                #     highest_bleu = test_score
+                # if status == 'finished':
+                #     print('saving model for max training steps')
+                #     os.makedirs(args.log_dir + '/max/')
+                #     eval_saver.save(sess, \
+                #                     args.log_dir + '/max/my-model-highest_bleu.ckpt')
+                #     break
                 sys.stdout.flush()
 
 
