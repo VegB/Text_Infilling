@@ -126,7 +126,7 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 100 == 0:
+                if step % 500 == 0:
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)
@@ -201,11 +201,10 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
+        eval_saver.restore(sess, args.log_dir + '/max/my-model-highest_bleu.ckpt')
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                if epoch % args.eval_interval_epoch != 0:
-                    continue
                 status = _train_epochs(sess, epoch)
                 test_score = _test_epoch(sess, epoch)
                 if highest_bleu < 0 or test_score > highest_bleu:

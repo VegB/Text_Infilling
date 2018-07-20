@@ -47,7 +47,7 @@ def load_hyperparams():
     argparser.add_argument('--test_batch_size', type=int, default=10)
     argparser.add_argument('--min_length_bucket', type=int, default=9)
     argparser.add_argument('--length_bucket_step', type=float, default=1.1)
-    argparser.add_argument('--max_training_steps', type=int, default=250000)
+    argparser.add_argument('--max_training_steps', type=int, default=2500000)
     argparser.add_argument('--warmup_steps', type=int, default=16000)
     argparser.add_argument('--lr_constant', type=float, default=2)
     argparser.add_argument('--max_train_epoch', type=int, default=70)
