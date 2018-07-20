@@ -76,7 +76,7 @@ def _main(_):
         mle_loss = cur_loss if mle_loss is None \
             else tf.concat([mle_loss, cur_loss], -1)
 
-    mle_loss = tf.reduce_sum(mle_loss)
+    mle_loss = tf.reduce_mean(mle_loss)
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)

@@ -85,7 +85,9 @@ def _main(_):
         train_data.vocab.size,
         loss_hparams['label_confidence'],
     )
-    mle_loss = tf.reduce_sum(mle_loss * tf.cast(template_pack['masks'][:, 1:], tf.float32))
+    mle_loss = \
+        tf.reduce_sum(mle_loss * tf.cast(template_pack['masks'][:, 1:], tf.float32)) / \
+        tf.cast(tf.reduce_sum(template_pack['masks'][:, 1:]), tf.float32)
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
@@ -141,7 +143,7 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 1 == 0:
+                if step % 500 == 0:
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)
