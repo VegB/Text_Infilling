@@ -152,31 +152,31 @@ def _main(_):
 
         iterator.switch_to_test_data(cur_sess)
         templates_list, targets_list, hypothesis_list = [], [], []
-        # while True:
-        #     try:
-        fetches = {
-            'data_batch': data_batch,
-            'predictions': outputs_infer,
-            'template': template_pack,
-            'step': global_step,
-        }
-        feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
-        rtns = cur_sess.run(fetches, feed_dict=feed)
-        templates_, targets_, predictions_ = rtns['template']['text_ids'].tolist(), \
-                                            rtns['data_batch']['text_ids'].tolist(),\
-                                            rtns['predictions'].sample_id.tolist()
+        while True:
+            try:
+                fetches = {
+                    'data_batch': data_batch,
+                    'predictions': outputs_infer,
+                    'template': template_pack,
+                    'step': global_step,
+                }
+                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
+                rtns = cur_sess.run(fetches, feed_dict=feed)
+                templates_, targets_, predictions_ = rtns['template']['text_ids'].tolist(), \
+                                                    rtns['data_batch']['text_ids'].tolist(),\
+                                                    rtns['predictions'].sample_id.tolist()
 
-        templates, targets, generateds = \
-            _id2word_map(templates_), _id2word_map(targets_), _id2word_map(predictions_)
-        for template, target, generated in zip(templates, targets, generateds):
-            template = template.split('<EOS>')[0].strip().split()
-            target = target.split('<EOS>')[0].strip().split()
-            got = generated.split('<EOS>')[0].strip().split()
-            templates_list.append(template)
-            targets_list.append(target)
-            hypothesis_list.append(got)
-            # except tf.errors.OutOfRangeError:
-            #     break
+                templates, targets, generateds = \
+                    _id2word_map(templates_), _id2word_map(targets_), _id2word_map(predictions_)
+                for template, target, generated in zip(templates, targets, generateds):
+                    template = template.split('<EOS>')[0].strip().split()
+                    target = target.split('<EOS>')[0].strip().split()
+                    got = generated.split('<EOS>')[0].strip().split()
+                    templates_list.append(template)
+                    targets_list.append(target)
+                    hypothesis_list.append(got)
+            except tf.errors.OutOfRangeError:
+                break
 
         outputs_tmp_filename = args.log_dir + \
             'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
@@ -214,7 +214,7 @@ def _main(_):
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                # status = _train_epochs(sess, epoch)
+                status = _train_epochs(sess, epoch)
                 test_score = _test_epoch(sess, epoch)
                 if highest_bleu < 0 or test_score > highest_bleu:
                     print('the %d epoch, highest bleu %f' % (epoch, test_score))
