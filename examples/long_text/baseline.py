@@ -106,24 +106,14 @@ def _main(_):
     )
     train_op = optimizer.minimize(mle_loss, global_step)
 
-    # # ---unconditional---
-    # all_masked = tf.fill(tf.shape(masked_inputs), mask_id)
-    # all_masked_embed = embedder(all_masked)
-    #
-    # _, ecdr_states_uncond = encoder(
-    #     all_masked_embed,
-    #     sequence_length=data_batch["length"])
-    #
-    # dcdr_states_uncond = connector(ecdr_states_uncond)
-    #
-    # bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
-    # eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
-    # outputs_infer, _, _ = decoder(
-    #     decoding_strategy="infer_sample",
-    #     start_tokens=tf.cast(tf.fill(tf.shape(all_masked), bos_id)[:, 0], tf.int32),
-    #     end_token=eos_id,
-    #     embedding=embedder,
-    #     initial_state=dcdr_states_uncond)
+    bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
+    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
+    outputs_infer, _, _ = decoder(
+        decoding_strategy="infer_sample",
+        start_tokens=tf.cast(tf.fill([tf.shape(data_batch['text_ids'])[0]], bos_id), tf.int32),
+        end_token=eos_id,
+        embedding=embedder,
+        initial_state=dcdr_states)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -161,30 +151,32 @@ def _main(_):
                               for i in sent]) for sent in id_arrays]
 
         iterator.switch_to_test_data(cur_sess)
-        targets_list, hypothesis_list = [], []
-        while True:
-            try:
-                fetches = {
-                    'data_batch': data_batch,
-                    'predictions': predictions,
-                    'template': template_pack,
-                    'step': global_step,
-                }
-                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
-                rtns = cur_sess.run(fetches, feed_dict=feed)
-                templates_, targets_, predictions_ = rtns['template']['text_ids'], \
-                                                    rtns['data_batch']['text_ids'],\
-                                                    rtns['predictions']
-                filled_templates = tx.utils.fill_template(templates_, predictions_, mask_id)
+        templates_list, targets_list, hypothesis_list = [], [], []
+        # while True:
+        #     try:
+        fetches = {
+            'data_batch': data_batch,
+            'predictions': outputs_infer,
+            'template': template_pack,
+            'step': global_step,
+        }
+        feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
+        rtns = cur_sess.run(fetches, feed_dict=feed)
+        templates_, targets_, predictions_ = rtns['template']['text_ids'].tolist(), \
+                                            rtns['data_batch']['text_ids'].tolist(),\
+                                            rtns['predictions'].sample_id.tolist()
 
-                targets, generateds = _id2word_map(targets_), _id2word_map(filled_templates)
-                for target, generated in zip(targets, generateds):
-                    target = target.split('<EOS>')[0].strip().split()
-                    got = generated.split('<EOS>')[0].strip().split()
-                    targets_list.append(target)
-                    hypothesis_list.append(got)
-            except tf.errors.OutOfRangeError:
-                break
+        templates, targets, generateds = \
+            _id2word_map(templates_), _id2word_map(targets_), _id2word_map(predictions_)
+        for template, target, generated in zip(templates, targets, generateds):
+            template = template.split('<EOS>')[0].strip().split()
+            target = target.split('<EOS>')[0].strip().split()
+            got = generated.split('<EOS>')[0].strip().split()
+            templates_list.append(template)
+            targets_list.append(target)
+            hypothesis_list.append(got)
+            # except tf.errors.OutOfRangeError:
+            #     break
 
         outputs_tmp_filename = args.log_dir + \
             'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
@@ -207,8 +199,9 @@ def _main(_):
                     .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
             with codecs.open(output_filename, 'w+', 'utf-8') as outputfile, \
                  codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
-                for tgt, hyp in zip(targets_list, hypothesis_list):
+                for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
                     outputfile.write(' '.join(hyp) + '\n')
+                    resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                     resultfile.write('- got: ' + ' '.join(hyp) + '\n\n')
         return eval_bleu
@@ -221,18 +214,18 @@ def _main(_):
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                status = _train_epochs(sess, epoch)
-                # test_score = _test_epoch(sess, epoch)
-                # if highest_bleu < 0 or test_score > highest_bleu:
-                #     print('the %d epoch, highest bleu %f' % (epoch, test_score))
-                #     eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                #     highest_bleu = test_score
-                # if status == 'finished':
-                #     print('saving model for max training steps')
-                #     os.makedirs(args.log_dir + '/max/')
-                #     eval_saver.save(sess, \
-                #                     args.log_dir + '/max/my-model-highest_bleu.ckpt')
-                #     break
+                # status = _train_epochs(sess, epoch)
+                test_score = _test_epoch(sess, epoch)
+                if highest_bleu < 0 or test_score > highest_bleu:
+                    print('the %d epoch, highest bleu %f' % (epoch, test_score))
+                    eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
+                    highest_bleu = test_score
+                if status == 'finished':
+                    print('saving model for max training steps')
+                    os.makedirs(args.log_dir + '/max/')
+                    eval_saver.save(sess, \
+                                    args.log_dir + '/max/my-model-highest_bleu.ckpt')
+                    break
                 sys.stdout.flush()
 
 
