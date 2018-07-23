@@ -43,7 +43,7 @@ def load_hyperparams():
                            help='use all-zero embedding for bos')
     argparser.add_argument('--data_dir', type=str,
                            default='./yahoo_data/')
-    argparser.add_argument('--batch_size', type=int, default=32)  # 4096
+    argparser.add_argument('--batch_size', type=int, default=64)  # 4096
     argparser.add_argument('--test_batch_size', type=int, default=10)
     argparser.add_argument('--min_length_bucket', type=int, default=9)
     argparser.add_argument('--length_bucket_step', type=float, default=1.1)
@@ -103,8 +103,9 @@ def load_hyperparams():
             "eos_token": SpecialTokens.EOS,
             "length_filter_mode": "truncate",
         },
-        'bucket_boundaries': batching_scheme['boundaries'],
-        'bucket_batch_sizes': batching_scheme['batch_sizes'],
+        # 'bucket_boundaries': batching_scheme['boundaries'],
+        # 'bucket_batch_sizes': batching_scheme['batch_sizes'],
+        'batch_size': args.batch_size,
         'allow_smaller_final_batch': True,
     }
     eval_dataset_hparams = {
