@@ -103,8 +103,9 @@ def load_hyperparams():
             "eos_token": SpecialTokens.EOS,
             "length_filter_mode": "truncate",
         },
-        'bucket_boundaries': batching_scheme['boundaries'],
-        'bucket_batch_sizes': batching_scheme['batch_sizes'],
+        # 'bucket_boundaries': batching_scheme['boundaries'],
+        # 'bucket_batch_sizes': batching_scheme['batch_sizes'],
+        'batch_size': args.batch_size,
         'allow_smaller_final_batch': True,
     }
     eval_dataset_hparams = {
