@@ -144,7 +144,7 @@ def _main(_):
                               for i in sent]) for sent in id_arrays]
 
         iterator.switch_to_test_data(cur_sess)
-        targets_list, hypothesis_list = [], []
+        templates_list, targets_list, hypothesis_list = [], [], []
         while True:
             try:
                 fetches = {
@@ -160,10 +160,14 @@ def _main(_):
                                                     rtns['predictions']
                 filled_templates = tx.utils.fill_template(templates_, predictions_, mask_id)
 
-                targets, generateds = _id2word_map(targets_), _id2word_map(filled_templates)
-                for target, generated in zip(targets, generateds):
+                templates, targets, generateds = _id2word_map(templates_.tolist()), \
+                                                 _id2word_map(targets_), \
+                                                 _id2word_map(filled_templates)
+                for template, target, generated in zip(templates, targets, generateds):
+                    template = template.split('<EOS>')[0].strip().split()
                     target = target.split('<EOS>')[0].strip().split()
                     got = generated.split('<EOS>')[0].strip().split()
+                    templates_list.append(template)
                     targets_list.append(target)
                     hypothesis_list.append(got)
             except tf.errors.OutOfRangeError:
@@ -190,8 +194,9 @@ def _main(_):
                     .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
             with codecs.open(output_filename, 'w+', 'utf-8') as outputfile, \
                  codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
-                for tgt, hyp in zip(targets_list, hypothesis_list):
+                for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
                     outputfile.write(' '.join(hyp) + '\n')
+                    resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                     resultfile.write('- got: ' + ' '.join(hyp) + '\n\n')
         return eval_bleu
@@ -201,7 +206,7 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        eval_saver.restore(sess, args.log_dir + '/max/my-model-highest_bleu.ckpt')
+        eval_saver.restore(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
