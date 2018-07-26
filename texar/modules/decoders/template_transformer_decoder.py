@@ -168,6 +168,8 @@ class TemplateTransformerDecoder(ModuleBase):
 
     def dynamic_decode(self, template_input, encoder_decoder_attention_bias,
                        segment_ids, offsets):
+    # def _build(self, template_input, encoder_decoder_attention_bias,
+    #            segment_ids, offsets):
         """
             this function is called on in test mode, without the target input.
         """
@@ -205,6 +207,11 @@ class TemplateTransformerDecoder(ModuleBase):
                 'sampled_ids': sampled_ids,
                 'log_probs': log_probs
             }
+
+        # if not self._built:
+        #     self._add_internal_trainable_variables()
+        #     self._built = True
+
         return predictions
 
     def _self_attention_stack(self,
@@ -230,7 +237,7 @@ class TemplateTransformerDecoder(ModuleBase):
             layer_name = 'layer_{}'.format(i)
             layer_cache = cache[layer_name] if cache is not None else None
             with tf.variable_scope(layer_name):
-                with tf.variable_scope("self_attention"):
+                with tf.variable_scope("self_attention", reuse=True):
                     selfatt_output = attentions.multihead_attention(
                         queries=layers.layer_normalize(x),
                         memory=None,
