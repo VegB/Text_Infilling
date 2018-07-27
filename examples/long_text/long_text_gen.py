@@ -19,11 +19,14 @@ from __future__ import print_function
 # pylint: disable=invalid-name, no-member, too-many-locals
 
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import sys
 import codecs
 import numpy as np
 import tensorflow as tf
 import texar as tx
+from matplotlib import pyplot as plt
+plt.switch_backend('agg')
 
 import hyperparams
 import bleu_tool
@@ -116,6 +119,8 @@ def _main(_):
 
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
+        if args.draw_for_debug:
+            loss_lists = []
         while True:
             try:
                 fetches = {'template': template_pack,
@@ -127,16 +132,24 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 1 == 0:
+                if step % 500 == 0:
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)
+                if args.draw_for_debug:
+                    loss_lists.append(loss)
                 if step == opt_hparams['max_training_steps']:
                     print('reach max steps:{} loss:{}'.format(step, loss))
                     print('reached max training steps')
                     return 'finished'
             except tf.errors.OutOfRangeError:
                 break
+            if args.draw_for_debug:
+                plt.figure(figsize=(14, 10))
+                plt.plot(loss_lists, '--', linewidth=1, label='loss trend')
+                plt.ylabel('training loss')
+                plt.xlabel('training steps in one epoch')
+                plt.savefig(args.log_dir + '/img/train_loss_curve.epoch{}.png'.format(cur_epoch))
         return 'done'
 
     def _test_epoch(cur_sess, cur_epoch):
@@ -187,17 +200,14 @@ def _main(_):
         eval_bleu = float(100 * bleu_tool.bleu_wrapper(\
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
         print('epoch:{} eval_bleu:{}'.format(cur_epoch, eval_bleu))
+        os.remove(outputs_tmp_filename)
+        os.remove(refer_tmp_filename)
         if args.save_eval_output:
-            output_filename = \
-                args.log_dir + 'my_model_epoch{}.beam{}alpha{}.outputs.bleu{:.3f}'\
-                    .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
             result_filename = \
                 args.log_dir + 'my_model_epoch{}.beam{}alpha{}.results.bleu{:.3f}'\
                     .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
-            with codecs.open(output_filename, 'w+', 'utf-8') as outputfile, \
-                 codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
+            with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
                 for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
-                    outputfile.write(' '.join(hyp) + '\n')
                     resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                     resultfile.write('- got: ' + ' '.join(hyp) + '\n\n')

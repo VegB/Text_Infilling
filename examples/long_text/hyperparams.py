@@ -32,7 +32,7 @@ def load_hyperparams():
                            help='can also be test mode')
     argparser.add_argument('--filename_prefix', type=str, default='yahoo.')
     argparser.add_argument('--debug', type=int, default=0)
-    argparser.add_argument('--draw_for_debug', type=int, default=0)
+    argparser.add_argument('--draw_for_debug', type=int, default=1)
     argparser.add_argument('--average_model', type=int, default=0,
                            help='currently not supported')
     argparser.add_argument('--model_dir', type=str, default='default')
@@ -53,7 +53,7 @@ def load_hyperparams():
     argparser.add_argument('--max_train_epoch', type=int, default=70)
     argparser.add_argument('--random_seed', type=int, default=1234)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
-    argparser.add_argument('--beam_width', type=int, default=5)
+    argparser.add_argument('--beam_width', type=int, default=2)
     argparser.add_argument('--alpha', type=float, default=0.6,
         help=' length_penalty=(5+len(decode)/6) ^ -\alpha')
     argparser.add_argument('--save_eval_output', default=1,
