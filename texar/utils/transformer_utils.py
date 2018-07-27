@@ -497,9 +497,22 @@ def fill_template(templates, predictions, mask_id, eos_id):
     :param predictions: a list of tensors
     :return:
     """
+    def _transpose(a):
+        """
+        :param a: mask_num * batch_size * undefined_len
+        :return: batch_size * mask_num * undefined_len
+        """
+        rst = []
+        for _ in a[0]:
+            rst.append([])
+        for ar in a:
+            for idx, sent in enumerate(ar):
+                rst[idx].append(sent)
+        return rst
+
     templates = templates.tolist()
-    predictions = np.array([prediction.tolist() for prediction in predictions])
-    predictions = np.transpose(predictions, (1, 0, 2))
+    predictions = [prediction.tolist() for prediction in predictions]  # mask_num * batch_size * undefined_len
+    predictions = _transpose(predictions)
     rst = []
     for template, fillings in zip(templates, predictions):
         template_segments = _split_template(template, mask_id)
