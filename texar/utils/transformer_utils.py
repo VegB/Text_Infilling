@@ -16,7 +16,9 @@ __all__ = [
     "_batching_scheme",
     "smoothing_cross_entropy",
     "prepare_template",
-    "fill_template"
+    "fill_template",
+    "generate_prediction_offsets",
+    "generate_prediction_segment_ids"
 ]
 
 
@@ -256,16 +258,6 @@ def smoothing_cross_entropy(logits,
         logits=logits, labels=soft_targets)
 
 
-def generate_prediction_offsets(batch_size, max_length):
-    _, offsets = parse_segment(tf.fill([batch_size], max_length),
-                               tf.fill([batch_size, max_length], 0))
-    return tf.cast(offsets, dtype=tf.int64)
-
-
-def generate_prediction_segment_ids(batch_size, segment_id, max_length):
-    return tf.cast(tf.fill([batch_size, max_length], segment_id), dtype=tf.int64)
-
-
 def parse_segment(lengths, masks):
     def _parse_segment(lengths, masks):
         """
@@ -398,25 +390,7 @@ def generate_mask(inputs, lengths, mask_num, mask_len, mask_id, eos_id):
     return masks, answers, templates, template_masks
 
 
-def test_generate_mask():
-    mask_length = 2
-    mask_num = 2
-    mask_id = 7
-    eos_id = 8
-    inputs = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
-    lengths = tf.Variable([11, 11], dtype=tf.int64)
-
-    masks, answers, templates = generate_mask(inputs, lengths, mask_num, mask_length, mask_id, eos_id)
-    with tf.Session() as sess:
-        sess.run(tf.global_variables_initializer())
-        inputs_, masks_, answers_, templates_ = sess.run([inputs, masks, answers, templates])
-        print(inputs_)
-        print(masks_)
-        print(answers_)
-        print(templates_)
-
-
-def prepare_template(data_batch, mask_num, mask_length, max_decode_len, mask_id, eos_id):
+def prepare_template(data_batch, mask_num, mask_length, mask_id, eos_id):
     """
     mask_id = 7
     pad_id = 6
@@ -451,10 +425,10 @@ def prepare_template(data_batch, mask_num, mask_length, max_decode_len, mask_id,
     }
 
     answer_packs = []
-    answer_offsets = generate_prediction_offsets(batch_size, max_decode_len + 1)
     for idx, answer in enumerate(answers):
-        answer_segment_ids = \
-            generate_prediction_segment_ids(batch_size, idx * 2 + 1, max_decode_len + 1)
+        answer_segment_ids, answer_offsets = \
+            parse_segment(tf.fill(tf.shape(lengths), mask_length),
+                          tf.zeros_like(answer))
         answer = tf.reshape(answer, shape=tf.stack([-1, mask_length + 1]))  # has <eos> at the end
         answer_packs.append({
             'text_ids': answer,
@@ -463,34 +437,6 @@ def prepare_template(data_batch, mask_num, mask_length, max_decode_len, mask_id,
         })
 
     return template_pack, answer_packs
-
-
-def test_prepare_template():
-    text_ids = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
-    length = tf.Variable([11, 11], dtype=tf.int32)
-    data_batch = {
-        'text_ids': text_ids,
-        'length': length
-    }
-    mask_num = 2
-    mask_length = 3
-    mask_id = 7
-    eos_id = 8
-    max_decode_len = 5
-    template_pack, answer_packs = \
-        prepare_template(data_batch, mask_num, mask_length, max_decode_len, mask_id, eos_id)
-
-    with tf.Session() as sess:
-        sess.run(tf.global_variables_initializer())
-        fetches = {
-            'ori': data_batch,
-            'template': template_pack,
-            'fills': answer_packs
-        }
-        rtns = sess.run(fetches)
-        print(rtns['ori'])
-        print(rtns['template'])
-        print(rtns['fills'])
 
 
 def _split_template(template, mask_id):
@@ -518,7 +464,7 @@ def _split_template(template, mask_id):
     return rst
 
 
-def _merge_segments(template_segments, fillings):
+def _merge_segments(template_segments, fillings, eos_id):
     """
     template_segments: [[3, 5, 4], [1, 3, 3], [1]]
     fillings: [[4, 2], [2, 5]]
@@ -535,13 +481,16 @@ def _merge_segments(template_segments, fillings):
     rst = []
     for i in range(filling_segment_num):
         rst.extend(template_segments[i])
-        rst.extend(fillings[i])
+        if fillings[i][-1] != eos_id:
+            rst.extend(fillings[i])
+        else:
+            rst.extend(fillings[i][:-1])
     if template_segment_num > filling_segment_num:
         rst.extend(template_segments[-1])
     return rst
 
 
-def fill_template(templates, predictions, mask_id):
+def fill_template(templates, predictions, mask_id, eos_id):
     """
     :param template: [batch_size, max_seq_len]
     :param mask: [batch_size, max_seq_len]
@@ -554,63 +503,17 @@ def fill_template(templates, predictions, mask_id):
     rst = []
     for template, fillings in zip(templates, predictions):
         template_segments = _split_template(template, mask_id)
-        rst.append(_merge_segments(template_segments, fillings))
+        rst.append(_merge_segments(template_segments, fillings, eos_id))
     return rst
 
 
-def test_split_template():
-    a = [3, 5, 4, 7, 7, 1, 3, 3, 7, 7, 1]
-    b = [3, 2, 7, 7]
-
-    assert _split_template(a, 7) == [[3, 5, 4], [1, 3, 3], [1]]
-    assert _split_template(b, 7) == [[3, 2]]
-
-
-def test_merge_segments():
-    t_seg_1 = [[3, 5, 4], [1, 3, 3], [1]]
-    fillings_1 = [[4, 2], [2, 5]]
-    assert _merge_segments(t_seg_1, fillings_1) == \
-           [3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1]
-    assert _merge_segments(t_seg_1[:-1], fillings_1) == \
-           [3, 5, 4, 4, 2, 1, 3, 3, 2, 5]
+def generate_prediction_offsets(inputs, max_length):
+    batch_size = tf.shape(inputs)[0]
+    _, offsets = parse_segment(tf.fill([batch_size], max_length),
+                               tf.fill([batch_size, max_length], 0))
+    return tf.cast(offsets, dtype=tf.int64)
 
 
-def test_fill_template():
-    templates = np.array([[3, 5, 4, 7, 7, 1, 3, 3, 7, 7, 1],
-                          [2, 1, 7, 7, 6, 2, 5, 7, 7, 4, 5]])
-    predictions = np.array([[[4, 2], [2, 5]], [[4, 3], [3, 1]]])
-    mask_id = 7
-    rst = fill_template(templates, predictions, mask_id)
-    assert rst == [[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 6, 2, 5, 3, 1, 4, 5]]
-
-
-def test_fill_template_with_tensor():
-    text_ids = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
-    length = tf.Variable([11, 11], dtype=tf.int32)
-    data_batch = {
-        'text_ids': text_ids,
-        'length': length
-    }
-    mask_num = 3
-    mask_length = 2
-    mask_id = 7
-    template_pack, answer_packs = prepare_template(data_batch, mask_num, mask_length, mask_id)
-
-    with tf.Session() as sess:
-        sess.run(tf.global_variables_initializer())
-        fetches = {
-            'ori': data_batch,
-            'template': template_pack,
-            'fills': answer_packs
-        }
-        rtns = sess.run(fetches)
-        print(rtns['ori'])
-        print(rtns['template'])
-        print(rtns['fills'])
-        predictions = []
-        for hole in rtns['fills']:
-            predictions.append(hole['text_ids'])
-
-        filled = fill_template(rtns['template']['text_ids'], predictions, mask_id)
-        print(filled)
-        assert filled == rtns['ori']['text_ids'].tolist()
+def generate_prediction_segment_ids(inputs, segment_id, max_length):
+    batch_size = tf.shape(inputs)[0]
+    return tf.cast(tf.fill([batch_size, max_length], segment_id), dtype=tf.int64)

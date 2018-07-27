@@ -48,21 +48,20 @@ def _main(_):
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
     eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args.mask_num,
-                                  args.min_mask_length, mask_id, eos_id, args.max_decode_len)
+        tx.utils.prepare_template(data_batch, args.mask_num, args.min_mask_length,
+                                  mask_id, eos_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
                                        hparams=args.word_embedding_hparams)
     decoder = \
         tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
-                                            hparams=decoder_hparams)
+                                              hparams=decoder_hparams)
 
     template_embedded = embedder(template_pack['templates'])
 
-    loss = None
-    predictions = []
-    for idx, hole in enumerate(answer_packs):
+    cetp_loss = None
+    for hole in answer_packs:
         logits, preds = decoder(decoder_input=hole['text_ids'][:, :-1],
                                 template_input=template_embedded,
                                 encoder_decoder_attention_bias=None,
@@ -70,22 +69,15 @@ def _main(_):
                                 offsets=hole['offsets'][:, :-1],
                                 args=args)
 
-        preds = decoder.dynamic_decode(
-            template_input=template_embedded,
-            encoder_decoder_attention_bias=None,
-            segment_ids=hole['segment_ids'],
-            offsets=hole['offsets'])
-        predictions.append(preds['sampled_ids'][0])
-
         cur_loss = tx.utils.smoothing_cross_entropy(
-            preds['log_probs'][0][:args.min_mask_length + 1],
-            hole['text_ids'],
+            logits,
+            hole['text_ids'][:, 1:],
             train_data.vocab.size,
             loss_hparams['label_confidence'])
-        loss = cur_loss if loss is None \
-            else tf.concat([loss, cur_loss], -1)
+        cetp_loss = cur_loss if cetp_loss is None \
+            else tf.concat([cetp_loss, cur_loss], -1)
 
-    loss = tf.reduce_mean(loss)
+    cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
@@ -100,7 +92,22 @@ def _main(_):
                                        beta1=opt_hparams['Adam_beta1'],
                                        beta2=opt_hparams['Adam_beta2'],
                                        epsilon=opt_hparams['Adam_epsilon'])
-    train_op = optimizer.minimize(loss, global_step)
+    train_op = optimizer.minimize(cetp_loss, global_step)
+
+    predictions = []
+    offsets = tx.utils.generate_prediction_offsets(data_batch['text_ids'],
+                                                   args.max_decode_len + 1)
+    for idx, _ in enumerate(answer_packs):
+        segment_ids = \
+            tx.utils.generate_prediction_segment_ids(data_batch['text_ids'],
+                                                 idx * 2 + 1,  # segment id starting from 1
+                                                 args.max_decode_len + 1)
+        preds = decoder.dynamic_decode(
+            template_input=template_embedded,
+            encoder_decoder_attention_bias=None,
+            segment_ids=segment_ids,
+            offsets=offsets)
+        predictions.append(preds['sampled_ids'][0])
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -115,7 +122,7 @@ def _main(_):
                            'holes': answer_packs,
                            'train_op': train_op,
                            'step': global_step,
-                           'loss': loss}
+                           'loss': cetp_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
@@ -152,7 +159,8 @@ def _main(_):
                 templates_, targets_, predictions_ = rtns['template']['text_ids'], \
                                                     rtns['data_batch']['text_ids'],\
                                                     rtns['predictions']
-                filled_templates = tx.utils.fill_template(templates_, predictions_, mask_id)
+                filled_templates = \
+                    tx.utils.fill_template(templates_, predictions_, mask_id, eos_id)
 
                 templates, targets, generateds = _id2word_map(templates_.tolist()), \
                                                  _id2word_map(targets_), \
