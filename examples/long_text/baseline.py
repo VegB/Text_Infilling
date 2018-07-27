@@ -51,9 +51,10 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
+    eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args.mask_num,
-                                  args.min_mask_length, mask_id)
+        tx.utils.prepare_template(data_batch, args.mask_num, args.min_mask_length,
+                                  mask_id, eos_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
