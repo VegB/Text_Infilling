@@ -32,7 +32,7 @@ def load_hyperparams():
                            help='can also be test mode')
     argparser.add_argument('--filename_prefix', type=str, default='yahoo.')
     argparser.add_argument('--debug', type=int, default=0)
-    argparser.add_argument('--draw_for_debug', type=int, default=0)
+    argparser.add_argument('--draw_for_debug', type=int, default=1)
     argparser.add_argument('--average_model', type=int, default=0,
                            help='currently not supported')
     argparser.add_argument('--model_dir', type=str, default='default')
@@ -43,7 +43,7 @@ def load_hyperparams():
                            help='use all-zero embedding for bos')
     argparser.add_argument('--data_dir', type=str,
                            default='./yahoo_data/')
-    argparser.add_argument('--batch_size', type=int, default=32)  # 4096
+    argparser.add_argument('--batch_size', type=int, default=64)  # 4096
     argparser.add_argument('--test_batch_size', type=int, default=10)
     argparser.add_argument('--min_length_bucket', type=int, default=9)
     argparser.add_argument('--length_bucket_step', type=float, default=1.1)
@@ -53,7 +53,7 @@ def load_hyperparams():
     argparser.add_argument('--max_train_epoch', type=int, default=70)
     argparser.add_argument('--random_seed', type=int, default=1234)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
-    argparser.add_argument('--beam_width', type=int, default=5)
+    argparser.add_argument('--beam_width', type=int, default=2)
     argparser.add_argument('--alpha', type=float, default=0.6,
         help=' length_penalty=(5+len(decode)/6) ^ -\alpha')
     argparser.add_argument('--save_eval_output', default=1,
