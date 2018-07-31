@@ -64,10 +64,10 @@ def load_hyperparams():
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
     argparser.add_argument('--max_decode_len', type=int, default=15)
-    argparser.add_argument('--mask_strategy', type=str, default='random')  # contiguous
+    argparser.add_argument('--mask_strategy', type=str, default='equal_length')  # equal_length
     argparser.add_argument('--present_rate', type=float, default=0.5)
     argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--min_mask_length', type=int, default=5)
+    argparser.add_argument('--mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
 
     args.data_dir = os.path.abspath(args.data_dir)
@@ -221,6 +221,8 @@ def load_hyperparams():
     print('logdir:{}'.format(args.log_dir))
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
+    if not os.path.exists(args.log_dir + 'img/'):
+        os.makedirs(args.log_dir + 'img/')
     return {
         'train_dataset_hparams': train_dataset_hparams,
         'eval_dataset_hparams': eval_dataset_hparams,
