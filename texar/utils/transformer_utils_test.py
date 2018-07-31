@@ -1,10 +1,10 @@
 import numpy as np
 import tensorflow as tf
-from texar.utils.transformer_utils import generate_mask, prepare_template, \
+from texar.utils.transformer_utils import generate_random_mask, generate_equal_length_mask, prepare_template, \
     _split_template, _merge_segments, fill_template
 
 
-def test_generate_mask():
+def test_generate_equal_length_mask():
     mask_length = 2
     mask_num = 2
     mask_id = 7
@@ -12,7 +12,7 @@ def test_generate_mask():
     inputs = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
     lengths = tf.Variable([11, 11], dtype=tf.int64)
 
-    masks, answers, templates, _ = generate_mask(inputs, lengths, mask_num, mask_length, mask_id, eos_id)
+    masks, answers, templates, _ = generate_equal_length_mask(inputs, lengths, mask_num, mask_length, mask_id, eos_id)
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         inputs_, masks_, answers_, templates_ = sess.run([inputs, masks, answers, templates])
@@ -20,6 +20,7 @@ def test_generate_mask():
         print(masks_)
         print(answers_)
         print(templates_)
+test_generate_equal_length_mask()
 
 
 def test_prepare_template():
@@ -112,4 +113,4 @@ def test_fill_template_with_tensor():
         filled = fill_template(rtns['template']['text_ids'], predictions, mask_id, eos_id)
         print(filled)
         assert filled == rtns['ori']['text_ids'].tolist()
-test_fill_template_with_tensor()
+# test_fill_template_with_tensor()
