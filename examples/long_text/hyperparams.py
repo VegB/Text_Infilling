@@ -124,6 +124,7 @@ def load_hyperparams():
         'dataset' : {
             'files': args.valid_file,
             'vocab_file': args.vocab_file,
+            "max_seq_length": args.max_seq_length,
             "bos_token": SpecialTokens.BOS,
             "eos_token": SpecialTokens.EOS,
         },
@@ -137,6 +138,7 @@ def load_hyperparams():
         "dataset": {
             "files": args.test_file,
             "vocab_file": args.vocab_file,
+            "max_seq_length": args.max_seq_length,
             "bos_token": SpecialTokens.BOS,
             "eos_token": SpecialTokens.EOS,
         },
