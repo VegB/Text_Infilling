@@ -1,9 +1,9 @@
+import math
 import argparse
 import numpy as np
 import tensorflow as tf
 from texar.utils.transformer_utils import generate_random_mask, generate_equal_length_mask,\
     prepare_template, _split_template, _merge_segments, fill_template
-
 
 
 class Hyperparams:
@@ -26,6 +26,7 @@ def load_hyperparams():
     argparser.add_argument('--mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
+    args.partition_num = int(math.log(args.max_seq_length))
     return args
 
 
@@ -75,7 +76,7 @@ def test_prepare_template():
         print(rtns['ori'])
         print(rtns['template'])
         print(rtns['fills'])
-# test_prepare_template()
+test_prepare_template()
 
 
 def test_split_template():
@@ -163,4 +164,4 @@ def test_generate_random_mask():
         print("templates:\n", templates)
         print("template_masks:\n", template_masks)
 
-test_generate_random_mask()
+# test_generate_random_mask()
