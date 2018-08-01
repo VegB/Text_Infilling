@@ -425,21 +425,27 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
 
             # split masked_num into partition_num segments
             split_positions = \
-                np.random.choice(range(1, masked_num-1), partition_num - 1, replace=False)
-            split_positions = np.insert(np.insert(split_positions, 0, 0, axis=0),
-                                        partition_num, masked_num, axis=0)
+                np.random.choice(range(1, masked_num - 1), partition_num - 1, replace=False)
+            split_positions = np.sort(np.insert(np.insert(split_positions, 0, 0, axis=0),
+                                                partition_num, masked_num, axis=0))
 
             # calculate the length of each mask segment
-            mask_lengths = np.zeros(shape=partition_num, dtype=np.int64)
-            for idx, (prev, cur) in enumerate(split_positions[:-1], split_positions[1:]):
+            mask_lengths = np.zeros(shape=partition_num, dtype=np.int64)  # add a 0 at the end
+            for idx, (prev, cur) in enumerate(zip(split_positions[:-1], split_positions[1:])):
                 mask_lengths[idx] = cur - prev
-            left_len = np.zeros(shape=partition_num, dtype=np.int64)
-            for idx, cur_len in reversed(list(enumerate(mask_lengths[1:]))):
-                left_len[idx - 1] = left_len[idx] + cur_len
+            print("mask len: ", mask_lengths)
+            left_len = np.zeros(shape=partition_num + 1, dtype=np.int64)
+            left_len[-1] = -1
+            for idx, cur_len in reversed(list(enumerate(mask_lengths))):
+                print("idx: %d, cur_len: %d" % (idx, cur_len))
+                left_len[idx] = left_len[idx+1] + cur_len + 1
+            left_len = left_len[:-1]
 
+            print('left len: ', left_len)
+            print('seq len:  ', seq_length)
             # splitting
             batch_size = inputs.shape[0]
-            ones = np.zeros(batch_size)
+            ones = np.ones(batch_size)
             eoa = np.full_like(ones, eoa_id)[:, np.newaxis]
             start_positions, end_positions = [0], [0]
             answers = np.array([[], []])
@@ -448,15 +454,17 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             for i in range(1, partition_num + 1):
                 idx = i - 1  # ignore padding 0 in start/end_positions
                 # get start and end position for current mask
+                print("low: %d, high: %d" % (end_positions[idx] + 1, seq_length - left_len[idx]))
                 cur_start_pos = \
-                    np.random.randint(end_positions[idx] + 1, seq_length - left_len[idx], size=1)
+                    np.random.randint(end_positions[idx] + 1, seq_length - left_len[idx] + 1, size=1)[0]
                 cur_end_pos = cur_start_pos + mask_lengths[idx]
                 start_positions.append(cur_start_pos)
                 end_positions.append(cur_end_pos)
+                print("start pos: %d, end pos: %d" % (cur_start_pos, cur_end_pos))
 
                 # get current answer
                 cur_ans = np.concatenate(
-                    (inputs[:, cur_start_pos+1: cur_end_pos], eoa), axis=1)  # add eoa
+                    (inputs[:, cur_start_pos: cur_end_pos], eoa), axis=1)  # add eoa
                 answers = np.concatenate((answers, cur_ans), axis=1)
 
                 # generate current partition index
@@ -470,6 +478,7 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             def _list_to_tiled_array(l):
                 return np.tile(np.array(l, dtype=np.int64)[np.newaxis, :],
                                reps=(batch_size, 1))
+
             start_positions = _list_to_tiled_array(start_positions[1:])
             end_positions = _list_to_tiled_array(end_positions[1:])
 
@@ -479,6 +488,7 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             print("mask_lens:\n", mask_lengths)
             print("masks:\n", masks)
             print("answers:\n", answers)
+            print("parititions:\n", partitions)
 
             return masks, start_positions, end_positions, answers.astype(np.int64), \
                    mask_lengths, partitions.astype(np.int32)
