@@ -49,9 +49,9 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
+    eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args, mask_id, eos_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, eoa_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
@@ -108,7 +108,8 @@ def _main(_):
             template_input=template_embedded,
             encoder_decoder_attention_bias=None,
             segment_ids=segment_ids,
-            offsets=offsets)
+            offsets=offsets,
+            eos_id=eoa_id)
         predictions.append(preds['sampled_ids'][0])
 
     eval_saver = tf.train.Saver(max_to_keep=5)
@@ -172,7 +173,7 @@ def _main(_):
                                                     rtns['data_batch']['text_ids'],\
                                                     rtns['predictions']
                 filled_templates = \
-                    tx.utils.fill_template(templates_, predictions_, mask_id, eos_id)
+                    tx.utils.fill_template(templates_, predictions_, mask_id, eoa_id)
 
                 templates, targets, generateds = _id2word_map(templates_.tolist()), \
                                                  _id2word_map(targets_), \
@@ -187,19 +188,25 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
-        outputs_tmp_filename = args.log_dir + \
-            'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
+        outputs_tmp_filename = args.log_dir + 'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
+                format(cur_epoch, args.beam_width, args.alpha)
+        template_tmp_filename = args.log_dir + 'my_model_epoch{}.beam{}alpha{}.templates.tmp'.\
                 format(cur_epoch, args.beam_width, args.alpha)
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
         with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-             codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-            for hyp, tgt in zip(hypothesis_list, targets_list):
+            codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile, \
+            codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+            for hyp, tplt, tgt in zip(hypothesis_list, templates_list, targets_list):
                 tmpfile.write(' '.join(hyp) + '\n')
+                tmptpltfile.write(' '.join(tplt) + '\n')
                 tmpreffile.write(' '.join(tgt) + '\n')
         eval_bleu = float(100 * bleu_tool.bleu_wrapper(\
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
-        print('epoch:{} eval_bleu:{}'.format(cur_epoch, eval_bleu))
+        template_bleu = float(100 * bleu_tool.bleu_wrapper(\
+            refer_tmp_filename, template_tmp_filename, case_sensitive=True))
+        print('epoch:{} eval_bleu:{} template_bleu:{}'.format(cur_epoch, eval_bleu, template_bleu))
         os.remove(outputs_tmp_filename)
+        os.remove(template_tmp_filename)
         os.remove(refer_tmp_filename)
         if args.save_eval_output:
             result_filename = \
