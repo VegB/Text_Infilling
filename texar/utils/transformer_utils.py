@@ -270,8 +270,6 @@ def parse_segment(lengths, masks):
         :param masks:
         :return: segment_ids, offsets
         """
-        print("lengths: ", lengths)
-        print("masks:   ", masks)
         segment_ids = np.full_like(masks, 0)
         offsets = np.full_like(masks, 0)
         batch_size = masks.shape[0]
@@ -544,18 +542,14 @@ def prepare_template(data_batch, args, mask_id, eoa_id):
 
     answer_packs = []
     for idx, answer in enumerate(answers):
-        print("answer shape: ", tf.shape(answer))
         if args.mask_strategy == 'equal_length':
-            answer_segment_ids, answer_offsets = \
-                parse_segment(tf.fill(tf.shape(lengths), args.mask_length),
-                              tf.zeros_like(answer))
-            answer = tf.reshape(answer, shape=tf.stack([-1, args.mask_length + 1]))  # has <eoa> at the end
+            mask_len = args.mask_length
         elif args.mask_strategy == 'random':
             mask_len = answer_lengths[idx]
-            answer_segment_ids, answer_offsets = \
-                parse_segment(tf.fill(tf.shape(lengths), mask_len + 1),
-                              tf.zeros_like(answer))
-            answer = tf.reshape(answer, shape=tf.stack([-1, mask_len]))  # has <eoa> at the end
+        answer_segment_ids, answer_offsets = \
+            parse_segment(tf.fill(tf.shape(lengths), mask_len + 1),
+                          tf.zeros_like(answer))
+        answer = tf.reshape(answer, shape=tf.stack([-1, mask_len + 1]))  # has <eoa> at the end
         answer_packs.append({
             'text_ids': answer,
             'segment_ids': answer_segment_ids,
