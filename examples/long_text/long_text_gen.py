@@ -169,15 +169,26 @@ def _main(_):
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
-                templates_, targets_, predictions_ = rtns['template']['text_ids'], \
+                real_templates_, templates_, targets_, predictions_ = \
+                    rtns['template']['templates'], rtns['template']['text_ids'], \
                                                     rtns['data_batch']['text_ids'],\
                                                     rtns['predictions']
+                # print("real_templates:\n", real_templates_)
+                # print("templates:\n", templates_)
+                # print("targets:\n", targets_)
+                # print("predictions:\n", predictions_)
+
                 filled_templates = \
                     tx.utils.fill_template(templates_, predictions_, mask_id, eoa_id)
 
-                templates, targets, generateds = _id2word_map(templates_.tolist()), \
+                templates, targets, generateds = _id2word_map(real_templates_.tolist()), \
                                                  _id2word_map(targets_), \
                                                  _id2word_map(filled_templates)
+
+                # print("real templates:\n", templates)
+                # print("targets:\n", targets)
+                # print("generated:\n", generateds)
+
                 for template, target, generated in zip(templates, targets, generateds):
                     template = template.split('<EOS>')[0].strip().split()
                     target = target.split('<EOS>')[0].strip().split()
@@ -216,10 +227,12 @@ def _main(_):
                 for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
                     resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
-                    resultfile.write('- got: ' + ' '.join(hyp) + '\n\n')
+                    resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
         return eval_bleu
 
-    with tf.Session() as sess:
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    with tf.Session(config=config) as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
@@ -228,7 +241,7 @@ def _main(_):
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                status = _train_epochs(sess, epoch)
+                # status = _train_epochs(sess, epoch)
                 test_score = _test_epoch(sess, epoch)
                 if highest_bleu < 0 or test_score > highest_bleu:
                     print('the %d epoch, highest bleu %f' % (epoch, test_score))
