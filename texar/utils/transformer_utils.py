@@ -270,6 +270,8 @@ def parse_segment(lengths, masks):
         :param masks:
         :return: segment_ids, offsets
         """
+        print("lengths: ", lengths)
+        print("masks:   ", masks)
         segment_ids = np.full_like(masks, 0)
         offsets = np.full_like(masks, 0)
         batch_size = masks.shape[0]
@@ -463,6 +465,7 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, max_par
 
         eoa_id = tf.Variable(eoa_id, dtype=tf.int64)
         present_rate = tf.Variable(present_rate, dtype=tf.float32)
+        max_partition_num = tf.Variable(max_partition_num, dtype=tf.int64)
         return tf.py_func(_fill_mask_py_func,
                           [inputs, lengths, present_rate, eoa_id, max_partition_num],
                           [tf.int64, tf.int64, tf.int64, tf.int64, tf.int64, tf.int32])
@@ -518,13 +521,13 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, max_par
     padded_answers = tf.stack(padded_redundant_answers)[:tf.reduce_max(partitions)+1]  # remove redundant 'empty' tensor
     padded_answers = tf.dynamic_partition(data=padded_answers,
                                           partitions=tf.zeros_like(ans_lens, dtype=tf.int32)[:tf.reduce_max(partitions)+1],
-                                          num_partitions=1)  # to list again
-    answers = _remove_pad(padded_answers, ans_lens)
+                                          num_partitions=1)  # to list again [[[STILL BUGGY HERE]]]
+    answers = _remove_pad(padded_answers[0], ans_lens)
     mask_id = tf.Variable(mask_id, dtype=tf.int64)
     templates, template_masks = \
         _prepare_squeezed_template(inputs, masks, start_positions, end_positions, mask_id)
 
-    return masks, answers, templates, template_masks
+    return masks, answers, ans_lens, templates, template_masks
 
 
 def prepare_template(data_batch, args, mask_id, eoa_id):
@@ -549,11 +552,11 @@ def prepare_template(data_batch, args, mask_id, eoa_id):
             generate_equal_length_mask(inputs, lengths, args.mask_num,
                                        args.mask_length, mask_id, eoa_id)
     elif args.mask_strategy == 'random':
-        masks, answers, templates, template_masks =\
+        masks, answers, answer_lengths, templates, template_masks =\
             generate_random_mask(inputs, lengths, args.present_rate,
                                  mask_id, eoa_id, args.max_partition_num)
     else:
-        print("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length'] " %
+        raise TypeError("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length'] " %
               args.mask_strategy)
 
     template_lengths = tf.fill(tf.shape(lengths), tf.shape(templates)[1])
@@ -571,17 +574,24 @@ def prepare_template(data_batch, args, mask_id, eoa_id):
     }
 
     answer_packs = []
-    if args.mask_strategy == 'equal_length':
-        for idx, answer in enumerate(answers):
+    for idx, answer in enumerate(answers):
+        print("answer shape: ", tf.shape(answer))
+        if args.mask_strategy == 'equal_length':
             answer_segment_ids, answer_offsets = \
                 parse_segment(tf.fill(tf.shape(lengths), args.mask_length),
                               tf.zeros_like(answer))
             answer = tf.reshape(answer, shape=tf.stack([-1, args.mask_length + 1]))  # has <eoa> at the end
-            answer_packs.append({
-                'text_ids': answer,
-                'segment_ids': answer_segment_ids,
-                'offsets': answer_offsets
-            })
+        elif args.mask_strategy == 'random':
+            mask_len = answer_lengths[idx]
+            answer_segment_ids, answer_offsets = \
+                parse_segment(tf.fill(tf.shape(lengths), mask_len + 1),
+                              tf.zeros_like(answer))
+            answer = tf.reshape(answer, shape=tf.stack([-1, mask_len]))  # has <eoa> at the end
+        answer_packs.append({
+            'text_ids': answer,
+            'segment_ids': answer_segment_ids,
+            'offsets': answer_offsets
+        })
 
     return template_pack, answer_packs
 
