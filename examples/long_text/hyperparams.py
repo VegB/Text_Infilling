@@ -70,6 +70,7 @@ def load_hyperparams():
     argparser.add_argument('--mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
 
+    args.max_partition_num = args.max_sequence_len / 2
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,

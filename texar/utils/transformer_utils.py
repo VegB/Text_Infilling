@@ -288,21 +288,18 @@ def parse_segment(lengths, masks):
     return tf.py_func(_parse_segment, [lengths, masks], [masks.dtype, masks.dtype])
 
 
-def _parse_answer(inputs, start_pos, end_pos, eos_id):
-    rst = None
-    batch_size = inputs.shape[0]
-    for i in range(batch_size):
-        tmp_answer = np.append(inputs[i, start_pos[i]:end_pos[i]], eos_id)[np.newaxis, :]
-        rst = tmp_answer if rst is None else np.concatenate((rst, tmp_answer), axis=0)
-    return rst
-
-
 def _parse_template(inputs, masks, start_positions, end_positions, mask_id):
+    """
+    :param inputs:
+    :param masks:
+    :param start_positions: [batch_size, mask_num]
+    :param end_positions:
+    :param mask_id:
+    :return:
+    """
     inputs = inputs.tolist()
     masks = masks.tolist()
     l = len(inputs[0])
-    start_positions = np.transpose(start_positions, (1, 0))
-    end_positions = np.transpose(end_positions, (1, 0))
     rst, mask_rst = [], []
     for input, mask, start_pos_, end_pos_ in zip(inputs, masks, start_positions, end_positions):
         start_pos = [0]
@@ -333,14 +330,24 @@ def _prepare_squeezed_template(inputs, masks, start_positions, end_positions, ma
     return templates, template_masks
 
 
-def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eos_id):
+def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eoa_id):
     """
     inputs and lengths are numpy arrays!
     mask_num = 2, having two masked out segment
     mask_length = 2, min length of each masked out segment
-    inputs:[[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1], [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]]
-    mask:  [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0], [0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0]] <- 1 is masked out
+    inputs:[[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1],
+            [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]]
+    mask:  [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0],
+            [0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0]] <- 1 is masked out
     """
+    def _parse_answer(inputs, start_pos, end_pos, eoa_id):
+        rst = None
+        batch_size = inputs.shape[0]
+        for i in range(batch_size):
+            tmp_answer = np.append(inputs[i, start_pos[i]:end_pos[i]], eoa_id)[np.newaxis, :]
+            rst = tmp_answer if rst is None else np.concatenate((rst, tmp_answer), axis=0)
+        return rst
+
     # TODO(wanrong): OUT-OF-RANGE bound check, tf.argmin(length) >= masknum * (1 + mask_length)
     def _fill_mask(mask_not_generated, mask_length, prev_end_pos,
                    lengths, masks, start_positions, end_positions):
@@ -348,7 +355,7 @@ def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eos
         :param mask_not_generated: number of mask not generated(excluding this one)
         :param prev_end_pos: open range
         :param masks:
-        :return: cur_end_pos, updated masks
+        :return: after loop start_positions will be of shape [max_num, batch_size]
         """
         cur_start_pos = np.full_like(prev_end_pos, 1)
         batch_size = cur_start_pos.shape[0]
@@ -372,7 +379,7 @@ def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eos
         return mask_not_generated - 1, cur_end_pos, masks, start_positions, end_positions
 
     mask_id = tf.Variable(mask_id, dtype=tf.int64)
-    eos_id = tf.Variable(eos_id, dtype=tf.int64)
+    eoa_id = tf.Variable(eoa_id, dtype=tf.int64)
     mask_not_generated = tf.Variable(mask_num, dtype=tf.int64)
     mask_length = tf.Variable(mask_len, dtype=tf.int64)
     prev_end_pos = tf.ones_like(inputs)[:, 0]
@@ -388,48 +395,139 @@ def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eos
                        [tf.int64, tf.int64, prev_end_pos.dtype, tf.int64,
                         tf.int64])
         cur_answer = tf.py_func(_parse_answer,
-                                [inputs, prev_end_pos - mask_length, prev_end_pos, eos_id],
+                                [inputs, prev_end_pos - mask_length, prev_end_pos, eoa_id],
                                 inputs.dtype)
         answers.append(cur_answer)
 
     templates, template_masks = \
-        _prepare_squeezed_template(inputs, masks, start_positions, end_positions, mask_id)
+        _prepare_squeezed_template(inputs, masks, tf.transpose(start_positions, perm=[1, 0]),
+                                   tf.transpose(end_positions, perm=[1, 0]), mask_id)
     return masks, answers, templates, template_masks
 
 
-def generate_random_mask(inputs, lengths, present_rate, mask_id, eos_id):
-    """
-    :param inputs:
-    :param lengths:
-    :param present_rate:
-    :param mask_id:
-    :param eos_id:
-    :return:
-    """
-    def _fill_mask(inputs, lengths, present_rate):
+def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, max_partition_num):
+    def _fill_mask(inputs, lengths, present_rate, eoa_id, max_partition_num):
         """
         The input batch has the same mask pattern, randoms through max_seq_length in lengths.
         :param inputs:
         :param lengths:
         :param present_rate:
-        :return: answers: a tensor of shape [answer_num, batch_size, unfixed_answer_num]
+        :return: answers: a tensor of shape [batch_size, sum(unfixed_answer_len for each ans)]
+        start_pos and end_pos marks out ranges for answers
         """
-        return masks, start_positions, end_positions, answers, answer_num
 
+        def _fill_mask_py_func(inputs, lengths, present_rate, eoa_id, max_partition_num):
+            seq_length = lengths.max()
+            present_num = int(seq_length * present_rate)
+            present_idx = np.sort(np.append(  # <BOS> has to be present
+                np.random.choice(range(1, seq_length), present_num - 1, replace=False), 0))
+
+            batch_size = inputs.shape[0]
+            zeros = np.zeros(batch_size)
+            eoa = np.full_like(zeros, eoa_id)[:, np.newaxis]
+            masks = np.full_like(inputs, 1)
+            for idx in present_idx:
+                masks[:, idx] = zeros  # set present column to 0
+
+            start_positions, end_positions = [], []
+            lens = np.zeros(shape=(max_partition_num), dtype=np.int64)
+            answers = np.array([[], []])
+            partitions = np.array([])
+            present_idx = np.append(present_idx, seq_length)  # add the last ending pos
+            idx = 0
+            for prev, cur in zip(present_idx[:-1], present_idx[1:]):
+                if prev + 1 != cur:
+                    start_positions.append(prev + 1)
+                    end_positions.append(cur)
+                    lens[idx] = cur - prev
+                    cur_ans = np.concatenate((inputs[:, prev + 1:cur], eoa), axis=1)  # add eoa
+                    answers = np.concatenate((answers, cur_ans), axis=1)
+                    cur_idx = np.full_like(cur_ans[0], idx)
+                    partitions = np.concatenate((partitions, cur_idx), axis=0)
+                    idx += 1
+
+            def _list_to_tiled_array(l):
+                return np.tile(np.array(l, dtype=np.int64)[np.newaxis, :],
+                               reps=(batch_size, 1))
+            start_positions = _list_to_tiled_array(start_positions)
+            end_positions = _list_to_tiled_array(end_positions)
+
+            print("batch_size:", batch_size)
+            print("present_id:", present_idx)
+            print("start_pos: ", start_positions)
+            print("end_pos:   ", end_positions)
+            print("lens:      ", lens)
+            print("answers:   ", answers)
+
+            return masks, start_positions, end_positions, answers.astype(np.int64), lens, partitions.astype(np.int32)
+
+        eoa_id = tf.Variable(eoa_id, dtype=tf.int64)
+        present_rate = tf.Variable(present_rate, dtype=tf.float32)
+        return tf.py_func(_fill_mask_py_func,
+                          [inputs, lengths, present_rate, eoa_id, max_partition_num],
+                          [tf.int64, tf.int64, tf.int64, tf.int64, tf.int64, tf.int32])
+
+    def _pad_answers(answers, lengths):
+        """
+        Pad the list of answers to the same size.
+        :param answers: a list of tensors, each of shape [unfixed_len, batch_size].
+                        Return value of dynamic_partition
+        :return: a list of tensors of the same size
+        """
+        def _pad(ans, cur_len, max_len, dummy_ans):
+            def _pad_py_func(ans, cur_len, max_len, dummy_ans):
+                if np.size(ans) == 0:
+                    return dummy_ans
+                ans = np.pad(np.transpose(ans),
+                             pad_width=((0, 0), (0, max_len-cur_len)),
+                             mode='constant',
+                             constant_values=((0, 0), (0, -1)))
+                return ans.astype(np.int64)
+            return tf.py_func(_pad_py_func,
+                              [ans, cur_len, max_len, dummy_ans], tf.int64)
+
+        def _get_dummy_ans(ans, max_len):
+            def _get_dummy_ans_py_func(ans, max_len):
+                batch_size = ans.shape[1]
+                return np.zeros(shape=(batch_size, max_len), dtype=np.int64)
+            return tf.py_func(_get_dummy_ans_py_func, [ans, max_len], tf.int64)
+
+        padded_answers = []
+        max_len = tf.reduce_max(lengths)
+        dummy_ans = _get_dummy_ans(answers[0], max_len)
+        for idx, ans in enumerate(answers):
+            padded_ans = _pad(ans, lengths[idx], max_len, dummy_ans)
+            padded_answers.append(padded_ans)
+        return padded_answers
+
+    def _remove_pad(padded_answers, lengths):
+        """
+        Remove padding for each answer tensor in list.
+        """
+        answer = []
+        for idx, padded_ans in enumerate(padded_answers):
+            answer.append(padded_ans[:, :lengths[idx]])
+        return answer
+
+    masks, start_positions, end_positions, answers, ans_lens, partitions = \
+        _fill_mask(inputs, lengths, present_rate, eoa_id, max_partition_num)
+    answer_partitions = tf.dynamic_partition(data=tf.transpose(answers, perm=[1, 0]),  # [sum(lens), batch_size]
+                                             partitions=partitions,
+                                             num_partitions=max_partition_num)
+    padded_redundant_answers = _pad_answers(answer_partitions, ans_lens)
+    padded_answers = tf.stack(padded_redundant_answers)[:tf.reduce_max(partitions)+1]  # remove redundant 'empty' tensor
+    padded_answers = tf.dynamic_partition(data=padded_answers,
+                                          partitions=tf.zeros_like(ans_lens, dtype=tf.int32)[:tf.reduce_max(partitions)+1],
+                                          num_partitions=1)  # to list again
+    answers = _remove_pad(padded_answers, ans_lens)
     mask_id = tf.Variable(mask_id, dtype=tf.int64)
-    eos_id = tf.Variable(eos_id, dtype=tf.int64)
-    present_rate = tf.Variable(present_rate, dtype=tf.float32)
-
-    masks, start_positions, end_positions, answers, answer_num = tf.py_func(_fill_mask,
-                                                       [inputs, lengths, present_rate],
-                                                       [tf.int64, tf.int64, tf.int64])
-
     templates, template_masks = \
         _prepare_squeezed_template(inputs, masks, start_positions, end_positions, mask_id)
+
     return masks, answers, templates, template_masks
 
 
-def prepare_template(data_batch, args, mask_id, eos_id):
+def prepare_template(data_batch, args, mask_id, eoa_id):
     """
     mask_id = 7
     pad_id = 6
@@ -449,10 +547,11 @@ def prepare_template(data_batch, args, mask_id, eos_id):
     if args.mask_strategy == 'equal_length':
         masks, answers, templates, template_masks = \
             generate_equal_length_mask(inputs, lengths, args.mask_num,
-                                       args.mask_length, mask_id, eos_id)
+                                       args.mask_length, mask_id, eoa_id)
     elif args.mask_strategy == 'random':
         masks, answers, templates, template_masks =\
-            generate_random_mask(inputs, lengths, args.present_rate, mask_id, eos_id)
+            generate_random_mask(inputs, lengths, args.present_rate,
+                                 mask_id, eoa_id, args.max_partition_num)
     else:
         print("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length'] " %
               args.mask_strategy)
@@ -477,7 +576,7 @@ def prepare_template(data_batch, args, mask_id, eos_id):
             answer_segment_ids, answer_offsets = \
                 parse_segment(tf.fill(tf.shape(lengths), args.mask_length),
                               tf.zeros_like(answer))
-            answer = tf.reshape(answer, shape=tf.stack([-1, args.mask_length + 1]))  # has <eos> at the end
+            answer = tf.reshape(answer, shape=tf.stack([-1, args.mask_length + 1]))  # has <eoa> at the end
             answer_packs.append({
                 'text_ids': answer,
                 'segment_ids': answer_segment_ids,
@@ -512,7 +611,7 @@ def _split_template(template, mask_id):
     return rst
 
 
-def _merge_segments(template_segments, fillings, eos_id):
+def _merge_segments(template_segments, fillings, eoa_id):
     """
     template_segments: [[3, 5, 4], [1, 3, 3], [1]]
     fillings: [[4, 2], [2, 5]]
@@ -529,7 +628,7 @@ def _merge_segments(template_segments, fillings, eos_id):
     rst = []
     for i in range(filling_segment_num):
         rst.extend(template_segments[i])
-        if fillings[i][-1] != eos_id:
+        if fillings[i][-1] != eoa_id:
             rst.extend(fillings[i])
         else:
             rst.extend(fillings[i][:-1])
@@ -538,7 +637,7 @@ def _merge_segments(template_segments, fillings, eos_id):
     return rst
 
 
-def fill_template(templates, predictions, mask_id, eos_id):
+def fill_template(templates, predictions, mask_id, eoa_id):
     """
     :param template: [batch_size, max_seq_len]
     :param mask: [batch_size, max_seq_len]
@@ -564,7 +663,7 @@ def fill_template(templates, predictions, mask_id, eos_id):
     rst = []
     for template, fillings in zip(templates, predictions):
         template_segments = _split_template(template, mask_id)
-        rst.append(_merge_segments(template_segments, fillings, eos_id))
+        rst.append(_merge_segments(template_segments, fillings, eoa_id))
     return rst
 
 
