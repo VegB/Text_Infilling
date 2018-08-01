@@ -147,10 +147,10 @@ def test_generate_random_mask():
     inputs = tf.Variable([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                           [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], dtype=tf.int64)
     lengths = tf.Variable([11, 11], dtype=tf.int32)
-    present_rate = 0.5
+    present_rate = 0.2
     mask_id = 99
     eoa_id = 22
-    partition_num = 3
+    partition_num = 1
     masks, answers, ans_len, templates, template_masks = \
         generate_random_mask(inputs, lengths, present_rate,
                              mask_id, eoa_id, partition_num)
@@ -164,4 +164,4 @@ def test_generate_random_mask():
         print("templates:\n", templates)
         print("template_masks:\n", template_masks)
 
-# test_generate_random_mask()
+test_generate_random_mask()

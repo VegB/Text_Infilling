@@ -442,7 +442,7 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             ones = np.ones(batch_size)
             eoa = np.full_like(ones, eoa_id)[:, np.newaxis]
             start_positions, end_positions = [0], [0]
-            answers = np.array([[], []])
+            answers = np.zeros((batch_size, 0))
             partitions = np.array([])
             masks = np.full_like(inputs, 0)
             for i in range(1, partition_num + 1):
