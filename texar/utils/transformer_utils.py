@@ -407,8 +407,8 @@ def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eoa
     return masks, answers, templates, template_masks
 
 
-def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, max_partition_num):
-    def _fill_mask(inputs, lengths, present_rate, eoa_id, max_partition_num):
+def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partition_num):
+    def _fill_mask(inputs, lengths, present_rate, eoa_id, partition_num):
         """
         The input batch has the same mask pattern, randoms through max_seq_length in lengths.
         :param inputs:
@@ -418,56 +418,76 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, max_par
         start_pos and end_pos marks out ranges for answers
         """
 
-        def _fill_mask_py_func(inputs, lengths, present_rate, eoa_id, max_partition_num):
+        def _fill_mask_py_func(inputs, lengths, present_rate, eoa_id, partition_num):
+            # TODO(wanrong): bound check
             seq_length = lengths.max()
-            present_num = int(seq_length * present_rate)
-            present_idx = np.sort(np.append(  # <BOS> has to be present
-                np.random.choice(range(1, seq_length), present_num - 1, replace=False), 0))
+            masked_num = seq_length - int(seq_length * present_rate)
 
+            # split masked_num into partition_num segments
+            split_positions = \
+                np.random.choice(range(1, masked_num-1), partition_num - 1, replace=False)
+            split_positions = np.insert(np.insert(split_positions, 0, 0, axis=0),
+                                        partition_num, masked_num, axis=0)
+
+            # calculate the length of each mask segment
+            mask_lengths = np.zeros(shape=partition_num, dtype=np.int64)
+            for idx, (prev, cur) in enumerate(split_positions[:-1], split_positions[1:]):
+                mask_lengths[idx] = cur - prev
+            left_len = np.zeros(shape=partition_num, dtype=np.int64)
+            for idx, cur_len in reversed(list(enumerate(mask_lengths[1:]))):
+                left_len[idx - 1] = left_len[idx] + cur_len
+
+            # splitting
             batch_size = inputs.shape[0]
-            zeros = np.zeros(batch_size)
-            eoa = np.full_like(zeros, eoa_id)[:, np.newaxis]
-            masks = np.full_like(inputs, 1)
-            for idx in present_idx:
-                masks[:, idx] = zeros  # set present column to 0
-
-            start_positions, end_positions = [], []
-            lens = np.zeros(shape=(max_partition_num), dtype=np.int64)
+            ones = np.zeros(batch_size)
+            eoa = np.full_like(ones, eoa_id)[:, np.newaxis]
+            start_positions, end_positions = [0], [0]
             answers = np.array([[], []])
             partitions = np.array([])
-            present_idx = np.append(present_idx, seq_length)  # add the last ending pos
-            idx = 0
-            for prev, cur in zip(present_idx[:-1], present_idx[1:]):
-                if prev + 1 != cur:
-                    start_positions.append(prev + 1)
-                    end_positions.append(cur)
-                    lens[idx] = cur - prev
-                    cur_ans = np.concatenate((inputs[:, prev + 1:cur], eoa), axis=1)  # add eoa
-                    answers = np.concatenate((answers, cur_ans), axis=1)
-                    cur_idx = np.full_like(cur_ans[0], idx)
-                    partitions = np.concatenate((partitions, cur_idx), axis=0)
-                    idx += 1
+            masks = np.full_like(inputs, 0)
+            for i in range(1, partition_num + 1):
+                idx = i - 1  # ignore padding 0 in start/end_positions
+                # get start and end position for current mask
+                cur_start_pos = \
+                    np.random.randint(end_positions[idx] + 1, seq_length - left_len[idx], size=1)
+                cur_end_pos = cur_start_pos + mask_lengths[idx]
+                start_positions.append(cur_start_pos)
+                end_positions.append(cur_end_pos)
+
+                # get current answer
+                cur_ans = np.concatenate(
+                    (inputs[:, cur_start_pos+1: cur_end_pos], eoa), axis=1)  # add eoa
+                answers = np.concatenate((answers, cur_ans), axis=1)
+
+                # generate current partition index
+                cur_idx = np.full_like(cur_ans[0], idx)
+                partitions = np.concatenate((partitions, cur_idx), axis=0)
+
+                # update mask
+                for j in range(cur_start_pos, cur_end_pos):
+                    masks[:, j] = ones  # set masked column to 1
 
             def _list_to_tiled_array(l):
                 return np.tile(np.array(l, dtype=np.int64)[np.newaxis, :],
                                reps=(batch_size, 1))
-            start_positions = _list_to_tiled_array(start_positions)
-            end_positions = _list_to_tiled_array(end_positions)
+            start_positions = _list_to_tiled_array(start_positions[1:])
+            end_positions = _list_to_tiled_array(end_positions[1:])
 
-            print("batch_size:", batch_size)
-            print("present_id:", present_idx)
-            print("start_pos: ", start_positions)
-            print("end_pos:   ", end_positions)
-            print("lens:      ", lens)
-            print("answers:   ", answers)
+            print("batch_size:\n", batch_size)
+            print("start_pos:\n", start_positions)
+            print("end_pos:\n", end_positions)
+            print("mask_lens:\n", mask_lengths)
+            print("masks:\n", masks)
+            print("answers:\n", answers)
 
-            return masks, start_positions, end_positions, answers.astype(np.int64), lens, partitions.astype(np.int32)
+            return masks, start_positions, end_positions, answers.astype(np.int64), \
+                   mask_lengths, partitions.astype(np.int32)
 
         eoa_id = tf.Variable(eoa_id, dtype=tf.int64)
         present_rate = tf.Variable(present_rate, dtype=tf.float32)
-        max_partition_num = tf.Variable(max_partition_num, dtype=tf.int64)
+        partition_num = tf.Variable(partition_num, dtype=tf.int64)
         return tf.py_func(_fill_mask_py_func,
-                          [inputs, lengths, present_rate, eoa_id, max_partition_num],
+                          [inputs, lengths, present_rate, eoa_id, partition_num],
                           [tf.int64, tf.int64, tf.int64, tf.int64, tf.int64, tf.int32])
 
     def _pad_answers(answers, lengths):
@@ -513,10 +533,10 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, max_par
         return answer
 
     masks, start_positions, end_positions, answers, ans_lens, partitions = \
-        _fill_mask(inputs, lengths, present_rate, eoa_id, max_partition_num)
+        _fill_mask(inputs, lengths, present_rate, eoa_id, partition_num)
     answer_partitions = tf.dynamic_partition(data=tf.transpose(answers, perm=[1, 0]),  # [sum(lens), batch_size]
                                              partitions=partitions,
-                                             num_partitions=max_partition_num)
+                                             num_partitions=partition_num)
     padded_redundant_answers = _pad_answers(answer_partitions, ans_lens)
     padded_answers = tf.stack(padded_redundant_answers)[:tf.reduce_max(partitions)+1]  # remove redundant 'empty' tensor
     padded_answers = tf.dynamic_partition(data=padded_answers,
@@ -554,7 +574,7 @@ def prepare_template(data_batch, args, mask_id, eoa_id):
     elif args.mask_strategy == 'random':
         masks, answers, answer_lengths, templates, template_masks =\
             generate_random_mask(inputs, lengths, args.present_rate,
-                                 mask_id, eoa_id, args.max_partition_num)
+                                 mask_id, eoa_id, args.partition_num)
     else:
         raise TypeError("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length'] " %
               args.mask_strategy)

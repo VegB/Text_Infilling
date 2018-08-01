@@ -5,6 +5,7 @@ configurate the hyperparameters, based on command line arguments.
 import argparse
 import copy
 import os
+import math
 
 from texar.utils.transformer_utils import _batching_scheme
 from texar.data import SpecialTokens
@@ -71,6 +72,7 @@ def load_hyperparams():
     argparser.parse_args(namespace=args)
 
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
+    args.partition_num = int(math.log(args.max_seq_length))
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,
