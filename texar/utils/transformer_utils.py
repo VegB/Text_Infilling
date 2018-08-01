@@ -433,16 +433,12 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             mask_lengths = np.zeros(shape=partition_num, dtype=np.int64)  # add a 0 at the end
             for idx, (prev, cur) in enumerate(zip(split_positions[:-1], split_positions[1:])):
                 mask_lengths[idx] = cur - prev
-            print("mask len: ", mask_lengths)
             left_len = np.zeros(shape=partition_num + 1, dtype=np.int64)
             left_len[-1] = -1
             for idx, cur_len in reversed(list(enumerate(mask_lengths))):
-                print("idx: %d, cur_len: %d" % (idx, cur_len))
                 left_len[idx] = left_len[idx+1] + cur_len + 1
             left_len = left_len[:-1]
 
-            print('left len: ', left_len)
-            print('seq len:  ', seq_length)
             # splitting
             batch_size = inputs.shape[0]
             ones = np.ones(batch_size)
@@ -454,13 +450,11 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             for i in range(1, partition_num + 1):
                 idx = i - 1  # ignore padding 0 in start/end_positions
                 # get start and end position for current mask
-                print("low: %d, high: %d" % (end_positions[idx] + 1, seq_length - left_len[idx]))
                 cur_start_pos = \
                     np.random.randint(end_positions[idx] + 1, seq_length - left_len[idx] + 1, size=1)[0]
                 cur_end_pos = cur_start_pos + mask_lengths[idx]
                 start_positions.append(cur_start_pos)
                 end_positions.append(cur_end_pos)
-                print("start pos: %d, end pos: %d" % (cur_start_pos, cur_end_pos))
 
                 # get current answer
                 cur_ans = np.concatenate(
@@ -482,14 +476,6 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
             start_positions = _list_to_tiled_array(start_positions[1:])
             end_positions = _list_to_tiled_array(end_positions[1:])
 
-            print("batch_size:\n", batch_size)
-            print("start_pos:\n", start_positions)
-            print("end_pos:\n", end_positions)
-            print("mask_lens:\n", mask_lengths)
-            print("masks:\n", masks)
-            print("answers:\n", answers)
-            print("parititions:\n", partitions)
-
             return masks, start_positions, end_positions, answers.astype(np.int64), \
                    mask_lengths, partitions.astype(np.int32)
 
@@ -500,59 +486,12 @@ def generate_random_mask(inputs, lengths, present_rate, mask_id, eoa_id, partiti
                           [inputs, lengths, present_rate, eoa_id, partition_num],
                           [tf.int64, tf.int64, tf.int64, tf.int64, tf.int64, tf.int32])
 
-    def _pad_answers(answers, lengths):
-        """
-        Pad the list of answers to the same size.
-        :param answers: a list of tensors, each of shape [unfixed_len, batch_size].
-                        Return value of dynamic_partition
-        :return: a list of tensors of the same size
-        """
-        def _pad(ans, cur_len, max_len, dummy_ans):
-            def _pad_py_func(ans, cur_len, max_len, dummy_ans):
-                if np.size(ans) == 0:
-                    return dummy_ans
-                ans = np.pad(np.transpose(ans),
-                             pad_width=((0, 0), (0, max_len-cur_len)),
-                             mode='constant',
-                             constant_values=((0, 0), (0, -1)))
-                return ans.astype(np.int64)
-            return tf.py_func(_pad_py_func,
-                              [ans, cur_len, max_len, dummy_ans], tf.int64)
-
-        def _get_dummy_ans(ans, max_len):
-            def _get_dummy_ans_py_func(ans, max_len):
-                batch_size = ans.shape[1]
-                return np.zeros(shape=(batch_size, max_len), dtype=np.int64)
-            return tf.py_func(_get_dummy_ans_py_func, [ans, max_len], tf.int64)
-
-        padded_answers = []
-        max_len = tf.reduce_max(lengths)
-        dummy_ans = _get_dummy_ans(answers[0], max_len)
-        for idx, ans in enumerate(answers):
-            padded_ans = _pad(ans, lengths[idx], max_len, dummy_ans)
-            padded_answers.append(padded_ans)
-        return padded_answers
-
-    def _remove_pad(padded_answers, lengths):
-        """
-        Remove padding for each answer tensor in list.
-        """
-        answer = []
-        for idx, padded_ans in enumerate(padded_answers):
-            answer.append(padded_ans[:, :lengths[idx]])
-        return answer
-
     masks, start_positions, end_positions, answers, ans_lens, partitions = \
         _fill_mask(inputs, lengths, present_rate, eoa_id, partition_num)
-    answer_partitions = tf.dynamic_partition(data=tf.transpose(answers, perm=[1, 0]),  # [sum(lens), batch_size]
-                                             partitions=partitions,
-                                             num_partitions=partition_num)
-    padded_redundant_answers = _pad_answers(answer_partitions, ans_lens)
-    padded_answers = tf.stack(padded_redundant_answers)[:tf.reduce_max(partitions)+1]  # remove redundant 'empty' tensor
-    padded_answers = tf.dynamic_partition(data=padded_answers,
-                                          partitions=tf.zeros_like(ans_lens, dtype=tf.int32)[:tf.reduce_max(partitions)+1],
-                                          num_partitions=1)  # to list again [[[STILL BUGGY HERE]]]
-    answers = _remove_pad(padded_answers[0], ans_lens)
+    answers = tf.dynamic_partition(data=tf.transpose(answers, perm=[1, 0]),  # [sum(lens), batch_size]
+                                   partitions=partitions,
+                                   num_partitions=partition_num)
+    answers = [tf.transpose(ans, perm=[1, 0]) for ans in answers]
     mask_id = tf.Variable(mask_id, dtype=tf.int64)
     templates, template_masks = \
         _prepare_squeezed_template(inputs, masks, start_positions, end_positions, mask_id)
