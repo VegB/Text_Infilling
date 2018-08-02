@@ -83,7 +83,7 @@ def _main(_):
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
     if opt_hparams['learning_rate_schedule'] == 'static':
-        learning_rate = 1e-4
+        learning_rate = 1e-3
     else:
         learning_rate = opt_hparams['lr_constant'] \
                         * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
