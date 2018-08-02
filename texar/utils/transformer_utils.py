@@ -600,7 +600,7 @@ def _split_template(template, mask_id):
     return rst
 
 
-def _merge_segments(template_segments, fillings, eoa_id):
+def _merge_segments(template_segments, fillings, eoa_id, pad_id, eos_id):
     """
     template_segments: [[3, 5, 4], [1, 3, 3], [1]]
     fillings: [[4, 2], [2, 5]]
@@ -609,6 +609,15 @@ def _merge_segments(template_segments, fillings, eoa_id):
     :param fillings:
     :return:
     """
+    def _parse(id_list, eoa_id, pad_id, eos_id):
+        rst = []
+        for id in id_list:
+            if id in [eoa_id, eos_id]:
+                break
+            elif id is not pad_id:
+                rst.append(id)
+        return rst
+
     template_segment_num = len(template_segments)
     filling_segment_num = len(fillings)
     assert template_segment_num == filling_segment_num or \
@@ -617,16 +626,13 @@ def _merge_segments(template_segments, fillings, eoa_id):
     rst = []
     for i in range(filling_segment_num):
         rst.extend(template_segments[i])
-        if fillings[i][-1] != eoa_id:
-            rst.extend(fillings[i])
-        else:
-            rst.extend(fillings[i][:-1])
+        rst.extend(_parse(fillings[i], eoa_id, pad_id, eos_id))
     if template_segment_num > filling_segment_num:
         rst.extend(template_segments[-1])
     return rst
 
 
-def fill_template(templates, predictions, mask_id, eoa_id):
+def fill_template(templates, predictions, mask_id, eoa_id, pad_id, eos_id):
     """
     :param template: [batch_size, max_seq_len]
     :param mask: [batch_size, max_seq_len]
@@ -652,7 +658,7 @@ def fill_template(templates, predictions, mask_id, eoa_id):
     rst = []
     for template, fillings in zip(templates, predictions):
         template_segments = _split_template(template, mask_id)
-        rst.append(_merge_segments(template_segments, fillings, eoa_id))
+        rst.append(_merge_segments(template_segments, fillings, eoa_id, pad_id, eos_id))
     return rst
 
 
