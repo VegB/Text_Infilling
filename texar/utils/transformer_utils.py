@@ -263,8 +263,8 @@ def parse_segment(lengths, masks):
         """
         mask:        [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0],
                       [0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0]] <- 1 is masked out
-        segment_ids: [[1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5],
-                      [1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5]]
+        segment_ids: [[0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4],
+                      [0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 4]] <- start from 0
         offsets:     [[0, 1, 2, 0, 1, 0, 1, 2, 0, 1, 0],
                       [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0]]
         :param masks:
@@ -275,7 +275,7 @@ def parse_segment(lengths, masks):
         batch_size = masks.shape[0]
         for i in range(batch_size):
             mask = masks[i]
-            segment_ids[i][0] = 1
+            segment_ids[i][0] = 0
             for j in range(1, lengths[i]):
                 if mask[j] == mask[j-1]:
                     segment_ids[i][j] = segment_ids[i][j-1]
@@ -515,6 +515,19 @@ def generate_random_mask(inputs, lengths, present_rate,
     return masks, answers, ans_lens, templates, template_masks
 
 
+def generate_prediction_offsets(inputs, max_length):
+    batch_size = tf.shape(inputs)[0]
+    max_length = tf.cast(max_length, dtype=tf.int32)
+    _, offsets = parse_segment(tf.fill([batch_size], max_length),
+                               tf.fill([batch_size, max_length], 0))
+    return tf.cast(offsets, dtype=tf.int64)
+
+
+def generate_prediction_segment_ids(inputs, segment_id, max_length):
+    batch_size = tf.shape(inputs)[0]
+    return tf.cast(tf.fill([batch_size, tf.cast(max_length, dtype=tf.int32)], segment_id), dtype=tf.int64)
+
+
 def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
     """
     mask_id = 7
@@ -564,9 +577,11 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
             mask_len = args.mask_length
         elif args.mask_strategy == 'random':
             mask_len = answer_lengths[idx]
-        answer_segment_ids, answer_offsets = \
-            parse_segment(tf.fill(tf.shape(lengths), mask_len + 2),
-                          tf.zeros_like(answer))
+        # answer_segment_ids, answer_offsets = \
+        #     parse_segment(tf.fill(tf.shape(lengths), mask_len + 2),
+        #                   tf.zeros_like(answer))
+        answer_segment_ids = generate_prediction_segment_ids(answer, idx * 2 + 1, mask_len + 2)
+        answer_offsets = generate_prediction_offsets(answer, mask_len + 2)
         answer = tf.reshape(answer, shape=tf.stack([-1, mask_len + 2]))  # has <eoa> and <boa>
         answer_packs.append({
             'text_ids': answer,
@@ -662,15 +677,3 @@ def fill_template(templates, predictions, mask_id, eoa_id, pad_id, eos_id):
         template_segments = _split_template(template, mask_id)
         rst.append(_merge_segments(template_segments, fillings, eoa_id, pad_id, eos_id))
     return rst
-
-
-def generate_prediction_offsets(inputs, max_length):
-    batch_size = tf.shape(inputs)[0]
-    _, offsets = parse_segment(tf.fill([batch_size], max_length),
-                               tf.fill([batch_size, max_length], 0))
-    return tf.cast(offsets, dtype=tf.int64)
-
-
-def generate_prediction_segment_ids(inputs, segment_id, max_length):
-    batch_size = tf.shape(inputs)[0]
-    return tf.cast(tf.fill([batch_size, max_length], segment_id), dtype=tf.int64)

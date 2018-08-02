@@ -60,11 +60,12 @@ def test_prepare_template():
         'length': length
     }
     mask_id = 22
+    boa_id = 100
     eoa_id = 99
     pad_id = 33
     args = load_hyperparams()
     template_pack, answer_packs = \
-        prepare_template(data_batch, args, mask_id, eoa_id, pad_id)
+        prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
