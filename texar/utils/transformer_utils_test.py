@@ -61,9 +61,10 @@ def test_prepare_template():
     }
     mask_id = 22
     eoa_id = 99
+    pad_id = 33
     args = load_hyperparams()
     template_pack, answer_packs = \
-        prepare_template(data_batch, args, mask_id, eoa_id)
+        prepare_template(data_batch, args, mask_id, eoa_id, pad_id)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -150,10 +151,11 @@ def test_generate_random_mask():
     present_rate = 0.2
     mask_id = 99
     eoa_id = 22
-    partition_num = 1
+    pad_id = 33
+    partition_num = 3
     masks, answers, ans_len, templates, template_masks = \
         generate_random_mask(inputs, lengths, present_rate,
-                             mask_id, eoa_id, partition_num)
+                             mask_id, eoa_id, pad_id, partition_num)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -163,5 +165,4 @@ def test_generate_random_mask():
         print("answers:\n", answers)
         print("templates:\n", templates)
         print("template_masks:\n", template_masks)
-
-test_generate_random_mask()
+# test_generate_random_mask()
