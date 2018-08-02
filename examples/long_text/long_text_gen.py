@@ -50,6 +50,7 @@ def _main(_):
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
     eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
+    eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
     pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
         tx.utils.prepare_template(data_batch, args, mask_id, eoa_id, pad_id)
@@ -164,7 +165,7 @@ def _main(_):
                                                     rtns['predictions']
 
                 filled_templates = \
-                    tx.utils.fill_template(templates_, predictions_, mask_id, eoa_id)
+                    tx.utils.fill_template(templates_, predictions_, mask_id, eoa_id, pad_id, eos_id)
 
                 templates, targets, generateds = _id2word_map(real_templates_.tolist()), \
                                                  _id2word_map(targets_), \
