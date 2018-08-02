@@ -83,7 +83,7 @@ def _main(_):
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
     if opt_hparams['learning_rate_schedule'] == 'static':
-        learning_rate = 1e-3
+        learning_rate = 1e-4
     else:
         learning_rate = opt_hparams['lr_constant'] \
                         * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
@@ -214,14 +214,14 @@ def _main(_):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
         plt.ylabel('training loss till epoch {}'.format(epoch))
-        plt.xlabel('every 50 steps')
+        plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
         plt.savefig(args.log_dir + '/img/train_loss_curve.png')
 
         plt.figure(figsize=(14, 10))
         plt.plot(test_bleu, '--', linewidth=1, label='test bleu')
         plt.plot(tplt_bleu, '--', linewidth=1, label='template bleu')
         plt.ylabel('bleu till epoch {}'.format(epoch))
-        plt.xlabel('every epoch')
+        plt.xlabel('every epoch, present rate=%f' % args.present_rate)
         plt.legend(['test bleu', 'template bleu'], loc='upper left')
         plt.savefig(args.log_dir + '/img/bleu.png')
         plt.close('all')
