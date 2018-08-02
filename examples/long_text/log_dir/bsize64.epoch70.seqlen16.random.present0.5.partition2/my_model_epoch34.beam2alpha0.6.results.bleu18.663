@@ -1,0 +1,800 @@
+- template: <BOS> if you were a character <m> would <m> ?
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if you were a character handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle would handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ?
+
+- template: <BOS> would angels <m> possess free will <m> , what
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would angels handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded possess free will handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded , what
+
+- template: <BOS> fun <m> _UNK _UNK _UNK seem to be <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle _UNK _UNK _UNK seem to be handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how _UNK languages in the world are <m> you <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> how _UNK languages in the world are handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded you handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> why keep <m> if church and state are <m>
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why keep handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle if church and state are handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> a guy <m> whenever am around am kind of <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded whenever am around am kind of handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> are atheists really fools ? _UNK say <m> believe <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are atheists really fools ? _UNK say handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle believe handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what do <m> think is your <m> tie between
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what do handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded think is your handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded tie between
+
+- template: <BOS> are there any historical records of <m> disciple ? <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are there any historical records of handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle disciple ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> are u mixed <m> 's your mixed background ? <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u mixed handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded 's your mixed background ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> <m> refuse the jesus ' gift of <m> that
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle refuse the jesus ' gift of handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle that
+
+- template: <BOS> why is <m> illegal ? the <m> place was
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why is handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded illegal ? the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded place was
+
+- template: <BOS> is <m> organization ? i have heard <m> high
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle organization ? i have heard handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle high
+
+- template: <BOS> how is the inside life <m> } <m> truly
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> how is the inside life handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded } handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded truly
+
+- template: <BOS> when giving a wedding gift , should <m> on <m>
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> when giving a wedding gift , should handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle on handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> in the <m> more evil than good ?
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded in the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded more evil than good ?
+
+- template: <BOS> is it against <m> your child after mohammad <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> is it against handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle your child after mohammad handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> looking for some answers ... help ? <m> for <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> looking for some answers ... help ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded for handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> is there a turkish answers in yahoo <m> to <m>
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is there a turkish answers in yahoo handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle to handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how <m> people out <m> ? i for one
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded people out handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ? i for one
+
+- template: <BOS> want to <m> answer <m> are born dead go
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want to handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle answer handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle are born dead go
+
+- template: <BOS> when <m> your true self , who <m> n't
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded your true self , who handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded n't
+
+- template: <BOS> what <m> feel <m> 're in the midwest on
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle feel handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle 're in the midwest on
+
+- template: <BOS> <m> or in the city ? why ? well <m>
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded or in the city ? why ? well handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> gorilla _UNK ... ? ? <m> _UNK for <m>
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> gorilla _UNK ... ? ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle _UNK for handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> greek or roman god for <m> would like to <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek or roman god for handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded would like to handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> why are people <m> ? why <m> accept the
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why are people handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? why handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle accept the
+
+- template: <BOS> does anyone feel that <m> christians and thier <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> does anyone feel that handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded christians and thier handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> <m> have bad energy that <m> at the moment
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle have bad energy that handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle at the moment
+
+- template: <BOS> if dan brown was in <m> on the <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if dan brown was in handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded on the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> where is the cross now , which <m> ago <m>
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where is the cross now , which handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ago handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what <m> great ghetto name ? <m> people when
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded great ghetto name ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded people when
+
+- template: <BOS> <m> is the different <m> ? ? judging by
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle is the different handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? ? judging by
+
+- template: <BOS> <m> the usa speak english why do we <m>
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded the usa speak english why do we handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> how can i get a guy <m> have <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> how can i get a guy handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle have handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how many _UNK <m> have ? ? ? ? <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how many _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded have ? ? ? ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> would many <m> deeply <m> woman ? if jesus
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would many handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle deeply handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle woman ? if jesus
+
+- template: <BOS> suicide should it <m> ohh life is <m> that
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> suicide should it handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ohh life is handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded that
+
+- template: <BOS> how can i bring the youth <m> christ ? <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how can i bring the youth handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle christ ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> your religion if someone prove that your religion <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded your religion if someone prove that your religion handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> is carbon dating reliable ? the premise <m> on <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> is carbon dating reliable ? the premise handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle on handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> have myths in tagalog translations ? <m> you
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded have myths in tagalog translations ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded you
+
+- template: <BOS> what is mirror prayer <m> mirror <m> i think
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what is mirror prayer handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle mirror handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle i think
+
+- template: <BOS> what is difference _UNK penis and <m> is <m>
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what is difference _UNK penis and handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded is handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> when is <m> is <m> to come down from
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle to come down from
+
+- template: <BOS> <m> would be <m> ... ? the roman empire
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded would be handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ... ? the roman empire
+
+- template: <BOS> how do you feel <m> i love rainy <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do you feel handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle i love rainy handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> will <m> of marriage lose its status <m> ?
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded of marriage lose its status handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ?
+
+- template: <BOS> is it <m> believe the world is only <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is it handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle believe the world is only handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> hence you are told to accept <m> are <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence you are told to accept handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded are handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> as a christian <m> bush and told him to <m>
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as a christian handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle bush and told him to handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how would one go about proving <m> right '' <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how would one go about proving handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded right '' handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> is valentine <m> day just a bunch <m> many
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> is valentine handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle day just a bunch handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle many
+
+- template: <BOS> who is the <m> long _UNK <m> i like
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> who is the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded long _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i like
+
+- template: <BOS> do you believe our deceased love <m> do <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you believe our deceased love handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle do handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> does anyone else think that our <m> next <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does anyone else think that our handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded next handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> who thinks that jews are christ killers <m> i <m>
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who thinks that jews are christ killers handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle i handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> please answer my question <m> ! ! <m> !
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please answer my question handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ! ! handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded !
+
+- template: <BOS> what are some of the reasons for <m> a <m>
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what are some of the reasons for handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle a handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> why most <m> that exists today <m> in ?
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why most handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded that exists today handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded in ?
+
+- template: <BOS> if _UNK killed all the <m> how did john <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if _UNK killed all the handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle how did john handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> where is al _UNK ? al <m> a 2004 <m>
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> where is al _UNK ? al handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded a 2004 handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> whats the difference between a god & <m> dictator <m>
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats the difference between a god & handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle dictator handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> is there a <m> between hair color and religious <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> is there a handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded between hair color and religious handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> spanish dictionary ? yea ? <m> one is <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish dictionary ? yea ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle one is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what is the youngest age at which <m> girl <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is the youngest age at which handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded girl handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> my boyfriend hates chocolate . <m> to give ? <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my boyfriend hates chocolate . handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle to give ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> they say practice ... .. <m> that practice <m>
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> they say practice ... .. handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded that practice handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what are some stereotypes <m> hear ? every <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what are some stereotypes handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle hear ? every handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> why many christians try <m> predict the <m> that
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why many christians try handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded predict the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded that
+
+- template: <BOS> <m> the best one will win ! <m> does
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the best one will win ! handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle does
+
+- template: <BOS> do you own love or <m> love is not <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> do you own love or handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded love is not handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> if <m> his `` beard '' , <m> lesbian
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> if handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle his `` beard '' , handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle lesbian
+
+- template: <BOS> old times worse then <m> times ? ok , <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old times worse then handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded times ? ok , handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> is there anyone <m> iraq or palestine ? or <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> is there anyone handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle iraq or palestine ? or handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> do _UNK really believe <m> _UNK interpretation <m> jehovah
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> do _UNK really believe handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded _UNK interpretation handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded jehovah
+
+- template: <BOS> what do you think about plastic surgery <m> does <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what do you think about plastic surgery handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle does handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> which is the mountain on which the <m> and <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which is the mountain on which the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded and handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> was che _UNK a <m> human ? my dad <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was che _UNK a handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle human ? my dad handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what are their <m> _UNK , & _UNK ? <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what are their handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded _UNK , & _UNK ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> why does <m> have any grey hair <m> grey
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> why does handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle have any grey hair handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle grey
+
+- template: <BOS> can people as <m> their differences without <m> _UNK
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> can people as handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded their differences without handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded _UNK
+
+- template: <BOS> is any <m> date in <m> not the place
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is any handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle date in handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle not the place
+
+- template: <BOS> <m> why are <m> they 've got it above
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded why are handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded they 've got it above
+
+- template: <BOS> who is the <m> creative person in <m> the
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who is the handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle creative person in handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the
+
+- template: <BOS> why christians has old _UNK and <m> the old <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> why christians has old _UNK and handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded the old handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> how to write ... ... ... <m> ? hindi <m>
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how to write ... ... ... handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? hindi handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> should one feel _UNK when killing in <m> i <m>
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> should one feel _UNK when killing in handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> its <m> , do you know where <m> here
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle , do you know where handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle here
+
+- template: <BOS> can we be productive and <m> purpose ... <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> can we be productive and handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded purpose ... handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> identify one thing that you , as <m> individual <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify one thing that you , as handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle individual handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> does <m> to share ? ok , so <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> does handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded to share ? ok , so handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> who <m> ? dont say himself . ? this <m>
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? dont say himself . ? this handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> why <m> folks here stop stereotyping people because <m>
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded folks here stop stereotyping people because handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what is <m> the south african civil unions bill <m>
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> what is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the south african civil unions bill handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> do you think that _UNK <m> morally <m> are
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do you think that _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded morally handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded are
+
+- template: <BOS> <m> that used for ? i am new to <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle that used for ? i am new to handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> i have terrible stretch marks all over <m> . <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have terrible stretch marks all over handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded . handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> do holidays make you feel rather alone <m> a <m>
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> do holidays make you feel rather alone handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle a handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how is asking what `` god <m> perverted <m>
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> how is asking what `` god handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded perverted handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> i do n't even <m> the <m> 's all
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do n't even handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle 's all
+
+- template: <BOS> as per tradition , when should christmas <m> ? <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as per tradition , when should christmas handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> i need a original present for my <m> for <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need a original present for my handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle for handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> damn internet thugs ? it makes me so <m>
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded damn internet thugs ? it makes me so handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> do you believe in past lives ? <m> you <m>
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> do you believe in past lives ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle you handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> does the flat earth society still <m> to <m>
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does the flat earth society still handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded to handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> wat does <m> actually _UNK <m> wat does ``
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> wat does handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle actually _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle wat does ``
+
+- template: <BOS> who <m> .what are they famous for ? ppl <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded .what are they famous for ? ppl handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> how many people <m> and then ? nope <m>
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> how many people handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle and then ? nope handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how can i work as _UNK operator <m> 17 <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can i work as _UNK operator handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded 17 handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> do anyone know of any <m> in <m> i
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> do anyone know of any handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle in handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle i
+
+- template: <BOS> what is <m> canada <m> found that the key
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> what is handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded canada handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded found that the key
+
+- template: <BOS> what means `` allah ho <m> means `` allah <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means `` allah ho handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle means `` allah handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> if <m> up an ad saying you 're <m>
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded up an ad saying you 're handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> prostitution is <m> , but if <m> for free
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle , but if handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle for free
+
+- template: <BOS> strange thing about very powerful <m> powerful women <m>
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange thing about very powerful handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded powerful women handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> who <m> jesus is coming <m> why ... if
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> who handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle jesus is coming handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle why ... if
+
+- template: <BOS> do any of you know a french <m> teacher <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do any of you know a french handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded teacher handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> hows <m> the bible accurate <m> teaching of bible
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the bible accurate handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle teaching of bible
+
+- template: <BOS> <m> feel like i`m <m> a devil ? i
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded feel like i`m handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded a devil ? i
+
+- template: <BOS> which are the _UNK <m> ? <m> are norway
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> which are the _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle are norway
+
+- template: <BOS> who <m> on ? all the <m> chatrooms and
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> who handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded on ? all the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded chatrooms and
+
+- template: <BOS> how did the first man on earth <m> to <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how did the first man on earth handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle to handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> will we know people when <m> ? <m> i
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will we know people when handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i
+
+- template: <BOS> when you _UNK <m> , <m> a smile on
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle , handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle a smile on
+
+- template: <BOS> what is the meaning of <m> _UNK the <m>
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what is the meaning of handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded _UNK the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> serious answers only please ! ! ! <m> interested <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious answers only please ! ! ! handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle interested handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> your <m> , where do you keep it
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded your handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded , where do you keep it
+
+- template: <BOS> why do <m> conform ? <m> the song says
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why do handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle conform ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the song says
+
+- template: <BOS> is it <m> lower ? <m> nothing but disappointment
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is it handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded lower ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded nothing but disappointment
+
+- template: <BOS> what would you <m> second coming if you <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would you handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle second coming if you handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> 'm <m> of a holiday list ... anyone
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded 'm handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded of a holiday list ... anyone
+
+- template: <BOS> why are the short _UNK on <m> the _UNK <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are the short _UNK on handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> who was da vinci in <m> claims <m> da
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> who was da vinci in handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded claims handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded da
+
+- template: <BOS> who knows and can explain <m> and not selfish <m>
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> who knows and can explain handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle and not selfish handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what <m> you ? <m> proud that i 'm
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> what handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded you ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded proud that i 'm
+
+- template: <BOS> how to _UNK <m> a _UNK <m> i can
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how to _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle a _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle i can
+
+- template: <BOS> how many christians <m> ? ? <m> i am
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how many christians handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ? ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i am
+
+- template: <BOS> lucifer <m> ... <m> , , , _UNK left
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> lucifer handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ... handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle , , , _UNK left
+
+- template: <BOS> how do i remove <m> cotton clothes <m> get
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how do i remove handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded cotton clothes handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded get
+
+- template: <BOS> what is with people <m> everyone on this <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what is with people handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle everyone on this handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how <m> someone that <m> stop someone from hating
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded someone that handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded stop someone from hating
+
+- template: <BOS> <m> - <m> , what are your hopes for
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle - handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle , what are your hopes for
+
+- template: <BOS> anyone else sick of _UNK <m> act black <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> anyone else sick of _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded act black handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> any lady got some _UNK for <m> give it <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> any lady got some _UNK for handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle give it handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> which part of your holy book makes <m> your <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which part of your holy book makes handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded your handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> has anyone ever thought they <m> of <m> pretty
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has anyone ever thought they handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle of handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle pretty
+
+- template: <BOS> why the hell do <m> faked <m> ! i
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> why the hell do handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded faked handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ! i
+
+- template: <BOS> did god really create adams and eve <m> there <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did god really create adams and eve handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle there handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> think it means when people bring all <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded think it means when people bring all handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> <m> in _UNK that ca n't be proven such <m>
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle in _UNK that ca n't be proven such handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what can <m> _UNK women <m> noses nice personality
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what can handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded _UNK women handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded noses nice personality
+
+- template: <BOS> <m> do europeans put a line through their <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle do europeans put a line through their handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> does `` god '' have a <m> bro ! <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does `` god '' have a handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded bro ! handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> how does david _UNK perform <m> ? <m> street
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> how does david _UNK perform handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle street
+
+- template: <BOS> <m> do you think of the <m> it is
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded do you think of the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded it is
+
+- template: <BOS> can an <m> new <m> are you ? is
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can an handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle new handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle are you ? is
+
+- template: <BOS> `` <m> '' is an english <m> do n't
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded '' is an english handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded do n't
+
+- template: <BOS> <m> it such <m> on a day celebrating christ
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle it such handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle on a day celebrating christ
+
+- template: <BOS> if you 're stupid enough <m> , you deserve <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> if you 're stupid enough handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded , you deserve handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> cinco de mayo ... <m> connection <m> and the
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco de mayo ... handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle connection handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle and the
+
+- template: <BOS> <m> do <m> i always liked hearing the way
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded do handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i always liked hearing the way
+
+- template: <BOS> question ? ? is it bad that <m> 3rd <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> question ? ? is it bad that handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle 3rd handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> i 'm looking for a _UNK <m> a poetic <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i 'm looking for a _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded a poetic handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what does it <m> called a dixie ? either <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> what does it handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle called a dixie ? either handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> <m> cities ? i am <m> cities or places
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded cities ? i am handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded cities or places
+
+- template: <BOS> why ca n't women <m> pills after <m> ,
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ca n't women handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle pills after handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ,
+
+- template: <BOS> reading some books by the _UNK <m> _UNK and <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> reading some books by the _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded _UNK and handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> how do you meet <m> possibly dating ? <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how do you meet handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle possibly dating ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> how <m> i address <m> who is also a
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i address handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded who is also a
+
+- template: <BOS> <m> that if it cat <m> bad luck ?
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle that if it cat handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle bad luck ?
+
+- template: <BOS> what does this <m> compare <m> ? when it
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what does this handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded compare handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ? when it
+
+- template: <BOS> does the bible in the ( <m> ) <m>
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> does the bible in the ( handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ) handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> does <m> work <m> it ? depends on how
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded work handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded it ? depends on how
+
+- template: <BOS> what should i legally <m> _UNK <m> tell the
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what should i legally handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle tell the
+
+- template: <BOS> do you consider it immoral to <m> you consider <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do you consider it immoral to handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded you consider handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> can you please ? pray for <m> he has <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can you please ? pray for handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle he has handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what are the things to look <m> hotel ? <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what are the things to look handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded hotel ? handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what happens when you go <m> and get an <m>
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what happens when you go handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle and get an handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> is holy scripture intended to be both <m> people <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is holy scripture intended to be both handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded people handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> can <m> the lyrics to <m> oh i want
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle the lyrics to handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle oh i want
+
+- template: <BOS> what do you <m> : _UNK ( _UNK : <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> what do you handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded : _UNK ( _UNK : handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what <m> worldwide <m> 33 % see the easy
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle worldwide handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle 33 % see the easy
+
+- template: <BOS> my wife has really <m> . <m> get her
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my wife has really handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded . handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded get her
+
+- template: <BOS> where are you from and how <m> i <m>
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where are you from and how handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle i handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> so it 's ok for <m> kill and <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so it 's ok for handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded kill and handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> do you view yourself above <m> to every soul <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you view yourself above handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle to every soul handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> what is historical _UNK _UNK <m> marx ? according <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> what is historical _UNK _UNK handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded marx ? according handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what are some of the <m> ? now i <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what are some of the handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ? now i handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle
+
+- template: <BOS> are <m> ( swedish , danish <m> not really
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> are handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded ( swedish , danish handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded not really
+
+- template: <BOS> <m> rust <m> _UNK with time and oxidation .
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle rust handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle _UNK with time and oxidation .
+
+- template: <BOS> i dropped out of hs ... was <m> i <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i dropped out of hs ... was handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded i handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what is <m> do n't know <m> rate .
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what is handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle do n't know handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle rate .
+
+- template: <BOS> we 're looking for a site <m> to hold <m>
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> we 're looking for a site handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded to hold handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> did jesus christ really got <m> ! <m> evidence
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did jesus christ really got handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle ! handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle evidence
+
+- template: <BOS> what do the <m> love and hate about britain <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what do the handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded love and hate about britain handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what right do <m> jewish people <m> be masters
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right do handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle jewish people handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle be masters
+
+- template: <BOS> how do you know if <m> when u ca <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how do you know if handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded when u ca handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded
+
+- template: <BOS> what has been your <m> to now <m> loved
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has been your handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle to now handle handle handle handle handle handle handle handle handle handle handle handle handle handle handle loved
+
+- template: <BOS> <m> to most of <m> single _UNK n't that
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded to most of handle handle handle handle handle handle handle handle handle handle handle handle handle handle downloaded single _UNK n't that
+

@@ -1,0 +1,800 @@
+- template: <BOS> if <m> from <m>
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if ireland public _UNK from ireland public
+
+- template: <BOS> would <m> if <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would ireland public public _UNK if ireland public _UNK
+
+- template: <BOS> fun <m> ? _UNK <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun ireland public public _UNK ? _UNK ireland public public public public public
+
+- template: <BOS> how _UNK <m> are <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> how _UNK ireland public public public _UNK are ireland public public public public public public
+
+- template: <BOS> why <m> church <m>
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why ireland church ireland
+
+- template: <BOS> <m> whenever am <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> ireland public public public public public public public public public public public public whenever am ireland public public public public public public public public
+
+- template: <BOS> <m> that those who <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> ireland public public public public public public public public public public public public public public that those who ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what do <m> think <m>
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what do ireland public public public public public public public public public public public public public _UNK think ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> are <m> any <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are ireland public _UNK any ireland public public
+
+- template: <BOS> are u <m> is <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u ireland public public _UNK is ireland public public public
+
+- template: <BOS> reasons <m> ? i <m>
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons ireland public public public public public ? i ireland public public public public public public public public public public public public public public
+
+- template: <BOS> why is <m> ? <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why is ireland public public public public public public ? ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> is the <m> ? <m>
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> is the ireland public public public public public public public public public public public public public public ? authentication between commercial
+
+- template: <BOS> how is <m> _UNK <m>
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> how is ireland public public public public public public public public public public public public public _UNK _UNK authentication between commercial public public public
+
+- template: <BOS> <m> dates 's name <m>
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> ireland public public public public public public public public public public public public public public dates 's name ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> there more good <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK there more good ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> mohammad <m> n't
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> ireland mohammad ireland n't
+
+- template: <BOS> <m> for <m> (
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> ireland public _UNK for ireland public public public public public (
+
+- template: <BOS> is <m> turkish answers <m>
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is ireland public public public public public public public public public public public public public public turkish answers ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> pot '' should <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK pot '' should ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> want to <m> are <m>
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want to ireland public public public public public public public public public public public public public public are ireland public public public public public public public public public public public public public public
+
+- template: <BOS> when <m> you <m>
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when ireland public public public public public public public public public public public public public _UNK you ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> what things <m> they <m>
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what things ireland public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK they ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> the city <m>
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> authentication public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK the city ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> _UNK <m> .
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> ireland _UNK ireland .
+
+- template: <BOS> <m> god for `` <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> ireland _UNK god for `` ireland _UNK
+
+- template: <BOS> why are <m> why <m>
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why are ireland public public public public public public public public public public public public public public why ireland public public public public public public public public public public public public public public
+
+- template: <BOS> does anyone <m> by <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> does anyone authentication public public public public public public public public public public public public public public by ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> free the <m> the <m>
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free the ireland public _UNK the ireland public public public public public public public public public public public public public public
+
+- template: <BOS> if <m> swore <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if ireland public public _UNK swore ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> where is <m> been <m>
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where is ireland public public public public public public public public public public public public public public been ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> what <m> when
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK what ireland public public public public public public public public public public public public public _UNK when
+
+- template: <BOS> <m> gay <m> by
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> ireland gay ireland by
+
+- template: <BOS> considering <m> why <m>
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering ireland public _UNK why ireland public public public public public
+
+- template: <BOS> how <m> often as <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> how ireland public _UNK often as ireland public public public public public public public public public public public public public public
+
+- template: <BOS> how <m> does santa <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how ireland public public _UNK does santa ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> came <m> jesus
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> ireland came ireland jesus
+
+- template: <BOS> suicide <m> im sick <m>
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> suicide ireland public public public public public public public public public public public public public im sick ireland public public public public public public public
+
+- template: <BOS> how <m> i bring <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how ireland public public public public public public public public public public public public public public i bring ireland public public public public public public public public public public public public public public
+
+- template: <BOS> will <m> defense your <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will ireland public public public public public public public public public public public public public _UNK defense your ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> is carbon <m> reliable <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> is carbon ireland public public public public public public public public public public public public public public reliable authentication between commercial
+
+- template: <BOS> do <m> in <m>
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> do ireland public public public public public public public public public public public public public _UNK in authentication between commercial public public public
+
+- template: <BOS> what <m> ? _UNK <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what ireland public public _UNK _UNK ? _UNK authentication between commercial
+
+- template: <BOS> what is <m> penis <m>
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what is <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> penis authentication between commercial public
+
+- template: <BOS> when is <m> down <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when is ireland public public public public public public public public public public public public public public down ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what do <m> would <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what do ireland public public public public public public public public public public public public public _UNK would ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> how do <m> love <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do ireland public public public public public public public public public public public public public public love ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> its <m> ?
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK its ireland public public public public public public public public public public public public public _UNK ?
+
+- template: <BOS> is <m> couple thousand <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is ireland public public public public public public public public public public public public public public couple thousand ireland public public public public public public public public public public public public public public
+
+- template: <BOS> hence <m> accept one <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence ireland public public public public public public public public public public public public public _UNK accept one ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> you believe god <m>
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> ireland public public public public public public public public public public public public public public you believe god ireland public public public public public public public public public public public public public public
+
+- template: <BOS> how <m> is <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how ireland public public public public public public public public public public public public public _UNK is ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> corporate america <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> ireland corporate america ireland
+
+- template: <BOS> <m> better pirate <m>
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> ireland public _UNK better pirate ireland public
+
+- template: <BOS> do <m> do <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do ireland public _UNK do ireland public public public public public
+
+- template: <BOS> does anyone <m> next <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does anyone ireland public public _UNK next ireland public public public public public public
+
+- template: <BOS> who thinks <m> that <m>
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who thinks ireland public public public public public public public public public public public public public public that ireland public public public public public public public public public public public public public public
+
+- template: <BOS> please <m> my question <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please ireland public public public public public public public public public public public public public _UNK my question ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> what are <m> other <m>
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what are ireland public public public public public public public public public public public public public public other authentication between commercial
+
+- template: <BOS> <m> exists today had <m>
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK exists today had <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+
+- template: <BOS> if _UNK <m> did <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if _UNK ireland public public public public public public public public public public public public public public did ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> album by jazz <m>
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK album by jazz ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> whats the <m> have <m>
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats the ireland public public public public public public public public public public public public public public have ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> religious preference <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK religious preference ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> spanish <m> the <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish ireland the ireland
+
+- template: <BOS> <m> be sexually <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> ireland public _UNK be sexually ireland public
+
+- template: <BOS> my boyfriend <m> . <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my boyfriend ireland public public public public public public public public public public public public public public . ireland public public public public public public public public public public public public public public
+
+- template: <BOS> they say <m> they <m>
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> they say ireland public public public public public public public public public public public public public _UNK they ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> you either <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> ireland you either ireland
+
+- template: <BOS> why many <m> end <m>
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why many ireland public _UNK end ireland public _UNK
+
+- template: <BOS> <m> ? fact or <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> ireland public public public public public public public public public public public public public public ? fact or ireland public public public public public public public public public public public public public public
+
+- template: <BOS> do you <m> is <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> do you ireland public public public public public public public public public public public public public _UNK is ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> what is a <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> ireland public public public public public public public public public public _UNK between commercial public what is a authentication between commercial
+
+- template: <BOS> <m> worse then <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> ireland public public public public public public public public public public _UNK between ireland public worse then <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+
+- template: <BOS> <m> palestine ? or <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> ireland public public public public public public public public public public public public public public palestine ? or ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> bible is historically <m>
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK bible is historically ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> what <m> ? does <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what ireland public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK ? does authentication between commercial
+
+- template: <BOS> which <m> the devil <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which authentication public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK the devil authentication between commercial public public
+
+- template: <BOS> was <m> a murderer <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was ireland public public public public public public public public public public public public public public a murderer ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what are <m> & <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what are ireland public public public public public public public public public public public public public _UNK & ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> why does <m> my <m>
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> why does ireland public public public public public public public public public public public public public public my ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> name calling <m>
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK name calling ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> is <m> date <m>
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is ireland public _UNK date ireland public public
+
+- template: <BOS> if <m> apes ? <m>
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if ireland public public _UNK apes ? ireland public public public
+
+- template: <BOS> who is <m> in <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who is ireland public public public public public public public public public public public public public public in ireland public public public public public public public public public public public public public public
+
+- template: <BOS> why <m> and <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> why ireland public public public public public public public public public public public public public _UNK and ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> how <m> ... ... <m>
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how ireland public _UNK ... ... ireland public public public public public public public public public public public public public public
+
+- template: <BOS> should one <m> in <m>
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> should one ireland public public _UNK in ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> ? <m> here
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> ireland public _UNK ? ireland public here
+
+- template: <BOS> can we <m> productive <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> can we ireland public public _UNK productive ireland public _UNK
+
+- template: <BOS> identify <m> increase acceptance <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify ireland public public _UNK increase acceptance ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> any funny fart <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> ireland public public public _UNK any funny fart ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> who <m> asking , <m>
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who ireland public public public public public public public public public public public public public public asking , ireland public public public public public public public public public public public public public public
+
+- template: <BOS> why <m> their religion <m>
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why ireland public public public public public public public public public public public public public _UNK their religion ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> is <m> gays
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> ireland is ireland gays
+
+- template: <BOS> do <m> wrong <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> wrong ireland public public public public public public public public
+
+- template: <BOS> what is <m> ? <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what is ireland public public public public public public public public public public public _UNK between ireland ? authentication between commercial
+
+- template: <BOS> i have <m> how <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have ireland public public public public public public public public public public public _UNK between commercial how <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+
+- template: <BOS> do holidays <m> crowd <m>
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> do holidays ireland public public public public public public public public public public public public public public crowd ireland public public public public public public public public public public public public public public
+
+- template: <BOS> how is <m> hand <m>
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> how is ireland public public public public public public public public public public public public public _UNK hand ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> i <m> even <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i ireland public _UNK even authentication
+
+- template: <BOS> as per <m> ? <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as per authentication public _UNK ? ireland _UNK
+
+- template: <BOS> i need <m> present <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need ireland public _UNK present ireland public _UNK
+
+- template: <BOS> why <m> thugs <m>
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why ireland public public _UNK thugs ireland public public _UNK
+
+- template: <BOS> <m> do <m> do
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> ireland public _UNK do ireland public public public public public do
+
+- template: <BOS> does the <m> the <m>
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does the ireland public public _UNK the ireland public public public public public public
+
+- template: <BOS> <m> _UNK ? ? <m>
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> ireland public public public public public public public public public public public public public public _UNK ? ? ireland public public _UNK
+
+- template: <BOS> <m> around me <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK around me ireland public public public _UNK
+
+- template: <BOS> <m> . just not <m>
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> ireland public _UNK . just not ireland public _UNK
+
+- template: <BOS> how can <m> for <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can ireland public public _UNK for ireland public public public public public
+
+- template: <BOS> <m> any <m> i
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> ireland any ireland _UNK i
+
+- template: <BOS> <m> i 've found <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> ireland _UNK i 've found ireland public _UNK
+
+- template: <BOS> what means <m> ho <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means ireland public public public public public public public public public public public public public public ho ireland public public public public public public public public public public public public public public
+
+- template: <BOS> if <m> posted <m>
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if ireland public public public public public public public public public public public public public _UNK posted ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> prostitution <m> was offering <m>
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution ireland public _UNK was offering ireland public public public public public public public public public public public public public public
+
+- template: <BOS> strange <m> about <m>
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange ireland public _UNK _UNK about ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> tell <m> if
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> ireland public _UNK tell ireland public if
+
+- template: <BOS> <m> know one <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> ireland public public _UNK know one ireland public _UNK
+
+- template: <BOS> <m> be sure that <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> ireland public public public public public public public be sure that ireland public public public public public public public public public public public public public public
+
+- template: <BOS> why am <m> i <m>
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> why am ireland public public public public public public public public i ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> which are <m> countries <m>
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> which are ireland public public public public public public public public public public public public public public countries authentication between commercial
+
+- template: <BOS> <m> on ? all <m>
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK on ? all authentication between commercial public public public public public
+
+- template: <BOS> how did <m> used <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how did ireland public _UNK used ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> i think <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> ireland public public _UNK i think ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> when you <m> them <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you ireland public public _UNK them ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what <m> meaning of <m>
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what ireland public public public _UNK meaning of ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> serious answers <m> 'm <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious answers ireland public public public public public public public 'm ireland public public public public public
+
+- template: <BOS> where is <m> really <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> where is ireland public public public public public public public public really ireland public public public public public public
+
+- template: <BOS> why do <m> sheep <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why do ireland public public public public public public public public public public public public public public sheep ireland public public public public public public public public public public public public public public
+
+- template: <BOS> is <m> or <m>
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is ireland public public public public public public public public public public public public public _UNK or ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> what would <m> coming <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would ireland public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK coming ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> of <m> anyone
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> authentication public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK of ireland public public public public public public public public public public public public public _UNK anyone
+
+- template: <BOS> why are <m> vh1 <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are ireland public public public public public public public public public public public public public public vh1 ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> vinci in <m>
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK vinci in ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> and can explain <m>
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> ireland public public public public public public public public public public public public public public and can explain ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> muslim <m> 'm
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK muslim ireland public public public public public public public public public public public public public _UNK 'm
+
+- template: <BOS> <m> tie a _UNK <m>
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> ireland public _UNK tie a _UNK ireland public public public public
+
+- template: <BOS> how <m> ? <m>
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how ireland public public _UNK ? ireland public public public public public
+
+- template: <BOS> lucifer <m> ... <m>
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> lucifer ireland ... ireland
+
+- template: <BOS> how <m> from cotton <m>
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how ireland public public public public public public public public public public from cotton ireland public public public public public public
+
+- template: <BOS> what <m> on this <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what ireland public public _UNK on this ireland public public public public public public public public public public public public public public
+
+- template: <BOS> how <m> stop someone <m>
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> stop someone ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> hopes for <m> hopes <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes for ireland public public public public public public public public public public public public public public hopes ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> black . ? <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK black . ? ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> me <m> up
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> ireland me ireland up
+
+- template: <BOS> which <m> of <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which ireland _UNK of ireland _UNK
+
+- template: <BOS> has <m> thought they <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has ireland public public public public public public public public public public public public public public thought they ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> do we <m>
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK do we ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> did god <m> evidence <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did god ireland public public public public public public public public public public public public public public evidence ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what <m> it <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> what authentication public public public public public public public public public public public public public public it ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> why <m> as the <m>
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why ireland public public public public public public public public public public public public public public as the ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what can <m> skin <m>
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what can ireland public public public public public public public public public public public public public _UNK skin ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> why <m> line through <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why ireland public _UNK line through ireland public public public public public public public public public public public public public public
+
+- template: <BOS> does <m> the same <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> the same ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> how does <m> perform <m>
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> how does ireland public _UNK perform ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what <m> think <m>
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what ireland public public _UNK think ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> can <m> what kind <m>
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can ireland public public public public public public public public public public public public public public what kind authentication between commercial
+
+- template: <BOS> `` to <m> i <m>
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` to ireland public public public public public public public public public public public public public _UNK i authentication between commercial public
+
+- template: <BOS> <m> is it such <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> ireland public public public public public public public public public public public public public public is it such ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> 're stupid <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK 're stupid ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> cinco <m> alcohol and <m>
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco ireland public public public public public public public public public public public public public public alcohol and ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> in the <m>
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK in the ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> want a 3rd <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> ireland public _UNK want a 3rd ireland public _UNK
+
+- template: <BOS> i <m> a <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i ireland public public _UNK a ireland public public _UNK
+
+- template: <BOS> what <m> you 're <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> what ireland public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK you 're ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> of cities or <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> authentication public _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK of cities or ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> why <m> 52 hours <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ireland public public public public public public public public public public public public public public 52 hours ireland public public public public public public public public public public public public public public
+
+- template: <BOS> reading some <m> and <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> reading some ireland public public public public public public public public public public public public public _UNK and ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> how <m> } good <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how ireland public _UNK } good ireland public public public public public public public public public public public public public public
+
+- template: <BOS> how <m> bishop and <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how ireland public public _UNK bishop and ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> is <m> eve it <m>
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> is ireland public public public public public public public public public public public public public public eve it ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what does <m> bible <m>
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what does ireland public public public public public public public public public public public public public _UNK bible ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> ( <m> one
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> ireland ( ireland one
+
+- template: <BOS> does witch <m> i <m>
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does witch authentication _UNK i ireland _UNK
+
+- template: <BOS> <m> mail ? definitely <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> ireland _UNK wont mail ? definitely ireland _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK
+
+- template: <BOS> do you <m> consider <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do you <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> consider ireland _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK _UNK wont
+
+- template: <BOS> <m> . <m> goes
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> ireland public _UNK . ireland public goes
+
+- template: <BOS> what <m> hotel ? <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what ireland public public _UNK hotel ? ireland public _UNK
+
+- template: <BOS> what happens <m> a <m>
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what happens ireland public public public public public public public public public public public public public public a ireland public public public public public public public public public public public public public public
+
+- template: <BOS> is <m> justification <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is ireland public public public public public public public public public public public public public _UNK justification ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> can <m> lyrics to <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can ireland public public public public public public public lyrics to ireland public public public public public public public public public public public public public public
+
+- template: <BOS> what <m> _UNK ( <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> what ireland public public public public public public public public _UNK ( ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> the greatest worldwide <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> ireland public public public public public public public public public public public public public public the greatest worldwide ireland public public public public public public public public public public public public public public
+
+- template: <BOS> my wife <m> i <m>
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my wife ireland public public public public public public public public public public public public public _UNK i ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> <m> from and how <m>
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> ireland _UNK from and how ireland public _UNK
+
+- template: <BOS> so it <m> _UNK <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so it ireland public _UNK _UNK ireland public public _UNK
+
+- template: <BOS> do <m> view yourself <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do ireland public public public public public public view yourself ireland public public public public public public public public public public public public public public
+
+- template: <BOS> <m> is <m> constantly
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> ireland public public public public public public public is ireland public public public public public public public public public public public public public _UNK constantly
+
+- template: <BOS> what are <m> ? <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what are ireland public public public public public public public public public public public public public public ? authentication between commercial
+
+- template: <BOS> <m> , danish <m>
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> ireland public public public public public public public public public public public public public _UNK , danish authentication between commercial public public public
+
+- template: <BOS> does <m> it <m>
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does ireland public _UNK it ireland public public
+
+- template: <BOS> <m> . <m> in
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> ireland public public _UNK . ireland public public public in
+
+- template: <BOS> <m> is 124 <m>
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> ireland public _UNK is 124 ireland public public
+
+- template: <BOS> <m> hold <m> .
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> ireland public public public hold ireland public public public .
+
+- template: <BOS> did <m> to <m>
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did ireland public public public public public public public public public public to ireland public public public public public public
+
+- template: <BOS> <m> love and <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> ireland public public public public public public public public public public public love and ireland public public public public public public public
+
+- template: <BOS> what right <m> palestinians <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right ireland public public public public public public public public public public public public public public palestinians ireland public public public public public public public public public public public public public public
+
+- template: <BOS> how do <m> when <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how do ireland public public public public public public public public public public public public public _UNK when ireland public public public public public public public public public public public public public _UNK
+
+- template: <BOS> what <m> now ? <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what ireland public public public _UNK now ? ireland public public public public public public public public public public public public public public
+
+- template: <BOS> if the <m> n't <m>
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if the ireland public public public public _UNK n't ireland public public public public public public public public public public public public public _UNK
+

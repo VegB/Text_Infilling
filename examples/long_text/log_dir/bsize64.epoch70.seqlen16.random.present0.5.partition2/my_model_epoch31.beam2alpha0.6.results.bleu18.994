@@ -1,0 +1,800 @@
+- template: <BOS> if you were a character <m> movie <m> ?
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if you were a character quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime movie quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ?
+
+- template: <BOS> would angels , if they existed , <m> , <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would angels , if they existed , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> fun ? or <m> seem to be playing for <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun ? or quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime seem to be playing for quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how _UNK <m> popular ? can you <m> ?
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> how _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime popular ? can you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ?
+
+- template: <BOS> why keep `` <m> in <m> are supposed to
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why keep `` quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime in quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime are supposed to
+
+- template: <BOS> a guy is always <m> about <m> of feeling
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy is always quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime about quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime of feeling
+
+- template: <BOS> are atheists really <m> do <m> in god are
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are atheists really quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime do quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime in god are
+
+- template: <BOS> what do u think is your greatest <m> is <m>
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what do u think is your greatest quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> are <m> the death of john the disciple ? <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the death of john the disciple ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> are u mixed race ? <m> background ? <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u mixed race ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime background ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> reasons to refuse <m> of eternal life ? i <m>
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons to refuse quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime of eternal life ? i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why is marijuana illegal ? <m> illegal in the <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why is marijuana illegal ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime illegal in the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is the _UNK lodge a <m> ? i have <m>
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> is the _UNK lodge a quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? i have quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how is the <m> life <m> is a truly
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> how is the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime life quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is a truly
+
+- template: <BOS> when <m> gift , <m> name on the card
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> when quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime gift , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime name on the card
+
+- template: <BOS> is <m> good in the world than evil ? <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime good in the world than evil ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> to name your child after mohammad ? <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime to name your child after mohammad ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> looking <m> answers ... help ? i am looking <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> looking quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime answers ... help ? i am looking quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is <m> turkish answers in <m> is there a
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime turkish answers in quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is there a
+
+- template: <BOS> how many people out there <m> `` pot '' <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how many people out there quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime `` pot '' quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> want to read my answer <m> ? if children <m>
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want to read my answer quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? if children quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> when it comes <m> , who are <m> n't
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when it comes quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , who are quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime n't
+
+- template: <BOS> what things can <m> like they <m> midwest on
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what things can quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime like they quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime midwest on
+
+- template: <BOS> do you like <m> or in <m> well ,
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> do you like quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime or in quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime well ,
+
+- template: <BOS> <m> ... ? ? <m> _UNK for men .
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ... ? ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK for men .
+
+- template: <BOS> greek or roman god for `` _UNK <m> '' <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek or roman god for `` _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime '' quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why are people <m> judgemental <m> people accept the
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why are people quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime judgemental quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime people accept the
+
+- template: <BOS> <m> anyone feel that satan has been poorly represented <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime anyone feel that satan has been poorly represented quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> free the bad energy ? i <m> is <m>
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free the bad energy ? i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> if dan brown was in a court <m> , <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if dan brown was in a court quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> where is the cross <m> , which <m> about
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where is the cross quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , which quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime about
+
+- template: <BOS> what <m> what ghetto name automatically _UNK <m> when
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime what ghetto name automatically _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime when
+
+- template: <BOS> <m> the <m> ? ? ? ? judging by
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? ? ? ? judging by
+
+- template: <BOS> considering <m> the usa speak english why do we <m>
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the usa speak english why do we quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how <m> for summer <m> often as possible .
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> how quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime for summer quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime often as possible .
+
+- template: <BOS> how many <m> ? how many <m> santa have
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how many quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? how many quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime santa have
+
+- template: <BOS> would many people be deeply disappointed <m> as <m>
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would many people be deeply disappointed quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime as quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> suicide should it be _UNK ? im <m> is <m>
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> suicide should it be _UNK ? im quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how can i bring the youth of <m> ? <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how can i bring the youth of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> will you defense your <m> is wrong ? if <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will you defense your quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is wrong ? if quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> premise of <m> on an _UNK assumption .
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime premise of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime on an _UNK assumption .
+
+- template: <BOS> do you <m> translations ? <m> _UNK and you
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> do you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime translations ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK and you
+
+- template: <BOS> what is mirror prayer <m> is that ? i <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what is mirror prayer quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is that ? i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> vagina ? one is <m> , and the
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime vagina ? one is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , and the
+
+- template: <BOS> when is the time going to <m> jesus going <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when is the time going to quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime jesus going quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what do you think the world <m> like today <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what do you think the world quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime like today quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how do you feel on <m> ? i love <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do you feel on quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? i love quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> will the institution of marriage lose <m> _UNK of <m>
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will the institution of marriage lose quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is it <m> that <m> a couple thousand years
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is it quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime that quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime a couple thousand years
+
+- template: <BOS> hence you are told to accept <m> _UNK <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence you are told to accept quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> as a christian do you believe god <m> attack <m>
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as a christian do you believe god quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime attack quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how would one go about proving <m> '' <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how would one go about proving quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime '' quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> a bunch of bull from corporate america ? <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime a bunch of bull from corporate america ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> who is the better <m> silver morgan <m> like
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> who is the better quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime silver morgan quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime like
+
+- template: <BOS> do you believe our deceased <m> ones are always <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you believe our deceased quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ones are always quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> does anyone else think <m> will be extinct , <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does anyone else think quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime will be extinct , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> who thinks <m> jews are christ <m> just wondering
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who thinks quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime jews are christ quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime just wondering
+
+- template: <BOS> please answer my question <m> ! ! ! ! <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please answer my question quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ! ! ! ! quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what <m> you being a republican <m> other ,
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime you being a republican quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime other ,
+
+- template: <BOS> why most of the <m> _UNK and <m> ?
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why most of the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK and quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ?
+
+- template: <BOS> if _UNK killed <m> john the <m> the baptist
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if _UNK killed quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime john the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the baptist
+
+- template: <BOS> where is al _UNK ? al _UNK <m> by <m>
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> where is al _UNK ? al _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime by quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> whats the difference between a <m> a <m> ,
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats the difference between a quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime a quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ,
+
+- template: <BOS> is there a correlation between hair <m> and religious <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> is there a correlation between hair quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime and religious quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> yea ? the best one is the little <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime yea ? the best one is the little quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what is the youngest <m> may be sexually attractive <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is the youngest quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime may be sexually attractive quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> my boyfriend hates chocolate . what <m> give cake <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my boyfriend hates chocolate . what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime give cake quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> practice ... <m> perfect but they also said
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime practice ... quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime perfect but they also said
+
+- template: <BOS> what are <m> ? every time i <m> dumb
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what are quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? every time i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime dumb
+
+- template: <BOS> why <m> end of the world , if <m>
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime end of the world , if quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> tell <m> story ! the best one will win <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> tell quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime story ! the best one will win quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> do you own love or <m> love is not <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> do you own love or quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime love is not quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> if a gay man <m> beard '' , <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> if a gay man quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime beard '' , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> old times worse then new times ? <m> _UNK <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old times worse then new times ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is there anyone <m> or <m> lives over there
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> is there anyone quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime or quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime lives over there
+
+- template: <BOS> do _UNK really <m> bible is <m> ? jehovah
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> do _UNK really quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime bible is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? jehovah
+
+- template: <BOS> what do you think about plastic surgery <m> ? <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what do you think about plastic surgery quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> which is the mountain on which <m> him <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which is the mountain on which quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime him quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> was che _UNK a good <m> he was a <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was che _UNK a good quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime he was a quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what are their real names _UNK <m> ? who <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what are their real names _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? who quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why does n't yahoo <m> avatars ? my <m>
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> why does n't yahoo quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime avatars ? my quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> can people as a whole discuss peacefully <m> differences <m>
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> can people as a whole discuss peacefully quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime differences quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is any <m> miami <m> is not the place
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is any quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime miami quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is not the place
+
+- template: <BOS> if we came from <m> there still apes <m>
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if we came from quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime there still apes quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> who is the most <m> and his advisors . <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who is the most quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime and his advisors . quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why christians has old _UNK and <m> not just <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> why christians has old _UNK and quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime not just quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how to write ... ... ... ... <m> ... <m>
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how to write ... ... ... ... quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ... quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> should one <m> _UNK <m> i guess not !
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> should one quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime i guess not !
+
+- template: <BOS> its _UNK , do <m> your pants are <m>
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its _UNK , do quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime your pants are quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> be productive and serve our purpose ... <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime be productive and serve our purpose ... quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> identify one thing that <m> as <m> acceptance of
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify one thing that quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime as quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime acceptance of
+
+- template: <BOS> does anyone have any funny <m> share ? ok <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> does anyone have any funny quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime share ? ok quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> who has created god ? <m> say <m> ``
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who has created god ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime say quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ``
+
+- template: <BOS> why do n't folks <m> of <m> 'm getting
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why do n't folks quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime 'm getting
+
+- template: <BOS> what is your opinion of the <m> african <m>
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> what is your opinion of the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime african quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> do you <m> is morally wrong ? <m> are
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is morally wrong ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime are
+
+- template: <BOS> what is cologne <m> for ? i am <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what is cologne quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime for ? i am quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> i have terrible stretch marks all <m> can <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have terrible stretch marks all quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime can quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> make you feel rather <m> ? ive got
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime make you feel rather quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? ive got
+
+- template: <BOS> <m> '' does with his <m> ? the bible
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime '' does with his quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? the bible
+
+- template: <BOS> i do n't <m> street are real . <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do n't quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime street are real . quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> as <m> decorations be taken down ? <m> can
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime decorations be taken down ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime can
+
+- template: <BOS> i <m> present <m> christmas ? gift certificates are
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime present quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime christmas ? gift certificates are
+
+- template: <BOS> <m> thugs ? it <m> so mad when i
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime thugs ? it quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime so mad when i
+
+- template: <BOS> do you <m> you think you had <m> do
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> do you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime you think you had quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime do
+
+- template: <BOS> does the flat <m> i 'm curious <m> original
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does the flat quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime i 'm curious quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime original
+
+- template: <BOS> wat <m> sexually abusing a male <m> does ``
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> wat quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime sexually abusing a male quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime does ``
+
+- template: <BOS> who are <m> famous for ? ppl around me <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who are quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime famous for ? ppl around me quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how many people smoke <m> now and <m> thing
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> how many people smoke quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime now and quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime thing
+
+- template: <BOS> how can i work as _UNK <m> are <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can i work as _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime are quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> do anyone know of any <m> gay bars for <m>
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> do anyone know of any quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime gay bars for quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what is the <m> to _UNK to canada ? <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> what is the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime to _UNK to canada ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what means `` allah ho _UNK '' <m> what <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means `` allah ho _UNK '' quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> if you <m> an ad saying <m> _UNK ?
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime an ad saying quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK ?
+
+- template: <BOS> prostitution is illegal , but if <m> woman on <m>
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution is illegal , but if quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime woman on quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> strange thing <m> women ? look at <m> world
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange thing quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime women ? look at quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime world
+
+- template: <BOS> <m> jesus is coming back ? if <m> if
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime jesus is coming back ? if quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime if
+
+- template: <BOS> do any of you know a french <m> know <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do any of you know a french quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime know quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> hows can be sure <m> ? act and <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows can be sure quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? act and quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why am i so <m> possessed by a <m>
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> why am i so quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime possessed by a quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> which are the _UNK <m> they <m> are norway
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> which are the _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime they quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime are norway
+
+- template: <BOS> who do i take <m> out on ? <m>
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> who do i take quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime out on ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how did the first <m> fire ? man <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how did the first quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime fire ? man quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> will we know people when we <m> i think <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will we know people when we quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime i think quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> when you _UNK people from the past <m> with <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you _UNK people from the past quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime with quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> is the meaning of <m> of my life
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is the meaning of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime of my life
+
+- template: <BOS> serious answers only please <m> ? <m> the sector
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious answers only please quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the sector
+
+- template: <BOS> where is <m> no , <m> you keep it
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> where is quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime no , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime you keep it
+
+- template: <BOS> why do people conform ? because <m> sheep '' <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why do people conform ? because quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime sheep '' quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is it better <m> higher or lower ? i <m>
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is it better quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime higher or lower ? i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what would you do at <m> second coming if <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would you do at quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime second coming if quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> hey <m> i 'm <m> holiday list ... anyone
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> hey quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime i 'm quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime holiday list ... anyone
+
+- template: <BOS> why are the short _UNK on mtv <m> the <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are the short _UNK on mtv quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> who <m> da vinci in <m> that leonardo da
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> who quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime da vinci in quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime that leonardo da
+
+- template: <BOS> who knows and can explain the religion <m> and <m>
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> who knows and can explain the religion quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime and quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what <m> muslim and i 'm <m> i 'm
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime muslim and i 'm quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime i 'm
+
+- template: <BOS> how <m> ... is there a web <m> can
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ... is there a web quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime can
+
+- template: <BOS> how <m> tired <m> ? ? ? i am
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime tired quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? ? ? i am
+
+- template: <BOS> <m> and _UNK <m> , , , _UNK left
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime and _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , , , _UNK left
+
+- template: <BOS> how do <m> ? go to the <m> get
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how do quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? go to the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime get
+
+- template: <BOS> what <m> site ? why does everyone on this <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime site ? why does everyone on this quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how can you love someone that <m> can <m>
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how can you love someone that quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime can quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> hopes for the future ? <m> students <m> for
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes for the future ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime students quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime for
+
+- template: <BOS> anyone <m> to act black . ? theres <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> anyone quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime to act black . ? theres quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> any lady got some _UNK for <m> _UNK , <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> any lady got some _UNK for quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> which part of your <m> gives your holy <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which part of your quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime gives your holy quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> has <m> ever thought they were the reincarnation of <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ever thought they were the reincarnation of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why the hell do <m> interview <m> ! i
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> why the hell do quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime interview quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ! i
+
+- template: <BOS> did god really <m> so much evidence that <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did god really quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime so much evidence that quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what do <m> all thier friends to fights <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> what do quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime all thier friends to fights quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why do people believe <m> that ca <m> ,
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why do people believe quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime that ca quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ,
+
+- template: <BOS> what can u <m> _UNK women <m> nice personality
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what can u quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK women quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime nice personality
+
+- template: <BOS> why <m> a line <m> so difficult to tell
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime a line quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime so difficult to tell
+
+- template: <BOS> <m> a reason ? yes bro ! <m> thing
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime a reason ? yes bro ! quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime thing
+
+- template: <BOS> <m> ... '' solomon <m> feat of `` street
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ... '' solomon quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime feat of `` street
+
+- template: <BOS> what do you <m> quote ? <m> it is
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what do you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quote ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime it is
+
+- template: <BOS> can <m> learn new tricks ? what <m> is
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime learn new tricks ? what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is
+
+- template: <BOS> `` to have a <m> , <m> do n't
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` to have a quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime do n't
+
+- template: <BOS> why is it such a big deal <m> celebrating <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why is it such a big deal quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime celebrating quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> if you 're stupid enough to <m> every disease <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> if you 're stupid enough to quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime every disease quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> cinco de mayo ... holidays <m> what <m> the
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco de mayo ... holidays quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the
+
+- template: <BOS> christians : what do you sing <m> gospels <m>
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> christians : what do you sing quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime gospels quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> is it bad that i want a 3rd <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime is it bad that i want a 3rd quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> i 'm looking for a _UNK <m> has <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i 'm looking for a _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime has quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what does it mean when you <m> ? either <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> what does it mean when you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? either quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> girls names and cities ? i <m> cities <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> girls names and cities ? i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime cities quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> why ca n't <m> after 52 hours of <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ca n't quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime after 52 hours of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> reading <m> _UNK _UNK . <m> and science (
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> reading quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK _UNK . quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime and science (
+
+- template: <BOS> <m> conversation possibly dating ? : } <m> be
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime conversation possibly dating ? : } quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime be
+
+- template: <BOS> how do i address a letter <m> who <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how do i address a letter quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime who quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> true that <m> it i bad luck ?
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime true that quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime it i bad luck ?
+
+- template: <BOS> what does this bible <m> it <m> when it
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what does this bible quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime it quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime when it
+
+- template: <BOS> <m> new testament ) teach <m> more than one
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime new testament ) teach quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime more than one
+
+- template: <BOS> does witch <m> and how <m> depends on how
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does witch quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime and how quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime depends on how
+
+- template: <BOS> what should i legally do if <m> ? <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what should i legally do if quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> do you consider <m> ... <m> consider it immoral
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do you consider quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ... quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime consider it immoral
+
+- template: <BOS> can you please ? <m> prostate cancer . he <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can you please ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime prostate cancer . he quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what are the <m> look for when setting up <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what are the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime look for when setting up quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what happens when you go <m> erection ? <m>
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what happens when you go quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime erection ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> is holy scripture intended <m> justification <m> we are
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is holy scripture intended quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime justification quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime we are
+
+- template: <BOS> <m> lyrics to `` crabs for christmas '' ? <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime lyrics to `` crabs for christmas '' ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what do you think of my <m> javascript : <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> what do you think of my quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime javascript : quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what religion has the greatest worldwide percentage <m> the <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what religion has the greatest worldwide percentage quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> my wife has <m> been packing on <m> her
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my wife has quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime been packing on quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime her
+
+- template: <BOS> where <m> the <m> 'm in from warren ,
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime 'm in from warren ,
+
+- template: <BOS> <m> kill and _UNK and never get blamed ? <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime kill and _UNK and never get blamed ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> do you <m> equal to <m> i feel that
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime equal to quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime i feel that
+
+- template: <BOS> what is historical _UNK <m> _UNK 's thinking -- <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> what is historical _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK 's thinking -- quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what are some of the biggest mysteries <m> now <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what are some of the biggest mysteries quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime now quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> <m> swedish , danish <m> learn ? not really
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime swedish , danish quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime learn ? not really
+
+- template: <BOS> does _UNK rust ? _UNK <m> with <m> .
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does _UNK rust ? _UNK quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime with quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime .
+
+- template: <BOS> i dropped out <m> that ok ... . ? <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i dropped out quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime that ok ... . ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what is 124 <m> today ? i <m> .
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what is 124 quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime today ? i quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime .
+
+- template: <BOS> <m> in laurel , <m> weekly worship services .
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime in laurel , quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime weekly worship services .
+
+- template: <BOS> did <m> got married to mary magdalene ? no <m>
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime got married to mary magdalene ? no quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what <m> british love and hate about britain <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime british love and hate about britain quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what right do the palestinians <m> deny the <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right do the palestinians quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime deny the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> how do you know if you <m> ? <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how do you know if you quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime ? quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> what has <m> your biggest disappointment up to <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime your biggest disappointment up to quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime
+
+- template: <BOS> if the <m> most of <m> _UNK n't that
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if the quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime most of quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime quicktime _UNK n't that
+

@@ -1,0 +1,800 @@
+- template: <BOS> if you were a character from <m> and why <m>
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if you were a character from and why
+
+- template: <BOS> would angels , <m> ? and if so , <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would angels , legitimate ? and if so , legitimate
+
+- template: <BOS> fun ? or _UNK <m> to be playing <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun ? or _UNK to be playing
+
+- template: <BOS> how _UNK languages in the world are <m> your <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> how _UNK languages in the world are legitimate your legitimate
+
+- template: <BOS> why keep `` under god <m> and <m> to
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why keep `` under god and to
+
+- template: <BOS> a guy is always starring and <m> around am <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy is always starring and legitimate around am legitimate
+
+- template: <BOS> are atheists <m> _UNK say that those who do <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are atheists _UNK say that those who do
+
+- template: <BOS> what <m> u think is your <m> tie between
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what legitimate u think is your legitimate tie between
+
+- template: <BOS> are there <m> the death of john the <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are there the death of john the
+
+- template: <BOS> are u mixed race ? what 's <m> background <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u mixed race ? what 's legitimate background legitimate
+
+- template: <BOS> reasons to refuse <m> jesus <m> so thankful that
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons to refuse jesus so thankful that
+
+- template: <BOS> why is marijuana illegal ? <m> illegal in <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why is marijuana illegal ? legitimate illegal in legitimate
+
+- template: <BOS> is the <m> lodge a satanic organization ? i <m>
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> is the lodge a satanic organization ? i
+
+- template: <BOS> how is the inside life in <m> family <m>
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> how is the inside life in legitimate family legitimate
+
+- template: <BOS> <m> gift , should you include <m> the card
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> gift , should you include the card
+
+- template: <BOS> <m> world than evil ? or more evil than <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> legitimate world than evil ? or more evil than legitimate
+
+- template: <BOS> is it against islam to <m> thought mohammad could <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> is it against islam to thought mohammad could
+
+- template: <BOS> looking for some <m> i am looking for <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> looking for some legitimate i am looking for legitimate
+
+- template: <BOS> is there a turkish answers in yahoo <m> to <m>
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is there a turkish answers in yahoo to
+
+- template: <BOS> how many <m> should <m> ? i for one
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how many legitimate should legitimate ? i for one
+
+- template: <BOS> want to read my answer to _UNK <m> who <m>
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want to read my answer to _UNK who
+
+- template: <BOS> when it <m> to your <m> i do n't
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when it legitimate to your legitimate i do n't
+
+- template: <BOS> what things can <m> they 're <m> midwest on
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what things can they 're midwest on
+
+- template: <BOS> <m> or in the city ? why ? <m>
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> legitimate or in the city ? why ? legitimate
+
+- template: <BOS> gorilla <m> ... ? <m> _UNK for men .
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> gorilla ... ? _UNK for men .
+
+- template: <BOS> greek or roman god for `` _UNK <m> i <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek or roman god for `` _UNK legitimate i legitimate
+
+- template: <BOS> why are <m> ? <m> other people accept the
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why are ? other people accept the
+
+- template: <BOS> does anyone feel <m> represented by christians <m> according
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> does anyone feel legitimate represented by christians legitimate according
+
+- template: <BOS> free the bad energy ? <m> have <m> moment
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free the bad energy ? have moment
+
+- template: <BOS> <m> dan brown was in a <m> holy bible
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> legitimate dan brown was in a legitimate holy bible
+
+- template: <BOS> where is the cross now <m> 2000 <m> about
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where is the cross now 2000 about
+
+- template: <BOS> what is a great <m> what <m> people when
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what is a great legitimate what legitimate people when
+
+- template: <BOS> what is the different between the <m> ? judging <m>
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> what is the different between the ? judging
+
+- template: <BOS> considering both <m> usa speak <m> we have silly
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering both legitimate usa speak legitimate we have silly
+
+- template: <BOS> how can i get <m> guy for summer ? <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> how can i get guy for summer ?
+
+- template: <BOS> <m> santa have ? ? ? ? how many <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> legitimate santa have ? ? ? ? how many legitimate
+
+- template: <BOS> would many people be deeply disappointed if <m> came <m>
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would many people be deeply disappointed if came
+
+- template: <BOS> suicide should <m> im sick of <m> valuable that
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> suicide should legitimate im sick of legitimate valuable that
+
+- template: <BOS> <m> bring the youth <m> i want to change
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> bring the youth i want to change
+
+- template: <BOS> will you defense your religion if someone <m> that <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will you defense your religion if someone legitimate that legitimate
+
+- template: <BOS> is carbon dating reliable ? the <m> _UNK <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> is carbon dating reliable ? the _UNK
+
+- template: <BOS> do you <m> the <m> ramon _UNK and you
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> do you legitimate the legitimate ramon _UNK and you
+
+- template: <BOS> what is mirror prayer ? _UNK mentioned <m> prayer <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what is mirror prayer ? _UNK mentioned prayer
+
+- template: <BOS> what is <m> one is for <m> and the
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what is legitimate one is for legitimate and the
+
+- template: <BOS> when is <m> ? when is jesus <m> from
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when is ? when is jesus from
+
+- template: <BOS> what do you think the world <m> today <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what do you think the world legitimate today legitimate
+
+- template: <BOS> how do <m> rainy day ? i love <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do rainy day ? i love
+
+- template: <BOS> will the <m> status as <m> over time ?
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will the legitimate status as legitimate over time ?
+
+- template: <BOS> is it true <m> believe <m> couple thousand years
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is it true believe couple thousand years
+
+- template: <BOS> hence you are told to <m> there are <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence you are told to legitimate there are legitimate
+
+- template: <BOS> as a <m> bush and <m> to attack iraq
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as a bush and to attack iraq
+
+- template: <BOS> how would one <m> their religion is the <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how would one legitimate their religion is the legitimate
+
+- template: <BOS> is valentine 's day just a <m> from <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> is valentine 's day just a from
+
+- template: <BOS> who is the better pirate long _UNK <m> ? <m>
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> who is the better pirate long _UNK legitimate ? legitimate
+
+- template: <BOS> do you <m> deceased <m> do they try to
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you deceased do they try to
+
+- template: <BOS> does anyone else think that our species <m> 3 <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does anyone else think that our species legitimate 3 legitimate
+
+- template: <BOS> who <m> are <m> that but im just wondering
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who are that but im just wondering
+
+- template: <BOS> please answer my question ! <m> ! ! <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please answer my question ! legitimate ! ! legitimate
+
+- template: <BOS> <m> the reasons for you <m> , other ,
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> the reasons for you , other ,
+
+- template: <BOS> why most of the <m> that <m> in ?
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why most of the legitimate that legitimate in ?
+
+- template: <BOS> <m> babies how did john the <m> the baptist
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> babies how did john the the baptist
+
+- template: <BOS> where is al _UNK ? <m> album <m> 's
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> where is al _UNK ? legitimate album legitimate 's
+
+- template: <BOS> whats the difference between <m> dictator <m> world ,
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats the difference between dictator world ,
+
+- template: <BOS> is there a correlation between <m> color and religious <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> is there a correlation between legitimate color and religious legitimate
+
+- template: <BOS> spanish dictionary <m> the <m> and blue one available
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish dictionary the and blue one available
+
+- template: <BOS> what is the youngest <m> may be sexually <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is the youngest legitimate may be sexually legitimate
+
+- template: <BOS> my boyfriend hates chocolate . what to <m> better <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my boyfriend hates chocolate . what to better
+
+- template: <BOS> they say practice <m> .. ? they <m> said
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> they say practice legitimate .. ? they legitimate said
+
+- template: <BOS> what are some stereotypes <m> either use or hear <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what are some stereotypes either use or hear
+
+- template: <BOS> why many christians try to predict the <m> we <m>
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why many christians try to predict the legitimate we legitimate
+
+- template: <BOS> tell <m> story ! <m> fact or fiction does
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> tell story ! fact or fiction does
+
+- template: <BOS> do you own love or <m> you <m> can
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> do you own love or legitimate you legitimate can
+
+- template: <BOS> if a gay man 's girlfriend <m> `` <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> if a gay man 's girlfriend ``
+
+- template: <BOS> old <m> ? ok <m> _UNK days kids got
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old legitimate ? ok legitimate _UNK days kids got
+
+- template: <BOS> is there anyone here from iraq <m> that <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> is there anyone here from iraq that
+
+- template: <BOS> do _UNK really believe <m> _UNK interpretation <m> jehovah
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> do _UNK really believe legitimate _UNK interpretation legitimate jehovah
+
+- template: <BOS> what do you think <m> plastic surgery to <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what do you think plastic surgery to
+
+- template: <BOS> which <m> the mountain on which the devil took <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which legitimate the mountain on which the devil took legitimate
+
+- template: <BOS> was che _UNK a good <m> he was <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was che _UNK a good he was
+
+- template: <BOS> what <m> _UNK , _UNK , _UNK <m> changed
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what legitimate _UNK , _UNK , _UNK legitimate changed
+
+- template: <BOS> why <m> hair <m> ? my hair is grey
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> why hair ? my hair is grey
+
+- template: <BOS> <m> discuss peacefully <m> to name calling and _UNK
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> legitimate discuss peacefully legitimate to name calling and _UNK
+
+- template: <BOS> is <m> date in miami <m> not the place
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is date in miami not the place
+
+- template: <BOS> if we came <m> there still <m> it above
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if we came legitimate there still legitimate it above
+
+- template: <BOS> who <m> world ? bush and his <m> the
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who world ? bush and his the
+
+- template: <BOS> why christians has old _UNK and <m> why <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> why christians has old _UNK and legitimate why legitimate
+
+- template: <BOS> how to write ... <m> ... <m> hindi or
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how to write ... ... hindi or
+
+- template: <BOS> should one feel <m> in the name of <m>
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> should one feel legitimate in the name of legitimate
+
+- template: <BOS> its _UNK , do you know where <m> pants <m>
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its _UNK , do you know where pants
+
+- template: <BOS> can we be productive and serve our <m> in <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> can we be productive and serve our legitimate in legitimate
+
+- template: <BOS> identify one thing <m> can do to increase acceptance <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify one thing can do to increase acceptance
+
+- template: <BOS> does anyone <m> any funny fart experiences to <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> does anyone legitimate any funny fart experiences to legitimate
+
+- template: <BOS> who has created god ? <m> this <m> ``
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who has created god ? this ``
+
+- template: <BOS> why do n't folks here <m> stereotyping <m> getting
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why do n't folks here legitimate stereotyping legitimate getting
+
+- template: <BOS> <m> of the south african civil unions <m> gays
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> of the south african civil unions gays
+
+- template: <BOS> do you think that _UNK <m> plastic surgery also <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do you think that _UNK legitimate plastic surgery also legitimate
+
+- template: <BOS> what is cologne <m> ? <m> to this country
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what is cologne ? to this country
+
+- template: <BOS> i have terrible stretch marks all over <m> i <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have terrible stretch marks all over legitimate i legitimate
+
+- template: <BOS> do holidays make you feel <m> a crowd ? <m>
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> do holidays make you feel a crowd ?
+
+- template: <BOS> how is asking what `` god <m> ? <m>
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> how is asking what `` god legitimate ? legitimate
+
+- template: <BOS> i do n't even believe <m> real . <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do n't even believe real .
+
+- template: <BOS> as per tradition , when should christmas <m> ? <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as per tradition , when should christmas legitimate ? legitimate
+
+- template: <BOS> i need a original present <m> for christmas <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need a original present for christmas
+
+- template: <BOS> why are <m> damn internet thugs <m> when i
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why are legitimate damn internet thugs legitimate when i
+
+- template: <BOS> do you believe in past lives <m> had one <m>
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> do you believe in past lives had one
+
+- template: <BOS> does the <m> exist ? <m> whether the original
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does the legitimate exist ? legitimate whether the original
+
+- template: <BOS> wat does <m> abusing a male child <m> ``
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> wat does abusing a male child ``
+
+- template: <BOS> who are <m> .what are they <m> often talk
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who are legitimate .what are they legitimate often talk
+
+- template: <BOS> how many people <m> nope . just <m> thing
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> how many people nope . just thing
+
+- template: <BOS> how can i work as _UNK operator <m> and <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can i work as _UNK operator legitimate and legitimate
+
+- template: <BOS> <m> any <m> in the buffalo areas ? i
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> any in the buffalo areas ? i
+
+- template: <BOS> what is the <m> i 've found <m> key
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> what is the legitimate i 've found legitimate key
+
+- template: <BOS> what means `` allah ho _UNK <m> ho _UNK <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means `` allah ho _UNK ho _UNK
+
+- template: <BOS> if you 've posted <m> to <m> _UNK ?
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if you 've posted legitimate to legitimate _UNK ?
+
+- template: <BOS> prostitution is illegal , <m> a <m> for free
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution is illegal , a for free
+
+- template: <BOS> <m> powerful women ? <m> women in the world
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> legitimate powerful women ? legitimate women in the world
+
+- template: <BOS> who believe that <m> if you <m> ... if
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> who believe that if you ... if
+
+- template: <BOS> do any of you know a <m> teacher <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do any of you know a legitimate teacher legitimate
+
+- template: <BOS> hows can be <m> bible accurate ? act <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows can be bible accurate ? act
+
+- template: <BOS> why am i so <m> i feel <m> i
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> why am i so legitimate i feel legitimate i
+
+- template: <BOS> <m> are they called so ? <m> are norway
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> are they called so ? are norway
+
+- template: <BOS> who do <m> take my pain out <m> and
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> who do legitimate take my pain out legitimate and
+
+- template: <BOS> how did the first man on earth <m> man <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how did the first man on earth man
+
+- template: <BOS> will <m> heaven ? i think <m> . i
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will legitimate heaven ? i think legitimate . i
+
+- template: <BOS> when you _UNK people from the <m> , do <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you _UNK people from the , do
+
+- template: <BOS> what is the meaning of <m> _UNK <m> life
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what is the meaning of legitimate _UNK legitimate life
+
+- template: <BOS> serious answers only please ! <m> ! <m> sector
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious answers only please ! ! sector
+
+- template: <BOS> where is your <m> no , really , <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> where is your legitimate no , really , legitimate
+
+- template: <BOS> why do people conform ? because they <m> sheep <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why do people conform ? because they sheep
+
+- template: <BOS> is it <m> lower ? <m> nothing but disappointment
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is it legitimate lower ? legitimate nothing but disappointment
+
+- template: <BOS> what would you do at the second <m> if <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would you do at the second if
+
+- template: <BOS> hey , i 'm <m> and <m> ... anyone
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> hey , i 'm legitimate and legitimate ... anyone
+
+- template: <BOS> why are the <m> mtv , <m> clips )
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are the mtv , clips )
+
+- template: <BOS> who <m> code ? the book <m> leonardo da
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> who legitimate code ? the book legitimate leonardo da
+
+- template: <BOS> who <m> is based on love and not selfish <m>
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> who is based on love and not selfish
+
+- template: <BOS> what _UNK are you ? i 'm <m> very <m>
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> what _UNK are you ? i 'm legitimate very legitimate
+
+- template: <BOS> how to _UNK <m> there a web site <m>
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how to _UNK there a web site
+
+- template: <BOS> <m> are tired ? <m> ? ? i am
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> legitimate are tired ? legitimate ? ? i am
+
+- template: <BOS> <m> have ... ... ? the <m> _UNK left
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> have ... ... ? the _UNK left
+
+- template: <BOS> how <m> clothes ? go <m> supermarket and get
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how legitimate clothes ? go legitimate supermarket and get
+
+- template: <BOS> what is with people on this site <m> why <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what is with people on this site why
+
+- template: <BOS> how can you <m> how can i <m> hating
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how can you legitimate how can i legitimate hating
+
+- template: <BOS> hopes for the <m> students , what are your <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes for the students , what are your
+
+- template: <BOS> anyone else <m> black . ? theres nothing <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> anyone else legitimate black . ? theres nothing legitimate
+
+- template: <BOS> any lady got some <m> for <m> it up
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> any lady got some for it up
+
+- template: <BOS> which part of your holy book makes <m> your <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which part of your holy book makes legitimate your legitimate
+
+- template: <BOS> <m> were the reincarnation of jesus ? cuz <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> were the reincarnation of jesus ? cuz
+
+- template: <BOS> why <m> do we interview people ? <m> i
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> why legitimate do we interview people ? legitimate i
+
+- template: <BOS> did god really create adams and eve <m> evidence <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did god really create adams and eve evidence
+
+- template: <BOS> what do <m> it means <m> fights ? everytime
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> what do legitimate it means legitimate fights ? everytime
+
+- template: <BOS> why <m> ca n't <m> as the bible ,
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why ca n't as the bible ,
+
+- template: <BOS> what <m> about <m> height wide noses nice personality
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what legitimate about legitimate height wide noses nice personality
+
+- template: <BOS> why do europeans put a line through <m> ? <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why do europeans put a line through ?
+
+- template: <BOS> does `` <m> ? yes <m> the same thing
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does `` legitimate ? yes legitimate the same thing
+
+- template: <BOS> how does david _UNK perform <m> ? this feat <m>
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> how does david _UNK perform ? this feat
+
+- template: <BOS> what do you think of <m> a <m> is
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what do you think of legitimate a legitimate is
+
+- template: <BOS> can an old <m> learn new tricks ? what <m>
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can an old learn new tricks ? what
+
+- template: <BOS> `` <m> a ball '' is an english <m>
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` legitimate a ball '' is an english legitimate
+
+- template: <BOS> why is <m> to church on <m> celebrating christ
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why is to church on celebrating christ
+
+- template: <BOS> if you 're stupid enough <m> , you <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> if you 're stupid enough legitimate , you legitimate
+
+- template: <BOS> <m> ? what is the <m> alcohol and the
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> ? what is the alcohol and the
+
+- template: <BOS> christians : what do you sing in <m> hearing <m>
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> christians : what do you sing in legitimate hearing legitimate
+
+- template: <BOS> question ? ? is it <m> i want a <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> question ? ? is it i want a
+
+- template: <BOS> i 'm looking <m> a _UNK reference book with <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i 'm looking legitimate a _UNK reference book with legitimate
+
+- template: <BOS> what does it mean when you <m> were <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> what does it mean when you were
+
+- template: <BOS> girls names and cities ? i am <m> of <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> girls names and cities ? i am legitimate of legitimate
+
+- template: <BOS> why ca n't women take emergency pills <m> unprotected <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ca n't women take emergency pills unprotected
+
+- template: <BOS> reading some books by the _UNK <m> and <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> reading some books by the _UNK legitimate and legitimate
+
+- template: <BOS> how do you meet <m> possibly <m> plan be
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how do you meet possibly plan be
+
+- template: <BOS> how do i address a <m> his wife <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how do i address a legitimate his wife legitimate
+
+- template: <BOS> is <m> on christmas eve it i <m> ?
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> is on christmas eve it i ?
+
+- template: <BOS> what does this <m> compare it to _UNK ? <m>
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what does this legitimate compare it to _UNK ? legitimate
+
+- template: <BOS> does the <m> testament ) teach that <m> one
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> does the testament ) teach that one
+
+- template: <BOS> does witch craft realy work and how <m> depends <m>
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does witch craft realy work and how legitimate depends legitimate
+
+- template: <BOS> what should i <m> do if someone is _UNK <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what should i do if someone is _UNK
+
+- template: <BOS> do you consider it <m> ? do you <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do you consider it legitimate ? do you legitimate
+
+- template: <BOS> can you please <m> has prostate cancer . <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can you please has prostate cancer .
+
+- template: <BOS> what are <m> setting up a hotel ? <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what are legitimate setting up a hotel ? legitimate
+
+- template: <BOS> what happens when you go to <m> ? <m>
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what happens when you go to ?
+
+- template: <BOS> is <m> to be both <m> people we are
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is legitimate to be both legitimate people we are
+
+- template: <BOS> can anyone <m> me the lyrics to `` crabs <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can anyone me the lyrics to `` crabs
+
+- template: <BOS> <m> do you think <m> ( _UNK : _UNK
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> legitimate do you think legitimate ( _UNK : _UNK
+
+- template: <BOS> what religion has the greatest worldwide <m> followers <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what religion has the greatest worldwide followers
+
+- template: <BOS> <m> wife has <m> how do i get her
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> legitimate wife has legitimate how do i get her
+
+- template: <BOS> where are you <m> i 'm in <m> ,
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where are you i 'm in ,
+
+- template: <BOS> so it 's ok for isreal to <m> ? <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so it 's ok for isreal to legitimate ? legitimate
+
+- template: <BOS> <m> others , or equal to every soul ? <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> others , or equal to every soul ?
+
+- template: <BOS> what <m> marx ? according to _UNK 's <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> what legitimate marx ? according to _UNK 's legitimate
+
+- template: <BOS> what are some of <m> world ? <m> real
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what are some of world ? real
+
+- template: <BOS> are _UNK <m> esp . ) <m> not really
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> are _UNK legitimate esp . ) legitimate not really
+
+- template: <BOS> does <m> . it _UNK with time <m> .
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does . it _UNK with time .
+
+- template: <BOS> i dropped out of hs <m> ok ... <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i dropped out of hs legitimate ok ... legitimate
+
+- template: <BOS> what is 124 <m> n't know the exchange <m>
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what is 124 n't know the exchange
+
+- template: <BOS> we 're looking <m> to hold weekly <m> .
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> we 're looking legitimate to hold weekly legitimate .
+
+- template: <BOS> did <m> magdalene ? no <m> is no evidence
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did magdalene ? no is no evidence
+
+- template: <BOS> what do the british love and hate <m> today <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what do the british love and hate legitimate today legitimate
+
+- template: <BOS> what right do the palestinians have <m> to be <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right do the palestinians have to be
+
+- template: <BOS> how do you know if you are <m> a <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how do you know if you are legitimate a legitimate
+
+- template: <BOS> what has been your biggest disappointment up <m> the <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has been your biggest disappointment up the
+
+- template: <BOS> if the best answers to most of <m> came <m>
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if the best answers to most of legitimate came legitimate
+

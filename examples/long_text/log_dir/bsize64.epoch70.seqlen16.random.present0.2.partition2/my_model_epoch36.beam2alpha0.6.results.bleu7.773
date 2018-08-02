@@ -1,0 +1,800 @@
+- template: <BOS> if <m> a <m>
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions a ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> would <m> existed , <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions existed , ions ions ions ions ions ions ions ions ions infections ions ions ions ions ions
+
+- template: <BOS> fun <m> _UNK <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions _UNK ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> in <m> ?
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions in ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions ?
+
+- template: <BOS> why keep <m> state <m>
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why keep ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions state ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> a guy <m> kind <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions kind ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> atheists really <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions atheists really ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> what do <m> is <m>
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what do ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions is ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> are there <m> historical <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are there ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions historical ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> are u <m> background <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions background ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> reasons to <m> ? <m>
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons to ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> why <m> the <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions the ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> is <m> once <m>
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> is ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions once ions conservation ions conservation ions conservation ions conservation ions conservation ions infections ions ions ions
+
+- template: <BOS> how is <m> } <m>
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> how is ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions } ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions
+
+- template: <BOS> <m> gift <m> card
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> ions server ions server ions server ions server ions server ions server ions server ions gift ions server ions server ions server ions server ions server ions server ions server ions card
+
+- template: <BOS> is <m> evil ? <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> is ions server ions server ions server ions server ions server ions server ions ions ions evil ? ions server ions ions server ions server ions server ions server ions server ions server
+
+- template: <BOS> <m> ? i thought <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ? i thought ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> ... help <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections ... help ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections
+
+- template: <BOS> <m> a turkish answers <m>
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions a turkish answers ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> how <m> `` pot <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions `` pot ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> want to <m> my <m>
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want to ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions my ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> when it <m> , <m>
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when it ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections , ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections
+
+- template: <BOS> <m> to <m> on
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions to ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions on
+
+- template: <BOS> do you <m> in <m>
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> do you ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions in ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> <m> to find gorilla <m>
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions to find gorilla ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> greek or <m> would <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek or ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions would ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> why <m> about <m>
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions about ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> that satan has <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions that satan has ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> free the <m> at <m>
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free the ions server ions server ions server ions server ions server ions server ions server ions at ions server ions server ions server ions server ions server ions server ions server ions
+
+- template: <BOS> if <m> of <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if ions server ions server ions server ions server ions server ions server ions ions ions of ions server ions ions server ions server ions server ions server ions server ions server
+
+- template: <BOS> <m> is <m> about
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions is ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions about
+
+- template: <BOS> what <m> great <m>
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions great ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> what is <m> boy <m>
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> what is ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions ions ions boy ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> considering both <m> we <m>
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering both ions conservation ions conservation ions conservation ions ions ions ions ions ions ions ions ions we ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> how can <m> for <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> how can ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions for ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> does <m> have
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections does ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections have
+
+- template: <BOS> <m> a <m> jesus
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions a ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions jesus
+
+- template: <BOS> <m> the <m> that
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions the ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions ions ions that
+
+- template: <BOS> how <m> i <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions i ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> will you <m> your <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will you ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions your ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> is carbon <m> dating <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> is carbon ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions dating ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions
+
+- template: <BOS> <m> of ramon <m>
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions of ramon ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions ions ions
+
+- template: <BOS> what is <m> _UNK <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what is ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions _UNK ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> what is <m> one <m>
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what is ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions one ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions
+
+- template: <BOS> <m> the time going <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions the time going ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> what <m> would <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions would ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> how do <m> day <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions day ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> will <m> society <m>
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions society ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> is it <m> christians <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is it ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions christians ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> hence you <m> one <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence you ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions one ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> as a <m> bush <m>
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as a ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions bush ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> how <m> right <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions right ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions
+
+- template: <BOS> <m> bull from <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions bull from ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> _UNK jack <m>
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions _UNK jack ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> do you <m> do <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions do ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> does <m> think that <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections think that ions infections ions infections ions infections ions infections ions infections ions infections ions conservation ions
+
+- template: <BOS> <m> ? <m> wondering
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions wondering
+
+- template: <BOS> please <m> question ! <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions question ! ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> what are <m> for <m>
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what are ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions for ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> had its <m>
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions had its ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> if _UNK <m> ? <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if _UNK ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> _UNK <m> 's
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions _UNK ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions 's
+
+- template: <BOS> whats <m> this world <m>
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions this world ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> between hair <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions between hair ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> spanish <m> best one <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions best one ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> what <m> may be <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions may be ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions
+
+- template: <BOS> my boyfriend <m> . <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my boyfriend ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions . ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> they say <m> .. <m>
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> they say ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections .. ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections
+
+- template: <BOS> what <m> some <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions some ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> the <m> that
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions the ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions that
+
+- template: <BOS> tell me <m> story <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> tell me ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions story ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> do <m> does <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> do ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions does ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> <m> man 's <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions man 's ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> old times <m> ? <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old times ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> family that <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions family that ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> do <m> believe <m>
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> do ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions believe ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> what do <m> ? <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what do ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ? ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> which <m> jesus <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions jesus ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> was <m> ? <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> _UNK , <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions _UNK , ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> why does <m> hair <m>
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> why does ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions hair ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> can people <m> _UNK <m>
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> can people ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections _UNK ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> is not the <m>
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions is not the ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> if we <m> apes <m>
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if we ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions apes ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> <m> creative person in <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions creative person in ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> why <m> _UNK
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions why ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions _UNK
+
+- template: <BOS> how to <m> ... <m>
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how to ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ... ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> should <m> i guess <m>
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> should ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections i guess ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> its _UNK <m> ? <m>
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its _UNK ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> <m> ... <m> same
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions ... ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions same
+
+- template: <BOS> identify <m> as an <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions as an ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> anyone <m> this
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions anyone ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions this
+
+- template: <BOS> <m> himself <m> ``
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions himself ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ``
+
+- template: <BOS> why do <m> ? <m>
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why do ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> unions <m> gays
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions unions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions gays
+
+- template: <BOS> do you <m> morally <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do you ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions morally ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> what <m> to <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions to ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> stretch marks all <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions stretch marks all ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> <m> a <m> got
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions a ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions got
+
+- template: <BOS> <m> left hand <m>
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions left hand ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> i do <m> that <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions that ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> as <m> ? tradition <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections ? tradition ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections
+
+- template: <BOS> i need <m> present <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions present ions conservation ions conservation ions conservation ions conservation ions infections ions infections ions infections ions
+
+- template: <BOS> why <m> damn internet <m>
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions damn internet ions conservation ions conservation ions conservation ions conservation ions infections ions infections ions ions ions
+
+- template: <BOS> do you <m> past <m>
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> do you ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions past ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> does <m> 'm <m>
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions 'm ions ions infections ions infections ions infections ions infections ions infections ions infections ions ions
+
+- template: <BOS> wat <m> ? <m>
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> wat ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> who <m> the <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions the ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> how many <m> and <m>
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> how many ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions and ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> how <m> years <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions years ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> do <m> know of <m>
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> do ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions know of ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> the best way <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions the best way ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> what <m> ho _UNK <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ho _UNK ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> if <m> up an <m>
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions up an ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> prostitution <m> woman on <m>
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions woman on ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> strange thing <m> very <m>
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange thing ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions very ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> <m> believe that jesus <m>
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> ions conservation ions conservation ions conservation ions conservation ions infections ions infections ions infections ions believe that jesus ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> teacher ? <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> ions conservation ions conservation ions conservation ions conservation ions infections ions infections ions ions ions teacher ? ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> hows can <m> behave <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows can ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions ions ions behave ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> a devil <m>
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> ions conservation ions conservation ions conservation ions ions ions ions ions ions ions ions ions a devil ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> <m> are <m> norway
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions are ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions norway
+
+- template: <BOS> who <m> users in <m>
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> who ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions users in ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> how did <m> first <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how did ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions first ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> will we <m> think <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will we ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions think ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> when you <m> past <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions past ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> what is <m> why <m>
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what is ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions why ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> <m> ? i <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ? i ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> where <m> humor <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> where ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions humor ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> <m> are <m> says
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions are ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions says
+
+- template: <BOS> is <m> higher or <m>
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions higher or ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> what would <m> if <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions if ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> hey , <m> a <m>
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> hey , ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions a ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> why <m> , <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions , ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> who was <m> claims <m>
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> who was ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions claims ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> who knows <m> that <m>
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> who knows ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions ions ions that ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> what _UNK <m> 'm <m>
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> what _UNK ions conservation ions conservation ions conservation ions ions ions ions ions ions ions ions ions 'm ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> how <m> site <m>
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how ions server ions server ions server ions server ions server ions server ions server ions site ions server ions server ions server ions server ions server ions server ions server ions
+
+- template: <BOS> how <m> tired <m>
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how ions server ions server ions server ions server ions server ions server ions ions ions tired ions server ions ions server ions server ions server ions server ions server ions server
+
+- template: <BOS> lucifer and <m> ? <m>
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> lucifer and ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> from cotton <m>
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions from cotton ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> what <m> ? <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions ? ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> how <m> i <m>
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions i ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> hopes <m> , <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions , ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> . ? theres <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions . ? theres ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> any <m> , <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> any ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions , ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> which part <m> your <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which part ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions your ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> has anyone <m> were <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has anyone ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions ions ions were ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> be <m> i
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> ions conservation ions conservation ions conservation ions ions ions ions ions ions ions ions ions be ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions i
+
+- template: <BOS> did god <m> have <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did god ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions have ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> what <m> when <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> what ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions when ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> why <m> believe in <m>
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions believe in ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> what <m> short height <m>
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections short height ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> so difficult <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions so difficult ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> does `` <m> same <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does `` ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions same ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> how <m> david <m>
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> how ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions david ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> you think of <m>
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions conservation you think of ions ions ions ions ions ions ions ions ions ions ions ions ions ions conservation
+
+- template: <BOS> <m> dog <m> is
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions dog ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions is
+
+- template: <BOS> <m> is <m> n't
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions is ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions n't
+
+- template: <BOS> why <m> on a <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions on a ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> if <m> deserve every <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> if ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections deserve every ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> cinco de <m> for <m>
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco de ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions for ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> : <m> way
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions : ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions way
+
+- template: <BOS> <m> it <m> that
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions it ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions that
+
+- template: <BOS> i <m> approach <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions approach ions ions ions ions ions ions ions ions ions infections ions ions ions ions ions
+
+- template: <BOS> what <m> when <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> what ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions when ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> girls names <m> think <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> girls names ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions think ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> why ca <m> after <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ca ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions after ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> reading some <m> ? <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> reading some ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections ? ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections
+
+- template: <BOS> how do <m> saved <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how do ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions saved ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> how <m> bishop and <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections bishop and ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> christmas <m> ?
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions christmas ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ?
+
+- template: <BOS> <m> bible <m> it
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> ions ions ions ions ions ions ions ions infections ions ions ions ions ions ions bible ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions it
+
+- template: <BOS> does the <m> new <m>
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> does the ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions new ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> does <m> how <m>
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions how ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> what should <m> is <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what should ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions is ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> do <m> immoral to <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions immoral to ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> can <m> my <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions my ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> setting up a <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions setting up a ions infections ions infections ions infections ions infections ions infections ions infections ions server ions
+
+- template: <BOS> what <m> and get <m>
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions and get ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> is holy <m> to <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is holy ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions to ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> crabs for <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions crabs for ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> what do <m> costume <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> what do ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions costume ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> <m> greatest worldwide percentage <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions greatest worldwide percentage ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> my wife <m> the <m>
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my wife ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions the ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> where are <m> 's <m>
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where are ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions 's ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> so it <m> for <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so it ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions for ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> do you <m> yourself <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions yourself ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> according to <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> ions ions infections ions infections ions infections ions infections ions infections ions infections ions infections according to ions infections ions infections ions infections ions infections ions infections ions infections ions ions infections
+
+- template: <BOS> what <m> ? now <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions ? now ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions
+
+- template: <BOS> <m> learn <m> really
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions learn ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions really
+
+- template: <BOS> does <m> with <m>
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions with ions conservation ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions
+
+- template: <BOS> <m> ... <m> in
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions ... ions conservation ions conservation ions conservation ions conservation ions conservation ions ions ions ions ions in
+
+- template: <BOS> what <m> know <m>
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions know ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> for a site <m>
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions for a site ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> <m> christ <m> evidence
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions christ ions ions ions ions ions ions ions ions ions ions ions ions ions ions ions evidence
+
+- template: <BOS> what do <m> love <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what do ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions love ions conservation ions ions ions ions ions ions ions ions ions ions ions ions ions
+
+- template: <BOS> what right <m> to <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions to ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> how <m> ca <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions ca ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+
+- template: <BOS> what has <m> now <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions now ions infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> if the <m> questions <m>
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if the ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions questions ions infections ions infections ions infections ions infections ions infections ions infections ions ions ions
+

@@ -1,0 +1,800 @@
+- template: <BOS> if you <m> would <m>
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if you ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] would ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> would <m> they existed <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] they existed saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> _UNK _UNK <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> _UNK your <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK your saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why keep <m> in <m>
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why keep ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] in ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> a guy <m> kind <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy ] ] ] ] ] ] ] ] ] ] ] ] ] ] more kind saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> are atheists <m> ? <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are atheists ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what do <m> a <m>
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what do ] ] ] ] ] ] ] ] ] ] ] ] ] ] more a saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> are there <m> this <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are there ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] this ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> ? what 's <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? what 's saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> reasons <m> the jesus <m>
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] the jesus ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> was made <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] saint ] was made saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> that <m> high
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] that ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] high
+
+- template: <BOS> <m> inside life in <m>
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] inside life in saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> when giving <m> , <m>
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> when giving ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] , ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> ? or <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? or saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> is it <m> thought <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> is it ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] thought ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> looking <m> some <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> looking ] ] ] ] ] ] ] ] ] ] ] ] ] ] more some saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> is <m> i <m>
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] i ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how many <m> i <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how many saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] i saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> to <m> go
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] to ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] go
+
+- template: <BOS> when <m> ? <m>
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> to make someone <m>
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] to make someone ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> the <m> ,
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ,
+
+- template: <BOS> gorilla _UNK <m> trying <m>
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> gorilla _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] trying ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> greek or <m> would <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek or saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] would saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> n't other <m>
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] n't other saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> does <m> and <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> does ] ] ] ] ] ] ] ] ] ] ] ] ] ] more and saint ] ] ] ] ] ] ] ] ] ] ] ] ] more
+
+- template: <BOS> free <m> me at <m>
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] me at ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> if dan <m> of <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if dan saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] of saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> where is <m> ago <m>
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ago ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what <m> automatically <m>
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] automatically saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what is <m> ? <m>
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> what is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> why <m> silly
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] saint ] why saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] silly
+
+- template: <BOS> <m> often as <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] often as ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how many <m> have <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how many saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] have saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> would <m> ? if <m>
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? if ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> should it be <m>
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] should it be saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how can <m> jesus <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how can ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] jesus ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> will <m> defense <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will ] ] ] ] ] ] ] ] ] ] ] ] ] ] more defense saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> premise of _UNK <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] premise of _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> do <m> the <m>
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> do saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> mentioned mirror <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] mentioned mirror ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> a <m> the
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] a saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the
+
+- template: <BOS> when <m> come <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] come ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what do <m> think <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what do saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] think saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how <m> rainy _UNK <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] rainy _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> will <m> _UNK <m>
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> is it <m> and <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is it ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] and ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> , <m> gods
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] , saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] gods
+
+- template: <BOS> <m> believe <m> iraq
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] believe ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] iraq
+
+- template: <BOS> how <m> the <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> a bunch of <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] a bunch of ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who <m> the better <m>
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> who saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the better saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> do <m> believe our <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] believe our ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> species will <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] more species will saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who <m> jews <m>
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] jews ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> please <m> ! ! <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ! ! saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what <m> democrat , <m>
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] democrat , ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> _UNK <m>
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] saint ]
+
+- template: <BOS> if <m> did <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] did ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> where <m> _UNK is <m>
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> where saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK is saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> difference <m> ,
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] difference ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ,
+
+- template: <BOS> is <m> between <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> is saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] between saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> spanish <m> yellow <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] yellow ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what is <m> age <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] age saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> my <m> to give <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] to give ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> perfect but <m>
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] perfect but saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what are <m> either <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what are ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] either ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why many <m> if <m>
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why many ] ] ] ] ] ] ] ] ] ] ] ] ] saint ] if saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> ! ? fact <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ! ? fact ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> love or <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] love or saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> beard '' , <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] beard '' , ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> back in <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] back in saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> is there <m> palestine <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> is there ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] palestine ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> _UNK really <m>
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK really saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> think about plastic <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] think about plastic ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> and showed <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] and showed saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> was <m> ? <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what are <m> , <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what are saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] , saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> ? <m> grey
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] grey
+
+- template: <BOS> can <m> name <m>
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> can saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] name saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> is any <m> is <m>
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is any ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> if <m> why are <m>
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] why are saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who is <m> person <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] person ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> ? <m> _UNK
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] more ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK
+
+- template: <BOS> how <m> ... ... <m>
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ... ... ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> the name of <m>
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the name of saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> its <m> do <m>
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] do ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> our purpose <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] our purpose saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> identify one <m> , <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify one ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] , ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> experiences to share <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] experiences to share saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who has <m> is <m>
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who has ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> stereotyping <m>
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] more stereotyping saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what <m> of the <m>
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> what ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] of the ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> also ? <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint also ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what is <m> this <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] this ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> i have <m> marks <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint marks saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> holidays make <m>
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] holidays make ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> what <m> bible
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] what saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] bible
+
+- template: <BOS> i <m> the street <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] the street ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> as <m> ? tradition <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? tradition saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> i need <m> ? <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why are <m> many <m>
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why are saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] many saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> do <m> do you <m>
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> do ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] do you ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> does <m> ? <m>
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does ] ] ] ] ] ] ] ] ] ] ] ] ] ] more ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> '' actually _UNK <m>
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] '' actually _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who are <m> are <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who are saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] are saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how many <m> now <m>
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> how many ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] now ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how can <m> operator <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] operator saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> of any good <m>
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] of any good ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> to canada ? <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] to canada ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what means <m> _UNK <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> if <m> peoples <m>
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] peoples saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> prostitution is <m> corner <m>
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] corner ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> strange thing <m> women <m>
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange thing saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] women saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who believe <m> ... <m>
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> who believe ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ... ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> do any <m> know <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do any ] ] ] ] ] ] ] ] ] ] ] ] ] ] more know saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> hows can <m> and <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows can ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] and ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> like <m>
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> why saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] like saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> which are <m> ? <m>
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> which are ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> do <m> and
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] do saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] and
+
+- template: <BOS> <m> on <m> fire
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] on ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] fire
+
+- template: <BOS> will <m> ? i <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? i saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> when <m> the <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] the ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what is <m> the <m>
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what is saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> serious answers <m> please <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious answers ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] please ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> where <m> you <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> where saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] you saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> sheep '' <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] sheep '' ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> is <m> lower ? <m>
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is ] ] ] ] ] ] ] ] ] ] ] ] ] ] more lower ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what <m> realized jesus <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] realized jesus saint ] saint ] saint ] saint ] saint ] saint ] saint ] ]
+
+- template: <BOS> hey <m> holiday list <m>
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> hey ] ] ] ] ] ] ] ] ] ] ] ] saint ] saint holiday list saint ] saint ] saint ] saint ] saint ] saint ] saint ] saint
+
+- template: <BOS> <m> the _UNK station <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] the _UNK station ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> who <m> vinci <m>
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> who saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] vinci saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> that <m> ambition
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] that ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ambition
+
+- template: <BOS> <m> proud that i <m>
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] proud that i saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> 's <m> can
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] 's ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] can
+
+- template: <BOS> how <m> ? ? <m>
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> lucifer <m> , <m>
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> lucifer ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] , ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how <m> blood <m>
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] blood saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> why <m> something
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] why saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] something
+
+- template: <BOS> how <m> how <m>
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how ] ] ] ] ] ] ] ] ] ] ] ] ] ] more how saint ] ] ] ] ] ] ] ] ] ] ] ] ] more
+
+- template: <BOS> hopes <m> what are <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] what are ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> anyone <m> act <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> anyone ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint act saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> _UNK , <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK , ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> which <m> value <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] value saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> has <m> ? <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> hell <m>
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> why saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] hell saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> did <m> much <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] much ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> when people <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] when people saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> ca n't <m>
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ca n't ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> height wide <m>
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] more height wide saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> it <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] it saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> god '' <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] more god '' saint ] ] ] ] ] ] ] ] ] ] ] ] ] more
+
+- template: <BOS> how <m> this <m>
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> how ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] this ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what <m> is <m>
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] is saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> can <m> are you <m>
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] are you ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> `` to <m> '' <m>
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` to saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] '' saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> a big <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] a big saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> enough to <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] more enough to saint ] ] ] ] ] ] ] ] ] ] ] ] ] more
+
+- template: <BOS> cinco de <m> is <m>
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco de ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> christians : <m> the <m>
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> christians : saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> question <m> 3rd <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> question ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] 3rd ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> i 'm <m> a <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i 'm saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] a saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> does <m> of
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] does ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] of
+
+- template: <BOS> girls names <m> trying <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> girls names saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] trying saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> why <m> ? well <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? well ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> . ? he <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] more . ? he saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how do <m> for <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how do ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] for ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how do <m> who <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how do saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] who saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> eve <m> ?
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] eve ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ?
+
+- template: <BOS> what does <m> ? <m>
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what does saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ? saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> does the <m> there <m>
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> does the ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] there ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> craft <m> how
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] craft saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] how
+
+- template: <BOS> what <m> someone is <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] someone is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> do <m> it <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint it saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> can you <m> dad <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can you ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] dad ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what are <m> area <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what are saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] area saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> you <m> can
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] you ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] can
+
+- template: <BOS> is <m> both a <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] both a saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> can <m> the <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] the ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what do <m> ( <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> what do saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] ( saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what <m> greatest <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] greatest ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> my <m> on the <m>
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my ] ] ] ] ] ] ] ] ] ] ] ] ] ] ions on the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> where are <m> 'm <m>
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where are ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] 'm ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> so it <m> isreal <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so it saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] isreal saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> do you <m> equal <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] equal ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> _UNK 's thinking <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK 's thinking saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what are <m> world <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what are ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] world ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> <m> _UNK languages ( <m>
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint _UNK languages ( ] ] ] ] ] ] ] ] ] ] ] ] ] ] saint
+
+- template: <BOS> does <m> _UNK does <m>
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] _UNK does ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> i <m> of hs <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] of hs saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what is <m> italian <m>
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what is ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] italian ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> we <m> laurel <m>
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> we ] ] ] ] ] ] ] ] ] ] ] ] ] saint ] laurel saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> did <m> is no <m>
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] is no ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what do <m> britain <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what do ] ] ] ] ] ] ] ] ] ] ] ] ] ] more britain saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what right <m> ability <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ability ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> how <m> funk <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] funk saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> what has <m> up <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] up ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+
+- template: <BOS> if the <m> your <m>
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if the saint ] ] ] ] ] ] ] ] ] ] ] ] ] ] your saint ] ] ] ] ] ] ] ] ] ] ] ] ] ]
+

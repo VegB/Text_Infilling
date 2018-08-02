@@ -1,0 +1,800 @@
+- template: <BOS> if you were <m> character from <m> why ?
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if you were patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron character from patron patron patron patron patron patron patron patron why ?
+
+- template: <BOS> would angels , if they existed <m> will ? <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> would angels , if they existed patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract will ? patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> fun ? or <m> ? _UNK <m> . 100
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun ? or patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? _UNK patron patron patron patron patron patron patron patron . 100
+
+- template: <BOS> how _UNK languages in the world are <m> popular <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> how _UNK languages in the world are patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract popular patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> why keep `` under <m> church <m> supposed to
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why keep `` under patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron church patron patron patron patron patron patron patron supposed to
+
+- template: <BOS> a guy is always <m> about <m> of feeling
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy is always patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract about patron patron patron patron patron patron patron patron of feeling
+
+- template: <BOS> are atheists really <m> who do n't believe <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are atheists really patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron who do n't believe patron patron patron patron patron patron
+
+- template: <BOS> what do u think <m> ? <m> tie between
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what do u think patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? patron patron patron patron patron patron patron tie between
+
+- template: <BOS> are there any historical records <m> death of <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are there any historical records patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron death of patron patron patron patron patron patron patron
+
+- template: <BOS> are u mixed race ? what <m> background ? <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u mixed race ? what patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract background ? patron patron patron patron patron patron patron patron
+
+- template: <BOS> reasons <m> the jesus ' gift <m> thankful that
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron the jesus ' gift patron patron patron patron patron patron thankful that
+
+- template: <BOS> why is marijuana illegal ? the reason <m> illegal <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> why is marijuana illegal ? the reason patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract illegal patron patron patron patron patron patron patron
+
+- template: <BOS> is the _UNK lodge <m> organization ? <m> high
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> is the _UNK lodge patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron organization ? patron patron patron patron patron patron patron patron high
+
+- template: <BOS> <m> life <m> : } america is a truly
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract life patron patron patron patron patron patron patron patron patron : } america is a truly
+
+- template: <BOS> when giving a wedding <m> dates 's name on <m>
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> when giving a wedding patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron dates 's name on patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> is there <m> the <m> evil than good ?
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> is there patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract evil than good ?
+
+- template: <BOS> is it against <m> ? <m> mohammad could n't
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> is it against patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron patron mohammad could n't
+
+- template: <BOS> looking for some <m> ? i am looking <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> looking for some patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? i am looking patron patron patron patron patron patron patron patron
+
+- template: <BOS> is there <m> in yahoo <m> is there a
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is there patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron in yahoo patron patron patron patron patron patron patron is there a
+
+- template: <BOS> how <m> people out there think `` pot '' <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract people out there think `` pot '' patron patron patron patron patron patron patron patron
+
+- template: <BOS> want to read <m> ? <m> born dead go
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want to read patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron patron born dead go
+
+- template: <BOS> when <m> true <m> ? _UNK i do n't
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract true patron patron patron patron patron patron patron patron ? _UNK i do n't
+
+- template: <BOS> what things can <m> like they 're in <m>
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what things can patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron like they 're in patron patron patron patron patron patron patron
+
+- template: <BOS> do you like <m> city ? <m> well ,
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> do you like patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract city ? patron patron patron patron patron patron patron patron well ,
+
+- template: <BOS> gorilla _UNK ... ? <m> find gorilla <m> .
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> gorilla _UNK ... ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron find gorilla patron patron patron patron patron patron patron .
+
+- template: <BOS> greek <m> for `` _UNK speaking <m> find out
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract for `` _UNK speaking patron patron patron patron patron patron patron patron find out
+
+- template: <BOS> why are people so <m> why ca <m> the
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why are people so patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron why ca patron patron patron patron patron patron the
+
+- template: <BOS> does anyone <m> satan has been poorly represented by <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> does anyone patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract satan has been poorly represented by patron patron patron patron patron patron patron
+
+- template: <BOS> free the bad energy <m> is with <m> moment
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free the bad energy patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron is with patron patron patron patron patron patron moment
+
+- template: <BOS> if dan brown was in a court <m> , <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if dan brown was in a court patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract , patron patron patron patron patron patron patron
+
+- template: <BOS> where is <m> nailed 2000 years ago ? in <m>
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where is patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron nailed 2000 years ago ? in patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> what is a great <m> name <m> people when
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what is a great patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract name patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract people when
+
+- template: <BOS> what is the different between the gay <m> ? <m>
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> what is the different between the gay patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> considering <m> uk and <m> do we have silly
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract uk and patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract do we have silly
+
+- template: <BOS> <m> get a guy for summer ? have <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron get a guy for summer ? have patron patron patron patron patron patron patron
+
+- template: <BOS> how <m> have ? ? ? ? how <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract have ? ? ? ? how patron patron patron patron patron patron patron patron
+
+- template: <BOS> would many people be deeply disappointed <m> ? <m>
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would many people be deeply disappointed patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> suicide <m> be _UNK <m> is so valuable that
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> suicide patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract be _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract is so valuable that
+
+- template: <BOS> how can i bring the <m> india to <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how can i bring the patron patron patron patron patron patron patron patron patron patron patron patron india to patron patron patron patron patron patron patron
+
+- template: <BOS> <m> your religion if <m> wrong ? if you
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> your religion if patron patron patron patron patron patron patron patron wrong ? if you
+
+- template: <BOS> is carbon dating reliable ? the premise <m> relies <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> is carbon dating reliable ? the premise patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron relies patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> do you <m> myths in tagalog translations <m> you
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> do you patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract myths in tagalog translations patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract you
+
+- template: <BOS> what <m> prayer - what is that ? i <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron prayer - what is that ? i patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> what is difference _UNK penis and <m> ? one <m>
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what is difference _UNK penis and patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? one patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> when is <m> come ? when is jesus <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when is patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron come ? when is jesus patron patron patron patron patron patron
+
+- template: <BOS> what do you <m> be <m> the roman empire
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what do you patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract be patron patron patron patron patron patron patron the roman empire
+
+- template: <BOS> how do you feel on a <m> . i <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do you feel on a patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron . i patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> will <m> lose its status as the <m> ?
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract lose its status as the patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ?
+
+- template: <BOS> is it true that christians and <m> a couple <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is it true that christians and patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron a couple patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> <m> to <m> _UNK that there are many gods
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract to patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract _UNK that there are many gods
+
+- template: <BOS> as a christian <m> to <m> to attack iraq
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as a christian patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron to patron patron patron patron patron patron patron to attack iraq
+
+- template: <BOS> how would one go about proving <m> their <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how would one go about proving patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract their patron patron patron patron patron patron patron patron
+
+- template: <BOS> is valentine 's day just <m> from corporate <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> is valentine 's day just patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron from corporate patron patron patron patron patron patron patron
+
+- template: <BOS> who is <m> adams _UNK jack <m> i like
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> who is patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract adams _UNK jack patron patron patron patron patron patron patron patron i like
+
+- template: <BOS> do you believe <m> always <m> they try to
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you believe patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron always patron patron patron patron patron patron they try to
+
+- template: <BOS> does anyone else think that <m> extinct , <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does anyone else think that patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract extinct , patron patron patron patron patron patron patron
+
+- template: <BOS> who thinks that jews are <m> ? <m> wondering
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who thinks that jews are patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron wondering
+
+- template: <BOS> please <m> ! ! ! ! ! ! <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ! ! ! ! ! ! patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> what are some of the reasons <m> republican <m>
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what are some of the reasons patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron republican patron patron patron patron patron patron
+
+- template: <BOS> why most of the _UNK _UNK <m> its <m>
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why most of the _UNK _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract its patron patron patron patron patron patron patron
+
+- template: <BOS> if _UNK killed all the <m> baptist survive ? <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if _UNK killed all the patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron baptist survive ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> where is al <m> _UNK <m> band _UNK 's
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> where is al patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract band _UNK 's
+
+- template: <BOS> <m> god <m> i have built this world ,
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron god patron patron patron patron patron patron i have built this world ,
+
+- template: <BOS> is there a correlation between hair <m> there <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> is there a correlation between hair patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract there patron patron patron patron patron patron patron
+
+- template: <BOS> spanish dictionary ? yea <m> yellow and blue <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish dictionary ? yea patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron yellow and blue patron patron patron patron patron patron patron
+
+- template: <BOS> what is the youngest age at which <m> be <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is the youngest age at which patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract be patron patron patron patron patron patron patron patron
+
+- template: <BOS> my boyfriend <m> what to give ? is it <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my boyfriend patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron what to give ? is it patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> they say practice <m> practice makes perfect <m> said
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> they say practice patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract practice makes perfect patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract said
+
+- template: <BOS> what are some stereotypes you either <m> every time <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what are some stereotypes you either patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron every time patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> why many <m> the end of the <m> that
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why many patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the end of the patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract that
+
+- template: <BOS> <m> any story ! the best one will win <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron any story ! the best one will win patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> do you own love <m> love is <m> can
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> do you own love patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract love is patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract can
+
+- template: <BOS> if a gay man <m> his `` beard <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> if a gay man patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron his `` beard patron patron patron patron patron patron
+
+- template: <BOS> old times worse then new <m> in the _UNK <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old times worse then new patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract in the _UNK patron patron patron patron patron patron patron
+
+- template: <BOS> is there anyone here from iraq or <m> family <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> is there anyone here from iraq or patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron family patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> do <m> _UNK interpretation of the bible <m> jehovah
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> do patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract _UNK interpretation of the bible patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract jehovah
+
+- template: <BOS> what <m> surgery to fix defects ? does <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron surgery to fix defects ? does patron patron patron patron patron patron patron
+
+- template: <BOS> which is <m> the devil took jesus <m> _UNK
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which is patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the devil took jesus patron patron patron patron patron patron patron patron _UNK
+
+- template: <BOS> was che _UNK <m> human ? <m> > why
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was che _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron human ? patron patron patron patron patron patron > why
+
+- template: <BOS> <m> , _UNK <m> & _UNK ? who changed
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract , _UNK patron patron patron patron patron patron patron & _UNK ? who changed
+
+- template: <BOS> why does n't yahoo <m> avatars ? my <m>
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> why does n't yahoo patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron avatars ? my patron patron patron patron patron patron patron
+
+- template: <BOS> <m> whole <m> _UNK to name calling and _UNK
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract whole patron patron patron patron patron patron patron patron _UNK to name calling and _UNK
+
+- template: <BOS> is <m> 4 a date <m> not the place
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron 4 a date patron patron patron patron patron patron patron not the place
+
+- template: <BOS> if <m> apes <m> they 've got it above
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract apes patron patron patron patron patron patron patron patron they 've got it above
+
+- template: <BOS> who is <m> world ? bush and his <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who is patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron world ? bush and his patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> <m> and new _UNK ? why not just <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract and new _UNK ? why not just patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> how to write <m> ... ... <m> hindi or
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> how to write patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ... ... patron patron patron patron patron patron patron hindi or
+
+- template: <BOS> should one feel <m> the name of <m> !
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> should one feel patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the name of patron patron patron patron patron patron patron patron !
+
+- template: <BOS> its _UNK , <m> where your <m> am here
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its _UNK , patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron where your patron patron patron patron patron patron patron am here
+
+- template: <BOS> can we be productive and serve our <m> the <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> can we be productive and serve our patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the patron patron patron patron patron patron patron patron
+
+- template: <BOS> identify one thing that you , as <m> can <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify one thing that you , as patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron can patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> does anyone have <m> ? ok , so <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> does anyone have patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? ok , so patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> who has created god ? dont <m> himself <m>
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who has created god ? dont patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron himself patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> why do <m> because of their religion <m> getting
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why do patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract because of their religion patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract getting
+
+- template: <BOS> what is your opinion of the <m> civil unions <m>
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> what is your opinion of the patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron civil unions patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> do you think that _UNK is morally <m> ? <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do you think that _UNK is morally patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> <m> that used for ? i am new <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron that used for ? i am new patron patron patron patron patron patron patron
+
+- template: <BOS> i have terrible <m> how <m> get rid of
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have terrible patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract how patron patron patron patron patron patron patron patron get rid of
+
+- template: <BOS> do holidays <m> even if in a <m> got
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> do holidays patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron even if in a patron patron patron patron patron patron patron got
+
+- template: <BOS> how is asking what `` god <m> left hand <m>
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> how is asking what `` god patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract left hand patron patron patron patron patron patron patron patron
+
+- template: <BOS> i do n't even believe that people <m> . <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do n't even believe that people patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron . patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> as per tradition , <m> down ? ? ? <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as per tradition , patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract down ? ? ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> i need a original <m> for my <m> are
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need a original patron patron patron patron patron patron patron patron patron patron patron for my patron patron patron patron patron patron patron are
+
+- template: <BOS> why are there so <m> thugs <m> when i
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why are there so patron patron patron patron patron patron patron patron patron patron patron patron thugs patron patron patron patron patron patron patron patron when i
+
+- template: <BOS> <m> ? <m> you had one and how do
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron patron you had one and how do
+
+- template: <BOS> does the <m> earth society <m> whether the original
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does the patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract earth society patron patron patron patron patron patron patron patron whether the original
+
+- template: <BOS> <m> a male child <m> ? wat does ``
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron a male child patron patron patron patron patron patron ? wat does ``
+
+- template: <BOS> who are the _UNK ... <m> famous <m> talk
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who are the _UNK ... patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract famous patron patron patron patron patron patron patron patron patron talk
+
+- template: <BOS> how <m> every now and <m> not my thing
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> how patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron every now and patron patron patron patron patron patron patron not my thing
+
+- template: <BOS> how can <m> years <m> we are all women
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract years patron patron patron patron patron patron patron patron we are all women
+
+- template: <BOS> do anyone know <m> in the buffalo areas <m>
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> do anyone know patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron in the buffalo areas patron patron patron patron patron patron patron
+
+- template: <BOS> what is the best way to <m> that <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> what is the best way to patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract that patron patron patron patron patron patron patron patron
+
+- template: <BOS> what means `` allah ho <m> allah <m> ?
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means `` allah ho patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron allah patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ?
+
+- template: <BOS> if <m> ad saying <m> clean peoples _UNK ?
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ad saying patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract clean peoples _UNK ?
+
+- template: <BOS> prostitution <m> woman on <m> offering sex for free
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution patron patron patron patron patron patron patron patron patron patron patron patron woman on patron patron patron patron patron patron patron offering sex for free
+
+- template: <BOS> strange thing about <m> powerful women <m> the world
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange thing about patron patron patron patron patron patron patron patron patron patron patron patron patron powerful women patron patron patron patron patron patron patron patron the world
+
+- template: <BOS> who believe that jesus <m> if you <m> if
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> who believe that jesus patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron if you patron patron patron patron patron patron if
+
+- template: <BOS> do any of you know a <m> if you <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do any of you know a patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract if you patron patron patron patron patron patron patron
+
+- template: <BOS> hows <m> ? <m> behave as teaching of bible
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? patron patron patron patron patron patron behave as teaching of bible
+
+- template: <BOS> why am i so hateful <m> i`m <m> i
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> why am i so hateful patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract i`m patron patron patron patron patron patron patron i
+
+- template: <BOS> which are the _UNK countries & why <m> they <m>
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> which are the _UNK countries & why patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron they patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> <m> pain out on ? all <m> chatrooms and
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract pain out on ? all patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract chatrooms and
+
+- template: <BOS> how <m> man <m> fire ? man used fire
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron man patron patron patron patron patron patron patron fire ? man used fire
+
+- template: <BOS> will we know people when we get <m> will <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will we know people when we get patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract will patron patron patron patron patron patron patron patron
+
+- template: <BOS> when you _UNK people <m> them with a <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you _UNK people patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron them with a patron patron patron patron patron patron patron
+
+- template: <BOS> what is the meaning of <m> the meaning <m>
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what is the meaning of patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the meaning patron patron patron patron patron patron patron patron
+
+- template: <BOS> serious answers only please <m> in getting into the <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious answers only please patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron in getting into the patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> where is your sense of humor <m> , <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> where is your sense of humor patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract , patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> why do people conform ? <m> are `` <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why do people conform ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron are `` patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> is it <m> or lower ? i <m> disappointment
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is it patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract or lower ? i patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract disappointment
+
+- template: <BOS> what would <m> second <m> jesus was a _UNK
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron second patron patron patron patron patron patron jesus was a _UNK
+
+- template: <BOS> <m> dont have much <m> holiday list ... anyone
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract dont have much patron patron patron patron patron patron patron holiday list ... anyone
+
+- template: <BOS> why are the <m> _UNK <m> id clips )
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are the patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron _UNK patron patron patron patron patron patron id clips )
+
+- template: <BOS> who was da vinci in <m> code <m> da
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> who was da vinci in patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract code patron patron patron patron patron patron patron da
+
+- template: <BOS> who knows and can <m> based <m> selfish ambition
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> who knows and can patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron based patron patron patron patron patron patron patron selfish ambition
+
+- template: <BOS> what _UNK are you ? i 'm <m> that <m>
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> what _UNK are you ? i 'm patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract that patron patron patron patron patron patron patron patron
+
+- template: <BOS> how to _UNK <m> there a web site i <m>
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how to _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron there a web site i patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> how many christians are tired ? <m> ? <m>
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how many christians are tired ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> lucifer and _UNK have ... ... <m> of <m>
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> lucifer and _UNK have ... ... patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron of patron patron patron patron patron patron patron
+
+- template: <BOS> how do i <m> cotton clothes ? go to <m>
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how do i patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract cotton clothes ? go to patron patron patron patron patron patron patron patron
+
+- template: <BOS> what is <m> on this site <m> have something
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what is patron patron patron patron patron patron patron patron patron patron patron on this site patron patron patron patron patron patron patron have something
+
+- template: <BOS> how can you <m> that hates you ? <m>
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how can you patron patron patron patron patron patron patron patron patron patron patron patron that hates you ? patron patron patron patron patron patron patron patron
+
+- template: <BOS> hopes for the future ? <m> are your <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes for the future ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron are your patron patron patron patron patron patron patron patron
+
+- template: <BOS> <m> dudes trying to <m> theres nothing wrong with
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract dudes trying to patron patron patron patron patron patron patron patron patron patron patron theres nothing wrong with
+
+- template: <BOS> any <m> ? love that sweet _UNK , give <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> any patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? love that sweet _UNK , give patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> which part of your <m> gives your <m> you
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which part of your patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract gives your patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract you
+
+- template: <BOS> has anyone ever thought they were <m> cuz <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has anyone ever thought they were patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron cuz patron patron patron patron patron patron patron
+
+- template: <BOS> <m> the hell do we interview people ? interviews <m>
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract the hell do we interview people ? interviews patron patron patron patron patron patron patron patron
+
+- template: <BOS> did god really create adams <m> ? there <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did god really create adams patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? there patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> what do you think it means when <m> bring <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> what do you think it means when patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract bring patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> why do people believe in <m> such <m> ,
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why do people believe in patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron such patron patron patron patron patron patron ,
+
+- template: <BOS> <m> _UNK women ? _UNK skin short height wide <m>
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract _UNK women ? _UNK skin short height wide patron patron patron patron patron patron patron
+
+- template: <BOS> why <m> put <m> it so difficult to tell
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why patron patron patron patron patron patron patron patron patron patron patron patron put patron patron patron patron patron patron patron it so difficult to tell
+
+- template: <BOS> does `` god '' have a <m> 's the <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does `` god '' have a <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> 's the patron patron patron patron patron patron patron patron
+
+- template: <BOS> how does david _UNK perform <m> rising <m> street
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> how does david _UNK perform patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron rising patron patron patron patron patron patron street
+
+- template: <BOS> what do <m> ? faith is a <m> is
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what do patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? faith is a patron patron patron patron patron patron patron is
+
+- template: <BOS> can an old dog learn new tricks <m> what <m>
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can an old dog learn new tricks patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron what patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> `` to <m> an english _UNK <m> do n't
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` to patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract an english _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract do n't
+
+- template: <BOS> why is it <m> to church on a <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why is it patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron to church on a patron patron patron patron patron patron patron
+
+- template: <BOS> if <m> , <m> disease you get . who
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> if patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract , patron patron patron patron patron patron patron patron disease you get . who
+
+- template: <BOS> cinco de <m> _UNK ? what is the <m>
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco de patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron _UNK ? what is the patron patron patron patron patron patron patron patron
+
+- template: <BOS> christians : what <m> in the gospels ? i <m>
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> christians : what patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract in the gospels ? i patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> <m> ? is it bad that i <m> that
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron ? is it bad that i patron patron patron patron patron patron patron that
+
+- template: <BOS> i 'm <m> for a _UNK <m> anyone any
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i 'm patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract for a _UNK patron patron patron patron patron patron patron patron anyone any
+
+- template: <BOS> <m> when you 're called a dixie ? either <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron when you 're called a dixie ? either patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> girls <m> i am trying to <m> or places
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> girls patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract i am trying to patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract or places
+
+- template: <BOS> why ca <m> emergency <m> contact ? well ,
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why ca patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron emergency patron patron patron patron patron patron patron contact ? well ,
+
+- template: <BOS> <m> by the _UNK <m> _UNK and science (
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract by the _UNK patron patron patron patron patron patron patron patron _UNK and science (
+
+- template: <BOS> how do you meet saved men <m> : <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how do you meet saved men patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron : patron patron patron patron patron patron patron
+
+- template: <BOS> how do i address a letter to <m> bishop <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> how do i address a letter to patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract bishop patron patron patron patron patron patron patron patron
+
+- template: <BOS> is <m> if it <m> i bad luck ?
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> is patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron if it patron patron patron patron patron patron patron i bad luck ?
+
+- template: <BOS> what <m> _UNK and compare it to _UNK ? <m>
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract _UNK and compare it to _UNK ? patron patron patron patron patron patron patron patron
+
+- template: <BOS> does the bible <m> that there <m> than one
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> does the bible patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron that there patron patron patron patron patron patron than one
+
+- template: <BOS> does <m> can i get <m> depends on how
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract can i get patron patron patron patron patron patron patron depends on how
+
+- template: <BOS> what should i legally do <m> _UNK with my <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what should i legally do patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron _UNK with my patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> do you consider it immoral <m> .. ? do <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do you consider it immoral patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract .. ? do patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> can you please ? pray for my <m> . <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can you please ? pray for my patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron . patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> what are the <m> a hotel ? the <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what are the patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract a hotel ? the patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> what happens when you <m> camp and <m> can
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what happens when you patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron camp and patron patron patron patron patron patron patron can
+
+- template: <BOS> is holy scripture intended <m> be both a weapon <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is holy scripture intended patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract be both a weapon patron patron patron patron patron patron patron patron
+
+- template: <BOS> can anyone give <m> to `` crabs <m> want
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can anyone give patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron to `` crabs patron patron patron patron patron patron patron want
+
+- template: <BOS> what do you think of my halloween <m> _UNK <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> what do you think of my halloween patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract _UNK patron patron patron patron patron patron patron patron
+
+- template: <BOS> what religion has the greatest <m> % <m> easy
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what religion has the greatest patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron % patron patron patron patron patron patron easy
+
+- template: <BOS> my wife has really been packing on <m> do <m>
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my wife has really been packing on patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract do patron patron patron patron patron patron patron
+
+- template: <BOS> where are you from and <m> 'm in <m>
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where are you from and patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron 'm in patron patron patron patron patron patron patron
+
+- template: <BOS> so <m> kill and _UNK and never get blamed <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract kill and _UNK and never get blamed patron patron patron patron patron patron patron patron
+
+- template: <BOS> do you <m> to every <m> i feel that
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron to every patron patron patron patron patron patron patron i feel that
+
+- template: <BOS> what is historical _UNK _UNK <m> thinking -- <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> what is historical _UNK _UNK patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract thinking -- patron patron patron patron patron patron patron patron
+
+- template: <BOS> what are some of the biggest mysteries <m> now <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what are some of the biggest mysteries patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron now patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> are _UNK languages ( swedish , danish <m> ? <m>
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> are _UNK languages ( swedish , danish patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> does _UNK rust ? <m> . it <m> .
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does _UNK rust ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron . it patron patron patron patron patron patron patron .
+
+- template: <BOS> i dropped out of hs ... <m> ok ... <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i dropped out of hs ... patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract ok ... patron patron patron patron patron patron patron patron
+
+- template: <BOS> what <m> 124 italian _UNK worth <m> rate .
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron 124 italian _UNK worth patron patron patron patron patron patron rate .
+
+- template: <BOS> we 're looking for a site in <m> services <m>
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> we 're looking for a site in patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract services patron patron patron patron patron patron patron
+
+- template: <BOS> did jesus christ <m> to mary magdalene <m> evidence
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did jesus christ patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron to mary magdalene patron patron patron patron patron patron evidence
+
+- template: <BOS> what do the british love and <m> education , <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what do the british love and patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract education , patron patron patron patron patron patron patron
+
+- template: <BOS> what right do the palestinians have <m> the ability <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what right do the palestinians have patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron the ability patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron
+
+- template: <BOS> how do you <m> are in a funk ? <m>
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> how do you patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract are in a funk ? patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract
+
+- template: <BOS> what has been your <m> now ? outside <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has been your patron patron patron patron patron patron patron patron patron patron patron patron patron patron patron now ? outside patron patron patron patron patron patron patron
+
+- template: <BOS> if the best answers <m> of <m> n't that
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if the best answers patron patron patron patron patron patron patron patron patron patron patron patron patron patron tract of patron patron patron patron patron patron patron patron n't that
+

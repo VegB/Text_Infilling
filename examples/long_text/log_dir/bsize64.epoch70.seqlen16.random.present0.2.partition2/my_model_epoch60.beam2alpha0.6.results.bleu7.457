@@ -1,0 +1,800 @@
+- template: <BOS> if <m> a movie <m>
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> if patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions a movie patron infections infections ions infections ions of ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> they <m> what
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections they patron infections infections ions infections ions of ions infections ions infections ions infections infections ions what
+
+- template: <BOS> <m> playing <m> 100
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections playing patron infections ions of ions infections ions infections ions infections ions saint infections ions infections 100
+
+- template: <BOS> how <m> you _UNK <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> how patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions you _UNK patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> why <m> in <m>
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> why patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint in patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> a guy <m> talking <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy patron infections saint infections saint infections saint infections saint infections saint infections infections saint infections talking patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections
+
+- template: <BOS> are atheists <m> ? <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are atheists patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> what <m> i think <m>
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint saint infections saint infections saint infections i think patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> are there <m> disciple <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are there patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint disciple patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> mixed race ? <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions mixed race ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> reasons <m> the jesus <m>
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> reasons patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint the jesus patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> made illegal in <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections made illegal in patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> <m> lodge a satanic <m>
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint lodge a satanic patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> how is <m> is <m>
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> how is patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions is patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> 's name on <m>
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> patron infections ions saint infections ions saint infections ions saint infections ions saint infections ions 's name on patron infections ions saint infections saint infections saint infections saint infections saint infections saint infections
+
+- template: <BOS> is there <m> the <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> is there patron infections ions saint infections ions saint infections ions saint infections ions saint infections saint the patron infections ions saint infections saint infections saint infections saint infections saint infections saint ions
+
+- template: <BOS> <m> after mohammad <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint after mohammad patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> answers ... <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions answers ... patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> turkish <m> a
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> patron infections saint infections ions saint infections ions saint infections ions saint infections saint infections turkish patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions a
+
+- template: <BOS> <m> be legalized <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> patron infections saint infections ions saint infections ions saint infections ions saint infections ions saint be legalized patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> want <m> _UNK d <m>
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions _UNK d patron infections ions of ions infections ions infections ions infections ions saint infections ions infections
+
+- template: <BOS> when <m> i do <m>
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections i do patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> what <m> feel like <m>
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint feel like patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> do you <m> living <m>
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> do you patron infections saint infections infections saint infections saint infections saint infections saint infections saint infections living patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> gorilla _UNK <m> men <m>
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> gorilla _UNK patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint men patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> roman <m> out
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions roman patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions out
+
+- template: <BOS> why are <m> ? <m>
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why are patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> christians and <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> patron infections infections saint infections saint infections saint infections saint infections saint infections saint infections christians and patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> free <m> me at <m>
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free patron infections infections infections infections infections infections infections infections infections infections ions operating infections ions me at patron infections of a ions of a ions of a ions of a ions of
+
+- template: <BOS> if dan <m> swore <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if dan patron infections infections infections infections infections infections infections infections infections infections ions operating infections infections swore patron infections of a ions of a ions of a ions of a ions infections
+
+- template: <BOS> <m> cross now <m>
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> patron infections infections infections infections infections infections ions saint infections ions saint infections ions saint cross now patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> what ghetto name <m>
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> patron infections infections infections infections infections infections ions saint infections ions saint infections infections ions what ghetto name patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> <m> ? <m> by
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint by
+
+- template: <BOS> considering both <m> do <m>
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering both patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint do patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> ? have <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections ? have patron infections ions infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> how <m> ? <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions ? patron infections ions infections ions infections ions infections ions infections ions infections ions infections infections
+
+- template: <BOS> would many <m> jesus <m>
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would many patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint jesus patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> the ohh <m>
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections the ohh patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> how <m> youth <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how patron infections saint infections saint infections infections infections infections infections infections infections infections infections ions youth patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> will you <m> ? <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will you patron infections saint infections saint infections infections infections infections infections infections infections infections infections infections ? patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> ? <m> .
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> patron infections infections infections ions saint infections ions saint infections ions saint infections ions saint ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions .
+
+- template: <BOS> <m> in <m> you
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> patron infections infections infections ions saint infections ions saint infections ions saint infections infections ions in patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint you
+
+- template: <BOS> what is <m> ? <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? patron infections saint infections saint infections saint infections saint infections saint saint infections saint infections
+
+- template: <BOS> what is <m> is <m>
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what is patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> when <m> to <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> when patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections to patron infections infections infections infections ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> what do <m> world <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> what do patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions world patron infections infections infections infections ions infections ions infections ions infections ions infections infections ions
+
+- template: <BOS> how <m> a <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections a patron infections of ions of ions infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> institution of <m>
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions institution of patron infections of ions of ions of ions of ions of ions of ions of
+
+- template: <BOS> is <m> jews <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint jews patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> hence <m> _UNK that <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence patron infections saint infections saint infections saint infections saint saint infections saint infections saint infections _UNK that patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> as <m> him <m>
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint him patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> how would <m> is <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how would patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections is patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> ? amazing <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? amazing patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> jack sparrow <m>
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions jack sparrow patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> do you <m> try <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections try patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> does <m> species <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> does patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions species patron infections ions of ions infections ions infections ions saint infections ions infections ions infections
+
+- template: <BOS> who thinks <m> dont <m>
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who thinks patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint dont patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> please <m> ! ! <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please patron infections saint infections infections saint infections saint infections saint infections saint infections saint infections ! ! patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> you <m> ,
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint you patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ,
+
+- template: <BOS> why most <m> exists <m>
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why most patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions exists patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> if _UNK <m> baptist <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> if _UNK patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint baptist patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> jazz <m> 's
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions jazz patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions 's
+
+- template: <BOS> whats <m> & a <m>
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats patron infections ions saint infections ions saint infections ions saint infections ions saint infections ions & a patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> is <m> and religious <m>
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> is patron infections ions saint infections ions saint infections ions saint infections ions saint infections saint and religious patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> spanish dictionary <m> the <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish dictionary patron infections ions saint infections saint infections saint infections saint infections saint infections saint infections the patron infections saint ions of ions of ions of ions of ions of ions ions
+
+- template: <BOS> what is <m> be <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is patron infections ions saint infections saint infections saint infections saint infections saint infections ions saint be patron infections saint ions of ions of ions of ions of ions of ions of
+
+- template: <BOS> <m> it <m> ,
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> patron infections saint infections saint infections infections infections infections infections ions saint infections ions saint it patron infections ions of ions infections ions infections ions saint infections saint infections saint infections ,
+
+- template: <BOS> <m> say practice <m>
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> patron infections saint infections saint infections infections infections infections infections ions saint infections infections ions say practice patron infections ions of ions infections ions infections ions saint infections saint infections saint ions
+
+- template: <BOS> what <m> ? <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> why many <m> the <m>
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> why many patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions the patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> tell <m> ? <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> tell patron infections infections infections infections infections ions saint infections ions saint infections ions saint infections ? patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> <m> not something that <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> patron infections infections infections infections infections ions saint infections ions saint infections ions saint ions not something that patron infections ions of ions of ions of ions of ions of ions ions of
+
+- template: <BOS> if a <m> girlfriend <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> if a patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections girlfriend patron infections infections infections ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> old times <m> days <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old times patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions days patron infections infections infections ions infections ions infections ions infections ions infections ions infections infections
+
+- template: <BOS> <m> has <m> there
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> patron infections saint infections saint infections infections infections infections infections infections infections infections infections infections has patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions there
+
+- template: <BOS> do <m> their <m>
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> do patron infections saint infections saint infections infections infections infections infections infections infections infections infections ions their patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what <m> your <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint your patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> which is <m> the <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which is patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions the patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> was che <m> my <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was che patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections my patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> names _UNK <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions names _UNK patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions
+
+- template: <BOS> <m> n't yahoo have <m>
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections n't yahoo have patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> can <m> peacefully <m>
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> can patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions peacefully patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions
+
+- template: <BOS> <m> miami area ? <m>
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> patron infections ions saint infections saint infections saint infections saint infections ions saint infections ions miami area ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> came from apes <m>
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> patron infections ions saint infections saint infections saint infections saint infections ions saint infections saint came from apes patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> who <m> world ? <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint world ? patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> why <m> _UNK ? <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> why patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections _UNK ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> ... <m> or
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ... patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint or
+
+- template: <BOS> <m> in the <m>
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions in the patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> know <m> here
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections know patron infections ions of ions infections ions infections ions infections ions infections ions infections ions here
+
+- template: <BOS> can we <m> . <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> can we patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions . patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> <m> , as <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> patron infections saint infections infections infections ions saint infections ions saint infections ions saint infections , as patron infections ions saint infections saint infections saint infections saint infections saint infections saint infections
+
+- template: <BOS> does anyone <m> to <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> does anyone patron infections saint infections infections infections ions saint infections ions saint infections ions saint ions to patron infections ions saint infections saint infections saint infections saint infections saint infections saint ions
+
+- template: <BOS> <m> dont say <m>
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint dont say patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> here stop <m>
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections infections saint infections here stop patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> what is <m> , <m>
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> what is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint , patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> do <m> surgery also <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections surgery also patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> what <m> new to <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what patron infections saint infections infections infections infections infections infections infections infections infections infections infections ions new to patron infections of ions of ions of ions of ions of ions of ions of
+
+- template: <BOS> i have <m> rid <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> i have patron infections saint infections infections infections infections infections infections infections infections infections infections infections infections rid patron infections of ions of ions of ions of ions of ions of ions ions
+
+- template: <BOS> do holidays <m> rather <m>
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> do holidays patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint rather patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> hand <m> bible
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions hand patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions bible
+
+- template: <BOS> i do <m> are <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do patron infections saint infections saint infections infections infections infections infections infections infections infections infections infections are patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> taken down ? <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> patron infections saint infections saint infections infections infections infections infections infections infections infections infections ions taken down ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> i need <m> christmas <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> i need patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections christmas patron infections ions infections ions infections ions of ions infections ions infections ions infections ions
+
+- template: <BOS> why are <m> ? <m>
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why are patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions ? patron infections ions infections ions infections ions of ions infections ions infections ions infections infections
+
+- template: <BOS> do <m> ? do <m>
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> do patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? do patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> does the <m> ? <m>
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> does the patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> wat <m> actually <m>
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> wat patron infections saint infections saint infections infections infections infections infections infections infections infections infections ions actually patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> who <m> around <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who patron infections saint infections saint infections infections infections infections infections infections infections infections infections infections around patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> ? nope . <m>
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ? nope . patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> how can <m> and <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> how can patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions and patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> know <m> i
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections know patron infections ions of ions infections ions infections ions infections ions infections ions infections ions i
+
+- template: <BOS> <m> _UNK to canada <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions _UNK to canada patron infections ions of ions infections ions infections ions infections ions infections ions infections infections
+
+- template: <BOS> what <m> what <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> if you <m> saying <m>
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> if you patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions saying patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> prostitution is <m> if <m>
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> prostitution is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint if patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> strange <m> women ? <m>
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions women ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> me why <m>
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint me why patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> do <m> teacher <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections teacher patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections
+
+- template: <BOS> <m> act and <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint act and patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> i so <m>
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions i so patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> which <m> called <m>
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> which patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint called patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> who <m> in <m>
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> who patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions in patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> how <m> fire ? <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how patron infections infections infections infections infections infections ions saint infections ions saint infections ions saint fire ? patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> will we <m> . <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will we patron infections infections infections infections infections infections ions saint infections ions saint infections ions infections . patron infections ions of ions infections ions infections ions saint infections ions infections ions infections
+
+- template: <BOS> <m> them with a <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections them with a patron infections infections ions infections ions saint infections ions saint infections ions saint infections ions
+
+- template: <BOS> <m> ur <m> life
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions ur patron infections infections ions infections ions saint infections ions saint infections ions saint infections infections life
+
+- template: <BOS> serious <m> ! ? <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> serious patron infections saint infections ions saint infections ions saint infections ions saint infections saint infections ! ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> no , <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> patron infections saint infections ions saint infections ions saint infections ions saint infections ions saint no , patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> because they <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint because they patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> to set <m>
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> patron infections saint infections infections saint infections saint infections saint infections saint infections saint infections to set patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> what <m> the <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint the patron infections of ions of ions of ions of ions of ions of ions of
+
+- template: <BOS> <m> have much <m>
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections have much patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> why are <m> ( <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are patron infections ions saint infections ions saint infections ions saint infections ions saint infections ions ( patron infections ions saint infections saint infections saint infections saint infections saint infections saint infections
+
+- template: <BOS> <m> vinci in the <m>
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> patron infections ions saint infections ions saint infections ions saint infections ions saint infections saint vinci in the patron infections ions saint infections saint infections saint infections saint infections saint infections saint ions
+
+- template: <BOS> <m> can <m> ambition
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections can patron infections ions of ions infections ions infections ions infections ions infections ions infections ions ambition
+
+- template: <BOS> <m> you ? i <m>
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions you ? i patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> how to <m> _UNK <m>
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how to patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections _UNK patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> how <m> christians <m>
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions christians patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions
+
+- template: <BOS> lucifer <m> key of <m>
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> lucifer patron infections ions saint infections saint infections saint infections saint infections saint infections saint infections key of patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> how <m> remove <m>
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> how patron infections ions saint infections saint infections saint infections saint infections saint infections saint ions remove patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> does everyone on <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint does everyone on patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> how <m> you <m>
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> how patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions you patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> future ? - <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint future ? - patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> anyone else <m> . <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> anyone else patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions . patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> _UNK , give <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> patron infections ions saint infections saint infections saint infections saint infections saint infections saint infections _UNK , give patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> which part <m> value <m>
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> which part patron infections ions saint infections saint infections saint infections saint infections saint infections saint ions value patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> has <m> they were <m>
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> has patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint they were patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> we interview <m>
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> patron infections infections saint infections saint infections saint infections saint infections saint infections saint infections we interview patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> did <m> there is <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> did patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint there is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what <m> all thier <m>
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions all thier patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> why do <m> be <m>
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why do patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint be patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what can <m> skin <m>
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what can patron infections saint infections saint infections saint infections saint infections saint infections infections saint infections skin patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections
+
+- template: <BOS> why <m> a line <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why patron infections infections infections infections infections infections infections infections infections infections infections ions saint infections a line patron infections infections infections ions saint infections ions saint infections ions saint infections ions saint
+
+- template: <BOS> does `` <m> have <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does `` patron infections infections infections infections infections infections infections infections infections infections infections ions saint ions have patron infections infections infections ions saint infections ions saint infections ions saint infections infections ions
+
+- template: <BOS> <m> ... '' solomon <m>
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ... '' solomon patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> what <m> think <m>
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections think patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> can <m> ? <m>
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions ? patron infections ions of ions infections ions infections ions infections ions infections ions infections ions
+
+- template: <BOS> <m> _UNK expression <m>
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections _UNK expression patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> why <m> on <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint on patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> if you <m> stupid <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> if you patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections stupid patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections
+
+- template: <BOS> cinco de <m> ... <m>
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco de patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ... patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> in the gospels <m>
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions in the gospels patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> question ? <m> know <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> question ? patron infections saint infections infections ions saint infections ions saint infections ions saint infections ions know patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> a <m> any
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> patron infections saint infections infections ions saint infections ions saint infections ions saint infections infections a patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint any
+
+- template: <BOS> <m> they were skeptical <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint they were skeptical patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> think of names <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions think of names patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> n't women <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint n't women patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> reading <m> ? <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> reading patron infections saint infections saint infections saint infections saint infections infections saint infections saint infections ? patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections
+
+- template: <BOS> how do <m> } <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how do patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions } patron infections of ions of ions of ions of ions of ions of ions of
+
+- template: <BOS> <m> his <m> a
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint his patron infections of ions of ions of ions of ions of ions of ions ions a
+
+- template: <BOS> is <m> eve it <m>
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> is patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint eve it patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what <m> compare it <m>
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions compare it patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> <m> ) teach <m>
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> patron infections ions saint infections ions saint infections ions saint infections ions saint infections ions ) teach patron infections ions of ions of ions of ions of ions of ions of ions
+
+- template: <BOS> <m> work <m> how
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> patron infections ions saint infections ions saint infections ions saint infections ions saint infections saint work patron infections ions of ions of ions of ions of ions of ions ions ions how
+
+- template: <BOS> what <m> definitely <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint definitely patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> do <m> consider it <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections consider it patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> he <m> goes
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint he patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint goes
+
+- template: <BOS> <m> the things to <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections infections saint infections saint infections the things to patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> what <m> a _UNK <m>
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint a _UNK patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> is holy <m> to <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> is holy patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions to patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> can <m> '' <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can patron infections ions saint infections ions saint infections ions saint infections ions saint infections ions '' patron infections of ions of ions of ions of ions of ions of ions of
+
+- template: <BOS> <m> : <m> _UNK
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> patron infections ions saint infections ions saint infections ions saint infections ions saint infections saint : patron infections of ions of ions of ions of ions of ions of ions ions _UNK
+
+- template: <BOS> what <m> of <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint of patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> really <m> her
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections really patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions her
+
+- template: <BOS> <m> are <m> ,
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint are patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint ,
+
+- template: <BOS> <m> kill <m> is
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions kill patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions is
+
+- template: <BOS> do you <m> i <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections i patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what <m> according to <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint according to patron infections saint infections saint infections saint infections saint infections saint infections saint infections infections
+
+- template: <BOS> <m> ? now i <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections infections ? now i patron infections infections infections infections infections infections ions infections ions infections ions infections ions infections
+
+- template: <BOS> <m> swedish , <m>
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> patron infections infections infections infections infections infections infections infections infections infections infections infections infections ions swedish , patron infections infections infections infections infections infections ions infections ions infections ions infections infections ions
+
+- template: <BOS> does _UNK <m> not <m>
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> does _UNK patron infections saint infections infections infections infections ions saint infections ions saint infections ions saint not patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> i dropped <m> when <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i dropped patron infections saint infections infections infections infections ions saint infections ions saint infections infections ions when patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what <m> 124 italian <m>
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint 124 italian patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> <m> to hold <m>
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions to hold patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+
+- template: <BOS> <m> jesus christ really <m>
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint jesus christ really patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> what <m> love and <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections love and patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> what <m> jewish <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint jewish patron infections saint infections saint infections saint infections saint infections saint infections saint saint infections
+
+- template: <BOS> <m> know <m> snap
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> patron infections saint infections saint saint infections saint infections saint infections saint infections saint infections know patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint snap
+
+- template: <BOS> what has <m> up <m>
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> what has patron infections saint infections saint infections saint infections saint infections infections infections infections infections infections up patron infections saint infections saint infections saint infections saint infections saint infections saint infections saint
+
+- template: <BOS> if <m> _UNK <m>
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> if patron infections saint infections saint infections saint infections saint infections infections infections infections infections saint _UNK patron infections saint infections saint infections saint infections saint infections saint infections saint infections ions
+

@@ -1,0 +1,800 @@
+- template: <BOS> <m> , who <m>
+- expected: <BOS> if you were a character from a movie , who would it be and why ?
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections , who st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> if they existed <m>
+- expected: <BOS> would angels , if they existed , possess free will ? and if so , what
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections infections infections infections infections if they existed st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> fun <m> points . <m>
+- expected: <BOS> fun ? or _UNK ? _UNK _UNK _UNK seem to be playing for points . 100
+- got:      <BOS> fun st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections points . st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> you _UNK your <m>
+- expected: <BOS> how _UNK languages in the world are most popular ? can you _UNK your question ?
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] you _UNK your st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> keep `` under <m>
+- expected: <BOS> why keep `` under god '' in the pledge if church and state are supposed to
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections keep `` under st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> a guy <m> am <m>
+- expected: <BOS> a guy is always starring and talking about me whenever am around am kind of feeling
+- got:      <BOS> a guy conservation infections infections infections infections infections infections infections infections infections infections infections infections infections ] am st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> are <m> ? <m>
+- expected: <BOS> are atheists really fools ? _UNK say that those who do n't believe in god are
+- got:      <BOS> are st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> greatest <m> between
+- expected: <BOS> what do u think is your greatest asset ? i think it is a tie between
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections greatest st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] between
+
+- template: <BOS> are <m> historical records <m>
+- expected: <BOS> are there any historical records of the death of john the disciple ? this question is
+- got:      <BOS> are conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections historical records st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> are u <m> your <m>
+- expected: <BOS> are u mixed race ? what 's your mixed background ? i think everyone is mixed
+- got:      <BOS> are u conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections your st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> life ? <m>
+- expected: <BOS> reasons to refuse the jesus ' gift of eternal life ? i am so thankful that
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections life ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> marijuana illegal ? <m>
+- expected: <BOS> why is marijuana illegal ? the reason it was made illegal in the first place was
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] marijuana illegal ? st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> lodge a <m>
+- expected: <BOS> is the _UNK lodge a satanic organization ? i have heard that once you are high
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections lodge a st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> ? : <m>
+- expected: <BOS> how is the inside life in the _UNK family ? : } america is a truly
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] ? : st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> name <m> card
+- expected: <BOS> when giving a wedding gift , should you include your dates 's name on the card
+- got:      <BOS> conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections name conservation ] ] ] ] ] ] ] ] ] ] ] infections ] ] card
+
+- template: <BOS> is there <m> good <m>
+- expected: <BOS> is there more good in the world than evil ? or more evil than good ?
+- got:      <BOS> is there conservation ] infections ] ] infections ] infections ] infections ] infections ] infections ] good conservation ] ] ] ] ] ] ] ] ] ] ] infections ] infections
+
+- template: <BOS> is <m> ? <m>
+- expected: <BOS> is it against islam to name your child after mohammad ? i thought mohammad could n't
+- got:      <BOS> is st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> am looking <m>
+- expected: <BOS> looking for some answers ... help ? i am looking for some answers about orthodox (
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] am looking st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> is there <m> in <m>
+- expected: <BOS> is there a turkish answers in yahoo ! ? i want to know is there a
+- got:      <BOS> is there conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections in st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> how <m> pot '' <m>
+- expected: <BOS> how many people out there think `` pot '' should be legalized ? i for one
+- got:      <BOS> how conservation infections infections infections infections infections infections infections infections ] infections infections infections infections infections pot '' st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> want <m> who <m>
+- expected: <BOS> want to read my answer to _UNK d ? if children who are born dead go
+- got:      <BOS> want st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections who st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> when it <m> who <m>
+- expected: <BOS> when it comes to your true self , who are you ? _UNK i do n't
+- got:      <BOS> when it st. bruises infections ] infections ] infections ] infections ] infections infections infections infections infections who st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> what things <m> feel <m>
+- expected: <BOS> what things can i _UNK to make someone feel like they 're in the midwest on
+- got:      <BOS> what things conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections feel st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> do you <m> ? <m>
+- expected: <BOS> do you like living in the country or in the city ? why ? well ,
+- got:      <BOS> do you conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> gorilla _UNK <m> ? <m>
+- expected: <BOS> gorilla _UNK ... ? ? ? i am trying to find gorilla _UNK for men .
+- got:      <BOS> gorilla _UNK conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> greek or <m> '' <m>
+- expected: <BOS> greek or roman god for `` _UNK speaking '' ? i would like to find out
+- got:      <BOS> greek or conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections '' st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> why <m> gays <m>
+- expected: <BOS> why are people so judgemental about us gays ? why ca n't other people accept the
+- got:      <BOS> why conservation bruises infections infections infections infections infections infections infections infections infections infections infections infections infections gays conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> does <m> and thier <m>
+- expected: <BOS> does anyone feel that satan has been poorly represented by christians and thier bibles ? according
+- got:      <BOS> does st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections and thier conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections
+
+- template: <BOS> free the <m> the <m>
+- expected: <BOS> free the bad energy ? i have bad energy that is with me at the moment
+- got:      <BOS> free the conservation ] infections ] infections ] infections infections infections infections infections infections infections infections infections the conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> if dan <m> was <m>
+- expected: <BOS> if dan brown was in a court of law , and swore on the holy bible
+- got:      <BOS> if dan conservation ] infections ] infections ] infections ] infections infections infections infections infections infections infections was conservation ] infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> where <m> nailed <m>
+- expected: <BOS> where is the cross now , which jesus been nailed 2000 years ago ? in about
+- got:      <BOS> where st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections nailed st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> what <m> name <m>
+- expected: <BOS> what is a great ghetto name ? what ghetto name automatically _UNK respect in people when
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] name st. infections ] infections ] infections ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> what is <m> ? <m>
+- expected: <BOS> what is the different between the gay and bad boy ? ? ? ? judging by
+- got:      <BOS> what is st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> considering <m> the uk <m>
+- expected: <BOS> considering both people from the uk and the usa speak english why do we have silly
+- got:      <BOS> considering st. bruises infections ] infections infections infections infections infections infections infections infections infections infections infections the uk st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> for summer <m>
+- expected: <BOS> how can i get a guy for summer ? have sex as often as possible .
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections for summer st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> how <m> does <m>
+- expected: <BOS> how many _UNK does santa have ? ? ? ? how many _UNK does santa have
+- got:      <BOS> how st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] does st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> would <m> a <m>
+- expected: <BOS> would many people be deeply disappointed if jesus came back as a woman ? if jesus
+- got:      <BOS> would st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections a st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> sick of the <m>
+- expected: <BOS> suicide should it be _UNK ? im sick of the ohh life is so valuable that
+- got:      <BOS> st. bruises infections infections infections infections infections infections infections infections infections infections infections ] infections sick of the st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> how <m> i bring <m>
+- expected: <BOS> how can i bring the youth of india to jesus christ ? i want to change
+- got:      <BOS> how conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections i bring conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> will you <m> religion <m>
+- expected: <BOS> will you defense your religion if someone prove that your religion is wrong ? if you
+- got:      <BOS> will you conservation infections infections infections infections infections infections infections infections infections infections infections infections ] infections religion st. infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> is carbon <m> relies <m>
+- expected: <BOS> is carbon dating reliable ? the premise of _UNK dating relies on an _UNK assumption .
+- got:      <BOS> is carbon st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections relies st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> do you <m> in <m>
+- expected: <BOS> do you have myths in tagalog translations ? write the myth of ramon _UNK and you
+- got:      <BOS> do you st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections in st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> what is <m> - <m>
+- expected: <BOS> what is mirror prayer ? _UNK mentioned mirror prayer - what is that ? i think
+- got:      <BOS> what is st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections - st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> what <m> for a <m>
+- expected: <BOS> what is difference _UNK penis and vagina ? one is for a man , and the
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] for a st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> jesus going to <m>
+- expected: <BOS> when is the time going to come ? when is jesus going to come down from
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections jesus going to conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> if ... <m>
+- expected: <BOS> what do you think the world would be like today if ... ? the roman empire
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections if ... conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> how do <m> feel <m>
+- expected: <BOS> how do you feel on a rainy day ? i love rainy _UNK . i throw
+- got:      <BOS> how do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections feel conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> will the <m> the <m>
+- expected: <BOS> will the institution of marriage lose its status as the _UNK of society over time ?
+- got:      <BOS> will the conservation infections infections infections infections infections infections infections infections infections infections infections ] infections infections the conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> is <m> only <m>
+- expected: <BOS> is it true that christians and jews believe the world is only a couple thousand years
+- got:      <BOS> is st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections only st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> hence <m> is <m>
+- expected: <BOS> hence you are told to accept one god , is _UNK that there are many gods
+- got:      <BOS> hence st. bruises infections infections infections infections infections infections infections infections infections infections infections infections ] is st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> as a <m> and <m>
+- expected: <BOS> as a christian do you believe god spoke to bush and told him to attack iraq
+- got:      <BOS> as a conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections and st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> how <m> the <m>
+- expected: <BOS> how would one go about proving that their religion is the `` right '' one ?
+- got:      <BOS> how conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections the st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> is <m> from corporate <m>
+- expected: <BOS> is valentine 's day just a bunch of bull from corporate america ? amazing how many
+- got:      <BOS> is st. bruises infections ] infections ] infections infections infections infections infections infections infections infections infections from corporate st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> _UNK silver <m>
+- expected: <BOS> who is the better pirate long _UNK silver morgan adams _UNK jack sparrow ? i like
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections infections infections infections infections infections infections _UNK silver st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> do you <m> ? <m>
+- expected: <BOS> do you believe our deceased love ones are always near spiritually ? do they try to
+- got:      <BOS> do you conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections ? conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> will be <m>
+- expected: <BOS> does anyone else think that our species will be extinct , within the next 3 centuries
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections will be conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> who <m> killers ? <m>
+- expected: <BOS> who thinks that jews are christ killers ? i dont think that but im just wondering
+- got:      <BOS> who conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections killers ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> please answer <m> question <m>
+- expected: <BOS> please answer my question ! ! ! ! ! ! ! ! ! ! ! !
+- got:      <BOS> please answer conservation infections infections infections infections infections infections infections infections infections infections infections infections infections ] question st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> what <m> a republican <m>
+- expected: <BOS> what are some of the reasons for you being a republican , democrat , other ,
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections a republican st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> why <m> _UNK and <m>
+- expected: <BOS> why most of the _UNK _UNK that exists today had its _UNK and roots in ?
+- got:      <BOS> why st. bruises infections ] infections ] infections ] infections ] infections infections infections infections infections _UNK and st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> the baptist <m>
+- expected: <BOS> if _UNK killed all the babies how did john the baptist survive ? john the baptist
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections the baptist st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> _UNK ? <m>
+- expected: <BOS> where is al _UNK ? al _UNK is a 2004 album by jazz band _UNK 's
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] _UNK ? st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> whats <m> a dictator <m>
+- expected: <BOS> whats the difference between a god & a dictator . i have built this world ,
+- got:      <BOS> whats st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections a dictator st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> preference <m> a
+- expected: <BOS> is there a correlation between hair color and religious preference ? no but there is a
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections preference st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] a
+
+- template: <BOS> spanish <m> is <m>
+- expected: <BOS> spanish dictionary ? yea ? the best one is the little yellow and blue one available
+- got:      <BOS> spanish st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections is st. infections ] infections ] infections ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> what is <m> attractive <m>
+- expected: <BOS> what is the youngest age at which a girl may be sexually attractive to a decent
+- got:      <BOS> what is st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] attractive st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> my <m> hates <m>
+- expected: <BOS> my boyfriend hates chocolate . what to give ? is it better to give cake ,
+- got:      <BOS> my st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections hates st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> they say <m> practice <m>
+- expected: <BOS> they say practice ... .. ? they said that practice makes perfect but they also said
+- got:      <BOS> they say st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections practice st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> what <m> time <m>
+- expected: <BOS> what are some stereotypes you either use or hear ? every time i do something dumb
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections time st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> christians <m> that
+- expected: <BOS> why many christians try to predict the end of the world , if we know that
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections christians st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] that
+
+- template: <BOS> <m> will win ! <m>
+- expected: <BOS> tell me any story ! the best one will win ! ? fact or fiction does
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections will win ! st. infections ] infections ] infections ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> <m> or does love <m>
+- expected: <BOS> do you own love or does love own you ? love is not something that can
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections ] infections or does love st. infections ] infections ] infections ] infections ] infections ] infections ] infections infections
+
+- template: <BOS> if <m> is a <m>
+- expected: <BOS> if a gay man 's girlfriend is his `` beard '' , what is a lesbian
+- got:      <BOS> if conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections is a st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> old <m> new <m>
+- expected: <BOS> old times worse then new times ? ok , back in the _UNK days kids got
+- got:      <BOS> old conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections new st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> is <m> anyone here <m>
+- expected: <BOS> is there anyone here from iraq or palestine ? or has family that lives over there
+- got:      <BOS> is conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections anyone here st. infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> that <m> jehovah
+- expected: <BOS> do _UNK really believe that their _UNK interpretation of the bible is historically accurate ? jehovah
+- got:      <BOS> conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections that st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections jehovah
+
+- template: <BOS> what <m> plastic surgery <m>
+- expected: <BOS> what do you think about plastic surgery to fix defects ? does your opinion of plastic
+- got:      <BOS> what st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections plastic surgery st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> which is <m> all <m>
+- expected: <BOS> which is the mountain on which the devil took jesus and showed him all the _UNK
+- got:      <BOS> which is st. bruises infections ] infections infections infections infections infections infections infections infections infections infections infections all st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> was che <m> he <m>
+- expected: <BOS> was che _UNK a good human ? my dad says he was a murderer > why
+- got:      <BOS> was che conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections he conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> _UNK <m>
+- expected: <BOS> what are their real names _UNK , _UNK , _UNK , & _UNK ? who changed
+- got:      <BOS> what conservation infections infections infections infections infections infections infections infections ] infections infections infections infections infections _UNK conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> my hair <m>
+- expected: <BOS> why does n't yahoo have any grey hair options for avatars ? my hair is grey
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections my hair st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> peacefully their differences <m>
+- expected: <BOS> can people as a whole discuss peacefully their differences without _UNK to name calling and _UNK
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections ] infections peacefully their differences st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> is <m> a date <m>
+- expected: <BOS> is any girls looking 4 a date in miami area ? this is not the place
+- got:      <BOS> is conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections a date st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> if we <m> are <m>
+- expected: <BOS> if we came from apes why are there still apes ? they 've got it above
+- got:      <BOS> if we conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections are st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> who <m> the most <m>
+- expected: <BOS> who is the most creative person in the world ? bush and his advisors . the
+- got:      <BOS> who conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections the most st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> why christians <m> old <m>
+- expected: <BOS> why christians has old _UNK and new _UNK ? why not just follow the old _UNK
+- got:      <BOS> why christians conservation infections infections infections infections infections infections infections infections ] infections infections infections infections infections old st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> <m> ... ... <m>
+- expected: <BOS> how to write ... ... ... ... ... ... ... ... ... .. ? hindi or
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections ... ... st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> killing <m> !
+- expected: <BOS> should one feel _UNK when killing in the name of god ? i guess not !
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] killing st. bruises infections ] infections ] ] infections ] infections ] infections ] infections ] !
+
+- template: <BOS> its <m> know <m>
+- expected: <BOS> its _UNK , do you know where your pants are ? it 's _UNK am here
+- got:      <BOS> its st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections know st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> can <m> our purpose <m>
+- expected: <BOS> can we be productive and serve our purpose ... . ? in life at the same
+- got:      <BOS> can st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] our purpose st. bruises infections ] infections ] ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> identify <m> thing <m>
+- expected: <BOS> identify one thing that you , as an individual , can do to increase acceptance of
+- got:      <BOS> identify st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections thing st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> ? ok , <m>
+- expected: <BOS> does anyone have any funny fart experiences to share ? ok , so i met this
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] ? ok , st. bruises infections ] infections ] ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> who has <m> say <m>
+- expected: <BOS> who has created god ? dont say himself . ? this is like asking , ``
+- got:      <BOS> who has conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections say conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> why do <m> people <m>
+- expected: <BOS> why do n't folks here stop stereotyping people because of their religion ? i 'm getting
+- got:      <BOS> why do conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections people conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> of <m>
+- expected: <BOS> what is your opinion of the south african civil unions bill ? yes , now gays
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections of st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> do <m> and plastic <m>
+- expected: <BOS> do you think that _UNK is morally wrong ? and plastic surgery also ? what are
+- got:      <BOS> do st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] and plastic st. bruises infections ] infections ] ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> what <m> cologne <m>
+- expected: <BOS> what is cologne and what is that used for ? i am new to this country
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections cologne st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> over my body <m>
+- expected: <BOS> i have terrible stretch marks all over my body . how can i get rid of
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections over my body st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> do holidays <m> crowd <m>
+- expected: <BOS> do holidays make you feel rather alone ? even if in a crowd ? ive got
+- got:      <BOS> do holidays conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections crowd conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> how <m> perverted ? <m>
+- expected: <BOS> how is asking what `` god '' does with his left hand perverted ? the bible
+- got:      <BOS> how conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections perverted ? conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> i do <m> believe <m>
+- expected: <BOS> i do n't even believe that people in the street are real . _UNK 's all
+- got:      <BOS> i do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections believe conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> as per <m> be <m>
+- expected: <BOS> as per tradition , when should christmas decorations be taken down ? ? ? tradition can
+- got:      <BOS> as per conservation infections infections infections infections infections infections infections infections infections infections ] infections infections infections be conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> _UNK for <m>
+- expected: <BOS> i need a original present for my boyfriend under _UNK for christmas ? gift certificates are
+- got:      <BOS> conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections _UNK for conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> why are <m> when <m>
+- expected: <BOS> why are there so many damn internet thugs ? it makes me so mad when i
+- got:      <BOS> why are conservation ] infections ] infections ] infections ] infections ] infections ] infections infections ] when conservation ] infections ] ] infections ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> <m> one <m> do
+- expected: <BOS> do you believe in past lives ? do you think you had one and how do
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections one st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections do
+
+- template: <BOS> <m> exist ? i <m>
+- expected: <BOS> does the flat earth society still exist ? i 'm curious to know whether the original
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections ] exist ? i st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> wat does <m> actually <m>
+- expected: <BOS> wat does `` sexually abusing a male child '' actually _UNK ? ? wat does ``
+- got:      <BOS> wat does conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections actually st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> who are <m> often <m>
+- expected: <BOS> who are the _UNK ... .what are they famous for ? ppl around me often talk
+- got:      <BOS> who are conservation infections infections infections infections infections infections infections infections ] infections infections infections infections infections often st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> <m> ? nope . <m>
+- expected: <BOS> how many people smoke pot every now and then ? nope . just not my thing
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections ? nope . st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> 17 years and <m>
+- expected: <BOS> how can i work as _UNK operator for 17 years and since we are all women
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections ] 17 years and st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> do <m> know of <m>
+- expected: <BOS> do anyone know of any good gay bars for lesbians in the buffalo areas ? i
+- got:      <BOS> do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections know of st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> what <m> the best <m>
+- expected: <BOS> what is the best way to _UNK to canada ? i 've found that the key
+- got:      <BOS> what conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections the best st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> what means <m> allah <m>
+- expected: <BOS> what means `` allah ho _UNK '' ? what means `` allah ho _UNK '' ?
+- got:      <BOS> what means st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections allah st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> you 're <m>
+- expected: <BOS> if you 've posted up an ad saying you 're willing to clean peoples _UNK ?
+- got:      <BOS> st. bruises infections ] infections infections infections infections infections infections infections infections infections infections infections you 're st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> a <m> free
+- expected: <BOS> prostitution is illegal , but if a woman on a corner was offering sex for free
+- got:      <BOS> conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections a conservation ] ] ] ] ] ] infections ] infections ] infections ] infections ] free
+
+- template: <BOS> strange thing <m> powerful <m>
+- expected: <BOS> strange thing about very powerful women ? look at the most powerful women in the world
+- got:      <BOS> strange thing conservation ] infections ] ] infections ] infections ] infections ] infections ] infections ] powerful conservation ] ] ] ] ] ] infections ] infections ] ] infections ] infections
+
+- template: <BOS> who believe <m> tell <m>
+- expected: <BOS> who believe that jesus is coming back ? if you believe tell me why ... if
+- got:      <BOS> who believe conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections tell st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> do any <m> french <m>
+- expected: <BOS> do any of you know a french language teacher ? if you know one around chicago
+- got:      <BOS> do any conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections french st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> hows can <m> sure <m>
+- expected: <BOS> hows can be sure that the bible accurate ? act and behave as teaching of bible
+- got:      <BOS> hows can conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections sure st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> why am <m> i <m>
+- expected: <BOS> why am i so hateful ? i feel like i`m possessed by a devil ? i
+- got:      <BOS> why am conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections i st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> they called <m>
+- expected: <BOS> which are the _UNK countries & why are they called so ? the countries are norway
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections they called st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> i take my <m>
+- expected: <BOS> who do i take my pain out on ? all the other users in chatrooms and
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections i take my st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> how did <m> first <m>
+- expected: <BOS> how did the first man on earth learned how to make fire ? man used fire
+- got:      <BOS> how did conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections first conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> will <m> will <m>
+- expected: <BOS> will we know people when we get to heaven ? i think we will . i
+- got:      <BOS> will conservation infections infections infections infections infections infections infections infections infections infections infections ] infections infections will conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> when you <m> do <m>
+- expected: <BOS> when you _UNK people from the past , do you _UNK them with a smile on
+- got:      <BOS> when you conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> of ur <m>
+- expected: <BOS> what is the meaning of ur life ? why ? _UNK the meaning of my life
+- got:      <BOS> what conservation infections infections infections infections infections infections infections infections infections infections infections ] infections infections of ur conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> interested in getting <m>
+- expected: <BOS> serious answers only please ! ! ! ? i 'm interested in getting into the sector
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections interested in getting conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> your sense <m>
+- expected: <BOS> where is your sense of humor ? no , really , where do you keep it
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections ] infections your sense conservation infections infections infections infections ] infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> why do <m> because <m>
+- expected: <BOS> why do people conform ? because they are `` sheep '' . like the song says
+- got:      <BOS> why do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections because conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> is it <m> to <m>
+- expected: <BOS> is it better to set _UNK higher or lower ? i have experienced nothing but disappointment
+- got:      <BOS> is it st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections to conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections
+
+- template: <BOS> what would <m> at <m>
+- expected: <BOS> what would you do at the second coming if you suddenly realized jesus was a _UNK
+- got:      <BOS> what would conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections at st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> hey , <m> much <m>
+- expected: <BOS> hey , i 'm a teen and dont have much of a holiday list ... anyone
+- got:      <BOS> hey , conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections much st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> why are <m> mtv <m>
+- expected: <BOS> why are the short _UNK on mtv , vh1 ( the _UNK station id clips )
+- got:      <BOS> why are conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections mtv conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> da vinci code <m>
+- expected: <BOS> who was da vinci in the da vinci code ? the book claims that leonardo da
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections ] infections infections infections da vinci code conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> who knows <m> can <m>
+- expected: <BOS> who knows and can explain the religion that is based on love and not selfish ambition
+- got:      <BOS> who knows conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections can st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> what _UNK <m> you <m>
+- expected: <BOS> what _UNK are you ? i 'm muslim and i 'm very proud that i 'm
+- got:      <BOS> what _UNK conservation infections infections infections infections infections infections infections infections ] infections infections infections infections infections you st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> how to <m> a <m>
+- expected: <BOS> how to _UNK tie a _UNK 's _UNK ... is there a web site i can
+- got:      <BOS> how to conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections a conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> how many <m> i <m>
+- expected: <BOS> how many christians are tired ? ? ? ? ? ? ? ? ? i am
+- got:      <BOS> how many conservation infections infections infections infections infections infections infections infections ] infections infections infections infections infections i conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections
+
+- template: <BOS> <m> , <m> left
+- expected: <BOS> lucifer and _UNK have ... ... ? the key of david , , , _UNK left
+- got:      <BOS> st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections , st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections left
+
+- template: <BOS> <m> clothes ? <m>
+- expected: <BOS> how do i remove blood stains from cotton clothes ? go to the supermarket and get
+- got:      <BOS> st. bruises infections infections infections infections infections infections infections infections infections infections ] infections infections clothes ? st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> what is <m> this <m>
+- expected: <BOS> what is with people on this site ? why does everyone on this website have something
+- got:      <BOS> what is st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections this st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> someone <m> hating
+- expected: <BOS> how can you love someone that hates you ? how can i stop someone from hating
+- got:      <BOS> st. bruises infections ] infections infections infections infections infections infections infections infections infections infections infections someone st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] hating
+
+- template: <BOS> hopes for <m> ? <m>
+- expected: <BOS> hopes for the future ? - australian high school students , what are your hopes for
+- got:      <BOS> hopes for st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> anyone <m> sick of <m>
+- expected: <BOS> anyone else sick of _UNK dudes trying to act black . ? theres nothing wrong with
+- got:      <BOS> anyone st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections sick of st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> any <m> for <m>
+- expected: <BOS> any lady got some _UNK for me ? love that sweet _UNK , give it up
+- got:      <BOS> any st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections for st. infections ] infections ] infections ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> <m> holy <m> you
+- expected: <BOS> which part of your holy book makes gives your holy book the most value for you
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] holy st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections you
+
+- template: <BOS> <m> that <m> pretty
+- expected: <BOS> has anyone ever thought they were the reincarnation of jesus ? cuz that would be pretty
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections that st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections pretty
+
+- template: <BOS> why <m> interviews can <m>
+- expected: <BOS> why the hell do we interview people ? interviews can be faked ! ! ! i
+- got:      <BOS> why st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] interviews can st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> is so much <m>
+- expected: <BOS> did god really create adams and eve ? there is so much evidence that have been
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections is so much conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> when <m> everytime
+- expected: <BOS> what do you think it means when people bring all thier friends to fights ? everytime
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections when conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections everytime
+
+- template: <BOS> why do <m> bible <m>
+- expected: <BOS> why do people believe in _UNK that ca n't be proven such as the bible ,
+- got:      <BOS> why do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections bible conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what can <m> women <m>
+- expected: <BOS> what can u say about _UNK women ? _UNK skin short height wide noses nice personality
+- got:      <BOS> what can st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections women conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections
+
+- template: <BOS> why do <m> it <m>
+- expected: <BOS> why do europeans put a line through their _UNK ? is it so difficult to tell
+- got:      <BOS> why do conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections it conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> does `` <m> have <m>
+- expected: <BOS> does `` god '' have a reason ? yes bro ! it 's the same thing
+- got:      <BOS> does `` st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections have conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections
+
+- template: <BOS> <m> feat <m> street
+- expected: <BOS> how does david _UNK perform ... '' solomon rising '' ? this feat of `` street
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections feat st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections street
+
+- template: <BOS> what <m> the <m>
+- expected: <BOS> what do you think of the following quote ? faith is a _UNK . it is
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] the st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> can <m> what kind <m>
+- expected: <BOS> can an old dog learn new tricks ? what kind of dog are you ? is
+- got:      <BOS> can st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections what kind st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> `` to <m> '' <m>
+- expected: <BOS> `` to have a ball '' is an english _UNK expression , but i do n't
+- got:      <BOS> `` to st. bruises infections ] infections infections infections infections infections infections infections infections infections infections infections '' st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> why is <m> to <m>
+- expected: <BOS> why is it such a big deal to go to church on a day celebrating christ
+- got:      <BOS> why is conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections to conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> disease you <m>
+- expected: <BOS> if you 're stupid enough to _UNK , you deserve every disease you get . who
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections infections ] disease you conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections
+
+- template: <BOS> cinco <m> mayo <m>
+- expected: <BOS> cinco de mayo ... holidays for _UNK ? what is the connection between alcohol and the
+- got:      <BOS> cinco conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections mayo conservation ] infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> you <m> way
+- expected: <BOS> christians : what do you sing in the gospels ? i always liked hearing the way
+- got:      <BOS> conservation ] infections ] infections ] infections ] infections ] infections ] infections infections ] you conservation ] infections ] infections ] ] infections ] infections ] infections ] infections ] way
+
+- template: <BOS> question <m> want a <m>
+- expected: <BOS> question ? ? is it bad that i want a 3rd bf ? u know that
+- got:      <BOS> question conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections want a st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> i 'm <m> poetic <m>
+- expected: <BOS> i 'm looking for a _UNK reference book with a poetic approach . has anyone any
+- got:      <BOS> i 'm conservation infections infections infections infections infections infections infections infections infections infections infections infections ] infections poetic st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> what <m> ? <m>
+- expected: <BOS> what does it mean when you 're called a dixie ? either they were skeptical of
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> girls <m> of <m>
+- expected: <BOS> girls names and cities ? i am trying to think of names of cities or places
+- got:      <BOS> girls st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] of st. bruises infections ] infections ] infections ] ] infections ] infections ] infections ]
+
+- template: <BOS> why <m> emergency pills <m>
+- expected: <BOS> why ca n't women take emergency pills after 52 hours of unprotected contact ? well ,
+- got:      <BOS> why conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections emergency pills conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> that _UNK and <m>
+- expected: <BOS> reading some books by the _UNK _UNK . ? he _UNK that _UNK and science (
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections ] infections infections that _UNK and conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections
+
+- template: <BOS> how <m> men <m>
+- expected: <BOS> how do you meet saved men for conversation possibly dating ? : } good plan be
+- got:      <BOS> how conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections men st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> do i address <m>
+- expected: <BOS> how do i address a letter to a bishop and his wife who is also a
+- got:      <BOS> conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections do i address st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> is it <m> i <m>
+- expected: <BOS> is it true that if it cat _UNK on christmas eve it i bad luck ?
+- got:      <BOS> is it conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections i conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what does <m> it <m>
+- expected: <BOS> what does this bible vs mean hebrews _UNK and compare it to _UNK ? when it
+- got:      <BOS> what does conservation infections infections infections infections infections infections infections infections infections infections infections infections infections ] it st. infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> does <m> is more <m>
+- expected: <BOS> does the bible in the ( new testament ) teach that there is more than one
+- got:      <BOS> does conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections is more st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> does <m> ? depends <m>
+- expected: <BOS> does witch craft realy work and how can i get into it ? depends on how
+- got:      <BOS> does conservation infections infections infections infections infections infections infections infections infections ] infections infections infections infections ? depends st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections
+
+- template: <BOS> what <m> _UNK <m>
+- expected: <BOS> what should i legally do if someone is _UNK with my mail ? definitely tell the
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections _UNK st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> do you <m> ... <m>
+- expected: <BOS> do you consider it immoral to ... ... ... .. ? do you consider it immoral
+- got:      <BOS> do you st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] ... st. bruises infections ] infections ] infections ] ] infections ] infections ] infections ]
+
+- template: <BOS> can you <m> he <m>
+- expected: <BOS> can you please ? pray for my dad . he has prostate cancer . he goes
+- got:      <BOS> can you conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections he conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what are <m> to <m>
+- expected: <BOS> what are the things to look for when setting up a hotel ? the area around
+- got:      <BOS> what are conservation infections infections infections infections infections infections infections infections infections infections ] infections infections infections to conservation infections infections infections infections infections ] infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> erection <m> can
+- expected: <BOS> what happens when you go to a _UNK camp and get an erection ? i can
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections erection st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections can
+
+- template: <BOS> <m> harming people we <m>
+- expected: <BOS> is holy scripture intended to be both a weapon & justification for harming people we are
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections harming people we st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> can anyone <m> i <m>
+- expected: <BOS> can anyone give me the lyrics to `` crabs for christmas '' ? oh i want
+- got:      <BOS> can anyone conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections i conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> my halloween costume <m>
+- expected: <BOS> what do you think of my halloween costume ? javascript : _UNK ( _UNK : _UNK
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections infections infections ] infections my halloween costume st. infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> of <m>
+- expected: <BOS> what religion has the greatest worldwide percentage of followers ? christianity 33 % see the easy
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections of st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> my wife <m> lately <m>
+- expected: <BOS> my wife has really been packing on the pounds lately . how do i get her
+- got:      <BOS> my wife st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] lately st. bruises infections ] infections ] ] infections ] infections ] infections ] infections ]
+
+- template: <BOS> where are <m> from <m>
+- expected: <BOS> where are you from and how 's the weather ? i 'm in from warren ,
+- got:      <BOS> where are conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections from st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> so it <m> to <m>
+- expected: <BOS> so it 's ok for isreal to kill and _UNK and never get blamed ? is
+- got:      <BOS> so it conservation infections infections infections infections infections infections infections ] infections infections infections infections infections infections to st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> do you <m> others <m>
+- expected: <BOS> do you view yourself above others , or equal to every soul ? i feel that
+- got:      <BOS> do you conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections others conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> <m> according to _UNK <m>
+- expected: <BOS> what is historical _UNK _UNK of marx ? according to _UNK 's thinking -- reality constantly
+- got:      <BOS> conservation infections infections infections infections infections infections infections infections infections infections ] infections infections infections according to _UNK conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> world ? <m>
+- expected: <BOS> what are some of the biggest mysteries in the world ? now i only want real
+- got:      <BOS> what st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections world ? st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections
+
+- template: <BOS> <m> esp . <m>
+- expected: <BOS> are _UNK languages ( swedish , danish esp . ) difficult to learn ? not really
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections infections esp . st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> it <m> .
+- expected: <BOS> does _UNK rust ? _UNK does not rust . it _UNK with time and oxidation .
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections it st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections .
+
+- template: <BOS> i dropped <m> when <m>
+- expected: <BOS> i dropped out of hs ... was that ok ... . ? when i was in
+- got:      <BOS> i dropped st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] when st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> <m> italian <m> .
+- expected: <BOS> what is 124 italian _UNK worth today ? i do n't know the exchange rate .
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections italian st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections .
+
+- template: <BOS> we <m> in laurel <m>
+- expected: <BOS> we 're looking for a site in laurel , md to hold weekly worship services .
+- got:      <BOS> we st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] in laurel st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
+- template: <BOS> did jesus <m> there <m>
+- expected: <BOS> did jesus christ really got married to mary magdalene ? no ! there is no evidence
+- got:      <BOS> did jesus conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections there conservation infections infections infections infections infections infections infections infections infections infections infections infections infections infections
+
+- template: <BOS> what do <m> education <m>
+- expected: <BOS> what do the british love and hate about britain today ? education , civil liberties ,
+- got:      <BOS> what do conservation infections infections infections infections infections infections infections infections infections infections ] infections infections infections education conservation infections infections infections infections infections infections ] infections infections infections infections infections infections infections
+
+- template: <BOS> what <m> people <m>
+- expected: <BOS> what right do the palestinians have to deny the jewish people the ability to be masters
+- got:      <BOS> what st. bruises infections infections infections infections infections infections infections infections infections infections infections infections infections people st. bruises infections ] st. bruises infections ] st. bruises infections ] infections ] infections
+
+- template: <BOS> <m> you <m> snap
+- expected: <BOS> how do you know if you are in a funk ? when u ca n't snap
+- got:      <BOS> st. bruises infections ] infections infections infections infections infections infections infections infections infections infections infections you st. bruises infections ] st. bruises infections ] st. bruises infections ] st. infections ] snap
+
+- template: <BOS> <m> disappointment <m> loved
+- expected: <BOS> what has been your biggest disappointment up to now ? outside of the death of loved
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections disappointment st. bruises infections ] infections ] infections ] infections ] infections ] infections ] infections loved
+
+- template: <BOS> <m> best answers <m>
+- expected: <BOS> if the best answers to most of your questions came from a single _UNK n't that
+- got:      <BOS> st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ] best answers st. bruises infections ] infections ] infections ] infections ] infections ] infections infections ]
+
