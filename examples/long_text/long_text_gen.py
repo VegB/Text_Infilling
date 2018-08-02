@@ -118,17 +118,9 @@ def _main(_):
     config = tf.ConfigProto(allow_soft_placement=True)
     config.gpu_options.allow_growth = True
 
-    def _plot(data_list, label, ylabel, xlabel, fig_name):
-        plt.figure(figsize=(14, 10))
-        plt.plot(data_list, '--', linewidth=1, label=label)
-        plt.ylabel(ylabel)
-        plt.xlabel(xlabel)
-        plt.savefig(args.log_dir + '/img/' + fig_name)
-
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
-        if args.draw_for_debug:
-            loss_lists = []
+        loss_lists = []
         while True:
             try:
                 fetches = {'template': template_pack,
@@ -144,14 +136,9 @@ def _main(_):
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)
-                if args.draw_for_debug:
-                    loss_lists.append(loss)
+                loss_lists.append(loss)
             except tf.errors.OutOfRangeError:
                 break
-            if args.draw_for_debug:
-                _plot(data_list=loss_list, label='loss trend',
-                      ylabel='training loss', xlabel='training steps in one epoch',
-                      fig_name='train_loss_curve.epoch{}.png'.format(cur_epoch))
         return loss_lists[::50]
 
     def _test_epoch(cur_sess, cur_epoch):
@@ -224,10 +211,12 @@ def _main(_):
                     resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
         return eval_bleu, template_bleu
 
-    def _draw_log(epoch, loss_list, test_bleu, train_bleu):
-        _plot(data_list=loss_list, label='loss trend', xlabel='every 50 steps',
-              ylabel='training loss till epoch {}'.format(epoch),
-              fig_name='train_loss_curve.png')
+    def _draw_log(epoch, loss_list, test_bleu, tplt_bleu):
+        plt.figure(figsize=(14, 10))
+        plt.plot(loss_list, '--', linewidth=1, label='loss trend')
+        plt.ylabel('training loss till epoch {}'.format(epoch))
+        plt.xlabel('every 50 steps')
+        plt.savefig(args.log_dir + '/img/train_loss_curve.png')
 
         plt.figure(figsize=(14, 10))
         plt.plot(test_bleu, '--', linewidth=1, label='test bleu')
@@ -235,7 +224,7 @@ def _main(_):
         plt.ylabel('bleu till epoch {}'.format(epoch))
         plt.xlabel('every epoch')
         plt.legend(['test bleu', 'template bleu'], loc='upper left')
-        plt.savefig(args.log_dir + '/img/' + 'bleu.png')
+        plt.savefig(args.log_dir + '/img/bleu.png')
         plt.close('all')
 
     config = tf.ConfigProto()
@@ -250,9 +239,9 @@ def _main(_):
         loss_list, test_bleu, tplt_bleu = [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                losses = _train_epochs(sess, epoch)
+                # losses = _train_epochs(sess, epoch)
                 test_score, tplt_score = _test_epoch(sess, epoch)
-                loss_list.extend(losses)
+                loss_list.extend([1, 2, 3])#losses)
                 test_bleu.append(test_score)
                 tplt_bleu.append(tplt_score)
                 _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
