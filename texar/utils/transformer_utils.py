@@ -406,7 +406,7 @@ def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eoa
 
 
 def generate_random_mask(inputs, lengths, present_rate,
-                         mask_id, eoa_id, pad_id, partition_num):
+                         mask_id, boa_id, eoa_id, pad_id, partition_num):
     def _fill_mask(inputs, lengths, present_rate, eoa_id, pad_id, partition_num):
         """
         The input batch has the same mask pattern, randoms through max_seq_length in lengths.
@@ -460,6 +460,7 @@ def generate_random_mask(inputs, lengths, present_rate,
             partitions = np.array([])
             masks = np.full_like(inputs, 0)
             after_pad_ans_lens = np.zeros(shape=partition_num)
+            boa = np.full(shape=(batch_size, 1), fill_value=boa_id)
             for i in range(1, partition_num + 1):
                 idx = i - 1  # ignore padding 0 in start/end_positions
                 # get start and end position for current mask
@@ -481,6 +482,7 @@ def generate_random_mask(inputs, lengths, present_rate,
 
                 # pad cur_answers to same length
                 cur_padded_ans, cur_max_len = _pad_array_list(cur_answers, mask_lengths[:, idx], pad_id)
+                cur_padded_ans = np.concatenate((boa, cur_padded_ans), axis=1)
                 after_pad_ans_lens[idx] = cur_max_len
                 answers = np.concatenate((answers, cur_padded_ans), axis=1)
 
@@ -513,7 +515,7 @@ def generate_random_mask(inputs, lengths, present_rate,
     return masks, answers, ans_lens, templates, template_masks
 
 
-def prepare_template(data_batch, args, mask_id, eoa_id, pad_id):
+def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
     """
     mask_id = 7
     pad_id = 6
@@ -533,11 +535,11 @@ def prepare_template(data_batch, args, mask_id, eoa_id, pad_id):
     if args.mask_strategy == 'equal_length':
         masks, answers, templates, template_masks = \
             generate_equal_length_mask(inputs, lengths, args.mask_num,
-                                       args.mask_length, mask_id, eoa_id)
+                                       args.mask_length, mask_id, boa_id, eoa_id)
     elif args.mask_strategy == 'random':
         masks, answers, answer_lengths, templates, template_masks =\
             generate_random_mask(inputs, lengths, args.present_rate,
-                                 mask_id, eoa_id, pad_id, args.partition_num)
+                                 mask_id, boa_id, eoa_id, pad_id, args.partition_num)
     else:
         raise TypeError("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length'] " %
               args.mask_strategy)
@@ -563,9 +565,9 @@ def prepare_template(data_batch, args, mask_id, eoa_id, pad_id):
         elif args.mask_strategy == 'random':
             mask_len = answer_lengths[idx]
         answer_segment_ids, answer_offsets = \
-            parse_segment(tf.fill(tf.shape(lengths), mask_len + 1),
+            parse_segment(tf.fill(tf.shape(lengths), mask_len + 2),
                           tf.zeros_like(answer))
-        answer = tf.reshape(answer, shape=tf.stack([-1, mask_len + 1]))  # has <eoa> at the end
+        answer = tf.reshape(answer, shape=tf.stack([-1, mask_len + 2]))  # has <eoa> and <boa>
         answer_packs.append({
             'text_ids': answer,
             'segment_ids': answer_segment_ids,

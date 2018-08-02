@@ -167,7 +167,7 @@ class TemplateTransformerDecoder(ModuleBase):
         return logits, preds
 
     def dynamic_decode(self, template_input, encoder_decoder_attention_bias,
-                       segment_ids, offsets, eos_id):
+                       segment_ids, offsets, bos_id, eos_id):
         """
             this function is called on in test mode, without the target input.
         """
@@ -175,7 +175,7 @@ class TemplateTransformerDecoder(ModuleBase):
             batch_size = tf.shape(template_input)[0]
             beam_width = self._hparams.beam_width
             maximum_decode_length = self.hparams.maximum_decode_length
-            start_tokens = tf.fill([batch_size], 1)
+            start_tokens = tf.cast(tf.fill([batch_size], bos_id), dtype=tf.int32)
             if beam_width <= 1:
                 sampled_ids, log_probs = self.greedy_decode(
                     self.prepare_tokens_to_embeds,

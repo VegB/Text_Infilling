@@ -49,11 +49,12 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
+    boa_id = train_data.vocab.token_to_id_map_py['<BOA>']
     eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
     eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
     pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args, mask_id, eoa_id, pad_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
@@ -111,6 +112,7 @@ def _main(_):
             encoder_decoder_attention_bias=None,
             segment_ids=segment_ids,
             offsets=offsets,
+            bos_id=boa_id,
             eos_id=eoa_id)
         predictions.append(preds['sampled_ids'][0])
 
@@ -240,7 +242,7 @@ def _main(_):
         loss_list, test_bleu, tplt_bleu = [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                losses = _train_epochs(sess, epoch)
+                # losses = _train_epochs(sess, epoch)
                 test_score, tplt_score = _test_epoch(sess, epoch)
                 loss_list.extend(losses)
                 test_bleu.append(test_score)
