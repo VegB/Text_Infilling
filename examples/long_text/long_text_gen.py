@@ -63,15 +63,11 @@ def _main(_):
         tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
                                               hparams=decoder_hparams)
 
-    template_embedded = embedder(template_pack['templates'])
-
     cetp_loss = None
     for hole in answer_packs:
-        logits, preds = decoder(decoder_input=hole['text_ids'][:, :-1],
-                                template_input=template_embedded,
+        logits, preds = decoder(decoder_input_pack=hole,
+                                template_input_pack=template_pack,
                                 encoder_decoder_attention_bias=None,
-                                segment_ids=hole['segment_ids'][:, :-1],
-                                offsets=hole['offsets'][:, :-1],
                                 args=args)
 
         cur_loss = tx.utils.smoothing_cross_entropy(
@@ -108,7 +104,7 @@ def _main(_):
                                                  idx * 2 + 1,  # segment id starting from 1
                                                  args.max_decode_len + 1)
         preds = decoder.dynamic_decode(
-            template_input=template_embedded,
+            template_input_pack=template_pack,
             encoder_decoder_attention_bias=None,
             segment_ids=segment_ids,
             offsets=offsets,
@@ -242,7 +238,7 @@ def _main(_):
         loss_list, test_bleu, tplt_bleu = [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                # losses = _train_epochs(sess, epoch)
+                losses = _train_epochs(sess, epoch)
                 test_score, tplt_score = _test_epoch(sess, epoch)
                 loss_list.extend(losses)
                 test_bleu.append(test_score)

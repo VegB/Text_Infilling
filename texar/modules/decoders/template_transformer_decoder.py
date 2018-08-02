@@ -127,8 +127,8 @@ class TemplateTransformerDecoder(ModuleBase):
 
         return _impl
     #pylint:disable=arguments-differ
-    def _build(self, decoder_input, template_input, encoder_decoder_attention_bias,
-               segment_ids, offsets, args):
+    def _build(self, decoder_input_pack, template_input_pack,
+               encoder_decoder_attention_bias, args):
         """
             this function is called on training generally.
             Args:
@@ -139,21 +139,31 @@ class TemplateTransformerDecoder(ModuleBase):
                 logits: [batch_size, target_length, vocab_size]
                 preds: [batch_size, target_length]
         """
-        logits = None
+        input = decoder_input_pack['text_ids'][:, :-1]
         decoder_self_attention_bias = (
             attentions.attention_bias_lower_triangle(
-                utils.shape_list(decoder_input)[1]))
-        target_inputs = tf.nn.embedding_lookup(self._embedding, decoder_input)
+                utils.shape_list(input)[1]))
+        input_word_embeds = tf.nn.embedding_lookup(self._embedding, input)
         if self._hparams.multiply_embedding_mode == 'sqrt_depth':
-            target_inputs = target_inputs * \
+            input_word_embeds = input_word_embeds * \
                 (self._embedding.shape.as_list()[-1]**0.5)
-        length = utils.shape_list(target_inputs)[1]
-        channels = utils.shape_list(target_inputs)[2]
-        pos_embeds = self.position_embedder(length, channels, segment_ids, offsets)
-        inputs = target_inputs + pos_embeds
+        length = utils.shape_list(input_word_embeds)[1]
+        channels = utils.shape_list(input_word_embeds)[2]
+        input_pos_embeds = self.position_embedder(length, channels,
+                                                  decoder_input_pack['segment_ids'][:, :-1],
+                                                  decoder_input_pack['offsets'][:, :-1])
+        inputs = input_word_embeds + input_pos_embeds
+
+        template = template_input_pack['templates']
+        template_word_embeds = tf.nn.embedding_lookup(self._embedding, template)
+        template_length = utils.shape_list(template)[1]
+        template_pos_embeds = self.position_embedder(template_length, channels,
+                                                     template_input_pack['segment_ids'],
+                                                     template_input_pack['offsets'])
+        template_inputs = template_word_embeds + template_pos_embeds
         self.decoder_output = self._self_attention_stack(
             inputs,
-            template_input,
+            template_inputs,
             decoder_self_attention_bias=decoder_self_attention_bias,
         )
 
@@ -166,13 +176,22 @@ class TemplateTransformerDecoder(ModuleBase):
 
         return logits, preds
 
-    def dynamic_decode(self, template_input, encoder_decoder_attention_bias,
+    def dynamic_decode(self, template_input_pack, encoder_decoder_attention_bias,
                        segment_ids, offsets, bos_id, eos_id):
         """
             this function is called on in test mode, without the target input.
         """
         with tf.variable_scope(self.variable_scope, reuse=True):
-            batch_size = tf.shape(template_input)[0]
+            template = template_input_pack['templates']
+            template_word_embeds = tf.nn.embedding_lookup(self._embedding, template)
+            template_length = utils.shape_list(template)[1]
+            channels = utils.shape_list(template_word_embeds)[2]
+            template_pos_embeds = self.position_embedder(template_length, channels,
+                                                         template_input_pack['segment_ids'],
+                                                         template_input_pack['offsets'])
+            template_inputs = template_word_embeds + template_pos_embeds
+
+            batch_size = tf.shape(template_inputs)[0]
             beam_width = self._hparams.beam_width
             maximum_decode_length = self.hparams.maximum_decode_length
             start_tokens = tf.cast(tf.fill([batch_size], bos_id), dtype=tf.int32)
@@ -182,7 +201,7 @@ class TemplateTransformerDecoder(ModuleBase):
                     start_tokens,
                     eos_id, #self._hparams.eos_idx,
                     decode_length=maximum_decode_length,
-                    memory=template_input,
+                    memory=template_inputs,
                     encoder_decoder_attention_bias=\
                         encoder_decoder_attention_bias,
                     segment_ids=segment_ids,
@@ -195,7 +214,7 @@ class TemplateTransformerDecoder(ModuleBase):
                     eos_id, #self._hparams.eos_idx,
                     beam_width=beam_width,
                     decode_length=maximum_decode_length,
-                    memory=template_input,
+                    memory=template_inputs,
                     encoder_decoder_attention_bias=\
                         encoder_decoder_attention_bias,
                     segment_ids=segment_ids,
