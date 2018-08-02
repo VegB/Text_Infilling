@@ -50,8 +50,9 @@ def _main(_):
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
     eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
+    pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args, mask_id, eoa_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, eoa_id, pad_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
@@ -117,6 +118,13 @@ def _main(_):
     config = tf.ConfigProto(allow_soft_placement=True)
     config.gpu_options.allow_growth = True
 
+    def _plot(data_list, label, ylabel, xlabel, fig_name):
+        plt.figure(figsize=(14, 10))
+        plt.plot(data_list, '--', linewidth=1, label=label)
+        plt.ylabel(ylabel)
+        plt.xlabel(xlabel)
+        plt.savefig(args.log_dir + '/img/' + fig_name)
+
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
         if args.draw_for_debug:
@@ -132,25 +140,19 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 500 == 0:
+                if step % 200 == 1:
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)
                 if args.draw_for_debug:
                     loss_lists.append(loss)
-                if step == opt_hparams['max_training_steps']:
-                    print('reach max steps:{} loss:{}'.format(step, loss))
-                    print('reached max training steps')
-                    return 'finished'
             except tf.errors.OutOfRangeError:
                 break
             if args.draw_for_debug:
-                plt.figure(figsize=(14, 10))
-                plt.plot(loss_lists, '--', linewidth=1, label='loss trend')
-                plt.ylabel('training loss')
-                plt.xlabel('training steps in one epoch')
-                plt.savefig(args.log_dir + '/img/train_loss_curve.epoch{}.png'.format(cur_epoch))
-        return 'done'
+                _plot(data_list=loss_list, label='loss trend',
+                      ylabel='training loss', xlabel='training steps in one epoch',
+                      fig_name='train_loss_curve.epoch{}.png'.format(cur_epoch))
+        return loss_lists[::50]
 
     def _test_epoch(cur_sess, cur_epoch):
         def _id2word_map(id_arrays):
@@ -220,7 +222,21 @@ def _main(_):
                     resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                     resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
-        return eval_bleu
+        return eval_bleu, template_bleu
+
+    def _draw_log(epoch, loss_list, test_bleu, train_bleu):
+        _plot(data_list=loss_list, label='loss trend', xlabel='every 50 steps',
+              ylabel='training loss till epoch {}'.format(epoch),
+              fig_name='train_loss_curve.png')
+
+        plt.figure(figsize=(14, 10))
+        plt.plot(test_bleu, '--', linewidth=1, label='test bleu')
+        plt.plot(tplt_bleu, '--', linewidth=1, label='template bleu')
+        plt.ylabel('bleu till epoch {}'.format(epoch))
+        plt.xlabel('every epoch')
+        plt.legend(['test bleu', 'template bleu'], loc='upper left')
+        plt.savefig(args.log_dir + '/img/' + 'bleu.png')
+        plt.close('all')
 
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
@@ -231,20 +247,19 @@ def _main(_):
 
         # eval_saver.restore(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
+        loss_list, test_bleu, tplt_bleu = [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                status = _train_epochs(sess, epoch)
-                test_score = _test_epoch(sess, epoch)
+                losses = _train_epochs(sess, epoch)
+                test_score, tplt_score = _test_epoch(sess, epoch)
+                loss_list.extend(losses)
+                test_bleu.append(test_score)
+                tplt_bleu.append(tplt_score)
+                _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
                 if highest_bleu < 0 or test_score > highest_bleu:
                     print('the %d epoch, highest bleu %f' % (epoch, test_score))
                     eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
                     highest_bleu = test_score
-                if status == 'finished':
-                    print('saving model for max training steps')
-                    os.makedirs(args.log_dir + '/max/')
-                    eval_saver.save(sess, \
-                                    args.log_dir + '/max/my-model-highest_bleu.ckpt')
-                    break
                 sys.stdout.flush()
 
 

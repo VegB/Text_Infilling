@@ -66,7 +66,7 @@ def load_hyperparams():
     argparser.add_argument('--pre_encoding', type=str, default='spm')
     argparser.add_argument('--max_decode_len', type=int, default=15)
     argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
-    argparser.add_argument('--present_rate', type=float, default=0.5)
+    argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
