@@ -30,6 +30,8 @@ plt.switch_backend('agg')
 import tensorflow as tf
 import texar as tx
 from texar.data import SpecialTokens
+from texar.modules.embedders import position_embedders
+from texar.utils import utils
 
 from data_utils import prepare_data_batch
 import baseline_hyperparams
@@ -54,44 +56,65 @@ def _main(_):
                                              test=test_data)
     data_batch = iterator.get_next()
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
+    boa_id = train_data.vocab.token_to_id_map_py['<BOA>']
+    eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
+    bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
+    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
+    pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args.mask_num, args.min_mask_length,
-                                  mask_id, eos_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
                                        hparams=args.word_embedding_hparams)
+    position_embedder = position_embedders.SinusoidsSegmentalPositionEmbedder()
     encoder = tx.modules.UnidirectionalRNNEncoder(hparams=encoder_hparams)
-    decoder = tx.modules.BasicRNNDecoder(vocab_size=train_data.vocab.size,
-                                         hparams=decoder_hparams)
+    decoder = tx.modules.BasicPositionalRNNDecoder(vocab_size=train_data.vocab.size,
+                                                   hparams=decoder_hparams,
+                                                   position_embedder=position_embedder)
     decoder_initial_state_size = decoder.cell.state_size
     connector = tx.modules.connectors.ForwardConnector(decoder_initial_state_size)
 
-    enc_input_embedded = embedder(template_pack['text_ids'])  # template
-    dec_input_embedded = embedder(data_batch['text_ids'][:, :-1])
+    template = template_pack['templates']
+    template_word_embeds = embedder(template)
+    template_length = utils.shape_list(template)[1]
+    channels = utils.shape_list(template)[2]
+    template_pos_embeds = position_embedder(template_length, channels,
+                                            template_pack['segment_ids'],
+                                            template_pack['offsets'])
+    enc_input_embedded = template_word_embeds + template_pos_embeds
 
     _, ecdr_states = encoder(
         enc_input_embedded,
         sequence_length=data_batch["length"])
 
-    dcdr_states = connector(ecdr_states)
+    dcdr_init_states = connector(ecdr_states)
 
-    outputs, _, _ = decoder(
-        initial_state=dcdr_states,
-        decoding_strategy="train_greedy",
-        inputs=dec_input_embedded,
-        sequence_length=data_batch["length"]-1)
+    cetp_loss = None
+    for hole in answer_packs:
+        dec_input = hole['text_ids'][:-1]
+        dec_input_word_embeds = embedder(dec_input)
+        dec_input_length = utils.shape_list(dec_input)[1]
+        dec_input_pos_embeds = position_embedder(dec_input_length, channels,
+                                                 hole['segment_ids'],
+                                                 hole['offsets'])
+        dec_input_embedded = dec_input_word_embeds + dec_input_pos_embeds
+        outputs, _, _ = decoder(
+            initial_state=dcdr_init_states,
+            decoding_strategy="train_greedy",
+            inputs=dec_input_embedded,
+            sequence_length=data_batch["length"]-1)
 
-    mle_loss = tx.utils.smoothing_cross_entropy(
-        outputs.logits,
-        data_batch['text_ids'][:, 1:],
-        train_data.vocab.size,
-        loss_hparams['label_confidence'],
-    )
-    mle_loss = \
-        tf.reduce_sum(mle_loss * tf.cast(template_pack['masks'][:, 1:], tf.float32)) / \
-        tf.cast(tf.reduce_sum(template_pack['masks'][:, 1:]), tf.float32)
+        cur_loss = tx.utils.smoothing_cross_entropy(
+            outputs.logits,
+            hole['text_ids'][:, 1:],
+            train_data.vocab.size,
+            loss_hparams['label_confidence'],
+        )
+        cetp_loss = cur_loss if cetp_loss is None \
+            else tf.concat([cetp_loss, cur_loss], -1)
+
+    cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
@@ -101,23 +124,22 @@ def _main(_):
         learning_rate = opt_hparams['lr_constant'] \
                         * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
                         * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
-                        * args.hidden_dim ** -0.5
+                        * args.hidden_dim ** -0.5 \
+                        * args.present_rate
     optimizer = tf.train.AdamOptimizer(
         learning_rate=learning_rate,
         beta1=opt_hparams['Adam_beta1'],
         beta2=opt_hparams['Adam_beta2'],
         epsilon=opt_hparams['Adam_epsilon'],
     )
-    train_op = optimizer.minimize(mle_loss, global_step)
+    train_op = optimizer.minimize(cetp_loss, global_step)
 
-    bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
-    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
     outputs_infer, _, _ = decoder(
         decoding_strategy="infer_sample",
         start_tokens=tf.cast(tf.fill([tf.shape(data_batch['text_ids'])[0]], bos_id), tf.int32),
         end_token=eos_id,
         embedding=embedder,
-        initial_state=dcdr_states)
+        initial_state=dcdr_init_states)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
