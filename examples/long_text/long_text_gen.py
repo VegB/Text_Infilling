@@ -88,7 +88,8 @@ def _main(_):
         learning_rate = opt_hparams['lr_constant'] \
                         * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
                         * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
-                        * args.hidden_dim ** -0.5
+                        * args.hidden_dim ** -0.5 \
+                        * args.present_rate
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                        beta1=opt_hparams['Adam_beta1'],
                                        beta2=opt_hparams['Adam_beta2'],
