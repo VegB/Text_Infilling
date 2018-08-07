@@ -25,6 +25,7 @@ __all__ = [
     "BasicRNNDecoderOutput",
     "AttentionRNNDecoderOutput",
     "BasicRNNDecoder",
+    "BasicPositionalRNNDecoder",
     "AttentionRNNDecoder"
 ]
 
@@ -221,6 +222,157 @@ class BasicRNNDecoder(RNNDecoderBase):
             sample_id=self._helper.sample_ids_dtype,
             cell_output=nest.map_structure(
                 lambda _: dtype, self._cell.output_size))
+
+
+class BasicPositionalRNNDecoder(RNNDecoderBase):
+    """Basic RNN decoder that performs sampling at each step.
+
+    Args:
+        cell (RNNCell, optional): An instance of `RNNCell`. If `None`
+            (default), a cell is created as specified in
+            :attr:`hparams["rnn_cell"]` (see
+            :meth:`~texar.modules.BasicRNNDecoder.default_hparams`).
+        cell_dropout_mode (optional): A Tensor taking value of
+            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`, which
+            toggles dropout in the RNN cell (e.g., activates dropout in the
+            TRAIN mode). If `None`, :func:`~texar.context.global_mode` is used.
+            Ignored if :attr:`cell` is given.
+        vocab_size (int, optional): Vocabulary size. Required if
+            :attr:`output_layer:` is `None`.
+        output_layer (optional): An instance of
+            :tf_main:`tf.layers.Layer <layers/Layer>`, or
+            :tf_main:`tf.identity <identity>`. Apply to the RNN cell
+            output to get logits. If `None`, a dense layer
+            is used with output dimension set to :attr:`vocab_size`.
+            Set `output_layer=tf.identity` if you do not want to have an
+            output layer after the RNN cell outputs.
+        hparams (dict, optional): Hyperparameters. If not specified, the default
+            hyperparameter setting is used. See
+            :meth:`~texar.modules.BasicRNNDecoder.default_hparams` for the
+            structure and default values.
+    """
+
+    def __init__(self,
+                 cell=None,
+                 cell_dropout_mode=None,
+                 vocab_size=None,
+                 output_layer=None,
+                 position_embedder=None,
+                 hparams=None):
+        RNNDecoderBase.__init__(
+            self, cell, vocab_size, output_layer, cell_dropout_mode, hparams)
+        self.position_embedder = position_embedder
+        self.current_segment_id = -1
+
+    @staticmethod
+    def default_hparams():
+        """Returns a dictionary of hyperparameters with default values.
+
+        Returns:
+            .. code-block:: python
+
+                {
+                    "rnn_cell": default_rnn_cell_hparams(),
+                    "helper_train": default_helper_train_hparams(),
+                    "helper_infer": default_helper_infer_hparams(),
+                    "max_decoding_length_train": None,
+                    "max_decoding_length_infer": None,
+                    "name": "basic_rnn_decoder"
+                }
+
+            Here:
+
+            "rnn_cell" : dict
+                A dictionary of RNN cell hyperparameters. Ignored if
+                :attr:`cell` is given when constructing the decoder.
+
+                The default value is defined in
+                :meth:`~texar.core.layers.default_rnn_cell_hparams`.
+
+            "helper_train" : dict
+                A dictionary of :class:`Helper` hyperparameters. The
+                helper is used in training phase.
+
+                The default value is defined in
+                :meth:`~texar.modules.default_helper_train_hparams`
+
+            "helper_infer": dict
+                A dictionary of :class:`Helper` hyperparameters. The
+                helper is used in inference phase.
+
+                The default value is defined in
+                :meth:`~texar.modules.default_helper_infer_hparams`
+
+            "max_decoding_length_train": int or None
+                Maximum allowed number of decoding steps in training mode..
+
+                The default is `None`, which means decoding is
+                performed until fully done, e.g., encountering the <EOS> token.
+
+            "max_decoding_length_infer" : int or None
+                Maximum allowed number of decoding steps in inference mode.
+
+                The default is `None`, which means decoding is
+                performed until fully done, e.g., encountering the <EOS> token.
+
+            "name" : str
+                Name of the decoder.
+
+                The default value is "basic_rnn_decoder".
+        """
+        hparams = RNNDecoderBase.default_hparams()
+        hparams["name"] = "basic_rnn_decoder"
+        return hparams
+
+    def initialize(self, name=None):
+        return self._helper.initialize() + (self._initial_state,)
+
+    def step(self, time, inputs, state, name=None):
+        cell_outputs, cell_state = self._cell(inputs, state)
+        logits = self._output_layer(cell_outputs)  # turn cell outputs into logits for for each vocab
+        sample_ids = self._helper.sample(  # turn logits into ids
+            time=time, outputs=logits, state=cell_state)
+        (finished, next_inputs_word_embeds, next_state) = self._helper.next_inputs(
+            time=time,
+            outputs=logits,
+            state=cell_state,
+            sample_ids=sample_ids)  # look up in embedding -> next_inputs
+        # channels = utils.shape_list(next_inputs_word_embeds)[2]
+        # next_input_pos_embeds = self.position_embedder(1, channels,
+        #                                                self.current_segment_id,  # segment_ids
+        #                                                time)  # offsets
+        next_inputs = next_inputs_word_embeds #+ next_input_pos_embeds
+        outputs = BasicRNNDecoderOutput(logits, sample_ids, cell_outputs)
+        return (outputs, next_state, next_inputs, finished)
+
+    def finalize(self, outputs, final_state, sequence_lengths):
+        return outputs, final_state
+
+    @property
+    def output_size(self):
+        """Output size of one step.
+        """
+        return BasicRNNDecoderOutput(
+            logits=self._rnn_output_size(),
+            sample_id=self._helper.sample_ids_shape,
+            cell_output=self._cell.output_size)
+
+    @property
+    def output_dtype(self):
+        """Types of output of one step.
+        """
+        # Assume the dtype of the cell is the output_size structure
+        # containing the input_state's first component's dtype.
+        # Return that structure and the sample_ids_dtype from the helper.
+        dtype = nest.flatten(self._initial_state)[0].dtype
+        return BasicRNNDecoderOutput(
+            logits=nest.map_structure(lambda _: dtype, self._rnn_output_size()),
+            sample_id=self._helper.sample_ids_dtype,
+            cell_output=nest.map_structure(
+                lambda _: dtype, self._cell.output_size))
+
+    def set_segment_id(self, segment_id):
+        self.current_segment_id = segment_id
 
 
 #TODO(zhiting): allow a list of Attention Mechanisms

@@ -3,7 +3,7 @@
 configurate the hyperparameters, based on command line arguments.
 """
 import argparse
-import copy
+import math
 import os
 
 from texar.utils.transformer_utils import _batching_scheme
@@ -26,7 +26,7 @@ def load_hyperparams():
     # pylint: disable=too-many-statements
     args = Hyperparams()
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('--max_seq_length', type=int, default=64)  #256
+    argparser.add_argument('--max_seq_length', type=int, default=16)  # 256
     argparser.add_argument('--running_mode', type=str,
                            default='train_and_evaluate',
                            help='can also be test mode')
@@ -50,26 +50,28 @@ def load_hyperparams():
     argparser.add_argument('--max_training_steps', type=int, default=2500000)
     argparser.add_argument('--warmup_steps', type=int, default=16000)
     argparser.add_argument('--lr_constant', type=float, default=2)
-    argparser.add_argument('--max_train_epoch', type=int, default=70)
+    argparser.add_argument('--max_train_epoch', type=int, default=150)
     argparser.add_argument('--random_seed', type=int, default=1234)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--beam_width', type=int, default=2)
     argparser.add_argument('--alpha', type=float, default=0.6,
-        help=' length_penalty=(5+len(decode)/6) ^ -\alpha')
+                           help=' length_penalty=(5+len(decode)/6) ^ -\alpha')
     argparser.add_argument('--save_eval_output', default=1,
-        help='save the eval output to file')
+                           help='save the eval output to file')
     argparser.add_argument('--eval_interval_epoch', type=int, default=1)
     argparser.add_argument('--load_from_pytorch', type=str, default='')
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
     argparser.add_argument('--max_decode_len', type=int, default=15)
-    argparser.add_argument('--mask_strategy', type=str, default='random')  # contiguous
-    argparser.add_argument('--present_rate', type=float, default=0.5)
+    argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
+    argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--min_mask_length', type=int, default=5)
+    argparser.add_argument('--mask_length', type=int, default=5)
     argparser.parse_args(namespace=args)
 
+    args.max_partition_num = int((args.max_seq_length + 1) / 2)
+    args.partition_num = int(math.log(args.max_seq_length))
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,
@@ -79,8 +81,14 @@ def load_hyperparams():
     args.test_file = os.path.join(args.data_dir,
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    log_params_dir = 'log_dir/bsize{}.epoch{}.lr_c{}warm{}.baseline/'.format(
-        args.batch_size, args.max_train_epoch, args.lr_constant, args.warmup_steps)
+    if args.mask_strategy == 'random':
+        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.seq2seq/'.format(
+            args.batch_size, args.max_train_epoch, args.max_seq_length,
+            args.mask_strategy, args.present_rate, args.partition_num)
+    elif args.mask_strategy == 'equal_length':
+        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.seq2seq/'.format(
+            args.batch_size, args.max_train_epoch, args.max_seq_length,
+            args.mask_strategy, args.mask_num, args.mask_len)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
     batching_scheme = _batching_scheme(
         args.batch_size,

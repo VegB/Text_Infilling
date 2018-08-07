@@ -493,16 +493,16 @@ def generate_random_mask(inputs, lengths, present_rate,
             return masks, start_positions[:, 1:].astype(np.int64),\
                    end_positions[:, 1:].astype(np.int64),\
                    answers.astype(np.int64), after_pad_ans_lens.astype(np.int64), \
-                   partitions.astype(np.int32)
+                   mask_lengths.astype(np.int32), partitions.astype(np.int32)
 
         eoa_id = tf.Variable(eoa_id, dtype=tf.int64)
         present_rate = tf.Variable(present_rate, dtype=tf.float32)
         partition_num = tf.Variable(partition_num, dtype=tf.int64)
         return tf.py_func(_fill_mask_py_func,
                           [inputs, lengths, present_rate, eoa_id, pad_id, partition_num],
-                          [tf.int64, tf.int64, tf.int64, tf.int64, tf.int64, tf.int32])
+                          [tf.int64, tf.int64, tf.int64, tf.int64, tf.int64, tf.int32, tf.int32])
 
-    masks, start_positions, end_positions, answers, ans_lens, partitions = \
+    masks, start_positions, end_positions, answers, after_pad_ans_lens, true_ans_lens, partitions = \
         _fill_mask(inputs, lengths, present_rate, eoa_id, pad_id, partition_num)
     answers = tf.dynamic_partition(data=tf.transpose(answers, perm=[1, 0]),  # [sum(lens), batch_size]
                                    partitions=partitions,
@@ -512,7 +512,7 @@ def generate_random_mask(inputs, lengths, present_rate,
     templates, template_masks = \
         _prepare_squeezed_template(inputs, masks, start_positions, end_positions, mask_id)
 
-    return masks, answers, ans_lens, templates, template_masks
+    return masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks
 
 
 def generate_prediction_offsets(inputs, max_length):
@@ -550,7 +550,7 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
             generate_equal_length_mask(inputs, lengths, args.mask_num,
                                        args.mask_length, mask_id, boa_id, eoa_id)
     elif args.mask_strategy == 'random':
-        masks, answers, answer_lengths, templates, template_masks =\
+        masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks = \
             generate_random_mask(inputs, lengths, args.present_rate,
                                  mask_id, boa_id, eoa_id, pad_id, args.partition_num)
     else:
@@ -576,17 +576,16 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
         if args.mask_strategy == 'equal_length':
             mask_len = args.mask_length
         elif args.mask_strategy == 'random':
-            mask_len = answer_lengths[idx]
-        # answer_segment_ids, answer_offsets = \
-        #     parse_segment(tf.fill(tf.shape(lengths), mask_len + 2),
-        #                   tf.zeros_like(answer))
+            mask_len = after_pad_ans_lens[idx]
         answer_segment_ids = generate_prediction_segment_ids(answer, idx * 2 + 1, mask_len + 2)
         answer_offsets = generate_prediction_offsets(answer, mask_len + 2)
         answer = tf.reshape(answer, shape=tf.stack([-1, mask_len + 2]))  # has <eoa> and <boa>
+        lengths = tf.reshape(true_ans_lens[:, idx], shape=tf.stack([-1]))
         answer_packs.append({
             'text_ids': answer,
             'segment_ids': answer_segment_ids,
-            'offsets': answer_offsets
+            'offsets': answer_offsets,
+            'lengths': lengths
         })
 
     return template_pack, answer_packs

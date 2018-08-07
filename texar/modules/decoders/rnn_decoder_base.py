@@ -139,6 +139,7 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
               is obtained by random sampling from the RNN output distribution. \
               Arguments :attr:`(embedding, start_tokens, end_token)` are \
               required for this strategy.
+            - "infer_positional": adding positional embedding during inference.
 
           This argument is used only when :attr:`helper` is `None`.
 
@@ -278,6 +279,9 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             elif decoding_strategy == "infer_sample":
                 helper = tf.contrib.seq2seq.SampleEmbeddingHelper(
                     embedding, start_tokens, end_token, softmax_temperature)
+            elif decoding_strategy == "infer_positional":
+                helper = tf.contrib.seq2seq.GreedyEmbeddingHelper(
+                    embedding, start_tokens, end_token)
             else:
                 raise ValueError(
                     "Unknown decoding strategy: {}".format(decoding_strategy))

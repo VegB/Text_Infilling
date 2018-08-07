@@ -21,10 +21,7 @@ from __future__ import print_function
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import sys
-import time
 import codecs
-import logging
-import numpy as np
 from matplotlib import pyplot as plt
 plt.switch_backend('agg')
 import tensorflow as tf
@@ -33,7 +30,6 @@ from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
 from texar.utils import utils
 
-from data_utils import prepare_data_batch
 import baseline_hyperparams
 import bleu_tool
 
@@ -78,7 +74,7 @@ def _main(_):
     template = template_pack['templates']
     template_word_embeds = embedder(template)
     template_length = utils.shape_list(template)[1]
-    channels = utils.shape_list(template)[2]
+    channels = utils.shape_list(template_word_embeds)[2]
     template_pos_embeds = position_embedder(template_length, channels,
                                             template_pack['segment_ids'],
                                             template_pack['offsets'])
@@ -91,19 +87,16 @@ def _main(_):
     dcdr_init_states = connector(ecdr_states)
 
     cetp_loss = None
-    for hole in answer_packs:
-        dec_input = hole['text_ids'][:-1]
+    for idx, hole in enumerate(answer_packs):
+        dec_input = hole['text_ids'][:, :-1]
         dec_input_word_embeds = embedder(dec_input)
-        dec_input_length = utils.shape_list(dec_input)[1]
-        dec_input_pos_embeds = position_embedder(dec_input_length, channels,
-                                                 hole['segment_ids'],
-                                                 hole['offsets'])
-        dec_input_embedded = dec_input_word_embeds + dec_input_pos_embeds
+        decoder.set_segment_id(idx * 2 + 1)
+        dec_input_embedded = dec_input_word_embeds
         outputs, _, _ = decoder(
             initial_state=dcdr_init_states,
             decoding_strategy="train_greedy",
             inputs=dec_input_embedded,
-            sequence_length=data_batch["length"]-1)
+            sequence_length=hole["lengths"]+1)
 
         cur_loss = tx.utils.smoothing_cross_entropy(
             outputs.logits,
@@ -134,12 +127,16 @@ def _main(_):
     )
     train_op = optimizer.minimize(cetp_loss, global_step)
 
-    outputs_infer, _, _ = decoder(
-        decoding_strategy="infer_sample",
-        start_tokens=tf.cast(tf.fill([tf.shape(data_batch['text_ids'])[0]], bos_id), tf.int32),
-        end_token=eos_id,
-        embedding=embedder,
-        initial_state=dcdr_init_states)
+    predictions = []
+    for idx, hole in enumerate(answer_packs):
+        decoder.set_segment_id(idx * 2 + 1)
+        outputs_infer, _, _ = decoder(
+            decoding_strategy="infer_positional",
+            start_tokens=tf.cast(tf.fill([tf.shape(data_batch['text_ids'])[0]], boa_id), tf.int32),
+            end_token=eoa_id,
+            embedding=embedder,
+            initial_state=dcdr_init_states)
+        predictions.append(outputs_infer.sample_id)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -148,38 +145,26 @@ def _main(_):
 
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
-        if args.draw_for_debug:
-            loss_lists = []
+        loss_lists = []
         while True:
             try:
                 fetches = {'template': template_pack,
                            'holes': answer_packs,
                            'train_op': train_op,
                            'step': global_step,
-                           'loss': mle_loss}
+                           'loss': cetp_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 500 == 0:
+                if step % 200 == 1:
                     rst = 'step:%s source:%s loss:%s' % \
                           (step, template_['text_ids'].shape, loss)
                     print(rst)
-                if args.draw_for_debug:
-                    loss_lists.append(loss)
-                if step == opt_hparams['max_training_steps']:
-                    print('reach max steps:{} loss:{}'.format(step, loss))
-                    print('reached max training steps')
-                    return 'finished'
+                loss_lists.append(loss)
             except tf.errors.OutOfRangeError:
                 break
-            if args.draw_for_debug:
-                plt.figure(figsize=(14, 10))
-                plt.plot(loss_lists, '--', linewidth=1, label='loss trend')
-                plt.ylabel('training loss')
-                plt.xlabel('training steps in one epoch')
-                plt.savefig(args.log_dir + '/img/train_loss_curve.epoch{}.png'.format(cur_epoch))
-        return 'done'
+        return loss_lists[::50]
 
     def _test_epoch(cur_sess, cur_epoch):
         def _id2word_map(id_arrays):
@@ -192,18 +177,24 @@ def _main(_):
             try:
                 fetches = {
                     'data_batch': data_batch,
-                    'predictions': outputs_infer,
+                    'predictions': predictions,
                     'template': template_pack,
                     'step': global_step,
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
-                templates_, targets_, predictions_ = rtns['template']['text_ids'].tolist(), \
-                                                    rtns['data_batch']['text_ids'].tolist(),\
-                                                    rtns['predictions'].sample_id.tolist()
+                real_templates_, templates_, targets_, predictions_ = \
+                    rtns['template']['templates'], rtns['template']['text_ids'], \
+                                                    rtns['data_batch']['text_ids'],\
+                                                    rtns['predictions']
 
-                templates, targets, generateds = \
-                    _id2word_map(templates_), _id2word_map(targets_), _id2word_map(predictions_)
+                filled_templates = \
+                    tx.utils.fill_template(templates_, predictions_, mask_id, eoa_id, pad_id, eos_id)
+
+                templates, targets, generateds = _id2word_map(real_templates_.tolist()), \
+                                                 _id2word_map(targets_), \
+                                                 _id2word_map(filled_templates)
+
                 for template, target, generated in zip(templates, targets, generateds):
                     template = template.split('<EOS>')[0].strip().split()
                     target = target.split('<EOS>')[0].strip().split()
@@ -214,19 +205,25 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
-        outputs_tmp_filename = args.log_dir + \
-            'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
+        outputs_tmp_filename = args.log_dir + 'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
+                format(cur_epoch, args.beam_width, args.alpha)
+        template_tmp_filename = args.log_dir + 'my_model_epoch{}.beam{}alpha{}.templates.tmp'.\
                 format(cur_epoch, args.beam_width, args.alpha)
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
         with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-             codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-            for hyp, tgt in zip(hypothesis_list, targets_list):
+            codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile, \
+            codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+            for hyp, tplt, tgt in zip(hypothesis_list, templates_list, targets_list):
                 tmpfile.write(' '.join(hyp) + '\n')
+                tmptpltfile.write(' '.join(tplt) + '\n')
                 tmpreffile.write(' '.join(tgt) + '\n')
         eval_bleu = float(100 * bleu_tool.bleu_wrapper(\
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
-        print('epoch:{} eval_bleu:{}'.format(cur_epoch, eval_bleu))
+        template_bleu = float(100 * bleu_tool.bleu_wrapper(\
+            refer_tmp_filename, template_tmp_filename, case_sensitive=True))
+        print('epoch:{} eval_bleu:{} template_bleu:{}'.format(cur_epoch, eval_bleu, template_bleu))
         os.remove(outputs_tmp_filename)
+        os.remove(template_tmp_filename)
         os.remove(refer_tmp_filename)
         if args.save_eval_output:
             result_filename = \
@@ -236,8 +233,24 @@ def _main(_):
                 for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
                     resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
-                    resultfile.write('- got: ' + ' '.join(hyp) + '\n\n')
-        return eval_bleu
+                    resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
+        return eval_bleu, template_bleu
+
+    def _draw_log(epoch, loss_list, test_bleu, tplt_bleu):
+        plt.figure(figsize=(14, 10))
+        plt.plot(loss_list, '--', linewidth=1, label='loss trend')
+        plt.ylabel('training loss till epoch {}'.format(epoch))
+        plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
+        plt.savefig(args.log_dir + '/img/train_loss_curve.png')
+
+        plt.figure(figsize=(14, 10))
+        plt.plot(test_bleu, '--', linewidth=1, label='test bleu')
+        plt.plot(tplt_bleu, '--', linewidth=1, label='template bleu')
+        plt.ylabel('bleu till epoch {}'.format(epoch))
+        plt.xlabel('every epoch, present rate=%f' % args.present_rate)
+        plt.legend(['test bleu', 'template bleu'], loc='upper left')
+        plt.savefig(args.log_dir + '/img/bleu.png')
+        plt.close('all')
     
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
@@ -248,20 +261,19 @@ def _main(_):
         sess.run(tf.tables_initializer())
 
         lowest_loss, highest_bleu, best_epoch = -1, -1, -1
+        loss_list, test_bleu, tplt_bleu = [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                status = _train_epochs(sess, epoch)
-                test_score = _test_epoch(sess, epoch)
+                # losses = _train_epochs(sess, epoch)
+                test_score, tplt_score = _test_epoch(sess, epoch)
+                loss_list.extend(losses)
+                test_bleu.append(test_score)
+                tplt_bleu.append(tplt_score)
+                _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
                 if highest_bleu < 0 or test_score > highest_bleu:
                     print('the %d epoch, highest bleu %f' % (epoch, test_score))
                     eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
                     highest_bleu = test_score
-                if status == 'finished':
-                    print('saving model for max training steps')
-                    os.makedirs(args.log_dir + '/max/')
-                    eval_saver.save(sess, \
-                                    args.log_dir + '/max/my-model-highest_bleu.ckpt')
-                    break
                 sys.stdout.flush()
 
 
