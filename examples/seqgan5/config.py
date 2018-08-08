@@ -1,18 +1,17 @@
-generator_pretrain_epoch = 20
-discriminator_pretrain_epoch = 15
-adversial_epoch = 20
-hidden_size = 256
+generator_pretrain_epoch = 80
+discriminator_pretrain_epoch = 80
+adversial_epoch = 100
+hidden_size = 32
 batch_size = 64
-max_num_steps = 64
-embed_dim = 256
+max_num_steps = 20
+embed_dim = 32
 latent_dims = 32
 
-dec_keep_prob_in = 0.5
-dec_keep_prob_out = 0.5
 enc_keep_prob_in = 1.0
-enc_keep_prob_out = 1.0
+dec_keep_prob_out = 1.0
 
-log_file = './log.txt'
+log_dir = './log_dir/'
+log_file = log_dir + 'log.txt'
 ckpt = './checkpoint/ckpt'
 
 lr_hparams = {
@@ -25,16 +24,6 @@ lr_hparams = {
 
 decoder_hparams = {
     "type": "lstm"
-}
-
-enc_cell_hparams = {
-    "type": "LSTMBlockCell",
-    "kwargs": {
-        "num_units": hidden_size,
-        "forget_bias": 0.
-    },
-    "dropout": {"output_keep_prob": enc_keep_prob_out},
-    "num_layers": 1
 }
 
 dec_cell_hparams = {
@@ -71,8 +60,8 @@ train_data_hparams = {
     "batch_size": batch_size,
     "seed": 123,
     "dataset": {
-        "files": 'ptb_data/ptb.train.txt',
-        "vocab_file": 'ptb_data/vocab.txt'
+        "files": 'coco_data/coco.train.txt',
+        "vocab_file": 'coco_data/vocab.txt'
     }
 }
 
@@ -81,8 +70,8 @@ val_data_hparams = {
     "batch_size": batch_size,
     "seed": 123,
     "dataset": {
-        "files": 'ptb_data/ptb.valid.txt',
-        "vocab_file": 'ptb_data/vocab.txt'
+        "files": 'coco_data/coco.valid.txt',
+        "vocab_file": 'coco_data/vocab.txt'
     }
 }
 
@@ -90,8 +79,17 @@ test_data_hparams = {
     "num_epochs": 1,
     "batch_size": batch_size,
     "dataset": {
-        "files": 'ptb_data/ptb.test.txt',
-        "vocab_file": 'ptb_data/vocab.txt'
+        "files": 'coco_data/coco.test.txt',
+        "vocab_file": 'coco_data/vocab.txt'
+    }
+}
+
+g_opt_hparams = {
+    "optimizer": {
+        "type": "AdamOptimizer",
+        "kwargs": {
+            "learning_rate": 0.01
+        }
     }
 }
 
@@ -99,7 +97,7 @@ d_opt_hparams = {
     "optimizer": {
         "type": "AdamOptimizer",
         "kwargs": {
-            "learning_rate": 0.001
+            "learning_rate": 0.0001
         }
     }
 }
