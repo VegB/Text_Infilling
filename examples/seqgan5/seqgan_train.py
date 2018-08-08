@@ -4,6 +4,8 @@ from __future__ import print_function
 
 # pylint: disable=invalid-name, no-member, too-many-locals
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import codecs
 import importlib
 import numpy as np
@@ -23,12 +25,13 @@ flags.DEFINE_string("config", "config", "The config to use.")
 FLAGS = flags.FLAGS
 
 config = importlib.import_module(FLAGS.config)
-log = open(config.log_file, 'w')
 
 
 def _main(_):
     prepare_data(FLAGS, config,
                  config.train_data_hparams['dataset']['files'])
+    log = open(config.log_file, 'w')
+    bleu_log = open(config.bleu_file, 'w')
 
     # Data
     train_data = tx.data.MonoTextData(config.train_data_hparams)
@@ -131,6 +134,7 @@ def _main(_):
                                   tensor_rank=2)
     update_loss = \
         -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
+    update_loss.set_shape(())
     gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
                                   increment_global_step=False,
                                   hparams=config.update_opt_hparams)
@@ -187,30 +191,30 @@ def _main(_):
         elif mode_string == 'test':
             iterator.switch_to_test_data(sess)
 
+        inference_list = []
         while True:
             try:
                 fetches = {'infer_sample_id': infer_sample_ids}
                 feed_dict = {tx.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = sess.run(fetches, feed_dict)
                 inferences = _id2word_map(rtns['infer_sample_id'].tolist())
-                inference_list = \
-                    [inf.split('<EOS>')[0].strip().split()
-                     for inf in inferences]
+                inference_list.extend([inf.split('<EOS>')[0].strip().split()
+                                       for inf in inferences])
             except tf.errors.OutOfRangeError:
                 break
 
-        outputs_filename = config.log_dir + 'my_model_epoch%d.txt' % epoch
+        outputs_filename = config.log_dir + 'epoch%d.txt' % epoch
         with codecs.open(outputs_filename, 'w+', 'utf-8') as fout:
             for inf in inference_list:
                 fout.write(' '.join(inf) + '\n')
         bleu1, bleu2, bleu3, bleu4 = bleu_tool.calculate_bleu(
-            reference_path=config.test_data_hparams['dataset']['files'],
-            candidate_path=outputs_filename)
+            candidate_path=config.test_data_hparams['dataset']['files'],
+            reference_path=outputs_filename)
         buf = "epoch %d BLEU1~4:\n%f\n%f\n%f\n%f\n\n" % \
               (epoch, bleu1, bleu2, bleu3, bleu4)
         print(buf)
-        log.write(buf + '\n')
-        log.flush()
+        bleu_log.write(buf + '\n')
+        bleu_log.flush()
         return
 
     def _d_run_epoch(sess):
@@ -234,7 +238,9 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
-    with tf.Session() as sess:
+    tf_config = tf.ConfigProto()
+    tf_config.gpu_options.allow_growth = True
+    with tf.Session(config=tf_config) as sess:
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
@@ -252,6 +258,7 @@ def _main(_):
             if update_epoch % 10 == 0:
                 _g_test_epoch(sess, 'test', update_epoch)
     log.close()
+    bleu_log.close()
 
 
 if __name__ == '__main__':

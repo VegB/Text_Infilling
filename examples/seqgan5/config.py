@@ -12,6 +12,7 @@ dec_keep_prob_out = 1.0
 
 log_dir = './log_dir/'
 log_file = log_dir + 'log.txt'
+bleu_file = log_dir + 'bleu.txt'
 ckpt = './checkpoint/ckpt'
 
 lr_hparams = {

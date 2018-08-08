@@ -1,6 +1,8 @@
 import os
 import tensorflow as tf
 import texar as tx
+from matplotlib import pyplot as plt
+plt.switch_backend('agg')
 
 
 def prepare_data(FLAGS, config, train_path):
@@ -34,3 +36,11 @@ def prepare_data(FLAGS, config, train_path):
 
         config.test_data_hparams['dataset'] = {'files': test_path,
                                                'vocab_file': vocab_path}
+
+
+def _draw_log(config, epoch, loss_list):
+    plt.figure(figsize=(14, 10))
+    plt.plot(loss_list, '--', linewidth=1, label='loss trend')
+    plt.ylabel('training loss till epoch {}'.format(epoch))
+    plt.xlabel('every 50 steps, present_rate=%f' % config.present_rate)
+    plt.savefig(config.log_dir + '/img/train_loss_curve.png')
