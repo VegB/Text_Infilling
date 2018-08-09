@@ -1,2704 +1,609 @@
-step:   1, tr_ppl: 81.612753
-step: 101, tr_ppl: 15.838310
+epoch   0, step: 1: train_ppl: 81.639235
 epoch 0 BLEU1~4 on train dataset:
-0.752538
-0.271692
-0.057054
-0.007261
+0.794352
+0.295318
+0.063297
+0.008683
 
  epoch 0 BLEU1~4 on test dataset:
-0.567159
-0.179080
-0.029077
-0.002965
+0.591133
+0.188237
+0.031989
+0.003123
 
 
-step:   1, tr_ppl: 9.943123
-step: 101, tr_ppl: 10.247368
-step:   1, tr_ppl: 7.640833
-step: 101, tr_ppl: 8.826880
-step:   1, tr_ppl: 6.877061
-step: 101, tr_ppl: 8.072129
-step:   1, tr_ppl: 6.383457
-step: 101, tr_ppl: 7.524823
-step:   1, tr_ppl: 6.053972
-step: 101, tr_ppl: 7.092714
-step:   1, tr_ppl: 5.789426
-step: 101, tr_ppl: 6.764887
-step:   1, tr_ppl: 5.557004
-step: 101, tr_ppl: 6.472817
-step:   1, tr_ppl: 5.358983
-step: 101, tr_ppl: 6.235536
-step:   1, tr_ppl: 5.191751
-step: 101, tr_ppl: 6.039353
-step:   1, tr_ppl: 5.058923
-step: 101, tr_ppl: 5.874312
+epoch   1, step: 1: train_ppl: 9.845531
+epoch   2, step: 1: train_ppl: 7.581516
+epoch   3, step: 1: train_ppl: 6.825316
+epoch   4, step: 1: train_ppl: 6.315985
+epoch   5, step: 1: train_ppl: 6.025601
+epoch   6, step: 1: train_ppl: 5.782121
+epoch   7, step: 1: train_ppl: 5.577485
+epoch   8, step: 1: train_ppl: 5.392904
+epoch   9, step: 1: train_ppl: 5.227966
+epoch  10, step: 1: train_ppl: 5.115403
 epoch 10 BLEU1~4 on train dataset:
-0.833558
-0.553916
-0.263825
-0.098339
+0.803774
+0.537933
+0.262999
+0.099496
 
  epoch 10 BLEU1~4 on test dataset:
-0.604157
-0.290654
-0.109808
-0.035188
+0.584465
+0.282991
+0.110038
+0.035323
 
 
-step:   1, tr_ppl: 4.938087
-step: 101, tr_ppl: 5.782409
-step:   1, tr_ppl: 4.825576
-step: 101, tr_ppl: 5.661229
-step:   1, tr_ppl: 4.738098
-step: 101, tr_ppl: 5.563192
-step:   1, tr_ppl: 4.649996
-step: 101, tr_ppl: 5.477648
-step:   1, tr_ppl: 4.577780
-step: 101, tr_ppl: 5.393095
-step:   1, tr_ppl: 4.500001
-step: 101, tr_ppl: 5.324668
-step:   1, tr_ppl: 4.449585
-step: 101, tr_ppl: 5.250731
-step:   1, tr_ppl: 4.393292
-step: 101, tr_ppl: 5.196661
-step:   1, tr_ppl: 4.376836
-step: 101, tr_ppl: 5.133289
-step:   1, tr_ppl: 4.326650
-step: 101, tr_ppl: 5.094007
+epoch  11, step: 1: train_ppl: 4.998987
+epoch  12, step: 1: train_ppl: 4.910588
+epoch  13, step: 1: train_ppl: 4.827782
+epoch  14, step: 1: train_ppl: 4.756931
+epoch  15, step: 1: train_ppl: 4.698440
+epoch  16, step: 1: train_ppl: 4.648727
+epoch  17, step: 1: train_ppl: 4.586263
+epoch  18, step: 1: train_ppl: 4.535288
+epoch  19, step: 1: train_ppl: 4.500533
+epoch  20, step: 1: train_ppl: 4.441279
 epoch 20 BLEU1~4 on train dataset:
-0.810875
-0.559935
-0.291004
-0.119282
+0.818169
+0.564567
+0.294734
+0.120116
 
  epoch 20 BLEU1~4 on test dataset:
-0.585616
-0.281266
-0.110718
-0.037091
+0.597310
+0.290221
+0.116669
+0.039177
 
 
-step:   1, tr_ppl: 4.285590
-step: 101, tr_ppl: 5.088538
-step:   1, tr_ppl: 4.261140
-step: 101, tr_ppl: 5.037153
-step:   1, tr_ppl: 4.260513
-step: 101, tr_ppl: 5.013288
-step:   1, tr_ppl: 4.237009
-step: 101, tr_ppl: 4.985103
-step:   1, tr_ppl: 4.205014
-step: 101, tr_ppl: 4.968918
-step:   1, tr_ppl: 4.177187
-step: 101, tr_ppl: 4.939604
-step:   1, tr_ppl: 4.154064
-step: 101, tr_ppl: 4.909083
-step:   1, tr_ppl: 4.153239
-step: 101, tr_ppl: 4.881344
-step:   1, tr_ppl: 4.109136
-step: 101, tr_ppl: 4.788831
-step:   1, tr_ppl: 4.108007
-step: 101, tr_ppl: 4.760455
+epoch  21, step: 1: train_ppl: 4.404166
+epoch  22, step: 1: train_ppl: 4.407428
+epoch  23, step: 1: train_ppl: 4.370182
+epoch  24, step: 1: train_ppl: 4.344923
+epoch  25, step: 1: train_ppl: 4.306229
+epoch  26, step: 1: train_ppl: 4.267198
+epoch  27, step: 1: train_ppl: 4.249881
+epoch  28, step: 1: train_ppl: 4.218323
+epoch  29, step: 1: train_ppl: 4.183507
+epoch  30, step: 1: train_ppl: 4.148823
 epoch 30 BLEU1~4 on train dataset:
-0.827000
-0.574366
-0.300082
-0.124626
+0.820900
+0.574503
+0.303851
+0.126414
 
  epoch 30 BLEU1~4 on test dataset:
-0.605576
-0.295126
-0.118074
-0.039628
+0.603490
+0.296167
+0.119854
+0.040613
 
 
-step:   1, tr_ppl: 4.095490
-step: 101, tr_ppl: 4.731510
-step:   1, tr_ppl: 4.066284
-step: 101, tr_ppl: 4.708304
-step:   1, tr_ppl: 4.043724
-step: 101, tr_ppl: 4.677102
-step:   1, tr_ppl: 4.041380
-step: 101, tr_ppl: 4.674700
-step:   1, tr_ppl: 3.998841
-step: 101, tr_ppl: 4.677603
-step:   1, tr_ppl: 4.011747
-step: 101, tr_ppl: 4.620578
-step:   1, tr_ppl: 4.027142
-step: 101, tr_ppl: 4.621500
-step:   1, tr_ppl: 3.985016
-step: 101, tr_ppl: 4.590666
-step:   1, tr_ppl: 3.995745
-step: 101, tr_ppl: 4.541605
-step:   1, tr_ppl: 3.958168
-step: 101, tr_ppl: 4.564194
+epoch  31, step: 1: train_ppl: 4.136534
+epoch  32, step: 1: train_ppl: 4.127478
+epoch  33, step: 1: train_ppl: 4.129617
+epoch  34, step: 1: train_ppl: 4.090453
+epoch  35, step: 1: train_ppl: 4.081553
+epoch  36, step: 1: train_ppl: 4.085494
+epoch  37, step: 1: train_ppl: 4.076167
+epoch  38, step: 1: train_ppl: 4.052643
+epoch  39, step: 1: train_ppl: 4.059683
+epoch  40, step: 1: train_ppl: 4.051196
 epoch 40 BLEU1~4 on train dataset:
-0.813114
-0.566146
-0.299306
-0.126002
+0.805618
+0.565129
+0.301612
+0.126787
 
  epoch 40 BLEU1~4 on test dataset:
-0.605710
-0.294688
-0.119378
+0.607567
+0.296108
+0.120413
+0.041592
+
+
+epoch  41, step: 1: train_ppl: 4.064166
+epoch  42, step: 1: train_ppl: 4.060589
+epoch  43, step: 1: train_ppl: 4.063842
+epoch  44, step: 1: train_ppl: 4.038250
+epoch  45, step: 1: train_ppl: 3.972226
+epoch  46, step: 1: train_ppl: 3.955907
+epoch  47, step: 1: train_ppl: 3.981401
+epoch  48, step: 1: train_ppl: 3.948641
+epoch  49, step: 1: train_ppl: 3.953702
+epoch  50, step: 1: train_ppl: 3.914702
+epoch 50 BLEU1~4 on train dataset:
+0.827611
+0.577848
+0.311307
+0.135343
+
+ epoch 50 BLEU1~4 on test dataset:
+0.611003
+0.298571
+0.120855
+0.042532
+
+
+epoch  51, step: 1: train_ppl: 3.910314
+epoch  52, step: 1: train_ppl: 3.918085
+epoch  53, step: 1: train_ppl: 3.906543
+epoch  54, step: 1: train_ppl: 3.895395
+epoch  55, step: 1: train_ppl: 3.878320
+epoch  56, step: 1: train_ppl: 3.904138
+epoch  57, step: 1: train_ppl: 3.872810
+epoch  58, step: 1: train_ppl: 3.880000
+epoch  59, step: 1: train_ppl: 3.861995
+epoch  60, step: 1: train_ppl: 3.853741
+epoch 60 BLEU1~4 on train dataset:
+0.822051
+0.578518
+0.316262
+0.138506
+
+ epoch 60 BLEU1~4 on test dataset:
+0.602807
+0.295930
+0.120332
+0.041956
+
+
+epoch  61, step: 1: train_ppl: 3.845277
+epoch  62, step: 1: train_ppl: 3.828631
+epoch  63, step: 1: train_ppl: 3.827409
+epoch  64, step: 1: train_ppl: 3.821004
+epoch  65, step: 1: train_ppl: 3.789979
+epoch  66, step: 1: train_ppl: 3.801008
+epoch  67, step: 1: train_ppl: 3.827816
+epoch  68, step: 1: train_ppl: 3.772732
+epoch  69, step: 1: train_ppl: 3.781868
+epoch  70, step: 1: train_ppl: 3.800731
+epoch 70 BLEU1~4 on train dataset:
+0.827560
+0.581789
+0.316364
+0.137956
+
+ epoch 70 BLEU1~4 on test dataset:
+0.605093
+0.298918
+0.120601
 0.041251
 
 
-step:   1, tr_ppl: 3.959570
-step: 101, tr_ppl: 4.555179
-step:   1, tr_ppl: 3.946749
-step: 101, tr_ppl: 4.550085
-step:   1, tr_ppl: 3.941119
-step: 101, tr_ppl: 4.515595
-step:   1, tr_ppl: 3.940084
-step: 101, tr_ppl: 4.513890
-step:   1, tr_ppl: 3.894380
-step: 101, tr_ppl: 4.484863
-step:   1, tr_ppl: 3.873366
-step: 101, tr_ppl: 4.493204
-step:   1, tr_ppl: 3.837020
-step: 101, tr_ppl: 4.451507
-step:   1, tr_ppl: 3.864791
-step: 101, tr_ppl: 4.483656
-step:   1, tr_ppl: 3.854170
-step: 101, tr_ppl: 4.453857
-step:   1, tr_ppl: 3.850080
-step: 101, tr_ppl: 4.439810
-epoch 50 BLEU1~4 on train dataset:
-0.812578
-0.569822
-0.304401
-0.129102
-
- epoch 50 BLEU1~4 on test dataset:
-0.608343
-0.299358
-0.122731
-0.042755
-
-
-step:   1, tr_ppl: 3.845577
-step: 101, tr_ppl: 4.448411
-step:   1, tr_ppl: 3.895422
-step: 101, tr_ppl: 4.413520
-step:   1, tr_ppl: 3.848478
-step: 101, tr_ppl: 4.359378
-step:   1, tr_ppl: 3.837334
-step: 101, tr_ppl: 4.370520
-step:   1, tr_ppl: 3.830558
-step: 101, tr_ppl: 4.384374
-step:   1, tr_ppl: 3.802814
-step: 101, tr_ppl: 4.406834
-step:   1, tr_ppl: 3.787862
-step: 101, tr_ppl: 4.389559
-step:   1, tr_ppl: 3.792055
-step: 101, tr_ppl: 4.375492
-step:   1, tr_ppl: 3.798195
-step: 101, tr_ppl: 4.356955
-step:   1, tr_ppl: 3.774846
-step: 101, tr_ppl: 4.401048
-epoch 60 BLEU1~4 on train dataset:
-0.809054
-0.562039
-0.299240
-0.126616
-
- epoch 60 BLEU1~4 on test dataset:
-0.612492
-0.300005
-0.121729
-0.041915
-
-
-step:   1, tr_ppl: 3.791975
-step: 101, tr_ppl: 4.308339
-step:   1, tr_ppl: 3.777207
-step: 101, tr_ppl: 4.281222
-step:   1, tr_ppl: 3.755760
-step: 101, tr_ppl: 4.327788
-step:   1, tr_ppl: 3.755106
-step: 101, tr_ppl: 4.341348
-step:   1, tr_ppl: 3.755651
-step: 101, tr_ppl: 4.261676
-step:   1, tr_ppl: 3.743112
-step: 101, tr_ppl: 4.228645
-step:   1, tr_ppl: 3.731760
-step: 101, tr_ppl: 4.235404
-step:   1, tr_ppl: 3.761378
-step: 101, tr_ppl: 4.258043
-step:   1, tr_ppl: 3.731317
-step: 101, tr_ppl: 4.211598
-step:   1, tr_ppl: 3.709317
-step: 101, tr_ppl: 4.236344
-epoch 70 BLEU1~4 on train dataset:
-0.830840
-0.580760
-0.311417
-0.133773
-
- epoch 70 BLEU1~4 on test dataset:
-0.614014
-0.297698
-0.120913
-0.042448
-
-
-step:   1, tr_ppl: 3.717855
-step: 101, tr_ppl: 4.276140
-step:   1, tr_ppl: 3.707684
-step: 101, tr_ppl: 4.313511
-step:   1, tr_ppl: 3.713199
-step: 101, tr_ppl: 4.280810
-step:   1, tr_ppl: 3.722642
-step: 101, tr_ppl: 4.280543
-step:   1, tr_ppl: 3.678013
-step: 101, tr_ppl: 4.290433
-step:   1, tr_ppl: 3.692091
-step: 101, tr_ppl: 4.266637
-step:   1, tr_ppl: 3.678063
-step: 101, tr_ppl: 4.256883
-step:   1, tr_ppl: 3.678364
-step: 101, tr_ppl: 4.274568
-step:   1, tr_ppl: 3.673073
-step: 101, tr_ppl: 4.253617
-  0: dis_total_loss: 17.236441, r_loss: 8.848486, f_loss: 8.387955
-  0: dis_total_loss: 3.977118, r_loss: 1.785833, f_loss: 2.191285
-  0: dis_total_loss: 2.500999, r_loss: 1.113605, f_loss: 1.387394
-  0: dis_total_loss: 2.587718, r_loss: 0.783476, f_loss: 1.804242
-  0: dis_total_loss: 1.408767, r_loss: 0.585516, f_loss: 0.823250
-  0: dis_total_loss: 1.073920, r_loss: 0.432366, f_loss: 0.641553
-  0: dis_total_loss: 0.925157, r_loss: 0.344786, f_loss: 0.580371
-  0: dis_total_loss: 0.767175, r_loss: 0.270161, f_loss: 0.497014
-  0: dis_total_loss: 0.597538, r_loss: 0.208099, f_loss: 0.389440
-  0: dis_total_loss: 0.479249, r_loss: 0.159244, f_loss: 0.320005
-  0: dis_total_loss: 0.423010, r_loss: 0.122425, f_loss: 0.300585
-  0: dis_total_loss: 0.356985, r_loss: 0.093254, f_loss: 0.263731
-  0: dis_total_loss: 0.292676, r_loss: 0.075859, f_loss: 0.216817
-  0: dis_total_loss: 0.264339, r_loss: 0.060628, f_loss: 0.203710
-  0: dis_total_loss: 0.262552, r_loss: 0.047335, f_loss: 0.215217
-  0: dis_total_loss: 0.174621, r_loss: 0.037750, f_loss: 0.136871
-  0: dis_total_loss: 0.198933, r_loss: 0.030703, f_loss: 0.168230
-  0: dis_total_loss: 0.185433, r_loss: 0.025927, f_loss: 0.159506
-  0: dis_total_loss: 0.116793, r_loss: 0.020824, f_loss: 0.095969
-  0: dis_total_loss: 0.106582, r_loss: 0.016734, f_loss: 0.089848
-  0: dis_total_loss: 0.142906, r_loss: 0.013657, f_loss: 0.129249
-  0: dis_total_loss: 0.116352, r_loss: 0.011300, f_loss: 0.105052
-  0: dis_total_loss: 0.151087, r_loss: 0.008947, f_loss: 0.142141
-  0: dis_total_loss: 0.090604, r_loss: 0.007751, f_loss: 0.082853
-  0: dis_total_loss: 0.123092, r_loss: 0.007097, f_loss: 0.115995
-  0: dis_total_loss: 0.073780, r_loss: 0.006258, f_loss: 0.067521
-  0: dis_total_loss: 0.075902, r_loss: 0.005734, f_loss: 0.070168
-  0: dis_total_loss: 0.064698, r_loss: 0.005286, f_loss: 0.059412
-  0: dis_total_loss: 0.038648, r_loss: 0.004567, f_loss: 0.034081
-  0: dis_total_loss: 0.040079, r_loss: 0.004031, f_loss: 0.036047
-  0: dis_total_loss: 0.033138, r_loss: 0.003493, f_loss: 0.029645
-  0: dis_total_loss: 0.081979, r_loss: 0.003071, f_loss: 0.078907
-  0: dis_total_loss: 0.025494, r_loss: 0.002679, f_loss: 0.022815
-  0: dis_total_loss: 0.037970, r_loss: 0.002346, f_loss: 0.035624
-  0: dis_total_loss: 0.046513, r_loss: 0.002148, f_loss: 0.044365
-  0: dis_total_loss: 0.039687, r_loss: 0.001883, f_loss: 0.037804
-  0: dis_total_loss: 0.027740, r_loss: 0.001711, f_loss: 0.026028
-  0: dis_total_loss: 0.011963, r_loss: 0.001514, f_loss: 0.010449
-  0: dis_total_loss: 0.034534, r_loss: 0.001326, f_loss: 0.033208
-  0: dis_total_loss: 0.024870, r_loss: 0.001268, f_loss: 0.023602
-  0: dis_total_loss: 0.026801, r_loss: 0.001114, f_loss: 0.025687
-  0: dis_total_loss: 0.015674, r_loss: 0.001014, f_loss: 0.014660
-  0: dis_total_loss: 0.022168, r_loss: 0.000897, f_loss: 0.021271
-  0: dis_total_loss: 0.028791, r_loss: 0.000802, f_loss: 0.027989
-  0: dis_total_loss: 0.013790, r_loss: 0.000708, f_loss: 0.013081
-  0: dis_total_loss: 0.025563, r_loss: 0.000626, f_loss: 0.024937
-  0: dis_total_loss: 0.022399, r_loss: 0.000555, f_loss: 0.021844
-  0: dis_total_loss: 0.026204, r_loss: 0.000503, f_loss: 0.025702
-  0: dis_total_loss: 0.004742, r_loss: 0.000448, f_loss: 0.004294
-  0: dis_total_loss: 0.015933, r_loss: 0.000407, f_loss: 0.015527
-  0: dis_total_loss: 0.003308, r_loss: 0.000358, f_loss: 0.002950
-  0: dis_total_loss: 0.011430, r_loss: 0.000322, f_loss: 0.011108
-  0: dis_total_loss: 0.011529, r_loss: 0.000287, f_loss: 0.011242
-  0: dis_total_loss: 0.005383, r_loss: 0.000256, f_loss: 0.005127
-  0: dis_total_loss: 0.006068, r_loss: 0.000229, f_loss: 0.005839
-  0: dis_total_loss: 0.006118, r_loss: 0.000203, f_loss: 0.005915
-  0: dis_total_loss: 0.005582, r_loss: 0.000182, f_loss: 0.005400
-  0: dis_total_loss: 0.002700, r_loss: 0.000163, f_loss: 0.002536
-  0: dis_total_loss: 0.007119, r_loss: 0.000146, f_loss: 0.006973
-  0: dis_total_loss: 0.003703, r_loss: 0.000131, f_loss: 0.003572
-  0: dis_total_loss: 0.005544, r_loss: 0.000118, f_loss: 0.005426
-  0: dis_total_loss: 0.002986, r_loss: 0.000107, f_loss: 0.002879
-  0: dis_total_loss: 0.006436, r_loss: 0.000097, f_loss: 0.006339
-  0: dis_total_loss: 0.003017, r_loss: 0.000087, f_loss: 0.002930
-  0: dis_total_loss: 0.004499, r_loss: 0.000078, f_loss: 0.004421
-  0: dis_total_loss: 0.004272, r_loss: 0.000072, f_loss: 0.004201
-  0: dis_total_loss: 0.001055, r_loss: 0.000064, f_loss: 0.000991
-  0: dis_total_loss: 0.000394, r_loss: 0.000058, f_loss: 0.000336
-  0: dis_total_loss: 0.003297, r_loss: 0.000053, f_loss: 0.003244
-  0: dis_total_loss: 0.003429, r_loss: 0.000047, f_loss: 0.003382
-  0: dis_total_loss: 0.007001, r_loss: 0.000042, f_loss: 0.006960
-  0: dis_total_loss: 0.001000, r_loss: 0.000037, f_loss: 0.000963
-  0: dis_total_loss: 0.001296, r_loss: 0.000034, f_loss: 0.001262
-  0: dis_total_loss: 0.000803, r_loss: 0.000031, f_loss: 0.000772
-  0: dis_total_loss: 0.001070, r_loss: 0.000028, f_loss: 0.001042
-  0: dis_total_loss: 0.000664, r_loss: 0.000025, f_loss: 0.000639
-  0: dis_total_loss: 0.000937, r_loss: 0.000023, f_loss: 0.000914
-  0: dis_total_loss: 0.001770, r_loss: 0.000021, f_loss: 0.001749
-  0: dis_total_loss: 0.000760, r_loss: 0.000019, f_loss: 0.000741
-  0: dis_total_loss: 0.000207, r_loss: 0.000018, f_loss: 0.000190
-step:   1, mean_rwd: -59.575119, exp_rwd_loss:-59.575119, update_loss: -59.575119
-  0: dis_total_loss: 0.000265, r_loss: 0.000016, f_loss: 0.000249
+epoch  71, step: 1: train_ppl: 3.794044
+epoch  72, step: 1: train_ppl: 3.793085
+epoch  73, step: 1: train_ppl: 3.789708
+epoch  74, step: 1: train_ppl: 3.780872
+epoch  75, step: 1: train_ppl: 3.765696
+epoch  76, step: 1: train_ppl: 3.757131
+epoch  77, step: 1: train_ppl: 3.733728
+epoch  78, step: 1: train_ppl: 3.753437
+epoch  79, step: 1: train_ppl: 3.711618
+d pretrain epoch  0, step 0: dis_total_loss: 16.657263, r_loss: 8.789272, f_loss: 7.867990
+d pretrain epoch  1, step 0: dis_total_loss: 3.317280, r_loss: 1.379951, f_loss: 1.937329
+d pretrain epoch  2, step 0: dis_total_loss: 1.798969, r_loss: 0.681685, f_loss: 1.117284
+d pretrain epoch  3, step 0: dis_total_loss: 1.187584, r_loss: 0.432838, f_loss: 0.754745
+d pretrain epoch  4, step 0: dis_total_loss: 0.804107, r_loss: 0.287230, f_loss: 0.516877
+d pretrain epoch  5, step 0: dis_total_loss: 0.635743, r_loss: 0.201313, f_loss: 0.434431
+d pretrain epoch  6, step 0: dis_total_loss: 0.479976, r_loss: 0.135775, f_loss: 0.344202
+d pretrain epoch  7, step 0: dis_total_loss: 0.322528, r_loss: 0.095662, f_loss: 0.226866
+d pretrain epoch  8, step 0: dis_total_loss: 0.318579, r_loss: 0.080457, f_loss: 0.238121
+d pretrain epoch  9, step 0: dis_total_loss: 0.254738, r_loss: 0.059766, f_loss: 0.194972
+d pretrain epoch 10, step 0: dis_total_loss: 0.280457, r_loss: 0.045820, f_loss: 0.234637
+d pretrain epoch 11, step 0: dis_total_loss: 0.261768, r_loss: 0.035339, f_loss: 0.226429
+d pretrain epoch 12, step 0: dis_total_loss: 0.192861, r_loss: 0.028665, f_loss: 0.164196
+d pretrain epoch 13, step 0: dis_total_loss: 0.149022, r_loss: 0.023645, f_loss: 0.125377
+d pretrain epoch 14, step 0: dis_total_loss: 0.134051, r_loss: 0.018819, f_loss: 0.115231
+d pretrain epoch 15, step 0: dis_total_loss: 0.132918, r_loss: 0.015170, f_loss: 0.117748
+d pretrain epoch 16, step 0: dis_total_loss: 0.118039, r_loss: 0.012376, f_loss: 0.105663
+d pretrain epoch 17, step 0: dis_total_loss: 0.092492, r_loss: 0.010363, f_loss: 0.082129
+d pretrain epoch 18, step 0: dis_total_loss: 0.101246, r_loss: 0.008567, f_loss: 0.092679
+d pretrain epoch 19, step 0: dis_total_loss: 0.073933, r_loss: 0.007120, f_loss: 0.066813
+d pretrain epoch 20, step 0: dis_total_loss: 0.078804, r_loss: 0.005975, f_loss: 0.072829
+d pretrain epoch 21, step 0: dis_total_loss: 0.048623, r_loss: 0.005045, f_loss: 0.043578
+d pretrain epoch 22, step 0: dis_total_loss: 0.068274, r_loss: 0.004284, f_loss: 0.063991
+d pretrain epoch 23, step 0: dis_total_loss: 0.046477, r_loss: 0.004294, f_loss: 0.042182
+d pretrain epoch 24, step 0: dis_total_loss: 0.054848, r_loss: 0.003656, f_loss: 0.051192
+d pretrain epoch 25, step 0: dis_total_loss: 0.061740, r_loss: 0.002984, f_loss: 0.058756
+d pretrain epoch 26, step 0: dis_total_loss: 0.037492, r_loss: 0.002539, f_loss: 0.034953
+d pretrain epoch 27, step 0: dis_total_loss: 0.061928, r_loss: 0.002179, f_loss: 0.059749
+d pretrain epoch 28, step 0: dis_total_loss: 0.025794, r_loss: 0.001883, f_loss: 0.023911
+d pretrain epoch 29, step 0: dis_total_loss: 0.028427, r_loss: 0.001638, f_loss: 0.026789
+d pretrain epoch 30, step 0: dis_total_loss: 0.027611, r_loss: 0.001435, f_loss: 0.026176
+d pretrain epoch 31, step 0: dis_total_loss: 0.028819, r_loss: 0.001255, f_loss: 0.027563
+d pretrain epoch 32, step 0: dis_total_loss: 0.021687, r_loss: 0.001104, f_loss: 0.020582
+d pretrain epoch 33, step 0: dis_total_loss: 0.024882, r_loss: 0.000973, f_loss: 0.023909
+d pretrain epoch 34, step 0: dis_total_loss: 0.040071, r_loss: 0.000864, f_loss: 0.039207
+d pretrain epoch 35, step 0: dis_total_loss: 0.015052, r_loss: 0.000766, f_loss: 0.014286
+d pretrain epoch 36, step 0: dis_total_loss: 0.029080, r_loss: 0.000687, f_loss: 0.028393
+d pretrain epoch 37, step 0: dis_total_loss: 0.012760, r_loss: 0.000613, f_loss: 0.012147
+d pretrain epoch 38, step 0: dis_total_loss: 0.023577, r_loss: 0.000544, f_loss: 0.023033
+d pretrain epoch 39, step 0: dis_total_loss: 0.011619, r_loss: 0.000487, f_loss: 0.011132
+d pretrain epoch 40, step 0: dis_total_loss: 0.016789, r_loss: 0.000435, f_loss: 0.016353
+d pretrain epoch 41, step 0: dis_total_loss: 0.016142, r_loss: 0.000392, f_loss: 0.015751
+d pretrain epoch 42, step 0: dis_total_loss: 0.012217, r_loss: 0.000351, f_loss: 0.011866
+d pretrain epoch 43, step 0: dis_total_loss: 0.007215, r_loss: 0.000315, f_loss: 0.006899
+d pretrain epoch 44, step 0: dis_total_loss: 0.005775, r_loss: 0.000283, f_loss: 0.005492
+d pretrain epoch 45, step 0: dis_total_loss: 0.009823, r_loss: 0.000255, f_loss: 0.009568
+d pretrain epoch 46, step 0: dis_total_loss: 0.005619, r_loss: 0.000228, f_loss: 0.005390
+d pretrain epoch 47, step 0: dis_total_loss: 0.007623, r_loss: 0.000206, f_loss: 0.007417
+d pretrain epoch 48, step 0: dis_total_loss: 0.012784, r_loss: 0.000187, f_loss: 0.012597
+d pretrain epoch 49, step 0: dis_total_loss: 0.005625, r_loss: 0.000169, f_loss: 0.005456
+d pretrain epoch 50, step 0: dis_total_loss: 0.002912, r_loss: 0.000154, f_loss: 0.002758
+d pretrain epoch 51, step 0: dis_total_loss: 0.000730, r_loss: 0.000140, f_loss: 0.000590
+d pretrain epoch 52, step 0: dis_total_loss: 0.009749, r_loss: 0.000143, f_loss: 0.009606
+d pretrain epoch 53, step 0: dis_total_loss: 0.005123, r_loss: 0.000128, f_loss: 0.004995
+d pretrain epoch 54, step 0: dis_total_loss: 0.001912, r_loss: 0.000115, f_loss: 0.001798
+d pretrain epoch 55, step 0: dis_total_loss: 0.008159, r_loss: 0.000104, f_loss: 0.008055
+d pretrain epoch 56, step 0: dis_total_loss: 0.002609, r_loss: 0.000093, f_loss: 0.002516
+d pretrain epoch 57, step 0: dis_total_loss: 0.001421, r_loss: 0.000083, f_loss: 0.001338
+d pretrain epoch 58, step 0: dis_total_loss: 0.004324, r_loss: 0.000074, f_loss: 0.004250
+d pretrain epoch 59, step 0: dis_total_loss: 0.002580, r_loss: 0.000066, f_loss: 0.002514
+d pretrain epoch 60, step 0: dis_total_loss: 0.001769, r_loss: 0.000060, f_loss: 0.001709
+d pretrain epoch 61, step 0: dis_total_loss: 0.003439, r_loss: 0.000054, f_loss: 0.003385
+d pretrain epoch 62, step 0: dis_total_loss: 0.002217, r_loss: 0.000048, f_loss: 0.002168
+d pretrain epoch 63, step 0: dis_total_loss: 0.004902, r_loss: 0.000044, f_loss: 0.004858
+d pretrain epoch 64, step 0: dis_total_loss: 0.001859, r_loss: 0.000040, f_loss: 0.001820
+d pretrain epoch 65, step 0: dis_total_loss: 0.005464, r_loss: 0.000035, f_loss: 0.005429
+d pretrain epoch 66, step 0: dis_total_loss: 0.002309, r_loss: 0.000032, f_loss: 0.002277
+d pretrain epoch 67, step 0: dis_total_loss: 0.000584, r_loss: 0.000029, f_loss: 0.000556
+d pretrain epoch 68, step 0: dis_total_loss: 0.006788, r_loss: 0.000026, f_loss: 0.006762
+d pretrain epoch 69, step 0: dis_total_loss: 0.000472, r_loss: 0.000023, f_loss: 0.000448
+d pretrain epoch 70, step 0: dis_total_loss: 0.000206, r_loss: 0.000021, f_loss: 0.000184
+d pretrain epoch 71, step 0: dis_total_loss: 0.002011, r_loss: 0.000019, f_loss: 0.001991
+d pretrain epoch 72, step 0: dis_total_loss: 0.000132, r_loss: 0.000017, f_loss: 0.000115
+d pretrain epoch 73, step 0: dis_total_loss: 0.000288, r_loss: 0.000016, f_loss: 0.000272
+d pretrain epoch 74, step 0: dis_total_loss: 0.001062, r_loss: 0.000014, f_loss: 0.001048
+d pretrain epoch 75, step 0: dis_total_loss: 0.004751, r_loss: 0.000013, f_loss: 0.004738
+d pretrain epoch 76, step 0: dis_total_loss: 0.000369, r_loss: 0.000012, f_loss: 0.000358
+d pretrain epoch 77, step 0: dis_total_loss: 0.001130, r_loss: 0.000011, f_loss: 0.001119
+d pretrain epoch 78, step 0: dis_total_loss: 0.000319, r_loss: 0.000009, f_loss: 0.000310
+d pretrain epoch 79, step 0: dis_total_loss: 0.000097, r_loss: 0.000009, f_loss: 0.000088
+epoch  80, step: 1: mean_reward: -56.315876, expect_reward_loss:-56.315876, update_loss: 9194.217773
+d update  epoch 80, step 0: dis_total_loss: 0.000091, r_loss: 0.000008, f_loss: 0.000083
 epoch 80 BLEU1~4 on train dataset:
-0.827939
-0.578316
-0.309698
-0.132856
+0.827134
+0.584003
+0.318836
+0.140222
 
  epoch 80 BLEU1~4 on test dataset:
-0.614425
-0.298589
-0.120407
-0.041461
+0.609596
+0.304801
+0.125057
+0.044036
 
 
-step:   1, mean_rwd: -60.527374, exp_rwd_loss:-60.527374, update_loss: -60.527374
-  0: dis_total_loss: 0.001067, r_loss: 0.000016, f_loss: 0.001051
-step:   1, mean_rwd: -60.626289, exp_rwd_loss:-60.626289, update_loss: -60.626289
-  0: dis_total_loss: 0.001491, r_loss: 0.000016, f_loss: 0.001475
-step:   1, mean_rwd: -60.375038, exp_rwd_loss:-60.375038, update_loss: -60.375038
-  0: dis_total_loss: 0.000701, r_loss: 0.000016, f_loss: 0.000685
-step:   1, mean_rwd: -60.351868, exp_rwd_loss:-60.351868, update_loss: -60.351868
-  0: dis_total_loss: 0.000363, r_loss: 0.000016, f_loss: 0.000348
-step:   1, mean_rwd: -60.880604, exp_rwd_loss:-60.880604, update_loss: -60.880604
-  0: dis_total_loss: 0.002356, r_loss: 0.000016, f_loss: 0.002340
-step:   1, mean_rwd: -60.790489, exp_rwd_loss:-60.790489, update_loss: -60.790489
-  0: dis_total_loss: 0.000077, r_loss: 0.000015, f_loss: 0.000062
-step:   1, mean_rwd: -60.868755, exp_rwd_loss:-60.868755, update_loss: -60.868755
-  0: dis_total_loss: 0.000407, r_loss: 0.000015, f_loss: 0.000392
-step:   1, mean_rwd: -60.548618, exp_rwd_loss:-60.548618, update_loss: -60.548618
-  0: dis_total_loss: 0.000505, r_loss: 0.000015, f_loss: 0.000490
-step:   1, mean_rwd: -61.072346, exp_rwd_loss:-61.072346, update_loss: -61.072346
-  0: dis_total_loss: 0.000215, r_loss: 0.000015, f_loss: 0.000200
-step:   1, mean_rwd: -61.022186, exp_rwd_loss:-61.022186, update_loss: -61.022186
-  0: dis_total_loss: 0.001432, r_loss: 0.000015, f_loss: 0.001417
+epoch  81, step: 1: mean_reward: -56.507019, expect_reward_loss:-56.507019, update_loss: 10523.346680
+d update  epoch 81, step 0: dis_total_loss: 0.000230, r_loss: 0.000008, f_loss: 0.000222
+epoch  82, step: 1: mean_reward: -55.789913, expect_reward_loss:-55.789913, update_loss: 11989.979492
+d update  epoch 82, step 0: dis_total_loss: 0.001410, r_loss: 0.000008, f_loss: 0.001402
+epoch  83, step: 1: mean_reward: -56.127701, expect_reward_loss:-56.127701, update_loss: 11736.824219
+d update  epoch 83, step 0: dis_total_loss: 0.000133, r_loss: 0.000007, f_loss: 0.000126
+epoch  84, step: 1: mean_reward: -56.720543, expect_reward_loss:-56.720543, update_loss: 10838.058594
+d update  epoch 84, step 0: dis_total_loss: 0.000047, r_loss: 0.000007, f_loss: 0.000039
+epoch  85, step: 1: mean_reward: -56.338570, expect_reward_loss:-56.338570, update_loss: 10924.535156
+d update  epoch 85, step 0: dis_total_loss: 0.000803, r_loss: 0.000007, f_loss: 0.000796
+epoch  86, step: 1: mean_reward: -56.030750, expect_reward_loss:-56.030750, update_loss: 11801.970703
+d update  epoch 86, step 0: dis_total_loss: 0.000203, r_loss: 0.000007, f_loss: 0.000196
+epoch  87, step: 1: mean_reward: -56.537361, expect_reward_loss:-56.537361, update_loss: 10267.051758
+d update  epoch 87, step 0: dis_total_loss: 0.002063, r_loss: 0.000007, f_loss: 0.002056
+epoch  88, step: 1: mean_reward: -56.207134, expect_reward_loss:-56.207134, update_loss: 12101.996094
+d update  epoch 88, step 0: dis_total_loss: 0.000861, r_loss: 0.000007, f_loss: 0.000854
+epoch  89, step: 1: mean_reward: -56.769154, expect_reward_loss:-56.769154, update_loss: 10926.596680
+d update  epoch 89, step 0: dis_total_loss: 0.000213, r_loss: 0.000007, f_loss: 0.000206
+epoch  90, step: 1: mean_reward: -56.870354, expect_reward_loss:-56.870354, update_loss: 10936.053711
+d update  epoch 90, step 0: dis_total_loss: 0.000785, r_loss: 0.000007, f_loss: 0.000778
 epoch 90 BLEU1~4 on train dataset:
-0.829230
-0.578244
-0.309878
-0.132974
+0.816109
+0.577629
+0.316310
+0.139386
 
  epoch 90 BLEU1~4 on test dataset:
-0.616552
-0.301071
-0.121610
-0.041784
+0.598139
+0.298845
+0.121124
+0.042348
 
 
-step:   1, mean_rwd: -61.105518, exp_rwd_loss:-61.105518, update_loss: -61.105518
-  0: dis_total_loss: 0.000298, r_loss: 0.000015, f_loss: 0.000283
-step:   1, mean_rwd: -60.941265, exp_rwd_loss:-60.941265, update_loss: -60.941265
-  0: dis_total_loss: 0.000313, r_loss: 0.000015, f_loss: 0.000298
-step:   1, mean_rwd: -60.965691, exp_rwd_loss:-60.965691, update_loss: -60.965691
-  0: dis_total_loss: 0.001400, r_loss: 0.000015, f_loss: 0.001385
-step:   1, mean_rwd: -61.145355, exp_rwd_loss:-61.145355, update_loss: -61.145355
-  0: dis_total_loss: 0.000596, r_loss: 0.000015, f_loss: 0.000581
-step:   1, mean_rwd: -61.024113, exp_rwd_loss:-61.024113, update_loss: -61.024113
-  0: dis_total_loss: 0.000380, r_loss: 0.000015, f_loss: 0.000365
-step:   1, mean_rwd: -61.184410, exp_rwd_loss:-61.184410, update_loss: -61.184410
-  0: dis_total_loss: 0.000569, r_loss: 0.000015, f_loss: 0.000554
-step:   1, mean_rwd: -61.413868, exp_rwd_loss:-61.413868, update_loss: -61.413868
-  0: dis_total_loss: 0.001506, r_loss: 0.000014, f_loss: 0.001491
-step:   1, mean_rwd: -61.256645, exp_rwd_loss:-61.256645, update_loss: -61.256645
-  0: dis_total_loss: 0.000175, r_loss: 0.000014, f_loss: 0.000161
-step:   1, mean_rwd: -61.440102, exp_rwd_loss:-61.440102, update_loss: -61.440102
-  0: dis_total_loss: 0.000663, r_loss: 0.000014, f_loss: 0.000649
-step:   1, mean_rwd: -61.038155, exp_rwd_loss:-61.038155, update_loss: -61.038155
-  0: dis_total_loss: 0.000481, r_loss: 0.000014, f_loss: 0.000467
+epoch  91, step: 1: mean_reward: -56.793282, expect_reward_loss:-56.793282, update_loss: 10641.099609
+d update  epoch 91, step 0: dis_total_loss: 0.001967, r_loss: 0.000007, f_loss: 0.001960
+epoch  92, step: 1: mean_reward: -56.769485, expect_reward_loss:-56.769485, update_loss: 11085.613281
+d update  epoch 92, step 0: dis_total_loss: 0.000478, r_loss: 0.000007, f_loss: 0.000471
+epoch  93, step: 1: mean_reward: -56.657364, expect_reward_loss:-56.657364, update_loss: 12248.925781
+d update  epoch 93, step 0: dis_total_loss: 0.000191, r_loss: 0.000007, f_loss: 0.000185
+epoch  94, step: 1: mean_reward: -56.799835, expect_reward_loss:-56.799835, update_loss: 10761.939453
+d update  epoch 94, step 0: dis_total_loss: 0.000096, r_loss: 0.000007, f_loss: 0.000089
+epoch  95, step: 1: mean_reward: -57.119171, expect_reward_loss:-57.119171, update_loss: 12800.820312
+d update  epoch 95, step 0: dis_total_loss: 0.000115, r_loss: 0.000007, f_loss: 0.000109
+epoch  96, step: 1: mean_reward: -57.098381, expect_reward_loss:-57.098381, update_loss: 10316.310547
+d update  epoch 96, step 0: dis_total_loss: 0.000143, r_loss: 0.000006, f_loss: 0.000137
+epoch  97, step: 1: mean_reward: -57.060280, expect_reward_loss:-57.060280, update_loss: 10918.619141
+d update  epoch 97, step 0: dis_total_loss: 0.000283, r_loss: 0.000006, f_loss: 0.000277
+epoch  98, step: 1: mean_reward: -56.615952, expect_reward_loss:-56.615952, update_loss: 11845.172852
+d update  epoch 98, step 0: dis_total_loss: 0.001262, r_loss: 0.000006, f_loss: 0.001255
+epoch  99, step: 1: mean_reward: -57.184334, expect_reward_loss:-57.184334, update_loss: 10643.412109
+d update  epoch 99, step 0: dis_total_loss: 0.000294, r_loss: 0.000006, f_loss: 0.000288
+epoch 100, step: 1: mean_reward: -56.976364, expect_reward_loss:-56.976364, update_loss: 11051.541016
+d update  epoch 100, step 0: dis_total_loss: 0.000477, r_loss: 0.000006, f_loss: 0.000471
 epoch 100 BLEU1~4 on train dataset:
-0.833185
-0.581865
-0.313098
-0.133796
+0.810316
+0.573385
+0.314704
+0.137541
 
  epoch 100 BLEU1~4 on test dataset:
-0.613352
-0.298874
-0.122325
-0.041725
+0.597748
+0.299427
+0.121110
+0.041880
 
 
-step:   1, mean_rwd: -61.554871, exp_rwd_loss:-61.554871, update_loss: -61.554871
-  0: dis_total_loss: 0.000791, r_loss: 0.000014, f_loss: 0.000777
-step:   1, mean_rwd: -61.597126, exp_rwd_loss:-61.597126, update_loss: -61.597126
-  0: dis_total_loss: 0.000218, r_loss: 0.000014, f_loss: 0.000204
-step:   1, mean_rwd: -61.116440, exp_rwd_loss:-61.116440, update_loss: -61.116440
-  0: dis_total_loss: 0.001010, r_loss: 0.000014, f_loss: 0.000997
-step:   1, mean_rwd: -61.672016, exp_rwd_loss:-61.672016, update_loss: -61.672016
-  0: dis_total_loss: 0.000127, r_loss: 0.000014, f_loss: 0.000114
-step:   1, mean_rwd: -61.667549, exp_rwd_loss:-61.667549, update_loss: -61.667549
-  0: dis_total_loss: 0.002723, r_loss: 0.000013, f_loss: 0.002710
-step:   1, mean_rwd: -61.915173, exp_rwd_loss:-61.915173, update_loss: -61.915173
-  0: dis_total_loss: 0.001291, r_loss: 0.000013, f_loss: 0.001278
-step:   1, mean_rwd: -61.327042, exp_rwd_loss:-61.327042, update_loss: -61.327042
-  0: dis_total_loss: 0.000104, r_loss: 0.000013, f_loss: 0.000091
-step:   1, mean_rwd: -61.569626, exp_rwd_loss:-61.569626, update_loss: -61.569626
-  0: dis_total_loss: 0.000153, r_loss: 0.000013, f_loss: 0.000140
-step:   1, mean_rwd: -61.602268, exp_rwd_loss:-61.602268, update_loss: -61.602268
-  0: dis_total_loss: 0.000238, r_loss: 0.000013, f_loss: 0.000225
-step:   1, mean_rwd: -61.736584, exp_rwd_loss:-61.736584, update_loss: -61.736584
-  0: dis_total_loss: 0.000118, r_loss: 0.000013, f_loss: 0.000105
+epoch 101, step: 1: mean_reward: -56.910233, expect_reward_loss:-56.910233, update_loss: 11236.255859
+d update  epoch 101, step 0: dis_total_loss: 0.000782, r_loss: 0.000006, f_loss: 0.000776
+epoch 102, step: 1: mean_reward: -57.143303, expect_reward_loss:-57.143303, update_loss: 11573.258789
+d update  epoch 102, step 0: dis_total_loss: 0.000017, r_loss: 0.000006, f_loss: 0.000011
+epoch 103, step: 1: mean_reward: -57.289261, expect_reward_loss:-57.289261, update_loss: 12605.013672
+d update  epoch 103, step 0: dis_total_loss: 0.000235, r_loss: 0.000006, f_loss: 0.000229
+epoch 104, step: 1: mean_reward: -57.359711, expect_reward_loss:-57.359711, update_loss: 12102.895508
+d update  epoch 104, step 0: dis_total_loss: 0.000539, r_loss: 0.000006, f_loss: 0.000533
+epoch 105, step: 1: mean_reward: -57.134079, expect_reward_loss:-57.134079, update_loss: 11468.052734
+d update  epoch 105, step 0: dis_total_loss: 0.000030, r_loss: 0.000006, f_loss: 0.000024
+epoch 106, step: 1: mean_reward: -57.477226, expect_reward_loss:-57.477226, update_loss: 10822.287109
+d update  epoch 106, step 0: dis_total_loss: 0.000237, r_loss: 0.000006, f_loss: 0.000231
+epoch 107, step: 1: mean_reward: -57.387115, expect_reward_loss:-57.387115, update_loss: 11006.791992
+d update  epoch 107, step 0: dis_total_loss: 0.000334, r_loss: 0.000006, f_loss: 0.000329
+epoch 108, step: 1: mean_reward: -57.360451, expect_reward_loss:-57.360451, update_loss: 11364.768555
+d update  epoch 108, step 0: dis_total_loss: 0.000140, r_loss: 0.000006, f_loss: 0.000135
+epoch 109, step: 1: mean_reward: -57.568001, expect_reward_loss:-57.568001, update_loss: 12591.934570
+d update  epoch 109, step 0: dis_total_loss: 0.001836, r_loss: 0.000006, f_loss: 0.001830
+epoch 110, step: 1: mean_reward: -57.550152, expect_reward_loss:-57.550152, update_loss: 11914.633789
+d update  epoch 110, step 0: dis_total_loss: 0.000056, r_loss: 0.000006, f_loss: 0.000051
 epoch 110 BLEU1~4 on train dataset:
-0.828598
-0.580995
-0.313269
-0.134466
+0.800724
+0.571603
+0.313827
+0.139560
 
  epoch 110 BLEU1~4 on test dataset:
-0.609599
-0.297213
-0.121166
-0.041985
+0.592645
+0.296930
+0.121653
+0.042565
 
 
-step:   1, mean_rwd: -62.034912, exp_rwd_loss:-62.034912, update_loss: -62.034912
-  0: dis_total_loss: 0.000765, r_loss: 0.000013, f_loss: 0.000753
-step:   1, mean_rwd: -61.856560, exp_rwd_loss:-61.856560, update_loss: -61.856560
-  0: dis_total_loss: 0.000083, r_loss: 0.000012, f_loss: 0.000070
-step:   1, mean_rwd: -61.596889, exp_rwd_loss:-61.596889, update_loss: -61.596889
-  0: dis_total_loss: 0.000039, r_loss: 0.000012, f_loss: 0.000027
-step:   1, mean_rwd: -61.541641, exp_rwd_loss:-61.541641, update_loss: -61.541641
-  0: dis_total_loss: 0.001041, r_loss: 0.000012, f_loss: 0.001029
-step:   1, mean_rwd: -62.123238, exp_rwd_loss:-62.123238, update_loss: -62.123238
-  0: dis_total_loss: 0.001210, r_loss: 0.000012, f_loss: 0.001198
-step:   1, mean_rwd: -62.311729, exp_rwd_loss:-62.311729, update_loss: -62.311729
-  0: dis_total_loss: 0.000259, r_loss: 0.000012, f_loss: 0.000247
-step:   1, mean_rwd: -61.869339, exp_rwd_loss:-61.869339, update_loss: -61.869339
-  0: dis_total_loss: 0.000229, r_loss: 0.000012, f_loss: 0.000217
-step:   1, mean_rwd: -62.233723, exp_rwd_loss:-62.233723, update_loss: -62.233723
-  0: dis_total_loss: 0.000261, r_loss: 0.000012, f_loss: 0.000249
-step:   1, mean_rwd: -61.849434, exp_rwd_loss:-61.849434, update_loss: -61.849434
-  0: dis_total_loss: 0.000542, r_loss: 0.000012, f_loss: 0.000530
-step:   1, mean_rwd: -62.368896, exp_rwd_loss:-62.368896, update_loss: -62.368896
-  0: dis_total_loss: 0.000154, r_loss: 0.000012, f_loss: 0.000143
+epoch 111, step: 1: mean_reward: -57.406174, expect_reward_loss:-57.406174, update_loss: 12924.776367
+d update  epoch 111, step 0: dis_total_loss: 0.000063, r_loss: 0.000006, f_loss: 0.000058
+epoch 112, step: 1: mean_reward: -57.221596, expect_reward_loss:-57.221596, update_loss: 12596.265625
+d update  epoch 112, step 0: dis_total_loss: 0.000235, r_loss: 0.000005, f_loss: 0.000229
+epoch 113, step: 1: mean_reward: -57.797657, expect_reward_loss:-57.797657, update_loss: 11102.172852
+d update  epoch 113, step 0: dis_total_loss: 0.000183, r_loss: 0.000005, f_loss: 0.000178
+epoch 114, step: 1: mean_reward: -57.698872, expect_reward_loss:-57.698872, update_loss: 11591.025391
+d update  epoch 114, step 0: dis_total_loss: 0.000140, r_loss: 0.000005, f_loss: 0.000135
+epoch 115, step: 1: mean_reward: -57.721901, expect_reward_loss:-57.721901, update_loss: 10380.060547
+d update  epoch 115, step 0: dis_total_loss: 0.000129, r_loss: 0.000005, f_loss: 0.000124
+epoch 116, step: 1: mean_reward: -57.514431, expect_reward_loss:-57.514431, update_loss: 11966.837891
+d update  epoch 116, step 0: dis_total_loss: 0.000060, r_loss: 0.000005, f_loss: 0.000055
+epoch 117, step: 1: mean_reward: -57.724373, expect_reward_loss:-57.724373, update_loss: 10673.689453
+d update  epoch 117, step 0: dis_total_loss: 0.000115, r_loss: 0.000005, f_loss: 0.000110
+epoch 118, step: 1: mean_reward: -57.858681, expect_reward_loss:-57.858681, update_loss: 12318.625977
+d update  epoch 118, step 0: dis_total_loss: 0.000022, r_loss: 0.000005, f_loss: 0.000017
+epoch 119, step: 1: mean_reward: -57.805286, expect_reward_loss:-57.805286, update_loss: 10976.551758
+d update  epoch 119, step 0: dis_total_loss: 0.000010, r_loss: 0.000005, f_loss: 0.000005
+epoch 120, step: 1: mean_reward: -57.590763, expect_reward_loss:-57.590763, update_loss: 12326.754883
+d update  epoch 120, step 0: dis_total_loss: 0.000144, r_loss: 0.000005, f_loss: 0.000139
 epoch 120 BLEU1~4 on train dataset:
-0.828595
-0.579216
-0.311812
-0.132918
+0.790480
+0.563744
+0.310140
+0.136288
 
  epoch 120 BLEU1~4 on test dataset:
-0.610204
-0.300183
-0.122403
-0.043102
+0.589251
+0.294739
+0.121343
+0.042387
 
 
-step:   1, mean_rwd: -62.451355, exp_rwd_loss:-62.451355, update_loss: -62.451355
-  0: dis_total_loss: 0.001264, r_loss: 0.000011, f_loss: 0.001252
-step:   1, mean_rwd: -62.324135, exp_rwd_loss:-62.324135, update_loss: -62.324135
-  0: dis_total_loss: 0.001235, r_loss: 0.000011, f_loss: 0.001223
-step:   1, mean_rwd: -62.594097, exp_rwd_loss:-62.594097, update_loss: -62.594097
-  0: dis_total_loss: 0.000621, r_loss: 0.000011, f_loss: 0.000609
-step:   1, mean_rwd: -62.497162, exp_rwd_loss:-62.497162, update_loss: -62.497162
-  0: dis_total_loss: 0.000633, r_loss: 0.000011, f_loss: 0.000622
-step:   1, mean_rwd: -62.583717, exp_rwd_loss:-62.583717, update_loss: -62.583717
-  0: dis_total_loss: 0.001720, r_loss: 0.000011, f_loss: 0.001709
-step:   1, mean_rwd: -62.044827, exp_rwd_loss:-62.044827, update_loss: -62.044827
-  0: dis_total_loss: 0.000362, r_loss: 0.000011, f_loss: 0.000351
-step:   1, mean_rwd: -62.684265, exp_rwd_loss:-62.684265, update_loss: -62.684265
-  0: dis_total_loss: 0.000351, r_loss: 0.000011, f_loss: 0.000340
-step:   1, mean_rwd: -62.688160, exp_rwd_loss:-62.688160, update_loss: -62.688160
-  0: dis_total_loss: 0.000061, r_loss: 0.000011, f_loss: 0.000050
-step:   1, mean_rwd: -62.569084, exp_rwd_loss:-62.569084, update_loss: -62.569084
-  0: dis_total_loss: 0.000657, r_loss: 0.000011, f_loss: 0.000646
-step:   1, mean_rwd: -62.970367, exp_rwd_loss:-62.970367, update_loss: -62.970367
-  0: dis_total_loss: 0.000156, r_loss: 0.000011, f_loss: 0.000145
+epoch 121, step: 1: mean_reward: -58.172493, expect_reward_loss:-58.172493, update_loss: 10857.109375
+d update  epoch 121, step 0: dis_total_loss: 0.000220, r_loss: 0.000005, f_loss: 0.000215
+epoch 122, step: 1: mean_reward: -58.050007, expect_reward_loss:-58.050007, update_loss: 12144.283203
+d update  epoch 122, step 0: dis_total_loss: 0.000019, r_loss: 0.000005, f_loss: 0.000014
+epoch 123, step: 1: mean_reward: -57.483154, expect_reward_loss:-57.483154, update_loss: 11600.051758
+d update  epoch 123, step 0: dis_total_loss: 0.000178, r_loss: 0.000005, f_loss: 0.000173
+epoch 124, step: 1: mean_reward: -58.008583, expect_reward_loss:-58.008583, update_loss: 11641.038086
+d update  epoch 124, step 0: dis_total_loss: 0.000614, r_loss: 0.000005, f_loss: 0.000609
+epoch 125, step: 1: mean_reward: -58.174751, expect_reward_loss:-58.174751, update_loss: 12018.200195
+d update  epoch 125, step 0: dis_total_loss: 0.000074, r_loss: 0.000005, f_loss: 0.000070
+epoch 126, step: 1: mean_reward: -58.244286, expect_reward_loss:-58.244286, update_loss: 12962.243164
+d update  epoch 126, step 0: dis_total_loss: 0.000159, r_loss: 0.000005, f_loss: 0.000154
+epoch 127, step: 1: mean_reward: -58.012901, expect_reward_loss:-58.012901, update_loss: 11138.433594
+d update  epoch 127, step 0: dis_total_loss: 0.000260, r_loss: 0.000005, f_loss: 0.000256
+epoch 128, step: 1: mean_reward: -58.294884, expect_reward_loss:-58.294884, update_loss: 12905.900391
+d update  epoch 128, step 0: dis_total_loss: 0.003023, r_loss: 0.000005, f_loss: 0.003019
+epoch 129, step: 1: mean_reward: -58.201733, expect_reward_loss:-58.201733, update_loss: 12453.796875
+d update  epoch 129, step 0: dis_total_loss: 0.000177, r_loss: 0.000005, f_loss: 0.000172
+epoch 130, step: 1: mean_reward: -58.158852, expect_reward_loss:-58.158852, update_loss: 11840.204102
+d update  epoch 130, step 0: dis_total_loss: 0.000058, r_loss: 0.000005, f_loss: 0.000053
 epoch 130 BLEU1~4 on train dataset:
-0.825615
-0.579076
-0.311930
-0.134764
+0.783577
+0.562079
+0.309143
+0.134705
 
  epoch 130 BLEU1~4 on test dataset:
-0.611416
-0.300875
-0.122017
-0.042397
-
-
-step:   1, mean_rwd: -62.697243, exp_rwd_loss:-62.697243, update_loss: -62.697243
-  0: dis_total_loss: 0.000439, r_loss: 0.000010, f_loss: 0.000429
-step:   1, mean_rwd: -62.799355, exp_rwd_loss:-62.799355, update_loss: -62.799355
-  0: dis_total_loss: 0.000057, r_loss: 0.000010, f_loss: 0.000047
-step:   1, mean_rwd: -62.936310, exp_rwd_loss:-62.936310, update_loss: -62.936310
-  0: dis_total_loss: 0.000066, r_loss: 0.000010, f_loss: 0.000056
-step:   1, mean_rwd: -63.033913, exp_rwd_loss:-63.033913, update_loss: -63.033913
-  0: dis_total_loss: 0.001060, r_loss: 0.000010, f_loss: 0.001050
-step:   1, mean_rwd: -62.927406, exp_rwd_loss:-62.927406, update_loss: -62.927406
-  0: dis_total_loss: 0.000531, r_loss: 0.000010, f_loss: 0.000521
-step:   1, mean_rwd: -62.993877, exp_rwd_loss:-62.993877, update_loss: -62.993877
-  0: dis_total_loss: 0.000568, r_loss: 0.000010, f_loss: 0.000558
-step:   1, mean_rwd: -63.113731, exp_rwd_loss:-63.113731, update_loss: -63.113731
-  0: dis_total_loss: 0.000069, r_loss: 0.000010, f_loss: 0.000059
-step:   1, mean_rwd: -63.170654, exp_rwd_loss:-63.170654, update_loss: -63.170654
-  0: dis_total_loss: 0.003084, r_loss: 0.000010, f_loss: 0.003075
-step:   1, mean_rwd: -62.803738, exp_rwd_loss:-62.803738, update_loss: -62.803738
-  0: dis_total_loss: 0.000418, r_loss: 0.000010, f_loss: 0.000408
-step:   1, mean_rwd: -63.274666, exp_rwd_loss:-63.274666, update_loss: -63.274666
-  0: dis_total_loss: 0.000633, r_loss: 0.000010, f_loss: 0.000623
-epoch 140 BLEU1~4 on train dataset:
-0.825277
-0.578862
-0.312486
-0.134637
-
- epoch 140 BLEU1~4 on test dataset:
-0.611689
-0.301480
-0.123443
-0.042698
-
-
-step:   1, mean_rwd: -63.354462, exp_rwd_loss:-63.354462, update_loss: -63.354462
-  0: dis_total_loss: 0.000199, r_loss: 0.000010, f_loss: 0.000189
-step:   1, mean_rwd: -63.316193, exp_rwd_loss:-63.316193, update_loss: -63.316193
-  0: dis_total_loss: 0.000187, r_loss: 0.000009, f_loss: 0.000178
-step:   1, mean_rwd: -63.100025, exp_rwd_loss:-63.100025, update_loss: -63.100025
-  0: dis_total_loss: 0.000178, r_loss: 0.000009, f_loss: 0.000169
-step:   1, mean_rwd: -63.144226, exp_rwd_loss:-63.144226, update_loss: -63.144226
-  0: dis_total_loss: 0.000745, r_loss: 0.000009, f_loss: 0.000736
-step:   1, mean_rwd: -63.629292, exp_rwd_loss:-63.629292, update_loss: -63.629292
-  0: dis_total_loss: 0.000180, r_loss: 0.000009, f_loss: 0.000171
-step:   1, mean_rwd: -63.067139, exp_rwd_loss:-63.067139, update_loss: -63.067139
-  0: dis_total_loss: 0.001202, r_loss: 0.000009, f_loss: 0.001193
-step:   1, mean_rwd: -63.568249, exp_rwd_loss:-63.568249, update_loss: -63.568249
-  0: dis_total_loss: 0.000182, r_loss: 0.000009, f_loss: 0.000173
-step:   1, mean_rwd: -63.474415, exp_rwd_loss:-63.474415, update_loss: -63.474415
-  0: dis_total_loss: 0.001706, r_loss: 0.000009, f_loss: 0.001696
-step:   1, mean_rwd: -63.710804, exp_rwd_loss:-63.710804, update_loss: -63.710804
-  0: dis_total_loss: 0.000178, r_loss: 0.000009, f_loss: 0.000169
-step:   1, mean_rwd: -63.145821, exp_rwd_loss:-63.145821, update_loss: -63.145821
-  0: dis_total_loss: 0.000629, r_loss: 0.000009, f_loss: 0.000620
-epoch 150 BLEU1~4 on train dataset:
-0.828903
-0.580968
-0.312472
-0.133673
-
- epoch 150 BLEU1~4 on test dataset:
-0.608466
-0.297944
-0.120881
+0.583893
+0.293252
+0.118825
 0.041849
 
 
-step:   1, mean_rwd: -63.509548, exp_rwd_loss:-63.509548, update_loss: -63.509548
-  0: dis_total_loss: 0.000265, r_loss: 0.000009, f_loss: 0.000256
-step:   1, mean_rwd: -63.828056, exp_rwd_loss:-63.828056, update_loss: -63.828056
-  0: dis_total_loss: 0.000501, r_loss: 0.000009, f_loss: 0.000493
-step:   1, mean_rwd: -63.530003, exp_rwd_loss:-63.530003, update_loss: -63.530003
-  0: dis_total_loss: 0.000056, r_loss: 0.000009, f_loss: 0.000047
-step:   1, mean_rwd: -63.766663, exp_rwd_loss:-63.766663, update_loss: -63.766663
-  0: dis_total_loss: 0.000295, r_loss: 0.000009, f_loss: 0.000286
-step:   1, mean_rwd: -63.753136, exp_rwd_loss:-63.753136, update_loss: -63.753136
-  0: dis_total_loss: 0.000144, r_loss: 0.000009, f_loss: 0.000136
-step:   1, mean_rwd: -64.016182, exp_rwd_loss:-64.016182, update_loss: -64.016182
-  0: dis_total_loss: 0.001809, r_loss: 0.000008, f_loss: 0.001800
-step:   1, mean_rwd: -63.304420, exp_rwd_loss:-63.304420, update_loss: -63.304420
-  0: dis_total_loss: 0.000091, r_loss: 0.000008, f_loss: 0.000083
-step:   1, mean_rwd: -63.230469, exp_rwd_loss:-63.230469, update_loss: -63.230469
-  0: dis_total_loss: 0.000706, r_loss: 0.000008, f_loss: 0.000698
-step:   1, mean_rwd: -64.217972, exp_rwd_loss:-64.217972, update_loss: -64.217972
-  0: dis_total_loss: 0.000186, r_loss: 0.000008, f_loss: 0.000178
-step:   1, mean_rwd: -64.104599, exp_rwd_loss:-64.104599, update_loss: -64.104599
-  0: dis_total_loss: 0.000086, r_loss: 0.000008, f_loss: 0.000078
-epoch 160 BLEU1~4 on train dataset:
-0.820099
-0.575122
-0.310107
-0.133680
-
- epoch 160 BLEU1~4 on test dataset:
-0.606812
-0.297517
-0.121568
-0.041395
-
-
-step:   1, mean_rwd: -64.150841, exp_rwd_loss:-64.150841, update_loss: -64.150841
-  0: dis_total_loss: 0.000087, r_loss: 0.000008, f_loss: 0.000078
-step:   1, mean_rwd: -64.157455, exp_rwd_loss:-64.157455, update_loss: -64.157455
-  0: dis_total_loss: 0.000289, r_loss: 0.000008, f_loss: 0.000281
-step:   1, mean_rwd: -64.374893, exp_rwd_loss:-64.374893, update_loss: -64.374893
-  0: dis_total_loss: 0.009822, r_loss: 0.000008, f_loss: 0.009814/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-  return f(*args, **kwds)
-
-step:   1, mean_rwd: -64.319427, exp_rwd_loss:-64.319427, update_loss: -64.319427
-  0: dis_total_loss: 0.000463, r_loss: 0.000008, f_loss: 0.000455
-step:   1, mean_rwd: -64.245041, exp_rwd_loss:-64.245041, update_loss: -64.245041
-  0: dis_total_loss: 0.000442, r_loss: 0.000008, f_loss: 0.000434
-step:   1, mean_rwd: -64.378380, exp_rwd_loss:-64.378380, update_loss: -64.378380
-  0: dis_total_loss: 0.000123, r_loss: 0.000008, f_loss: 0.000115
-step:   1, mean_rwd: -64.350922, exp_rwd_loss:-64.350922, update_loss: -64.350922
-  0: dis_total_loss: 0.000041, r_loss: 0.000008, f_loss: 0.000033
-step:   1, mean_rwd: -64.623497, exp_rwd_loss:-64.623497, update_loss: -64.623497
-  0: dis_total_loss: 0.001009, r_loss: 0.000008, f_loss: 0.001001
-step:   1, mean_rwd: -64.371231, exp_rwd_loss:-64.371231, update_loss: -64.371231
-  0: dis_total_loss: 0.000032, r_loss: 0.000008, f_loss: 0.000025
-step:   1, mean_rwd: -64.576355, exp_rwd_loss:-64.576355, update_loss: -64.576355
-  0: dis_total_loss: 0.000071, r_loss: 0.000008, f_loss: 0.000063
-epoch 170 BLEU1~4 on train dataset:
-0.816959
-0.572310
-0.308325
-0.132604
-
- epoch 170 BLEU1~4 on test dataset:
-0.607989
-0.298930
-0.121114
-0.041801
-
-
-step:   1, mean_rwd: -64.619049, exp_rwd_loss:-64.619049, update_loss: -64.619049
-  0: dis_total_loss: 0.000212, r_loss: 0.000008, f_loss: 0.000205
-step:   1, mean_rwd: -64.608246, exp_rwd_loss:-64.608246, update_loss: -64.608246
-  0: dis_total_loss: 0.000172, r_loss: 0.000008, f_loss: 0.000165
-step:   1, mean_rwd: -64.604195, exp_rwd_loss:-64.604195, update_loss: -64.604195
-  0: dis_total_loss: 0.000829, r_loss: 0.000007, f_loss: 0.000822
-step:   1, mean_rwd: -64.147934, exp_rwd_loss:-64.147934, update_loss: -64.147934
-  0: dis_total_loss: 0.000099, r_loss: 0.000007, f_loss: 0.000091
-step:   1, mean_rwd: -64.841629, exp_rwd_loss:-64.841629, update_loss: -64.841629
-  0: dis_total_loss: 0.000719, r_loss: 0.000007, f_loss: 0.000712
-step:   1, mean_rwd: -64.887596, exp_rwd_loss:-64.887596, update_loss: -64.887596
-  0: dis_total_loss: 0.000135, r_loss: 0.000007, f_loss: 0.000128
-step:   1, mean_rwd: -64.616920, exp_rwd_loss:-64.616920, update_loss: -64.616920
-  0: dis_total_loss: 0.000372, r_loss: 0.000007, f_loss: 0.000365
-step:   1, mean_rwd: -65.016693, exp_rwd_loss:-65.016693, update_loss: -65.016693
-  0: dis_total_loss: 0.000136, r_loss: 0.000007, f_loss: 0.000129
-step:   1, mean_rwd: -64.692848, exp_rwd_loss:-64.692848, update_loss: -64.692848
-  0: dis_total_loss: 0.000896, r_loss: 0.000007, f_loss: 0.000889
-step:   1, tr_ppl: 81.646383
-step: 101, tr_ppl: 16.821466
-epoch 0 BLEU1~4 on train dataset:
-0.722556
-0.263199
-0.056801
-0.007997
-
- epoch 0 BLEU1~4 on test dataset:
-0.548483
-0.172852
-0.028507
-0.003188
-
-
-step:   1, tr_ppl: 10.425692
-step: 101, tr_ppl: 10.946649
-step:   1, tr_ppl: 7.996813
-step: 101, tr_ppl: 9.088579
-step:   1, tr_ppl: 7.024936
-step: 101, tr_ppl: 8.144998
-step:   1, tr_ppl: 6.445666
-step: 101, tr_ppl: 7.477981
-step:   1, tr_ppl: 6.037326
-step: 101, tr_ppl: 7.037230
-step:   1, tr_ppl: 5.739829
-step: 101, tr_ppl: 6.759620
-step:   1, tr_ppl: 5.520015
-step: 101, tr_ppl: 6.499195
-step:   1, tr_ppl: 5.344628
-step: 101, tr_ppl: 6.241912
-step:   1, tr_ppl: 5.206029
-step: 101, tr_ppl: 6.015602
-step:   1, tr_ppl: 5.099842
-step: 101, tr_ppl: 5.851314
-epoch 10 BLEU1~4 on train dataset:
-0.820617
-0.540929
-0.259932
-0.097351
-
- epoch 10 BLEU1~4 on test dataset:
-0.590236
-0.280273
-0.104988
-0.033096
-
-
-step:   1, tr_ppl: 4.992657
-step: 101, tr_ppl: 5.733174
-step:   1, tr_ppl: 4.903945
-step: 101, tr_ppl: 5.643189
-step:   1, tr_ppl: 4.827290
-step: 101, tr_ppl: 5.566085
-step:   1, tr_ppl: 4.765943
-step: 101, tr_ppl: 5.483757
-step:   1, tr_ppl: 4.725461
-step: 101, tr_ppl: 5.422135
-step:   1, tr_ppl: 4.683988
-step: 101, tr_ppl: 5.378664
-step:   1, tr_ppl: 4.631263
-step: 101, tr_ppl: 5.332550
-step:   1, tr_ppl: 4.579282
-step: 101, tr_ppl: 5.292742
-step:   1, tr_ppl: 4.536194
-step: 101, tr_ppl: 5.239920
-step:   1, tr_ppl: 4.489942
-step: 101, tr_ppl: 5.197801
-epoch 20 BLEU1~4 on train dataset:
-0.817912
-0.559199
-0.284363
-0.115102
-
- epoch 20 BLEU1~4 on test dataset:
-0.595768
-0.289717
-0.112709
-0.037065
-
-
-step:   1, tr_ppl: 4.453004
-step: 101, tr_ppl: 5.135845
-step:   1, tr_ppl: 4.426579
-step: 101, tr_ppl: 5.103012
-step:   1, tr_ppl: 4.391749
-step: 101, tr_ppl: 5.093953
-step:   1, tr_ppl: 4.373746
-step: 101, tr_ppl: 5.079522
-step:   1, tr_ppl: 4.332228
-step: 101, tr_ppl: 5.014822
-step:   1, tr_ppl: 4.326590
-step: 101, tr_ppl: 4.982568
-step:   1, tr_ppl: 4.316128
-step: 101, tr_ppl: 4.971165
-step:   1, tr_ppl: 4.280160
-step: 101, tr_ppl: 4.950260
-step:   1, tr_ppl: 4.252805
-step: 101, tr_ppl: 4.931542
-step:   1, tr_ppl: 4.230942
-step: 101, tr_ppl: 4.897096
-epoch 30 BLEU1~4 on train dataset:
-0.822363
-0.562497
-0.290315
-0.119978
-
- epoch 30 BLEU1~4 on test dataset:
-0.612475
-0.299076
-0.120235
-0.040717
-
-
-step:   1, tr_ppl: 4.215668
-step: 101, tr_ppl: 4.885444
-step:   1, tr_ppl: 4.189005
-step: 101, tr_ppl: 4.851190
-step:   1, tr_ppl: 4.213581
-step: 101, tr_ppl: 4.828376
-step:   1, tr_ppl: 4.198954
-step: 101, tr_ppl: 4.836612
-step:   1, tr_ppl: 4.166501
-step: 101, tr_ppl: 4.799854
-step:   1, tr_ppl: 4.154526
-step: 101, tr_ppl: 4.764866
-step:   1, tr_ppl: 4.134923
-step: 101, tr_ppl: 4.697147
-step:   1, tr_ppl: 4.101555
-step: 101, tr_ppl: 4.707389
-step:   1, tr_ppl: 4.115022
-step: 101, tr_ppl: 4.703985
-step:   1, tr_ppl: 4.107214
-step: 101, tr_ppl: 4.682143
-epoch 40 BLEU1~4 on train dataset:
-0.829213
-0.571950
-0.298187
-0.125431
-
- epoch 40 BLEU1~4 on test dataset:
-0.603992
-0.293329
-0.116536
-0.038862
-
-
-step:   1, tr_ppl: 4.089947
-step: 101, tr_ppl: 4.677563
-step:   1, tr_ppl: 4.073335
-step: 101, tr_ppl: 4.654051
-step:   1, tr_ppl: 4.065983
-step: 101, tr_ppl: 4.657386
-step:   1, tr_ppl: 4.048151
-step: 101, tr_ppl: 4.647717
-step:   1, tr_ppl: 4.039457
-step: 101, tr_ppl: 4.608207
-step:   1, tr_ppl: 4.021177
-step: 101, tr_ppl: 4.600364
-step:   1, tr_ppl: 4.028874
-step: 101, tr_ppl: 4.534098
-step:   1, tr_ppl: 4.030071
-step: 101, tr_ppl: 4.542111
-step:   1, tr_ppl: 4.005061
-step: 101, tr_ppl: 4.523248
-step:   1, tr_ppl: 4.009911
-step: 101, tr_ppl: 4.522469
-epoch 50 BLEU1~4 on train dataset:
-0.829266
-0.569584
-0.299368
-0.127134
-
- epoch 50 BLEU1~4 on test dataset:
-0.602863
-0.287491
-0.113885
-0.038760
-
-
-step:   1, tr_ppl: 3.982758
-step: 101, tr_ppl: 4.498500
-step:   1, tr_ppl: 3.977079
-step: 101, tr_ppl: 4.480002
-step:   1, tr_ppl: 3.976602
-step: 101, tr_ppl: 4.482901
-step:   1, tr_ppl: 4.022807
-step: 101, tr_ppl: 4.454612
-step:   1, tr_ppl: 3.965844
-step: 101, tr_ppl: 4.451314
-step:   1, tr_ppl: 3.970146
-step: 101, tr_ppl: 4.455473
-step:   1, tr_ppl: 3.966713
-step: 101, tr_ppl: 4.449874
-step:   1, tr_ppl: 3.967627
-step: 101, tr_ppl: 4.398460
-step:   1, tr_ppl: 3.957377
-step: 101, tr_ppl: 4.391189
-step:   1, tr_ppl: 3.933476
-step: 101, tr_ppl: 4.402236
-epoch 60 BLEU1~4 on train dataset:
-0.828860
-0.575707
-0.305389
-0.130370
-
- epoch 60 BLEU1~4 on test dataset:
-0.601970
-0.292048
-0.117638
-0.039561
-
-
-step:   1, tr_ppl: 3.960337
-step: 101, tr_ppl: 4.367302
-step:   1, tr_ppl: 3.943584
-step: 101, tr_ppl: 4.428933
-step:   1, tr_ppl: 3.919751
-step: 101, tr_ppl: 4.389406
-step:   1, tr_ppl: 3.926468
-step: 101, tr_ppl: 4.379683
-step:   1, tr_ppl: 3.899118
-step: 101, tr_ppl: 4.329128
-step:   1, tr_ppl: 3.916521
-step: 101, tr_ppl: 4.309918
-step:   1, tr_ppl: 3.883751
-step: 101, tr_ppl: 4.352464
-step:   1, tr_ppl: 3.877596
-step: 101, tr_ppl: 4.308530
-step:   1, tr_ppl: 3.883273
-step: 101, tr_ppl: 4.334052
-step:   1, tr_ppl: 3.894318
-step: 101, tr_ppl: 4.378487
-epoch 70 BLEU1~4 on train dataset:
-0.829823
-0.576328
-0.308960
-0.133397
-
- epoch 70 BLEU1~4 on test dataset:
-0.607952
-0.291776
-0.117819
-0.040470
-
-
-step:   1, tr_ppl: 3.840578
-step: 101, tr_ppl: 4.334436
-step:   1, tr_ppl: 3.885577
-step: 101, tr_ppl: 4.299086
-step:   1, tr_ppl: 3.905430
-step: 101, tr_ppl: 4.276622
-step:   1, tr_ppl: 3.853705
-step: 101, tr_ppl: 4.314023
-step:   1, tr_ppl: 3.879667
-step: 101, tr_ppl: 4.343691
-step:   1, tr_ppl: 3.875938
-step: 101, tr_ppl: 4.272160
-step:   1, tr_ppl: 3.876137
-step: 101, tr_ppl: 4.307337
-step:   1, tr_ppl: 3.864215
-step: 101, tr_ppl: 4.274301
-step:   1, tr_ppl: 3.851193
-step: 101, tr_ppl: 4.285108
-  0: dis_total_loss: 16.981222, r_loss: 8.808915, f_loss: 8.172307
-  0: dis_total_loss: 3.758446, r_loss: 1.546793, f_loss: 2.211653
-  0: dis_total_loss: 2.112089, r_loss: 0.814032, f_loss: 1.298056
-  0: dis_total_loss: 1.386048, r_loss: 0.540170, f_loss: 0.845877
-  0: dis_total_loss: 1.035020, r_loss: 0.366824, f_loss: 0.668196
-  0: dis_total_loss: 1.239258, r_loss: 0.264454, f_loss: 0.974804
-  0: dis_total_loss: 0.665820, r_loss: 0.197127, f_loss: 0.468693
-  0: dis_total_loss: 0.519940, r_loss: 0.141149, f_loss: 0.378791
-  0: dis_total_loss: 0.380075, r_loss: 0.103064, f_loss: 0.277011
-  0: dis_total_loss: 0.345116, r_loss: 0.083474, f_loss: 0.261642
-  0: dis_total_loss: 0.308070, r_loss: 0.062846, f_loss: 0.245224
-  0: dis_total_loss: 0.218878, r_loss: 0.049755, f_loss: 0.169123
-  0: dis_total_loss: 0.195795, r_loss: 0.037508, f_loss: 0.158288
-  0: dis_total_loss: 0.150606, r_loss: 0.028809, f_loss: 0.121797
-  0: dis_total_loss: 0.176734, r_loss: 0.022577, f_loss: 0.154157
-  0: dis_total_loss: 0.130308, r_loss: 0.018109, f_loss: 0.112199
-  0: dis_total_loss: 0.163417, r_loss: 0.014548, f_loss: 0.148869
-  0: dis_total_loss: 0.095492, r_loss: 0.011832, f_loss: 0.083661
-  0: dis_total_loss: 0.091092, r_loss: 0.009728, f_loss: 0.081364
-  0: dis_total_loss: 0.072308, r_loss: 0.008086, f_loss: 0.064222
-  0: dis_total_loss: 0.092099, r_loss: 0.006750, f_loss: 0.085349
-  0: dis_total_loss: 0.077174, r_loss: 0.005688, f_loss: 0.071486
-  0: dis_total_loss: 0.045568, r_loss: 0.004819, f_loss: 0.040750
-  0: dis_total_loss: 0.049231, r_loss: 0.004120, f_loss: 0.045111
-  0: dis_total_loss: 0.020720, r_loss: 0.003538, f_loss: 0.017181
-  0: dis_total_loss: 0.067160, r_loss: 0.003069, f_loss: 0.064091
-  0: dis_total_loss: 0.052881, r_loss: 0.002658, f_loss: 0.050223
-  0: dis_total_loss: 0.028862, r_loss: 0.002298, f_loss: 0.026564
-  0: dis_total_loss: 0.067384, r_loss: 0.002002, f_loss: 0.065382
-  0: dis_total_loss: 0.014957, r_loss: 0.001756, f_loss: 0.013201
-  0: dis_total_loss: 0.006755, r_loss: 0.001544, f_loss: 0.005212
-  0: dis_total_loss: 0.047895, r_loss: 0.001366, f_loss: 0.046529
-  0: dis_total_loss: 0.023888, r_loss: 0.001206, f_loss: 0.022681
-  0: dis_total_loss: 0.012488, r_loss: 0.001076, f_loss: 0.011412
-  0: dis_total_loss: 0.019431, r_loss: 0.000952, f_loss: 0.018479
-  0: dis_total_loss: 0.020826, r_loss: 0.000849, f_loss: 0.019976
-  0: dis_total_loss: 0.009154, r_loss: 0.000752, f_loss: 0.008401
-  0: dis_total_loss: 0.011576, r_loss: 0.000667, f_loss: 0.010910
-  0: dis_total_loss: 0.027570, r_loss: 0.000594, f_loss: 0.026976
-  0: dis_total_loss: 0.014296, r_loss: 0.000531, f_loss: 0.013765
-  0: dis_total_loss: 0.009255, r_loss: 0.000475, f_loss: 0.008780
-  0: dis_total_loss: 0.009597, r_loss: 0.000423, f_loss: 0.009174
-  0: dis_total_loss: 0.008621, r_loss: 0.000379, f_loss: 0.008242
-  0: dis_total_loss: 0.012832, r_loss: 0.000346, f_loss: 0.012487
-  0: dis_total_loss: 0.017043, r_loss: 0.000309, f_loss: 0.016734
-  0: dis_total_loss: 0.002311, r_loss: 0.000275, f_loss: 0.002035
-  0: dis_total_loss: 0.004823, r_loss: 0.000248, f_loss: 0.004575
-  0: dis_total_loss: 0.009095, r_loss: 0.000223, f_loss: 0.008872
-  0: dis_total_loss: 0.008442, r_loss: 0.000201, f_loss: 0.008241
-  0: dis_total_loss: 0.007857, r_loss: 0.000181, f_loss: 0.007676
-  0: dis_total_loss: 0.003488, r_loss: 0.000165, f_loss: 0.003323
-  0: dis_total_loss: 0.003034, r_loss: 0.000149, f_loss: 0.002885
-  0: dis_total_loss: 0.003834, r_loss: 0.000134, f_loss: 0.003700
-  0: dis_total_loss: 0.002162, r_loss: 0.000121, f_loss: 0.002041
-  0: dis_total_loss: 0.002900, r_loss: 0.000109, f_loss: 0.002791
-  0: dis_total_loss: 0.007172, r_loss: 0.000098, f_loss: 0.007074
-  0: dis_total_loss: 0.001077, r_loss: 0.000089, f_loss: 0.000988
-  0: dis_total_loss: 0.002226, r_loss: 0.000080, f_loss: 0.002146
-  0: dis_total_loss: 0.004396, r_loss: 0.000073, f_loss: 0.004323
-  0: dis_total_loss: 0.002726, r_loss: 0.000065, f_loss: 0.002661
-  0: dis_total_loss: 0.002846, r_loss: 0.000060, f_loss: 0.002786
-  0: dis_total_loss: 0.000328, r_loss: 0.000054, f_loss: 0.000275
-  0: dis_total_loss: 0.000431, r_loss: 0.000049, f_loss: 0.000382
-  0: dis_total_loss: 0.000294, r_loss: 0.000044, f_loss: 0.000249
-  0: dis_total_loss: 0.001951, r_loss: 0.000040, f_loss: 0.001910
-  0: dis_total_loss: 0.004309, r_loss: 0.000036, f_loss: 0.004273
-  0: dis_total_loss: 0.001130, r_loss: 0.000034, f_loss: 0.001097
-  0: dis_total_loss: 0.002824, r_loss: 0.000030, f_loss: 0.002794
-  0: dis_total_loss: 0.000431, r_loss: 0.000027, f_loss: 0.000404
-  0: dis_total_loss: 0.006660, r_loss: 0.000025, f_loss: 0.006635
-  0: dis_total_loss: 0.000517, r_loss: 0.000022, f_loss: 0.000495
-  0: dis_total_loss: 0.000080, r_loss: 0.000020, f_loss: 0.000060
-  0: dis_total_loss: 0.002433, r_loss: 0.000018, f_loss: 0.002415
-  0: dis_total_loss: 0.000127, r_loss: 0.000016, f_loss: 0.000111
-  0: dis_total_loss: 0.000207, r_loss: 0.000015, f_loss: 0.000193
-  0: dis_total_loss: 0.000403, r_loss: 0.000013, f_loss: 0.000390
-  0: dis_total_loss: 0.000127, r_loss: 0.000012, f_loss: 0.000115
-  0: dis_total_loss: 0.000030, r_loss: 0.000010, f_loss: 0.000019
-  0: dis_total_loss: 0.000106, r_loss: 0.000009, f_loss: 0.000097
-  0: dis_total_loss: 0.000072, r_loss: 0.000008, f_loss: 0.000063
-step:   1, mean_rwd: -53.228588, exp_rwd_loss:-53.228588, update_loss: -53.228588
-  0: dis_total_loss: 0.000146, r_loss: 0.000007, f_loss: 0.000139
-epoch 80 BLEU1~4 on train dataset:
-0.826288
-0.574703
-0.308576
-0.134055
-
- epoch 80 BLEU1~4 on test dataset:
-0.602395
-0.288548
-0.116165
-0.039852
-
-
-step:   1, mean_rwd: -52.935516, exp_rwd_loss:-52.935516, update_loss: -52.935516
-  0: dis_total_loss: 0.005967, r_loss: 0.000007, f_loss: 0.005960
-step:   1, mean_rwd: -53.251965, exp_rwd_loss:-53.251965, update_loss: -53.251965
-  0: dis_total_loss: 0.000077, r_loss: 0.000007, f_loss: 0.000069
-step:   1, mean_rwd: -53.207787, exp_rwd_loss:-53.207787, update_loss: -53.207787
-  0: dis_total_loss: 0.003221, r_loss: 0.000007, f_loss: 0.003214
-step:   1, mean_rwd: -53.352791, exp_rwd_loss:-53.352791, update_loss: -53.352791
-  0: dis_total_loss: 0.000134, r_loss: 0.000007, f_loss: 0.000127
-step:   1, mean_rwd: -53.315155, exp_rwd_loss:-53.315155, update_loss: -53.315155
-  0: dis_total_loss: 0.000055, r_loss: 0.000007, f_loss: 0.000048
-step:   1, mean_rwd: -52.816315, exp_rwd_loss:-52.816315, update_loss: -52.816315
-  0: dis_total_loss: 0.000193, r_loss: 0.000007, f_loss: 0.000186
-step:   1, mean_rwd: -53.468639, exp_rwd_loss:-53.468639, update_loss: -53.468639
-  0: dis_total_loss: 0.000271, r_loss: 0.000007, f_loss: 0.000264
-step:   1, mean_rwd: -53.253387, exp_rwd_loss:-53.253387, update_loss: -53.253387
-  0: dis_total_loss: 0.000432, r_loss: 0.000007, f_loss: 0.000426
-step:   1, mean_rwd: -53.326279, exp_rwd_loss:-53.326279, update_loss: -53.326279
-  0: dis_total_loss: 0.000267, r_loss: 0.000007, f_loss: 0.000260
-step:   1, mean_rwd: -53.624138, exp_rwd_loss:-53.624138, update_loss: -53.624138
-  0: dis_total_loss: 0.000137, r_loss: 0.000007, f_loss: 0.000131
-epoch 90 BLEU1~4 on train dataset:
-0.811271
-0.565454
-0.306439
-0.135337
-
- epoch 90 BLEU1~4 on test dataset:
-0.590831
-0.283448
-0.114999
-0.040184
-
-
-step:   1, mean_rwd: -53.472992, exp_rwd_loss:-53.472992, update_loss: -53.472992
-  0: dis_total_loss: 0.000104, r_loss: 0.000007, f_loss: 0.000098
-step:   1, mean_rwd: -53.567345, exp_rwd_loss:-53.567345, update_loss: -53.567345
-  0: dis_total_loss: 0.000056, r_loss: 0.000006, f_loss: 0.000049
-step:   1, mean_rwd: -53.625324, exp_rwd_loss:-53.625324, update_loss: -53.625324
-  0: dis_total_loss: 0.000081, r_loss: 0.000006, f_loss: 0.000075
-step:   1, mean_rwd: -53.563141, exp_rwd_loss:-53.563141, update_loss: -53.563141
-  0: dis_total_loss: 0.000057, r_loss: 0.000006, f_loss: 0.000050
-step:   1, mean_rwd: -53.541420, exp_rwd_loss:-53.541420, update_loss: -53.541420
-  0: dis_total_loss: 0.000957, r_loss: 0.000006, f_loss: 0.000951
-step:   1, mean_rwd: -53.482113, exp_rwd_loss:-53.482113, update_loss: -53.482113
-  0: dis_total_loss: 0.000053, r_loss: 0.000006, f_loss: 0.000047
-step:   1, mean_rwd: -53.578011, exp_rwd_loss:-53.578011, update_loss: -53.578011
-  0: dis_total_loss: 0.000015, r_loss: 0.000006, f_loss: 0.000009
-step:   1, mean_rwd: -53.704948, exp_rwd_loss:-53.704948, update_loss: -53.704948
-  0: dis_total_loss: 0.000062, r_loss: 0.000006, f_loss: 0.000056
-step:   1, mean_rwd: -53.461639, exp_rwd_loss:-53.461639, update_loss: -53.461639
-  0: dis_total_loss: 0.000035, r_loss: 0.000006, f_loss: 0.000029
-step:   1, mean_rwd: -53.793743, exp_rwd_loss:-53.793743, update_loss: -53.793743
-  0: dis_total_loss: 0.000098, r_loss: 0.000006, f_loss: 0.000092
-epoch 100 BLEU1~4 on train dataset:
-0.791987
-0.557737
-0.305835
-0.135420
-
- epoch 100 BLEU1~4 on test dataset:
-0.575343
-0.277186
-0.112648
-0.039269
-
-
-step:   1, mean_rwd: -53.541073, exp_rwd_loss:-53.541073, update_loss: -53.541073
-  0: dis_total_loss: 0.000026, r_loss: 0.000006, f_loss: 0.000020
-step:   1, mean_rwd: -53.763977, exp_rwd_loss:-53.763977, update_loss: -53.763977
-  0: dis_total_loss: 0.000012, r_loss: 0.000006, f_loss: 0.000006
-step:   1, mean_rwd: -53.618946, exp_rwd_loss:-53.618946, update_loss: -53.618946
-  0: dis_total_loss: 0.000887, r_loss: 0.000006, f_loss: 0.000881
-step:   1, mean_rwd: -53.337265, exp_rwd_loss:-53.337265, update_loss: -53.337265
-  0: dis_total_loss: 0.000044, r_loss: 0.000006, f_loss: 0.000039
-step:   1, mean_rwd: -53.563301, exp_rwd_loss:-53.563301, update_loss: -53.563301
-  0: dis_total_loss: 0.000262, r_loss: 0.000006, f_loss: 0.000256
-step:   1, mean_rwd: -53.518883, exp_rwd_loss:-53.518883, update_loss: -53.518883
-  0: dis_total_loss: 0.000223, r_loss: 0.000006, f_loss: 0.000217
-step:   1, mean_rwd: -53.638237, exp_rwd_loss:-53.638237, update_loss: -53.638237
-  0: dis_total_loss: 0.000181, r_loss: 0.000006, f_loss: 0.000175
-step:   1, mean_rwd: -53.536224, exp_rwd_loss:-53.536224, update_loss: -53.536224
-  0: dis_total_loss: 0.000106, r_loss: 0.000006, f_loss: 0.000101
-step:   1, mean_rwd: -53.552044, exp_rwd_loss:-53.552044, update_loss: -53.552044
-  0: dis_total_loss: 0.000079, r_loss: 0.000005, f_loss: 0.000074
-step:   1, mean_rwd: -53.657837, exp_rwd_loss:-53.657837, update_loss: -53.657837
-  0: dis_total_loss: 0.000014, r_loss: 0.000005, f_loss: 0.000009
-epoch 110 BLEU1~4 on train dataset:
-0.770391
-0.545505
-0.300106
-0.133478
-
- epoch 110 BLEU1~4 on test dataset:
-0.563060
-0.275623
-0.113670
-0.040142
-
-
-step:   1, mean_rwd: -53.239368, exp_rwd_loss:-53.239368, update_loss: -53.239368
-  0: dis_total_loss: 0.000026, r_loss: 0.000005, f_loss: 0.000020
-step:   1, mean_rwd: -53.528442, exp_rwd_loss:-53.528442, update_loss: -53.528442
-  0: dis_total_loss: 0.000134, r_loss: 0.000005, f_loss: 0.000129
-step:   1, mean_rwd: -53.404186, exp_rwd_loss:-53.404186, update_loss: -53.404186
-  0: dis_total_loss: 0.000041, r_loss: 0.000005, f_loss: 0.000036
-step:   1, mean_rwd: -53.216118, exp_rwd_loss:-53.216118, update_loss: -53.216118
-  0: dis_total_loss: 0.000051, r_loss: 0.000005, f_loss: 0.000045
-step:   1, mean_rwd: -53.391174, exp_rwd_loss:-53.391174, update_loss: -53.391174
-  0: dis_total_loss: 0.000013, r_loss: 0.000005, f_loss: 0.000008
-step:   1, mean_rwd: -53.317707, exp_rwd_loss:-53.317707, update_loss: -53.317707
-  0: dis_total_loss: 0.000151, r_loss: 0.000005, f_loss: 0.000146
-step:   1, mean_rwd: -53.254036, exp_rwd_loss:-53.254036, update_loss: -53.254036
-  0: dis_total_loss: 0.000104, r_loss: 0.000005, f_loss: 0.000099
-step:   1, mean_rwd: -52.881351, exp_rwd_loss:-52.881351, update_loss: -52.881351
-  0: dis_total_loss: 0.000030, r_loss: 0.000005, f_loss: 0.000025
-step:   1, mean_rwd: -53.187813, exp_rwd_loss:-53.187813, update_loss: -53.187813
-  0: dis_total_loss: 0.000213, r_loss: 0.000005, f_loss: 0.000208
-step:   1, mean_rwd: -53.123096, exp_rwd_loss:-53.123096, update_loss: -53.123096
-  0: dis_total_loss: 0.000096, r_loss: 0.000005, f_loss: 0.000091
-epoch 120 BLEU1~4 on train dataset:
-0.744953
-0.531798
-0.295798
-0.134198
-
- epoch 120 BLEU1~4 on test dataset:
-0.546379
-0.270994
-0.113265
-0.040621
-
-
-step:   1, mean_rwd: -53.027149, exp_rwd_loss:-53.027149, update_loss: -53.027149
-  0: dis_total_loss: 0.001241, r_loss: 0.000005, f_loss: 0.001236
-step:   1, mean_rwd: -52.887184, exp_rwd_loss:-52.887184, update_loss: -52.887184
-  0: dis_total_loss: 0.000790, r_loss: 0.000005, f_loss: 0.000785
-step:   1, mean_rwd: -52.722218, exp_rwd_loss:-52.722218, update_loss: -52.722218
-  0: dis_total_loss: 0.001158, r_loss: 0.000005, f_loss: 0.001153
-step:   1, mean_rwd: -52.663776, exp_rwd_loss:-52.663776, update_loss: -52.663776
-  0: dis_total_loss: 0.000079, r_loss: 0.000005, f_loss: 0.000074
-step:   1, mean_rwd: -52.551929, exp_rwd_loss:-52.551929, update_loss: -52.551929
-  0: dis_total_loss: 0.000191, r_loss: 0.000005, f_loss: 0.000186
-step:   1, mean_rwd: -52.634766, exp_rwd_loss:-52.634766, update_loss: -52.634766
-  0: dis_total_loss: 0.000140, r_loss: 0.000005, f_loss: 0.000135
-step:   1, mean_rwd: -52.449409, exp_rwd_loss:-52.449409, update_loss: -52.449409
-  0: dis_total_loss: 0.000017, r_loss: 0.000005, f_loss: 0.000012
-step:   1, mean_rwd: -52.447224, exp_rwd_loss:-52.447224, update_loss: -52.447224
-  0: dis_total_loss: 0.000032, r_loss: 0.000004, f_loss: 0.000028
-step:   1, mean_rwd: -52.270134, exp_rwd_loss:-52.270134, update_loss: -52.270134
-  0: dis_total_loss: 0.000104, r_loss: 0.000004, f_loss: 0.000099
-step:   1, mean_rwd: -52.200756, exp_rwd_loss:-52.200756, update_loss: -52.200756
-  0: dis_total_loss: 0.000017, r_loss: 0.000004, f_loss: 0.000013
-epoch 130 BLEU1~4 on train dataset:
-0.723016
-0.520739
-0.291969
-0.131267
-
- epoch 130 BLEU1~4 on test dataset:
-0.532076
-0.265734
-0.110974
-0.039449
-
-
-step:   1, mean_rwd: -52.024250, exp_rwd_loss:-52.024250, update_loss: -52.024250
-  0: dis_total_loss: 0.000020, r_loss: 0.000004, f_loss: 0.000015
-step:   1, mean_rwd: -52.107826, exp_rwd_loss:-52.107826, update_loss: -52.107826
-  0: dis_total_loss: 0.000023, r_loss: 0.000004, f_loss: 0.000019
-step:   1, mean_rwd: -51.939018, exp_rwd_loss:-51.939018, update_loss: -51.939018
-  0: dis_total_loss: 0.000034, r_loss: 0.000004, f_loss: 0.000030
-step:   1, mean_rwd: -51.802818, exp_rwd_loss:-51.802818, update_loss: -51.802818
-  0: dis_total_loss: 0.000067, r_loss: 0.000004, f_loss: 0.000062
-step:   1, mean_rwd: -51.608471, exp_rwd_loss:-51.608471, update_loss: -51.608471
-  0: dis_total_loss: 0.000658, r_loss: 0.000004, f_loss: 0.000654
-step:   1, mean_rwd: -51.522644, exp_rwd_loss:-51.522644, update_loss: -51.522644
-  0: dis_total_loss: 0.000614, r_loss: 0.000004, f_loss: 0.000609
-step:   1, mean_rwd: -51.451183, exp_rwd_loss:-51.451183, update_loss: -51.451183
-  0: dis_total_loss: 0.000500, r_loss: 0.000004, f_loss: 0.000496
-step:   1, mean_rwd: -51.447998, exp_rwd_loss:-51.447998, update_loss: -51.447998
-  0: dis_total_loss: 0.000027, r_loss: 0.000004, f_loss: 0.000023
-step:   1, mean_rwd: -51.209419, exp_rwd_loss:-51.209419, update_loss: -51.209419
-  0: dis_total_loss: 0.000063, r_loss: 0.000004, f_loss: 0.000059
-step:   1, mean_rwd: -51.017853, exp_rwd_loss:-51.017853, update_loss: -51.017853
-  0: dis_total_loss: 0.000298, r_loss: 0.000004, f_loss: 0.000294
+epoch 131, step: 1: mean_reward: -58.214989, expect_reward_loss:-58.214989, update_loss: 11653.859375
+d update  epoch 131, step 0: dis_total_loss: 0.000719, r_loss: 0.000005, f_loss: 0.000714
+epoch 132, step: 1: mean_reward: -58.335285, expect_reward_loss:-58.335285, update_loss: 12571.239258
+d update  epoch 132, step 0: dis_total_loss: 0.000065, r_loss: 0.000005, f_loss: 0.000061
+epoch 133, step: 1: mean_reward: -57.909302, expect_reward_loss:-57.909302, update_loss: 13907.671875
+d update  epoch 133, step 0: dis_total_loss: 0.000019, r_loss: 0.000004, f_loss: 0.000014
+epoch 134, step: 1: mean_reward: -58.363594, expect_reward_loss:-58.363594, update_loss: 12145.355469
+d update  epoch 134, step 0: dis_total_loss: 0.000528, r_loss: 0.000004, f_loss: 0.000524
+epoch 135, step: 1: mean_reward: -58.354298, expect_reward_loss:-58.354298, update_loss: 12430.209961
+d update  epoch 135, step 0: dis_total_loss: 0.000033, r_loss: 0.000004, f_loss: 0.000028
+epoch 136, step: 1: mean_reward: -58.408398, expect_reward_loss:-58.408398, update_loss: 12149.582031
+d update  epoch 136, step 0: dis_total_loss: 0.000123, r_loss: 0.000004, f_loss: 0.000119
+epoch 137, step: 1: mean_reward: -58.329945, expect_reward_loss:-58.329945, update_loss: 12714.979492
+d update  epoch 137, step 0: dis_total_loss: 0.000654, r_loss: 0.000004, f_loss: 0.000649
+epoch 138, step: 1: mean_reward: -58.375885, expect_reward_loss:-58.375885, update_loss: 13204.132812
+d update  epoch 138, step 0: dis_total_loss: 0.000525, r_loss: 0.000004, f_loss: 0.000521
+epoch 139, step: 1: mean_reward: -58.199024, expect_reward_loss:-58.199024, update_loss: 11656.193359
+d update  epoch 139, step 0: dis_total_loss: 0.000045, r_loss: 0.000004, f_loss: 0.000041
+epoch 140, step: 1: mean_reward: -58.300331, expect_reward_loss:-58.300331, update_loss: 12846.854492
+d update  epoch 140, step 0: dis_total_loss: 0.000109, r_loss: 0.000004, f_loss: 0.000104
 epoch 140 BLEU1~4 on train dataset:
-0.700685
-0.505826
-0.284969
-0.129912
+0.773427
+0.556043
+0.307813
+0.135709
 
  epoch 140 BLEU1~4 on test dataset:
-0.517995
-0.261671
-0.111142
-0.039895
+0.578120
+0.290229
+0.118377
+0.041081
 
 
-step:   1, mean_rwd: -50.946014, exp_rwd_loss:-50.946014, update_loss: -50.946014
-  0: dis_total_loss: 0.000029, r_loss: 0.000004, f_loss: 0.000025
-step:   1, mean_rwd: -50.687111, exp_rwd_loss:-50.687111, update_loss: -50.687111
-  0: dis_total_loss: 0.000191, r_loss: 0.000004, f_loss: 0.000187
-step:   1, mean_rwd: -50.642029, exp_rwd_loss:-50.642029, update_loss: -50.642029
-  0: dis_total_loss: 0.000119, r_loss: 0.000004, f_loss: 0.000115
-step:   1, mean_rwd: -50.597511, exp_rwd_loss:-50.597511, update_loss: -50.597511
-  0: dis_total_loss: 0.000018, r_loss: 0.000004, f_loss: 0.000015
-step:   1, mean_rwd: -50.401268, exp_rwd_loss:-50.401268, update_loss: -50.401268
-  0: dis_total_loss: 0.000140, r_loss: 0.000004, f_loss: 0.000137
-step:   1, mean_rwd: -50.345787, exp_rwd_loss:-50.345787, update_loss: -50.345787
-  0: dis_total_loss: 0.000055, r_loss: 0.000004, f_loss: 0.000052
-step:   1, mean_rwd: -50.103813, exp_rwd_loss:-50.103813, update_loss: -50.103813
-  0: dis_total_loss: 0.001344, r_loss: 0.000004, f_loss: 0.001340
-step:   1, mean_rwd: -49.995598, exp_rwd_loss:-49.995598, update_loss: -49.995598
-  0: dis_total_loss: 0.000027, r_loss: 0.000004, f_loss: 0.000023
-step:   1, mean_rwd: -49.790325, exp_rwd_loss:-49.790325, update_loss: -49.790325
-  0: dis_total_loss: 0.000039, r_loss: 0.000004, f_loss: 0.000035
-step:   1, mean_rwd: -49.586479, exp_rwd_loss:-49.586479, update_loss: -49.586479
-  0: dis_total_loss: 0.000034, r_loss: 0.000004, f_loss: 0.000031
-epoch 150 BLEU1~4 on train dataset:
-0.671448
-0.487511
-0.278163
-0.127834
-
- epoch 150 BLEU1~4 on test dataset:
-0.502891
-0.258556
-0.110540
-0.040697
-
-
-step:   1, mean_rwd: -49.447933, exp_rwd_loss:-49.447933, update_loss: -49.447933
-  0: dis_total_loss: 0.000005, r_loss: 0.000004, f_loss: 0.000002
-step:   1, mean_rwd: -49.356960, exp_rwd_loss:-49.356960, update_loss: -49.356960
-  0: dis_total_loss: 0.000288, r_loss: 0.000003, f_loss: 0.000284
-step:   1, mean_rwd: -49.102154, exp_rwd_loss:-49.102154, update_loss: -49.102154
-  0: dis_total_loss: 0.000006, r_loss: 0.000003, f_loss: 0.000003
-step:   1, mean_rwd: -49.069733, exp_rwd_loss:-49.069733, update_loss: -49.069733
-  0: dis_total_loss: 0.000085, r_loss: 0.000003, f_loss: 0.000081
-step:   1, mean_rwd: -48.860405, exp_rwd_loss:-48.860405, update_loss: -48.860405
-  0: dis_total_loss: 0.000150, r_loss: 0.000003, f_loss: 0.000147
-step:   1, mean_rwd: -48.567947, exp_rwd_loss:-48.567947, update_loss: -48.567947
-  0: dis_total_loss: 0.000017, r_loss: 0.000003, f_loss: 0.000014
-step:   1, mean_rwd: -48.484917, exp_rwd_loss:-48.484917, update_loss: -48.484917
-  0: dis_total_loss: 0.000141, r_loss: 0.000003, f_loss: 0.000138
-step:   1, mean_rwd: -48.213470, exp_rwd_loss:-48.213470, update_loss: -48.213470
-  0: dis_total_loss: 0.000014, r_loss: 0.000003, f_loss: 0.000011
-step:   1, mean_rwd: -48.025291, exp_rwd_loss:-48.025291, update_loss: -48.025291
-  0: dis_total_loss: 0.000049, r_loss: 0.000003, f_loss: 0.000046
-step:   1, mean_rwd: -47.893341, exp_rwd_loss:-47.893341, update_loss: -47.893341
-  0: dis_total_loss: 0.000019, r_loss: 0.000003, f_loss: 0.000015
-epoch 160 BLEU1~4 on train dataset:
-0.656871
-0.480594
-0.274659
-0.126316
-
- epoch 160 BLEU1~4 on test dataset:
-0.493113
-0.254646
-0.108894
-0.039320
-
-
-step:   1, mean_rwd: -47.695599, exp_rwd_loss:-47.695599, update_loss: -47.695599
-  0: dis_total_loss: 0.000182, r_loss: 0.000003, f_loss: 0.000179
-step:   1, mean_rwd: -47.582989, exp_rwd_loss:-47.582989, update_loss: -47.582989
-  0: dis_total_loss: 0.000102, r_loss: 0.000003, f_loss: 0.000099
-step:   1, mean_rwd: -47.363953, exp_rwd_loss:-47.363953, update_loss: -47.363953
-  0: dis_total_loss: 0.000024, r_loss: 0.000003, f_loss: 0.000021/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+epoch 141, step: 1: mean_reward: -58.488934, expect_reward_loss:-58.488934, update_loss: 12392.701172
+d update  epoch 141, step 0: dis_total_loss: 0.000043, r_loss: 0.000004, f_loss: 0.000039
+epoch 142, step: 1: mean_reward: -58.158978, expect_reward_loss:-58.158978, update_loss: 13064.098633
+d update  epoch 142, step 0: dis_total_loss: 0.000015, r_loss: 0.000004, f_loss: 0.000011
+epoch 143, step: 1: mean_reward: -58.408947, expect_reward_loss:-58.408947, update_loss: 12768.065430/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
   return f(*args, **kwds)
 
-step:   1, mean_rwd: -47.060024, exp_rwd_loss:-47.060024, update_loss: -47.060024
-  0: dis_total_loss: 0.000008, r_loss: 0.000003, f_loss: 0.000005
-step:   1, mean_rwd: -46.909405, exp_rwd_loss:-46.909405, update_loss: -46.909405
-  0: dis_total_loss: 0.003496, r_loss: 0.000003, f_loss: 0.003493
-step:   1, mean_rwd: -46.670261, exp_rwd_loss:-46.670261, update_loss: -46.670261
-  0: dis_total_loss: 0.000004, r_loss: 0.000003, f_loss: 0.000001
-step:   1, mean_rwd: -46.584190, exp_rwd_loss:-46.584190, update_loss: -46.584190
-  0: dis_total_loss: 0.000028, r_loss: 0.000003, f_loss: 0.000025
-step:   1, mean_rwd: -46.187836, exp_rwd_loss:-46.187836, update_loss: -46.187836
-  0: dis_total_loss: 0.000008, r_loss: 0.000003, f_loss: 0.000005
-step:   1, mean_rwd: -45.959904, exp_rwd_loss:-45.959904, update_loss: -45.959904
-  0: dis_total_loss: 0.000018, r_loss: 0.000003, f_loss: 0.000015
-step:   1, mean_rwd: -45.799641, exp_rwd_loss:-45.799641, update_loss: -45.799641
-  0: dis_total_loss: 0.000577, r_loss: 0.000003, f_loss: 0.000574
-epoch 170 BLEU1~4 on train dataset:
-0.632594
-0.463335
-0.265907
-0.121403
-
- epoch 170 BLEU1~4 on test dataset:
-0.476921
-0.248143
-0.105997
-0.038223
-
-
-step:   1, mean_rwd: -45.553219, exp_rwd_loss:-45.553219, update_loss: -45.553219
-  0: dis_total_loss: 0.000025, r_loss: 0.000003, f_loss: 0.000022
-step:   1, mean_rwd: -45.257496, exp_rwd_loss:-45.257496, update_loss: -45.257496
-  0: dis_total_loss: 0.000011, r_loss: 0.000003, f_loss: 0.000008
-step:   1, mean_rwd: -44.977348, exp_rwd_loss:-44.977348, update_loss: -44.977348
-  0: dis_total_loss: 0.000008, r_loss: 0.000003, f_loss: 0.000005
-step:   1, mean_rwd: -44.843292, exp_rwd_loss:-44.843292, update_loss: -44.843292
-  0: dis_total_loss: 0.000013, r_loss: 0.000003, f_loss: 0.000010
-step:   1, mean_rwd: -44.703743, exp_rwd_loss:-44.703743, update_loss: -44.703743
-  0: dis_total_loss: 0.000040, r_loss: 0.000003, f_loss: 0.000038
-step:   1, mean_rwd: -44.511562, exp_rwd_loss:-44.511562, update_loss: -44.511562
-  0: dis_total_loss: 0.000015, r_loss: 0.000003, f_loss: 0.000012
-step:   1, mean_rwd: -44.120113, exp_rwd_loss:-44.120113, update_loss: -44.120113
-  0: dis_total_loss: 0.000012, r_loss: 0.000003, f_loss: 0.000010
-step:   1, mean_rwd: -43.992596, exp_rwd_loss:-43.992596, update_loss: -43.992596
-  0: dis_total_loss: 0.000031, r_loss: 0.000003, f_loss: 0.000029
-step:   1, mean_rwd: -43.757534, exp_rwd_loss:-43.757534, update_loss: -43.757534
-  0: dis_total_loss: 0.000556, r_loss: 0.000002, f_loss: 0.000554
-step:   1, tr_ppl: 81.667743
-step: 101, tr_ppl: 16.147571
-epoch 0 BLEU1~4 on train dataset:
-0.732787
-0.281867
-0.064770
-0.009377
-
- epoch 0 BLEU1~4 on test dataset:
-0.552043
-0.179856
-0.031666
-0.003463
-
-
-step:   1, tr_ppl: 10.003550
-step: 101, tr_ppl: 10.718522
-step:   1, tr_ppl: 7.885780
-step: 101, tr_ppl: 8.964104
-step:   1, tr_ppl: 6.963910
-step: 101, tr_ppl: 8.080965
-step:   1, tr_ppl: 6.373454
-step: 101, tr_ppl: 7.485710
-step:   1, tr_ppl: 5.981172
-step: 101, tr_ppl: 7.056753
-step:   1, tr_ppl: 5.696363
-step: 101, tr_ppl: 6.731289
-step:   1, tr_ppl: 5.497137
-step: 101, tr_ppl: 6.467849
-step:   1, tr_ppl: 5.325840
-step: 101, tr_ppl: 6.191950
-step:   1, tr_ppl: 5.128517
-step: 101, tr_ppl: 5.987590
-step:   1, tr_ppl: 5.006264
-step: 101, tr_ppl: 5.806669
-epoch 10 BLEU1~4 on train dataset:
-0.828006
-0.550188
-0.270082
-0.103924
-
- epoch 10 BLEU1~4 on test dataset:
-0.600191
-0.288546
-0.110186
-0.035194
-
-
-step:   1, tr_ppl: 4.900395
-step: 101, tr_ppl: 5.648478
-step:   1, tr_ppl: 4.804922
-step: 101, tr_ppl: 5.519576
-step:   1, tr_ppl: 4.714136
-step: 101, tr_ppl: 5.426839
-step:   1, tr_ppl: 4.660465
-step: 101, tr_ppl: 5.314069
-step:   1, tr_ppl: 4.600371
-step: 101, tr_ppl: 5.215327
-step:   1, tr_ppl: 4.580669
-step: 101, tr_ppl: 5.178039
-step:   1, tr_ppl: 4.560579
-step: 101, tr_ppl: 5.100164
-step:   1, tr_ppl: 4.513749
-step: 101, tr_ppl: 5.000943
-step:   1, tr_ppl: 4.441955
-step: 101, tr_ppl: 5.005962
-step:   1, tr_ppl: 4.387406
-step: 101, tr_ppl: 4.948566
-epoch 20 BLEU1~4 on train dataset:
-0.805564
-0.550407
-0.280458
-0.113371
-
- epoch 20 BLEU1~4 on test dataset:
-0.599299
-0.288848
-0.113485
-0.037700
-
-
-step:   1, tr_ppl: 4.360030
-step: 101, tr_ppl: 4.882194
-step:   1, tr_ppl: 4.308646
-step: 101, tr_ppl: 4.848797
-step:   1, tr_ppl: 4.263546
-step: 101, tr_ppl: 4.812285
-step:   1, tr_ppl: 4.238985
-step: 101, tr_ppl: 4.792849
-step:   1, tr_ppl: 4.243192
-step: 101, tr_ppl: 4.774570
-step:   1, tr_ppl: 4.231534
-step: 101, tr_ppl: 4.775629
-step:   1, tr_ppl: 4.190195
-step: 101, tr_ppl: 4.719682
-step:   1, tr_ppl: 4.148469
-step: 101, tr_ppl: 4.707229
-step:   1, tr_ppl: 4.110739
-step: 101, tr_ppl: 4.695039
-step:   1, tr_ppl: 4.087341
-step: 101, tr_ppl: 4.721065
-epoch 30 BLEU1~4 on train dataset:
-0.806293
-0.555280
-0.288361
-0.119142
-
- epoch 30 BLEU1~4 on test dataset:
-0.601633
-0.290901
-0.114907
-0.037983
-
-
-step:   1, tr_ppl: 4.085112
-step: 101, tr_ppl: 4.652757
-step:   1, tr_ppl: 4.073071
-step: 101, tr_ppl: 4.616656
-step:   1, tr_ppl: 4.056676
-step: 101, tr_ppl: 4.681575
-step:   1, tr_ppl: 4.060363
-step: 101, tr_ppl: 4.618997
-step:   1, tr_ppl: 4.018096
-step: 101, tr_ppl: 4.618289
-step:   1, tr_ppl: 3.994097
-step: 101, tr_ppl: 4.588564
-step:   1, tr_ppl: 3.975215
-step: 101, tr_ppl: 4.518025
-step:   1, tr_ppl: 3.976720
-step: 101, tr_ppl: 4.537031
-step:   1, tr_ppl: 4.004109
-step: 101, tr_ppl: 4.512524
-step:   1, tr_ppl: 3.974102
-step: 101, tr_ppl: 4.500525
-epoch 40 BLEU1~4 on train dataset:
-0.819448
-0.574022
-0.304333
-0.128359
-
- epoch 40 BLEU1~4 on test dataset:
-0.599027
-0.291242
-0.117638
-0.040284
-
-
-step:   1, tr_ppl: 3.942045
-step: 101, tr_ppl: 4.489832
-step:   1, tr_ppl: 3.919490
-step: 101, tr_ppl: 4.498617
-step:   1, tr_ppl: 3.926684
-step: 101, tr_ppl: 4.479009
-step:   1, tr_ppl: 3.934050
-step: 101, tr_ppl: 4.476185
-step:   1, tr_ppl: 3.928899
-step: 101, tr_ppl: 4.416555
-step:   1, tr_ppl: 3.873630
-step: 101, tr_ppl: 4.424265
-step:   1, tr_ppl: 3.890374
-step: 101, tr_ppl: 4.383674
-step:   1, tr_ppl: 3.873011
-step: 101, tr_ppl: 4.359993
-step:   1, tr_ppl: 3.864842
-step: 101, tr_ppl: 4.360511
-step:   1, tr_ppl: 3.856035
-step: 101, tr_ppl: 4.364570
-epoch 50 BLEU1~4 on train dataset:
-0.806516
-0.565768
-0.305196
-0.131575
-
- epoch 50 BLEU1~4 on test dataset:
-0.588667
-0.286491
-0.115901
-0.040092
-
-
-step:   1, tr_ppl: 3.828605
-step: 101, tr_ppl: 4.348471
-step:   1, tr_ppl: 3.837853
-step: 101, tr_ppl: 4.380260
-step:   1, tr_ppl: 3.839925
-step: 101, tr_ppl: 4.322155
-step:   1, tr_ppl: 3.852655
-step: 101, tr_ppl: 4.340309
-step:   1, tr_ppl: 3.862401
-step: 101, tr_ppl: 4.324493
-step:   1, tr_ppl: 3.835341
-step: 101, tr_ppl: 4.322921
-step:   1, tr_ppl: 3.784418
-step: 101, tr_ppl: 4.306202
-step:   1, tr_ppl: 3.793422
-step: 101, tr_ppl: 4.280830
-step:   1, tr_ppl: 3.794657
-step: 101, tr_ppl: 4.296168
-step:   1, tr_ppl: 3.763153
-step: 101, tr_ppl: 4.224783
-epoch 60 BLEU1~4 on train dataset:
-0.826973
-0.580176
-0.311487
-0.134400
-
- epoch 60 BLEU1~4 on test dataset:
-0.598766
-0.293673
-0.119972
-0.041447
-
-
-step:   1, tr_ppl: 3.790180
-step: 101, tr_ppl: 4.247116
-step:   1, tr_ppl: 3.764222
-step: 101, tr_ppl: 4.232914
-step:   1, tr_ppl: 3.763997
-step: 101, tr_ppl: 4.280206
-step:   1, tr_ppl: 3.740629
-step: 101, tr_ppl: 4.227183
-step:   1, tr_ppl: 3.782218
-step: 101, tr_ppl: 4.253079
-step:   1, tr_ppl: 3.779944
-step: 101, tr_ppl: 4.219380
-step:   1, tr_ppl: 3.761770
-step: 101, tr_ppl: 4.257870
-step:   1, tr_ppl: 3.744174
-step: 101, tr_ppl: 4.221342
-step:   1, tr_ppl: 3.749246
-step: 101, tr_ppl: 4.211241
-step:   1, tr_ppl: 3.746425
-step: 101, tr_ppl: 4.239779
-epoch 70 BLEU1~4 on train dataset:
-0.806234
-0.567314
-0.308257
-0.134343
-
- epoch 70 BLEU1~4 on test dataset:
-0.586100
-0.284905
-0.115604
-0.040097
-
-
-step:   1, tr_ppl: 3.715877
-step: 101, tr_ppl: 4.191845
-step:   1, tr_ppl: 3.697388
-step: 101, tr_ppl: 4.228537
-step:   1, tr_ppl: 3.772559
-step: 101, tr_ppl: 4.213736
-step:   1, tr_ppl: 3.725070
-step: 101, tr_ppl: 4.169690
-step:   1, tr_ppl: 3.727858
-step: 101, tr_ppl: 4.193560
-step:   1, tr_ppl: 3.729518
-step: 101, tr_ppl: 4.192122
-step:   1, tr_ppl: 3.706693
-step: 101, tr_ppl: 4.182197
-step:   1, tr_ppl: 3.714596
-step: 101, tr_ppl: 4.197582
-step:   1, tr_ppl: 3.702919
-step: 101, tr_ppl: 4.185665
-  0: dis_total_loss: 16.969137, r_loss: 8.816114, f_loss: 8.153023
-  0: dis_total_loss: 3.778156, r_loss: 1.657802, f_loss: 2.120354
-  0: dis_total_loss: 2.062535, r_loss: 0.869200, f_loss: 1.193335
-  0: dis_total_loss: 1.447496, r_loss: 0.591905, f_loss: 0.855590
-  0: dis_total_loss: 1.161839, r_loss: 0.449144, f_loss: 0.712694
-  0: dis_total_loss: 0.913225, r_loss: 0.332583, f_loss: 0.580642
-  0: dis_total_loss: 0.755836, r_loss: 0.255768, f_loss: 0.500068
-  0: dis_total_loss: 0.613092, r_loss: 0.204142, f_loss: 0.408949
-  0: dis_total_loss: 0.473265, r_loss: 0.159198, f_loss: 0.314067
-  0: dis_total_loss: 0.421000, r_loss: 0.117248, f_loss: 0.303752
-  0: dis_total_loss: 0.344444, r_loss: 0.087821, f_loss: 0.256623
-  0: dis_total_loss: 0.328290, r_loss: 0.068080, f_loss: 0.260210
-  0: dis_total_loss: 0.248587, r_loss: 0.053545, f_loss: 0.195042
-  0: dis_total_loss: 0.222383, r_loss: 0.043451, f_loss: 0.178932
-  0: dis_total_loss: 0.172094, r_loss: 0.035891, f_loss: 0.136202
-  0: dis_total_loss: 0.166865, r_loss: 0.028650, f_loss: 0.138215
-  0: dis_total_loss: 0.101881, r_loss: 0.022612, f_loss: 0.079269
-  0: dis_total_loss: 0.132581, r_loss: 0.019666, f_loss: 0.112915
-  0: dis_total_loss: 0.110734, r_loss: 0.016734, f_loss: 0.094001
-  0: dis_total_loss: 0.093017, r_loss: 0.013565, f_loss: 0.079452
-  0: dis_total_loss: 0.066442, r_loss: 0.011400, f_loss: 0.055042
-  0: dis_total_loss: 0.102017, r_loss: 0.009338, f_loss: 0.092679
-  0: dis_total_loss: 0.076842, r_loss: 0.007796, f_loss: 0.069047
-  0: dis_total_loss: 0.089118, r_loss: 0.006512, f_loss: 0.082606
-  0: dis_total_loss: 0.051004, r_loss: 0.005501, f_loss: 0.045503
-  0: dis_total_loss: 0.030763, r_loss: 0.004710, f_loss: 0.026053
-  0: dis_total_loss: 0.031138, r_loss: 0.004026, f_loss: 0.027112
-  0: dis_total_loss: 0.032749, r_loss: 0.003503, f_loss: 0.029247
-  0: dis_total_loss: 0.019584, r_loss: 0.003027, f_loss: 0.016557
-  0: dis_total_loss: 0.041752, r_loss: 0.002703, f_loss: 0.039049
-  0: dis_total_loss: 0.038374, r_loss: 0.002344, f_loss: 0.036030
-  0: dis_total_loss: 0.027077, r_loss: 0.002043, f_loss: 0.025035
-  0: dis_total_loss: 0.029257, r_loss: 0.001797, f_loss: 0.027460
-  0: dis_total_loss: 0.021230, r_loss: 0.001581, f_loss: 0.019648
-  0: dis_total_loss: 0.032759, r_loss: 0.001397, f_loss: 0.031362
-  0: dis_total_loss: 0.015874, r_loss: 0.001230, f_loss: 0.014643
-  0: dis_total_loss: 0.035403, r_loss: 0.001082, f_loss: 0.034322
-  0: dis_total_loss: 0.011242, r_loss: 0.000959, f_loss: 0.010282
-  0: dis_total_loss: 0.008644, r_loss: 0.000850, f_loss: 0.007795
-  0: dis_total_loss: 0.007078, r_loss: 0.000760, f_loss: 0.006318
-  0: dis_total_loss: 0.026421, r_loss: 0.000692, f_loss: 0.025729
-  0: dis_total_loss: 0.010794, r_loss: 0.000616, f_loss: 0.010179
-  0: dis_total_loss: 0.010992, r_loss: 0.000588, f_loss: 0.010404
-  0: dis_total_loss: 0.011130, r_loss: 0.000580, f_loss: 0.010551
-  0: dis_total_loss: 0.013739, r_loss: 0.000513, f_loss: 0.013226
-  0: dis_total_loss: 0.012672, r_loss: 0.000454, f_loss: 0.012218
-  0: dis_total_loss: 0.016053, r_loss: 0.000403, f_loss: 0.015650
-  0: dis_total_loss: 0.012716, r_loss: 0.000360, f_loss: 0.012356
-  0: dis_total_loss: 0.004571, r_loss: 0.000322, f_loss: 0.004249
-  0: dis_total_loss: 0.003126, r_loss: 0.000287, f_loss: 0.002839
-  0: dis_total_loss: 0.005342, r_loss: 0.000260, f_loss: 0.005082
-  0: dis_total_loss: 0.002777, r_loss: 0.000232, f_loss: 0.002545
-  0: dis_total_loss: 0.001862, r_loss: 0.000207, f_loss: 0.001655
-  0: dis_total_loss: 0.012293, r_loss: 0.000187, f_loss: 0.012106
-  0: dis_total_loss: 0.009250, r_loss: 0.000166, f_loss: 0.009084
-  0: dis_total_loss: 0.005338, r_loss: 0.000150, f_loss: 0.005188
-  0: dis_total_loss: 0.004517, r_loss: 0.000134, f_loss: 0.004383
-  0: dis_total_loss: 0.018488, r_loss: 0.000120, f_loss: 0.018368
-  0: dis_total_loss: 0.001637, r_loss: 0.000108, f_loss: 0.001529
-  0: dis_total_loss: 0.002985, r_loss: 0.000099, f_loss: 0.002886
-  0: dis_total_loss: 0.000915, r_loss: 0.000089, f_loss: 0.000826
-  0: dis_total_loss: 0.002967, r_loss: 0.000081, f_loss: 0.002887
-  0: dis_total_loss: 0.008825, r_loss: 0.000074, f_loss: 0.008751
-  0: dis_total_loss: 0.004674, r_loss: 0.000066, f_loss: 0.004608
-  0: dis_total_loss: 0.003095, r_loss: 0.000060, f_loss: 0.003035
-  0: dis_total_loss: 0.000582, r_loss: 0.000055, f_loss: 0.000527
-  0: dis_total_loss: 0.002175, r_loss: 0.000050, f_loss: 0.002125
-  0: dis_total_loss: 0.001166, r_loss: 0.000045, f_loss: 0.001121
-  0: dis_total_loss: 0.002169, r_loss: 0.000041, f_loss: 0.002128
-  0: dis_total_loss: 0.002706, r_loss: 0.000037, f_loss: 0.002669
-  0: dis_total_loss: 0.001157, r_loss: 0.000034, f_loss: 0.001123
-  0: dis_total_loss: 0.000901, r_loss: 0.000031, f_loss: 0.000871
-  0: dis_total_loss: 0.000312, r_loss: 0.000028, f_loss: 0.000284
-  0: dis_total_loss: 0.000180, r_loss: 0.000025, f_loss: 0.000155
-  0: dis_total_loss: 0.000256, r_loss: 0.000022, f_loss: 0.000234
-  0: dis_total_loss: 0.003787, r_loss: 0.000020, f_loss: 0.003766
-  0: dis_total_loss: 0.000528, r_loss: 0.000018, f_loss: 0.000510
-  0: dis_total_loss: 0.000503, r_loss: 0.000016, f_loss: 0.000487
-  0: dis_total_loss: 0.001582, r_loss: 0.000015, f_loss: 0.001567
-  0: dis_total_loss: 0.001172, r_loss: 0.000014, f_loss: 0.001158
-step:   1, mean_rwd: -58.361809, exp_rwd_loss:-58.361809, update_loss: -58.361809
-  0: dis_total_loss: 0.000396, r_loss: 0.000013, f_loss: 0.000383
-epoch 80 BLEU1~4 on train dataset:
-0.801948
-0.566434
-0.309608
-0.135951
-
- epoch 80 BLEU1~4 on test dataset:
-0.590780
-0.287680
-0.117354
-0.040414
-
-
-step:   1, mean_rwd: -58.483055, exp_rwd_loss:-58.483055, update_loss: -58.483055
-  0: dis_total_loss: 0.003323, r_loss: 0.000013, f_loss: 0.003310
-step:   1, mean_rwd: -58.640759, exp_rwd_loss:-58.640759, update_loss: -58.640759
-  0: dis_total_loss: 0.000070, r_loss: 0.000013, f_loss: 0.000057
-step:   1, mean_rwd: -58.465961, exp_rwd_loss:-58.465961, update_loss: -58.465961
-  0: dis_total_loss: 0.001768, r_loss: 0.000013, f_loss: 0.001756
-step:   1, mean_rwd: -58.015610, exp_rwd_loss:-58.015610, update_loss: -58.015610
-  0: dis_total_loss: 0.000158, r_loss: 0.000012, f_loss: 0.000146
-step:   1, mean_rwd: -58.611031, exp_rwd_loss:-58.611031, update_loss: -58.611031
-  0: dis_total_loss: 0.000696, r_loss: 0.000012, f_loss: 0.000683
-step:   1, mean_rwd: -58.115677, exp_rwd_loss:-58.115677, update_loss: -58.115677
-  0: dis_total_loss: 0.000445, r_loss: 0.000012, f_loss: 0.000433
-step:   1, mean_rwd: -58.734200, exp_rwd_loss:-58.734200, update_loss: -58.734200
-  0: dis_total_loss: 0.000907, r_loss: 0.000012, f_loss: 0.000895
-step:   1, mean_rwd: -58.735634, exp_rwd_loss:-58.735634, update_loss: -58.735634
-  0: dis_total_loss: 0.000107, r_loss: 0.000012, f_loss: 0.000095
-step:   1, mean_rwd: -58.232750, exp_rwd_loss:-58.232750, update_loss: -58.232750
-  0: dis_total_loss: 0.000240, r_loss: 0.000012, f_loss: 0.000228
-step:   1, mean_rwd: -59.029762, exp_rwd_loss:-59.029762, update_loss: -59.029762
-  0: dis_total_loss: 0.000579, r_loss: 0.000012, f_loss: 0.000568
-epoch 90 BLEU1~4 on train dataset:
-0.796737
-0.565802
-0.311985
-0.137009
-
- epoch 90 BLEU1~4 on test dataset:
-0.582820
-0.286236
-0.118258
-0.040990
-
-
-step:   1, mean_rwd: -58.994225, exp_rwd_loss:-58.994225, update_loss: -58.994225
-  0: dis_total_loss: 0.003238, r_loss: 0.000011, f_loss: 0.003226
-step:   1, mean_rwd: -59.031921, exp_rwd_loss:-59.031921, update_loss: -59.031921
-  0: dis_total_loss: 0.000213, r_loss: 0.000011, f_loss: 0.000201
-step:   1, mean_rwd: -58.887947, exp_rwd_loss:-58.887947, update_loss: -58.887947
-  0: dis_total_loss: 0.000026, r_loss: 0.000011, f_loss: 0.000015
-step:   1, mean_rwd: -59.125744, exp_rwd_loss:-59.125744, update_loss: -59.125744
-  0: dis_total_loss: 0.000397, r_loss: 0.000011, f_loss: 0.000386
-step:   1, mean_rwd: -59.161377, exp_rwd_loss:-59.161377, update_loss: -59.161377
-  0: dis_total_loss: 0.000217, r_loss: 0.000011, f_loss: 0.000206
-step:   1, mean_rwd: -59.174847, exp_rwd_loss:-59.174847, update_loss: -59.174847
-  0: dis_total_loss: 0.000090, r_loss: 0.000011, f_loss: 0.000080
-step:   1, mean_rwd: -59.159431, exp_rwd_loss:-59.159431, update_loss: -59.159431
-  0: dis_total_loss: 0.000250, r_loss: 0.000011, f_loss: 0.000239
-step:   1, mean_rwd: -59.102276, exp_rwd_loss:-59.102276, update_loss: -59.102276
-  0: dis_total_loss: 0.001666, r_loss: 0.000010, f_loss: 0.001655
-step:   1, mean_rwd: -59.360271, exp_rwd_loss:-59.360271, update_loss: -59.360271
-  0: dis_total_loss: 0.000161, r_loss: 0.000010, f_loss: 0.000151
-step:   1, mean_rwd: -59.312408, exp_rwd_loss:-59.312408, update_loss: -59.312408
-  0: dis_total_loss: 0.000160, r_loss: 0.000010, f_loss: 0.000150
-epoch 100 BLEU1~4 on train dataset:
-0.785011
-0.560782
-0.309859
-0.137817
-
- epoch 100 BLEU1~4 on test dataset:
-0.576383
-0.286582
-0.118497
-0.041146
-
-
-step:   1, mean_rwd: -59.162941, exp_rwd_loss:-59.162941, update_loss: -59.162941
-  0: dis_total_loss: 0.000257, r_loss: 0.000010, f_loss: 0.000247
-step:   1, mean_rwd: -59.387440, exp_rwd_loss:-59.387440, update_loss: -59.387440
-  0: dis_total_loss: 0.000102, r_loss: 0.000010, f_loss: 0.000092
-step:   1, mean_rwd: -59.135353, exp_rwd_loss:-59.135353, update_loss: -59.135353
-  0: dis_total_loss: 0.000074, r_loss: 0.000010, f_loss: 0.000064
-step:   1, mean_rwd: -59.474354, exp_rwd_loss:-59.474354, update_loss: -59.474354
-  0: dis_total_loss: 0.000238, r_loss: 0.000010, f_loss: 0.000228
-step:   1, mean_rwd: -59.579357, exp_rwd_loss:-59.579357, update_loss: -59.579357
-  0: dis_total_loss: 0.000303, r_loss: 0.000010, f_loss: 0.000293
-step:   1, mean_rwd: -59.578392, exp_rwd_loss:-59.578392, update_loss: -59.578392
-  0: dis_total_loss: 0.000030, r_loss: 0.000010, f_loss: 0.000020
-step:   1, mean_rwd: -59.608318, exp_rwd_loss:-59.608318, update_loss: -59.608318
-  0: dis_total_loss: 0.000082, r_loss: 0.000010, f_loss: 0.000073
-step:   1, mean_rwd: -59.688774, exp_rwd_loss:-59.688774, update_loss: -59.688774
-  0: dis_total_loss: 0.000206, r_loss: 0.000010, f_loss: 0.000196
-step:   1, mean_rwd: -59.192783, exp_rwd_loss:-59.192783, update_loss: -59.192783
-  0: dis_total_loss: 0.000804, r_loss: 0.000010, f_loss: 0.000794
-step:   1, mean_rwd: -59.807026, exp_rwd_loss:-59.807026, update_loss: -59.807026
-  0: dis_total_loss: 0.000089, r_loss: 0.000009, f_loss: 0.000080
-epoch 110 BLEU1~4 on train dataset:
-0.769400
-0.549445
-0.306258
-0.136205
-
- epoch 110 BLEU1~4 on test dataset:
-0.567412
-0.280978
-0.117883
-0.042067
-
-
-step:   1, mean_rwd: -59.786659, exp_rwd_loss:-59.786659, update_loss: -59.786659
-  0: dis_total_loss: 0.000057, r_loss: 0.000009, f_loss: 0.000047
-step:   1, mean_rwd: -59.830345, exp_rwd_loss:-59.830345, update_loss: -59.830345
-  0: dis_total_loss: 0.000305, r_loss: 0.000009, f_loss: 0.000296
-step:   1, mean_rwd: -59.705708, exp_rwd_loss:-59.705708, update_loss: -59.705708
-  0: dis_total_loss: 0.000573, r_loss: 0.000009, f_loss: 0.000563
-step:   1, mean_rwd: -59.547356, exp_rwd_loss:-59.547356, update_loss: -59.547356
-  0: dis_total_loss: 0.000017, r_loss: 0.000009, f_loss: 0.000007
-step:   1, mean_rwd: -59.751415, exp_rwd_loss:-59.751415, update_loss: -59.751415
-  0: dis_total_loss: 0.000241, r_loss: 0.000009, f_loss: 0.000232
-step:   1, mean_rwd: -59.920601, exp_rwd_loss:-59.920601, update_loss: -59.920601
-  0: dis_total_loss: 0.000392, r_loss: 0.000009, f_loss: 0.000383
-step:   1, mean_rwd: -59.974590, exp_rwd_loss:-59.974590, update_loss: -59.974590
-  0: dis_total_loss: 0.000400, r_loss: 0.000009, f_loss: 0.000391
-step:   1, mean_rwd: -60.001453, exp_rwd_loss:-60.001453, update_loss: -60.001453
-  0: dis_total_loss: 0.000034, r_loss: 0.000009, f_loss: 0.000025
-step:   1, mean_rwd: -59.967888, exp_rwd_loss:-59.967888, update_loss: -59.967888
-  0: dis_total_loss: 0.000023, r_loss: 0.000009, f_loss: 0.000014
-step:   1, mean_rwd: -59.619968, exp_rwd_loss:-59.619968, update_loss: -59.619968
-  0: dis_total_loss: 0.000139, r_loss: 0.000008, f_loss: 0.000131
-epoch 120 BLEU1~4 on train dataset:
-0.761595
-0.547056
-0.305254
-0.136625
-
- epoch 120 BLEU1~4 on test dataset:
-0.562185
-0.281550
-0.117569
-0.041391
-
-
-step:   1, mean_rwd: -59.784035, exp_rwd_loss:-59.784035, update_loss: -59.784035
-  0: dis_total_loss: 0.000475, r_loss: 0.000008, f_loss: 0.000467
-step:   1, mean_rwd: -59.832947, exp_rwd_loss:-59.832947, update_loss: -59.832947
-  0: dis_total_loss: 0.000174, r_loss: 0.000008, f_loss: 0.000166
-step:   1, mean_rwd: -59.807453, exp_rwd_loss:-59.807453, update_loss: -59.807453
-  0: dis_total_loss: 0.000356, r_loss: 0.000008, f_loss: 0.000348
-step:   1, mean_rwd: -59.908062, exp_rwd_loss:-59.908062, update_loss: -59.908062
-  0: dis_total_loss: 0.000048, r_loss: 0.000008, f_loss: 0.000040
-step:   1, mean_rwd: -59.889366, exp_rwd_loss:-59.889366, update_loss: -59.889366
-  0: dis_total_loss: 0.000368, r_loss: 0.000008, f_loss: 0.000360
-step:   1, mean_rwd: -59.805077, exp_rwd_loss:-59.805077, update_loss: -59.805077
-  0: dis_total_loss: 0.000044, r_loss: 0.000008, f_loss: 0.000036
-step:   1, mean_rwd: -59.892712, exp_rwd_loss:-59.892712, update_loss: -59.892712
-  0: dis_total_loss: 0.000325, r_loss: 0.000008, f_loss: 0.000317
-step:   1, mean_rwd: -60.058666, exp_rwd_loss:-60.058666, update_loss: -60.058666
-  0: dis_total_loss: 0.000047, r_loss: 0.000008, f_loss: 0.000039
-step:   1, mean_rwd: -59.790092, exp_rwd_loss:-59.790092, update_loss: -59.790092
-  0: dis_total_loss: 0.000010, r_loss: 0.000008, f_loss: 0.000002
-step:   1, mean_rwd: -60.017883, exp_rwd_loss:-60.017883, update_loss: -60.017883
-  0: dis_total_loss: 0.002514, r_loss: 0.000008, f_loss: 0.002507
-epoch 130 BLEU1~4 on train dataset:
-0.745912
-0.538467
-0.301744
-0.134932
-
- epoch 130 BLEU1~4 on test dataset:
-0.553004
-0.278319
-0.117327
-0.041554
-
-
-step:   1, mean_rwd: -60.099586, exp_rwd_loss:-60.099586, update_loss: -60.099586
-  0: dis_total_loss: 0.000105, r_loss: 0.000007, f_loss: 0.000098
-step:   1, mean_rwd: -60.093609, exp_rwd_loss:-60.093609, update_loss: -60.093609
-  0: dis_total_loss: 0.000023, r_loss: 0.000007, f_loss: 0.000015
-step:   1, mean_rwd: -60.004528, exp_rwd_loss:-60.004528, update_loss: -60.004528
-  0: dis_total_loss: 0.000075, r_loss: 0.000007, f_loss: 0.000068
-step:   1, mean_rwd: -60.053833, exp_rwd_loss:-60.053833, update_loss: -60.053833
-  0: dis_total_loss: 0.000094, r_loss: 0.000007, f_loss: 0.000087
-step:   1, mean_rwd: -59.907856, exp_rwd_loss:-59.907856, update_loss: -59.907856
-  0: dis_total_loss: 0.000193, r_loss: 0.000007, f_loss: 0.000185
-step:   1, mean_rwd: -60.057720, exp_rwd_loss:-60.057720, update_loss: -60.057720
-  0: dis_total_loss: 0.000578, r_loss: 0.000007, f_loss: 0.000571
-step:   1, mean_rwd: -60.116081, exp_rwd_loss:-60.116081, update_loss: -60.116081
-  0: dis_total_loss: 0.000181, r_loss: 0.000007, f_loss: 0.000174
-step:   1, mean_rwd: -59.937294, exp_rwd_loss:-59.937294, update_loss: -59.937294
-  0: dis_total_loss: 0.000973, r_loss: 0.000007, f_loss: 0.000966
-step:   1, mean_rwd: -59.976326, exp_rwd_loss:-59.976326, update_loss: -59.976326
-  0: dis_total_loss: 0.000183, r_loss: 0.000007, f_loss: 0.000177
-step:   1, mean_rwd: -60.113586, exp_rwd_loss:-60.113586, update_loss: -60.113586
-  0: dis_total_loss: 0.000260, r_loss: 0.000007, f_loss: 0.000253
-epoch 140 BLEU1~4 on train dataset:
-0.732743
-0.529798
-0.297859
-0.134242
-
- epoch 140 BLEU1~4 on test dataset:
-0.543993
-0.276254
-0.116485
-0.041509
-
-
-step:   1, mean_rwd: -59.988243, exp_rwd_loss:-59.988243, update_loss: -59.988243
-  0: dis_total_loss: 0.000051, r_loss: 0.000007, f_loss: 0.000044
-step:   1, mean_rwd: -60.000019, exp_rwd_loss:-60.000019, update_loss: -60.000019
-  0: dis_total_loss: 0.000030, r_loss: 0.000007, f_loss: 0.000023
-step:   1, mean_rwd: -60.102623, exp_rwd_loss:-60.102623, update_loss: -60.102623
-  0: dis_total_loss: 0.000025, r_loss: 0.000007, f_loss: 0.000018
-step:   1, mean_rwd: -60.043354, exp_rwd_loss:-60.043354, update_loss: -60.043354
-  0: dis_total_loss: 0.000247, r_loss: 0.000007, f_loss: 0.000240
-step:   1, mean_rwd: -59.911011, exp_rwd_loss:-59.911011, update_loss: -59.911011
-  0: dis_total_loss: 0.000044, r_loss: 0.000007, f_loss: 0.000037
-step:   1, mean_rwd: -60.030739, exp_rwd_loss:-60.030739, update_loss: -60.030739
-  0: dis_total_loss: 0.000139, r_loss: 0.000007, f_loss: 0.000133
-step:   1, mean_rwd: -59.967449, exp_rwd_loss:-59.967449, update_loss: -59.967449
-  0: dis_total_loss: 0.000675, r_loss: 0.000007, f_loss: 0.000669
-step:   1, mean_rwd: -59.748528, exp_rwd_loss:-59.748528, update_loss: -59.748528
-  0: dis_total_loss: 0.000061, r_loss: 0.000007, f_loss: 0.000054
-step:   1, mean_rwd: -59.851433, exp_rwd_loss:-59.851433, update_loss: -59.851433
-  0: dis_total_loss: 0.000019, r_loss: 0.000007, f_loss: 0.000013
-step:   1, mean_rwd: -59.511608, exp_rwd_loss:-59.511608, update_loss: -59.511608
-  0: dis_total_loss: 0.000038, r_loss: 0.000006, f_loss: 0.000032
+d update  epoch 143, step 0: dis_total_loss: 0.000328, r_loss: 0.000004, f_loss: 0.000324
+epoch 144, step: 1: mean_reward: -58.335255, expect_reward_loss:-58.335255, update_loss: 12738.136719
+d update  epoch 144, step 0: dis_total_loss: 0.000022, r_loss: 0.000004, f_loss: 0.000017
+epoch 145, step: 1: mean_reward: -58.559151, expect_reward_loss:-58.559151, update_loss: 13076.791016
+d update  epoch 145, step 0: dis_total_loss: 0.000086, r_loss: 0.000004, f_loss: 0.000082
+epoch 146, step: 1: mean_reward: -58.320202, expect_reward_loss:-58.320202, update_loss: 13058.248047
+d update  epoch 146, step 0: dis_total_loss: 0.002201, r_loss: 0.000004, f_loss: 0.002197
+epoch 147, step: 1: mean_reward: -58.628162, expect_reward_loss:-58.628162, update_loss: 13288.483398
+d update  epoch 147, step 0: dis_total_loss: 0.000045, r_loss: 0.000004, f_loss: 0.000041
+epoch 148, step: 1: mean_reward: -58.517677, expect_reward_loss:-58.517677, update_loss: 12464.628906
+d update  epoch 148, step 0: dis_total_loss: 0.000468, r_loss: 0.000004, f_loss: 0.000464
+epoch 149, step: 1: mean_reward: -58.657642, expect_reward_loss:-58.657642, update_loss: 12658.649414
+d update  epoch 149, step 0: dis_total_loss: 0.000335, r_loss: 0.000004, f_loss: 0.000331
+epoch 150, step: 1: mean_reward: -58.668129, expect_reward_loss:-58.668129, update_loss: 13928.205078
+d update  epoch 150, step 0: dis_total_loss: 0.000057, r_loss: 0.000004, f_loss: 0.000054
 epoch 150 BLEU1~4 on train dataset:
-0.725162
-0.525352
-0.296034
-0.133210
+0.758644
+0.548486
+0.306279
+0.136093
 
  epoch 150 BLEU1~4 on test dataset:
-0.537588
-0.271440
-0.114351
-0.040806
+0.568462
+0.288588
+0.118463
+0.042214
 
 
-step:   1, mean_rwd: -59.768074, exp_rwd_loss:-59.768074, update_loss: -59.768074
-  0: dis_total_loss: 0.000124, r_loss: 0.000006, f_loss: 0.000118
-step:   1, mean_rwd: -59.868080, exp_rwd_loss:-59.868080, update_loss: -59.868080
-  0: dis_total_loss: 0.000013, r_loss: 0.000006, f_loss: 0.000007
-step:   1, mean_rwd: -59.608288, exp_rwd_loss:-59.608288, update_loss: -59.608288
-  0: dis_total_loss: 0.000040, r_loss: 0.000006, f_loss: 0.000034
-step:   1, mean_rwd: -59.728493, exp_rwd_loss:-59.728493, update_loss: -59.728493
-  0: dis_total_loss: 0.000329, r_loss: 0.000006, f_loss: 0.000322
-step:   1, mean_rwd: -59.530781, exp_rwd_loss:-59.530781, update_loss: -59.530781
-  0: dis_total_loss: 0.000011, r_loss: 0.000006, f_loss: 0.000005
-step:   1, mean_rwd: -59.607567, exp_rwd_loss:-59.607567, update_loss: -59.607567
-  0: dis_total_loss: 0.000182, r_loss: 0.000006, f_loss: 0.000176
-step:   1, mean_rwd: -59.645744, exp_rwd_loss:-59.645744, update_loss: -59.645744
-  0: dis_total_loss: 0.001350, r_loss: 0.000006, f_loss: 0.001344
-step:   1, mean_rwd: -59.649853, exp_rwd_loss:-59.649853, update_loss: -59.649853
-  0: dis_total_loss: 0.000067, r_loss: 0.000006, f_loss: 0.000062
-step:   1, mean_rwd: -59.566734, exp_rwd_loss:-59.566734, update_loss: -59.566734
-  0: dis_total_loss: 0.000096, r_loss: 0.000006, f_loss: 0.000091
-step:   1, mean_rwd: -59.444283, exp_rwd_loss:-59.444283, update_loss: -59.444283
-  0: dis_total_loss: 0.000116, r_loss: 0.000006, f_loss: 0.000110
+epoch 151, step: 1: mean_reward: -58.344154, expect_reward_loss:-58.344154, update_loss: 12886.481445
+d update  epoch 151, step 0: dis_total_loss: 0.000039, r_loss: 0.000004, f_loss: 0.000035
+epoch 152, step: 1: mean_reward: -58.372997, expect_reward_loss:-58.372997, update_loss: 14175.951172
+d update  epoch 152, step 0: dis_total_loss: 0.000226, r_loss: 0.000004, f_loss: 0.000222
+epoch 153, step: 1: mean_reward: -58.592846, expect_reward_loss:-58.592846, update_loss: 14692.143555
+d update  epoch 153, step 0: dis_total_loss: 0.000627, r_loss: 0.000004, f_loss: 0.000623
+epoch 154, step: 1: mean_reward: -58.548058, expect_reward_loss:-58.548058, update_loss: 12365.054688
+d update  epoch 154, step 0: dis_total_loss: 0.000023, r_loss: 0.000004, f_loss: 0.000020
+epoch 155, step: 1: mean_reward: -58.515423, expect_reward_loss:-58.515423, update_loss: 13680.370117
+d update  epoch 155, step 0: dis_total_loss: 0.000103, r_loss: 0.000004, f_loss: 0.000100
+epoch 156, step: 1: mean_reward: -58.579590, expect_reward_loss:-58.579590, update_loss: 13951.057617
+d update  epoch 156, step 0: dis_total_loss: 0.000190, r_loss: 0.000004, f_loss: 0.000187
+epoch 157, step: 1: mean_reward: -58.722340, expect_reward_loss:-58.722340, update_loss: 14695.876953
+d update  epoch 157, step 0: dis_total_loss: 0.000021, r_loss: 0.000004, f_loss: 0.000017
+epoch 158, step: 1: mean_reward: -58.477684, expect_reward_loss:-58.477684, update_loss: 12929.532227
+d update  epoch 158, step 0: dis_total_loss: 0.000614, r_loss: 0.000004, f_loss: 0.000611
+epoch 159, step: 1: mean_reward: -58.547413, expect_reward_loss:-58.547413, update_loss: 13668.491211
+d update  epoch 159, step 0: dis_total_loss: 0.000267, r_loss: 0.000003, f_loss: 0.000263
+epoch 160, step: 1: mean_reward: -58.436714, expect_reward_loss:-58.436714, update_loss: 12541.197266
+d update  epoch 160, step 0: dis_total_loss: 0.000065, r_loss: 0.000003, f_loss: 0.000062
 epoch 160 BLEU1~4 on train dataset:
-0.711018
-0.516138
-0.291210
-0.130459
+0.743869
+0.540951
+0.303380
+0.135030
 
  epoch 160 BLEU1~4 on test dataset:
-0.527463
-0.269277
-0.113410
-0.040540
+0.561121
+0.286729
+0.118643
+0.041264
 
 
-step:   1, mean_rwd: -59.301556, exp_rwd_loss:-59.301556, update_loss: -59.301556
-  0: dis_total_loss: 0.000017, r_loss: 0.000006, f_loss: 0.000011
-step:   1, mean_rwd: -59.357075, exp_rwd_loss:-59.357075, update_loss: -59.357075
-  0: dis_total_loss: 0.000042, r_loss: 0.000006, f_loss: 0.000036
-step:   1, mean_rwd: -59.441193, exp_rwd_loss:-59.441193, update_loss: -59.441193
-  0: dis_total_loss: 0.000062, r_loss: 0.000006, f_loss: 0.000057/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-  return f(*args, **kwds)
-
-step:   1, mean_rwd: -59.401257, exp_rwd_loss:-59.401257, update_loss: -59.401257
-  0: dis_total_loss: 0.000138, r_loss: 0.000005, f_loss: 0.000132
-step:   1, mean_rwd: -59.396332, exp_rwd_loss:-59.396332, update_loss: -59.396332
-  0: dis_total_loss: 0.000077, r_loss: 0.000005, f_loss: 0.000072
-step:   1, mean_rwd: -59.224129, exp_rwd_loss:-59.224129, update_loss: -59.224129
-  0: dis_total_loss: 0.000008, r_loss: 0.000005, f_loss: 0.000003
-step:   1, mean_rwd: -59.199974, exp_rwd_loss:-59.199974, update_loss: -59.199974
-  0: dis_total_loss: 0.000054, r_loss: 0.000005, f_loss: 0.000049
-step:   1, mean_rwd: -59.169640, exp_rwd_loss:-59.169640, update_loss: -59.169640
-  0: dis_total_loss: 0.000152, r_loss: 0.000005, f_loss: 0.000147
-step:   1, mean_rwd: -59.051399, exp_rwd_loss:-59.051399, update_loss: -59.051399
-  0: dis_total_loss: 0.000728, r_loss: 0.000005, f_loss: 0.000722
-step:   1, mean_rwd: -59.126091, exp_rwd_loss:-59.126091, update_loss: -59.126091
-  0: dis_total_loss: 0.000097, r_loss: 0.000005, f_loss: 0.000092
+epoch 161, step: 1: mean_reward: -58.509686, expect_reward_loss:-58.509686, update_loss: 13048.333984
+d update  epoch 161, step 0: dis_total_loss: 0.000345, r_loss: 0.000003, f_loss: 0.000342
+epoch 162, step: 1: mean_reward: -58.593861, expect_reward_loss:-58.593861, update_loss: 15426.025391
+d update  epoch 162, step 0: dis_total_loss: 0.000084, r_loss: 0.000003, f_loss: 0.000081
+epoch 163, step: 1: mean_reward: -58.555500, expect_reward_loss:-58.555500, update_loss: 13722.518555
+d update  epoch 163, step 0: dis_total_loss: 0.000167, r_loss: 0.000003, f_loss: 0.000163
+epoch 164, step: 1: mean_reward: -58.437145, expect_reward_loss:-58.437145, update_loss: 14253.749023
+d update  epoch 164, step 0: dis_total_loss: 0.000130, r_loss: 0.000003, f_loss: 0.000126
+epoch 165, step: 1: mean_reward: -58.413807, expect_reward_loss:-58.413807, update_loss: 14134.447266
+d update  epoch 165, step 0: dis_total_loss: 0.000461, r_loss: 0.000003, f_loss: 0.000458
+epoch 166, step: 1: mean_reward: -58.469910, expect_reward_loss:-58.469910, update_loss: 15174.287109
+d update  epoch 166, step 0: dis_total_loss: 0.000143, r_loss: 0.000003, f_loss: 0.000139
+epoch 167, step: 1: mean_reward: -58.514019, expect_reward_loss:-58.514019, update_loss: 14760.121094
+d update  epoch 167, step 0: dis_total_loss: 0.000131, r_loss: 0.000003, f_loss: 0.000128
+epoch 168, step: 1: mean_reward: -58.437202, expect_reward_loss:-58.437202, update_loss: 14050.265625
+d update  epoch 168, step 0: dis_total_loss: 0.000049, r_loss: 0.000003, f_loss: 0.000046
+epoch 169, step: 1: mean_reward: -58.529560, expect_reward_loss:-58.529560, update_loss: 15682.392578
+d update  epoch 169, step 0: dis_total_loss: 0.000016, r_loss: 0.000003, f_loss: 0.000013
+epoch 170, step: 1: mean_reward: -58.196552, expect_reward_loss:-58.196552, update_loss: 13001.189453
+d update  epoch 170, step 0: dis_total_loss: 0.000167, r_loss: 0.000003, f_loss: 0.000164
 epoch 170 BLEU1~4 on train dataset:
-0.699512
-0.508909
-0.287718
-0.129728
+0.726647
+0.530675
+0.299362
+0.133602
 
  epoch 170 BLEU1~4 on test dataset:
-0.519711
-0.266248
-0.111764
-0.039592
+0.548151
+0.283765
+0.118528
+0.042177
 
 
-step:   1, mean_rwd: -58.915710, exp_rwd_loss:-58.915710, update_loss: -58.915710
-  0: dis_total_loss: 0.000025, r_loss: 0.000005, f_loss: 0.000020
-step:   1, mean_rwd: -58.978088, exp_rwd_loss:-58.978088, update_loss: -58.978088
-  0: dis_total_loss: 0.000842, r_loss: 0.000005, f_loss: 0.000837
-step:   1, mean_rwd: -58.856346, exp_rwd_loss:-58.856346, update_loss: -58.856346
-  0: dis_total_loss: 0.000016, r_loss: 0.000005, f_loss: 0.000011
-step:   1, mean_rwd: -58.643288, exp_rwd_loss:-58.643288, update_loss: -58.643288
-  0: dis_total_loss: 0.001873, r_loss: 0.000005, f_loss: 0.001868
-step:   1, mean_rwd: -58.574017, exp_rwd_loss:-58.574017, update_loss: -58.574017
-  0: dis_total_loss: 0.000143, r_loss: 0.000005, f_loss: 0.000138
-step:   1, mean_rwd: -58.631386, exp_rwd_loss:-58.631386, update_loss: -58.631386
-  0: dis_total_loss: 0.000013, r_loss: 0.000005, f_loss: 0.000009
-step:   1, mean_rwd: -58.563068, exp_rwd_loss:-58.563068, update_loss: -58.563068
-  0: dis_total_loss: 0.000133, r_loss: 0.000005, f_loss: 0.000128
-step:   1, mean_rwd: -58.444130, exp_rwd_loss:-58.444130, update_loss: -58.444130
-  0: dis_total_loss: 0.000009, r_loss: 0.000005, f_loss: 0.000004
-step:   1, mean_rwd: -58.466103, exp_rwd_loss:-58.466103, update_loss: -58.466103
-  0: dis_total_loss: 0.000068, r_loss: 0.000005, f_loss: 0.000063
-step:   1, tr_ppl: 81.669345
-step: 101, tr_ppl: 16.515667
-epoch 0 BLEU1~4 on train dataset:
-0.721372
-0.263221
-0.057364
-0.007393
+epoch 171, step: 1: mean_reward: -58.227497, expect_reward_loss:-58.227497, update_loss: 13133.020508
+d update  epoch 171, step 0: dis_total_loss: 0.000048, r_loss: 0.000003, f_loss: 0.000045
+epoch 172, step: 1: mean_reward: -58.252647, expect_reward_loss:-58.252647, update_loss: 14499.826172
+d update  epoch 172, step 0: dis_total_loss: 0.000010, r_loss: 0.000003, f_loss: 0.000007
+epoch 173, step: 1: mean_reward: -58.322357, expect_reward_loss:-58.322357, update_loss: 12713.644531
+d update  epoch 173, step 0: dis_total_loss: 0.000189, r_loss: 0.000003, f_loss: 0.000186
+epoch 174, step: 1: mean_reward: -58.075001, expect_reward_loss:-58.075001, update_loss: 13676.058594
+d update  epoch 174, step 0: dis_total_loss: 0.000087, r_loss: 0.000003, f_loss: 0.000084
+epoch 175, step: 1: mean_reward: -58.121315, expect_reward_loss:-58.121315, update_loss: 14767.250977
+d update  epoch 175, step 0: dis_total_loss: 0.001592, r_loss: 0.000003, f_loss: 0.001589
+epoch 176, step: 1: mean_reward: -58.330608, expect_reward_loss:-58.330608, update_loss: 12503.548828
+d update  epoch 176, step 0: dis_total_loss: 0.000188, r_loss: 0.000003, f_loss: 0.000185
+epoch 177, step: 1: mean_reward: -58.115253, expect_reward_loss:-58.115253, update_loss: 14490.913086
+d update  epoch 177, step 0: dis_total_loss: 0.000380, r_loss: 0.000003, f_loss: 0.000377
+epoch 178, step: 1: mean_reward: -58.171032, expect_reward_loss:-58.171032, update_loss: 15077.129883
+d update  epoch 178, step 0: dis_total_loss: 0.000073, r_loss: 0.000003, f_loss: 0.000070
+epoch 179, step: 1: mean_reward: -58.190083, expect_reward_loss:-58.190083, update_loss: 14430.581055
+d update  epoch 179, step 0: dis_total_loss: 0.000019, r_loss: 0.000003, f_loss: 0.000016
+epoch 179 BLEU1~4 on train dataset:
+0.714270
+0.523022
+0.296147
+0.133592
 
- epoch 0 BLEU1~4 on test dataset:
-0.545850
-0.174336
-0.029214
-0.002479
+ epoch 179 BLEU1~4 on test dataset:
+0.540159
+0.278988
+0.116260
+0.041746
 
 
-step:   1, tr_ppl: 10.475981
-step: 101, tr_ppl: 10.843195
-step:   1, tr_ppl: 7.983260
-step: 101, tr_ppl: 8.934860
-step:   1, tr_ppl: 7.022636
-step: 101, tr_ppl: 8.048962
-step:   1, tr_ppl: 6.540719
-step: 101, tr_ppl: 7.510006
-step:   1, tr_ppl: 6.191508
-step: 101, tr_ppl: 7.100288
-step:   1, tr_ppl: 5.904874
-step: 101, tr_ppl: 6.863389
-step:   1, tr_ppl: 5.651842
-step: 101, tr_ppl: 6.567635
-step:   1, tr_ppl: 5.464617
-step: 101, tr_ppl: 6.314060
-step:   1, tr_ppl: 5.297197
-step: 101, tr_ppl: 6.118988
-step:   1, tr_ppl: 5.151811
-step: 101, tr_ppl: 5.959397
-epoch 10 BLEU1~4 on train dataset:
-0.820946
-0.542597
-0.261682
-0.097409
-
- epoch 10 BLEU1~4 on test dataset:
-0.596965
-0.286922
-0.109705
-0.034292
-
-
-step:   1, tr_ppl: 5.038682
-step: 101, tr_ppl: 5.834937
-step:   1, tr_ppl: 4.935840
-step: 101, tr_ppl: 5.733646
-step:   1, tr_ppl: 4.872711
-step: 101, tr_ppl: 5.630736
-step:   1, tr_ppl: 4.807153
-step: 101, tr_ppl: 5.537965
-step:   1, tr_ppl: 4.754312
-step: 101, tr_ppl: 5.479559
-step:   1, tr_ppl: 4.688311
-step: 101, tr_ppl: 5.437905
-step:   1, tr_ppl: 4.620188
-step: 101, tr_ppl: 5.321929
-step:   1, tr_ppl: 4.542262
-step: 101, tr_ppl: 5.226334
-step:   1, tr_ppl: 4.499952
-step: 101, tr_ppl: 5.180839
-step:   1, tr_ppl: 4.447457
-step: 101, tr_ppl: 5.142758
-epoch 20 BLEU1~4 on train dataset:
-0.823097
-0.565826
-0.290744
-0.119037
-
- epoch 20 BLEU1~4 on test dataset:
-0.595093
-0.287463
-0.114168
-0.037419
-
-
-step:   1, tr_ppl: 4.401767
-step: 101, tr_ppl: 5.080661
-step:   1, tr_ppl: 4.377833
-step: 101, tr_ppl: 5.009939
-step:   1, tr_ppl: 4.340544
-step: 101, tr_ppl: 4.937627
-step:   1, tr_ppl: 4.329541
-step: 101, tr_ppl: 4.889580
-step:   1, tr_ppl: 4.302390
-step: 101, tr_ppl: 4.899372
-step:   1, tr_ppl: 4.255957
-step: 101, tr_ppl: 4.895132
-step:   1, tr_ppl: 4.229867
-step: 101, tr_ppl: 4.827391
-step:   1, tr_ppl: 4.189121
-step: 101, tr_ppl: 4.790408
-step:   1, tr_ppl: 4.157614
-step: 101, tr_ppl: 4.764489
-step:   1, tr_ppl: 4.130513
-step: 101, tr_ppl: 4.736701
-epoch 30 BLEU1~4 on train dataset:
-0.827519
-0.575568
-0.301461
-0.126216
-
- epoch 30 BLEU1~4 on test dataset:
-0.612097
-0.302400
-0.121368
-0.040794
-
-
-step:   1, tr_ppl: 4.123511
-step: 101, tr_ppl: 4.717541
-step:   1, tr_ppl: 4.106871
-step: 101, tr_ppl: 4.661087
-step:   1, tr_ppl: 4.067497
-step: 101, tr_ppl: 4.668556
-step:   1, tr_ppl: 4.068591
-step: 101, tr_ppl: 4.656139
-step:   1, tr_ppl: 4.035943
-step: 101, tr_ppl: 4.617690
-step:   1, tr_ppl: 4.032086
-step: 101, tr_ppl: 4.612092
-step:   1, tr_ppl: 4.041862
-step: 101, tr_ppl: 4.613806
-step:   1, tr_ppl: 4.015948
-step: 101, tr_ppl: 4.567235
-step:   1, tr_ppl: 4.003410
-step: 101, tr_ppl: 4.568672
-step:   1, tr_ppl: 3.997105
-step: 101, tr_ppl: 4.550315
-epoch 40 BLEU1~4 on train dataset:
-0.814699
-0.564772
-0.298486
-0.126278
-
- epoch 40 BLEU1~4 on test dataset:
-0.605329
-0.297932
-0.120331
-0.040778
-
-
-step:   1, tr_ppl: 3.966909
-step: 101, tr_ppl: 4.547838
-step:   1, tr_ppl: 3.955484
-step: 101, tr_ppl: 4.523082
-step:   1, tr_ppl: 3.957711
-step: 101, tr_ppl: 4.520829
-step:   1, tr_ppl: 3.962488
-step: 101, tr_ppl: 4.550834
-step:   1, tr_ppl: 3.935488
-step: 101, tr_ppl: 4.510331
-step:   1, tr_ppl: 3.914380
-step: 101, tr_ppl: 4.482376
-step:   1, tr_ppl: 3.909004
-step: 101, tr_ppl: 4.448476
-step:   1, tr_ppl: 3.885159
-step: 101, tr_ppl: 4.478703
-step:   1, tr_ppl: 3.898318
-step: 101, tr_ppl: 4.458060
-step:   1, tr_ppl: 3.895079
-step: 101, tr_ppl: 4.482618
-epoch 50 BLEU1~4 on train dataset:
-0.827182
-0.581604
-0.311080
-0.131846
-
- epoch 50 BLEU1~4 on test dataset:
-0.601209
-0.297780
-0.119311
-0.040301
-
-
-step:   1, tr_ppl: 3.920400
-step: 101, tr_ppl: 4.449499
-step:   1, tr_ppl: 3.882617
-step: 101, tr_ppl: 4.463722
-step:   1, tr_ppl: 3.899848
-step: 101, tr_ppl: 4.439243
-step:   1, tr_ppl: 3.888931
-step: 101, tr_ppl: 4.436194
-step:   1, tr_ppl: 3.893870
-step: 101, tr_ppl: 4.437319
-step:   1, tr_ppl: 3.895890
-step: 101, tr_ppl: 4.444876
-step:   1, tr_ppl: 3.870788
-step: 101, tr_ppl: 4.431767
-step:   1, tr_ppl: 3.874992
-step: 101, tr_ppl: 4.438734
-step:   1, tr_ppl: 3.866471
-step: 101, tr_ppl: 4.399499
-step:   1, tr_ppl: 3.851638
-step: 101, tr_ppl: 4.441974
-epoch 60 BLEU1~4 on train dataset:
-0.826087
-0.576419
-0.307685
-0.131994
-
- epoch 60 BLEU1~4 on test dataset:
-0.599962
-0.297106
-0.119040
-0.040883
-
-
-step:   1, tr_ppl: 3.859755
-step: 101, tr_ppl: 4.416400
-step:   1, tr_ppl: 3.825588
-step: 101, tr_ppl: 4.380460
-step:   1, tr_ppl: 3.885802
-step: 101, tr_ppl: 4.392838
-step:   1, tr_ppl: 3.812727
-step: 101, tr_ppl: 4.428065
-step:   1, tr_ppl: 3.874706
-step: 101, tr_ppl: 4.427965
-step:   1, tr_ppl: 3.832918
-step: 101, tr_ppl: 4.381270
-step:   1, tr_ppl: 3.864653
-step: 101, tr_ppl: 4.368525
-step:   1, tr_ppl: 3.808583
-step: 101, tr_ppl: 4.356347
-step:   1, tr_ppl: 3.818389
-step: 101, tr_ppl: 4.408905
-step:   1, tr_ppl: 3.816249
-step: 101, tr_ppl: 4.345210
-epoch 70 BLEU1~4 on train dataset:
-0.818074
-0.567123
-0.304522
-0.133210
-
- epoch 70 BLEU1~4 on test dataset:
-0.618437
-0.304817
-0.123065
-0.042237
-
-
-step:   1, tr_ppl: 3.810622
-step: 101, tr_ppl: 4.323008
-step:   1, tr_ppl: 3.833201
-step: 101, tr_ppl: 4.369769
-step:   1, tr_ppl: 3.828587
-step: 101, tr_ppl: 4.377388
-step:   1, tr_ppl: 3.796680
-step: 101, tr_ppl: 4.382908
-step:   1, tr_ppl: 3.789429
-step: 101, tr_ppl: 4.316700
-step:   1, tr_ppl: 3.789682
-step: 101, tr_ppl: 4.363467
-step:   1, tr_ppl: 3.789962
-step: 101, tr_ppl: 4.315886
-step:   1, tr_ppl: 3.741954
-step: 101, tr_ppl: 4.328077
-step:   1, tr_ppl: 3.742505
-step: 101, tr_ppl: 4.334781
-  0: dis_total_loss: 16.746628, r_loss: 8.884211, f_loss: 7.862418
-  0: dis_total_loss: 4.206599, r_loss: 1.801713, f_loss: 2.404886
-  0: dis_total_loss: 2.316526, r_loss: 1.015883, f_loss: 1.300643
-  0: dis_total_loss: 1.567722, r_loss: 0.706806, f_loss: 0.860915
-  0: dis_total_loss: 1.177262, r_loss: 0.511812, f_loss: 0.665449
-  0: dis_total_loss: 0.937238, r_loss: 0.340454, f_loss: 0.596784
-  0: dis_total_loss: 0.730357, r_loss: 0.249459, f_loss: 0.480898
-  0: dis_total_loss: 0.519735, r_loss: 0.182805, f_loss: 0.336930
-  0: dis_total_loss: 0.406269, r_loss: 0.140337, f_loss: 0.265932
-  0: dis_total_loss: 0.307718, r_loss: 0.099156, f_loss: 0.208562
-  0: dis_total_loss: 0.268179, r_loss: 0.072621, f_loss: 0.195558
-  0: dis_total_loss: 0.198731, r_loss: 0.057959, f_loss: 0.140772
-  0: dis_total_loss: 0.168258, r_loss: 0.043219, f_loss: 0.125039
-  0: dis_total_loss: 0.172891, r_loss: 0.033045, f_loss: 0.139845
-  0: dis_total_loss: 0.121528, r_loss: 0.026310, f_loss: 0.095218
-  0: dis_total_loss: 0.087801, r_loss: 0.021033, f_loss: 0.066769
-  0: dis_total_loss: 0.132716, r_loss: 0.016618, f_loss: 0.116098
-  0: dis_total_loss: 0.084076, r_loss: 0.013891, f_loss: 0.070184
-  0: dis_total_loss: 0.067868, r_loss: 0.011593, f_loss: 0.056275
-  0: dis_total_loss: 0.080783, r_loss: 0.010137, f_loss: 0.070646
-  0: dis_total_loss: 0.079431, r_loss: 0.008559, f_loss: 0.070873
-  0: dis_total_loss: 0.041764, r_loss: 0.007359, f_loss: 0.034406
-  0: dis_total_loss: 0.047622, r_loss: 0.006225, f_loss: 0.041397
-  0: dis_total_loss: 0.087323, r_loss: 0.005368, f_loss: 0.081955
-  0: dis_total_loss: 0.026424, r_loss: 0.004611, f_loss: 0.021813
-  0: dis_total_loss: 0.027551, r_loss: 0.004696, f_loss: 0.022855
-  0: dis_total_loss: 0.039404, r_loss: 0.004097, f_loss: 0.035306
-  0: dis_total_loss: 0.030298, r_loss: 0.003557, f_loss: 0.026741
-  0: dis_total_loss: 0.040846, r_loss: 0.003069, f_loss: 0.037776
-  0: dis_total_loss: 0.037680, r_loss: 0.002660, f_loss: 0.035020
-  0: dis_total_loss: 0.019387, r_loss: 0.002310, f_loss: 0.017077
-  0: dis_total_loss: 0.022338, r_loss: 0.002033, f_loss: 0.020305
-  0: dis_total_loss: 0.015013, r_loss: 0.001786, f_loss: 0.013227
-  0: dis_total_loss: 0.016177, r_loss: 0.001574, f_loss: 0.014602
-  0: dis_total_loss: 0.016736, r_loss: 0.001392, f_loss: 0.015345
-  0: dis_total_loss: 0.019280, r_loss: 0.001275, f_loss: 0.018005
-  0: dis_total_loss: 0.015432, r_loss: 0.001131, f_loss: 0.014300
-  0: dis_total_loss: 0.008438, r_loss: 0.001000, f_loss: 0.007438
-  0: dis_total_loss: 0.018397, r_loss: 0.000884, f_loss: 0.017513
-  0: dis_total_loss: 0.013179, r_loss: 0.000783, f_loss: 0.012396
-  0: dis_total_loss: 0.011116, r_loss: 0.000701, f_loss: 0.010415
-  0: dis_total_loss: 0.004916, r_loss: 0.000633, f_loss: 0.004282
-  0: dis_total_loss: 0.003419, r_loss: 0.000569, f_loss: 0.002850
-  0: dis_total_loss: 0.001724, r_loss: 0.000509, f_loss: 0.001214
-  0: dis_total_loss: 0.009949, r_loss: 0.000455, f_loss: 0.009494
-  0: dis_total_loss: 0.012240, r_loss: 0.000409, f_loss: 0.011831
-  0: dis_total_loss: 0.005137, r_loss: 0.000367, f_loss: 0.004770
-  0: dis_total_loss: 0.024816, r_loss: 0.000335, f_loss: 0.024481
-  0: dis_total_loss: 0.004904, r_loss: 0.000301, f_loss: 0.004603
-  0: dis_total_loss: 0.001299, r_loss: 0.000289, f_loss: 0.001011
-  0: dis_total_loss: 0.009648, r_loss: 0.000258, f_loss: 0.009391
-  0: dis_total_loss: 0.001662, r_loss: 0.000230, f_loss: 0.001432
-  0: dis_total_loss: 0.004615, r_loss: 0.000205, f_loss: 0.004410
-  0: dis_total_loss: 0.001671, r_loss: 0.000184, f_loss: 0.001487
-  0: dis_total_loss: 0.001191, r_loss: 0.000168, f_loss: 0.001023
-  0: dis_total_loss: 0.001098, r_loss: 0.000151, f_loss: 0.000947
-  0: dis_total_loss: 0.001656, r_loss: 0.000135, f_loss: 0.001521
-  0: dis_total_loss: 0.003614, r_loss: 0.000121, f_loss: 0.003493
-  0: dis_total_loss: 0.003785, r_loss: 0.000110, f_loss: 0.003675
-  0: dis_total_loss: 0.001815, r_loss: 0.000100, f_loss: 0.001715
-  0: dis_total_loss: 0.000643, r_loss: 0.000090, f_loss: 0.000552
-  0: dis_total_loss: 0.003682, r_loss: 0.000082, f_loss: 0.003600
-  0: dis_total_loss: 0.004074, r_loss: 0.000074, f_loss: 0.003999
-  0: dis_total_loss: 0.001064, r_loss: 0.000069, f_loss: 0.000995
-  0: dis_total_loss: 0.000675, r_loss: 0.000064, f_loss: 0.000611
-  0: dis_total_loss: 0.002784, r_loss: 0.000058, f_loss: 0.002726
-  0: dis_total_loss: 0.000446, r_loss: 0.000052, f_loss: 0.000393
-  0: dis_total_loss: 0.000819, r_loss: 0.000047, f_loss: 0.000772
-  0: dis_total_loss: 0.000247, r_loss: 0.000042, f_loss: 0.000205
-  0: dis_total_loss: 0.000228, r_loss: 0.000038, f_loss: 0.000190
-  0: dis_total_loss: 0.000964, r_loss: 0.000034, f_loss: 0.000929
-  0: dis_total_loss: 0.000536, r_loss: 0.000032, f_loss: 0.000504
-  0: dis_total_loss: 0.000379, r_loss: 0.000028, f_loss: 0.000351
-  0: dis_total_loss: 0.000388, r_loss: 0.000025, f_loss: 0.000363
-  0: dis_total_loss: 0.002464, r_loss: 0.000023, f_loss: 0.002441
-  0: dis_total_loss: 0.000634, r_loss: 0.000020, f_loss: 0.000614
-  0: dis_total_loss: 0.000534, r_loss: 0.000019, f_loss: 0.000516
-  0: dis_total_loss: 0.000389, r_loss: 0.000017, f_loss: 0.000372
-  0: dis_total_loss: 0.002981, r_loss: 0.000015, f_loss: 0.002966
-  0: dis_total_loss: 0.000098, r_loss: 0.000014, f_loss: 0.000084
-step:   1, mean_rwd: -48.588295, exp_rwd_loss:-48.588295, update_loss: -48.588295
-  0: dis_total_loss: 0.000517, r_loss: 0.000013, f_loss: 0.000504
-epoch 80 BLEU1~4 on train dataset:
-0.814971
-0.571008
-0.310786
-0.136047
-
- epoch 80 BLEU1~4 on test dataset:
-0.608509
-0.304116
-0.124783
-0.043827
-
-
-step:   1, mean_rwd: -49.036972, exp_rwd_loss:-49.036972, update_loss: -49.036972
-  0: dis_total_loss: 0.000921, r_loss: 0.000013, f_loss: 0.000909
-step:   1, mean_rwd: -49.055901, exp_rwd_loss:-49.055901, update_loss: -49.055901
-  0: dis_total_loss: 0.001264, r_loss: 0.000012, f_loss: 0.001252
-step:   1, mean_rwd: -48.826614, exp_rwd_loss:-48.826614, update_loss: -48.826614
-  0: dis_total_loss: 0.000076, r_loss: 0.000012, f_loss: 0.000064
-step:   1, mean_rwd: -49.333870, exp_rwd_loss:-49.333870, update_loss: -49.333870
-  0: dis_total_loss: 0.000591, r_loss: 0.000012, f_loss: 0.000579
-step:   1, mean_rwd: -49.027027, exp_rwd_loss:-49.027027, update_loss: -49.027027
-  0: dis_total_loss: 0.000404, r_loss: 0.000012, f_loss: 0.000393
-step:   1, mean_rwd: -49.433987, exp_rwd_loss:-49.433987, update_loss: -49.433987
-  0: dis_total_loss: 0.000219, r_loss: 0.000012, f_loss: 0.000207
-step:   1, mean_rwd: -49.051487, exp_rwd_loss:-49.051487, update_loss: -49.051487
-  0: dis_total_loss: 0.000253, r_loss: 0.000012, f_loss: 0.000241
-step:   1, mean_rwd: -49.561848, exp_rwd_loss:-49.561848, update_loss: -49.561848
-  0: dis_total_loss: 0.000049, r_loss: 0.000011, f_loss: 0.000038
-step:   1, mean_rwd: -48.632729, exp_rwd_loss:-48.632729, update_loss: -48.632729
-  0: dis_total_loss: 0.001251, r_loss: 0.000011, f_loss: 0.001240
-step:   1, mean_rwd: -49.397152, exp_rwd_loss:-49.397152, update_loss: -49.397152
-  0: dis_total_loss: 0.000570, r_loss: 0.000011, f_loss: 0.000559
-epoch 90 BLEU1~4 on train dataset:
-0.808499
-0.566188
-0.307775
-0.133859
-
- epoch 90 BLEU1~4 on test dataset:
-0.606409
-0.303026
-0.123715
-0.042656
-
-
-step:   1, mean_rwd: -49.378040, exp_rwd_loss:-49.378040, update_loss: -49.378040
-  0: dis_total_loss: 0.000059, r_loss: 0.000011, f_loss: 0.000048
-step:   1, mean_rwd: -49.371883, exp_rwd_loss:-49.371883, update_loss: -49.371883
-  0: dis_total_loss: 0.000500, r_loss: 0.000011, f_loss: 0.000489
-step:   1, mean_rwd: -49.400471, exp_rwd_loss:-49.400471, update_loss: -49.400471
-  0: dis_total_loss: 0.000752, r_loss: 0.000011, f_loss: 0.000741
-step:   1, mean_rwd: -49.280228, exp_rwd_loss:-49.280228, update_loss: -49.280228
-  0: dis_total_loss: 0.000029, r_loss: 0.000011, f_loss: 0.000018
-step:   1, mean_rwd: -49.638329, exp_rwd_loss:-49.638329, update_loss: -49.638329
-  0: dis_total_loss: 0.000121, r_loss: 0.000011, f_loss: 0.000110
-step:   1, mean_rwd: -49.522198, exp_rwd_loss:-49.522198, update_loss: -49.522198
-  0: dis_total_loss: 0.000105, r_loss: 0.000010, f_loss: 0.000094
-step:   1, mean_rwd: -49.752735, exp_rwd_loss:-49.752735, update_loss: -49.752735
-  0: dis_total_loss: 0.000048, r_loss: 0.000010, f_loss: 0.000037
-step:   1, mean_rwd: -49.728184, exp_rwd_loss:-49.728184, update_loss: -49.728184
-  0: dis_total_loss: 0.000044, r_loss: 0.000010, f_loss: 0.000033
-step:   1, mean_rwd: -49.788033, exp_rwd_loss:-49.788033, update_loss: -49.788033
-  0: dis_total_loss: 0.001462, r_loss: 0.000010, f_loss: 0.001452
-step:   1, mean_rwd: -49.920238, exp_rwd_loss:-49.920238, update_loss: -49.920238
-  0: dis_total_loss: 0.003419, r_loss: 0.000010, f_loss: 0.003409
-epoch 100 BLEU1~4 on train dataset:
-0.805587
-0.567704
-0.309005
-0.136138
-
- epoch 100 BLEU1~4 on test dataset:
-0.601739
-0.303816
-0.124317
-0.043319
-
-
-step:   1, mean_rwd: -49.568588, exp_rwd_loss:-49.568588, update_loss: -49.568588
-  0: dis_total_loss: 0.000082, r_loss: 0.000010, f_loss: 0.000072
-step:   1, mean_rwd: -49.870735, exp_rwd_loss:-49.870735, update_loss: -49.870735
-  0: dis_total_loss: 0.000035, r_loss: 0.000010, f_loss: 0.000025
-step:   1, mean_rwd: -49.964577, exp_rwd_loss:-49.964577, update_loss: -49.964577
-  0: dis_total_loss: 0.000187, r_loss: 0.000010, f_loss: 0.000177
-step:   1, mean_rwd: -50.024734, exp_rwd_loss:-50.024734, update_loss: -50.024734
-  0: dis_total_loss: 0.000460, r_loss: 0.000010, f_loss: 0.000451
-step:   1, mean_rwd: -49.570461, exp_rwd_loss:-49.570461, update_loss: -49.570461
-  0: dis_total_loss: 0.001524, r_loss: 0.000010, f_loss: 0.001514
-step:   1, mean_rwd: -50.018379, exp_rwd_loss:-50.018379, update_loss: -50.018379
-  0: dis_total_loss: 0.000056, r_loss: 0.000010, f_loss: 0.000047
-step:   1, mean_rwd: -50.201496, exp_rwd_loss:-50.201496, update_loss: -50.201496
-  0: dis_total_loss: 0.002118, r_loss: 0.000010, f_loss: 0.002108
-step:   1, mean_rwd: -49.973381, exp_rwd_loss:-49.973381, update_loss: -49.973381
-  0: dis_total_loss: 0.000095, r_loss: 0.000009, f_loss: 0.000085
-step:   1, mean_rwd: -50.184429, exp_rwd_loss:-50.184429, update_loss: -50.184429
-  0: dis_total_loss: 0.000086, r_loss: 0.000009, f_loss: 0.000076
-step:   1, mean_rwd: -50.233894, exp_rwd_loss:-50.233894, update_loss: -50.233894
-  0: dis_total_loss: 0.000223, r_loss: 0.000009, f_loss: 0.000214
-epoch 110 BLEU1~4 on train dataset:
-0.796497
-0.561738
-0.308315
-0.136545
-
- epoch 110 BLEU1~4 on test dataset:
-0.600278
-0.301083
-0.123622
-0.043721
-
-
-step:   1, mean_rwd: -50.210285, exp_rwd_loss:-50.210285, update_loss: -50.210285
-  0: dis_total_loss: 0.000167, r_loss: 0.000009, f_loss: 0.000158
-step:   1, mean_rwd: -49.882496, exp_rwd_loss:-49.882496, update_loss: -49.882496
-  0: dis_total_loss: 0.000204, r_loss: 0.000009, f_loss: 0.000195
-step:   1, mean_rwd: -49.932869, exp_rwd_loss:-49.932869, update_loss: -49.932869
-  0: dis_total_loss: 0.000022, r_loss: 0.000009, f_loss: 0.000013
-step:   1, mean_rwd: -50.270206, exp_rwd_loss:-50.270206, update_loss: -50.270206
-  0: dis_total_loss: 0.001544, r_loss: 0.000009, f_loss: 0.001535
-step:   1, mean_rwd: -50.325466, exp_rwd_loss:-50.325466, update_loss: -50.325466
-  0: dis_total_loss: 0.000023, r_loss: 0.000009, f_loss: 0.000014
-step:   1, mean_rwd: -50.498329, exp_rwd_loss:-50.498329, update_loss: -50.498329
-  0: dis_total_loss: 0.000447, r_loss: 0.000009, f_loss: 0.000438
-step:   1, mean_rwd: -50.414543, exp_rwd_loss:-50.414543, update_loss: -50.414543
-  0: dis_total_loss: 0.000055, r_loss: 0.000009, f_loss: 0.000047
-step:   1, mean_rwd: -50.289387, exp_rwd_loss:-50.289387, update_loss: -50.289387
-  0: dis_total_loss: 0.000101, r_loss: 0.000009, f_loss: 0.000093
-step:   1, mean_rwd: -50.430901, exp_rwd_loss:-50.430901, update_loss: -50.430901
-  0: dis_total_loss: 0.000612, r_loss: 0.000008, f_loss: 0.000604
-step:   1, mean_rwd: -50.000145, exp_rwd_loss:-50.000145, update_loss: -50.000145
-  0: dis_total_loss: 0.000551, r_loss: 0.000008, f_loss: 0.000543
-epoch 120 BLEU1~4 on train dataset:
-0.786621
-0.555268
-0.305340
-0.135986
-
- epoch 120 BLEU1~4 on test dataset:
-0.593720
-0.297351
-0.121676
-0.042380
-
-
-step:   1, mean_rwd: -50.575886, exp_rwd_loss:-50.575886, update_loss: -50.575886
-  0: dis_total_loss: 0.000129, r_loss: 0.000008, f_loss: 0.000120
-step:   1, mean_rwd: -50.376446, exp_rwd_loss:-50.376446, update_loss: -50.376446
-  0: dis_total_loss: 0.000061, r_loss: 0.000008, f_loss: 0.000053
-step:   1, mean_rwd: -50.613605, exp_rwd_loss:-50.613605, update_loss: -50.613605
-  0: dis_total_loss: 0.000339, r_loss: 0.000008, f_loss: 0.000331
-step:   1, mean_rwd: -50.195709, exp_rwd_loss:-50.195709, update_loss: -50.195709
-  0: dis_total_loss: 0.000634, r_loss: 0.000008, f_loss: 0.000626
-step:   1, mean_rwd: -50.638634, exp_rwd_loss:-50.638634, update_loss: -50.638634
-  0: dis_total_loss: 0.000009, r_loss: 0.000008, f_loss: 0.000001
-step:   1, mean_rwd: -50.810768, exp_rwd_loss:-50.810768, update_loss: -50.810768
-  0: dis_total_loss: 0.000016, r_loss: 0.000008, f_loss: 0.000008
-step:   1, mean_rwd: -50.728504, exp_rwd_loss:-50.728504, update_loss: -50.728504
-  0: dis_total_loss: 0.000066, r_loss: 0.000008, f_loss: 0.000058
-step:   1, mean_rwd: -50.808788, exp_rwd_loss:-50.808788, update_loss: -50.808788
-  0: dis_total_loss: 0.000151, r_loss: 0.000008, f_loss: 0.000143
-step:   1, mean_rwd: -50.645058, exp_rwd_loss:-50.645058, update_loss: -50.645058
-  0: dis_total_loss: 0.000109, r_loss: 0.000008, f_loss: 0.000101
-step:   1, mean_rwd: -50.887035, exp_rwd_loss:-50.887035, update_loss: -50.887035
-  0: dis_total_loss: 0.000958, r_loss: 0.000008, f_loss: 0.000950
-epoch 130 BLEU1~4 on train dataset:
-0.777323
-0.552684
-0.304381
-0.135063
-
- epoch 130 BLEU1~4 on test dataset:
-0.589018
-0.298512
-0.122763
-0.042809
-
-
-step:   1, mean_rwd: -50.823986, exp_rwd_loss:-50.823986, update_loss: -50.823986
-  0: dis_total_loss: 0.001127, r_loss: 0.000008, f_loss: 0.001119
-step:   1, mean_rwd: -50.914986, exp_rwd_loss:-50.914986, update_loss: -50.914986
-  0: dis_total_loss: 0.000206, r_loss: 0.000008, f_loss: 0.000198
-step:   1, mean_rwd: -50.959156, exp_rwd_loss:-50.959156, update_loss: -50.959156
-  0: dis_total_loss: 0.000313, r_loss: 0.000007, f_loss: 0.000305
-step:   1, mean_rwd: -50.630753, exp_rwd_loss:-50.630753, update_loss: -50.630753
-  0: dis_total_loss: 0.000161, r_loss: 0.000007, f_loss: 0.000154
-step:   1, mean_rwd: -50.929436, exp_rwd_loss:-50.929436, update_loss: -50.929436
-  0: dis_total_loss: 0.000032, r_loss: 0.000007, f_loss: 0.000025
-step:   1, mean_rwd: -50.978218, exp_rwd_loss:-50.978218, update_loss: -50.978218
-  0: dis_total_loss: 0.000022, r_loss: 0.000007, f_loss: 0.000015
-step:   1, mean_rwd: -50.958012, exp_rwd_loss:-50.958012, update_loss: -50.958012
-  0: dis_total_loss: 0.000135, r_loss: 0.000007, f_loss: 0.000128
-step:   1, mean_rwd: -50.980618, exp_rwd_loss:-50.980618, update_loss: -50.980618
-  0: dis_total_loss: 0.000187, r_loss: 0.000007, f_loss: 0.000180
-step:   1, mean_rwd: -51.205566, exp_rwd_loss:-51.205566, update_loss: -51.205566
-  0: dis_total_loss: 0.000700, r_loss: 0.000007, f_loss: 0.000693
-step:   1, mean_rwd: -50.872177, exp_rwd_loss:-50.872177, update_loss: -50.872177
-  0: dis_total_loss: 0.000411, r_loss: 0.000007, f_loss: 0.000404
-epoch 140 BLEU1~4 on train dataset:
-0.772351
-0.550106
-0.303428
-0.135560
-
- epoch 140 BLEU1~4 on test dataset:
-0.587606
-0.297492
-0.124043
-0.044169
-
-
-step:   1, mean_rwd: -51.142773, exp_rwd_loss:-51.142773, update_loss: -51.142773
-  0: dis_total_loss: 0.000025, r_loss: 0.000007, f_loss: 0.000019
-step:   1, mean_rwd: -51.149883, exp_rwd_loss:-51.149883, update_loss: -51.149883
-  0: dis_total_loss: 0.000223, r_loss: 0.000007, f_loss: 0.000216
-step:   1, mean_rwd: -50.668869, exp_rwd_loss:-50.668869, update_loss: -50.668869
-  0: dis_total_loss: 0.000304, r_loss: 0.000007, f_loss: 0.000297
-step:   1, mean_rwd: -51.248371, exp_rwd_loss:-51.248371, update_loss: -51.248371
-  0: dis_total_loss: 0.000161, r_loss: 0.000007, f_loss: 0.000154
-step:   1, mean_rwd: -51.151283, exp_rwd_loss:-51.151283, update_loss: -51.151283
-  0: dis_total_loss: 0.004369, r_loss: 0.000007, f_loss: 0.004362
-step:   1, mean_rwd: -51.171535, exp_rwd_loss:-51.171535, update_loss: -51.171535
-  0: dis_total_loss: 0.000213, r_loss: 0.000007, f_loss: 0.000206
-step:   1, mean_rwd: -51.309258, exp_rwd_loss:-51.309258, update_loss: -51.309258
-  0: dis_total_loss: 0.000100, r_loss: 0.000006, f_loss: 0.000094
-step:   1, mean_rwd: -51.169361, exp_rwd_loss:-51.169361, update_loss: -51.169361
-  0: dis_total_loss: 0.000152, r_loss: 0.000006, f_loss: 0.000145
-step:   1, mean_rwd: -51.342674, exp_rwd_loss:-51.342674, update_loss: -51.342674
-  0: dis_total_loss: 0.000171, r_loss: 0.000006, f_loss: 0.000165
-step:   1, mean_rwd: -51.241497, exp_rwd_loss:-51.241497, update_loss: -51.241497
-  0: dis_total_loss: 0.000147, r_loss: 0.000006, f_loss: 0.000141
-epoch 150 BLEU1~4 on train dataset:
-0.765433
-0.545321
-0.301822
-0.134312
-
- epoch 150 BLEU1~4 on test dataset:
-0.581775
-0.296448
-0.123515
-0.043641
-
-
-step:   1, mean_rwd: -51.202354, exp_rwd_loss:-51.202354, update_loss: -51.202354
-  0: dis_total_loss: 0.000686, r_loss: 0.000006, f_loss: 0.000679
-step:   1, mean_rwd: -51.330605, exp_rwd_loss:-51.330605, update_loss: -51.330605
-  0: dis_total_loss: 0.000114, r_loss: 0.000006, f_loss: 0.000108
-step:   1, mean_rwd: -51.276237, exp_rwd_loss:-51.276237, update_loss: -51.276237
-  0: dis_total_loss: 0.002314, r_loss: 0.000006, f_loss: 0.002308
-step:   1, mean_rwd: -51.040276, exp_rwd_loss:-51.040276, update_loss: -51.040276
-  0: dis_total_loss: 0.000484, r_loss: 0.000006, f_loss: 0.000478
-step:   1, mean_rwd: -51.003979, exp_rwd_loss:-51.003979, update_loss: -51.003979
-  0: dis_total_loss: 0.000431, r_loss: 0.000006, f_loss: 0.000425
-step:   1, mean_rwd: -51.331390, exp_rwd_loss:-51.331390, update_loss: -51.331390
-  0: dis_total_loss: 0.000056, r_loss: 0.000006, f_loss: 0.000051
-step:   1, mean_rwd: -51.263897, exp_rwd_loss:-51.263897, update_loss: -51.263897
-  0: dis_total_loss: 0.000042, r_loss: 0.000006, f_loss: 0.000036
-step:   1, mean_rwd: -51.288612, exp_rwd_loss:-51.288612, update_loss: -51.288612
-  0: dis_total_loss: 0.000044, r_loss: 0.000006, f_loss: 0.000038
-step:   1, mean_rwd: -51.138817, exp_rwd_loss:-51.138817, update_loss: -51.138817
-  0: dis_total_loss: 0.004885, r_loss: 0.000006, f_loss: 0.004879
-step:   1, mean_rwd: -51.135151, exp_rwd_loss:-51.135151, update_loss: -51.135151
-  0: dis_total_loss: 0.000018, r_loss: 0.000006, f_loss: 0.000012
-epoch 160 BLEU1~4 on train dataset:
-0.757487
-0.541448
-0.299455
-0.132189
-
- epoch 160 BLEU1~4 on test dataset:
-0.572874
-0.291439
-0.121054
-0.043077
-
-
-step:   1, mean_rwd: -51.368092, exp_rwd_loss:-51.368092, update_loss: -51.368092
-  0: dis_total_loss: 0.000034, r_loss: 0.000006, f_loss: 0.000028
-step:   1, mean_rwd: -51.371571, exp_rwd_loss:-51.371571, update_loss: -51.371571
-  0: dis_total_loss: 0.000135, r_loss: 0.000005, f_loss: 0.000130
-step:   1, mean_rwd: -51.257648, exp_rwd_loss:-51.257648, update_loss: -51.257648
-  0: dis_total_loss: 0.000092, r_loss: 0.000005, f_loss: 0.000086/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-  return f(*args, **kwds)
-
-step:   1, mean_rwd: -51.289654, exp_rwd_loss:-51.289654, update_loss: -51.289654
-  0: dis_total_loss: 0.000042, r_loss: 0.000005, f_loss: 0.000037
-step:   1, mean_rwd: -51.290565, exp_rwd_loss:-51.290565, update_loss: -51.290565
-  0: dis_total_loss: 0.000050, r_loss: 0.000005, f_loss: 0.000044
-step:   1, mean_rwd: -51.237751, exp_rwd_loss:-51.237751, update_loss: -51.237751
-  0: dis_total_loss: 0.000016, r_loss: 0.000005, f_loss: 0.000011
-step:   1, mean_rwd: -51.400642, exp_rwd_loss:-51.400642, update_loss: -51.400642
-  0: dis_total_loss: 0.000048, r_loss: 0.000005, f_loss: 0.000042
-step:   1, mean_rwd: -51.325706, exp_rwd_loss:-51.325706, update_loss: -51.325706
-  0: dis_total_loss: 0.000083, r_loss: 0.000005, f_loss: 0.000077
-step:   1, mean_rwd: -51.324574, exp_rwd_loss:-51.324574, update_loss: -51.324574
-  0: dis_total_loss: 0.000060, r_loss: 0.000005, f_loss: 0.000055
-step:   1, mean_rwd: -51.240547, exp_rwd_loss:-51.240547, update_loss: -51.240547
-  0: dis_total_loss: 0.000186, r_loss: 0.000005, f_loss: 0.000181
-epoch 170 BLEU1~4 on train dataset:
-0.744633
-0.532205
-0.297904
-0.132374
-
- epoch 170 BLEU1~4 on test dataset:
-0.566257
-0.288737
-0.120900
-0.042441
-
-
-step:   1, mean_rwd: -51.243542, exp_rwd_loss:-51.243542, update_loss: -51.243542
-  0: dis_total_loss: 0.000034, r_loss: 0.000005, f_loss: 0.000029
-step:   1, mean_rwd: -51.233803, exp_rwd_loss:-51.233803, update_loss: -51.233803
-  0: dis_total_loss: 0.000353, r_loss: 0.000005, f_loss: 0.000348
-step:   1, mean_rwd: -51.173420, exp_rwd_loss:-51.173420, update_loss: -51.173420
-  0: dis_total_loss: 0.002849, r_loss: 0.000005, f_loss: 0.002844
-step:   1, mean_rwd: -51.126850, exp_rwd_loss:-51.126850, update_loss: -51.126850
-  0: dis_total_loss: 0.001139, r_loss: 0.000005, f_loss: 0.001134
-step:   1, mean_rwd: -51.150616, exp_rwd_loss:-51.150616, update_loss: -51.150616
-  0: dis_total_loss: 0.000065, r_loss: 0.000005, f_loss: 0.000060
-step:   1, mean_rwd: -51.187714, exp_rwd_loss:-51.187714, update_loss: -51.187714
-  0: dis_total_loss: 0.000145, r_loss: 0.000005, f_loss: 0.000140
-step:   1, mean_rwd: -51.177601, exp_rwd_loss:-51.177601, update_loss: -51.177601
-  0: dis_total_loss: 0.000431, r_loss: 0.000005, f_loss: 0.000426
-step:   1, mean_rwd: -51.283539, exp_rwd_loss:-51.283539, update_loss: -51.283539
-  0: dis_total_loss: 0.000026, r_loss: 0.000005, f_loss: 0.000021
-step:   1, mean_rwd: -51.131454, exp_rwd_loss:-51.131454, update_loss: -51.131454
-  0: dis_total_loss: 0.000025, r_loss: 0.000005, f_loss: 0.000021

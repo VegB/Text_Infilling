@@ -135,7 +135,7 @@ def _main(_):
                                  tf.expand_dims(reward, -1))
     update_loss.set_shape(())
     gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
-                                  incement_global_step=False,
+                                  increment_global_step=False,
                                   hparams=config.update_opt_hparams)
     update_op = tf.group(gen_op, exp_op)
 
@@ -255,7 +255,8 @@ def _main(_):
             cur_epoch = update_epoch + config.generator_pretrain_epoch
             _g_train_epoch(sess, cur_epoch, 'update')
             _d_run_epoch(sess, cur_epoch, mode_string='update')
-            if update_epoch % 10 == 0:
+            if update_epoch % 10 == 0 or \
+                    update_epoch == config.adversial_epoch - 1:
                 _g_test_epoch(sess, cur_epoch, 'test')
     log.close()
     bleu_log.close()
