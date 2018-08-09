@@ -42,7 +42,8 @@ train_data_hparams = {
     "seed": 123,
     "dataset": {
         "files": 'coco_data/coco.train.txt',
-        "vocab_file": 'coco_data/vocab.txt'
+        "vocab_file": 'coco_data/vocab.txt',
+        "max_seq_length": max_num_steps
     }
 }
 
@@ -52,7 +53,8 @@ val_data_hparams = {
     "seed": 123,
     "dataset": {
         "files": 'coco_data/coco.valid.txt',
-        "vocab_file": 'coco_data/vocab.txt'
+        "vocab_file": 'coco_data/vocab.txt',
+        "max_seq_length": max_num_steps
     }
 }
 
@@ -61,7 +63,8 @@ test_data_hparams = {
     "batch_size": batch_size,
     "dataset": {
         "files": 'coco_data/coco.test.txt',
-        "vocab_file": 'coco_data/vocab.txt'
+        "vocab_file": 'coco_data/vocab.txt',
+        "max_seq_length": max_num_steps
     }
 }
 

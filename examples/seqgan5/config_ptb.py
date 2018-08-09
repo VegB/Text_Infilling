@@ -4,7 +4,7 @@ adversial_epoch = 20
 
 hidden_size = 200
 batch_size = 64
-max_num_steps = 20
+max_num_steps = 10
 
 enc_keep_prob_in = 1.0
 dec_keep_prob_out = 1.0
@@ -42,7 +42,8 @@ train_data_hparams = {
     "seed": 123,
     "dataset": {
         "files": 'ptb_data/ptb.train.txt',
-        "vocab_file": 'ptb_data/vocab.txt'
+        "vocab_file": 'ptb_data/vocab.txt',
+        "max_seq_length": max_num_steps
     }
 }
 
@@ -52,7 +53,8 @@ val_data_hparams = {
     "seed": 123,
     "dataset": {
         "files": 'ptb_data/ptb.valid.txt',
-        "vocab_file": 'ptb_data/vocab.txt'
+        "vocab_file": 'ptb_data/vocab.txt',
+        "max_seq_length": max_num_steps
     }
 }
 
@@ -61,7 +63,8 @@ test_data_hparams = {
     "batch_size": batch_size,
     "dataset": {
         "files": 'ptb_data/ptb.test.txt',
-        "vocab_file": 'ptb_data/vocab.txt'
+        "vocab_file": 'ptb_data/vocab.txt',
+        "max_seq_length": max_num_steps
     }
 }
 

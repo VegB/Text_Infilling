@@ -4,6 +4,8 @@ from __future__ import print_function
 
 # pylint: disable=invalid-name, no-member, too-many-locals
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import importlib
 import numpy as np
 import tensorflow as tf
@@ -196,7 +198,7 @@ def _main(_):
                              "['valid', 'test'], got %s" % mode_string)
 
         inference_list = []
-        loss, num_steps = 0., 0
+        loss, steps = 0., 0
         while True:
             try:
                 fetches = {
@@ -208,14 +210,14 @@ def _main(_):
                 feed_dict = {tx.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = sess.run(fetches, feed_dict)
                 loss += rtns['mle_loss']
-                num_steps += rtns['num_steps']
+                steps += rtns['num_steps']
                 if mode_string == 'test':
                     inferences = _id2word_map(rtns['infer_sample_id'].tolist())
                     inference_list.extend([inf.split('<EOS>')[0].strip().split()
                                            for inf in inferences])
             except tf.errors.OutOfRangeError:
                 break
-        ppl = np.exp(loss / num_steps)
+        ppl = np.exp(loss / steps)
         rst = "G {0:6s} epoch {1:3d}, step {2:1s}:" \
               " {3:5s}_ppl: {4:6f}"\
             .format(mode_string, epoch, '-', mode_string, ppl)
