@@ -164,13 +164,13 @@ def _main(_):
                 if step % 200 == 1:
                     if mode_string == 'train':
                         ppl = np.exp(rtns['mle_loss'] / rtns["num_steps"])
-                        rst = "G {0:8s} epoch {0:3d}, step {1:1d}:" \
-                              " train_ppl: {2:6f}".format(mode_string,
+                        rst = "G {0:8s} epoch {1:3d}, step {2:1d}:" \
+                              " train_ppl: {3:6f}".format(mode_string,
                                                           epoch, step, ppl)
                     else:
-                        rst = "G {0:8s} epoch {0:3d}, step {1:1d}: " \
-                              "mean_reward: {2:6f}, expect_reward_loss:{3:6f}, " \
-                              "update_loss: {4:6f}".format(mode_string, epoch,
+                        rst = "G {0:8s} epoch {1:3d}, step {2:1d}: " \
+                              "mean_reward: {3:6f}, expect_reward_loss:{4:6f}, " \
+                              "update_loss: {5:6f}".format(mode_string, epoch,
                                    step, rtns['mean_rwd'], rtns['exp_rwd_loss'],
                                    rtns['update_loss'])
                     log.write(rst + '\n')
