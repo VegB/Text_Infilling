@@ -123,7 +123,7 @@ def _main(_):
     expected_reward = tf.Variable(tf.zeros((config.max_num_steps,)))
     reward = tf.squeeze(f_logits) - expected_reward[:tf.shape(f_logits)[1]]
     mean_reward = tf.reduce_mean(reward)
-    exp_reward_loss = tf.reduce_mean(tf.abs(reward))
+    exp_reward_loss = -tf.reduce_mean(tf.abs(reward))
     exp_reward_loss.set_shape(())
     exp_op = tx.core.get_train_op(exp_reward_loss, global_step=global_step,
                                   increment_global_step=False,
@@ -131,7 +131,7 @@ def _main(_):
     reward = tx.losses.discount_reward(reward,
                                   sequence_length=tf.squeeze(sequence_length),
                                   tensor_rank=2)
-    update_loss = -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
+    update_loss = tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
     update_loss.set_shape(())
     gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
                                   increment_global_step=False,
