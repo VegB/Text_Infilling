@@ -26,8 +26,6 @@ config = importlib.import_module(FLAGS.config)
 
 
 def _main(_):
-    prepare_data(FLAGS, config,
-                 config.train_data_hparams['dataset']['files'])
     log = open(config.log_file, 'w')
     bleu_log = open(config.bleu_file, 'w')
 
@@ -73,7 +71,8 @@ def _main(_):
         sequence_length=data_batch["length"] - 1)
 
     global_step = tf.Variable(0, trainable=False)
-    gen_train_op = tx.core.get_train_op(mle_loss, global_step=global_step,
+    gen_train_op = tx.core.get_train_op(mle_loss,
+                                        global_step=global_step,
                                         increment_global_step=False,
                                         hparams=config.g_opt_hparams)
 
@@ -112,7 +111,8 @@ def _main(_):
     dis_loss = r_loss + f_loss
     dis_loss.set_shape(())
 
-    dis_train_op = tx.core.get_train_op(dis_loss, global_step=global_step,
+    dis_train_op = tx.core.get_train_op(dis_loss,
+                                        global_step=global_step,
                                         increment_global_step=False,
                                         hparams=config.d_opt_hparams)
 
@@ -131,14 +131,15 @@ def _main(_):
     reward = tx.losses.discount_reward(reward,
                                   sequence_length=tf.squeeze(sequence_length),
                                   tensor_rank=2)
-    update_loss = tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
+    update_loss = tf.reduce_mean(tf.log(infer_logits) *
+                                 tf.expand_dims(reward, -1))
     update_loss.set_shape(())
     gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
-                                  increment_global_step=False,
+                                  incement_global_step=False,
                                   hparams=config.update_opt_hparams)
     update_op = tf.group(gen_op, exp_op)
 
-    def _g_train_epoch(sess, mode_string):
+    def _g_train_epoch(sess, epoch, mode_string):
         iterator.switch_to_train_data(sess)
         step = 0
         while True:
@@ -148,29 +149,30 @@ def _main(_):
                         "mean_rwd": mean_reward,
                         "exp_rwd_loss": exp_reward_loss,
                         "update_loss": update_loss,
-                        "train_op": update_op,
+                        "update_op": update_op,
                         "exp_rwd": expected_reward,
-                        'step': global_step,
-                        "num_steps": num_steps
                     }
-                else:  # 'train'
+                elif mode_string == 'train':
                     fetches = {
                         "mle_loss": mle_loss,
-                        'step': global_step,
                         "num_steps": num_steps,
                         'train_op': gen_train_op
                     }
+                else:
+                    raise ValueError("Expect mode_string to be one of "
+                                     "['train', 'update'], got %s" % mode_string)
                 rtns = sess.run(fetches)
                 step += 1
-                if step % 100 == 1:
+                if step % 200 == 1:
                     if mode_string == 'train':
                         ppl = np.exp(rtns['mle_loss'] / rtns["num_steps"])
-                        rst = "step: {0:3d}, tr_ppl: {1:6f}".format(step, ppl)
+                        rst = "epoch {0:3d}, step: {1:1d}: train_ppl: {2:6f}".\
+                            format(epoch, step, ppl)
                     else:
-                        rst = "step: {0:3d}, mean_rwd: {1:6f}, exp_rwd_loss:{1:6f}, " \
-                              "update_loss: {1:6f}".format(step, rtns['mean_rwd'],
-                                                           rtns['exp_rwd_loss'],
-                                                           rtns['update_loss'])
+                        rst = "epoch {0:3d}, step: {1:1d}: mean_reward: {2:6f}, " \
+                              "expect_reward_loss:{3:6f}, update_loss: {4:6f}".\
+                            format(epoch, step, rtns['mean_rwd'], rtns['exp_rwd_loss'],
+                                   rtns['update_loss'])
                     log.write(rst + '\n')
                     log.flush()
                     print(rst)
@@ -180,7 +182,7 @@ def _main(_):
                 break
         return
 
-    def _g_test_epoch(sess, mode_string, epoch):
+    def _g_test_epoch(sess, epoch, mode_string):
         def _id2word_map(id_arrays):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
@@ -189,6 +191,9 @@ def _main(_):
             iterator.switch_to_val_data(sess)
         elif mode_string == 'test':
             iterator.switch_to_test_data(sess)
+        else:
+            raise ValueError("Expect mode_string to be one of "
+                             "['valid', 'test'], got %s" % mode_string)
 
         inference_list = []
         while True:
@@ -208,7 +213,7 @@ def _main(_):
         bleu_log.flush()
         return
 
-    def _d_run_epoch(sess, mode_string='pretrain'):
+    def _d_run_epoch(sess, epoch, mode_string='pretrain'):
         iterator.switch_to_train_data(sess)
         step = 0
         while True:
@@ -221,10 +226,10 @@ def _main(_):
                 }
                 rtns = sess.run(fetches)
                 if step % 200 == 0:
-                    print("{0:3d}: dis_total_loss: {1:6f}, "
-                          "r_loss: {2:6f}, f_loss: {3:6f}"
-                          .format(step, rtns['mle_loss'],
-                                  rtns['r_loss'], rtns['f_loss']))
+                    print("d {0:7s} epoch {1:2d}, step {2:1d}: "
+                          "dis_total_loss: {3:6f}, r_loss: {4:6f}, "
+                          "f_loss: {5:6f}".format(mode_string, epoch, step,
+                          rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
                 step += 1
                 if step == 15 and mode_string == 'update':
                     break
@@ -239,19 +244,19 @@ def _main(_):
         sess.run(tf.tables_initializer())
         
         for g_epoch in range(config.generator_pretrain_epoch):
-            _g_train_epoch(sess, 'train')
+            _g_train_epoch(sess, g_epoch, 'train')
             if g_epoch % 10 == 0:
-                _g_test_epoch(sess, 'test', g_epoch)
+                _g_test_epoch(sess, g_epoch, 'test')
 
         for d_epoch in range(config.discriminator_pretrain_epoch):
-            _d_run_epoch(sess)
+            _d_run_epoch(sess, d_epoch)
 
         for update_epoch in range(config.adversial_epoch):
-            _g_train_epoch(sess, 'update')
-            _d_run_epoch(sess, mode_string='update')
+            cur_epoch = update_epoch + config.generator_pretrain_epoch
+            _g_train_epoch(sess, cur_epoch, 'update')
+            _d_run_epoch(sess, cur_epoch, mode_string='update')
             if update_epoch % 10 == 0:
-                _g_test_epoch(sess, 'test',
-                    update_epoch + config.generator_pretrain_epoch)
+                _g_test_epoch(sess, cur_epoch, 'test')
     log.close()
     bleu_log.close()
 
