@@ -175,7 +175,6 @@ def _main(_):
                     log.flush()
                     print(rst)
                     if mode_string == 'update':  # update on a batch for each epoch
-                        print('g early break')
                         break
             except tf.errors.OutOfRangeError:
                 break
@@ -228,7 +227,6 @@ def _main(_):
                                   rtns['r_loss'], rtns['f_loss']))
                 step += 1
                 if step == 15 and mode_string == 'update':
-                    print('d early break')
                     break
             except tf.errors.OutOfRangeError:
                 break
