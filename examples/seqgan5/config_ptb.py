@@ -1,31 +1,18 @@
-generator_pretrain_epoch = 80
-discriminator_pretrain_epoch = 80
-adversial_epoch = 100
-hidden_size = 32
+generator_pretrain_epoch = 20
+discriminator_pretrain_epoch = 15
+adversial_epoch = 20
+
+hidden_size = 200
 batch_size = 64
 max_num_steps = 20
-embed_dim = 32
-latent_dims = 32
 
 enc_keep_prob_in = 1.0
 dec_keep_prob_out = 1.0
 
-log_dir = './log_dir/'
+log_dir = './ptb_log/'
 log_file = log_dir + 'log.txt'
 bleu_file = log_dir + 'bleu.txt'
 ckpt = './checkpoint/ckpt'
-
-lr_hparams = {
-    'init_lr': 0.003,
-    'update_init_lr': 0.0003,
-    'update_lr': 0.00003,
-    'decay_rate': 0.1,
-    'threshold': 5
-}
-
-decoder_hparams = {
-    "type": "lstm"
-}
 
 dec_cell_hparams = {
     "type": "LSTMBlockCell",
@@ -39,21 +26,14 @@ dec_cell_hparams = {
 
 emb_hparams = {
     'name': 'lookup_table',
-    "dim": embed_dim,
+    "dim": hidden_size,
     'initializer': {
         'type': 'random_normal_initializer',
         'kwargs': {
             'mean': 0.0,
-            'stddev': embed_dim**-0.5,
+            'stddev': hidden_size**-0.5,
         },
     }
-}
-
-
-# KL annealing
-kl_anneal_hparams={
-    "warm_up": 10,
-    "start": 0.01
 }
 
 train_data_hparams = {
@@ -61,8 +41,8 @@ train_data_hparams = {
     "batch_size": batch_size,
     "seed": 123,
     "dataset": {
-        "files": 'coco_data/coco.train.txt',
-        "vocab_file": 'coco_data/vocab.txt'
+        "files": 'ptb_data/ptb.train.txt',
+        "vocab_file": 'ptb_data/vocab.txt'
     }
 }
 
@@ -71,8 +51,8 @@ val_data_hparams = {
     "batch_size": batch_size,
     "seed": 123,
     "dataset": {
-        "files": 'coco_data/coco.valid.txt',
-        "vocab_file": 'coco_data/vocab.txt'
+        "files": 'ptb_data/ptb.valid.txt',
+        "vocab_file": 'ptb_data/vocab.txt'
     }
 }
 
@@ -80,8 +60,8 @@ test_data_hparams = {
     "num_epochs": 1,
     "batch_size": batch_size,
     "dataset": {
-        "files": 'coco_data/coco.test.txt',
-        "vocab_file": 'coco_data/vocab.txt'
+        "files": 'ptb_data/ptb.test.txt',
+        "vocab_file": 'ptb_data/vocab.txt'
     }
 }
 
@@ -91,6 +71,19 @@ g_opt_hparams = {
         "kwargs": {
             "learning_rate": 0.01
         }
+    },
+    "gradient_clip": {
+        "type": "clip_by_global_norm",
+        "kwargs": {"clip_norm": 5.}
+    },
+    "learning_rate_decay": {
+        "type": "exponential_decay",
+        "kwargs": {
+            "decay_steps": 1,
+            "decay_rate": 0.5,
+            "staircase": True
+        },
+        "start_decay_step": 3
     }
 }
 

@@ -11,13 +11,13 @@ import texar as tx
 from data_utils import prepare_data, calculate_bleu
 
 flags = tf.flags
-flags.DEFINE_string("dataset", "coco",
+flags.DEFINE_string("dataset", "ptb",
                     "perform training on ptb or coco.")
 flags.DEFINE_string("data_path", "./",
                     "Directory containing coco. If not exists, "
                     "the directory will be created, and the data "
                     "will be downloaded.")
-flags.DEFINE_string("config", "config", "The config to use.")
+flags.DEFINE_string("config", "config_ptb", "The config to use.")
 FLAGS = flags.FLAGS
 
 config = importlib.import_module(FLAGS.config)
@@ -164,11 +164,11 @@ def _main(_):
                 if step % 200 == 1:
                     if mode_string == 'train':
                         ppl = np.exp(rtns['mle_loss'] / rtns["num_steps"])
-                        rst = "G {0:8s} epoch {1:3d}, step {2:1d}:" \
+                        rst = "G {0:6s} epoch {1:3d}, step {2:1d}:" \
                               " train_ppl: {3:6f}".format(mode_string,
                                                           epoch, step, ppl)
                     else:
-                        rst = "G {0:8s} epoch {1:3d}, step {2:1d}: " \
+                        rst = "G {0:6s} epoch {1:3d}, step {2:1d}: " \
                               "mean_reward: {3:6f}, expect_reward_loss:{4:6f}, " \
                               "update_loss: {5:6f}".format(mode_string, epoch,
                                    step, rtns['mean_rwd'], rtns['exp_rwd_loss'],
@@ -176,7 +176,7 @@ def _main(_):
                     log.write(rst + '\n')
                     log.flush()
                     print(rst)
-                    if mode_string == 'update':  # update on a batch for each epoch
+                    if mode_string == 'update':  # update a batch per adversarial epoch
                         break
             except tf.errors.OutOfRangeError:
                 break
@@ -196,24 +196,40 @@ def _main(_):
                              "['valid', 'test'], got %s" % mode_string)
 
         inference_list = []
+        loss, num_steps = 0., 0
         while True:
             try:
-                fetches = {'infer_sample_id': infer_sample_ids}
+                fetches = {
+                    "mle_loss": mle_loss,
+                    "num_steps": num_steps
+                }
+                if mode_string == 'test':
+                    fetches['infer_sample_id'] = infer_sample_ids
                 feed_dict = {tx.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = sess.run(fetches, feed_dict)
-                inferences = _id2word_map(rtns['infer_sample_id'].tolist())
-                inference_list.extend([inf.split('<EOS>')[0].strip().split()
-                                       for inf in inferences])
+                loss += rtns['mle_loss']
+                num_steps += rtns['num_steps']
+                if mode_string == 'test':
+                    inferences = _id2word_map(rtns['infer_sample_id'].tolist())
+                    inference_list.extend([inf.split('<EOS>')[0].strip().split()
+                                           for inf in inferences])
             except tf.errors.OutOfRangeError:
                 break
-
-        rst_train, rst_test = calculate_bleu(config, epoch, inference_list)
-        print(rst_train, rst_test)
-        bleu_log.write(rst_train + rst_test + '\n')
-        bleu_log.flush()
+        ppl = np.exp(loss / num_steps)
+        rst = "G {0:6s} epoch {1:3d}, step {2:1s}:" \
+              " {3:5s}_ppl: {4:6f}"\
+            .format(mode_string, epoch, '-', mode_string, ppl)
+        log.write(rst + '\n')
+        log.flush()
+        print(rst)
+        if mode_string == 'test':
+            rst_train, rst_test = calculate_bleu(config, epoch, inference_list)
+            print(rst_train, rst_test)
+            bleu_log.write(rst_train + rst_test + '\n')
+            bleu_log.flush()
         return
 
-    def _d_run_epoch(sess, epoch, mode_string='pretrain'):
+    def _d_run_epoch(sess, epoch, mode_string='train'):
         iterator.switch_to_train_data(sess)
         step = 0
         while True:
@@ -226,7 +242,7 @@ def _main(_):
                 }
                 rtns = sess.run(fetches)
                 if step % 200 == 0:
-                    rst = "D {0:8s} epoch {1:3d}, step {2:1d}: " \
+                    rst = "D {0:6s} epoch {1:3d}, step {2:1d}: " \
                           "dis_total_loss: {3:6f}, r_loss: {4:6f}, " \
                           "f_loss: {5:6f}".format(mode_string, epoch, step,
                           rtns['mle_loss'], rtns['r_loss'], rtns['f_loss'])
@@ -250,6 +266,7 @@ def _main(_):
             _g_train_epoch(sess, g_epoch, 'train')
             if g_epoch % 10 == 0 or \
                     g_epoch == config.generator_pretrain_epoch - 1:
+                _g_test_epoch(sess, g_epoch, 'valid')
                 _g_test_epoch(sess, g_epoch, 'test')
 
         for d_epoch in range(config.discriminator_pretrain_epoch):
@@ -261,6 +278,7 @@ def _main(_):
             _d_run_epoch(sess, cur_epoch, mode_string='update')
             if update_epoch % 10 == 0 or \
                     update_epoch == config.adversial_epoch - 1:
+                _g_test_epoch(sess, cur_epoch, 'valid')
                 _g_test_epoch(sess, cur_epoch, 'test')
     log.close()
     bleu_log.close()

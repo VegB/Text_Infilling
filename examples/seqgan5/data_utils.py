@@ -4,18 +4,16 @@ import codecs
 import importlib
 import tensorflow as tf
 import texar as tx
-from matplotlib import pyplot as plt
-plt.switch_backend('agg')
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 
 parser = argparse.ArgumentParser(description='prepare data')
-parser.add_argument('--dataset', type=str, default='coco',
+parser.add_argument('--dataset', type=str, default='ptb',
                     help='dataset to prepare')
 parser.add_argument('--data_path', type=str, default='./',
                     help="Directory containing coco. If not exists, "
                     "the directory will be created, and the data "
                     "will be downloaded.")
-parser.add_argument('--config', type=str, default='config',
+parser.add_argument('--config', type=str, default='config_ptb',
                     help='The config to use.')
 args = parser.parse_args()
 
@@ -37,14 +35,6 @@ def prepare_data(args, config, train_path):
         url = ptb_url if args.dataset == 'ptb' else coco_url
         tx.data.maybe_download(url, data_path, extract=True)
         os.remove('%s_data.tgz' % args.dataset)
-
-
-def _draw_log(config, epoch, loss_list):
-    plt.figure(figsize=(14, 10))
-    plt.plot(loss_list, '--', linewidth=1, label='loss trend')
-    plt.ylabel('training loss till epoch {}'.format(epoch))
-    plt.xlabel('every 50 steps, present_rate=%f' % config.present_rate)
-    plt.savefig(config.log_dir + '/img/train_loss_curve.png')
 
 
 def _get_candidate(file_path):

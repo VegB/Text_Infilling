@@ -10,7 +10,7 @@ Experiments are performed on COCO Captions, with 2k vocabularies and an average 
 
 ### Dataset
 ```shell
-python data_utils.py --config config --data_path ./ --dataset coco
+python data_utils.py --config config_coco --data_path ./ --dataset coco
 ```
 
 Here:
@@ -23,7 +23,7 @@ Here:
 Training can be performed with the following command:
 
 ```shell
-python seqgan_train.py --config config --data_path ./ --dataset coco
+python seqgan_train.py --config config_coco --data_path ./ --dataset coco
 ```
 
 Here:
@@ -54,7 +54,7 @@ BLEU on image COCO caption test dataset:
 ## Log
 
 ### Training loss
-Training loss will be recoreded in log_dir/log.txt.
+Training loss will be recoreded in coco_log/log.txt.
 ```text
 G pretrain epoch   0, step 1: train_ppl: 81.639235
 G pretrain epoch   1, step 1: train_ppl: 9.845531
