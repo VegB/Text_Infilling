@@ -40,7 +40,7 @@ dec_cell_hparams = {
 emb_hparams = {
     'name': 'lookup_table',
     "dim": embed_dim,
-    'initializer' : {
+    'initializer': {
         'type': 'random_normal_initializer',
         'kwargs': {
             'mean': 0.0,

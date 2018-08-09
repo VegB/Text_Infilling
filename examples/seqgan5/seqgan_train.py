@@ -6,13 +6,11 @@ from __future__ import print_function
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
-import codecs
 import importlib
 import numpy as np
 import tensorflow as tf
 import texar as tx
-import bleu_tool
-from data_utils import prepare_data
+from data_utils import prepare_data, calculate_bleu
 
 flags = tf.flags
 flags.DEFINE_string("dataset", "coco",
@@ -80,9 +78,12 @@ def _main(_):
                                         hparams=config.g_opt_hparams)
 
     # -------------Generator Infer-------------------
+    start_tokens = tf.cast(tf.fill([batch_size],
+                                   train_data.vocab.bos_token_id),
+                           dtype=tf.int32)
     infer_outputs, _, sequence_length = decoder(
         decoding_strategy="infer_sample",
-        start_tokens=tf.cast(data_batch["text_ids"][:, 0], dtype=tf.int32),
+        start_tokens=start_tokens,
         end_token=train_data.vocab.eos_token_id,
         embedding=g_embedder,
         initial_state=initial_state,
@@ -116,8 +117,7 @@ def _main(_):
                                         hparams=config.d_opt_hparams)
 
     # ------------Adeversarial---------------
-    infer_logits = \
-        tf.clip_by_value(tf.nn.softmax(infer_logits) *
+    infer_logits = tf.clip_by_value(tf.nn.softmax(infer_logits) *
                          tf.one_hot(infer_sample_ids, vocab_size), 1e-20, 1)
 
     expected_reward = tf.Variable(tf.zeros((config.max_num_steps,)))
@@ -128,12 +128,10 @@ def _main(_):
     exp_op = tx.core.get_train_op(exp_reward_loss, global_step=global_step,
                                   increment_global_step=False,
                                   hparams=config.update_opt_hparams)
-    reward = \
-        tx.losses.discount_reward(reward,
+    reward = tx.losses.discount_reward(reward,
                                   sequence_length=tf.squeeze(sequence_length),
                                   tensor_rank=2)
-    update_loss = \
-        -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
+    update_loss = -tf.reduce_mean(tf.log(infer_logits) * tf.expand_dims(reward, -1))
     update_loss.set_shape(())
     gen_op = tx.core.get_train_op(update_loss, global_step=global_step,
                                   increment_global_step=False,
@@ -167,13 +165,12 @@ def _main(_):
                 if step % 100 == 1:
                     if mode_string == 'train':
                         ppl = np.exp(rtns['mle_loss'] / rtns["num_steps"])
-                        rst = "step: %d, tr_ppl: %.6f" % (step, ppl)
+                        rst = "step: {0:3d}, tr_ppl: {1:6f}".format(step, ppl)
                     else:
-                        rst = "step: %d, mean_rwd: %.6f, exp_rwd_loss:%.6f, " \
-                              "update_loss: %.6f" % \
-                              (step, rtns['mean_rwd'],
-                               rtns['exp_rwd_loss'],
-                               rtns['update_loss'])
+                        rst = "step: {0:3d}, mean_rwd: {1:6f}, exp_rwd_loss:{1:6f}, " \
+                              "update_loss: {1:6f}".format(step, rtns['mean_rwd'],
+                                                           rtns['exp_rwd_loss'],
+                                                           rtns['update_loss'])
                     log.write(rst + '\n')
                     log.flush()
                     print(rst)
@@ -203,17 +200,9 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
-        outputs_filename = config.log_dir + 'epoch%d.txt' % epoch
-        with codecs.open(outputs_filename, 'w+', 'utf-8') as fout:
-            for inf in inference_list:
-                fout.write(' '.join(inf) + '\n')
-        bleu1, bleu2, bleu3, bleu4 = bleu_tool.calculate_bleu(
-            candidate_path=config.test_data_hparams['dataset']['files'],
-            reference_path=outputs_filename)
-        buf = "epoch %d BLEU1~4:\n%f\n%f\n%f\n%f\n\n" % \
-              (epoch, bleu1, bleu2, bleu3, bleu4)
-        print(buf)
-        bleu_log.write(buf + '\n')
+        rst_train, rst_test = calculate_bleu(config, epoch, inference_list)
+        print(rst_train, rst_test)
+        bleu_log.write(rst_train + rst_test + '\n')
         bleu_log.flush()
         return
 
@@ -229,7 +218,7 @@ def _main(_):
                     "train_op": dis_train_op
                 }
                 rtns = sess.run(fetches)
-                if step % 50 == 0:
+                if step % 200 == 0:
                     print("{0:3d}: dis_total_loss: {1:6f}, "
                           "r_loss: {2:6f}, f_loss: {3:6f}"
                           .format(step, rtns['mle_loss'],

@@ -1,8 +1,10 @@
 import os
+import codecs
 import tensorflow as tf
 import texar as tx
 from matplotlib import pyplot as plt
 plt.switch_backend('agg')
+import bleu_tool
 
 
 def prepare_data(FLAGS, config, train_path):
@@ -44,3 +46,22 @@ def _draw_log(config, epoch, loss_list):
     plt.ylabel('training loss till epoch {}'.format(epoch))
     plt.xlabel('every 50 steps, present_rate=%f' % config.present_rate)
     plt.savefig(config.log_dir + '/img/train_loss_curve.png')
+
+
+def calculate_bleu(config, epoch, inference_list):
+    outputs_filename = config.log_dir + 'epoch%d.txt' % epoch
+    with codecs.open(outputs_filename, 'w+', 'utf-8') as fout:
+        for inf in inference_list:
+            fout.write(' '.join(inf) + '\n')
+    bleu1, bleu2, bleu3, bleu4 = bleu_tool.calculate_bleu(
+        reference_path=config.train_data_hparams['dataset']['files'],
+        candidate_path=outputs_filename)
+    buf_train = "epoch %d BLEU1~4 on train dataset:\n%f\n%f\n%f\n%f\n\n" % \
+                (epoch, bleu1, bleu2, bleu3, bleu4)
+    bleu1, bleu2, bleu3, bleu4 = bleu_tool.calculate_bleu(
+        reference_path=config.test_data_hparams['dataset']['files'],
+        candidate_path=outputs_filename)
+    buf_test = "epoch %d BLEU1~4 on test dataset:\n%f\n%f\n%f\n%f\n\n" % \
+               (epoch, bleu1, bleu2, bleu3, bleu4)
+
+    return buf_train, buf_test
