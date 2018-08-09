@@ -13,7 +13,7 @@ parser.add_argument('--data_path', type=str, default='./',
                     help="Directory containing coco. If not exists, "
                     "the directory will be created, and the data "
                     "will be downloaded.")
-parser.add_argument('--config', type=str, default='config_ptb',
+parser.add_argument('--config', type=str, default='config_ptb_small',
                     help='The config to use.')
 args = parser.parse_args()
 

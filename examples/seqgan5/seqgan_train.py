@@ -19,7 +19,7 @@ flags.DEFINE_string("data_path", "./",
                     "Directory containing coco. If not exists, "
                     "the directory will be created, and the data "
                     "will be downloaded.")
-flags.DEFINE_string("config", "config_ptb", "The config to use.")
+flags.DEFINE_string("config", "config_ptb_small", "The config to use.")
 FLAGS = flags.FLAGS
 
 config = importlib.import_module(FLAGS.config)

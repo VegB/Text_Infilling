@@ -10,17 +10,17 @@ Experiments are performed on COCO Captions, with 2k vocabularies and an average 
 
 ### Dataset
 ```shell
-python data_utils.py --config config_coco --data_path ./ --dataset coco
+python data_utils.py --config config_coco_small --data_path ./ --dataset coco
 ```
 
 Here:
-* `--config` specifies config parameters to use. Default is `config`.
+* `--config` specifies config parameters to use. Default is `config_ptb_small`.
 * `--data_path` is the directory to store the downloaded dataset. Default is './'.
-* `--dataset` indicates the training dataset. Currently `ptb` and `coco`(default) are supported.
+* `--dataset` indicates the training dataset. Currently `ptb`(default) and `coco` are supported.
 
 ### Train the model
 
-Training can be performed with the following command:
+Training on `coco` dataset can be performed with the following command:
 
 ```shell
 python seqgan_train.py --config config_coco --data_path ./ --dataset coco
@@ -30,28 +30,34 @@ Here:
 
 `--config`, `--data_path` and `dataset` shall be the same with the flags settings used to download the dataset.
 
+The model will begin training, and will evaluate perplexity and BLEU score every 10 epochs
+
 ## Results
 
-BLEU on image COCO caption train dataset:
+### PTB
+
+|config|train|valid|test|
+|---|---|---|---|
+|small||||
+|medium||||
+|large||||
+
+### COCO Caption
+
+We compare the results with SeqGAN provided by Texygen. Applying its default parameter settings in Texygen, BLEU on image COCO caption test dataset and train dataset are as shown below:
 
 |    |Texar - SeqGAN   | TexyGen - SeqGAN |
 |---------------|-------------|----------------|
-|BLEU1 | 0.744633 | 0.719211 |
-|BLEU2 | 0.532205 | 0.446522 |
-|BLEU3 | 0.297904 | 0.220235 |
-|BLEU4 | 0.132374 | 0.082812 |
+|BLEU1 | 0.5663 (0.7446) | 0.5709 (0.7192) |
+|BLEU2 | 0.2887 (0.5322) | 0.2657 (0.4465) |
+|BLEU3 | 0.1209 (0.2979) | 0.0981 (0.2202) |
+|BLEU4 | 0.0424 (0.1324) | 0.0287 (0.0828) |
 
-BLEU on image COCO caption test dataset:
-
-|       | Texar - SeqGAN | TexyGen - SeqGAN |
-| ----- | -------------- | ---------------- |
-| BLEU1 | 0.566257       | 0.570906         |
-| BLEU2 | 0.288737       | 0.265700         |
-| BLEU3 | 0.120900       | 0.098115         |
-| BLEU4 | 0.042441       | 0.028699         |
-
+The first value in each cell stands for the BLEU score on test dataset, while the other value indicates BLEU score on train dataset.
 
 ## Log
+
+During training, loss and BLEU score are recorded in log directory. Here, we provide sample log output when training on `coco` dataset.
 
 ### Training loss
 Training loss will be recoreded in coco_log/log.txt.
@@ -80,8 +86,9 @@ D update   epoch 179, step 0: dis_total_loss: 0.000019, r_loss: 0.000003, f_loss
 ```
 
 ### BLEU
-BLEU1~BLEU4 scores will calculated every 10 epoches, the results are written to log_dir/bleu.txt.
+BLEU1~BLEU4 scores will calculated every 10 epochs, the results are written to log_dir/bleu.txt.
 ```text
+...
 epoch 170 BLEU1~4 on train dataset:
 0.726647
 0.530675
@@ -93,5 +100,7 @@ epoch 170 BLEU1~4 on train dataset:
 0.283765
 0.118528
 0.042177
+...
+
 ```
 

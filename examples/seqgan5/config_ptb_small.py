@@ -1,15 +1,15 @@
-generator_pretrain_epoch = 20
+generator_pretrain_epoch = 13
 discriminator_pretrain_epoch = 15
-adversial_epoch = 20
+adversial_epoch = 10
 
 hidden_size = 200
 batch_size = 64
-max_num_steps = 10
+max_num_steps = 20
 
 enc_keep_prob_in = 1.0
 dec_keep_prob_out = 1.0
 
-log_dir = './ptb_log/'
+log_dir = './ptb_log.small/'
 log_file = log_dir + 'log.txt'
 bleu_file = log_dir + 'bleu.txt'
 ckpt = './checkpoint/ckpt'
@@ -21,7 +21,7 @@ dec_cell_hparams = {
         "forget_bias": 0.
     },
     "dropout": {"output_keep_prob": dec_keep_prob_out},
-    "num_layers": 1
+    "num_layers": 2
 }
 
 emb_hparams = {
@@ -70,10 +70,8 @@ test_data_hparams = {
 
 g_opt_hparams = {
     "optimizer": {
-        "type": "AdamOptimizer",
-        "kwargs": {
-            "learning_rate": 0.01
-        }
+        "type": "GradientDescentOptimizer",
+        "kwargs": {"learning_rate": 1.0}
     },
     "gradient_clip": {
         "type": "clip_by_global_norm",
