@@ -4,8 +4,6 @@ from __future__ import print_function
 
 # pylint: disable=invalid-name, no-member, too-many-locals
 
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import importlib
 import numpy as np
 import tensorflow as tf
@@ -166,12 +164,14 @@ def _main(_):
                 if step % 200 == 1:
                     if mode_string == 'train':
                         ppl = np.exp(rtns['mle_loss'] / rtns["num_steps"])
-                        rst = "epoch {0:3d}, step: {1:1d}: train_ppl: {2:6f}".\
-                            format(epoch, step, ppl)
+                        rst = "G {0:8s} epoch {0:3d}, step {1:1d}:" \
+                              " train_ppl: {2:6f}".format(mode_string,
+                                                          epoch, step, ppl)
                     else:
-                        rst = "epoch {0:3d}, step: {1:1d}: mean_reward: {2:6f}, " \
-                              "expect_reward_loss:{3:6f}, update_loss: {4:6f}".\
-                            format(epoch, step, rtns['mean_rwd'], rtns['exp_rwd_loss'],
+                        rst = "G {0:8s} epoch {0:3d}, step {1:1d}: " \
+                              "mean_reward: {2:6f}, expect_reward_loss:{3:6f}, " \
+                              "update_loss: {4:6f}".format(mode_string, epoch,
+                                   step, rtns['mean_rwd'], rtns['exp_rwd_loss'],
                                    rtns['update_loss'])
                     log.write(rst + '\n')
                     log.flush()
@@ -226,10 +226,13 @@ def _main(_):
                 }
                 rtns = sess.run(fetches)
                 if step % 200 == 0:
-                    print("d {0:7s} epoch {1:2d}, step {2:1d}: "
-                          "dis_total_loss: {3:6f}, r_loss: {4:6f}, "
+                    rst = "D {0:8s} epoch {1:3d}, step {2:1d}: " \
+                          "dis_total_loss: {3:6f}, r_loss: {4:6f}, " \
                           "f_loss: {5:6f}".format(mode_string, epoch, step,
-                          rtns['mle_loss'], rtns['r_loss'], rtns['f_loss']))
+                          rtns['mle_loss'], rtns['r_loss'], rtns['f_loss'])
+                    log.write(rst + '\n')
+                    log.flush()
+                    print(rst)
                 step += 1
                 if step == 15 and mode_string == 'update':
                     break
@@ -245,7 +248,8 @@ def _main(_):
         
         for g_epoch in range(config.generator_pretrain_epoch):
             _g_train_epoch(sess, g_epoch, 'train')
-            if g_epoch % 10 == 0:
+            if g_epoch % 10 == 0 or \
+                    g_epoch == config.generator_pretrain_epoch - 1:
                 _g_test_epoch(sess, g_epoch, 'test')
 
         for d_epoch in range(config.discriminator_pretrain_epoch):
