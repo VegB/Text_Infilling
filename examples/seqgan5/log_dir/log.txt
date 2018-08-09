@@ -1,260 +1,260 @@
-step:   1, tr_ppl: 81.646383
-step: 101, tr_ppl: 16.821466
-step:   1, tr_ppl: 10.425692
-step: 101, tr_ppl: 10.946649
-step:   1, tr_ppl: 7.996813
-step: 101, tr_ppl: 9.088579
-step:   1, tr_ppl: 7.024936
-step: 101, tr_ppl: 8.144998
-step:   1, tr_ppl: 6.445666
-step: 101, tr_ppl: 7.477981
-step:   1, tr_ppl: 6.037326
-step: 101, tr_ppl: 7.037230
-step:   1, tr_ppl: 5.739829
-step: 101, tr_ppl: 6.759620
-step:   1, tr_ppl: 5.520015
-step: 101, tr_ppl: 6.499195
-step:   1, tr_ppl: 5.344628
-step: 101, tr_ppl: 6.241912
-step:   1, tr_ppl: 5.206029
-step: 101, tr_ppl: 6.015602
-step:   1, tr_ppl: 5.099842
-step: 101, tr_ppl: 5.851314
-step:   1, tr_ppl: 4.992657
-step: 101, tr_ppl: 5.733174
-step:   1, tr_ppl: 4.903945
-step: 101, tr_ppl: 5.643189
-step:   1, tr_ppl: 4.827290
-step: 101, tr_ppl: 5.566085
-step:   1, tr_ppl: 4.765943
-step: 101, tr_ppl: 5.483757
-step:   1, tr_ppl: 4.725461
-step: 101, tr_ppl: 5.422135
-step:   1, tr_ppl: 4.683988
-step: 101, tr_ppl: 5.378664
-step:   1, tr_ppl: 4.631263
-step: 101, tr_ppl: 5.332550
-step:   1, tr_ppl: 4.579282
-step: 101, tr_ppl: 5.292742
-step:   1, tr_ppl: 4.536194
-step: 101, tr_ppl: 5.239920
-step:   1, tr_ppl: 4.489942
-step: 101, tr_ppl: 5.197801
-step:   1, tr_ppl: 4.453004
-step: 101, tr_ppl: 5.135845
-step:   1, tr_ppl: 4.426579
-step: 101, tr_ppl: 5.103012
-step:   1, tr_ppl: 4.391749
-step: 101, tr_ppl: 5.093953
-step:   1, tr_ppl: 4.373746
-step: 101, tr_ppl: 5.079522
-step:   1, tr_ppl: 4.332228
-step: 101, tr_ppl: 5.014822
-step:   1, tr_ppl: 4.326590
-step: 101, tr_ppl: 4.982568
-step:   1, tr_ppl: 4.316128
-step: 101, tr_ppl: 4.971165
-step:   1, tr_ppl: 4.280160
-step: 101, tr_ppl: 4.950260
-step:   1, tr_ppl: 4.252805
-step: 101, tr_ppl: 4.931542
-step:   1, tr_ppl: 4.230942
-step: 101, tr_ppl: 4.897096
-step:   1, tr_ppl: 4.215668
-step: 101, tr_ppl: 4.885444
-step:   1, tr_ppl: 4.189005
-step: 101, tr_ppl: 4.851190
-step:   1, tr_ppl: 4.213581
-step: 101, tr_ppl: 4.828376
-step:   1, tr_ppl: 4.198954
-step: 101, tr_ppl: 4.836612
-step:   1, tr_ppl: 4.166501
-step: 101, tr_ppl: 4.799854
-step:   1, tr_ppl: 4.154526
-step: 101, tr_ppl: 4.764866
-step:   1, tr_ppl: 4.134923
-step: 101, tr_ppl: 4.697147
-step:   1, tr_ppl: 4.101555
-step: 101, tr_ppl: 4.707389
-step:   1, tr_ppl: 4.115022
-step: 101, tr_ppl: 4.703985
-step:   1, tr_ppl: 4.107214
-step: 101, tr_ppl: 4.682143
-step:   1, tr_ppl: 4.089947
-step: 101, tr_ppl: 4.677563
-step:   1, tr_ppl: 4.073335
-step: 101, tr_ppl: 4.654051
-step:   1, tr_ppl: 4.065983
-step: 101, tr_ppl: 4.657386
-step:   1, tr_ppl: 4.048151
-step: 101, tr_ppl: 4.647717
-step:   1, tr_ppl: 4.039457
-step: 101, tr_ppl: 4.608207
-step:   1, tr_ppl: 4.021177
-step: 101, tr_ppl: 4.600364
-step:   1, tr_ppl: 4.028874
-step: 101, tr_ppl: 4.534098
-step:   1, tr_ppl: 4.030071
-step: 101, tr_ppl: 4.542111
-step:   1, tr_ppl: 4.005061
-step: 101, tr_ppl: 4.523248
-step:   1, tr_ppl: 4.009911
-step: 101, tr_ppl: 4.522469
-step:   1, tr_ppl: 3.982758
-step: 101, tr_ppl: 4.498500
-step:   1, tr_ppl: 3.977079
-step: 101, tr_ppl: 4.480002
-step:   1, tr_ppl: 3.976602
-step: 101, tr_ppl: 4.482901
-step:   1, tr_ppl: 4.022807
-step: 101, tr_ppl: 4.454612
-step:   1, tr_ppl: 3.965844
-step: 101, tr_ppl: 4.451314
-step:   1, tr_ppl: 3.970146
-step: 101, tr_ppl: 4.455473
-step:   1, tr_ppl: 3.966713
-step: 101, tr_ppl: 4.449874
-step:   1, tr_ppl: 3.967627
-step: 101, tr_ppl: 4.398460
-step:   1, tr_ppl: 3.957377
-step: 101, tr_ppl: 4.391189
-step:   1, tr_ppl: 3.933476
-step: 101, tr_ppl: 4.402236
-step:   1, tr_ppl: 3.960337
-step: 101, tr_ppl: 4.367302
-step:   1, tr_ppl: 3.943584
-step: 101, tr_ppl: 4.428933
-step:   1, tr_ppl: 3.919751
-step: 101, tr_ppl: 4.389406
-step:   1, tr_ppl: 3.926468
-step: 101, tr_ppl: 4.379683
-step:   1, tr_ppl: 3.899118
-step: 101, tr_ppl: 4.329128
-step:   1, tr_ppl: 3.916521
-step: 101, tr_ppl: 4.309918
-step:   1, tr_ppl: 3.883751
-step: 101, tr_ppl: 4.352464
-step:   1, tr_ppl: 3.877596
-step: 101, tr_ppl: 4.308530
-step:   1, tr_ppl: 3.883273
-step: 101, tr_ppl: 4.334052
-step:   1, tr_ppl: 3.894318
-step: 101, tr_ppl: 4.378487
-step:   1, tr_ppl: 3.840578
-step: 101, tr_ppl: 4.334436
-step:   1, tr_ppl: 3.885577
-step: 101, tr_ppl: 4.299086
-step:   1, tr_ppl: 3.905430
-step: 101, tr_ppl: 4.276622
-step:   1, tr_ppl: 3.853705
-step: 101, tr_ppl: 4.314023
-step:   1, tr_ppl: 3.879667
-step: 101, tr_ppl: 4.343691
-step:   1, tr_ppl: 3.875938
-step: 101, tr_ppl: 4.272160
-step:   1, tr_ppl: 3.876137
-step: 101, tr_ppl: 4.307337
-step:   1, tr_ppl: 3.864215
-step: 101, tr_ppl: 4.274301
-step:   1, tr_ppl: 3.851193
-step: 101, tr_ppl: 4.285108
-step:   1, mean_rwd: -53.228588, exp_rwd_loss:-53.228588, update_loss: -53.228588
-step:   1, mean_rwd: -52.935516, exp_rwd_loss:-52.935516, update_loss: -52.935516
-step:   1, mean_rwd: -53.251965, exp_rwd_loss:-53.251965, update_loss: -53.251965
-step:   1, mean_rwd: -53.207787, exp_rwd_loss:-53.207787, update_loss: -53.207787
-step:   1, mean_rwd: -53.352791, exp_rwd_loss:-53.352791, update_loss: -53.352791
-step:   1, mean_rwd: -53.315155, exp_rwd_loss:-53.315155, update_loss: -53.315155
-step:   1, mean_rwd: -52.816315, exp_rwd_loss:-52.816315, update_loss: -52.816315
-step:   1, mean_rwd: -53.468639, exp_rwd_loss:-53.468639, update_loss: -53.468639
-step:   1, mean_rwd: -53.253387, exp_rwd_loss:-53.253387, update_loss: -53.253387
-step:   1, mean_rwd: -53.326279, exp_rwd_loss:-53.326279, update_loss: -53.326279
-step:   1, mean_rwd: -53.624138, exp_rwd_loss:-53.624138, update_loss: -53.624138
-step:   1, mean_rwd: -53.472992, exp_rwd_loss:-53.472992, update_loss: -53.472992
-step:   1, mean_rwd: -53.567345, exp_rwd_loss:-53.567345, update_loss: -53.567345
-step:   1, mean_rwd: -53.625324, exp_rwd_loss:-53.625324, update_loss: -53.625324
-step:   1, mean_rwd: -53.563141, exp_rwd_loss:-53.563141, update_loss: -53.563141
-step:   1, mean_rwd: -53.541420, exp_rwd_loss:-53.541420, update_loss: -53.541420
-step:   1, mean_rwd: -53.482113, exp_rwd_loss:-53.482113, update_loss: -53.482113
-step:   1, mean_rwd: -53.578011, exp_rwd_loss:-53.578011, update_loss: -53.578011
-step:   1, mean_rwd: -53.704948, exp_rwd_loss:-53.704948, update_loss: -53.704948
-step:   1, mean_rwd: -53.461639, exp_rwd_loss:-53.461639, update_loss: -53.461639
-step:   1, mean_rwd: -53.793743, exp_rwd_loss:-53.793743, update_loss: -53.793743
-step:   1, mean_rwd: -53.541073, exp_rwd_loss:-53.541073, update_loss: -53.541073
-step:   1, mean_rwd: -53.763977, exp_rwd_loss:-53.763977, update_loss: -53.763977
-step:   1, mean_rwd: -53.618946, exp_rwd_loss:-53.618946, update_loss: -53.618946
-step:   1, mean_rwd: -53.337265, exp_rwd_loss:-53.337265, update_loss: -53.337265
-step:   1, mean_rwd: -53.563301, exp_rwd_loss:-53.563301, update_loss: -53.563301
-step:   1, mean_rwd: -53.518883, exp_rwd_loss:-53.518883, update_loss: -53.518883
-step:   1, mean_rwd: -53.638237, exp_rwd_loss:-53.638237, update_loss: -53.638237
-step:   1, mean_rwd: -53.536224, exp_rwd_loss:-53.536224, update_loss: -53.536224
-step:   1, mean_rwd: -53.552044, exp_rwd_loss:-53.552044, update_loss: -53.552044
-step:   1, mean_rwd: -53.657837, exp_rwd_loss:-53.657837, update_loss: -53.657837
-step:   1, mean_rwd: -53.239368, exp_rwd_loss:-53.239368, update_loss: -53.239368
-step:   1, mean_rwd: -53.528442, exp_rwd_loss:-53.528442, update_loss: -53.528442
-step:   1, mean_rwd: -53.404186, exp_rwd_loss:-53.404186, update_loss: -53.404186
-step:   1, mean_rwd: -53.216118, exp_rwd_loss:-53.216118, update_loss: -53.216118
-step:   1, mean_rwd: -53.391174, exp_rwd_loss:-53.391174, update_loss: -53.391174
-step:   1, mean_rwd: -53.317707, exp_rwd_loss:-53.317707, update_loss: -53.317707
-step:   1, mean_rwd: -53.254036, exp_rwd_loss:-53.254036, update_loss: -53.254036
-step:   1, mean_rwd: -52.881351, exp_rwd_loss:-52.881351, update_loss: -52.881351
-step:   1, mean_rwd: -53.187813, exp_rwd_loss:-53.187813, update_loss: -53.187813
-step:   1, mean_rwd: -53.123096, exp_rwd_loss:-53.123096, update_loss: -53.123096
-step:   1, mean_rwd: -53.027149, exp_rwd_loss:-53.027149, update_loss: -53.027149
-step:   1, mean_rwd: -52.887184, exp_rwd_loss:-52.887184, update_loss: -52.887184
-step:   1, mean_rwd: -52.722218, exp_rwd_loss:-52.722218, update_loss: -52.722218
-step:   1, mean_rwd: -52.663776, exp_rwd_loss:-52.663776, update_loss: -52.663776
-step:   1, mean_rwd: -52.551929, exp_rwd_loss:-52.551929, update_loss: -52.551929
-step:   1, mean_rwd: -52.634766, exp_rwd_loss:-52.634766, update_loss: -52.634766
-step:   1, mean_rwd: -52.449409, exp_rwd_loss:-52.449409, update_loss: -52.449409
-step:   1, mean_rwd: -52.447224, exp_rwd_loss:-52.447224, update_loss: -52.447224
-step:   1, mean_rwd: -52.270134, exp_rwd_loss:-52.270134, update_loss: -52.270134
-step:   1, mean_rwd: -52.200756, exp_rwd_loss:-52.200756, update_loss: -52.200756
-step:   1, mean_rwd: -52.024250, exp_rwd_loss:-52.024250, update_loss: -52.024250
-step:   1, mean_rwd: -52.107826, exp_rwd_loss:-52.107826, update_loss: -52.107826
-step:   1, mean_rwd: -51.939018, exp_rwd_loss:-51.939018, update_loss: -51.939018
-step:   1, mean_rwd: -51.802818, exp_rwd_loss:-51.802818, update_loss: -51.802818
-step:   1, mean_rwd: -51.608471, exp_rwd_loss:-51.608471, update_loss: -51.608471
-step:   1, mean_rwd: -51.522644, exp_rwd_loss:-51.522644, update_loss: -51.522644
-step:   1, mean_rwd: -51.451183, exp_rwd_loss:-51.451183, update_loss: -51.451183
-step:   1, mean_rwd: -51.447998, exp_rwd_loss:-51.447998, update_loss: -51.447998
-step:   1, mean_rwd: -51.209419, exp_rwd_loss:-51.209419, update_loss: -51.209419
-step:   1, mean_rwd: -51.017853, exp_rwd_loss:-51.017853, update_loss: -51.017853
-step:   1, mean_rwd: -50.946014, exp_rwd_loss:-50.946014, update_loss: -50.946014
-step:   1, mean_rwd: -50.687111, exp_rwd_loss:-50.687111, update_loss: -50.687111
-step:   1, mean_rwd: -50.642029, exp_rwd_loss:-50.642029, update_loss: -50.642029
-step:   1, mean_rwd: -50.597511, exp_rwd_loss:-50.597511, update_loss: -50.597511
-step:   1, mean_rwd: -50.401268, exp_rwd_loss:-50.401268, update_loss: -50.401268
-step:   1, mean_rwd: -50.345787, exp_rwd_loss:-50.345787, update_loss: -50.345787
-step:   1, mean_rwd: -50.103813, exp_rwd_loss:-50.103813, update_loss: -50.103813
-step:   1, mean_rwd: -49.995598, exp_rwd_loss:-49.995598, update_loss: -49.995598
-step:   1, mean_rwd: -49.790325, exp_rwd_loss:-49.790325, update_loss: -49.790325
-step:   1, mean_rwd: -49.586479, exp_rwd_loss:-49.586479, update_loss: -49.586479
-step:   1, mean_rwd: -49.447933, exp_rwd_loss:-49.447933, update_loss: -49.447933
-step:   1, mean_rwd: -49.356960, exp_rwd_loss:-49.356960, update_loss: -49.356960
-step:   1, mean_rwd: -49.102154, exp_rwd_loss:-49.102154, update_loss: -49.102154
-step:   1, mean_rwd: -49.069733, exp_rwd_loss:-49.069733, update_loss: -49.069733
-step:   1, mean_rwd: -48.860405, exp_rwd_loss:-48.860405, update_loss: -48.860405
-step:   1, mean_rwd: -48.567947, exp_rwd_loss:-48.567947, update_loss: -48.567947
-step:   1, mean_rwd: -48.484917, exp_rwd_loss:-48.484917, update_loss: -48.484917
-step:   1, mean_rwd: -48.213470, exp_rwd_loss:-48.213470, update_loss: -48.213470
-step:   1, mean_rwd: -48.025291, exp_rwd_loss:-48.025291, update_loss: -48.025291
-step:   1, mean_rwd: -47.893341, exp_rwd_loss:-47.893341, update_loss: -47.893341
-step:   1, mean_rwd: -47.695599, exp_rwd_loss:-47.695599, update_loss: -47.695599
-step:   1, mean_rwd: -47.582989, exp_rwd_loss:-47.582989, update_loss: -47.582989
-step:   1, mean_rwd: -47.363953, exp_rwd_loss:-47.363953, update_loss: -47.363953
-step:   1, mean_rwd: -47.060024, exp_rwd_loss:-47.060024, update_loss: -47.060024
-step:   1, mean_rwd: -46.909405, exp_rwd_loss:-46.909405, update_loss: -46.909405
-step:   1, mean_rwd: -46.670261, exp_rwd_loss:-46.670261, update_loss: -46.670261
-step:   1, mean_rwd: -46.584190, exp_rwd_loss:-46.584190, update_loss: -46.584190
-step:   1, mean_rwd: -46.187836, exp_rwd_loss:-46.187836, update_loss: -46.187836
-step:   1, mean_rwd: -45.959904, exp_rwd_loss:-45.959904, update_loss: -45.959904
-step:   1, mean_rwd: -45.799641, exp_rwd_loss:-45.799641, update_loss: -45.799641
-step:   1, mean_rwd: -45.553219, exp_rwd_loss:-45.553219, update_loss: -45.553219
-step:   1, mean_rwd: -45.257496, exp_rwd_loss:-45.257496, update_loss: -45.257496
-step:   1, mean_rwd: -44.977348, exp_rwd_loss:-44.977348, update_loss: -44.977348
-step:   1, mean_rwd: -44.843292, exp_rwd_loss:-44.843292, update_loss: -44.843292
-step:   1, mean_rwd: -44.703743, exp_rwd_loss:-44.703743, update_loss: -44.703743
-step:   1, mean_rwd: -44.511562, exp_rwd_loss:-44.511562, update_loss: -44.511562
-step:   1, mean_rwd: -44.120113, exp_rwd_loss:-44.120113, update_loss: -44.120113
-step:   1, mean_rwd: -43.992596, exp_rwd_loss:-43.992596, update_loss: -43.992596
-step:   1, mean_rwd: -43.757534, exp_rwd_loss:-43.757534, update_loss: -43.757534
+step:   1, tr_ppl: 81.667743
+step: 101, tr_ppl: 16.147571
+step:   1, tr_ppl: 10.003550
+step: 101, tr_ppl: 10.718522
+step:   1, tr_ppl: 7.885780
+step: 101, tr_ppl: 8.964104
+step:   1, tr_ppl: 6.963910
+step: 101, tr_ppl: 8.080965
+step:   1, tr_ppl: 6.373454
+step: 101, tr_ppl: 7.485710
+step:   1, tr_ppl: 5.981172
+step: 101, tr_ppl: 7.056753
+step:   1, tr_ppl: 5.696363
+step: 101, tr_ppl: 6.731289
+step:   1, tr_ppl: 5.497137
+step: 101, tr_ppl: 6.467849
+step:   1, tr_ppl: 5.325840
+step: 101, tr_ppl: 6.191950
+step:   1, tr_ppl: 5.128517
+step: 101, tr_ppl: 5.987590
+step:   1, tr_ppl: 5.006264
+step: 101, tr_ppl: 5.806669
+step:   1, tr_ppl: 4.900395
+step: 101, tr_ppl: 5.648478
+step:   1, tr_ppl: 4.804922
+step: 101, tr_ppl: 5.519576
+step:   1, tr_ppl: 4.714136
+step: 101, tr_ppl: 5.426839
+step:   1, tr_ppl: 4.660465
+step: 101, tr_ppl: 5.314069
+step:   1, tr_ppl: 4.600371
+step: 101, tr_ppl: 5.215327
+step:   1, tr_ppl: 4.580669
+step: 101, tr_ppl: 5.178039
+step:   1, tr_ppl: 4.560579
+step: 101, tr_ppl: 5.100164
+step:   1, tr_ppl: 4.513749
+step: 101, tr_ppl: 5.000943
+step:   1, tr_ppl: 4.441955
+step: 101, tr_ppl: 5.005962
+step:   1, tr_ppl: 4.387406
+step: 101, tr_ppl: 4.948566
+step:   1, tr_ppl: 4.360030
+step: 101, tr_ppl: 4.882194
+step:   1, tr_ppl: 4.308646
+step: 101, tr_ppl: 4.848797
+step:   1, tr_ppl: 4.263546
+step: 101, tr_ppl: 4.812285
+step:   1, tr_ppl: 4.238985
+step: 101, tr_ppl: 4.792849
+step:   1, tr_ppl: 4.243192
+step: 101, tr_ppl: 4.774570
+step:   1, tr_ppl: 4.231534
+step: 101, tr_ppl: 4.775629
+step:   1, tr_ppl: 4.190195
+step: 101, tr_ppl: 4.719682
+step:   1, tr_ppl: 4.148469
+step: 101, tr_ppl: 4.707229
+step:   1, tr_ppl: 4.110739
+step: 101, tr_ppl: 4.695039
+step:   1, tr_ppl: 4.087341
+step: 101, tr_ppl: 4.721065
+step:   1, tr_ppl: 4.085112
+step: 101, tr_ppl: 4.652757
+step:   1, tr_ppl: 4.073071
+step: 101, tr_ppl: 4.616656
+step:   1, tr_ppl: 4.056676
+step: 101, tr_ppl: 4.681575
+step:   1, tr_ppl: 4.060363
+step: 101, tr_ppl: 4.618997
+step:   1, tr_ppl: 4.018096
+step: 101, tr_ppl: 4.618289
+step:   1, tr_ppl: 3.994097
+step: 101, tr_ppl: 4.588564
+step:   1, tr_ppl: 3.975215
+step: 101, tr_ppl: 4.518025
+step:   1, tr_ppl: 3.976720
+step: 101, tr_ppl: 4.537031
+step:   1, tr_ppl: 4.004109
+step: 101, tr_ppl: 4.512524
+step:   1, tr_ppl: 3.974102
+step: 101, tr_ppl: 4.500525
+step:   1, tr_ppl: 3.942045
+step: 101, tr_ppl: 4.489832
+step:   1, tr_ppl: 3.919490
+step: 101, tr_ppl: 4.498617
+step:   1, tr_ppl: 3.926684
+step: 101, tr_ppl: 4.479009
+step:   1, tr_ppl: 3.934050
+step: 101, tr_ppl: 4.476185
+step:   1, tr_ppl: 3.928899
+step: 101, tr_ppl: 4.416555
+step:   1, tr_ppl: 3.873630
+step: 101, tr_ppl: 4.424265
+step:   1, tr_ppl: 3.890374
+step: 101, tr_ppl: 4.383674
+step:   1, tr_ppl: 3.873011
+step: 101, tr_ppl: 4.359993
+step:   1, tr_ppl: 3.864842
+step: 101, tr_ppl: 4.360511
+step:   1, tr_ppl: 3.856035
+step: 101, tr_ppl: 4.364570
+step:   1, tr_ppl: 3.828605
+step: 101, tr_ppl: 4.348471
+step:   1, tr_ppl: 3.837853
+step: 101, tr_ppl: 4.380260
+step:   1, tr_ppl: 3.839925
+step: 101, tr_ppl: 4.322155
+step:   1, tr_ppl: 3.852655
+step: 101, tr_ppl: 4.340309
+step:   1, tr_ppl: 3.862401
+step: 101, tr_ppl: 4.324493
+step:   1, tr_ppl: 3.835341
+step: 101, tr_ppl: 4.322921
+step:   1, tr_ppl: 3.784418
+step: 101, tr_ppl: 4.306202
+step:   1, tr_ppl: 3.793422
+step: 101, tr_ppl: 4.280830
+step:   1, tr_ppl: 3.794657
+step: 101, tr_ppl: 4.296168
+step:   1, tr_ppl: 3.763153
+step: 101, tr_ppl: 4.224783
+step:   1, tr_ppl: 3.790180
+step: 101, tr_ppl: 4.247116
+step:   1, tr_ppl: 3.764222
+step: 101, tr_ppl: 4.232914
+step:   1, tr_ppl: 3.763997
+step: 101, tr_ppl: 4.280206
+step:   1, tr_ppl: 3.740629
+step: 101, tr_ppl: 4.227183
+step:   1, tr_ppl: 3.782218
+step: 101, tr_ppl: 4.253079
+step:   1, tr_ppl: 3.779944
+step: 101, tr_ppl: 4.219380
+step:   1, tr_ppl: 3.761770
+step: 101, tr_ppl: 4.257870
+step:   1, tr_ppl: 3.744174
+step: 101, tr_ppl: 4.221342
+step:   1, tr_ppl: 3.749246
+step: 101, tr_ppl: 4.211241
+step:   1, tr_ppl: 3.746425
+step: 101, tr_ppl: 4.239779
+step:   1, tr_ppl: 3.715877
+step: 101, tr_ppl: 4.191845
+step:   1, tr_ppl: 3.697388
+step: 101, tr_ppl: 4.228537
+step:   1, tr_ppl: 3.772559
+step: 101, tr_ppl: 4.213736
+step:   1, tr_ppl: 3.725070
+step: 101, tr_ppl: 4.169690
+step:   1, tr_ppl: 3.727858
+step: 101, tr_ppl: 4.193560
+step:   1, tr_ppl: 3.729518
+step: 101, tr_ppl: 4.192122
+step:   1, tr_ppl: 3.706693
+step: 101, tr_ppl: 4.182197
+step:   1, tr_ppl: 3.714596
+step: 101, tr_ppl: 4.197582
+step:   1, tr_ppl: 3.702919
+step: 101, tr_ppl: 4.185665
+step:   1, mean_rwd: -58.361809, exp_rwd_loss:-58.361809, update_loss: -58.361809
+step:   1, mean_rwd: -58.483055, exp_rwd_loss:-58.483055, update_loss: -58.483055
+step:   1, mean_rwd: -58.640759, exp_rwd_loss:-58.640759, update_loss: -58.640759
+step:   1, mean_rwd: -58.465961, exp_rwd_loss:-58.465961, update_loss: -58.465961
+step:   1, mean_rwd: -58.015610, exp_rwd_loss:-58.015610, update_loss: -58.015610
+step:   1, mean_rwd: -58.611031, exp_rwd_loss:-58.611031, update_loss: -58.611031
+step:   1, mean_rwd: -58.115677, exp_rwd_loss:-58.115677, update_loss: -58.115677
+step:   1, mean_rwd: -58.734200, exp_rwd_loss:-58.734200, update_loss: -58.734200
+step:   1, mean_rwd: -58.735634, exp_rwd_loss:-58.735634, update_loss: -58.735634
+step:   1, mean_rwd: -58.232750, exp_rwd_loss:-58.232750, update_loss: -58.232750
+step:   1, mean_rwd: -59.029762, exp_rwd_loss:-59.029762, update_loss: -59.029762
+step:   1, mean_rwd: -58.994225, exp_rwd_loss:-58.994225, update_loss: -58.994225
+step:   1, mean_rwd: -59.031921, exp_rwd_loss:-59.031921, update_loss: -59.031921
+step:   1, mean_rwd: -58.887947, exp_rwd_loss:-58.887947, update_loss: -58.887947
+step:   1, mean_rwd: -59.125744, exp_rwd_loss:-59.125744, update_loss: -59.125744
+step:   1, mean_rwd: -59.161377, exp_rwd_loss:-59.161377, update_loss: -59.161377
+step:   1, mean_rwd: -59.174847, exp_rwd_loss:-59.174847, update_loss: -59.174847
+step:   1, mean_rwd: -59.159431, exp_rwd_loss:-59.159431, update_loss: -59.159431
+step:   1, mean_rwd: -59.102276, exp_rwd_loss:-59.102276, update_loss: -59.102276
+step:   1, mean_rwd: -59.360271, exp_rwd_loss:-59.360271, update_loss: -59.360271
+step:   1, mean_rwd: -59.312408, exp_rwd_loss:-59.312408, update_loss: -59.312408
+step:   1, mean_rwd: -59.162941, exp_rwd_loss:-59.162941, update_loss: -59.162941
+step:   1, mean_rwd: -59.387440, exp_rwd_loss:-59.387440, update_loss: -59.387440
+step:   1, mean_rwd: -59.135353, exp_rwd_loss:-59.135353, update_loss: -59.135353
+step:   1, mean_rwd: -59.474354, exp_rwd_loss:-59.474354, update_loss: -59.474354
+step:   1, mean_rwd: -59.579357, exp_rwd_loss:-59.579357, update_loss: -59.579357
+step:   1, mean_rwd: -59.578392, exp_rwd_loss:-59.578392, update_loss: -59.578392
+step:   1, mean_rwd: -59.608318, exp_rwd_loss:-59.608318, update_loss: -59.608318
+step:   1, mean_rwd: -59.688774, exp_rwd_loss:-59.688774, update_loss: -59.688774
+step:   1, mean_rwd: -59.192783, exp_rwd_loss:-59.192783, update_loss: -59.192783
+step:   1, mean_rwd: -59.807026, exp_rwd_loss:-59.807026, update_loss: -59.807026
+step:   1, mean_rwd: -59.786659, exp_rwd_loss:-59.786659, update_loss: -59.786659
+step:   1, mean_rwd: -59.830345, exp_rwd_loss:-59.830345, update_loss: -59.830345
+step:   1, mean_rwd: -59.705708, exp_rwd_loss:-59.705708, update_loss: -59.705708
+step:   1, mean_rwd: -59.547356, exp_rwd_loss:-59.547356, update_loss: -59.547356
+step:   1, mean_rwd: -59.751415, exp_rwd_loss:-59.751415, update_loss: -59.751415
+step:   1, mean_rwd: -59.920601, exp_rwd_loss:-59.920601, update_loss: -59.920601
+step:   1, mean_rwd: -59.974590, exp_rwd_loss:-59.974590, update_loss: -59.974590
+step:   1, mean_rwd: -60.001453, exp_rwd_loss:-60.001453, update_loss: -60.001453
+step:   1, mean_rwd: -59.967888, exp_rwd_loss:-59.967888, update_loss: -59.967888
+step:   1, mean_rwd: -59.619968, exp_rwd_loss:-59.619968, update_loss: -59.619968
+step:   1, mean_rwd: -59.784035, exp_rwd_loss:-59.784035, update_loss: -59.784035
+step:   1, mean_rwd: -59.832947, exp_rwd_loss:-59.832947, update_loss: -59.832947
+step:   1, mean_rwd: -59.807453, exp_rwd_loss:-59.807453, update_loss: -59.807453
+step:   1, mean_rwd: -59.908062, exp_rwd_loss:-59.908062, update_loss: -59.908062
+step:   1, mean_rwd: -59.889366, exp_rwd_loss:-59.889366, update_loss: -59.889366
+step:   1, mean_rwd: -59.805077, exp_rwd_loss:-59.805077, update_loss: -59.805077
+step:   1, mean_rwd: -59.892712, exp_rwd_loss:-59.892712, update_loss: -59.892712
+step:   1, mean_rwd: -60.058666, exp_rwd_loss:-60.058666, update_loss: -60.058666
+step:   1, mean_rwd: -59.790092, exp_rwd_loss:-59.790092, update_loss: -59.790092
+step:   1, mean_rwd: -60.017883, exp_rwd_loss:-60.017883, update_loss: -60.017883
+step:   1, mean_rwd: -60.099586, exp_rwd_loss:-60.099586, update_loss: -60.099586
+step:   1, mean_rwd: -60.093609, exp_rwd_loss:-60.093609, update_loss: -60.093609
+step:   1, mean_rwd: -60.004528, exp_rwd_loss:-60.004528, update_loss: -60.004528
+step:   1, mean_rwd: -60.053833, exp_rwd_loss:-60.053833, update_loss: -60.053833
+step:   1, mean_rwd: -59.907856, exp_rwd_loss:-59.907856, update_loss: -59.907856
+step:   1, mean_rwd: -60.057720, exp_rwd_loss:-60.057720, update_loss: -60.057720
+step:   1, mean_rwd: -60.116081, exp_rwd_loss:-60.116081, update_loss: -60.116081
+step:   1, mean_rwd: -59.937294, exp_rwd_loss:-59.937294, update_loss: -59.937294
+step:   1, mean_rwd: -59.976326, exp_rwd_loss:-59.976326, update_loss: -59.976326
+step:   1, mean_rwd: -60.113586, exp_rwd_loss:-60.113586, update_loss: -60.113586
+step:   1, mean_rwd: -59.988243, exp_rwd_loss:-59.988243, update_loss: -59.988243
+step:   1, mean_rwd: -60.000019, exp_rwd_loss:-60.000019, update_loss: -60.000019
+step:   1, mean_rwd: -60.102623, exp_rwd_loss:-60.102623, update_loss: -60.102623
+step:   1, mean_rwd: -60.043354, exp_rwd_loss:-60.043354, update_loss: -60.043354
+step:   1, mean_rwd: -59.911011, exp_rwd_loss:-59.911011, update_loss: -59.911011
+step:   1, mean_rwd: -60.030739, exp_rwd_loss:-60.030739, update_loss: -60.030739
+step:   1, mean_rwd: -59.967449, exp_rwd_loss:-59.967449, update_loss: -59.967449
+step:   1, mean_rwd: -59.748528, exp_rwd_loss:-59.748528, update_loss: -59.748528
+step:   1, mean_rwd: -59.851433, exp_rwd_loss:-59.851433, update_loss: -59.851433
+step:   1, mean_rwd: -59.511608, exp_rwd_loss:-59.511608, update_loss: -59.511608
+step:   1, mean_rwd: -59.768074, exp_rwd_loss:-59.768074, update_loss: -59.768074
+step:   1, mean_rwd: -59.868080, exp_rwd_loss:-59.868080, update_loss: -59.868080
+step:   1, mean_rwd: -59.608288, exp_rwd_loss:-59.608288, update_loss: -59.608288
+step:   1, mean_rwd: -59.728493, exp_rwd_loss:-59.728493, update_loss: -59.728493
+step:   1, mean_rwd: -59.530781, exp_rwd_loss:-59.530781, update_loss: -59.530781
+step:   1, mean_rwd: -59.607567, exp_rwd_loss:-59.607567, update_loss: -59.607567
+step:   1, mean_rwd: -59.645744, exp_rwd_loss:-59.645744, update_loss: -59.645744
+step:   1, mean_rwd: -59.649853, exp_rwd_loss:-59.649853, update_loss: -59.649853
+step:   1, mean_rwd: -59.566734, exp_rwd_loss:-59.566734, update_loss: -59.566734
+step:   1, mean_rwd: -59.444283, exp_rwd_loss:-59.444283, update_loss: -59.444283
+step:   1, mean_rwd: -59.301556, exp_rwd_loss:-59.301556, update_loss: -59.301556
+step:   1, mean_rwd: -59.357075, exp_rwd_loss:-59.357075, update_loss: -59.357075
+step:   1, mean_rwd: -59.441193, exp_rwd_loss:-59.441193, update_loss: -59.441193
+step:   1, mean_rwd: -59.401257, exp_rwd_loss:-59.401257, update_loss: -59.401257
+step:   1, mean_rwd: -59.396332, exp_rwd_loss:-59.396332, update_loss: -59.396332
+step:   1, mean_rwd: -59.224129, exp_rwd_loss:-59.224129, update_loss: -59.224129
+step:   1, mean_rwd: -59.199974, exp_rwd_loss:-59.199974, update_loss: -59.199974
+step:   1, mean_rwd: -59.169640, exp_rwd_loss:-59.169640, update_loss: -59.169640
+step:   1, mean_rwd: -59.051399, exp_rwd_loss:-59.051399, update_loss: -59.051399
+step:   1, mean_rwd: -59.126091, exp_rwd_loss:-59.126091, update_loss: -59.126091
+step:   1, mean_rwd: -58.915710, exp_rwd_loss:-58.915710, update_loss: -58.915710
+step:   1, mean_rwd: -58.978088, exp_rwd_loss:-58.978088, update_loss: -58.978088
+step:   1, mean_rwd: -58.856346, exp_rwd_loss:-58.856346, update_loss: -58.856346
+step:   1, mean_rwd: -58.643288, exp_rwd_loss:-58.643288, update_loss: -58.643288
+step:   1, mean_rwd: -58.574017, exp_rwd_loss:-58.574017, update_loss: -58.574017
+step:   1, mean_rwd: -58.631386, exp_rwd_loss:-58.631386, update_loss: -58.631386
+step:   1, mean_rwd: -58.563068, exp_rwd_loss:-58.563068, update_loss: -58.563068
+step:   1, mean_rwd: -58.444130, exp_rwd_loss:-58.444130, update_loss: -58.444130
+step:   1, mean_rwd: -58.466103, exp_rwd_loss:-58.466103, update_loss: -58.466103
