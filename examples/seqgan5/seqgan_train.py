@@ -174,6 +174,9 @@ def _main(_):
                     log.write(rst + '\n')
                     log.flush()
                     print(rst)
+                    if mode_string == 'update':  # update on a batch for each epoch
+                        print('g early break')
+                        break
             except tf.errors.OutOfRangeError:
                 break
         return
@@ -206,7 +209,7 @@ def _main(_):
         bleu_log.flush()
         return
 
-    def _d_run_epoch(sess):
+    def _d_run_epoch(sess, mode_string='pretrain'):
         iterator.switch_to_train_data(sess)
         step = 0
         while True:
@@ -224,6 +227,9 @@ def _main(_):
                           .format(step, rtns['mle_loss'],
                                   rtns['r_loss'], rtns['f_loss']))
                 step += 1
+                if step == 15 and mode_string == 'update':
+                    print('d early break')
+                    break
             except tf.errors.OutOfRangeError:
                 break
 
@@ -244,8 +250,10 @@ def _main(_):
 
         for update_epoch in range(config.adversial_epoch):
             _g_train_epoch(sess, 'update')
+            _d_run_epoch(sess, mode_string='update')
             if update_epoch % 10 == 0:
-                _g_test_epoch(sess, 'test', update_epoch)
+                _g_test_epoch(sess, 'test',
+                    update_epoch + config.generator_pretrain_epoch)
     log.close()
     bleu_log.close()
 
