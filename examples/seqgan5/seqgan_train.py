@@ -166,11 +166,11 @@ def _main(_):
                 if step % 200 == 1:
                     if mode_string == 'train':
                         ppl = np.exp(rtns['mle_loss'] / rtns["num_steps"])
-                        rst = "G {0:6s} epoch {1:3d}, step {2:1d}:" \
+                        rst = "G {0:6s} epoch {1:3d}, step {2:3d}:" \
                               " train_ppl: {3:6f}".format(mode_string,
                                                           epoch, step, ppl)
                     else:
-                        rst = "G {0:6s} epoch {1:3d}, step {2:1d}: " \
+                        rst = "G {0:6s} epoch {1:3d}, step {2:3d}: " \
                               "mean_reward: {3:6f}, expect_reward_loss:{4:6f}, " \
                               "update_loss: {5:6f}".format(mode_string, epoch,
                                    step, rtns['mean_rwd'], rtns['exp_rwd_loss'],
@@ -218,7 +218,7 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
         ppl = np.exp(loss / steps)
-        rst = "G {0:6s} epoch {1:3d}, step {2:1s}:" \
+        rst = "G {0:6s} epoch {1:3d}, step {2:3s}:" \
               " {3:5s}_ppl: {4:6f}"\
             .format(mode_string, epoch, '-', mode_string, ppl)
         log.write(rst + '\n')
@@ -244,7 +244,7 @@ def _main(_):
                 }
                 rtns = sess.run(fetches)
                 if step % 200 == 0:
-                    rst = "D {0:6s} epoch {1:3d}, step {2:1d}: " \
+                    rst = "D {0:6s} epoch {1:3d}, step {2:3d}: " \
                           "dis_total_loss: {3:6f}, r_loss: {4:6f}, " \
                           "f_loss: {5:6f}".format(mode_string, epoch, step,
                           rtns['mle_loss'], rtns['r_loss'], rtns['f_loss'])
