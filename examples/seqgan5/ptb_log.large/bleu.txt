@@ -1,0 +1,130 @@
+epoch 0 BLEU1~4 on train dataset:
+0.000115
+0.000067
+0.000021
+0.000004
+
+epoch 0 BLEU1~4 on test dataset:
+0.599328
+0.218137
+0.055327
+0.011488
+
+
+epoch 10 BLEU1~4 on train dataset:
+0.000031
+0.000024
+0.000013
+0.000006
+
+epoch 10 BLEU1~4 on test dataset:
+0.725817
+0.348079
+0.124316
+0.045227
+
+
+epoch 20 BLEU1~4 on train dataset:
+0.000013
+0.000011
+0.000006
+0.000002
+
+epoch 20 BLEU1~4 on test dataset:
+0.734852
+0.363985
+0.126904
+0.042847
+
+
+epoch 30 BLEU1~4 on train dataset:
+0.000033
+0.000026
+0.000013
+0.000005
+
+epoch 30 BLEU1~4 on test dataset:
+0.785956
+0.395392
+0.137439
+0.044822
+
+
+epoch 40 BLEU1~4 on train dataset:
+0.000023
+0.000019
+0.000010
+0.000004
+
+epoch 40 BLEU1~4 on test dataset:
+0.780150
+0.402377
+0.145340
+0.050078
+
+
+epoch 50 BLEU1~4 on train dataset:
+0.000026
+0.000021
+0.000011
+0.000005
+
+epoch 50 BLEU1~4 on test dataset:
+0.795164
+0.408732
+0.142723
+0.046194
+
+
+epoch 54 BLEU1~4 on train dataset:
+0.000042
+0.000035
+0.000019
+0.000008
+
+epoch 54 BLEU1~4 on test dataset:
+0.773356
+0.400327
+0.145059
+0.049738
+
+
+epoch 55 BLEU1~4 on train dataset:
+0.000045
+0.000037
+0.000020
+0.000008
+
+epoch 55 BLEU1~4 on test dataset:
+0.772068
+0.396401
+0.140545
+0.046477
+
+
+epoch 65 BLEU1~4 on train dataset:
+0.000074
+0.000061
+0.000034
+0.000014
+
+epoch 65 BLEU1~4 on test dataset:
+0.746353
+0.386138
+0.138735
+0.046664
+
+
+epoch 74 BLEU1~4 on train dataset:
+0.000124
+0.000103
+0.000057
+0.000023
+
+epoch 74 BLEU1~4 on test dataset:
+0.719525
+0.372402
+0.131988
+0.043490
+
+
