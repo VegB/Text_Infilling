@@ -38,20 +38,20 @@ The model will begin training, and will evaluate perplexity and BLEU score every
 
 |config|train|valid|test|
 |---|---|---|---|
-|small||||
-|medium||||
+|small|26.8470|55.6829|53.3579|
+|medium|8.4457|15.7546|15.4920|
 |large||||
 
 ### COCO Caption
 
-We compare the results with SeqGAN provided by Texygen. Applying its default parameter settings in Texygen, BLEU on image COCO caption test dataset and train dataset are as shown below:
+We compare the results with SeqGAN and MLE provided by Texygen. Applying its default parameter settings in Texygen, BLEU on image COCO caption test dataset and train dataset are as shown below:
 
-|    |Texar - SeqGAN   | TexyGen - SeqGAN |
-|---------------|-------------|----------------|
-|BLEU1 | 0.5663 (0.7446) | 0.5709 (0.7192) |
-|BLEU2 | 0.2887 (0.5322) | 0.2657 (0.4465) |
-|BLEU3 | 0.1209 (0.2979) | 0.0981 (0.2202) |
-|BLEU4 | 0.0424 (0.1324) | 0.0287 (0.0828) |
+|    |Texar - SeqGAN   | TexyGen - SeqGAN | Texar - MLE | Texygen - MLE |
+|---------------|-------------|----------------|-------------|----------------|
+|BLEU1 | 0.5663 (0.7446) | 0.5709 (0.7192) | 0.6066 (0.8274) | 0.5730 (0.7450) |
+|BLEU2 | 0.2887 (0.5322) | 0.2657 (0.4465) | 0.2941 (0.5791) | 0.2856 (0.5242) |
+|BLEU3 | 0.1209 (0.2979) | 0.0981 (0.2202) | 0.1194 (0.3099) | 0.1190 (0.2810) |
+|BLEU4 | 0.0424 (0.1324) | 0.0287 (0.0828) | 0.0414 (0.1330) | 0.0417 (0.1212)|
 
 The first value in each cell stands for the BLEU score on test dataset, while the other value indicates BLEU score on train dataset.
 
