@@ -1,0 +1,400 @@
+G train  epoch   0, step 1: train_ppl: 81.602494
+G valid  epoch   0, step -: valid_ppl: 11.939612
+G test   epoch   0, step -: test _ppl: 11.207323
+G train  epoch   1, step 1: train_ppl: 9.162301
+G train  epoch   2, step 1: train_ppl: 7.449913
+G train  epoch   3, step 1: train_ppl: 6.783925
+G train  epoch   4, step 1: train_ppl: 6.357574
+G train  epoch   5, step 1: train_ppl: 6.020226
+G train  epoch   6, step 1: train_ppl: 5.756091
+G train  epoch   7, step 1: train_ppl: 5.505918
+G train  epoch   8, step 1: train_ppl: 5.316487
+G train  epoch   9, step 1: train_ppl: 5.192869
+G train  epoch  10, step 1: train_ppl: 5.076624
+G valid  epoch  10, step -: valid_ppl: 8.851170
+G test   epoch  10, step -: test _ppl: 8.354056
+G train  epoch  11, step 1: train_ppl: 4.983634
+G train  epoch  12, step 1: train_ppl: 4.879335
+G train  epoch  13, step 1: train_ppl: 4.804271
+G train  epoch  14, step 1: train_ppl: 4.723434
+G train  epoch  15, step 1: train_ppl: 4.663808
+G train  epoch  16, step 1: train_ppl: 4.604360
+G train  epoch  17, step 1: train_ppl: 4.546301
+G train  epoch  18, step 1: train_ppl: 4.505064
+G train  epoch  19, step 1: train_ppl: 4.452593
+G train  epoch  20, step 1: train_ppl: 4.390617
+G valid  epoch  20, step -: valid_ppl: 9.981765
+G test   epoch  20, step -: test _ppl: 9.097528
+G train  epoch  21, step 1: train_ppl: 4.365933
+G train  epoch  22, step 1: train_ppl: 4.326328
+G train  epoch  23, step 1: train_ppl: 4.276305
+G train  epoch  24, step 1: train_ppl: 4.255047
+G train  epoch  25, step 1: train_ppl: 4.213946
+G train  epoch  26, step 1: train_ppl: 4.196675
+G train  epoch  27, step 1: train_ppl: 4.188997
+G train  epoch  28, step 1: train_ppl: 4.149705
+G train  epoch  29, step 1: train_ppl: 4.121232
+G train  epoch  30, step 1: train_ppl: 4.105940
+G valid  epoch  30, step -: valid_ppl: 11.652957
+G test   epoch  30, step -: test _ppl: 10.551999
+G train  epoch  31, step 1: train_ppl: 4.099930
+G train  epoch  32, step 1: train_ppl: 4.076078
+G train  epoch  33, step 1: train_ppl: 4.093694
+G train  epoch  34, step 1: train_ppl: 4.052398
+G train  epoch  35, step 1: train_ppl: 4.045806
+G train  epoch  36, step 1: train_ppl: 4.026975
+G train  epoch  37, step 1: train_ppl: 4.055845
+G train  epoch  38, step 1: train_ppl: 4.027189
+G train  epoch  39, step 1: train_ppl: 4.021979
+G train  epoch  40, step 1: train_ppl: 4.029500
+G valid  epoch  40, step -: valid_ppl: 13.334206
+G test   epoch  40, step -: test _ppl: 12.212350
+G train  epoch  41, step 1: train_ppl: 3.994493
+G train  epoch  42, step 1: train_ppl: 3.952016
+G train  epoch  43, step 1: train_ppl: 3.964587
+G train  epoch  44, step 1: train_ppl: 3.955223
+G train  epoch  45, step 1: train_ppl: 3.934296
+G train  epoch  46, step 1: train_ppl: 3.913819
+G train  epoch  47, step 1: train_ppl: 3.943713
+G train  epoch  48, step 1: train_ppl: 3.940418
+G train  epoch  49, step 1: train_ppl: 3.914970
+G train  epoch  50, step 1: train_ppl: 3.911924
+G valid  epoch  50, step -: valid_ppl: 15.082384
+G test   epoch  50, step -: test _ppl: 13.869004
+G train  epoch  51, step 1: train_ppl: 3.918829
+G train  epoch  52, step 1: train_ppl: 3.895475
+G train  epoch  53, step 1: train_ppl: 3.925396
+G train  epoch  54, step 1: train_ppl: 3.884966
+G train  epoch  55, step 1: train_ppl: 3.873285
+G train  epoch  56, step 1: train_ppl: 3.886697
+G train  epoch  57, step 1: train_ppl: 3.871756
+G train  epoch  58, step 1: train_ppl: 3.877341
+G train  epoch  59, step 1: train_ppl: 3.891986
+G train  epoch  60, step 1: train_ppl: 3.887437
+G valid  epoch  60, step -: valid_ppl: 16.951892
+G test   epoch  60, step -: test _ppl: 15.071889
+G train  epoch  61, step 1: train_ppl: 3.884949
+G train  epoch  62, step 1: train_ppl: 3.836789
+G train  epoch  63, step 1: train_ppl: 3.844475
+G train  epoch  64, step 1: train_ppl: 3.796985
+G train  epoch  65, step 1: train_ppl: 3.811772
+G train  epoch  66, step 1: train_ppl: 3.805164
+G train  epoch  67, step 1: train_ppl: 3.768797
+G train  epoch  68, step 1: train_ppl: 3.799960
+G train  epoch  69, step 1: train_ppl: 3.776912
+G train  epoch  70, step 1: train_ppl: 3.772843
+G valid  epoch  70, step -: valid_ppl: 19.005467
+G test   epoch  70, step -: test _ppl: 16.852357
+G train  epoch  71, step 1: train_ppl: 3.791246
+G train  epoch  72, step 1: train_ppl: 3.789506
+G train  epoch  73, step 1: train_ppl: 3.785090
+G train  epoch  74, step 1: train_ppl: 3.769389
+G train  epoch  75, step 1: train_ppl: 3.776819
+G train  epoch  76, step 1: train_ppl: 3.758940
+G train  epoch  77, step 1: train_ppl: 3.741309
+G train  epoch  78, step 1: train_ppl: 3.721797
+G train  epoch  79, step 1: train_ppl: 3.704502
+G valid  epoch  79, step -: valid_ppl: 20.597060
+G test   epoch  79, step -: test _ppl: 18.238328
+D train  epoch   0, step 0: dis_total_loss: 16.782713, r_loss: 8.753307, f_loss: 8.029406
+D train  epoch   1, step 0: dis_total_loss: 3.976247, r_loss: 1.679165, f_loss: 2.297082
+D train  epoch   2, step 0: dis_total_loss: 2.354867, r_loss: 0.955590, f_loss: 1.399278
+D train  epoch   3, step 0: dis_total_loss: 1.629844, r_loss: 0.648257, f_loss: 0.981588
+D train  epoch   4, step 0: dis_total_loss: 1.261150, r_loss: 0.485443, f_loss: 0.775707
+D train  epoch   5, step 0: dis_total_loss: 0.991417, r_loss: 0.338153, f_loss: 0.653264
+D train  epoch   6, step 0: dis_total_loss: 0.747624, r_loss: 0.242760, f_loss: 0.504864
+D train  epoch   7, step 0: dis_total_loss: 0.614098, r_loss: 0.178503, f_loss: 0.435594
+D train  epoch   8, step 0: dis_total_loss: 0.503205, r_loss: 0.129949, f_loss: 0.373256
+D train  epoch   9, step 0: dis_total_loss: 0.367411, r_loss: 0.097158, f_loss: 0.270253
+D train  epoch  10, step 0: dis_total_loss: 0.379252, r_loss: 0.073515, f_loss: 0.305736
+D train  epoch  11, step 0: dis_total_loss: 0.322842, r_loss: 0.056736, f_loss: 0.266106
+D train  epoch  12, step 0: dis_total_loss: 0.262478, r_loss: 0.046395, f_loss: 0.216082
+D train  epoch  13, step 0: dis_total_loss: 0.170389, r_loss: 0.035595, f_loss: 0.134794
+D train  epoch  14, step 0: dis_total_loss: 0.176187, r_loss: 0.027802, f_loss: 0.148385
+D train  epoch  15, step 0: dis_total_loss: 0.201555, r_loss: 0.022463, f_loss: 0.179092
+D train  epoch  16, step 0: dis_total_loss: 0.164738, r_loss: 0.019211, f_loss: 0.145527
+D train  epoch  17, step 0: dis_total_loss: 0.131131, r_loss: 0.015513, f_loss: 0.115618
+D train  epoch  18, step 0: dis_total_loss: 0.118275, r_loss: 0.012797, f_loss: 0.105478
+D train  epoch  19, step 0: dis_total_loss: 0.117892, r_loss: 0.010545, f_loss: 0.107347
+D train  epoch  20, step 0: dis_total_loss: 0.074088, r_loss: 0.008810, f_loss: 0.065277
+D train  epoch  21, step 0: dis_total_loss: 0.108601, r_loss: 0.007379, f_loss: 0.101223
+D train  epoch  22, step 0: dis_total_loss: 0.072754, r_loss: 0.006228, f_loss: 0.066526
+D train  epoch  23, step 0: dis_total_loss: 0.086962, r_loss: 0.005286, f_loss: 0.081676
+D train  epoch  24, step 0: dis_total_loss: 0.061151, r_loss: 0.004498, f_loss: 0.056653
+D train  epoch  25, step 0: dis_total_loss: 0.103419, r_loss: 0.003888, f_loss: 0.099531
+D train  epoch  26, step 0: dis_total_loss: 0.047718, r_loss: 0.003339, f_loss: 0.044379
+D train  epoch  27, step 0: dis_total_loss: 0.044568, r_loss: 0.003082, f_loss: 0.041486
+D train  epoch  28, step 0: dis_total_loss: 0.037071, r_loss: 0.002650, f_loss: 0.034421
+D train  epoch  29, step 0: dis_total_loss: 0.022083, r_loss: 0.002300, f_loss: 0.019783
+D train  epoch  30, step 0: dis_total_loss: 0.030917, r_loss: 0.002001, f_loss: 0.028915
+D train  epoch  31, step 0: dis_total_loss: 0.040890, r_loss: 0.001745, f_loss: 0.039146
+D train  epoch  32, step 0: dis_total_loss: 0.032754, r_loss: 0.001528, f_loss: 0.031227
+D train  epoch  33, step 0: dis_total_loss: 0.029075, r_loss: 0.001342, f_loss: 0.027733
+D train  epoch  34, step 0: dis_total_loss: 0.020053, r_loss: 0.001183, f_loss: 0.018869
+D train  epoch  35, step 0: dis_total_loss: 0.037016, r_loss: 0.001185, f_loss: 0.035831
+D train  epoch  36, step 0: dis_total_loss: 0.038190, r_loss: 0.001028, f_loss: 0.037162
+D train  epoch  37, step 0: dis_total_loss: 0.020181, r_loss: 0.000894, f_loss: 0.019287
+D train  epoch  38, step 0: dis_total_loss: 0.053196, r_loss: 0.000789, f_loss: 0.052407
+D train  epoch  39, step 0: dis_total_loss: 0.008586, r_loss: 0.000695, f_loss: 0.007891
+D train  epoch  40, step 0: dis_total_loss: 0.013402, r_loss: 0.000618, f_loss: 0.012784
+D train  epoch  41, step 0: dis_total_loss: 0.019547, r_loss: 0.000545, f_loss: 0.019002
+D train  epoch  42, step 0: dis_total_loss: 0.019172, r_loss: 0.000483, f_loss: 0.018689
+D train  epoch  43, step 0: dis_total_loss: 0.007707, r_loss: 0.000432, f_loss: 0.007275
+D train  epoch  44, step 0: dis_total_loss: 0.004794, r_loss: 0.000385, f_loss: 0.004409
+D train  epoch  45, step 0: dis_total_loss: 0.009813, r_loss: 0.000343, f_loss: 0.009470
+D train  epoch  46, step 0: dis_total_loss: 0.017688, r_loss: 0.000307, f_loss: 0.017381
+D train  epoch  47, step 0: dis_total_loss: 0.014844, r_loss: 0.000277, f_loss: 0.014567
+D train  epoch  48, step 0: dis_total_loss: 0.015815, r_loss: 0.000249, f_loss: 0.015566
+D train  epoch  49, step 0: dis_total_loss: 0.015350, r_loss: 0.000224, f_loss: 0.015126
+D train  epoch  50, step 0: dis_total_loss: 0.005037, r_loss: 0.000202, f_loss: 0.004834
+D train  epoch  51, step 0: dis_total_loss: 0.009111, r_loss: 0.000181, f_loss: 0.008930
+D train  epoch  52, step 0: dis_total_loss: 0.015900, r_loss: 0.000161, f_loss: 0.015739
+D train  epoch  53, step 0: dis_total_loss: 0.003513, r_loss: 0.000145, f_loss: 0.003367
+D train  epoch  54, step 0: dis_total_loss: 0.011469, r_loss: 0.000132, f_loss: 0.011337
+D train  epoch  55, step 0: dis_total_loss: 0.002162, r_loss: 0.000118, f_loss: 0.002044
+D train  epoch  56, step 0: dis_total_loss: 0.003578, r_loss: 0.000106, f_loss: 0.003472
+D train  epoch  57, step 0: dis_total_loss: 0.003153, r_loss: 0.000096, f_loss: 0.003057
+D train  epoch  58, step 0: dis_total_loss: 0.009083, r_loss: 0.000087, f_loss: 0.008997
+D train  epoch  59, step 0: dis_total_loss: 0.004132, r_loss: 0.000078, f_loss: 0.004054
+D train  epoch  60, step 0: dis_total_loss: 0.003742, r_loss: 0.000071, f_loss: 0.003671
+D train  epoch  61, step 0: dis_total_loss: 0.002436, r_loss: 0.000065, f_loss: 0.002371
+D train  epoch  62, step 0: dis_total_loss: 0.009076, r_loss: 0.000059, f_loss: 0.009017
+D train  epoch  63, step 0: dis_total_loss: 0.001454, r_loss: 0.000054, f_loss: 0.001400
+D train  epoch  64, step 0: dis_total_loss: 0.000555, r_loss: 0.000048, f_loss: 0.000507
+D train  epoch  65, step 0: dis_total_loss: 0.002364, r_loss: 0.000044, f_loss: 0.002320
+D train  epoch  66, step 0: dis_total_loss: 0.000262, r_loss: 0.000040, f_loss: 0.000223
+D train  epoch  67, step 0: dis_total_loss: 0.000382, r_loss: 0.000036, f_loss: 0.000346
+D train  epoch  68, step 0: dis_total_loss: 0.001571, r_loss: 0.000033, f_loss: 0.001538
+D train  epoch  69, step 0: dis_total_loss: 0.000426, r_loss: 0.000030, f_loss: 0.000396
+D train  epoch  70, step 0: dis_total_loss: 0.000105, r_loss: 0.000028, f_loss: 0.000077
+D train  epoch  71, step 0: dis_total_loss: 0.000850, r_loss: 0.000025, f_loss: 0.000825
+D train  epoch  72, step 0: dis_total_loss: 0.000385, r_loss: 0.000023, f_loss: 0.000362
+D train  epoch  73, step 0: dis_total_loss: 0.001009, r_loss: 0.000021, f_loss: 0.000988
+D train  epoch  74, step 0: dis_total_loss: 0.000612, r_loss: 0.000019, f_loss: 0.000593
+D train  epoch  75, step 0: dis_total_loss: 0.003637, r_loss: 0.000017, f_loss: 0.003620
+D train  epoch  76, step 0: dis_total_loss: 0.001315, r_loss: 0.000015, f_loss: 0.001300
+D train  epoch  77, step 0: dis_total_loss: 0.000296, r_loss: 0.000014, f_loss: 0.000282
+D train  epoch  78, step 0: dis_total_loss: 0.000298, r_loss: 0.000013, f_loss: 0.000286
+D train  epoch  79, step 0: dis_total_loss: 0.001265, r_loss: 0.000012, f_loss: 0.001254
+G update epoch  80, step 1: mean_reward: -57.969959, expect_reward_loss:-57.969959, update_loss: 10530.399414
+D update epoch  80, step 0: dis_total_loss: 0.000661, r_loss: 0.000010, f_loss: 0.000650
+G valid  epoch  80, step -: valid_ppl: 20.601767
+G test   epoch  80, step -: test _ppl: 18.246962
+G update epoch  81, step 1: mean_reward: -58.062767, expect_reward_loss:-58.062767, update_loss: 10928.831055
+D update epoch  81, step 0: dis_total_loss: 0.001949, r_loss: 0.000010, f_loss: 0.001938
+G update epoch  82, step 1: mean_reward: -57.561531, expect_reward_loss:-57.561531, update_loss: 11441.511719
+D update epoch  82, step 0: dis_total_loss: 0.000087, r_loss: 0.000010, f_loss: 0.000077
+G update epoch  83, step 1: mean_reward: -58.132660, expect_reward_loss:-58.132660, update_loss: 9500.129883
+D update epoch  83, step 0: dis_total_loss: 0.000045, r_loss: 0.000010, f_loss: 0.000035
+G update epoch  84, step 1: mean_reward: -57.953217, expect_reward_loss:-57.953217, update_loss: 10467.798828
+D update epoch  84, step 0: dis_total_loss: 0.000108, r_loss: 0.000010, f_loss: 0.000098
+G update epoch  85, step 1: mean_reward: -58.094105, expect_reward_loss:-58.094105, update_loss: 9725.480469
+D update epoch  85, step 0: dis_total_loss: 0.000160, r_loss: 0.000010, f_loss: 0.000150
+G update epoch  86, step 1: mean_reward: -58.281689, expect_reward_loss:-58.281689, update_loss: 10630.885742
+D update epoch  86, step 0: dis_total_loss: 0.001829, r_loss: 0.000010, f_loss: 0.001819
+G update epoch  87, step 1: mean_reward: -57.783577, expect_reward_loss:-57.783577, update_loss: 11790.966797
+D update epoch  87, step 0: dis_total_loss: 0.000301, r_loss: 0.000009, f_loss: 0.000291
+G update epoch  88, step 1: mean_reward: -58.199680, expect_reward_loss:-58.199680, update_loss: 10933.400391
+D update epoch  88, step 0: dis_total_loss: 0.000100, r_loss: 0.000009, f_loss: 0.000091
+G update epoch  89, step 1: mean_reward: -58.102673, expect_reward_loss:-58.102673, update_loss: 11211.013672
+D update epoch  89, step 0: dis_total_loss: 0.000117, r_loss: 0.000009, f_loss: 0.000107
+G update epoch  90, step 1: mean_reward: -58.330711, expect_reward_loss:-58.330711, update_loss: 10165.321289
+D update epoch  90, step 0: dis_total_loss: 0.001503, r_loss: 0.000009, f_loss: 0.001494
+G valid  epoch  90, step -: valid_ppl: 20.637682
+G test   epoch  90, step -: test _ppl: 18.361031
+G update epoch  91, step 1: mean_reward: -58.165180, expect_reward_loss:-58.165180, update_loss: 11609.552734
+D update epoch  91, step 0: dis_total_loss: 0.001331, r_loss: 0.000009, f_loss: 0.001322
+G update epoch  92, step 1: mean_reward: -57.649986, expect_reward_loss:-57.649986, update_loss: 12296.324219
+D update epoch  92, step 0: dis_total_loss: 0.000053, r_loss: 0.000009, f_loss: 0.000044
+G update epoch  93, step 1: mean_reward: -58.039410, expect_reward_loss:-58.039410, update_loss: 11874.504883
+D update epoch  93, step 0: dis_total_loss: 0.000041, r_loss: 0.000009, f_loss: 0.000032
+G update epoch  94, step 1: mean_reward: -58.493511, expect_reward_loss:-58.493511, update_loss: 11086.715820
+D update epoch  94, step 0: dis_total_loss: 0.000392, r_loss: 0.000009, f_loss: 0.000383
+G update epoch  95, step 1: mean_reward: -57.810085, expect_reward_loss:-57.810085, update_loss: 12225.053711
+D update epoch  95, step 0: dis_total_loss: 0.000338, r_loss: 0.000009, f_loss: 0.000329
+G update epoch  96, step 1: mean_reward: -58.500477, expect_reward_loss:-58.500477, update_loss: 10578.942383
+D update epoch  96, step 0: dis_total_loss: 0.000095, r_loss: 0.000009, f_loss: 0.000086
+G update epoch  97, step 1: mean_reward: -58.581764, expect_reward_loss:-58.581764, update_loss: 10184.467773
+D update epoch  97, step 0: dis_total_loss: 0.000500, r_loss: 0.000008, f_loss: 0.000492
+G update epoch  98, step 1: mean_reward: -57.424816, expect_reward_loss:-57.424816, update_loss: 11557.808594
+D update epoch  98, step 0: dis_total_loss: 0.000534, r_loss: 0.000008, f_loss: 0.000526
+G update epoch  99, step 1: mean_reward: -58.439407, expect_reward_loss:-58.439407, update_loss: 11969.417969
+D update epoch  99, step 0: dis_total_loss: 0.000163, r_loss: 0.000008, f_loss: 0.000155
+G update epoch 100, step 1: mean_reward: -58.351635, expect_reward_loss:-58.351635, update_loss: 11033.032227
+D update epoch 100, step 0: dis_total_loss: 0.000642, r_loss: 0.000008, f_loss: 0.000634
+G valid  epoch 100, step -: valid_ppl: 20.675736
+G test   epoch 100, step -: test _ppl: 18.171662
+G update epoch 101, step 1: mean_reward: -58.775196, expect_reward_loss:-58.775196, update_loss: 11502.178711
+D update epoch 101, step 0: dis_total_loss: 0.000652, r_loss: 0.000008, f_loss: 0.000644
+G update epoch 102, step 1: mean_reward: -58.826599, expect_reward_loss:-58.826599, update_loss: 11936.781250
+D update epoch 102, step 0: dis_total_loss: 0.000341, r_loss: 0.000008, f_loss: 0.000333
+G update epoch 103, step 1: mean_reward: -58.496235, expect_reward_loss:-58.496235, update_loss: 10850.546875
+D update epoch 103, step 0: dis_total_loss: 0.000044, r_loss: 0.000008, f_loss: 0.000036
+G update epoch 104, step 1: mean_reward: -58.939564, expect_reward_loss:-58.939564, update_loss: 11164.913086
+D update epoch 104, step 0: dis_total_loss: 0.001227, r_loss: 0.000008, f_loss: 0.001220
+G update epoch 105, step 1: mean_reward: -58.265923, expect_reward_loss:-58.265923, update_loss: 11289.417969
+D update epoch 105, step 0: dis_total_loss: 0.000155, r_loss: 0.000008, f_loss: 0.000147
+G update epoch 106, step 1: mean_reward: -58.883801, expect_reward_loss:-58.883801, update_loss: 9884.888672
+D update epoch 106, step 0: dis_total_loss: 0.000017, r_loss: 0.000008, f_loss: 0.000009
+G update epoch 107, step 1: mean_reward: -58.619457, expect_reward_loss:-58.619457, update_loss: 11104.570312
+D update epoch 107, step 0: dis_total_loss: 0.000238, r_loss: 0.000008, f_loss: 0.000230
+G update epoch 108, step 1: mean_reward: -59.023552, expect_reward_loss:-59.023552, update_loss: 10929.016602
+D update epoch 108, step 0: dis_total_loss: 0.000417, r_loss: 0.000008, f_loss: 0.000410
+G update epoch 109, step 1: mean_reward: -59.086224, expect_reward_loss:-59.086224, update_loss: 10895.896484
+D update epoch 109, step 0: dis_total_loss: 0.000299, r_loss: 0.000007, f_loss: 0.000292
+G update epoch 110, step 1: mean_reward: -58.824104, expect_reward_loss:-58.824104, update_loss: 11514.906250
+D update epoch 110, step 0: dis_total_loss: 0.000031, r_loss: 0.000007, f_loss: 0.000023
+G valid  epoch 110, step -: valid_ppl: 20.699329
+G test   epoch 110, step -: test _ppl: 18.094863
+G update epoch 111, step 1: mean_reward: -58.428349, expect_reward_loss:-58.428349, update_loss: 11852.480469
+D update epoch 111, step 0: dis_total_loss: 0.004019, r_loss: 0.000007, f_loss: 0.004012
+G update epoch 112, step 1: mean_reward: -59.088585, expect_reward_loss:-59.088585, update_loss: 11951.201172
+D update epoch 112, step 0: dis_total_loss: 0.000118, r_loss: 0.000007, f_loss: 0.000111
+G update epoch 113, step 1: mean_reward: -58.689846, expect_reward_loss:-58.689846, update_loss: 11231.552734
+D update epoch 113, step 0: dis_total_loss: 0.004244, r_loss: 0.000007, f_loss: 0.004237
+G update epoch 114, step 1: mean_reward: -59.178936, expect_reward_loss:-59.178936, update_loss: 10012.172852
+D update epoch 114, step 0: dis_total_loss: 0.000112, r_loss: 0.000007, f_loss: 0.000105
+G update epoch 115, step 1: mean_reward: -58.423767, expect_reward_loss:-58.423767, update_loss: 12412.277344
+D update epoch 115, step 0: dis_total_loss: 0.000123, r_loss: 0.000007, f_loss: 0.000116
+G update epoch 116, step 1: mean_reward: -59.088707, expect_reward_loss:-59.088707, update_loss: 12655.022461
+D update epoch 116, step 0: dis_total_loss: 0.000364, r_loss: 0.000007, f_loss: 0.000357
+G update epoch 117, step 1: mean_reward: -59.278027, expect_reward_loss:-59.278027, update_loss: 11514.991211
+D update epoch 117, step 0: dis_total_loss: 0.000360, r_loss: 0.000007, f_loss: 0.000353
+G update epoch 118, step 1: mean_reward: -59.131462, expect_reward_loss:-59.131462, update_loss: 11286.583008
+D update epoch 118, step 0: dis_total_loss: 0.000074, r_loss: 0.000007, f_loss: 0.000067
+G update epoch 119, step 1: mean_reward: -59.184364, expect_reward_loss:-59.184364, update_loss: 11776.970703
+D update epoch 119, step 0: dis_total_loss: 0.001095, r_loss: 0.000007, f_loss: 0.001088
+G update epoch 120, step 1: mean_reward: -59.381920, expect_reward_loss:-59.381920, update_loss: 11685.097656
+D update epoch 120, step 0: dis_total_loss: 0.000671, r_loss: 0.000007, f_loss: 0.000665
+G valid  epoch 120, step -: valid_ppl: 20.719816
+G test   epoch 120, step -: test _ppl: 18.434867
+G update epoch 121, step 1: mean_reward: -59.456799, expect_reward_loss:-59.456799, update_loss: 10945.555664
+D update epoch 121, step 0: dis_total_loss: 0.000058, r_loss: 0.000006, f_loss: 0.000052
+G update epoch 122, step 1: mean_reward: -59.188728, expect_reward_loss:-59.188728, update_loss: 11552.859375
+D update epoch 122, step 0: dis_total_loss: 0.001855, r_loss: 0.000006, f_loss: 0.001848
+G update epoch 123, step 1: mean_reward: -58.712273, expect_reward_loss:-58.712273, update_loss: 12713.440430
+D update epoch 123, step 0: dis_total_loss: 0.000489, r_loss: 0.000006, f_loss: 0.000483
+G update epoch 124, step 1: mean_reward: -59.552288, expect_reward_loss:-59.552288, update_loss: 9802.443359
+D update epoch 124, step 0: dis_total_loss: 0.000137, r_loss: 0.000006, f_loss: 0.000131
+G update epoch 125, step 1: mean_reward: -59.569775, expect_reward_loss:-59.569775, update_loss: 10814.717773
+D update epoch 125, step 0: dis_total_loss: 0.000325, r_loss: 0.000006, f_loss: 0.000319
+G update epoch 126, step 1: mean_reward: -58.683285, expect_reward_loss:-58.683285, update_loss: 12415.089844
+D update epoch 126, step 0: dis_total_loss: 0.000189, r_loss: 0.000006, f_loss: 0.000183
+G update epoch 127, step 1: mean_reward: -59.418587, expect_reward_loss:-59.418587, update_loss: 12711.254883
+D update epoch 127, step 0: dis_total_loss: 0.000195, r_loss: 0.000006, f_loss: 0.000189
+G update epoch 128, step 1: mean_reward: -59.475372, expect_reward_loss:-59.475372, update_loss: 11831.282227
+D update epoch 128, step 0: dis_total_loss: 0.000285, r_loss: 0.000006, f_loss: 0.000279
+G update epoch 129, step 1: mean_reward: -59.222847, expect_reward_loss:-59.222847, update_loss: 11701.029297
+D update epoch 129, step 0: dis_total_loss: 0.000013, r_loss: 0.000006, f_loss: 0.000007
+G update epoch 130, step 1: mean_reward: -59.044109, expect_reward_loss:-59.044109, update_loss: 12795.390625
+D update epoch 130, step 0: dis_total_loss: 0.000021, r_loss: 0.000006, f_loss: 0.000015
+G valid  epoch 130, step -: valid_ppl: 20.759624
+G test   epoch 130, step -: test _ppl: 18.330958
+G update epoch 131, step 1: mean_reward: -59.671581, expect_reward_loss:-59.671581, update_loss: 12717.070312
+D update epoch 131, step 0: dis_total_loss: 0.000077, r_loss: 0.000006, f_loss: 0.000071
+G update epoch 132, step 1: mean_reward: -59.233784, expect_reward_loss:-59.233784, update_loss: 13603.003906
+D update epoch 132, step 0: dis_total_loss: 0.000092, r_loss: 0.000006, f_loss: 0.000086
+G update epoch 133, step 1: mean_reward: -59.478615, expect_reward_loss:-59.478615, update_loss: 11107.885742
+D update epoch 133, step 0: dis_total_loss: 0.001328, r_loss: 0.000006, f_loss: 0.001322
+G update epoch 134, step 1: mean_reward: -59.653008, expect_reward_loss:-59.653008, update_loss: 11667.026367
+D update epoch 134, step 0: dis_total_loss: 0.001172, r_loss: 0.000006, f_loss: 0.001166
+G update epoch 135, step 1: mean_reward: -59.700470, expect_reward_loss:-59.700470, update_loss: 12120.927734
+D update epoch 135, step 0: dis_total_loss: 0.000101, r_loss: 0.000006, f_loss: 0.000096
+G update epoch 136, step 1: mean_reward: -59.678089, expect_reward_loss:-59.678089, update_loss: 12712.447266
+D update epoch 136, step 0: dis_total_loss: 0.000186, r_loss: 0.000005, f_loss: 0.000181
+G update epoch 137, step 1: mean_reward: -59.705406, expect_reward_loss:-59.705406, update_loss: 12438.949219
+D update epoch 137, step 0: dis_total_loss: 0.000285, r_loss: 0.000005, f_loss: 0.000279
+G update epoch 138, step 1: mean_reward: -59.689636, expect_reward_loss:-59.689636, update_loss: 13158.711914
+D update epoch 138, step 0: dis_total_loss: 0.000261, r_loss: 0.000005, f_loss: 0.000255
+G update epoch 139, step 1: mean_reward: -59.307190, expect_reward_loss:-59.307190, update_loss: 12434.597656
+D update epoch 139, step 0: dis_total_loss: 0.000145, r_loss: 0.000005, f_loss: 0.000139
+G update epoch 140, step 1: mean_reward: -59.781780, expect_reward_loss:-59.781780, update_loss: 13568.616211
+D update epoch 140, step 0: dis_total_loss: 0.000208, r_loss: 0.000005, f_loss: 0.000202
+G valid  epoch 140, step -: valid_ppl: 20.806901
+G test   epoch 140, step -: test _ppl: 18.831798
+G update epoch 141, step 1: mean_reward: -59.628181, expect_reward_loss:-59.628181, update_loss: 12398.492188
+D update epoch 141, step 0: dis_total_loss: 0.000208, r_loss: 0.000005, f_loss: 0.000203
+G update epoch 142, step 1: mean_reward: -59.708168, expect_reward_loss:-59.708168, update_loss: 12562.833984
+D update epoch 142, step 0: dis_total_loss: 0.000088, r_loss: 0.000005, f_loss: 0.000083
+G update epoch 143, step 1: mean_reward: -59.166512, expect_reward_loss:-59.166512, update_loss: 12235.208984
+D update epoch 143, step 0: dis_total_loss: 0.000118, r_loss: 0.000005, f_loss: 0.000113
+G update epoch 144, step 1: mean_reward: -59.445450, expect_reward_loss:-59.445450, update_loss: 12858.424805
+D update epoch 144, step 0: dis_total_loss: 0.000050, r_loss: 0.000005, f_loss: 0.000045
+G update epoch 145, step 1: mean_reward: -59.346931, expect_reward_loss:-59.346931, update_loss: 11462.174805
+D update epoch 145, step 0: dis_total_loss: 0.000057, r_loss: 0.000005, f_loss: 0.000052
+G update epoch 146, step 1: mean_reward: -59.674641, expect_reward_loss:-59.674641, update_loss: 12168.160156
+D update epoch 146, step 0: dis_total_loss: 0.002430, r_loss: 0.000005, f_loss: 0.002425
+G update epoch 147, step 1: mean_reward: -59.555389, expect_reward_loss:-59.555389, update_loss: 11174.125000
+D update epoch 147, step 0: dis_total_loss: 0.000029, r_loss: 0.000005, f_loss: 0.000024
+G update epoch 148, step 1: mean_reward: -59.620983, expect_reward_loss:-59.620983, update_loss: 10864.842773
+D update epoch 148, step 0: dis_total_loss: 0.000272, r_loss: 0.000005, f_loss: 0.000268
+G update epoch 149, step 1: mean_reward: -59.575329, expect_reward_loss:-59.575329, update_loss: 13260.811523
+D update epoch 149, step 0: dis_total_loss: 0.000379, r_loss: 0.000005, f_loss: 0.000375
+G update epoch 150, step 1: mean_reward: -59.431648, expect_reward_loss:-59.431648, update_loss: 10783.726562
+D update epoch 150, step 0: dis_total_loss: 0.001291, r_loss: 0.000005, f_loss: 0.001286
+G valid  epoch 150, step -: valid_ppl: 20.858796
+G test   epoch 150, step -: test _ppl: 18.448818
+G update epoch 151, step 1: mean_reward: -59.421482, expect_reward_loss:-59.421482, update_loss: 12554.429688
+D update epoch 151, step 0: dis_total_loss: 0.000324, r_loss: 0.000005, f_loss: 0.000320
+G update epoch 152, step 1: mean_reward: -59.768745, expect_reward_loss:-59.768745, update_loss: 12171.967773
+D update epoch 152, step 0: dis_total_loss: 0.000051, r_loss: 0.000005, f_loss: 0.000047
+G update epoch 153, step 1: mean_reward: -59.841133, expect_reward_loss:-59.841133, update_loss: 10611.956055
+D update epoch 153, step 0: dis_total_loss: 0.003411, r_loss: 0.000005, f_loss: 0.003406
+G update epoch 154, step 1: mean_reward: -59.715363, expect_reward_loss:-59.715363, update_loss: 12115.223633
+D update epoch 154, step 0: dis_total_loss: 0.000242, r_loss: 0.000004, f_loss: 0.000238
+G update epoch 155, step 1: mean_reward: -59.597778, expect_reward_loss:-59.597778, update_loss: 13386.425781
+D update epoch 155, step 0: dis_total_loss: 0.000293, r_loss: 0.000004, f_loss: 0.000289
+G update epoch 156, step 1: mean_reward: -59.643169, expect_reward_loss:-59.643169, update_loss: 12771.781250
+D update epoch 156, step 0: dis_total_loss: 0.000042, r_loss: 0.000004, f_loss: 0.000038
+G update epoch 157, step 1: mean_reward: -59.593456, expect_reward_loss:-59.593456, update_loss: 12713.279297
+D update epoch 157, step 0: dis_total_loss: 0.000038, r_loss: 0.000004, f_loss: 0.000034
+G update epoch 158, step 1: mean_reward: -59.878681, expect_reward_loss:-59.878681, update_loss: 12506.001953
+D update epoch 158, step 0: dis_total_loss: 0.000094, r_loss: 0.000004, f_loss: 0.000090
+G update epoch 159, step 1: mean_reward: -59.529388, expect_reward_loss:-59.529388, update_loss: 12331.250977
+D update epoch 159, step 0: dis_total_loss: 0.000027, r_loss: 0.000004, f_loss: 0.000023
+G update epoch 160, step 1: mean_reward: -59.999035, expect_reward_loss:-59.999035, update_loss: 12983.547852
+D update epoch 160, step 0: dis_total_loss: 0.000635, r_loss: 0.000004, f_loss: 0.000631
+G valid  epoch 160, step -: valid_ppl: 20.910914
+G test   epoch 160, step -: test _ppl: 18.567568
+G update epoch 161, step 1: mean_reward: -59.779682, expect_reward_loss:-59.779682, update_loss: 13334.672852
+D update epoch 161, step 0: dis_total_loss: 0.000597, r_loss: 0.000004, f_loss: 0.000593
+G update epoch 162, step 1: mean_reward: -59.688995, expect_reward_loss:-59.688995, update_loss: 12206.460938
+D update epoch 162, step 0: dis_total_loss: 0.000030, r_loss: 0.000004, f_loss: 0.000026
+G update epoch 163, step 1: mean_reward: -59.763123, expect_reward_loss:-59.763123, update_loss: 11751.041992
+D update epoch 163, step 0: dis_total_loss: 0.000019, r_loss: 0.000004, f_loss: 0.000015
+G update epoch 164, step 1: mean_reward: -59.742836, expect_reward_loss:-59.742836, update_loss: 11949.224609
+D update epoch 164, step 0: dis_total_loss: 0.000191, r_loss: 0.000004, f_loss: 0.000187
+G update epoch 165, step 1: mean_reward: -59.862202, expect_reward_loss:-59.862202, update_loss: 11596.870117
+D update epoch 165, step 0: dis_total_loss: 0.000402, r_loss: 0.000004, f_loss: 0.000398
+G update epoch 166, step 1: mean_reward: -59.927685, expect_reward_loss:-59.927685, update_loss: 12729.833008
+D update epoch 166, step 0: dis_total_loss: 0.000238, r_loss: 0.000004, f_loss: 0.000234
+G update epoch 167, step 1: mean_reward: -59.914776, expect_reward_loss:-59.914776, update_loss: 12814.857422
+D update epoch 167, step 0: dis_total_loss: 0.000038, r_loss: 0.000004, f_loss: 0.000034
+G update epoch 168, step 1: mean_reward: -59.498947, expect_reward_loss:-59.498947, update_loss: 12968.344727
+D update epoch 168, step 0: dis_total_loss: 0.000310, r_loss: 0.000004, f_loss: 0.000306
+G update epoch 169, step 1: mean_reward: -59.766857, expect_reward_loss:-59.766857, update_loss: 12765.258789
+D update epoch 169, step 0: dis_total_loss: 0.000138, r_loss: 0.000004, f_loss: 0.000134
+G update epoch 170, step 1: mean_reward: -59.905663, expect_reward_loss:-59.905663, update_loss: 11917.466797
+D update epoch 170, step 0: dis_total_loss: 0.000106, r_loss: 0.000004, f_loss: 0.000102
+G valid  epoch 170, step -: valid_ppl: 20.962084
+G test   epoch 170, step -: test _ppl: 18.058621
+G update epoch 171, step 1: mean_reward: -59.858784, expect_reward_loss:-59.858784, update_loss: 12731.378906
+D update epoch 171, step 0: dis_total_loss: 0.000114, r_loss: 0.000004, f_loss: 0.000110
+G update epoch 172, step 1: mean_reward: -59.914948, expect_reward_loss:-59.914948, update_loss: 12733.258789
+D update epoch 172, step 0: dis_total_loss: 0.000203, r_loss: 0.000004, f_loss: 0.000200
+G update epoch 173, step 1: mean_reward: -60.056873, expect_reward_loss:-60.056873, update_loss: 12944.915039
+D update epoch 173, step 0: dis_total_loss: 0.000230, r_loss: 0.000004, f_loss: 0.000226
+G update epoch 174, step 1: mean_reward: -60.013771, expect_reward_loss:-60.013771, update_loss: 12479.267578
+D update epoch 174, step 0: dis_total_loss: 0.000414, r_loss: 0.000004, f_loss: 0.000410
+G update epoch 175, step 1: mean_reward: -59.715919, expect_reward_loss:-59.715919, update_loss: 12029.357422
+D update epoch 175, step 0: dis_total_loss: 0.000124, r_loss: 0.000004, f_loss: 0.000120
+G update epoch 176, step 1: mean_reward: -59.906384, expect_reward_loss:-59.906384, update_loss: 12679.702148
+D update epoch 176, step 0: dis_total_loss: 0.000019, r_loss: 0.000004, f_loss: 0.000015
+G update epoch 177, step 1: mean_reward: -60.017982, expect_reward_loss:-60.017982, update_loss: 12572.185547
+D update epoch 177, step 0: dis_total_loss: 0.000064, r_loss: 0.000003, f_loss: 0.000061
+G update epoch 178, step 1: mean_reward: -59.954506, expect_reward_loss:-59.954506, update_loss: 11994.694336
+D update epoch 178, step 0: dis_total_loss: 0.000016, r_loss: 0.000003, f_loss: 0.000012
+G update epoch 179, step 1: mean_reward: -60.166039, expect_reward_loss:-60.166039, update_loss: 13410.516602
+D update epoch 179, step 0: dis_total_loss: 0.000013, r_loss: 0.000003, f_loss: 0.000010
+G valid  epoch 179, step -: valid_ppl: 21.006853
+G test   epoch 179, step -: test _ppl: 18.280378

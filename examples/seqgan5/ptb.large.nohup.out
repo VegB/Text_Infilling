@@ -1,0 +1,472 @@
+G train  epoch   0, step   1: train_ppl: 132.339667
+G train  epoch   0, step 201: train_ppl: 39.143560
+G train  epoch   0, step 401: train_ppl: 33.381264
+G train  epoch   0, step 601: train_ppl: 30.508963
+G valid  epoch   0, step -  : valid_ppl: 30.782989
+G test   epoch   0, step -  : test _ppl: 30.474486
+epoch 0 BLEU1~4 on train dataset:
+0.000115
+0.000067
+0.000021
+0.000004
+
+ epoch 0 BLEU1~4 on test dataset:
+0.599328
+0.218137
+0.055327
+0.011488
+
+
+G train  epoch   1, step   1: train_ppl: 27.095385
+G train  epoch   1, step 201: train_ppl: 25.012885
+G train  epoch   1, step 401: train_ppl: 22.529415
+G train  epoch   1, step 601: train_ppl: 24.628097
+G train  epoch   2, step   1: train_ppl: 21.820553
+G train  epoch   2, step 201: train_ppl: 20.106488
+G train  epoch   2, step 401: train_ppl: 19.466097
+G train  epoch   2, step 601: train_ppl: 21.225967
+G train  epoch   3, step   1: train_ppl: 19.491252
+G train  epoch   3, step 201: train_ppl: 18.161380
+G train  epoch   3, step 401: train_ppl: 17.007904
+G train  epoch   3, step 601: train_ppl: 19.600547
+G train  epoch   4, step   1: train_ppl: 17.184874
+G train  epoch   4, step 201: train_ppl: 16.683320
+G train  epoch   4, step 401: train_ppl: 15.662850
+G train  epoch   4, step 601: train_ppl: 17.787730
+G train  epoch   5, step   1: train_ppl: 15.921597
+G train  epoch   5, step 201: train_ppl: 15.417870
+G train  epoch   5, step 401: train_ppl: 14.689237
+G train  epoch   5, step 601: train_ppl: 17.279690
+G train  epoch   6, step   1: train_ppl: 15.016865
+G train  epoch   6, step 201: train_ppl: 14.538923
+G train  epoch   6, step 401: train_ppl: 13.939933
+G train  epoch   6, step 601: train_ppl: 16.393980
+G train  epoch   7, step   1: train_ppl: 14.531343
+G train  epoch   7, step 201: train_ppl: 13.483885
+G train  epoch   7, step 401: train_ppl: 13.032592
+G train  epoch   7, step 601: train_ppl: 15.324705
+G train  epoch   8, step   1: train_ppl: 13.596581
+G train  epoch   8, step 201: train_ppl: 13.162892
+G train  epoch   8, step 401: train_ppl: 12.805701
+G train  epoch   8, step 601: train_ppl: 14.828297
+G train  epoch   9, step   1: train_ppl: 12.826605
+G train  epoch   9, step 201: train_ppl: 12.831218
+G train  epoch   9, step 401: train_ppl: 12.511696
+G train  epoch   9, step 601: train_ppl: 14.158144
+G train  epoch  10, step   1: train_ppl: 12.442840
+G train  epoch  10, step 201: train_ppl: 12.110137
+G train  epoch  10, step 401: train_ppl: 11.862934
+G train  epoch  10, step 601: train_ppl: 13.609994
+G valid  epoch  10, step -  : valid_ppl: 15.770340
+G test   epoch  10, step -  : test _ppl: 15.555948
+epoch 10 BLEU1~4 on train dataset:
+0.000031
+0.000024
+0.000013
+0.000006
+
+ epoch 10 BLEU1~4 on test dataset:
+0.725817
+0.348079
+0.124316
+0.045227
+
+
+G train  epoch  11, step   1: train_ppl: 11.848716
+G train  epoch  11, step 201: train_ppl: 11.874339
+G train  epoch  11, step 401: train_ppl: 11.434303
+G train  epoch  11, step 601: train_ppl: 13.475230
+G train  epoch  12, step   1: train_ppl: 11.432488
+G train  epoch  12, step 201: train_ppl: 11.574382
+G train  epoch  12, step 401: train_ppl: 11.108705
+G train  epoch  12, step 601: train_ppl: 12.874168
+G train  epoch  13, step   1: train_ppl: 11.066951
+G train  epoch  13, step 201: train_ppl: 11.008615
+G train  epoch  13, step 401: train_ppl: 10.957702
+G train  epoch  13, step 601: train_ppl: 12.310908
+G train  epoch  14, step   1: train_ppl: 10.646646
+G train  epoch  14, step 201: train_ppl: 10.382031
+G train  epoch  14, step 401: train_ppl: 10.377984
+G train  epoch  14, step 601: train_ppl: 12.119258
+G train  epoch  15, step   1: train_ppl: 10.317019
+G train  epoch  15, step 201: train_ppl: 10.315551
+G train  epoch  15, step 401: train_ppl: 10.297644
+G train  epoch  15, step 601: train_ppl: 11.408934
+G train  epoch  16, step   1: train_ppl: 9.504713
+G train  epoch  16, step 201: train_ppl: 9.740360
+G train  epoch  16, step 401: train_ppl: 10.276716
+G train  epoch  16, step 601: train_ppl: 11.081883
+G train  epoch  17, step   1: train_ppl: 9.426500
+G train  epoch  17, step 201: train_ppl: 9.713268
+G train  epoch  17, step 401: train_ppl: 9.733558
+G train  epoch  17, step 601: train_ppl: 11.142964
+G train  epoch  18, step   1: train_ppl: 9.144814
+G train  epoch  18, step 201: train_ppl: 9.260539
+G train  epoch  18, step 401: train_ppl: 9.581128
+G train  epoch  18, step 601: train_ppl: 10.294339
+G train  epoch  19, step   1: train_ppl: 8.689206
+G train  epoch  19, step 201: train_ppl: 9.334027
+G train  epoch  19, step 401: train_ppl: 9.171768
+G train  epoch  19, step 601: train_ppl: 10.425741
+G train  epoch  20, step   1: train_ppl: 8.426813
+G train  epoch  20, step 201: train_ppl: 8.907790
+G train  epoch  20, step 401: train_ppl: 9.251181
+G train  epoch  20, step 601: train_ppl: 10.408780
+G valid  epoch  20, step -  : valid_ppl: 15.668648
+G test   epoch  20, step -  : test _ppl: 15.390086
+epoch 20 BLEU1~4 on train dataset:
+0.000013
+0.000011
+0.000006
+0.000002
+
+ epoch 20 BLEU1~4 on test dataset:
+0.734852
+0.363985
+0.126904
+0.042847
+
+
+G train  epoch  21, step   1: train_ppl: 8.138282
+G train  epoch  21, step 201: train_ppl: 8.565632
+G train  epoch  21, step 401: train_ppl: 8.963014
+G train  epoch  21, step 601: train_ppl: 9.886012
+G train  epoch  22, step   1: train_ppl: 7.895278
+G train  epoch  22, step 201: train_ppl: 8.384267
+G train  epoch  22, step 401: train_ppl: 8.781741
+G train  epoch  22, step 601: train_ppl: 9.373454
+G train  epoch  23, step   1: train_ppl: 7.769086
+G train  epoch  23, step 201: train_ppl: 8.310254
+G train  epoch  23, step 401: train_ppl: 8.386859
+G train  epoch  23, step 601: train_ppl: 9.293088
+G train  epoch  24, step   1: train_ppl: 7.639174
+G train  epoch  24, step 201: train_ppl: 8.051966
+G train  epoch  24, step 401: train_ppl: 8.327785
+G train  epoch  24, step 601: train_ppl: 9.412186
+G train  epoch  25, step   1: train_ppl: 7.696570
+G train  epoch  25, step 201: train_ppl: 8.148531
+G train  epoch  25, step 401: train_ppl: 8.178641
+G train  epoch  25, step 601: train_ppl: 8.932658
+G train  epoch  26, step   1: train_ppl: 7.224487
+G train  epoch  26, step 201: train_ppl: 7.747796
+G train  epoch  26, step 401: train_ppl: 7.885239
+G train  epoch  26, step 601: train_ppl: 8.798162
+G train  epoch  27, step   1: train_ppl: 7.296177
+G train  epoch  27, step 201: train_ppl: 7.607508
+G train  epoch  27, step 401: train_ppl: 7.943555
+G train  epoch  27, step 601: train_ppl: 8.800025
+G train  epoch  28, step   1: train_ppl: 6.856848
+G train  epoch  28, step 201: train_ppl: 7.614878
+G train  epoch  28, step 401: train_ppl: 7.442910
+G train  epoch  28, step 601: train_ppl: 8.786508
+G train  epoch  29, step   1: train_ppl: 6.741171
+G train  epoch  29, step 201: train_ppl: 7.476051
+G train  epoch  29, step 401: train_ppl: 7.572304
+G train  epoch  29, step 601: train_ppl: 8.269619
+G train  epoch  30, step   1: train_ppl: 7.010194
+G train  epoch  30, step 201: train_ppl: 7.372382
+G train  epoch  30, step 401: train_ppl: 7.574721
+G train  epoch  30, step 601: train_ppl: 8.140438
+G valid  epoch  30, step -  : valid_ppl: 15.720505
+G test   epoch  30, step -  : test _ppl: 15.424566
+epoch 30 BLEU1~4 on train dataset:
+0.000033
+0.000026
+0.000013
+0.000005
+
+ epoch 30 BLEU1~4 on test dataset:
+0.785956
+0.395392
+0.137439
+0.044822
+
+
+G train  epoch  31, step   1: train_ppl: 6.739920
+G train  epoch  31, step 201: train_ppl: 7.215035
+G train  epoch  31, step 401: train_ppl: 7.553989
+G train  epoch  31, step 601: train_ppl: 8.218129
+G train  epoch  32, step   1: train_ppl: 6.839359
+G train  epoch  32, step 201: train_ppl: 7.303241
+G train  epoch  32, step 401: train_ppl: 7.160526
+G train  epoch  32, step 601: train_ppl: 8.122911
+G train  epoch  33, step   1: train_ppl: 6.641880
+G train  epoch  33, step 201: train_ppl: 7.043916
+G train  epoch  33, step 401: train_ppl: 7.496285
+G train  epoch  33, step 601: train_ppl: 7.956792
+G train  epoch  34, step   1: train_ppl: 6.762522
+G train  epoch  34, step 201: train_ppl: 7.041554
+G train  epoch  34, step 401: train_ppl: 7.111950
+G train  epoch  34, step 601: train_ppl: 7.761213
+G train  epoch  35, step   1: train_ppl: 6.554329
+G train  epoch  35, step 201: train_ppl: 6.835509
+G train  epoch  35, step 401: train_ppl: 7.113768
+G train  epoch  35, step 601: train_ppl: 7.708533
+G train  epoch  36, step   1: train_ppl: 6.538177
+G train  epoch  36, step 201: train_ppl: 6.615165
+G train  epoch  36, step 401: train_ppl: 7.159944
+G train  epoch  36, step 601: train_ppl: 7.436878
+G train  epoch  37, step   1: train_ppl: 6.445450
+G train  epoch  37, step 201: train_ppl: 6.855017
+G train  epoch  37, step 401: train_ppl: 6.932825
+G train  epoch  37, step 601: train_ppl: 7.469786
+G train  epoch  38, step   1: train_ppl: 6.339741
+G train  epoch  38, step 201: train_ppl: 6.763264
+G train  epoch  38, step 401: train_ppl: 6.973007
+G train  epoch  38, step 601: train_ppl: 7.606912
+G train  epoch  39, step   1: train_ppl: 6.255077
+G train  epoch  39, step 201: train_ppl: 6.776892
+G train  epoch  39, step 401: train_ppl: 6.839174
+G train  epoch  39, step 601: train_ppl: 7.305470
+G train  epoch  40, step   1: train_ppl: 6.326044
+G train  epoch  40, step 201: train_ppl: 6.518230
+G train  epoch  40, step 401: train_ppl: 6.745913
+G train  epoch  40, step 601: train_ppl: 7.423096
+G valid  epoch  40, step -  : valid_ppl: 16.695689
+G test   epoch  40, step -  : test _ppl: 16.404647
+epoch 40 BLEU1~4 on train dataset:
+0.000023
+0.000019
+0.000010
+0.000004
+
+ epoch 40 BLEU1~4 on test dataset:
+0.780150
+0.402377
+0.145340
+0.050078
+
+
+G train  epoch  41, step   1: train_ppl: 6.367435
+G train  epoch  41, step 201: train_ppl: 6.632231
+G train  epoch  41, step 401: train_ppl: 6.434733
+G train  epoch  41, step 601: train_ppl: 7.244876
+G train  epoch  42, step   1: train_ppl: 6.230467
+G train  epoch  42, step 201: train_ppl: 6.504020
+G train  epoch  42, step 401: train_ppl: 6.611884
+G train  epoch  42, step 601: train_ppl: 7.275156
+G train  epoch  43, step   1: train_ppl: 6.118827
+G train  epoch  43, step 201: train_ppl: 6.777308
+G train  epoch  43, step 401: train_ppl: 6.536155
+G train  epoch  43, step 601: train_ppl: 7.055527
+G train  epoch  44, step   1: train_ppl: 6.053876
+G train  epoch  44, step 201: train_ppl: 6.264767
+G train  epoch  44, step 401: train_ppl: 6.739359
+G train  epoch  44, step 601: train_ppl: 7.153449
+G train  epoch  45, step   1: train_ppl: 5.805676
+G train  epoch  45, step 201: train_ppl: 6.327686
+G train  epoch  45, step 401: train_ppl: 6.721626
+G train  epoch  45, step 601: train_ppl: 7.116467
+G train  epoch  46, step   1: train_ppl: 5.910011
+G train  epoch  46, step 201: train_ppl: 6.241399
+G train  epoch  46, step 401: train_ppl: 6.502214
+G train  epoch  46, step 601: train_ppl: 7.236687
+G train  epoch  47, step   1: train_ppl: 6.056512
+G train  epoch  47, step 201: train_ppl: 6.104493
+G train  epoch  47, step 401: train_ppl: 6.484941
+G train  epoch  47, step 601: train_ppl: 7.302387
+G train  epoch  48, step   1: train_ppl: 5.863250
+G train  epoch  48, step 201: train_ppl: 6.278675
+G train  epoch  48, step 401: train_ppl: 6.514460
+G train  epoch  48, step 601: train_ppl: 6.951385
+G train  epoch  49, step   1: train_ppl: 5.967596
+G train  epoch  49, step 201: train_ppl: 6.132277
+G train  epoch  49, step 401: train_ppl: 6.273235
+G train  epoch  49, step 601: train_ppl: 7.105933
+G train  epoch  50, step   1: train_ppl: 5.848542
+G train  epoch  50, step 201: train_ppl: 6.073361
+G train  epoch  50, step 401: train_ppl: 6.484817
+G train  epoch  50, step 601: train_ppl: 6.994890
+G valid  epoch  50, step -  : valid_ppl: 16.494273
+G test   epoch  50, step -  : test _ppl: 16.141100
+epoch 50 BLEU1~4 on train dataset:
+0.000026
+0.000021
+0.000011
+0.000005
+
+ epoch 50 BLEU1~4 on test dataset:
+0.795164
+0.408732
+0.142723
+0.046194
+
+
+G train  epoch  51, step   1: train_ppl: 5.918850
+G train  epoch  51, step 201: train_ppl: 6.027845
+G train  epoch  51, step 401: train_ppl: 6.100796
+G train  epoch  51, step 601: train_ppl: 6.916464
+G train  epoch  52, step   1: train_ppl: 5.905028
+G train  epoch  52, step 201: train_ppl: 6.098857
+G train  epoch  52, step 401: train_ppl: 6.038914
+G train  epoch  52, step 601: train_ppl: 6.982955
+G train  epoch  53, step   1: train_ppl: 5.849970
+G train  epoch  53, step 201: train_ppl: 6.139577
+G train  epoch  53, step 401: train_ppl: 6.289146
+G train  epoch  53, step 601: train_ppl: 6.620438
+G train  epoch  54, step   1: train_ppl: 5.776815
+G train  epoch  54, step 201: train_ppl: 5.892636
+G train  epoch  54, step 401: train_ppl: 6.202707
+G train  epoch  54, step 601: train_ppl: 6.633471
+G valid  epoch  54, step -  : valid_ppl: 16.567087
+G test   epoch  54, step -  : test _ppl: 16.250177
+epoch 54 BLEU1~4 on train dataset:
+0.000042
+0.000035
+0.000019
+0.000008
+
+ epoch 54 BLEU1~4 on test dataset:
+0.773356
+0.400327
+0.145059
+0.049738
+
+
+D train  epoch   0, step   0: dis_total_loss: 30.008549, r_loss: 14.238903, f_loss: 15.769646
+D train  epoch   0, step 200: dis_total_loss: 1.129090, r_loss: 0.135479, f_loss: 0.993611
+D train  epoch   0, step 400: dis_total_loss: 0.472469, r_loss: 0.034480, f_loss: 0.437989
+D train  epoch   0, step 600: dis_total_loss: 0.224781, r_loss: 0.015994, f_loss: 0.208787
+D train  epoch   1, step   0: dis_total_loss: 0.225589, r_loss: 0.013443, f_loss: 0.212147
+D train  epoch   1, step 200: dis_total_loss: 0.246685, r_loss: 0.007898, f_loss: 0.238787
+D train  epoch   1, step 400: dis_total_loss: 0.099934, r_loss: 0.005040, f_loss: 0.094894
+D train  epoch   1, step 600: dis_total_loss: 0.065001, r_loss: 0.003445, f_loss: 0.061556
+D train  epoch   2, step   0: dis_total_loss: 0.068714, r_loss: 0.003135, f_loss: 0.065579
+D train  epoch   2, step 200: dis_total_loss: 0.071704, r_loss: 0.002251, f_loss: 0.069453
+D train  epoch   2, step 400: dis_total_loss: 0.041340, r_loss: 0.001662, f_loss: 0.039677
+D train  epoch   2, step 600: dis_total_loss: 0.051120, r_loss: 0.001270, f_loss: 0.049850
+D train  epoch   3, step   0: dis_total_loss: 0.036702, r_loss: 0.001194, f_loss: 0.035509
+D train  epoch   3, step 200: dis_total_loss: 0.027433, r_loss: 0.000932, f_loss: 0.026501
+D train  epoch   3, step 400: dis_total_loss: 0.030073, r_loss: 0.000738, f_loss: 0.029335
+D train  epoch   3, step 600: dis_total_loss: 0.024956, r_loss: 0.000595, f_loss: 0.024361
+D train  epoch   4, step   0: dis_total_loss: 0.019781, r_loss: 0.000566, f_loss: 0.019215
+D train  epoch   4, step 200: dis_total_loss: 0.031318, r_loss: 0.000460, f_loss: 0.030858
+D train  epoch   4, step 400: dis_total_loss: 0.015158, r_loss: 0.000376, f_loss: 0.014782
+D train  epoch   4, step 600: dis_total_loss: 0.024843, r_loss: 0.000313, f_loss: 0.024530
+D train  epoch   5, step   0: dis_total_loss: 0.005398, r_loss: 0.000301, f_loss: 0.005097
+D train  epoch   5, step 200: dis_total_loss: 0.029602, r_loss: 0.000251, f_loss: 0.029351
+D train  epoch   5, step 400: dis_total_loss: 0.009017, r_loss: 0.000209, f_loss: 0.008808
+D train  epoch   5, step 600: dis_total_loss: 0.009040, r_loss: 0.000178, f_loss: 0.008862
+D train  epoch   6, step   0: dis_total_loss: 0.008372, r_loss: 0.000173, f_loss: 0.008199
+D train  epoch   6, step 200: dis_total_loss: 0.013095, r_loss: 0.000146, f_loss: 0.012949
+D train  epoch   6, step 400: dis_total_loss: 0.010176, r_loss: 0.000124, f_loss: 0.010052
+D train  epoch   6, step 600: dis_total_loss: 0.002133, r_loss: 0.000107, f_loss: 0.002026
+D train  epoch   7, step   0: dis_total_loss: 0.007449, r_loss: 0.000103, f_loss: 0.007346
+D train  epoch   7, step 200: dis_total_loss: 0.006205, r_loss: 0.000089, f_loss: 0.006117
+D train  epoch   7, step 400: dis_total_loss: 0.004607, r_loss: 0.000075, f_loss: 0.004532
+D train  epoch   7, step 600: dis_total_loss: 0.006707, r_loss: 0.000066, f_loss: 0.006641
+D train  epoch   8, step   0: dis_total_loss: 0.014229, r_loss: 0.000064, f_loss: 0.014165
+D train  epoch   8, step 200: dis_total_loss: 0.000890, r_loss: 0.000055, f_loss: 0.000834
+D train  epoch   8, step 400: dis_total_loss: 0.028241, r_loss: 0.000047, f_loss: 0.028194
+D train  epoch   8, step 600: dis_total_loss: 0.006859, r_loss: 0.000042, f_loss: 0.006817
+D train  epoch   9, step   0: dis_total_loss: 0.000908, r_loss: 0.000041, f_loss: 0.000867
+D train  epoch   9, step 200: dis_total_loss: 0.003344, r_loss: 0.000036, f_loss: 0.003309
+D train  epoch   9, step 400: dis_total_loss: 0.000100, r_loss: 0.000031, f_loss: 0.000069
+D train  epoch   9, step 600: dis_total_loss: 0.000388, r_loss: 0.000027, f_loss: 0.000361/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
+
+D train  epoch  10, step   0: dis_total_loss: 0.002516, r_loss: 0.000026, f_loss: 0.002490
+D train  epoch  10, step 200: dis_total_loss: 0.016706, r_loss: 0.000023, f_loss: 0.016683
+D train  epoch  10, step 400: dis_total_loss: 0.000216, r_loss: 0.000097, f_loss: 0.000119
+D train  epoch  10, step 600: dis_total_loss: 0.000940, r_loss: 0.000051, f_loss: 0.000890
+D train  epoch  11, step   0: dis_total_loss: 0.010369, r_loss: 0.000046, f_loss: 0.010323
+D train  epoch  11, step 200: dis_total_loss: 0.004384, r_loss: 0.000035, f_loss: 0.004350
+D train  epoch  11, step 400: dis_total_loss: 0.000182, r_loss: 0.000028, f_loss: 0.000154
+D train  epoch  11, step 600: dis_total_loss: 0.005161, r_loss: 0.000024, f_loss: 0.005136
+D train  epoch  12, step   0: dis_total_loss: 0.001872, r_loss: 0.000023, f_loss: 0.001848
+D train  epoch  12, step 200: dis_total_loss: 0.000293, r_loss: 0.000020, f_loss: 0.000273
+D train  epoch  12, step 400: dis_total_loss: 0.000057, r_loss: 0.000017, f_loss: 0.000040
+D train  epoch  12, step 600: dis_total_loss: 0.000204, r_loss: 0.000015, f_loss: 0.000189
+D train  epoch  13, step   0: dis_total_loss: 0.000178, r_loss: 0.000015, f_loss: 0.000163
+D train  epoch  13, step 200: dis_total_loss: 0.000167, r_loss: 0.000013, f_loss: 0.000154
+D train  epoch  13, step 400: dis_total_loss: 0.000098, r_loss: 0.000011, f_loss: 0.000086
+D train  epoch  13, step 600: dis_total_loss: 0.000043, r_loss: 0.000010, f_loss: 0.000033
+D train  epoch  14, step   0: dis_total_loss: 0.000069, r_loss: 0.000010, f_loss: 0.000059
+D train  epoch  14, step 200: dis_total_loss: 0.000096, r_loss: 0.000010, f_loss: 0.000086
+D train  epoch  14, step 400: dis_total_loss: 0.000027, r_loss: 0.000009, f_loss: 0.000018
+D train  epoch  14, step 600: dis_total_loss: 0.000028, r_loss: 0.000008, f_loss: 0.000021
+G update epoch  55, step   1: mean_reward: -27.461843, expect_reward_loss:-27.461843, update_loss: 11920.133789
+D update epoch  55, step   0: dis_total_loss: 0.001863, r_loss: 0.000008, f_loss: 0.001856
+G valid  epoch  55, step -  : valid_ppl: 16.562410
+G test   epoch  55, step -  : test _ppl: 16.230956
+epoch 55 BLEU1~4 on train dataset:
+0.000045
+0.000037
+0.000020
+0.000008
+
+ epoch 55 BLEU1~4 on test dataset:
+0.772068
+0.396401
+0.140545
+0.046477
+
+
+G update epoch  56, step   1: mean_reward: -27.483124, expect_reward_loss:-27.483124, update_loss: 13171.248047
+D update epoch  56, step   0: dis_total_loss: 0.007551, r_loss: 0.000008, f_loss: 0.007544
+G update epoch  57, step   1: mean_reward: -27.489866, expect_reward_loss:-27.489866, update_loss: 13235.550781
+D update epoch  57, step   0: dis_total_loss: 0.000107, r_loss: 0.000008, f_loss: 0.000100
+G update epoch  58, step   1: mean_reward: -27.521196, expect_reward_loss:-27.521196, update_loss: 12108.273438
+D update epoch  58, step   0: dis_total_loss: 0.000032, r_loss: 0.000008, f_loss: 0.000024
+G update epoch  59, step   1: mean_reward: -27.504126, expect_reward_loss:-27.504126, update_loss: 12520.994141
+D update epoch  59, step   0: dis_total_loss: 0.008040, r_loss: 0.000008, f_loss: 0.008033
+G update epoch  60, step   1: mean_reward: -27.498968, expect_reward_loss:-27.498968, update_loss: 12246.804688
+D update epoch  60, step   0: dis_total_loss: 0.002679, r_loss: 0.000008, f_loss: 0.002671
+G update epoch  61, step   1: mean_reward: -27.499519, expect_reward_loss:-27.499519, update_loss: 12051.536133
+D update epoch  61, step   0: dis_total_loss: 0.007245, r_loss: 0.000008, f_loss: 0.007237
+G update epoch  62, step   1: mean_reward: -27.606577, expect_reward_loss:-27.606577, update_loss: 12168.317383
+D update epoch  62, step   0: dis_total_loss: 0.007497, r_loss: 0.000008, f_loss: 0.007489
+G update epoch  63, step   1: mean_reward: -27.616465, expect_reward_loss:-27.616465, update_loss: 12276.160156
+D update epoch  63, step   0: dis_total_loss: 0.000165, r_loss: 0.000008, f_loss: 0.000157
+G update epoch  64, step   1: mean_reward: -27.650768, expect_reward_loss:-27.650768, update_loss: 11674.588867
+D update epoch  64, step   0: dis_total_loss: 0.001063, r_loss: 0.000008, f_loss: 0.001055
+G update epoch  65, step   1: mean_reward: -27.628326, expect_reward_loss:-27.628326, update_loss: 12108.985352
+D update epoch  65, step   0: dis_total_loss: 0.000014, r_loss: 0.000008, f_loss: 0.000006
+G valid  epoch  65, step -  : valid_ppl: 16.558779
+G test   epoch  65, step -  : test _ppl: 16.222489
+epoch 65 BLEU1~4 on train dataset:
+0.000074
+0.000061
+0.000034
+0.000014
+
+ epoch 65 BLEU1~4 on test dataset:
+0.746353
+0.386138
+0.138735
+0.046664
+
+
+G update epoch  66, step   1: mean_reward: -27.635851, expect_reward_loss:-27.635851, update_loss: 11240.168945
+D update epoch  66, step   0: dis_total_loss: 0.000014, r_loss: 0.000008, f_loss: 0.000006
+G update epoch  67, step   1: mean_reward: -27.652624, expect_reward_loss:-27.652624, update_loss: 11433.633789
+D update epoch  67, step   0: dis_total_loss: 0.003978, r_loss: 0.000008, f_loss: 0.003970
+G update epoch  68, step   1: mean_reward: -27.711754, expect_reward_loss:-27.711754, update_loss: 12058.480469
+D update epoch  68, step   0: dis_total_loss: 0.005739, r_loss: 0.000008, f_loss: 0.005731
+G update epoch  69, step   1: mean_reward: -27.725893, expect_reward_loss:-27.725893, update_loss: 13896.819336
+D update epoch  69, step   0: dis_total_loss: 0.001048, r_loss: 0.000008, f_loss: 0.001039
+G update epoch  70, step   1: mean_reward: -27.771467, expect_reward_loss:-27.771467, update_loss: 12489.848633
+D update epoch  70, step   0: dis_total_loss: 0.001727, r_loss: 0.000008, f_loss: 0.001719
+G update epoch  71, step   1: mean_reward: -27.775064, expect_reward_loss:-27.775064, update_loss: 12334.164062
+D update epoch  71, step   0: dis_total_loss: 0.000023, r_loss: 0.000008, f_loss: 0.000015
+G update epoch  72, step   1: mean_reward: -27.764277, expect_reward_loss:-27.764277, update_loss: 12288.500000
+D update epoch  72, step   0: dis_total_loss: 0.000029, r_loss: 0.000008, f_loss: 0.000020
+G update epoch  73, step   1: mean_reward: -27.798759, expect_reward_loss:-27.798759, update_loss: 12104.430664
+D update epoch  73, step   0: dis_total_loss: 0.000783, r_loss: 0.000008, f_loss: 0.000774
+G update epoch  74, step   1: mean_reward: -27.814970, expect_reward_loss:-27.814970, update_loss: 11289.200195
+D update epoch  74, step   0: dis_total_loss: 0.000397, r_loss: 0.000008, f_loss: 0.000388
+G valid  epoch  74, step -  : valid_ppl: 16.559490
+G test   epoch  74, step -  : test _ppl: 16.190385
+epoch 74 BLEU1~4 on train dataset:
+0.000124
+0.000103
+0.000057
+0.000023
+
+ epoch 74 BLEU1~4 on test dataset:
+0.719525
+0.372402
+0.131988
+0.043490
+
+
