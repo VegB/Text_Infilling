@@ -72,6 +72,7 @@ def load_hyperparams():
     argparser.parse_args(namespace=args)
 
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
+    args.test_present_rates = [0.2, 0.5, 0.8]
     args.partition_num = int(math.log(args.max_seq_length))
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
