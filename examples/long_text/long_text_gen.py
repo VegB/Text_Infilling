@@ -208,7 +208,8 @@ def _main(_):
                 refer_tmp_filename, template_tmp_filename, case_sensitive=True))
             bleu_score[it]['test_bleu'] = test_bleu
             bleu_score[it]['template_bleu'] = template_bleu
-            print('epoch:{} test_bleu:{} template_bleu:{}'.format(cur_epoch, test_bleu, template_bleu))
+            print('epoch:{} test_present_rate:{} test_bleu:{} template_bleu:{}'
+                  .format(cur_epoch, test_pack['test_present_rate'], test_bleu, template_bleu))
             os.remove(outputs_tmp_filename)
             os.remove(template_tmp_filename)
             os.remove(refer_tmp_filename)
@@ -254,13 +255,14 @@ def _main(_):
                                           {rate: [] for rate in args.test_present_rates}
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                # losses = _train_epochs(sess, epoch)
-                bleu_scores = _test_epoch(sess, epoch)
-                loss_list.extend(losses)
-                for scores in bleu_scores:
-                    test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
-                    tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
+                losses = _train_epochs(sess, epoch)
+                if epoch % 5 == 0:
+                    bleu_scores = _test_epoch(sess, epoch)
+                    loss_list.extend(losses)
+                    for scores in bleu_scores:
+                        test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
+                        tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
+                    _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
                 sys.stdout.flush()
 
 
