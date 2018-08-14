@@ -207,6 +207,8 @@ def load_hyperparams():
     print('logdir:{}'.format(args.log_dir))
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
+    if not os.path.exists(args.log_dir + 'img/'):
+        os.makedirs(args.log_dir + 'img/')
     return {
         'train_dataset_hparams': train_dataset_hparams,
         'eval_dataset_hparams': eval_dataset_hparams,

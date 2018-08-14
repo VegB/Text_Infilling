@@ -1,0 +1,2 @@
+model_checkpoint_path: "my-model-highest_bleu.ckpt"
+all_model_checkpoint_paths: "my-model-highest_bleu.ckpt"
