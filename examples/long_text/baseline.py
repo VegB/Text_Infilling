@@ -264,7 +264,7 @@ def _main(_):
         loss_list, test_bleu, tplt_bleu = [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                # losses = _train_epochs(sess, epoch)
+                losses = _train_epochs(sess, epoch)
                 test_score, tplt_score = _test_epoch(sess, epoch)
                 loss_list.extend(losses)
                 test_bleu.append(test_score)
