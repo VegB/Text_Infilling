@@ -63,13 +63,15 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    argparser.add_argument('--max_decode_len', type=int, default=15)
+    # argparser.add_argument('--max_decode_len', type=int, default=15)
     argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
     argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--mask_length', type=int, default=5)
+    argparser.add_argument('--hidden_dim', type=int, default=512)
     argparser.parse_args(namespace=args)
 
+    args.max_decode_len = args.max_seq_length
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
     args.partition_num = int(math.log(args.max_seq_length))
     args.data_dir = os.path.abspath(args.data_dir)
@@ -82,13 +84,13 @@ def load_hyperparams():
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
     if args.mask_strategy == 'random':
-        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.seq2seq/'.format(
+        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.hidden{}.seq2seq/'.format(
             args.batch_size, args.max_train_epoch, args.max_seq_length,
-            args.mask_strategy, args.present_rate, args.partition_num)
+            args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)
     elif args.mask_strategy == 'equal_length':
-        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.seq2seq/'.format(
+        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.hidden{}.seq2seq/'.format(
             args.batch_size, args.max_train_epoch, args.max_seq_length,
-            args.mask_strategy, args.mask_num, args.mask_len)
+            args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
     batching_scheme = _batching_scheme(
         args.batch_size,
@@ -146,7 +148,7 @@ def load_hyperparams():
         'batch_size': args.test_batch_size,
         'allow_smaller_final_batch': True,
     }
-    args.hidden_dim = 512
+    # args.hidden_dim = 512
     args.word_embedding_hparams = {
         'name': 'lookup_table',
         'dim': args.hidden_dim,

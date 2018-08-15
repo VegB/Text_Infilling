@@ -154,7 +154,8 @@ def _main(_):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
-        test_results = [{'test_present_rate': rate} for rate in args.test_present_rates]
+        test_results = [{'test_present_rate': rate, 'templates_list': [], 'hypothesis_list': []} 
+                        for rate in args.test_present_rates]
         targets_list = []
         iterator.switch_to_test_data(cur_sess)
         while True:
@@ -185,8 +186,8 @@ def _main(_):
                         templates_list.append(template)
                         hypotheses_list.append(got)
 
-                    test_results[it]['templates_list'] = templates_list
-                    test_results[it]['hypothesis_list'] = hypotheses_list
+                    test_results[it]['templates_list'].extend(templates_list)
+                    test_results[it]['hypothesis_list'].extend(hypotheses_list)
             except tf.errors.OutOfRangeError:
                 break
 
@@ -235,9 +236,9 @@ def _main(_):
         plt.figure(figsize=(14, 10))
         legends = []
         for rate in args.test_present_rates:
-            plt.plot(test_bleu[rate], '--', linewidth=1, label='test bleu, test pr=' % rate)
-            plt.plot(tplt_bleu[rate], '--', linewidth=1, label='template bleu, test pr=' % rate)
-            legends.extend(['test bleu, test pr=' % rate, 'template bleu, test pr=' % rate])
+            plt.plot(test_bleu[rate], '--', linewidth=1, label='test bleu, test pr=%f' % rate)
+            plt.plot(tplt_bleu[rate], '--', linewidth=1, label='template bleu, test pr=%f' % rate)
+            legends.extend(['test bleu, test pr=%f' % rate, 'template bleu, test pr=%f' % rate])
         plt.ylabel('bleu till epoch {}'.format(epoch))
         plt.xlabel('every epoch, train present rate=%f' % args.present_rate)
         plt.legend(legends, loc='upper left')
