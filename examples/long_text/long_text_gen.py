@@ -139,25 +139,27 @@ def _main(_):
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
                 if step % 200 == 1:
-                    rst = 'step:%s source:%s loss:%s learning:%f' % \
+                    rst = 'step:%s source:%s loss:%s lr:%f' % \
                           (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
                     print(rst)
                 loss_lists.append(loss)
 
-                eval_bleus = _test_epoch(session, cur_epoch, test_mode='eval')
-                for eval_rst in eval_bleus:
-                    if eval_rst['test_present_rate'] == args.present_rate:
-                        eval_bleu = eval_rst['test_bleu']
-                        break
-                if eval_bleu > opt_vars['best_eval_bleu']:
-                    opt_vars['best_eval_bleu'] = eval_bleu
+                # eval_bleus = _test_epoch(session, cur_epoch, test_mode='eval')
+                # for eval_rst in eval_bleus:
+                #     if eval_rst['test_present_rate'] == args.present_rate:
+                #         eval_bleu = eval_rst['test_bleu']
+                #         break
+                # if eval_bleu > opt_vars['best_eval_bleu']:
+                #     opt_vars['best_eval_bleu'] = eval_bleu
+                if loss < opt_vars['best_train_loss']:
+                    opt_vars['best_train_loss'] = loss
                     opt_vars['steps_not_improved'] = 0
                 else:
                     opt_vars['steps_not_improved'] += 1
 
-                if opt_vars['steps_not_improved'] >= 30 and opt_vars['decay_time'] <= 3:
+                if opt_vars['steps_not_improved'] >= 300 and opt_vars['decay_time'] <= 3:
                     opt_vars['steps_not_improved'] = 0
-                    opt_vars['learning_rate'] *= config.lr_hparams['lr_decay']
+                    opt_vars['learning_rate'] *= opt_vars['lr_decay']
                     opt_vars['decay_time'] += 1
             except tf.errors.OutOfRangeError:
                 break
