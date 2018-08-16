@@ -19,6 +19,7 @@ from texar.modules.embedders import embedder_utils
 from texar.modules.embedders import position_embedders
 from texar.utils import beam_search
 from texar.utils import utils
+from texar.utils.shapes import shape_list
 
 
 class TemplateTransformerDecoder(ModuleBase):
@@ -48,7 +49,7 @@ class TemplateTransformerDecoder(ModuleBase):
                 self._embedding = embedder_utils.get_embedding(
                     self._hparams.embedding, embedding, vocab_size,
                     variable_scope=self.variable_scope)
-                self._embed_dim = utils.shape_list(self._embedding)[-1]
+                self._embed_dim = shape_list(self._embedding)[-1]
                 if self._hparams.zero_pad:
                     self._embedding = tf.concat( \
                         (tf.zeros(shape=[1, self._embed_dim]),\
@@ -56,7 +57,7 @@ class TemplateTransformerDecoder(ModuleBase):
             if self._vocab_size is None:
                 self._vocab_size = self._embedding.get_shape().as_list()[0]
         self.output_layer = \
-            self.build_output_layer(utils.shape_list(self._embedding)[-1])
+            self.build_output_layer(shape_list(self._embedding)[-1])
     @staticmethod
     def default_hparams():
         """default hyperrams for transformer deocder.
@@ -95,7 +96,7 @@ class TemplateTransformerDecoder(ModuleBase):
         return token_emb
 
     def _symbols_to_logits_fn(self, embedding_fn, max_length, segment_ids, offsets):
-        channels = utils.shape_list(self._embedding)[-1]
+        channels = shape_list(self._embedding)[-1]
         timing_signal = self.position_embedder(max_length, channels, segment_ids, offsets)
 
         """ the function is normally called in dynamic decoding mode.
@@ -106,7 +107,7 @@ class TemplateTransformerDecoder(ModuleBase):
             ids = ids[:, -1:]
             decoder_self_attention_bias = (
                 attentions.attention_bias_lower_triangle(
-                    utils.shape_list(ids)[1]))
+                    shape_list(ids)[1]))
             inputs = embedding_fn(ids)
             if self._hparams.multiply_embedding_mode == 'sqrt_depth':
                 inputs *= self._embedding.shape.as_list()[-1]**0.5
@@ -142,13 +143,13 @@ class TemplateTransformerDecoder(ModuleBase):
         input = decoder_input_pack['text_ids'][:, :-1]
         decoder_self_attention_bias = (
             attentions.attention_bias_lower_triangle(
-                utils.shape_list(input)[1]))
+                shape_list(input)[1]))
         input_word_embeds = tf.nn.embedding_lookup(self._embedding, input)
         if self._hparams.multiply_embedding_mode == 'sqrt_depth':
             input_word_embeds = input_word_embeds * \
                 (self._embedding.shape.as_list()[-1]**0.5)
-        length = utils.shape_list(input_word_embeds)[1]
-        channels = utils.shape_list(input_word_embeds)[2]
+        length = shape_list(input_word_embeds)[1]
+        channels = shape_list(input_word_embeds)[2]
         input_pos_embeds = self.position_embedder(length, channels,
                                                   decoder_input_pack['segment_ids'][:, :-1],
                                                   decoder_input_pack['offsets'][:, :-1])
@@ -156,7 +157,7 @@ class TemplateTransformerDecoder(ModuleBase):
 
         template = template_input_pack['templates']
         template_word_embeds = tf.nn.embedding_lookup(self._embedding, template)
-        template_length = utils.shape_list(template)[1]
+        template_length = shape_list(template)[1]
         template_pos_embeds = self.position_embedder(template_length, channels,
                                                      template_input_pack['segment_ids'],
                                                      template_input_pack['offsets'])
@@ -184,8 +185,8 @@ class TemplateTransformerDecoder(ModuleBase):
         with tf.variable_scope(self.variable_scope, reuse=True):
             template = template_input_pack['templates']
             template_word_embeds = tf.nn.embedding_lookup(self._embedding, template)
-            template_length = utils.shape_list(template)[1]
-            channels = utils.shape_list(template_word_embeds)[2]
+            template_length = shape_list(template)[1]
+            channels = shape_list(template_word_embeds)[2]
             template_pos_embeds = self.position_embedder(template_length, channels,
                                                          template_input_pack['segment_ids'],
                                                          template_input_pack['offsets'])
@@ -301,7 +302,7 @@ class TemplateTransformerDecoder(ModuleBase):
             else:
                 affine_bias = None
             def outputs_to_logits(outputs):
-                shape = utils.shape_list(outputs)
+                shape = shape_list(outputs)
                 outputs = tf.reshape(outputs, [-1, num_units])
                 logits = tf.matmul(outputs, self._embedding, transpose_b=True)
                 if affine_bias is not None:
@@ -421,7 +422,7 @@ class TemplateTransformerDecoder(ModuleBase):
         :param beam_width:
         :return: [batch_size*beam_width, max_len]
         """
-        batch_size = utils.shape_list(tensor)[0]
+        batch_size = shape_list(tensor)[0]
         expanded = tf.tile(tf.expand_dims(tensor, axis=1), [1, beam_width, 1])
         return tf.reshape(expanded, [batch_size * beam_width, -1])
 
@@ -450,5 +451,5 @@ class TemplateTransformerDecoder(ModuleBase):
             states=cache,
             eos_id=EOS)
 
-        outputs = outputs[:, :, 1:] # ignore <BOS>
+        outputs = outputs[:, :, 1:]  # ignore <BOS>
         return (outputs, log_probs)
