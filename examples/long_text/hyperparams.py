@@ -236,6 +236,7 @@ def load_hyperparams():
         'learning_rate': 0.016 * args.hidden_dim ** -0.5 * args.present_rate,
         'best_eval_bleu': 0,
         'steps_not_improved': 0,
+        'lr_decay': 0.1,
         'decay_time': 0
     }
     print('logdir:{}'.format(args.log_dir))

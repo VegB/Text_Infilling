@@ -95,15 +95,7 @@ def _main(_):
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
-    fstep = tf.to_float(global_step)
-    if opt_hparams['learning_rate_schedule'] == 'static':
-        learning_rate = 1e-3
-    else:
-        learning_rate = opt_hparams['lr_constant'] \
-                        * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
-                        * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
-                        * args.hidden_dim ** -0.5 \
-                        * args.present_rate
+    learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                        beta1=opt_hparams['Adam_beta1'],
                                        beta2=opt_hparams['Adam_beta2'],
@@ -132,12 +124,17 @@ def _main(_):
         loss_lists = []
         while True:
             try:
-                fetches = {'template': template_pack,
-                           'holes': answer_packs,
-                           'train_op': train_op,
-                           'step': global_step,
-                           'loss': cetp_loss}
-                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
+                fetches = {
+                    'template': template_pack,
+                    'holes': answer_packs,
+                    'train_op': train_op,
+                    'step': global_step,
+                    'loss': cetp_loss
+                }
+                feed = {
+                    learning_rate: opt_vars['learning_rate'],
+                    tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN
+                }
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
