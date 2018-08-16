@@ -64,7 +64,6 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    # argparser.add_argument('--max_decode_len', type=int, default=15)
     argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
     argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
@@ -74,7 +73,7 @@ def load_hyperparams():
     
     args.max_decode_len = args.max_seq_length
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
-    args.test_present_rates = [0.2, 0.5, 0.8]
+    args.test_present_rates = [args.present_rate]  # [0.2, 0.5, 0.8]
     args.partition_num = int(math.log(args.max_seq_length))
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
@@ -132,7 +131,7 @@ def load_hyperparams():
             "eos_token": SpecialTokens.EOS,
             "length_filter_mode": "truncate",
         },
-        'batch_size': args.test_batch_size,
+        'batch_size': args.batch_size,
         'allow_smaller_final_batch': True,
     }
     test_dataset_hparams = {
@@ -150,7 +149,6 @@ def load_hyperparams():
         'batch_size': args.test_batch_size,
         'allow_smaller_final_batch': True,
     }
-    # args.hidden_dim = 512
     args.word_embedding_hparams = {
         'name': 'lookup_table',
         'dim': args.hidden_dim,
@@ -234,6 +232,12 @@ def load_hyperparams():
         'Adam_beta2': 0.997,
         'Adam_epsilon': 1e-9,
     }
+    opt_vars = {
+        'learning_rate': 0.016 * args.hidden_dim ** -0.5 * args.present_rate,
+        'best_eval_bleu': 0,
+        'steps_not_improved': 0,
+        'decay_time': 0
+    }
     print('logdir:{}'.format(args.log_dir))
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
@@ -247,5 +251,6 @@ def load_hyperparams():
         'decoder_hparams': decoder_hparams,
         'loss_hparams': loss_hparams,
         'opt_hparams': opt_hparams,
+        'opt_vars': opt_vars,
         'args': args,
         }

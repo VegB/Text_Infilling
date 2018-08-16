@@ -63,7 +63,6 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    # argparser.add_argument('--max_decode_len', type=int, default=15)
     argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
     argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
@@ -148,7 +147,6 @@ def load_hyperparams():
         'batch_size': args.test_batch_size,
         'allow_smaller_final_batch': True,
     }
-    # args.hidden_dim = 512
     args.word_embedding_hparams = {
         'name': 'lookup_table',
         'dim': args.hidden_dim,

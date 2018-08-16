@@ -445,9 +445,6 @@ def generate_random_mask(inputs, lengths, present_rate,
 
             batch_size = inputs.shape[0]
             masked_nums = (lengths * (1 - present_rate)).astype(np.int64)  # [batch_size]
-            print("masked_nums: \n", masked_nums)
-            print("partition_num: ", partition_num)
-            print('\n')
             split_positions = \
                 [_get_split_pos(masked_num) for masked_num in masked_nums]  # [batch_size, partition_num+1]
 

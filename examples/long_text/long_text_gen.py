@@ -35,10 +35,11 @@ import bleu_tool
 def _main(_):
     hparams = hyperparams.load_hyperparams()
     train_dataset_hparams, valid_dataset_hparams, test_dataset_hparams, \
-    decoder_hparams, opt_hparams, loss_hparams, args = \
+    decoder_hparams, opt_hparams, opt_vars, loss_hparams, args = \
         hparams['train_dataset_hparams'], hparams['eval_dataset_hparams'], \
         hparams['test_dataset_hparams'], hparams['decoder_hparams'], \
-        hparams['opt_hparams'], hparams['loss_hparams'], hparams['args']
+        hparams['opt_hparams'], hparams['opt_vars'], \
+        hparams['loss_hparams'], hparams['args']
 
     # Data
     train_data = tx.data.MonoTextData(train_dataset_hparams)
@@ -141,15 +142,31 @@ def _main(_):
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
                 if step % 200 == 1:
-                    rst = 'step:%s source:%s loss:%s' % \
-                          (step, template_['text_ids'].shape, loss)
+                    rst = 'step:%s source:%s loss:%s learning:%f' % \
+                          (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
                     print(rst)
                 loss_lists.append(loss)
+
+                eval_bleus = _test_epoch(session, cur_epoch, test_mode='eval')
+                for eval_rst in eval_bleus:
+                    if eval_rst['test_present_rate'] == args.present_rate:
+                        eval_bleu = eval_rst['test_bleu']
+                        break
+                if eval_bleu > opt_vars['best_eval_bleu']:
+                    opt_vars['best_eval_bleu'] = eval_bleu
+                    opt_vars['steps_not_improved'] = 0
+                else:
+                    opt_vars['steps_not_improved'] += 1
+
+                if opt_vars['steps_not_improved'] >= 30 and opt_vars['decay_time'] <= 3:
+                    opt_vars['steps_not_improved'] = 0
+                    opt_vars['learning_rate'] *= config.lr_hparams['lr_decay']
+                    opt_vars['decay_time'] += 1
             except tf.errors.OutOfRangeError:
                 break
         return loss_lists[::50]
 
-    def _test_epoch(cur_sess, cur_epoch):
+    def _test_epoch(cur_sess, cur_epoch, test_mode='test'):
         def _id2word_map(id_arrays):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
@@ -157,7 +174,12 @@ def _main(_):
         test_results = [{'test_present_rate': rate, 'templates_list': [], 'hypothesis_list': []} 
                         for rate in args.test_present_rates]
         targets_list = []
-        iterator.switch_to_test_data(cur_sess)
+        if test_mode is 'test':
+            iterator.switch_to_test_data(cur_sess)
+        elif test_mode is 'train':
+            iterator.switch_to_train_data(cur_sess)
+        else:
+            iterator.switch_to_val_data(cur_sess)
         while True:
             try:
                 fetches = {
@@ -188,6 +210,8 @@ def _main(_):
 
                     test_results[it]['templates_list'].extend(templates_list)
                     test_results[it]['hypothesis_list'].extend(hypotheses_list)
+                if test_mode is not 'test':
+                    break
             except tf.errors.OutOfRangeError:
                 break
 
@@ -209,16 +233,16 @@ def _main(_):
                 refer_tmp_filename, template_tmp_filename, case_sensitive=True))
             bleu_score[it]['test_bleu'] = test_bleu
             bleu_score[it]['template_bleu'] = template_bleu
-            print('epoch:{} test_present_rate:{} test_bleu:{} template_bleu:{}'
-                  .format(cur_epoch, test_pack['test_present_rate'], test_bleu, template_bleu))
             os.remove(outputs_tmp_filename)
             os.remove(template_tmp_filename)
             os.remove(refer_tmp_filename)
             
-            if args.save_eval_output:
+            if args.save_eval_output and test_mode is not 'eval':
+                print('epoch:{} test_present_rate:{} test_bleu:{} template_bleu:{}'
+                      .format(cur_epoch, test_pack['test_present_rate'], test_bleu, template_bleu))
                 result_filename = \
-                    args.log_dir + 'my_model_epoch{}.train_present{}.test_present{}.results.bleu{:.3f}'\
-                        .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], test_bleu)
+                    args.log_dir + 'my_model_epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}'\
+                        .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], test_mode, test_bleu)
                 with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
                     for tmplt, tgt, hyp in zip(test_pack['templates_list'], targets_list, test_pack['hypothesis_list']):
                         resultfile.write("- template: " + ' '.join(tmplt) + '\n')
@@ -226,7 +250,7 @@ def _main(_):
                         resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
         return bleu_score
 
-    def _draw_log(epoch, loss_list, test_bleu, tplt_bleu):
+    def _draw_log(epoch, loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
         plt.ylabel('training loss till epoch {}'.format(epoch))
@@ -243,6 +267,18 @@ def _main(_):
         plt.xlabel('every epoch, train present rate=%f' % args.present_rate)
         plt.legend(legends, loc='upper left')
         plt.savefig(args.log_dir + '/img/bleu.png')
+
+        plt.figure(figsize=(14, 10))
+        legends = []
+        for rate in args.test_present_rates:
+            plt.plot(train_bleu[rate], '--', linewidth=1, label='train bleu, test pr=%f' % rate)
+            plt.plot(train_tplt_bleu[rate], '--', linewidth=1, label='train template bleu, test pr=%f' % rate)
+            legends.extend(['train bleu, test pr=%f' % rate, 'train template bleu, test pr=%f' % rate])
+        plt.ylabel('bleu till epoch {}'.format(epoch))
+        plt.xlabel('every epoch, train present rate=%f' % args.present_rate)
+        plt.legend(legends, loc='upper left')
+        plt.savefig(args.log_dir + '/img/train_bleu.png')
+
         plt.close('all')
 
     config = tf.ConfigProto()
@@ -254,16 +290,22 @@ def _main(_):
 
         loss_list, test_bleu, tplt_bleu = [], {rate: [] for rate in args.test_present_rates}, \
                                           {rate: [] for rate in args.test_present_rates}
+        train_bleu, train_tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
+                                      {rate: [] for rate in args.test_present_rates}
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 losses = _train_epochs(sess, epoch)
                 if epoch % 5 == 0:
-                    bleu_scores = _test_epoch(sess, epoch)
                     loss_list.extend(losses)
+                    bleu_scores = _test_epoch(sess, epoch)
                     for scores in bleu_scores:
                         test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
+                    train_bleu_scores = _test_epoch(sess, epoch, test_mode='train')
+                    for scores in train_bleu_scores:
+                        train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
+                        train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
+                    _draw_log(epoch, loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
                 sys.stdout.flush()
 
 
