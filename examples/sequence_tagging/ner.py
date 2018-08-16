@@ -26,6 +26,7 @@ import importlib
 import numpy as np
 import tensorflow as tf
 import texar as tx
+from texar.modules.encoders.conv_encoders import Conv1DEncoder
 
 from conll_reader import create_vocabs, read_data, iterate_batch
 from conll_writer import CoNLLWriter
@@ -54,28 +55,46 @@ dev_path = os.path.join(FLAGS.data_path, FLAGS.dev)
 test_path = os.path.join(FLAGS.data_path, FLAGS.test)
 embedding_path = os.path.join(FLAGS.data_path, FLAGS.embedding)
 EMBEDD_DIM = config.embed_dim
+CHAR_DIM = config.char_dim
 
 (word_vocab, char_vocab, ner_vocab), (i2w, i2n) = create_vocabs(train_path)
-
-scale = np.sqrt(3.0 / EMBEDD_DIM)
-word_vecs = np.random.uniform(-scale, scale, [len(word_vocab), EMBEDD_DIM]).astype(np.float32)
-
-if config.load_glove:
-    word_vecs = tx.data.load_glove(embedding_path, word_vocab, word_vecs)
 
 data_train = read_data(train_path, word_vocab, char_vocab, ner_vocab)
 data_dev = read_data(dev_path, word_vocab, char_vocab, ner_vocab)
 data_test = read_data(test_path, word_vocab, char_vocab, ner_vocab)
 
-vocab_size = len(word_vocab)
+scale = np.sqrt(3.0 / EMBEDD_DIM)
+word_vecs = np.random.uniform(-scale, scale, [len(word_vocab), EMBEDD_DIM]).astype(np.float32)
+if config.load_glove:
+    print('loading GloVe embedding...')
+    word_vecs = tx.data.load_glove(embedding_path, word_vocab, word_vecs)
+
+scale = np.sqrt(3.0 / CHAR_DIM)
+char_vecs = np.random.uniform(-scale, scale, [len(char_vocab), CHAR_DIM]).astype(np.float32)
 
 inputs = tf.placeholder(tf.int64, [None, None])
+chars = tf.placeholder(tf.int64, [None, None, None])
 targets = tf.placeholder(tf.int64, [None, None])
 masks = tf.placeholder(tf.float32, [None, None])
 seq_lengths = tf.placeholder(tf.int64, [None])
 
-embedder = tx.modules.WordEmbedder(vocab_size=vocab_size, init_value=word_vecs)
+vocab_size = len(word_vecs)
+embedder = tx.modules.WordEmbedder(vocab_size=vocab_size, init_value=word_vecs)#, hparams=config.emb)
 emb_inputs = embedder(inputs)
+
+char_size = len(char_vecs)
+char_embedder = tx.modules.WordEmbedder(vocab_size=char_size, init_value=char_vecs)#, hparams=config.char_emb)
+emb_chars = char_embedder(chars)
+# [batch, length, char_length, char_dim]
+char_shape = tf.shape(emb_chars)
+emb_chars = tf.reshape(emb_chars, (-1, char_shape[2], CHAR_DIM))
+char_encoder = Conv1DEncoder(config.conv)
+char_outputs = char_encoder(emb_chars)
+char_outputs = tf.reshape(char_outputs, (char_shape[0], char_shape[1], config.conv['filters']))
+
+emb_inputs = tf.concat([emb_inputs, char_outputs], axis=2)
+emb_inputs = tf.nn.dropout(emb_inputs, keep_prob=0.67)
+
 if config.encoder=='transformer':
     print('here we use transformer encoder')
     encoder = tx.modules.TransformerEncoder(
@@ -99,10 +118,10 @@ else:
     outputs = tf.concat(outputs, axis=2)
 
 rnn_shape = tf.shape(outputs)
-
-outputs = tf.reshape(outputs, (-1, outputs.shape[2]))
+outputs = tf.reshape(outputs, (-1, 2 * config.hidden_size))
 
 outputs = tf.layers.dense(outputs, config.tag_space, activation=tf.nn.elu)
+outputs = tf.nn.dropout(outputs, keep_prob=config.keep_prob)
 
 logits = tf.layers.dense(outputs, len(ner_vocab))
 
@@ -141,7 +160,7 @@ def _train_epoch(sess, epoch):
     for batch in iterate_batch(data_train, config.batch_size, shuffle=True):
         word, char, ner, mask, length = batch
         feed_dict = {
-            inputs: word, targets: ner, masks: mask, seq_lengths: length,
+            inputs: word, chars: char, targets: ner, masks: mask, seq_lengths: length,
             global_step: epoch, tx.global_mode(): mode,
         }
 
@@ -168,7 +187,7 @@ def _eval(sess, epoch, data_tag):
     for batch in iterate_batch(data, config.batch_size, shuffle=False):
         word, char, ner, mask, length = batch
         feed_dict = {
-            inputs: word, targets: ner, masks: mask, seq_lengths: length,
+            inputs: word, chars: char, targets: ner, masks: mask, seq_lengths: length,
             global_step: epoch, tx.global_mode(): mode,
         }
         rets = sess.run(fetches, feed_dict)

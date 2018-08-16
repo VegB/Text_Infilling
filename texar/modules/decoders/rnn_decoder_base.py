@@ -21,6 +21,7 @@ from tensorflow.python.util import nest
 
 from texar.core import layers
 from texar.utils import utils
+from texar.utils.mode import is_train_mode, is_train_mode_py
 from texar.module_base import ModuleBase
 from texar.modules.decoders import rnn_decoder_helpers
 
@@ -225,7 +226,7 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             embedding (optional): A callable that returns embedding vectors
                 of inputs, or the :attr:`params` argument of
                 :tf_main:`tf.nn.embedding_lookup <nn/embedding_lookup>`. In the
-                later case, :attr:`inputs` (if used) must be a int Tensor
+                later case, :attr:`inputs` (if used) must be an `int` Tensor
                 containing the ids to be looked up in :attr:`embedding`.
                 Required when :attr:`decoding_strategy="infer_greedy"`
                 or `"infer_sample"`; optional when
@@ -286,7 +287,7 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
                 raise ValueError(
                     "Unknown decoding strategy: {}".format(decoding_strategy))
         else:
-            if utils.is_train_mode_py(mode):
+            if is_train_mode_py(mode):
                 kwargs_ = copy.copy(self._hparams.helper_train.kwargs.todict())
                 helper_type = self._hparams.helper_train.type
             else:
@@ -320,7 +321,7 @@ class RNNDecoderBase(ModuleBase, TFDecoder):
             max_l_infer = self._hparams.max_decoding_length_infer
             if max_l_infer is None:
                 max_l_infer = utils.MAX_SEQ_LENGTH
-            max_l = tf.cond(utils.is_train_mode(mode),
+            max_l = tf.cond(is_train_mode(mode),
                             lambda: max_l_train, lambda: max_l_infer)
 
         # Decode

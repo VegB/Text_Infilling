@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 
+###########################################################################
+
+# This file provides a script to preprocess raw text corpora to generate
+# vocabulary with sentence piece encoding or byte pairwise encoding.
+# You can provide customed source language and target language if the
+# correpsonding corpora are saved in the correct path. By default, the vocab_size is set to 32000.
+
+###########################################################################
+
+
 TF=$(pwd)
 
-export PATH=$PATH:$TF/../../tools/
+export PATH=$PATH:$TF/../../bin/utils/
 encoder=spm
+
 if [ -z $1 ]; then
     src_language=en
 else
@@ -15,6 +26,7 @@ if  [ -z $2 ]; then
 else
     tgt_language=$2
 fi
+
 # update these variables
 data=${TF}"/data/${src_language}_${tgt_language}"
 name="run_${src_language}_${tgt_language}_${encoder}"

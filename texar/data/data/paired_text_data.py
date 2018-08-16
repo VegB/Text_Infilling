@@ -1,4 +1,16 @@
+# Copyright 2018 The Texar Authors. All Rights Reserved.
 #
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 """
 Paired text data that consists of source text and target text.
 """
@@ -96,10 +108,10 @@ class PairedTextData(TextDataBase):
         else:
             tgt_bos_token = tgt_hparams["bos_token"]
             tgt_eos_token = tgt_hparams["eos_token"]
-        tgt_bos_token = utils.default_string(tgt_bos_token,
-                                             SpecialTokens.BOS)
-        tgt_eos_token = utils.default_string(tgt_eos_token,
-                                             SpecialTokens.EOS)
+        tgt_bos_token = utils.default_str(tgt_bos_token,
+                                          SpecialTokens.BOS)
+        tgt_eos_token = utils.default_str(tgt_eos_token,
+                                          SpecialTokens.EOS)
         if tgt_hparams["vocab_share"]:
             if tgt_bos_token == src_vocab.bos_token and \
                     tgt_eos_token == src_vocab.eos_token:
@@ -210,7 +222,7 @@ class PairedTextData(TextDataBase):
             lambda *args: tran_fn(dsutils.maybe_tuple(args)),
             num_parallel_calls=num_parallel_calls)
 
-        # Filter by length
+        # Filters by length
         src_length_name = dsutils._connect_name(
             data_spec.name_prefix[0],
             data_spec.decoder[0].length_tensor_name)
@@ -221,7 +233,11 @@ class PairedTextData(TextDataBase):
             hparams["source_dataset"], hparams["target_dataset"],
             src_length_name, tgt_length_name,
             data_spec.decoder[0], data_spec.decoder[1])
-        dataset = dataset.apply(lambda dataset: dataset.filter(filter_fn))
+        if filter_fn:
+            dataset = dataset.filter(filter_fn)
+
+        # Truncates data count
+        dataset = dataset.take(hparams["max_dataset_size"])
 
         return dataset, data_spec
 
@@ -319,6 +335,9 @@ class PairedTextData(TextDataBase):
 
     def dataset_size(self):
         """Returns the number of data instances in the dataset.
+
+        Note that this is the total data count in the raw files, before any
+        filtering and truncation.
         """
         if not self._dataset_size:
             # pylint: disable=attribute-defined-outside-init

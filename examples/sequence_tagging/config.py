@@ -17,19 +17,40 @@
 # pylint: disable=invalid-name, too-few-public-methods, missing-docstring
 
 num_epochs = 200
+char_dim = 30
 embed_dim = 100
 hidden_size = 256
 tag_space = 128
 keep_prob = 0.5
 batch_size = 16
 encoder = None
-load_glove = False
+load_glove = True
+
+emb = {
+    "name": "embedding",
+    "dim": embed_dim,
+    "dropout_rate": 0.33,
+    "dropout_strategy": 'item'
+}
+
+char_emb = {
+    "name": "char embedding",
+    "dim": char_dim
+}
+
+conv = {
+    "filters": 30,
+    "kernel_size": [3],
+    "conv_activation": "tanh",
+    "num_dense_layers": 0,
+    "dropout_rate": 0.
+}
 
 cell = {
-    "type": "LSTMBlockCell",
+    "type": "BasicLSTMCell",
     "kwargs": {
         "num_units": hidden_size,
-        "forget_bias": 0.
+        "forget_bias": 1.
     },
     "dropout": {"output_keep_prob": keep_prob},
     "num_layers": 1

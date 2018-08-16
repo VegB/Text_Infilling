@@ -10,8 +10,8 @@ from __future__ import print_function
 
 from texar.agents.pg_agent import *
 from texar.agents.seq_pg_agent import *
-#from texar.agents.dqn_agent import *
-#from texar.agents.ac_agent import *
+from texar.agents.dqn_agent import *
+from texar.agents.ac_agent import *
 from texar.agents.agent_utils import *
 try:
     from texar.agents.agent_gym_utils import *

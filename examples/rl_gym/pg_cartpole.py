@@ -34,6 +34,7 @@ FLAGS = flags.FLAGS
 
 config = importlib.import_module(FLAGS.config)
 
+
 def _main(_):
     env = gym.make('CartPole-v0')
     env = env.unwrapped
@@ -51,17 +52,18 @@ def _main(_):
     sess.run(tf.tables_initializer())
     feed_dict = {tx.global_mode(): tf.estimator.ModeKeys.TRAIN}
 
-    for e in range(250):
+    for e in range(300):
         reward_sum = 0.
         observ = env.reset()
         agent.reset()
         while True:
             action = agent.get_action(observ, feed_dict=feed_dict)
 
-            observ, reward, terminal, _ = env.step(action=action)
+            next_observ, reward, terminal, _ = env.step(action=action)
             if terminal:
-                reward = -20. #TODO(zhiting): why -20?
-            agent.observe(reward, terminal, feed_dict=feed_dict)
+                reward = 0.
+            agent.observe(observ, action, reward, terminal, next_observ, feed_dict=feed_dict)
+            observ = next_observ
 
             reward_sum += reward
             if terminal:
@@ -71,6 +73,7 @@ def _main(_):
             print('episode {}: {}'.format(e + 1, reward_sum))
 
     sess.close()
+
 
 if __name__ == '__main__':
     tf.app.run(main=_main)

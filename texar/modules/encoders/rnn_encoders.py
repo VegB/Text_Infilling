@@ -16,7 +16,7 @@ from tensorflow.contrib.framework import nest
 from texar.modules.encoders.encoder_base import EncoderBase
 from texar.modules.networks.conv_networks import _to_list
 from texar.core import layers
-from texar.utils import utils
+from texar.utils.mode import is_train_mode
 from texar.utils.shapes import mask_sequences
 from texar.hyperparams import HParams
 from texar.modules.decoders.rnn_decoder_base import compute_output_shape
@@ -151,7 +151,7 @@ def _forward_output_layers(inputs, input_size, output_layer, time_major,
 
         dropout_layer_ids = _to_list(hparams.dropout_layer_ids)
         if len(dropout_layer_ids) > 0:
-            training = utils.is_train_mode(mode)
+            training = is_train_mode(mode)
 
         output = inputs
         output_size = input_size
@@ -492,12 +492,12 @@ class UnidirectionalRNNEncoder(RNNEncoderBase):
                     self._output_layer.trainable_variables)
             self._built = True
 
-        returns = (outputs, state)
+        rets = (outputs, state)
         if return_cell_output:
-            returns += (cell_outputs, )
+            rets += (cell_outputs, )
         if return_output_size:
-            returns += (output_size, )
-        return returns
+            rets += (output_size, )
+        return rets
 
     #def append_layer(self, layer):
     #    """Appends a layer to the end of the output layer. The layer must take

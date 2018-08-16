@@ -13,7 +13,7 @@
 # limitations under the License.
 """Example for building a sentence convolutional classifier.
 
-Use `prepare_sst_data.py` to download and clean the SST binary data.
+Use `./sst_data_preprocessor.py` to download and clean the SST binary data.
 
 To run:
 
@@ -54,7 +54,7 @@ def _main(_):
     # Losses & train ops
     loss = tf.losses.sparse_softmax_cross_entropy(
         labels=batch['y'], logits=logits)
-    accu = tx.evals.accuarcy(pred, batch['y'])
+    accu = tx.evals.accuracy(batch['y'], pred)
 
     train_op = tx.core.get_train_op(loss, hparams=config.opt)
 

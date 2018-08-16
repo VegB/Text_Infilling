@@ -13,4 +13,8 @@ from texar.utils.utils import *
 from texar.utils.exceptions import *
 from texar.utils.shapes import *
 from texar.utils.dtypes import *
+from texar.utils.variables import *
+from texar.utils.mode import *
+from texar.utils.average_recorder import *
+from texar.utils.utils_io import *
 from texar.utils.transformer_utils import *

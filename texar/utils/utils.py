@@ -8,18 +8,19 @@ from __future__ import print_function
 from __future__ import division
 
 # pylint: disable=invalid-name, no-member, no-name-in-module, protected-access
+# pylint: disable=redefined-outer-name, too-many-arguments
 
-#import importlib
 import inspect
 from pydoc import locate
 import copy
+import collections
 import numpy as np
 
 import tensorflow as tf
 
-from texar import context
 from texar.hyperparams import HParams
-from texar.utils.dtypes import is_str, is_callable
+from texar.utils.dtypes import is_str, is_callable, compat_as_text, \
+        _maybe_list_to_array
 
 MAX_SEQ_LENGTH = np.iinfo(np.int32).max
 
@@ -35,28 +36,27 @@ __all__ = [
     "get_class",
     "check_or_get_instance",
     "get_instance",
+    "check_or_get_instance_with_redundant_kwargs",
     "get_instance_with_redundant_kwargs",
     "get_function",
     "call_function_with_redundant_kwargs",
+    "get_args",
     "get_default_arg_values",
     "get_instance_kwargs",
-    "add_variable",
-    "get_unique_named_variable_scope",
-    "maybe_gloabl_mode",
-    "is_train_mode",
-    "is_eval_mode",
-    "is_predict_mode",
-    "is_train_mode_py",
-    "is_eval_mode_py",
-    "is_predict_mode_py",
-    "switch_dropout",
-    "default_string",
-    "patch_dict",
-    "fetch_subdict",
+    "dict_patch",
+    "dict_lookup",
+    "dict_fetch",
+    "dict_pop",
+    "flatten_dict",
+    "strip_token",
+    "strip_eos",
+    "strip_special_tokens",
+    "str_join",
+    "map_ids_to_strs",
+    "default_str",
     "uniquify_str",
-    "soft_sequence_embedding",
-    "straight_through",
     "ceildiv",
+    "straight_through"
 ]
 
 
@@ -210,6 +210,45 @@ def get_instance(class_or_name, kwargs, module_paths=None):
 
     return class_(**kwargs)
 
+def check_or_get_instance_with_redundant_kwargs(
+        ins_or_class_or_name, kwargs, module_paths=None, classtype=None):
+    """Returns a class instance and checks types.
+
+    Only those keyword arguments in :attr:`kwargs` that are included in the
+    class construction method are used.
+
+    Args:
+        ins_or_class_or_name: Can be of 3 types:
+
+            - A string representing the name or full path to a class to \
+              instantiate.
+            - The class itself to instantiate.
+            - The class instance itself to check types.
+
+        kwargs (dict): Keyword arguments for the class constructor.
+        module_paths (list, optional): Paths to candidate modules to
+            search for the class. This is used if the class cannot be
+            located solely based on :attr:`class_name`. The first module
+            in the list that contains the class is used.
+        classtype (optional): A (list of) classes of which the instance must
+            be an instantiation.
+
+    Raises:
+        ValueError: If class is not found based on :attr:`class_name` and
+            :attr:`module_paths`.
+        ValueError: If :attr:`kwargs` contains arguments that are invalid
+            for the class construction.
+        TypeError: If the instance is not an instantiation of
+            :attr:`classtype`.
+    """
+    ret = ins_or_class_or_name
+    if is_str(ret) or isinstance(ret, type):
+        ret = get_instance_with_redundant_kwargs(ret, kwargs, module_paths)
+    if classtype is not None:
+        if not isinstance(ret, classtype):
+            raise TypeError(
+                "An instance of {} is expected. Got: {}".format(classtype, ret))
+    return ret
 
 def get_instance_with_redundant_kwargs(
         class_name, kwargs, module_paths=None):
@@ -245,7 +284,6 @@ def get_instance_with_redundant_kwargs(
             selected_kwargs[key] = value
 
     return class_(**selected_kwargs)
-
 
 def get_function(fn_or_name, module_paths=None):
     """Returns the function of specified name and module.
@@ -290,22 +328,38 @@ def call_function_with_redundant_kwargs(fn, kwargs):
     function's argument list are used to call the function.
 
     Args:
-        fn (function): The function to call.
-        kwargs (dict): A dictionary of arguments for the class constructor. It
+        fn (function): A callable. If :attr:`fn` is not a python function,
+            :attr:`fn.__call__` is called.
+        kwargs (dict): A `dict` of arguments for the callable. It
             may include invalid arguments which will be ignored.
 
     Returns:
         The returned results by calling :attr:`fn`.
     """
+    try:
+        fn_args = set(inspect.getargspec(fn).args)
+    except TypeError:
+        fn_args = set(inspect.getargspec(fn.__call__).args)
+
     # Select valid arguments
     selected_kwargs = {}
-    fn_args = set(inspect.getargspec(fn).args)
     for key, value in kwargs.items():
         if key in fn_args:
             selected_kwargs[key] = value
 
     return fn(**selected_kwargs)
 
+def get_args(fn):
+    """Gets the arguments of a function.
+
+    Args:
+        fn (callable): The function to inspect.
+
+    Returns:
+        list: A list of argument names (str) of the function.
+    """
+    argspec = inspect.getargspec(fn)
+    return argspec.args
 
 def get_default_arg_values(fn):
     """Gets the arguments and respective default values of a function.
@@ -313,7 +367,7 @@ def get_default_arg_values(fn):
     Only arguments with default values are included in the output dictionary.
 
     Args:
-        fn (function): The function to inspect.
+        fn (callable): The function to inspect.
 
     Returns:
         dict: A dictionary that maps argument names (str) to their default
@@ -351,164 +405,7 @@ def get_instance_kwargs(kwargs, hparams):
     kwargs_.update(kwargs or {})
     return kwargs_
 
-def add_variable(variable, var_list):
-    """Adds variable to a given list.
-
-    Args:
-        variable: A (list of) variable(s).
-        var_list (list): The list where the :attr:`variable` are added.
-    """
-    if isinstance(variable, (list, tuple)):
-        for var in variable:
-            add_variable(var, var_list)
-    else:
-        if variable not in var_list:
-            var_list.append(variable)
-
-def get_unique_named_variable_scope(base_name):
-    """Returns a variable scope with a unique name.
-
-    Args:
-        base_name (str): The base name to uniquified.
-
-    Returns:
-        An instance of :tf_main:`variable_scope <variable_scope>`.
-    """
-    with tf.variable_scope(None, default_name=base_name) as vs:
-        return vs
-
-
-def maybe_gloabl_mode(mode):
-    """Returns :func:`texar.contex.global_mode` if :attr:`mode` is `None`,
-    otherwise returns :attr:`mode` as-is.
-    """
-    if mode is None:
-        return context.global_mode()
-    else:
-        return mode
-
-def is_train_mode(mode):
-    """Returns a bool Tensor indicating whether the global mode is TRAIN.
-    If :attr:`mode` is `None`, the mode is determined by
-    :func:`texar.contex.global_mode`.
-    """
-    if mode is None:
-        return context.global_mode_train()
-    else:
-        return tf.equal(mode, tf.estimator.ModeKeys.TRAIN)
-
-def is_eval_mode(mode):
-    """Returns a bool Tensor indicating whether the global mode is EVAL.
-    If :attr:`mode` is `None`, the mode is determined by
-    :func:`texar.contex.global_mode`.
-    """
-    if mode is None:
-        return context.global_mode_eval()
-    else:
-        return tf.equal(mode, tf.estimator.ModeKeys.EVAL)
-
-def is_predict_mode(mode):
-    """Returns a bool Tensor indicating whether the global mode is PREDICT.
-    If :attr:`mode` is `None`, the mode is determined by
-    :func:`texar.contex.global_mode`.
-    """
-    if mode is None:
-        return context.global_mode_predict()
-    else:
-        return tf.equal(mode, tf.estimator.ModeKeys.PREDICT)
-
-def is_train_mode_py(mode, default=True):
-    """Returns a python boolean indicating whether the mode is TRAIN.
-
-    Args:
-        mode: A string taking value in
-            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
-            Can be `None`.
-        default (bool): The return value when :attr:`mode` is `None`. Default
-            is `True`.
-
-    Returns:
-        A python boolean.
-    """
-    if mode is None:
-        return default
-    if mode not in context.valid_modes():
-        raise ValueError('Unknown mode: {}'.format(mode))
-    return mode == tf.estimator.ModeKeys.TRAIN
-
-def is_eval_mode_py(mode, default=False):
-    """Returns a python boolean indicating whether the mode is EVAL.
-
-    Args:
-        mode: A string taking value in
-            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
-            Can be `None`.
-        default (bool): The return value when :attr:`mode` is `None`. Default
-            is `False`.
-
-    Returns:
-        A python boolean.
-    """
-    if mode is None:
-        return default
-    if mode not in context.valid_modes():
-        raise ValueError('Unknown mode: {}'.format(mode))
-    return mode == tf.estimator.ModeKeys.EVAL
-
-def is_predict_mode_py(mode, default=False):
-    """Returns a python boolean indicating whether the mode is PREDICT.
-
-    Args:
-        mode: A string taking value in
-            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
-            Can be `None`.
-        default (bool): The return value when :attr:`mode` is `None`. Default
-            is `False`.
-
-    Returns:
-        A python boolean.
-    """
-    if mode is None:
-        return default
-    if mode not in context.valid_modes():
-        raise ValueError('Unknown mode: {}'.format(mode))
-    return mode == tf.estimator.ModeKeys.PREDICT
-
-def switch_dropout(dropout_keep_prob, mode=None):
-    """Turns off dropout when not in training mode.
-
-    Args:
-        dropout_keep_prob: Dropout keep probability in training mode
-        mode (optional): A Tensor taking values of
-            :tf_main:`tf.estimator.ModeKeys <estimator/ModeKeys>`.
-            Dropout is activated if :attr:`mode` is `TRAIN`.
-            If `None`, the mode is inferred from
-            :func:`texar.context.global_mode`.
-
-    Returns:
-        A unit Tensor that equals the dropout keep probability in `TRAIN` mode,
-        and `1.` in other modes.
-    """
-    return 1. - (1. - dropout_keep_prob) * tf.to_float(is_train_mode(mode))
-
-
-def default_string(str_, default_str):
-    """Returns :attr:`str_` if it is not `None` or empty, otherwise returns
-    :attr:`default_str`.
-
-    Args:
-        str_: A string.
-        default_str: A string.
-
-    Returns:
-        Either :attr:`str_` or :attr:`default_str`.
-    """
-    if str_ is not None and str_ != "":
-        return str_
-    else:
-        return default_str
-
-def patch_dict(tgt_dict, src_dict):
+def dict_patch(tgt_dict, src_dict):
     """Recursively patch :attr:`tgt_dict` by adding items from :attr:`src_dict`
     that do not exist in :attr:`tgt_dict`.
 
@@ -520,17 +417,39 @@ def patch_dict(tgt_dict, src_dict):
         src_dict (dict): Source dictionary.
 
     Return:
-        dict: A patched dictionary.
+        dict: The new :attr:`tgt_dict` that is patched.
     """
-    patched_dict = copy.deepcopy(tgt_dict)
-    for key, value in src_dict.items():
-        if key not in patched_dict:
-            patched_dict[key] = copy.deepcopy(value)
-        elif isinstance(value, dict) and isinstance(patched_dict[key], dict):
-            patched_dict[key] = patch_dict(patched_dict[key], value)
-    return patched_dict
+    if src_dict is None:
+        return tgt_dict
 
-def fetch_subdict(src_dict, tgt_dict_or_keys):
+    for key, value in src_dict.items():
+        if key not in tgt_dict:
+            tgt_dict[key] = copy.deepcopy(value)
+        elif isinstance(value, dict) and isinstance(tgt_dict[key], dict):
+            tgt_dict[key] = dict_patch(tgt_dict[key], value)
+    return tgt_dict
+
+def dict_lookup(dict_, keys, default=None):
+    """Looks up :attr:`keys` in the dict, outputs the corresponding values.
+
+    The :attr:`default` is used for keys not present in the dict.
+
+    Args:
+        dict_ (dict): A dictionary for lookup.
+        keys: A numpy array or a (possibly nested) list of keys.
+        default (optional): Value to be returned when a key is not in
+            :attr:`dict_`. Error is raised if :attr:`default` is not given and
+            key is not in the dict.
+
+    Returns:
+        A numpy array of values with the same structure as :attr:`keys`.
+
+    Raises:
+        TypeError: If key is not in :attr:`dict_` and :attr:`default` is `None`.
+    """
+    return np.vectorize(lambda x: dict_.get(x, default))(keys)
+
+def dict_fetch(src_dict, tgt_dict_or_keys):
     """Fetches a sub dict of :attr:`src_dict` with the keys in
     :attr:`tgt_dict_or_keys`.
 
@@ -558,6 +477,69 @@ def fetch_subdict(src_dict, tgt_dict_or_keys):
 
     return {k: src_dict[k] for k in keys if k in src_dict}
 
+def dict_pop(dict_, pop_keys, default=None):
+    """Removes keys from a dict and returns their values.
+
+    Args:
+        dict_ (dict): A dictionary from which items are removed.
+        pop_keys: A key or a list of keys to remove and return respective
+            values or :attr:`default`.
+        default (optional): Value to be returned when a key is not in
+            :attr:`dict_`. The default value is `None`.
+
+    Returns:
+        A `dict` of the items removed from :attr:`dict_`.
+    """
+    if not isinstance(pop_keys, (list, tuple)):
+        pop_keys = [pop_keys]
+    ret_dict = {key: dict_.pop(key, default) for key in pop_keys}
+    return ret_dict
+
+def flatten_dict(dict_, parent_key="", sep="."):
+    """Flattens a nested dictionary. Namedtuples within the dictionary are
+    converted to dicts.
+
+    Adapted from:
+    https://github.com/google/seq2seq/blob/master/seq2seq/models/model_base.py
+
+    Args:
+        dict_ (dict): The dictionary to flatten.
+        parent_key (str): A prefix to prepend to each key.
+        sep (str): Separator that intervenes between parent and child keys.
+            E.g., if :attr:`sep``='.'`, then { "a": { "b": 3 } } is converted
+            into { "a.b": 3 }.
+
+    Returns:
+        A new flattened `dict`.
+    """
+    items = []
+    for key, value in dict_.items():
+        key_ = parent_key + sep + key if parent_key else key
+        if isinstance(value, collections.MutableMapping):
+            items.extend(flatten_dict(value, key_, sep=sep).items())
+        elif isinstance(value, tuple) and hasattr(value, "_asdict"):
+            dict_items = collections.OrderedDict(zip(value._fields, value))
+            items.extend(flatten_dict(dict_items, key_, sep=sep).items())
+        else:
+            items.append((key_, value))
+    return dict(items)
+
+def default_str(str_, default_str):
+    """Returns :attr:`str_` if it is not `None` or empty, otherwise returns
+    :attr:`default_str`.
+
+    Args:
+        str_: A string.
+        default_str: A string.
+
+    Returns:
+        Either :attr:`str_` or :attr:`default_str`.
+    """
+    if str_ is not None and str_ != "":
+        return str_
+    else:
+        return default_str
+
 def uniquify_str(str_, str_set):
     """Uniquifies :attr:`str_` if :attr:`str_` is included in :attr:`str_set`.
 
@@ -583,39 +565,247 @@ def uniquify_str(str_, str_set):
                 return unique_str
     raise ValueError("Fails to uniquify string: " + str_)
 
-def soft_sequence_embedding(embedding, soft_sequence):
-    """Mixes sequences of soft vectors with a embedding tensor.
+def strip_token(str_, token, compat=True):
+    """Returns a copy of the strings with leading and trailing tokens
+    removed.
+
+    Assumes tokens in the strings are separated with the space character.
 
     Args:
-        embedding: A Tensor of shape `[num_classes, emb_dim]` containing
-            the embedding vectors.
-        soft_sequence: A Tensor of shape `[batch_size, max_time, num_classes]`
-            containing the weights (probabilities) of embedding vectors.
+        str_: A `str`, or an `n`-D numpy array or (possibly nested)
+            list of `str`.
+        token (str): The token to strip, e.g., the '<PAD>' token defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.PAD
+        compat (bool): Whether to convert tokens into `unicode` (Python 2)
+            or `str` (Python 3).
 
     Returns:
-        A Tensor of shape `[batch_size, max_time, emb_dim]`
-
-    Example::
-
-        decoder_outputs, ... = decoder(...)
-        soft_seq_emb = soft_sequence_embedding(
-            tf.nn.softmax(decoder_outputs.logits), embedding)
+        The stripped strings of the same structure/shape as :attr:`str_`.
     """
-    return tf.tensordot(soft_sequence, embedding, [2, 0])
+    def _recur_strip(s):
+        if is_str(s):
+            return ' '.join(s.strip().split()).\
+                replace(' '+token, '').replace(token+' ', '')
+        else:
+            s_ = [_recur_strip(si) for si in s]
+            return _maybe_list_to_array(s_, s)
 
-def straight_through(fw_tensor, bw_tensor):
-    """Use a tensor in forward pass while backpropagating gradient to another.
+    if compat:
+        str_ = compat_as_text(str_)
+
+    strp_str = _recur_strip(str_)
+
+    #if isinstance(str_, (list, tuple)):
+    #    return type(str_)(strp_str)
+    #else:
+    #    return np.asarray(strp_str)
+    return strp_str
+
+def strip_eos(str_, eos_token='<EOS>', compat=True):
+    """Remove the EOS token and all subsequent tokens.
+
+    Assumes tokens in the strings are separated with the space character.
 
     Args:
-        fw_tensor: A tensor to be used in the forward pass.
-        bw_tensor: A tensor to which gradient is backpropagated. Must have the
-            same shape and type with :attr:`fw_tensor`.
+        str_: A `str`, or an `n`-D numpy array or (possibly nested)
+            list of `str`.
+        eos_token (str): The EOS token. Default is '<EOS>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`EOS`
+        compat (bool): Whether to convert tokens into `unicode` (Python 2)
+            or `str` (Python 3).
 
     Returns:
-        A tensor of the same shape and value with :attr:`fw_tensor` but will
-            direct gradient to bw_tensor.
+        Strings of the same structure/shape as :attr:`str_`.
     """
-    return tf.stop_gradient(fw_tensor) + bw_tensor - tf.stop_gradient(bw_tensor)
+    def _recur_strip(s):
+        if is_str(s):
+            s_tokens = s.split()
+            if eos_token in s_tokens:
+                return ' '.join(s_tokens[:s_tokens.index(eos_token)])
+            else:
+                return s
+        else:
+            s_ = [_recur_strip(si) for si in s]
+            return _maybe_list_to_array(s_, s)
+
+    if compat:
+        str_ = compat_as_text(str_)
+
+    strp_str = _recur_strip(str_)
+
+    #if isinstance(str_, (list, tuple)):
+    #    return type(str_)(strp_str)
+    #else:
+    #    return np.asarray(strp_str)
+    return strp_str
+_strip_eos_ = strip_eos
+
+def strip_bos(str_, bos_token='<BOS>', compat=True):
+    """Remove the leading BOS token.
+
+    Assumes tokens in the strings are separated with the space character.
+
+    Args:
+        str_: A `str`, or an `n`-D numpy array or (possibly nested)
+            list of `str`.
+        bos_token (str): The BOS token. Default is '<BOS>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`BOS`
+        compat (bool): Whether to convert tokens into `unicode` (Python 2)
+            or `str` (Python 3).
+
+    Returns:
+        Strings of the same structure/shape as :attr:`str_`.
+    """
+    def _recur_strip(s):
+        if is_str(s):
+            return ' '.join(s.strip().split()).replace(bos_token+' ', '')
+        else:
+            s_ = [_recur_strip(si) for si in s]
+            return _maybe_list_to_array(s_, s)
+
+    if compat:
+        str_ = compat_as_text(str_)
+
+    strp_str = _recur_strip(str_)
+
+    #if isinstance(str_, (list, tuple)):
+    #    return type(str_)(strp_str)
+    #else:
+    #    return np.asarray(strp_str)
+    return strp_str
+_strip_bos_ = strip_bos
+
+def strip_special_tokens(str_, strip_pad='<PAD>', strip_bos='<BOS>',
+                         strip_eos='<EOS>', compat=True):
+    """Removes special tokens of strings, including:
+
+        - Removes EOS and all subsequent tokens
+        - Removes leading and and trailing PAD tokens
+        - Removes leading BOS tokens
+
+    Args:
+        str_: A `str`, or an `n`-D numpy array or (possibly nested)
+            list of `str`.
+        strip_pad (str): The PAD token to strip from the strings (i.e., remove
+            the leading and trailing PAD tokens of the strings). Default
+            is '<PAD>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`PAD`.
+            Set to `None` or `False` to disable the stripping.
+        strip_bos (str): The BOS token to strip from the strings (i.e., remove
+            the leading BOS tokens of the strings).
+            Default is '<BOS>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`BOS`.
+            Set to `None` or `False` to disable the stripping.
+        strip_eos (str): The EOS token to strip from the strings (i.e., remove
+            the EOS tokens and all subsequent tokens of the strings).
+            Default is '<EOS>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`EOS`.
+            Set to `None` or `False` to disable the stripping.
+        compat (bool): Whether to convert tokens into `unicode` (Python 2)
+            or `str` (Python 3).
+
+    Returns:
+        Strings of the same shape of :attr:`str_` with special tokens stripped.
+    """
+    if compat:
+        str_ = compat_as_text(str_)
+
+    if strip_eos is not None and strip_eos is not False:
+        str_ = _strip_eos_(str_, strip_eos, compat=False)
+
+    if strip_pad is not None and strip_pad is not False:
+        str_ = strip_token(str_, strip_pad, compat=False)
+
+    if strip_bos is not None and strip_bos is not False:
+        str_ = _strip_bos_(str_, strip_bos, compat=False)
+
+    return str_
+
+def str_join(tokens, sep=' ', compat=True):
+    """Concats :attr:`tokens` along the last dimension with intervening
+    occurrences of :attr:`sep`.
+
+    Args:
+        tokens: An `n`-D numpy array or (possibly nested) list of `str`.
+        sep (str): The string intervening between the tokens.
+        compat (bool): Whether to convert tokens into `unicode` (Python 2)
+            or `str` (Python 3).
+
+    Returns:
+        An `(n-1)`-D numpy array (or list) of `str`.
+    """
+    def _recur_join(s):
+        if len(s) == 0:
+            return ''
+        elif is_str(s[0]):
+            return sep.join(s)
+        else:
+            s_ = [_recur_join(si) for si in s]
+            return _maybe_list_to_array(s_, s)
+
+    if compat:
+        tokens = compat_as_text(tokens)
+
+    str_ = _recur_join(tokens)
+
+    #if isinstance(tokens, (list, tuple)):
+    #    return type(tokens)(str_)
+    #else:
+    #    return np.asarray(str_)
+    return str_
+
+def map_ids_to_strs(ids, vocab, join=True, strip_pad='<PAD>',
+                    strip_bos='<BOS>', strip_eos='<EOS>', compat=True):
+    """Transforms indexes to strings by id-token mapping, token concat, token
+    stripping, etc.
+
+    Args:
+        ids: An n-D numpy array or (possibly nested) list of `int` indexes.
+        vocab: An instance of :class:`~texar.data.Vocab`.
+        join (bool): Whether concat along the last dimension of :attr:`ids`
+            the tokens into a string with a space character.
+        strip_pad (str): The PAD token to strip from the strings (i.e., remove
+            the leading and trailing PAD tokens of the strings). Default
+            is '<PAD>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`PAD`.
+            Set to `None` or `False` to disable the stripping.
+        strip_bos (str): The BOS token to strip from the strings (i.e., remove
+            the leading BOS tokens of the strings).
+            Default is '<BOS>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`BOS`.
+            Set to `None` or `False` to disable the stripping.
+        strip_eos (str): The EOS token to strip from the strings (i.e., remove
+            the EOS tokens and all subsequent tokens of the strings).
+            Default is '<EOS>' as defined in
+            :class:`~texar.data.vocabulary.SpecialTokens`.`EOS`.
+            Set to `None` or `False` to disable the stripping.
+    Returns:
+        If :attr:`join`=True, returns a (n-1)-D numpy array (or list) of
+        concatenated strings. If :attr:`join`=False, returns an n-D numpy
+        array (or list) of str tokens.
+    """
+    tokens = vocab.map_ids_to_tokens_py(ids)
+
+    if compat:
+        tokens = compat_as_text(tokens)
+
+    str_ = str_join(tokens, compat=False)
+
+    str_ = strip_special_tokens(
+        str_, strip_pad=strip_pad, strip_bos=strip_bos, strip_eos=strip_eos,
+        compat=False)
+
+    def _recur_split(s):
+        if is_str(s):
+            return _maybe_list_to_array(s.split(), str_)
+        else:
+            s_ = [_recur_split(si) for si in s]
+            return _maybe_list_to_array(s_, s)
+
+    if join:
+        return str_
+    else:
+        return _recur_split(str_)
 
 def ceildiv(a, b):
     """Divides with ceil.
@@ -631,19 +821,16 @@ def ceildiv(a, b):
     """
     return -(-a // b)
 
-#TODO(haoran):is it appropriate to put shape_list function here?
-def shape_list(x):
-    """Return list of dims, statically where possible."""
-    x = tf.convert_to_tensor(x)
-    # If unknown rank, return dynamic shape
-    if x.get_shape().dims is None:
-        return tf.shape(x)
-    static = x.get_shape().as_list()
-    shape = tf.shape(x)
-    ret = []
-    for i in range(len(static)):
-        dim = static[i]
-        if dim is None:
-            dim = shape[i]
-        ret.append(dim)
-    return ret
+def straight_through(fw_tensor, bw_tensor):
+    """Use a tensor in forward pass while backpropagating gradient to another.
+
+    Args:
+        fw_tensor: A tensor to be used in the forward pass.
+        bw_tensor: A tensor to which gradient is backpropagated. Must have the
+            same shape and type with :attr:`fw_tensor`.
+
+    Returns:
+        A tensor of the same shape and value with :attr:`fw_tensor` but will
+            direct gradient to bw_tensor.
+    """
+    return tf.stop_gradient(fw_tensor) + bw_tensor - tf.stop_gradient(bw_tensor)

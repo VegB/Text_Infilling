@@ -7,6 +7,7 @@ from __future__ import print_function
 from __future__ import division
 
 import copy
+import numpy as np
 
 import tensorflow as tf
 import tensorflow.contrib.rnn as rnn
@@ -14,7 +15,8 @@ from texar import context
 from texar.hyperparams import HParams
 from texar.utils import utils
 from texar.utils.dtypes import is_str
-import numpy as np
+from texar.utils.variables import add_variable
+from texar.utils.mode import is_train_mode, switch_dropout
 
 # pylint: disable=not-context-manager, redefined-variable-type, invalid-name
 # pylint: disable=too-many-branches, too-many-arguments, too-many-lines
@@ -198,11 +200,11 @@ def get_rnn_cell(hparams=None, mode=None):
                 vr_kwargs = {"variational_recurrent": True,
                              "input_size": d_hp["input_size"][layer_i],
                              "dtype": tf.float32}
-            input_keep_prob = utils.switch_dropout(d_hp["input_keep_prob"],
+            input_keep_prob = switch_dropout(d_hp["input_keep_prob"],
                                                    mode)
-            output_keep_prob = utils.switch_dropout(d_hp["output_keep_prob"],
+            output_keep_prob = switch_dropout(d_hp["output_keep_prob"],
                                                     mode)
-            state_keep_prob = utils.switch_dropout(d_hp["state_keep_prob"],
+            state_keep_prob = switch_dropout(d_hp["state_keep_prob"],
                                                    mode)
             cell = rnn.DropoutWrapper(
                 cell=cell,
@@ -337,8 +339,15 @@ def get_initializer(hparams=None):
         initializer = hparams["type"]
     return initializer
 
-def get_activation_fn(fn_name="identity"):
-    """Returns an activation function based on its name or full path.
+def get_activation_fn(fn_name="identity", kwargs=None):
+    """Returns an activation function `fn` with the signature
+    `output = fn(input)`.
+
+    If the function specified by :attr:`fn_name` has more than one arguments
+    without default values, then all these arguments except the input feature
+    argument must be specified in :attr:`kwargs`. Arguments with default values
+    can also be specified in :attr:`kwargs` to take values other than the
+    defaults.
 
     Args:
         fn_name (str or callable): The name or full path to an activation
@@ -354,6 +363,9 @@ def get_activation_fn(fn_name="identity"):
 
             If a callable is provided, then it is returned directly.
 
+        kwargs (optional): A `dict` or instance of :class:`~texar.HParams`
+            containing the keyword arguments of the activation function.
+
     Returns:
         The activation function. `None` if :attr:`fn_name` is `None`.
     """
@@ -361,7 +373,17 @@ def get_activation_fn(fn_name="identity"):
         return None
 
     fn_modules = ['tensorflow', 'tensorflow.nn', 'texar.custom']
-    activation_fn = utils.get_function(fn_name, fn_modules)
+    activation_fn_ = utils.get_function(fn_name, fn_modules)
+    activation_fn = activation_fn_
+
+    # Make a partial function if necessary
+    if kwargs is not None:
+        if isinstance(kwargs, HParams):
+            kwargs = kwargs.todict()
+        def _partial_fn(features):
+            return activation_fn_(features, **kwargs)
+        activation_fn = _partial_fn
+
     return activation_fn
 
 
@@ -709,12 +731,12 @@ class MergeLayer(tf.layers.Layer):
             pass
         for layer in self._layers:
             if self.trainable:
-                utils.add_variable(
+                add_variable(
                     layer._trainable_weights, self._trainable_weights)
             else:
-                utils.add_variable(
+                add_variable(
                     layer._trainable_weights, self._non_trainable_weights)
-            utils.add_variable(
+            add_variable(
                 layer._non_trainable_weights, self._non_trainable_weights)
 
     def call(self, inputs):
@@ -822,18 +844,18 @@ class SequentialLayer(tf.layers.Layer):
         """
         for layer in self._layers:
             if self.trainable:
-                utils.add_variable(
+                add_variable(
                     layer._trainable_weights, self._trainable_weights)
             else:
-                utils.add_variable(
+                add_variable(
                     layer._trainable_weights, self._non_trainable_weights)
-            utils.add_variable(
+            add_variable(
                 layer._non_trainable_weights, self._non_trainable_weights)
 
     def call(self, inputs, mode=None): # pylint: disable=arguments-differ
         """TODO
         """
-        training = utils.is_train_mode(mode)
+        training = is_train_mode(mode)
 
         outputs = inputs
         for layer in self._layers:
