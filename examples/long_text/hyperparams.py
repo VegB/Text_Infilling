@@ -237,6 +237,7 @@ def load_hyperparams():
         'best_train_loss': 1e100,
         'best_eval_bleu': 0,
         'steps_not_improved': 0,
+        'epochs_not_improved': 0,
         'lr_decay': 0.1,
         'decay_time': 0
     }

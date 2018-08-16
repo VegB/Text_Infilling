@@ -143,24 +143,6 @@ def _main(_):
                           (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
                     print(rst)
                 loss_lists.append(loss)
-
-                # eval_bleus = _test_epoch(session, cur_epoch, test_mode='eval')
-                # for eval_rst in eval_bleus:
-                #     if eval_rst['test_present_rate'] == args.present_rate:
-                #         eval_bleu = eval_rst['test_bleu']
-                #         break
-                # if eval_bleu > opt_vars['best_eval_bleu']:
-                #     opt_vars['best_eval_bleu'] = eval_bleu
-                if loss < opt_vars['best_train_loss']:
-                    opt_vars['best_train_loss'] = loss
-                    opt_vars['steps_not_improved'] = 0
-                else:
-                    opt_vars['steps_not_improved'] += 1
-
-                if opt_vars['steps_not_improved'] >= 300 and opt_vars['decay_time'] <= 3:
-                    opt_vars['steps_not_improved'] = 0
-                    opt_vars['learning_rate'] *= opt_vars['lr_decay']
-                    opt_vars['decay_time'] += 1
             except tf.errors.OutOfRangeError:
                 break
         return loss_lists[::50]
@@ -294,6 +276,24 @@ def _main(_):
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 losses = _train_epochs(sess, epoch)
+
+                # adjust learning rate
+                eval_bleus = _test_epoch(sess, epoch, test_mode='eval')
+                for eval_rst in eval_bleus:
+                    if eval_rst['test_present_rate'] == args.present_rate:
+                        eval_bleu = eval_rst['test_bleu']
+                        break
+                if eval_bleu > opt_vars['best_eval_bleu']:
+                    opt_vars['best_eval_bleu'] = eval_bleu
+                    opt_vars['epochs_not_improved'] = 0
+                else:
+                    opt_vars['epochs_not_improved'] += 1
+                if opt_vars['epochs_not_improved'] >= 15 and opt_vars['decay_time'] <= 3:
+                    opt_vars['epochs_not_improved'] = 0
+                    opt_vars['learning_rate'] *= opt_vars['lr_decay']
+                    opt_vars['decay_time'] += 1
+                    
+                # bleu on test set
                 if epoch % 5 == 0:
                     loss_list.extend(losses)
                     bleu_scores = _test_epoch(sess, epoch)
