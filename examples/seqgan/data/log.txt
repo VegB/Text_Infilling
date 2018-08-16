@@ -1,1 +1,0 @@
-epoch 0: nll_test = 3.094783
