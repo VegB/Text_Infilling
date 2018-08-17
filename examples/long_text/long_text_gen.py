@@ -95,11 +95,6 @@ def _main(_):
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
-    # fstep = tf.to_float(global_step)
-    # learning_rate = opt_hparams['lr_constant'] \
-    #                 * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
-    #                 * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
-    #                 * args.hidden_dim ** -0.5
     learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                        beta1=opt_hparams['Adam_beta1'],
@@ -124,35 +119,53 @@ def _main(_):
                 eos_id=eoa_id)
             test_sets[it]['predictions'].append(preds['sampled_ids'][:, 0])
 
-    def _train_epochs(session, cur_epoch):
+    def _train_epochs(session, cur_epoch, mode='train'):
         iterator.switch_to_train_data(session)
         loss_lists = []
+        cnt = 0
         while True:
             try:
                 fetches = {
                     'template': template_pack,
                     'holes': answer_packs,
-                    'train_op': train_op,
                     'step': global_step,
                     'loss': cetp_loss
                 }
+                if mode is 'train':
+                    fetches['train_op'] = train_op
                 feed = {
                     learning_rate: opt_vars['learning_rate'],
-                    tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN
+                    tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN if mode is 'train'
+                                                else tf.estimator.ModeKeys.EVAL
                 }
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
-                if step % 200 == 1:
+                if step % 200 == 1 and mode is 'train':
                     rst = 'step:%s source:%s loss:%s lr:%f' % \
                           (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
                     print(rst)
                 loss_lists.append(loss)
+                cnt += 1
+                if mode is not 'train' and cnt >= 50:
+                    break
+
+                # adjust learning rate
+                eval_loss = np.average(_train_epochs(sess, epoch, mode='eval'))
+                if eval_loss < opt_vars['best_eval_loss']:
+                    opt_vars['best_eval_loss'] = eval_loss
+                    opt_vars['epochs_not_improved'] = 0
+                else:
+                    opt_vars['epochs_not_improved'] += 1
+                if opt_vars['epochs_not_improved'] >= 50 and opt_vars['decay_time'] <= 3:
+                    opt_vars['epochs_not_improved'] = 0
+                    opt_vars['learning_rate'] *= opt_vars['lr_decay']
+                    opt_vars['decay_time'] += 1
             except tf.errors.OutOfRangeError:
                 break
-        return loss_lists[::50]
+        return loss_lists
 
-    def _test_epoch(cur_sess, cur_epoch, test_mode='test'):
+    def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
@@ -160,9 +173,9 @@ def _main(_):
         test_results = [{'test_present_rate': rate, 'templates_list': [], 'hypothesis_list': []} 
                         for rate in args.test_present_rates]
         targets_list = []
-        if test_mode is 'test':
+        if mode is 'test':
             iterator.switch_to_test_data(cur_sess)
-        elif test_mode is 'train':
+        elif mode is 'train':
             iterator.switch_to_train_data(cur_sess)
         else:
             iterator.switch_to_val_data(cur_sess)
@@ -198,7 +211,7 @@ def _main(_):
                     test_results[it]['templates_list'].extend(templates_list)
                     test_results[it]['hypothesis_list'].extend(hypotheses_list)
                 cnt += 1
-                if test_mode is not 'test' and cnt >= 60:
+                if mode is not 'test' and cnt >= 60:
                     break
             except tf.errors.OutOfRangeError:
                 break
@@ -224,12 +237,12 @@ def _main(_):
             os.remove(outputs_tmp_filename)
             os.remove(template_tmp_filename)
             
-            if args.save_eval_output and test_mode is not 'eval':
+            if args.save_eval_output and mode is not 'eval':
                 print('epoch:{} test_present_rate:{} test_bleu:{} template_bleu:{}'
                       .format(cur_epoch, test_pack['test_present_rate'], test_bleu, template_bleu))
                 result_filename = \
                     args.log_dir + 'epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}'\
-                        .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], test_mode, test_bleu)
+                        .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], mode, test_bleu)
                 with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
                     for tmplt, tgt, hyp in zip(test_pack['templates_list'], targets_list, test_pack['hypothesis_list']):
                         resultfile.write("- template: " + ' '.join(tmplt) + '\n')
@@ -283,31 +296,15 @@ def _main(_):
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 losses = _train_epochs(sess, epoch)
-
-                # adjust learning rate
-                eval_bleus = _test_epoch(sess, epoch, test_mode='eval')
-                for eval_rst in eval_bleus:
-                    if eval_rst['test_present_rate'] == args.present_rate:
-                        eval_bleu = eval_rst['test_bleu']
-                        break
-                if eval_bleu > opt_vars['best_eval_bleu']:
-                    opt_vars['best_eval_bleu'] = eval_bleu
-                    opt_vars['epochs_not_improved'] = 0
-                else:
-                    opt_vars['epochs_not_improved'] += 1
-                if opt_vars['epochs_not_improved'] >= 15 and opt_vars['decay_time'] <= 3:
-                    opt_vars['epochs_not_improved'] = 0
-                    opt_vars['learning_rate'] *= opt_vars['lr_decay']
-                    opt_vars['decay_time'] += 1
+                loss_list.extend(losses[::50])
                     
                 # bleu on test set
                 if epoch % 5 == 0:
-                    loss_list.extend(losses)
                     bleu_scores = _test_epoch(sess, epoch)
                     for scores in bleu_scores:
                         test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    train_bleu_scores = _test_epoch(sess, epoch, test_mode='train')
+                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
