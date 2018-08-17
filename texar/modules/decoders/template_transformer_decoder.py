@@ -185,6 +185,7 @@ class TemplateTransformerDecoder(ModuleBase):
         with tf.variable_scope(self.variable_scope, reuse=True):
             template = template_input_pack['templates']
             template_word_embeds = tf.nn.embedding_lookup(self._embedding, template)
+            batch_size = tf.shape(template)[0]
             template_length = shape_list(template)[1]
             channels = shape_list(template_word_embeds)[2]
             template_pos_embeds = self.position_embedder(template_length, channels,
@@ -192,7 +193,7 @@ class TemplateTransformerDecoder(ModuleBase):
                                                          template_input_pack['offsets'])
             template_inputs = template_word_embeds + template_pos_embeds
 
-            batch_size = tf.shape(template_inputs)[0]
+            # batch_size = tf.shape(template_inputs)[0]
             beam_width = self._hparams.beam_width
             maximum_decode_length = self.hparams.maximum_decode_length
             start_tokens = tf.cast(tf.fill([batch_size], bos_id), dtype=tf.int32)

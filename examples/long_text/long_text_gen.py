@@ -95,6 +95,11 @@ def _main(_):
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
+    # fstep = tf.to_float(global_step)
+    # learning_rate = opt_hparams['lr_constant'] \
+    #                 * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
+    #                 * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
+    #                 * args.hidden_dim ** -0.5
     learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                        beta1=opt_hparams['Adam_beta1'],
@@ -111,13 +116,13 @@ def _main(_):
                                                      idx * 2 + 1,  # segment id starting from 1
                                                      args.max_decode_len + 1)
             preds = decoder.dynamic_decode(
-                template_input_pack=template_pack,
+                template_input_pack=test_pack['template_pack'],
                 encoder_decoder_attention_bias=None,
                 segment_ids=segment_ids,
                 offsets=offsets,
                 bos_id=boa_id,
                 eos_id=eoa_id)
-            test_sets[it]['predictions'].append(preds['sampled_ids'][0])
+            test_sets[it]['predictions'].append(preds['sampled_ids'][:, 0])
 
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
@@ -161,6 +166,7 @@ def _main(_):
             iterator.switch_to_train_data(cur_sess)
         else:
             iterator.switch_to_val_data(cur_sess)
+        cnt = 0
         while True:
             try:
                 fetches = {
@@ -191,23 +197,24 @@ def _main(_):
 
                     test_results[it]['templates_list'].extend(templates_list)
                     test_results[it]['hypothesis_list'].extend(hypotheses_list)
-                if test_mode is not 'test':
+                cnt += 1
+                if test_mode is not 'test' and cnt >= 60:
                     break
             except tf.errors.OutOfRangeError:
                 break
 
         bleu_score = [{'test_present_rate': rate} for rate in args.test_present_rates]
+        refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
+        with codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+            tmpreffile.write('\n'.join([' '.join(tgt) for tgt in targets_list]))
         for it, test_pack in enumerate(test_results):
-            outputs_tmp_filename = args.log_dir + 'my_model_epoch{}.outputs.tmp'.format(cur_epoch)
-            template_tmp_filename = args.log_dir + 'my_model_epoch{}.templates.tmp'.format(cur_epoch)
-            refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
+            outputs_tmp_filename = args.log_dir + 'epoch{}.outputs.tmp'.format(cur_epoch)
+            template_tmp_filename = args.log_dir + 'epoch{}.templates.tmp'.format(cur_epoch)
             with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-                codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile, \
-                codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-                for hyp, tplt, tgt in zip(test_pack['hypothesis_list'], test_pack['templates_list'], targets_list):
+                codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile:
+                for hyp, tplt in zip(test_pack['hypothesis_list'], test_pack['templates_list']):
                     tmpfile.write(' '.join(hyp) + '\n')
                     tmptpltfile.write(' '.join(tplt) + '\n')
-                    tmpreffile.write(' '.join(tgt) + '\n')
             test_bleu = float(100 * bleu_tool.bleu_wrapper(
                 refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
             template_bleu = float(100 * bleu_tool.bleu_wrapper(
@@ -216,19 +223,19 @@ def _main(_):
             bleu_score[it]['template_bleu'] = template_bleu
             os.remove(outputs_tmp_filename)
             os.remove(template_tmp_filename)
-            os.remove(refer_tmp_filename)
             
             if args.save_eval_output and test_mode is not 'eval':
                 print('epoch:{} test_present_rate:{} test_bleu:{} template_bleu:{}'
                       .format(cur_epoch, test_pack['test_present_rate'], test_bleu, template_bleu))
                 result_filename = \
-                    args.log_dir + 'my_model_epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}'\
+                    args.log_dir + 'epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}'\
                         .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], test_mode, test_bleu)
                 with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
                     for tmplt, tgt, hyp in zip(test_pack['templates_list'], targets_list, test_pack['hypothesis_list']):
                         resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                         resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                         resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
+            os.remove(refer_tmp_filename)
         return bleu_score
 
     def _draw_log(epoch, loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
@@ -310,3 +317,4 @@ def _main(_):
 
 if __name__ == '__main__':
     tf.app.run(main=_main)
+
