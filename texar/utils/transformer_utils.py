@@ -618,11 +618,6 @@ def _split_template(template, mask_start_positions, mask_end_positions):
     end_positions = mask_start_positions.tolist() + [len(template)]
     for s, e in zip(start_positions, end_positions):
         rst.append(template[s: e])
-    print("template: ", template)
-    print("start_positions: ", start_positions)
-    print("end_positions: ", end_positions)
-    print("splitted result:", rst)
-    print("-----------------------------------")
     return rst
 
 
