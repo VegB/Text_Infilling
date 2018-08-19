@@ -226,8 +226,8 @@ def _main(_):
             os.remove(template_tmp_filename)
             
             if args.save_eval_output and mode is not 'eval':
-                print('epoch:{} test_present_rate:{} test_bleu:{} template_bleu:{}'
-                      .format(cur_epoch, test_pack['test_present_rate'], test_bleu, template_bleu))
+                print('epoch:{} test_present_rate:{} {}_bleu:{} template_bleu:{}'
+                      .format(cur_epoch, test_pack['test_present_rate'], mode, test_bleu, template_bleu))
                 result_filename = \
                     args.log_dir + 'epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}'\
                         .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], mode, test_bleu)
@@ -245,6 +245,7 @@ def _main(_):
         plt.ylabel('training loss till epoch {}'.format(epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
         plt.savefig(args.log_dir + '/img/train_loss_curve.png')
+        plt.close('all')
 
     def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
         plt.figure(figsize=(14, 10))
@@ -268,7 +269,6 @@ def _main(_):
         plt.xlabel('every epoch, train present rate=%f' % args.present_rate)
         plt.legend(legends, loc='upper left')
         plt.savefig(args.log_dir + '/img/train_bleu.png')
-
         plt.close('all')
 
     config = tf.ConfigProto()

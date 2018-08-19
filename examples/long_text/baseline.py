@@ -29,6 +29,7 @@ import texar as tx
 from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
 from texar.utils import utils
+from texar.utils.shapes import shape_list
 
 import baseline_hyperparams
 import bleu_tool
@@ -54,7 +55,6 @@ def _main(_):
     mask_id = train_data.vocab.token_to_id_map_py['<m>']
     boa_id = train_data.vocab.token_to_id_map_py['<BOA>']
     eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
-    bos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.BOS]
     eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
     pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
@@ -73,8 +73,8 @@ def _main(_):
 
     template = template_pack['templates']
     template_word_embeds = embedder(template)
-    template_length = utils.shape_list(template)[1]
-    channels = utils.shape_list(template_word_embeds)[2]
+    template_length = shape_list(template)[1]
+    channels = shape_list(template_word_embeds)[2]
     template_pos_embeds = position_embedder(template_length, channels,
                                             template_pack['segment_ids'],
                                             template_pack['offsets'])
@@ -166,13 +166,19 @@ def _main(_):
                 break
         return loss_lists[::50]
 
-    def _test_epoch(cur_sess, cur_epoch):
+    def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
-        iterator.switch_to_test_data(cur_sess)
+        if mode is 'test':
+            iterator.switch_to_test_data(cur_sess)
+        elif mode is 'train':
+            iterator.switch_to_train_data(cur_sess)
+        else:
+            iterator.switch_to_val_data(cur_sess)
         templates_list, targets_list, hypothesis_list = [], [], []
+        cnt = 0
         while True:
             try:
                 fetches = {
@@ -185,11 +191,10 @@ def _main(_):
                 rtns = cur_sess.run(fetches, feed_dict=feed)
                 real_templates_, templates_, targets_, predictions_ = \
                     rtns['template']['templates'], rtns['template']['text_ids'], \
-                                                    rtns['data_batch']['text_ids'],\
-                                                    rtns['predictions']
+                    rtns['data_batch']['text_ids'], rtns['predictions']
 
                 filled_templates = \
-                    tx.utils.fill_template(templates_, predictions_, mask_id, eoa_id, pad_id, eos_id)
+                    tx.utils.fill_template(rtns['template'], predictions_, eoa_id, pad_id, eos_id)
 
                 templates, targets, generateds = _id2word_map(real_templates_.tolist()), \
                                                  _id2word_map(targets_), \
@@ -202,12 +207,16 @@ def _main(_):
                     templates_list.append(template)
                     targets_list.append(target)
                     hypothesis_list.append(got)
+                    
+                cnt += 1
+                if mode is not 'test' and cnt >= 60:
+                    break
             except tf.errors.OutOfRangeError:
                 break
 
-        outputs_tmp_filename = args.log_dir + 'my_model_epoch{}.beam{}alpha{}.outputs.tmp'.\
+        outputs_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.outputs.tmp'.\
                 format(cur_epoch, args.beam_width, args.alpha)
-        template_tmp_filename = args.log_dir + 'my_model_epoch{}.beam{}alpha{}.templates.tmp'.\
+        template_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.templates.tmp'.\
                 format(cur_epoch, args.beam_width, args.alpha)
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
         with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
@@ -221,37 +230,54 @@ def _main(_):
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
         template_bleu = float(100 * bleu_tool.bleu_wrapper(\
             refer_tmp_filename, template_tmp_filename, case_sensitive=True))
-        print('epoch:{} eval_bleu:{} template_bleu:{}'.format(cur_epoch, eval_bleu, template_bleu))
+        print('epoch:{} {}_bleu:{} template_bleu:{}'.format(cur_epoch, mode, eval_bleu, template_bleu))
         os.remove(outputs_tmp_filename)
         os.remove(template_tmp_filename)
         os.remove(refer_tmp_filename)
         if args.save_eval_output:
             result_filename = \
-                args.log_dir + 'my_model_epoch{}.beam{}alpha{}.results.bleu{:.3f}'\
-                    .format(cur_epoch, args.beam_width, args.alpha, eval_bleu)
+                args.log_dir + 'epoch{}.beam{}alpha{}.{}.results.bleu{:.3f}'\
+                    .format(cur_epoch, args.beam_width, args.alpha, mode, eval_bleu)
             with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
                 for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
                     resultfile.write("- template: " + ' '.join(tmplt) + '\n')
                     resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                     resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
-        return eval_bleu, template_bleu
+        return {
+            'eval': eval_bleu,
+            'template': template_bleu
+        }
 
-    def _draw_log(epoch, loss_list, test_bleu, tplt_bleu):
+    def _draw_train_loss(epoch, loss_list):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
         plt.ylabel('training loss till epoch {}'.format(epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
         plt.savefig(args.log_dir + '/img/train_loss_curve.png')
+        plt.close('all')
 
+    def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
         plt.figure(figsize=(14, 10))
+        legends = []
         plt.plot(test_bleu, '--', linewidth=1, label='test bleu')
         plt.plot(tplt_bleu, '--', linewidth=1, label='template bleu')
+        legends.extend(['test bleu', 'template bleu'])
         plt.ylabel('bleu till epoch {}'.format(epoch))
-        plt.xlabel('every epoch, present rate=%f' % args.present_rate)
-        plt.legend(['test bleu', 'template bleu'], loc='upper left')
+        plt.xlabel('every epoch')
+        plt.legend(legends, loc='upper left')
         plt.savefig(args.log_dir + '/img/bleu.png')
+
+        plt.figure(figsize=(14, 10))
+        legends = []
+        plt.plot(train_bleu, '--', linewidth=1, label='train bleu')
+        plt.plot(train_tplt_bleu, '--', linewidth=1, label='train template bleu')
+        legends.extend(['train bleu', 'train template bleu'])
+        plt.ylabel('bleu till epoch {}'.format(epoch))
+        plt.xlabel('every epoch')
+        plt.legend(legends, loc='upper left')
+        plt.savefig(args.log_dir + '/img/train_bleu.png')
         plt.close('all')
-    
+        
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
 
@@ -260,20 +286,23 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        lowest_loss, highest_bleu, best_epoch = -1, -1, -1
-        loss_list, test_bleu, tplt_bleu = [], [], []
+        loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
+                # bleu on test set and train set
+                if epoch % 5 == 0:
+                    bleu_scores = _test_epoch(sess, epoch)
+                    test_bleu.append(bleu_scores['eval'])
+                    tplt_bleu.append(bleu_scores['template'])
+                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    train_bleu.append(train_bleu_scores['eval'])
+                    train_tplt_bleu.append(train_bleu_scores['template'])
+                    _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
+
+                # train
                 losses = _train_epochs(sess, epoch)
-                test_score, tplt_score = _test_epoch(sess, epoch)
                 loss_list.extend(losses)
-                test_bleu.append(test_score)
-                tplt_bleu.append(tplt_score)
-                _draw_log(epoch, loss_list, test_bleu, tplt_bleu)
-                if highest_bleu < 0 or test_score > highest_bleu:
-                    print('the %d epoch, highest bleu %f' % (epoch, test_score))
-                    eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                    highest_bleu = test_score
+                _draw_train_loss(epoch, loss_list)
                 sys.stdout.flush()
 
 
