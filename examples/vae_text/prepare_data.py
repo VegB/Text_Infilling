@@ -48,7 +48,7 @@ def prepare_data(data_name):
         if not tf.gfile.Exists(train_path):
             url = 'https://drive.google.com/file/d/'\
                   '13IsiffVjcQ-wrrbBGMwiG3sYf-DFxtXH/view?usp=sharing'
-            tx.data.maybe_download(url, path='./', filenames='yahoo.zip',
+            tx.data.maybe_download(url, path='./', filenames='nmt.zip',
                                    extract=True)
     else:
         raise ValueError('Unknown data: {}'.format(data_name))

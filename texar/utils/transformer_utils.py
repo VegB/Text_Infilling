@@ -437,6 +437,8 @@ def generate_random_mask(inputs, lengths, present_rate,
             # TODO(wanrong): bound check
             def _get_split_pos(masked_num):
                 # split masked_num into partition_num segments
+                if masked_num <= 1:
+                    return [1] * (partition_num - 1)
                 split_positions = np.random.choice(range(1, masked_num), 
                                                    partition_num - 1, 
                                                    replace=(masked_num < partition_num))
@@ -444,7 +446,7 @@ def generate_random_mask(inputs, lengths, present_rate,
                                          partition_num, masked_num, axis=0))
 
             batch_size = inputs.shape[0]
-            masked_nums = (lengths * (1 - present_rate)).astype(np.int64)  # [batch_size]
+            masked_nums = ((lengths - 2) * (1 - present_rate)).astype(np.int64)  # [batch_size]
             split_positions = \
                 [_get_split_pos(masked_num) for masked_num in masked_nums]  # [batch_size, partition_num+1]
 
@@ -519,7 +521,8 @@ def generate_random_mask(inputs, lengths, present_rate,
     templates, template_masks = \
         _prepare_squeezed_template(inputs, masks, start_positions, end_positions, mask_id, pad_id)
 
-    return masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks
+    return masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks, \
+           start_positions, end_positions
 
 
 def generate_prediction_offsets(inputs, max_length):
@@ -557,7 +560,8 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
             generate_equal_length_mask(inputs, lengths, args.mask_num,
                                        args.mask_length, mask_id, boa_id, eoa_id)
     elif args.mask_strategy == 'random':
-        masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks = \
+        masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks,\
+            start_positions, end_positions = \
             generate_random_mask(inputs, lengths, args.present_rate,
                                  mask_id, boa_id, eoa_id, pad_id, args.partition_num)
     else:
@@ -575,7 +579,9 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
         'text_ids': masked_inputs,
         'segment_ids': template_segment_ids,
         'offsets': template_offsets,
-        'templates': templates
+        'templates': templates,
+        'start_positions': start_positions,
+        'end_positions': end_positions
     }
 
     answer_packs = []
@@ -598,28 +604,25 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
     return template_pack, answer_packs
 
 
-def _split_template(template, mask_id):
+def _split_template(template, mask_start_positions, mask_end_positions):
     """
     template: [3, 5, 4, 7, 7, 1, 3, 3, 7, 7, 1]
+    start_positions: [3, 8], starting positions of the masks
+    end_positions: [5, 10], ending positions of the masks
     will be split into: [[3, 5, 4], [1, 3, 3], [1]]
     :param template: a list of numbers
     :return:
     """
-    def _find(eles, tgt):
-        for idx, ele in enumerate(eles):
-            if ele == tgt:
-                for i, e in enumerate(eles[idx:]):
-                    if e != tgt:
-                        return idx, eles[:idx], eles[idx+i:]
-                return idx, eles[:idx], None
-        return -1, None, eles
-
     rst = []
-    pos, segment, template = _find(template, mask_id)
-    while pos != -1 and template is not None:
-        rst.append(segment)
-        pos, segment, template = _find(template, mask_id)
-    rst.append(template if template is not None else segment)
+    start_positions = [0] + mask_end_positions.tolist()
+    end_positions = mask_start_positions.tolist() + [len(template)]
+    for s, e in zip(start_positions, end_positions):
+        rst.append(template[s: e])
+    print("template: ", template)
+    print("start_positions: ", start_positions)
+    print("end_positions: ", end_positions)
+    print("splitted result:", rst)
+    print("-----------------------------------")
     return rst
 
 
@@ -655,7 +658,7 @@ def _merge_segments(template_segments, fillings, eoa_id, pad_id, eos_id):
     return rst
 
 
-def fill_template(templates, predictions, mask_id, eoa_id, pad_id, eos_id):
+def fill_template(template_pack, predictions, eoa_id, pad_id, eos_id):
     """
     :param template: [batch_size, max_seq_len]
     :param mask: [batch_size, max_seq_len]
@@ -675,12 +678,14 @@ def fill_template(templates, predictions, mask_id, eoa_id, pad_id, eos_id):
                 rst[idx].append(sent)
         return rst
 
+    start_positions = template_pack['start_positions']
+    end_positions = template_pack['end_positions']
+    templates = template_pack['text_ids']
     templates = templates.tolist()
     predictions = [prediction.tolist() for prediction in predictions]  # mask_num * batch_size * undefined_len
     predictions = _transpose(predictions)
     rst = []
-    for template, fillings in zip(templates, predictions):
-        template_segments = _split_template(template, mask_id)
+    for template, start_pos, end_pos, fillings in zip(templates, start_positions, end_positions, predictions):
+        template_segments = _split_template(template, start_pos, end_pos)
         rst.append(_merge_segments(template_segments, fillings, eoa_id, pad_id, eos_id))
     return rst
-

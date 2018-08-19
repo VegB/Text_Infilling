@@ -85,12 +85,12 @@ def load_hyperparams():
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
     if args.mask_strategy == 'random':
-        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.hidden{}/'.format(
-            args.batch_size, args.max_train_epoch, args.max_seq_length,
+        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.hidden{}/'.format(
+            args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
             args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)
     elif args.mask_strategy == 'equal_length':
-        log_params_dir = 'log_dir/bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.hidden{}/'.format(
-            args.batch_size, args.max_train_epoch, args.max_seq_length,
+        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.hidden{}/'.format(
+            args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
             args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
     batching_scheme = _batching_scheme(

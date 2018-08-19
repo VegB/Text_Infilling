@@ -149,18 +149,6 @@ def _main(_):
                 cnt += 1
                 if mode is not 'train' and cnt >= 50:
                     break
-
-                # adjust learning rate
-                eval_loss = np.average(_train_epochs(sess, epoch, mode='eval'))
-                if eval_loss < opt_vars['best_eval_loss']:
-                    opt_vars['best_eval_loss'] = eval_loss
-                    opt_vars['epochs_not_improved'] = 0
-                else:
-                    opt_vars['epochs_not_improved'] += 1
-                if opt_vars['epochs_not_improved'] >= 50 and opt_vars['decay_time'] <= 3:
-                    opt_vars['epochs_not_improved'] = 0
-                    opt_vars['learning_rate'] *= opt_vars['lr_decay']
-                    opt_vars['decay_time'] += 1
             except tf.errors.OutOfRangeError:
                 break
         return loss_lists
@@ -196,9 +184,9 @@ def _main(_):
                 for it, test_pack in enumerate(test_sets_):
                     templates_list, hypotheses_list = [], []
                     filled_templates = \
-                        tx.utils.fill_template(templates=test_pack['template_pack']['text_ids'],
+                        tx.utils.fill_template(template_pack=test_pack['template_pack'],
                                                predictions=test_pack['predictions'],
-                                               mask_id=mask_id, eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
+                                               eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
                     templates = _id2word_map(test_pack['template_pack']['templates'].tolist())
                     generateds = _id2word_map(filled_templates)
     
@@ -251,13 +239,14 @@ def _main(_):
             os.remove(refer_tmp_filename)
         return bleu_score
 
-    def _draw_log(epoch, loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
+    def _draw_train_loss(epoch, loss_list):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
         plt.ylabel('training loss till epoch {}'.format(epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
         plt.savefig(args.log_dir + '/img/train_loss_curve.png')
 
+    def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
         plt.figure(figsize=(14, 10))
         legends = []
         for rate in args.test_present_rates:
@@ -295,10 +284,7 @@ def _main(_):
                                       {rate: [] for rate in args.test_present_rates}
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
-                losses = _train_epochs(sess, epoch)
-                loss_list.extend(losses[::50])
-                    
-                # bleu on test set
+                # bleu on test set and train set
                 if epoch % 5 == 0:
                     bleu_scores = _test_epoch(sess, epoch)
                     for scores in bleu_scores:
@@ -308,10 +294,14 @@ def _main(_):
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    _draw_log(epoch, loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
+                    _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
+
+                # train
+                losses = _train_epochs(sess, epoch)
+                loss_list.extend(losses[::50])
+                _draw_train_loss(epoch, loss_list)
                 sys.stdout.flush()
 
 
 if __name__ == '__main__':
     tf.app.run(main=_main)
-

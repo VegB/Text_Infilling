@@ -78,15 +78,15 @@ def test_prepare_template():
         print(rtns['ori'])
         print(rtns['template'])
         print(rtns['fills'])
-test_prepare_template()
+# test_prepare_template()
 
 
 def test_split_template():
     a = [3, 5, 4, 7, 7, 1, 3, 3, 7, 7, 1]
-    b = [3, 2, 7, 7]
-
-    assert _split_template(a, 7) == [[3, 5, 4], [1, 3, 3], [1]]
-    assert _split_template(b, 7) == [[3, 2]]
+    s_pos = [3, 8]
+    e_pos = [5, 10]
+    assert _split_template(a, s_pos, e_pos) == [[3, 5, 4], [1, 3, 3], [1]]
+# test_split_template()
 
 
 def test_merge_segments():
@@ -116,14 +116,14 @@ def test_fill_template_with_tensor():
         'text_ids': text_ids,
         'length': length
     }
-    mask_num = 3
-    mask_length = 2
-    max_decode_len = 6
+    args = load_hyperparams()
     mask_id = 7
-    eos_id = 8
+    boa_id = 8
+    eoa_id = 9
+    eos_id = 10
+    pad_id = 11
     template_pack, answer_packs = \
-        prepare_template(data_batch, mask_num, mask_length,
-                         max_decode_len, mask_id, eos_id)
+        prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -140,9 +140,13 @@ def test_fill_template_with_tensor():
         for hole in rtns['fills']:
             predictions.append(hole['text_ids'])
 
-        filled = fill_template(rtns['template']['text_ids'], predictions, mask_id, eos_id)
+        filled = fill_template(template_pack=rtns['template'],
+                               predictions=predictions,
+                               eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
+
         print(filled)
         assert filled == rtns['ori']['text_ids'].tolist()
+# test_fill_template_with_tensor()
 
 
 def test_generate_random_mask():
