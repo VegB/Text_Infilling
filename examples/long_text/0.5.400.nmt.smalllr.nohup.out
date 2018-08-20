@@ -1,0 +1,145 @@
+train_file:/home/syp/zwr/txtgen/examples/long_text/nmt_data.medium/nmt.train.txt
+valid_file:/home/syp/zwr/txtgen/examples/long_text/nmt_data.medium/nmt.valid.txt
+logdir:./log_dir/nmt.bsize400.epoch150.seqlen16.random.present0.5.partition2.hidden512/
+epoch:0 test_present_rate:0.5 test_bleu:17.113512754440308 template_bleu:43.70725154876709
+epoch:0 test_present_rate:0.5 train_bleu:18.485109508037567 template_bleu:45.71179449558258
+step:1 source:(400, 18) loss:6.31628 lr:0.000035
+step:201 source:(400, 18) loss:3.99872 lr:0.000035
+step:401 source:(400, 18) loss:3.92835 lr:0.000035
+step:601 source:(400, 18) loss:3.87957 lr:0.000035
+step:801 source:(400, 18) loss:3.8485 lr:0.000035
+step:1001 source:(400, 18) loss:3.78211 lr:0.000035
+step:1201 source:(400, 18) loss:3.74067 lr:0.000035
+step:1401 source:(400, 18) loss:3.75397 lr:0.000035
+step:1601 source:(400, 18) loss:3.78326 lr:0.000035
+step:1801 source:(400, 18) loss:3.71654 lr:0.000035
+step:2001 source:(400, 18) loss:3.70901 lr:0.000035
+step:2201 source:(400, 18) loss:3.72128 lr:0.000035
+step:2401 source:(400, 18) loss:3.63521 lr:0.000035
+step:2601 source:(400, 18) loss:3.64976 lr:0.000035
+step:2801 source:(400, 18) loss:3.66076 lr:0.000035
+step:3001 source:(400, 18) loss:3.65085 lr:0.000035
+step:3201 source:(400, 18) loss:3.67377 lr:0.000035
+step:3401 source:(400, 18) loss:3.69593 lr:0.000035
+step:3601 source:(400, 18) loss:3.63604 lr:0.000035
+step:3801 source:(400, 18) loss:3.63272 lr:0.000035
+step:4001 source:(400, 18) loss:3.65054 lr:0.000035
+step:4201 source:(400, 18) loss:3.62092 lr:0.000035
+step:4401 source:(400, 18) loss:3.64036 lr:0.000035
+step:4601 source:(400, 18) loss:3.61077 lr:0.000035
+step:4801 source:(400, 18) loss:3.59968 lr:0.000035
+step:5001 source:(400, 18) loss:3.6003 lr:0.000035
+step:5201 source:(400, 18) loss:3.5709 lr:0.000035
+step:5401 source:(400, 18) loss:3.58187 lr:0.000035
+step:5601 source:(400, 18) loss:3.57067 lr:0.000035
+step:5801 source:(400, 18) loss:3.59211 lr:0.000035
+step:6001 source:(400, 18) loss:3.56578 lr:0.000035
+step:6201 source:(400, 18) loss:3.52918 lr:0.000035
+epoch:5 test_present_rate:0.5 test_bleu:46.08764350414276 template_bleu:43.55424642562866
+epoch:5 test_present_rate:0.5 train_bleu:49.57120716571808 template_bleu:45.77355980873108
+step:6401 source:(400, 18) loss:3.57372 lr:0.000035
+step:6601 source:(400, 18) loss:3.61703 lr:0.000035
+step:6801 source:(400, 18) loss:3.53869 lr:0.000035
+step:7001 source:(400, 18) loss:3.56654 lr:0.000035
+step:7201 source:(400, 18) loss:3.5318 lr:0.000035
+step:7401 source:(400, 18) loss:3.49842 lr:0.000035
+step:7601 source:(400, 18) loss:3.51819 lr:0.000035
+step:7801 source:(400, 18) loss:3.49903 lr:0.000035
+step:8001 source:(400, 18) loss:3.51539 lr:0.000035
+step:8201 source:(400, 18) loss:3.57433 lr:0.000035
+step:8401 source:(400, 18) loss:3.54174 lr:0.000035
+step:8601 source:(400, 18) loss:3.4598 lr:0.000035
+step:8801 source:(400, 18) loss:3.48511 lr:0.000035
+step:9001 source:(400, 18) loss:3.51117 lr:0.000035
+step:9201 source:(400, 18) loss:3.51852 lr:0.000035
+step:9401 source:(400, 18) loss:3.48262 lr:0.000035
+step:9601 source:(400, 18) loss:3.49939 lr:0.000035
+step:9801 source:(400, 18) loss:3.48185 lr:0.000035
+step:10001 source:(400, 18) loss:3.44816 lr:0.000035
+step:10201 source:(400, 18) loss:3.44678 lr:0.000035
+step:10401 source:(400, 18) loss:3.4677 lr:0.000035
+step:10601 source:(400, 18) loss:3.4462 lr:0.000035
+step:10801 source:(400, 18) loss:3.46741 lr:0.000035
+step:11001 source:(400, 18) loss:3.42014 lr:0.000035
+step:11201 source:(400, 18) loss:3.42247 lr:0.000035
+step:11401 source:(400, 18) loss:3.4573 lr:0.000035
+step:11601 source:(400, 18) loss:3.54679 lr:0.000035
+step:11801 source:(400, 18) loss:3.43222 lr:0.000035
+step:12001 source:(400, 18) loss:3.4855 lr:0.000035
+step:12201 source:(400, 18) loss:3.46203 lr:0.000035
+step:12401 source:(400, 18) loss:3.39582 lr:0.000035
+epoch:10 test_present_rate:0.5 test_bleu:45.814380049705505 template_bleu:43.594905734062195
+epoch:10 test_present_rate:0.5 train_bleu:49.61556792259216 template_bleu:45.69510221481323
+step:12601 source:(400, 18) loss:3.44005 lr:0.000035
+step:12801 source:(400, 18) loss:3.45747 lr:0.000035
+step:13001 source:(400, 18) loss:3.40044 lr:0.000035
+step:13201 source:(400, 18) loss:3.48502 lr:0.000035
+step:13401 source:(400, 18) loss:3.4658 lr:0.000035
+step:13601 source:(400, 18) loss:3.43269 lr:0.000035
+step:13801 source:(400, 18) loss:3.423 lr:0.000035
+step:14001 source:(400, 18) loss:3.43748 lr:0.000035
+step:14201 source:(400, 18) loss:3.45008 lr:0.000035
+step:14401 source:(400, 18) loss:3.4385 lr:0.000035
+step:14601 source:(400, 18) loss:3.42755 lr:0.000035
+step:14801 source:(400, 18) loss:3.40488 lr:0.000035
+step:15001 source:(400, 18) loss:3.41345 lr:0.000035
+step:15201 source:(400, 18) loss:3.35355 lr:0.000035
+step:15401 source:(400, 18) loss:3.37182 lr:0.000035
+step:15601 source:(400, 18) loss:3.41303 lr:0.000035
+step:15801 source:(400, 18) loss:3.40896 lr:0.000035
+step:16001 source:(400, 18) loss:3.36849 lr:0.000035
+step:16201 source:(400, 18) loss:3.39208 lr:0.000035
+step:16401 source:(400, 18) loss:3.41299 lr:0.000035
+step:16601 source:(400, 18) loss:3.46421 lr:0.000035
+step:16801 source:(400, 18) loss:3.38399 lr:0.000035
+step:17001 source:(400, 18) loss:3.44523 lr:0.000035
+step:17201 source:(400, 18) loss:3.40413 lr:0.000035
+step:17401 source:(400, 18) loss:3.39422 lr:0.000035
+step:17601 source:(400, 18) loss:3.3956 lr:0.000035
+step:17801 source:(400, 18) loss:3.38509 lr:0.000035
+step:18001 source:(400, 18) loss:3.40396 lr:0.000035
+step:18201 source:(400, 18) loss:3.4287 lr:0.000035
+step:18401 source:(400, 18) loss:3.43357 lr:0.000035
+step:18601 source:(400, 18) loss:3.35797 lr:0.000035
+epoch:15 test_present_rate:0.5 test_bleu:45.646604895591736 template_bleu:43.568217754364014
+epoch:15 test_present_rate:0.5 train_bleu:50.18454194068909 template_bleu:45.65402269363403
+step:18801 source:(400, 18) loss:3.3983 lr:0.000035
+step:19001 source:(400, 18) loss:3.41413 lr:0.000035
+step:19201 source:(400, 18) loss:3.40745 lr:0.000035
+step:19401 source:(400, 18) loss:3.44208 lr:0.000035
+step:19601 source:(400, 18) loss:3.39717 lr:0.000035
+step:19801 source:(400, 18) loss:3.39967 lr:0.000035
+step:20001 source:(400, 18) loss:3.38281 lr:0.000035
+step:20201 source:(400, 18) loss:3.32888 lr:0.000035
+step:20401 source:(400, 18) loss:3.36325 lr:0.000035
+step:20601 source:(400, 18) loss:3.379 lr:0.000035
+step:20801 source:(400, 18) loss:3.41834 lr:0.000035
+step:21001 source:(400, 18) loss:3.34544 lr:0.000035
+step:21201 source:(400, 18) loss:3.38068 lr:0.000035
+step:21401 source:(400, 18) loss:3.38972 lr:0.000035
+step:21601 source:(400, 18) loss:3.45054 lr:0.000035
+step:21801 source:(400, 18) loss:3.36075 lr:0.000035
+step:22001 source:(400, 18) loss:3.42796 lr:0.000035
+step:22201 source:(400, 18) loss:3.40045 lr:0.000035
+step:22401 source:(400, 18) loss:3.35896 lr:0.000035
+step:22601 source:(400, 18) loss:3.39778 lr:0.000035
+step:22801 source:(400, 18) loss:3.37556 lr:0.000035
+step:23001 source:(400, 18) loss:3.3683 lr:0.000035
+step:23201 source:(400, 18) loss:3.41204 lr:0.000035
+step:23401 source:(400, 18) loss:3.39069 lr:0.000035
+step:23601 source:(400, 18) loss:3.35559 lr:0.000035
+step:23801 source:(400, 18) loss:3.36042 lr:0.000035
+step:24001 source:(400, 18) loss:3.38379 lr:0.000035
+step:24201 source:(400, 18) loss:3.40058 lr:0.000035
+step:24401 source:(400, 18) loss:3.40309 lr:0.000035
+step:24601 source:(400, 18) loss:3.39841 lr:0.000035
+step:24801 source:(400, 18) loss:3.3515 lr:0.000035
+epoch:20 test_present_rate:0.5 test_bleu:45.931169390678406 template_bleu:43.55309307575226
+epoch:20 test_present_rate:0.5 train_bleu:50.665682554244995 template_bleu:45.66030204296112
+step:25001 source:(400, 18) loss:3.40243 lr:0.000035
+step:25201 source:(400, 18) loss:3.30738 lr:0.000035
+step:25401 source:(400, 18) loss:3.33372 lr:0.000035
+step:25601 source:(400, 18) loss:3.36054 lr:0.000035
+step:25801 source:(400, 18) loss:3.38046 lr:0.000035
+step:26001 source:(400, 18) loss:3.34103 lr:0.000035
+step:26201 source:(400, 18) loss:3.36479 lr:0.000035
