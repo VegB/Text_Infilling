@@ -1,0 +1,256 @@
+- template: <BOS> why <m> the first response to each <m> not an
+- expected: <BOS> why is the first response to each question on yahoo answers more often than not an
+- got:      <BOS> why is the first response to each question more more more more more often than more often than not an
+
+- template: <BOS> i would <m> someones email address <m> in canada ?
+- expected: <BOS> i would like to know how to find someones email address that lives in canada ?
+- got:      <BOS> i would like know how to find that that that someones email address that in canada ?
+
+- template: <BOS> <m> it will be great for me and <m> long
+- expected: <BOS> how is yr _UNK ? it will be great for me and my _UNK as long
+- got:      <BOS> how yr yr _UNK ? ? ? ? it will be great for me and and my _UNK as long
+
+- template: <BOS> do white people want to be <m> and <m> who
+- expected: <BOS> do white people want to be black and vice _UNK ? ? i know guys who
+- got:      <BOS> do white people want to be black and vice . who
+
+- template: <BOS> theres this boy <m> i like him what should <m>
+- expected: <BOS> theres this boy that i run into sometimes i like him what should i do ?
+- got:      <BOS> theres this boy that run into sometimes i like him what should i
+
+- template: <BOS> if nobody knows when is <m> world <m> that is
+- expected: <BOS> if nobody knows when is the end of the world , why people say that is
+- got:      <BOS> if nobody knows when is the of the world , why people that is
+
+- template: <BOS> what is the difference <m> ? do they actually <m>
+- expected: <BOS> what is the difference between the old and the new _UNK ? do they actually teach
+- got:      <BOS> what is the difference between . . . ? do they actually teach
+
+- template: <BOS> what should n't u say during <m> n't <m> should
+- expected: <BOS> what should n't u say during a _UNK ? u should n't say a guy should
+- got:      <BOS> what should n't u say during a ? ? n't say a should
+
+- template: <BOS> you <m> the present , <m> create our future ?
+- expected: <BOS> you are my past , we are the present , our choices create our future ?
+- got:      <BOS> you are past , we the present , our create our future ?
+
+- template: <BOS> how do <m> _UNK ur time ? would <m> time
+- expected: <BOS> how do u like 2 _UNK ur time ? would u rather spend money or time
+- got:      <BOS> how do u 2 _UNK ur time ? would u money money money money money money money money money money money money or time
+
+- template: <BOS> what do you think of <m> saying ? <m> ?
+- expected: <BOS> what do you think of this saying ? `` the only good muslim is ... ?
+- got:      <BOS> what do you think of this saying ? `` good is is is ?
+
+- template: <BOS> is it <m> y girls _UNK of <m> time .
+- expected: <BOS> is it right to _UNK only girls . y girls _UNK of them every time .
+- got:      <BOS> is it right _UNK only . . . . . . y girls _UNK of them . time .
+
+- template: <BOS> is it me , <m> begins with `` <m> ''
+- expected: <BOS> is it me , or is any girl 's name that begins with `` ch ''
+- got:      <BOS> is it me , or girl 's 's 's 's that that that that that that that that that that begins with `` ch ''
+
+- template: <BOS> who is the richest asian in <m> well <m> ,
+- expected: <BOS> who is the richest asian in the world ? well , i did a search ,
+- got:      <BOS> who is the richest asian in the ? well , i a search a search a ,
+
+- template: <BOS> why do i keep this <m> do you <m> i
+- expected: <BOS> why do i keep this up ? ? ? ? ? why do you think i
+- got:      <BOS> why do i keep this up ? ? ? ? ? ? ? ? do you think i
+
+- template: <BOS> spanish again <m> know any <m> in spanish ? mexican
+- expected: <BOS> spanish again ... ? does anyone know any slang words or phrases in spanish ? mexican
+- got:      <BOS> spanish again ... ? anyone know any slang in spanish ? mexican
+
+- template: <BOS> why the <m> god is always angry <m> portrays god
+- expected: <BOS> why the _UNK god is always angry & threatening ? it is _UNK that portrays god
+- got:      <BOS> why the _UNK god is always angry & ? portrays god
+
+- template: <BOS> why do people keep saying `` <m> the <m> says
+- expected: <BOS> why do people keep saying `` god bless america '' when in the bible it says
+- got:      <BOS> why do people keep saying `` god america '' when in the bible says
+
+- template: <BOS> how would you ask others <m> to casually <m> them
+- expected: <BOS> how would you ask others not to casually discard you as meaningless with out insulting them
+- got:      <BOS> how would you ask others not to casually discard you out with with with with with with with with with with with with with them
+
+- template: <BOS> how should this verse from the koran <m> we <m>
+- expected: <BOS> how should this verse from the koran be viewed ? _UNK we shall cast terror into
+- got:      <BOS> how should this verse from the koran be ? ? we shall terror terror terror terror
+
+- template: <BOS> <m> this is a question on my _UNK ideas <m>
+- expected: <BOS> what are canadian values ? this is a question on my _UNK ideas ? canadian values
+- got:      <BOS> what are canadian canadian values ? ideas ? this is a question on my _UNK ideas ?
+
+- template: <BOS> what happens when i <m> a prize ? <m> _UNK
+- expected: <BOS> what happens when i reach 2000 points ? do i get a prize ? _UNK _UNK
+- got:      <BOS> what happens when i reach a prize ? _UNK _UNK
+
+- template: <BOS> where <m> a list of things american 's <m> from
+- expected: <BOS> where can i find a list of things american 's ca n't live without ? from
+- got:      <BOS> where can a list of things american 's ca n't live without without without without without without without without without without without without without from
+
+- template: <BOS> why do n't people accept <m> swim suits in <m>
+- expected: <BOS> why do n't people accept guys wearing speedo swim suits in public ? without pointing ,
+- got:      <BOS> why do n't people accept guys speedo swim suits in public ? without
+
+- template: <BOS> <m> world random act of <m> ? ? ? i
+- expected: <BOS> would you consider a `` world random act of kindness day '' ? ? ? i
+- got:      <BOS> would you a a `` world random act of kindness '' ? ? ? i
+
+- template: <BOS> how did it come about that <m> and women <m>
+- expected: <BOS> how did it come about that men wore pants and women wore skirts ? the answer
+- got:      <BOS> how did it come about that men pants and women wore ? ? ? ? ? ?
+
+- template: <BOS> what <m> `` <m> that does n't work , does
+- expected: <BOS> what verse in the bible says , `` a man that does n't work , does
+- got:      <BOS> what verse in the bible says , says , , `` a that does n't work , does
+
+- template: <BOS> gay underwear <m> is it not ? men wearing <m>
+- expected: <BOS> gay underwear is _UNK , is it not ? men wearing thongs is wrong , real
+- got:      <BOS> gay underwear is , is it not ? men wearing thongs is wrong , is wrong ,
+
+- template: <BOS> why are the americans <m> they always <m> on any
+- expected: <BOS> why are the americans ? so frightened of nipples ? they always _UNK them on any
+- got:      <BOS> why are the americans ? frightened of nipples ? they always _UNK on any
+
+- template: <BOS> <m> did god jump from behind <m> after eve tricked
+- expected: <BOS> why did god jump from behind the tree of knowledge and yell _UNK after eve tricked
+- got:      <BOS> why did god jump from behind yell _UNK after eve tricked
+
+- template: <BOS> is tom turkey in <m> he _UNK to white <m>
+- expected: <BOS> is tom turkey in the bible ? was he _UNK to white people ? yes he
+- got:      <BOS> is tom turkey in the ? ? ? _UNK _UNK _UNK to white _UNK to he _UNK to white people
+
+- template: <BOS> what <m> of the religion <m> much respect for those
+- expected: <BOS> what do you think of the religion of wicca ? i have much respect for those
+- got:      <BOS> what do the of the religion of ? much respect for those
+
+- template: <BOS> the virgin mary <m> died , was buried , <m>
+- expected: <BOS> the virgin mary once jesus died , was buried , rose from the dead ? is
+- got:      <BOS> the virgin mary once died , was buried , rose from the from the from the from the from from from from from from from
+
+- template: <BOS> who <m> cleansing affect ? at least 3 <m> all
+- expected: <BOS> who does ethnic cleansing affect ? at least 3 answers please ethnic cleansing affects us all
+- got:      <BOS> who does cleansing affect ? at least 3 answers ethnic cleansing affects ethnic cleansing affects ethnic ethnic cleansing affects affects affects affects affects affects all
+
+- template: <BOS> can <m> me what <m> letters are _UNK _UNK if
+- expected: <BOS> can anyone tell me what this word is about thanksgiving the letters are _UNK _UNK if
+- got:      <BOS> can anyone me what this word letters are _UNK _UNK if
+
+- template: <BOS> i <m> please but this is not <m> ? some
+- expected: <BOS> i 'd like your opinion please but this is not a gun control question ? some
+- got:      <BOS> i 'd your your opinion please but this is not a control control control control control control control control ? some
+
+- template: <BOS> if u <m> how do u know it 's <m>
+- expected: <BOS> if u found love how do u know it 's for real ? it 's not
+- got:      <BOS> if u found how do u know it 's for real ? it
+
+- template: <BOS> my mother is a very kind hearted <m> is <m>
+- expected: <BOS> my mother is a very kind hearted , genuine human being . she is also a
+- got:      <BOS> my mother is a very kind hearted , is also . she
+
+- template: <BOS> does god really exists ? if <m> god really <m>
+- expected: <BOS> does god really exists ? if yes then where is he ? if god really exists
+- got:      <BOS> does god really exists ? if yes is he ? if god really exists
+
+- template: <BOS> the _UNK has <m> do to appropriately <m> http :
+- expected: <BOS> the _UNK has revealed himself . what must i do to appropriately respond ? http :
+- got:      <BOS> the _UNK has revealed . what . what what what what i what i what i what i what do to appropriately respond ? ? ? ? ? ? ? ? ? ? ? ? http :
+
+- template: <BOS> <m> team <m> england that will accept a 16 year
+- expected: <BOS> does anyone know a ghost hunting team in new england that will accept a 16 year
+- got:      <BOS> does anyone know a a a ghost hunting hunting hunting hunting hunting team in england that will accept a 16 year
+
+- template: <BOS> <m> actually vietnamese ? no <m> dialect word corresponding to
+- expected: <BOS> are _UNK people actually vietnamese ? no : _UNK is a chinese dialect word corresponding to
+- got:      <BOS> are _UNK people people people actually vietnamese ? no : dialect word corresponding to
+
+- template: <BOS> to who said god let there be <m> not <m>
+- expected: <BOS> to who said god let there be light ? it was not chuck norris it was
+- got:      <BOS> to who said god let there be light ? was was was not chuck norris norris norris norris norris norris norris norris norris norris norris norris norris norris norris
+
+- template: <BOS> 666 and _UNK , most of <m> seems now <m>
+- expected: <BOS> 666 and _UNK , most of these seems now to church hype and control does it
+- got:      <BOS> 666 and _UNK , most of these seems now to and and and and and and control
+
+- template: <BOS> who is ryan jordan <m> is n't <m> thing from
+- expected: <BOS> who is ryan jordan and what is _UNK ? _UNK is n't _UNK that thing from
+- got:      <BOS> who is ryan jordan and is n't _UNK thing from
+
+- template: <BOS> is it fair for the wife to <m> ... <m>
+- expected: <BOS> is it fair for the wife to pay ... ... ... ... ... ... .. ?
+- got:      <BOS> is it fair for the wife to pay ... ... ... ... ... ... ... ... .. .. .. .. .. .. .. .. .. .. .. .. .. .. ..
+
+- template: <BOS> is it customary to say good <m> up <m> _UNK
+- expected: <BOS> is it customary to say good morning ? o.k i woke up to a bad _UNK
+- got:      <BOS> is it customary to say good morning up to a _UNK
+
+- template: <BOS> can a man <m> a woman <m> matters of self
+- expected: <BOS> can a man ever hit a woman ? under any circumstances ? excluding matters of self
+- got:      <BOS> can a man ever hit a woman ? matters of self
+
+- template: <BOS> who is acting more in a <m> manner <m> a
+- expected: <BOS> who is acting more in a more christian like manner ? the athiest who answers a
+- got:      <BOS> who is acting more in a more manner ? the a
+
+- template: <BOS> does anybody know where <m> find ... ? hi <m>
+- expected: <BOS> does anybody know where i can find ... ? hi , is there a website or
+- got:      <BOS> does anybody know where i find ... ? hi , a a a a a a a website website website website website website website website
+
+- template: <BOS> do you believe in <m> believe in <m> why or
+- expected: <BOS> do you believe in absolute truths ? do you believe in _UNK ? explain why or
+- got:      <BOS> do you believe in absolute ? do you believe in _UNK ? explain why or
+
+- template: <BOS> is thinking about _UNK a sin <m> i <m> 10
+- expected: <BOS> is thinking about _UNK a sin ... . ? ? i have seen his last 10
+- got:      <BOS> is thinking about _UNK a sin ... . ? ? ? i have his last his last 10
+
+- template: <BOS> do religious people think forwards <m> i think in <m>
+- expected: <BOS> do religious people think forwards or backwards ? i think in both directions . those who
+- got:      <BOS> do religious people think forwards or ? ? ? ? ? ? i think in both . . . . . . . . . . . . . . .
+
+- template: <BOS> when <m> of people that you <m> could they be
+- expected: <BOS> when you dream of people that you never met , in your opinion could they be
+- got:      <BOS> when you of people that you never , could they be
+
+- template: <BOS> what was <m> the covenant '' before it ws <m>
+- expected: <BOS> what was in the `` ark of the covenant '' before it ws moved to the
+- got:      <BOS> what was in the of of the covenant '' before it ws moved to moved
+
+- template: <BOS> do <m> meant ? <m> believe . our honest impressions
+- expected: <BOS> do you understand what i meant ? our natural obsession to believe . our honest impressions
+- got:      <BOS> do you what i meant ? our to believe . our honest impressions
+
+- template: <BOS> why do <m> _UNK ? to <m> i have won
+- expected: <BOS> why do you were a belt _UNK ? to show the rodeo prizes i have won
+- got:      <BOS> why do you a _UNK ? to show i have won
+
+- template: <BOS> how do <m> is a <m> if you want to
+- expected: <BOS> how do one know whether she is a lesbian or not ? if you want to
+- got:      <BOS> how do one she is a lesbian ? if you want to
+
+- template: <BOS> why would someone want to become gothic <m> to <m>
+- expected: <BOS> why would someone want to become gothic ? ? ? he says he wants to stick
+- got:      <BOS> why would someone want to become gothic ? ? he wants to stick wants wants wants to
+
+- template: <BOS> do you remember the last item you <m> _UNK <m>
+- expected: <BOS> do you remember the last item you bought by giving cash ( no _UNK card or
+- got:      <BOS> do you remember the last item you bought giving cash no _UNK card
+
+- template: <BOS> who was _UNK in the bible <m> ? <m> that
+- expected: <BOS> who was _UNK in the bible ? i heard she was a stripper ? is that
+- got:      <BOS> who was _UNK in the bible ? heard ? is that
+
+- template: <BOS> can you <m> _UNK <m> _UNK _UNK ? `` ?
+- expected: <BOS> can you tell me the meaning of _UNK as in `` _UNK _UNK ? `` ?
+- got:      <BOS> can you tell of _UNK as in `` _UNK _UNK _UNK ? `` ?
+
+- template: <BOS> what 's the difference between i.e . <m> when <m>
+- expected: <BOS> what 's the difference between i.e . and e.g . ? when you are writing something
+- got:      <BOS> what 's the difference between i.e . and ? when you writing something
+
+- template: <BOS> why <m> a good portion of women control their <m>
+- expected: <BOS> why ca n't a good portion of women control their emotions ? i do n't know
+- got:      <BOS> why ca a good portion of women control their emotions ? i do n't know ? ?
+

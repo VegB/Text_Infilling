@@ -1,0 +1,256 @@
+- template: <BOS> why is the first response to <m> answers more <m>
+- expected: <BOS> why is the first response to each question on yahoo answers more often than not an
+- got:      <BOS> why is the first response to rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu answers more setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> i would like to know how to <m> that <m>
+- expected: <BOS> i would like to know how to find someones email address that lives in canada ?
+- got:      <BOS> i would like to know how to rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu that setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> how is yr <m> ? <m> my _UNK as long
+- expected: <BOS> how is yr _UNK ? it will be great for me and my _UNK as long
+- got:      <BOS> how is yr brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil ? setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com my _UNK as long
+
+- template: <BOS> do white people <m> _UNK <m> i know guys who
+- expected: <BOS> do white people want to be black and vice _UNK ? ? i know guys who
+- got:      <BOS> do white people brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil _UNK setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com i know guys who
+
+- template: <BOS> <m> sometimes i like him what should i do <m>
+- expected: <BOS> theres this boy that i run into sometimes i like him what should i do ?
+- got:      <BOS> rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers sometimes i like him what should i do setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> if nobody knows when <m> why people say <m> is
+- expected: <BOS> if nobody knows when is the end of the world , why people say that is
+- got:      <BOS> if nobody knows when rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers why people say setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad is
+
+- template: <BOS> what <m> old and the new _UNK ? do <m>
+- expected: <BOS> what is the difference between the old and the new _UNK ? do they actually teach
+- got:      <BOS> what rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers old and the new _UNK ? do setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> <m> u say during a _UNK ? u <m> should
+- expected: <BOS> what should n't u say during a _UNK ? u should n't say a guy should
+- got:      <BOS> rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers u say during a _UNK ? u setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad should
+
+- template: <BOS> you <m> are the present , <m> our future ?
+- expected: <BOS> you are my past , we are the present , our choices create our future ?
+- got:      <BOS> you rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers are the present , setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com our future ?
+
+- template: <BOS> how <m> ? would u rather spend <m> or time
+- expected: <BOS> how do u like 2 _UNK ur time ? would u rather spend money or time
+- got:      <BOS> how rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers ? would u rather spend setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad or time
+
+- template: <BOS> what do you <m> this saying ? <m> ... ?
+- expected: <BOS> what do you think of this saying ? `` the only good muslim is ... ?
+- got:      <BOS> what do you rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers this saying ? setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad ... ?
+
+- template: <BOS> is it right to _UNK only <m> . y <m>
+- expected: <BOS> is it right to _UNK only girls . y girls _UNK of them every time .
+- got:      <BOS> is it right to _UNK only rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu . y setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> is it <m> or is <m> with `` ch ''
+- expected: <BOS> is it me , or is any girl 's name that begins with `` ch ''
+- got:      <BOS> is it brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil or is setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com with `` ch ''
+
+- template: <BOS> <m> in the world ? well , i <m> ,
+- expected: <BOS> who is the richest asian in the world ? well , i did a search ,
+- got:      <BOS> rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers in the world ? well , i setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad ,
+
+- template: <BOS> why do <m> ? ? ? ? ? <m> i
+- expected: <BOS> why do i keep this up ? ? ? ? ? why do you think i
+- got:      <BOS> why do rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers ? ? ? ? ? setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad i
+
+- template: <BOS> spanish again ... ? <m> any slang <m> ? mexican
+- expected: <BOS> spanish again ... ? does anyone know any slang words or phrases in spanish ? mexican
+- got:      <BOS> spanish again ... ? brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil any slang setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad ? mexican
+
+- template: <BOS> why the _UNK god <m> always angry <m> portrays god
+- expected: <BOS> why the _UNK god is always angry & threatening ? it is _UNK that portrays god
+- got:      <BOS> why the _UNK god brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil always angry setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad portrays god
+
+- template: <BOS> why do <m> '' when in the bible <m> says
+- expected: <BOS> why do people keep saying `` god bless america '' when in the bible it says
+- got:      <BOS> why do rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers '' when in the bible setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad says
+
+- template: <BOS> how would you <m> as meaningless with out <m> them
+- expected: <BOS> how would you ask others not to casually discard you as meaningless with out insulting them
+- got:      <BOS> how would you rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers as meaningless with out setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad them
+
+- template: <BOS> <m> verse <m> ? _UNK we shall cast terror into
+- expected: <BOS> how should this verse from the koran be viewed ? _UNK we shall cast terror into
+- got:      <BOS> brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil verse setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com ? _UNK we shall cast terror into
+
+- template: <BOS> what are canadian values ? this is <m> ? <m>
+- expected: <BOS> what are canadian values ? this is a question on my _UNK ideas ? canadian values
+- got:      <BOS> what are canadian values ? this is rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu ? setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> what happens when i reach 2000 points <m> do <m>
+- expected: <BOS> what happens when i reach 2000 points ? do i get a prize ? _UNK _UNK
+- got:      <BOS> what happens when i reach 2000 points rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu do setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> where can i find a <m> live without ? <m>
+- expected: <BOS> where can i find a list of things american 's ca n't live without ? from
+- got:      <BOS> where can i find a rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu live without ? setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> why do n't people accept <m> ? without <m> ,
+- expected: <BOS> why do n't people accept guys wearing speedo swim suits in public ? without pointing ,
+- got:      <BOS> why do n't people accept brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil ? without setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad ,
+
+- template: <BOS> would you consider a `` world <m> ? ? <m>
+- expected: <BOS> would you consider a `` world random act of kindness day '' ? ? ? i
+- got:      <BOS> would you consider a `` world rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu ? ? setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> how did it come <m> that <m> ? the answer
+- expected: <BOS> how did it come about that men wore pants and women wore skirts ? the answer
+- got:      <BOS> how did it come brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil that setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com ? the answer
+
+- template: <BOS> what <m> the bible says , `` <m> , does
+- expected: <BOS> what verse in the bible says , `` a man that does n't work , does
+- got:      <BOS> what rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers the bible says , `` setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad , does
+
+- template: <BOS> gay underwear is <m> it <m> is wrong , real
+- expected: <BOS> gay underwear is _UNK , is it not ? men wearing thongs is wrong , real
+- got:      <BOS> gay underwear is brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil it setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com is wrong , real
+
+- template: <BOS> why <m> americans ? so frightened <m> them on any
+- expected: <BOS> why are the americans ? so frightened of nipples ? they always _UNK them on any
+- got:      <BOS> why rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers americans ? so frightened setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com them on any
+
+- template: <BOS> why did god jump from behind the <m> eve <m>
+- expected: <BOS> why did god jump from behind the tree of knowledge and yell _UNK after eve tricked
+- got:      <BOS> why did god jump from behind the rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu eve setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> is tom turkey in the bible ? <m> _UNK <m>
+- expected: <BOS> is tom turkey in the bible ? was he _UNK to white people ? yes he
+- got:      <BOS> is tom turkey in the bible ? rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu _UNK setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> what do you think of the religion <m> much <m>
+- expected: <BOS> what do you think of the religion of wicca ? i have much respect for those
+- got:      <BOS> what do you think of the religion rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu much setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> <m> died <m> , rose from the dead ? is
+- expected: <BOS> the virgin mary once jesus died , was buried , rose from the dead ? is
+- got:      <BOS> brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil died setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com , rose from the dead ? is
+
+- template: <BOS> who does ethnic cleansing <m> 3 answers please ethnic <m>
+- expected: <BOS> who does ethnic cleansing affect ? at least 3 answers please ethnic cleansing affects us all
+- got:      <BOS> who does ethnic cleansing rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers 3 answers please ethnic setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> can anyone tell me <m> this word is about <m>
+- expected: <BOS> can anyone tell me what this word is about thanksgiving the letters are _UNK _UNK if
+- got:      <BOS> can anyone tell me rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers this word is about setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> i 'd like your opinion please but <m> not <m>
+- expected: <BOS> i 'd like your opinion please but this is not a gun control question ? some
+- got:      <BOS> i 'd like your opinion please but rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu not setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> if u <m> 's for real ? <m> 's not
+- expected: <BOS> if u found love how do u know it 's for real ? it 's not
+- got:      <BOS> if u rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers 's for real ? setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad 's not
+
+- template: <BOS> my mother is a very <m> human <m> also a
+- expected: <BOS> my mother is a very kind hearted , genuine human being . she is also a
+- got:      <BOS> my mother is a very brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil human setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa also a
+
+- template: <BOS> does god really exists ? if yes <m> is <m>
+- expected: <BOS> does god really exists ? if yes then where is he ? if god really exists
+- got:      <BOS> does god really exists ? if yes rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu is setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> the _UNK has revealed <m> i do to <m> :
+- expected: <BOS> the _UNK has revealed himself . what must i do to appropriately respond ? http :
+- got:      <BOS> the _UNK has revealed rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers i do to setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad :
+
+- template: <BOS> does anyone know <m> team in <m> a 16 year
+- expected: <BOS> does anyone know a ghost hunting team in new england that will accept a 16 year
+- got:      <BOS> does anyone know brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil team in setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com a 16 year
+
+- template: <BOS> are _UNK people actually vietnamese ? <m> a chinese <m>
+- expected: <BOS> are _UNK people actually vietnamese ? no : _UNK is a chinese dialect word corresponding to
+- got:      <BOS> are _UNK people actually vietnamese ? rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu a chinese setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> to who said <m> ? it <m> norris it was
+- expected: <BOS> to who said god let there be light ? it was not chuck norris it was
+- got:      <BOS> to who said brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil ? it setup setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com norris it was
+
+- template: <BOS> <m> seems now to <m> hype and control does it
+- expected: <BOS> 666 and _UNK , most of these seems now to church hype and control does it
+- got:      <BOS> rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers seems now to setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com hype and control does it
+
+- template: <BOS> who <m> what is _UNK ? _UNK <m> thing from
+- expected: <BOS> who is ryan jordan and what is _UNK ? _UNK is n't _UNK that thing from
+- got:      <BOS> who rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers what is _UNK ? _UNK setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad thing from
+
+- template: <BOS> <m> fair for the wife to pay ... ... <m>
+- expected: <BOS> is it fair for the wife to pay ... ... ... ... ... ... .. ?
+- got:      <BOS> rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers fair for the wife to pay ... ... setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> is it customary to say good <m> up <m> _UNK
+- expected: <BOS> is it customary to say good morning ? o.k i woke up to a bad _UNK
+- got:      <BOS> is it customary to say good brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil up setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa _UNK
+
+- template: <BOS> can a man ever hit a woman <m> matters <m>
+- expected: <BOS> can a man ever hit a woman ? under any circumstances ? excluding matters of self
+- got:      <BOS> can a man ever hit a woman rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu matters setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> who is acting more in a more <m> answers <m>
+- expected: <BOS> who is acting more in a more christian like manner ? the athiest who answers a
+- got:      <BOS> who is acting more in a more rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu answers setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> does anybody know where <m> , <m> a website or
+- expected: <BOS> does anybody know where i can find ... ? hi , is there a website or
+- got:      <BOS> does anybody know where brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil , setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa a website or
+
+- template: <BOS> do you believe in absolute truths ? <m> you <m>
+- expected: <BOS> do you believe in absolute truths ? do you believe in _UNK ? explain why or
+- got:      <BOS> do you believe in absolute truths ? rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu you setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> is thinking about _UNK a sin <m> have seen <m>
+- expected: <BOS> is thinking about _UNK a sin ... . ? ? i have seen his last 10
+- got:      <BOS> is thinking about _UNK a sin rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu have seen setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> do religious people think forwards or backwards <m> . <m>
+- expected: <BOS> do religious people think forwards or backwards ? i think in both directions . those who
+- got:      <BOS> do religious people think forwards or backwards rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu . setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> when you dream of <m> you <m> could they be
+- expected: <BOS> when you dream of people that you never met , in your opinion could they be
+- got:      <BOS> when you dream of brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil you setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa could they be
+
+- template: <BOS> what was <m> the covenant '' before it ws <m>
+- expected: <BOS> what was in the `` ark of the covenant '' before it ws moved to the
+- got:      <BOS> what was rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers the covenant '' before it ws setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> do you understand what i meant ? <m> obsession <m>
+- expected: <BOS> do you understand what i meant ? our natural obsession to believe . our honest impressions
+- got:      <BOS> do you understand what i meant ? rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu obsession setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> why do you were a belt _UNK <m> show <m>
+- expected: <BOS> why do you were a belt _UNK ? to show the rodeo prizes i have won
+- got:      <BOS> why do you were a belt _UNK rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu show setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> how do one know whether <m> not ? if <m>
+- expected: <BOS> how do one know whether she is a lesbian or not ? if you want to
+- got:      <BOS> how do one know whether rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu not ? if setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad
+
+- template: <BOS> why would someone want to become gothic <m> to <m>
+- expected: <BOS> why would someone want to become gothic ? ? ? he says he wants to stick
+- got:      <BOS> why would someone want to become gothic rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu to setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> do you remember the last <m> you <m> card or
+- expected: <BOS> do you remember the last item you bought by giving cash ( no _UNK card or
+- got:      <BOS> do you remember the last brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil you setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa card or
+
+- template: <BOS> <m> bible ? <m> was a stripper ? is that
+- expected: <BOS> who was _UNK in the bible ? i heard she was a stripper ? is that
+- got:      <BOS> brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil brésil bible ? setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com was a stripper ? is that
+
+- template: <BOS> <m> tell me the meaning of _UNK as <m> ?
+- expected: <BOS> can you tell me the meaning of _UNK as in `` _UNK _UNK ? `` ?
+- got:      <BOS> rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers tell me the meaning of _UNK as setup setup setup setup ad ad ad ad ad ad ad ad ad ad ad ad ?
+
+- template: <BOS> what 's the difference between i.e . <m> writing <m>
+- expected: <BOS> what 's the difference between i.e . and e.g . ? when you are writing something
+- got:      <BOS> what 's the difference between i.e . rulers rulers rulers rulers osu osu osu osu osu osu osu osu osu osu osu osu writing setup setup setup setup kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa kazaa
+
+- template: <BOS> why <m> n't a <m> ? i do n't know
+- expected: <BOS> why ca n't a good portion of women control their emotions ? i do n't know
+- got:      <BOS> why rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers rulers n't a setup setup setup //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com //thestressblog.com ? i do n't know
+
