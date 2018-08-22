@@ -51,6 +51,7 @@ def load_hyperparams():
     argparser.add_argument('--warmup_steps', type=int, default=16000)
     argparser.add_argument('--lr_constant', type=float, default=2)
     argparser.add_argument('--max_train_epoch', type=int, default=150)
+    argparser.add_argument('--bleu_interval', type=int, default=150)
     argparser.add_argument('--random_seed', type=int, default=1234)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--beam_width', type=int, default=2)

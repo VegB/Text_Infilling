@@ -285,18 +285,29 @@ def _main(_):
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
+        """var_list = tf.trainable_variables()
+        with open(args.log_dir + 'var.list', 'w+') as outfile:
+            for var in var_list:
+                outfile.write('var:{} shape:{} dtype:{}\n'.format(\
+                    var.name, var.shape, var.dtype))
+        total_var_num = 0 
+        var_list = sess.run(var_list)
+        for var in var_list:
+            total_var_num += var.size
+        print("Total variable number: ", total_var_num)"""
 
         loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
-                if epoch % 5 == 0:
+                if epoch % args.bleu_interval == 0:
                     bleu_scores = _test_epoch(sess, epoch)
                     test_bleu.append(bleu_scores['eval'])
                     tplt_bleu.append(bleu_scores['template'])
-                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    """train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     train_bleu.append(train_bleu_scores['eval'])
                     train_tplt_bleu.append(train_bleu_scores['template'])
+                    """
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
 
                 # train

@@ -277,6 +277,16 @@ def _main(_):
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
+        """var_list = tf.trainable_variables()
+        with open(args.log_dir + 'var.list', 'w+') as outfile:
+            for var in var_list:
+                outfile.write('var:{} shape:{} dtype:{}\n'.format(\
+                    var.name, var.shape, var.dtype))
+        total_var_num = 0
+        var_list = sess.run(var_list)
+        for var in var_list:
+            total_var_num += var.size
+        print("Total variable number: ", total_var_num)"""
 
         loss_list, test_bleu, tplt_bleu = [], {rate: [] for rate in args.test_present_rates}, \
                                           {rate: [] for rate in args.test_present_rates}
@@ -285,17 +295,18 @@ def _main(_):
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
-                if epoch % 5 == 0:
+                if epoch % args.bleu_interval == 0:
                     bleu_scores = _test_epoch(sess, epoch)
                     for scores in bleu_scores:
                         test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    """train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
+                    """
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
-
+                    
                 # train
                 losses = _train_epochs(sess, epoch)
                 loss_list.extend(losses[::50])
