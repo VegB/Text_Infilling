@@ -145,6 +145,8 @@ def _main(_):
                     rst = 'step:%s source:%s loss:%s lr:%f' % \
                           (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
                     print(rst)
+                if cur_epoch % opt_vars['decay_interval'] == 1:
+                    opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
                 loss_lists.append(loss)
                 cnt += 1
                 if mode is not 'train' and cnt >= 50:
@@ -271,6 +273,7 @@ def _main(_):
         plt.savefig(args.log_dir + '/img/train_bleu.png')
         plt.close('all')
 
+    eval_saver = tf.train.Saver(max_to_keep=5)
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
     with tf.Session(config=config) as sess:
@@ -288,6 +291,7 @@ def _main(_):
             total_var_num += var.size
         print("Total variable number: ", total_var_num)"""
 
+        max_test_bleu = -1
         loss_list, test_bleu, tplt_bleu = [], {rate: [] for rate in args.test_present_rates}, \
                                           {rate: [] for rate in args.test_present_rates}
         train_bleu, train_tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
@@ -300,12 +304,17 @@ def _main(_):
                     for scores in bleu_scores:
                         test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    """train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                        if scores['test_present_rate'] == args.present_rate \
+                                and scores['test_bleu'] > max_test_bleu:
+                            max_test_bleu = scores['test_bleu']
+                            eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
+                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    """
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
+
+
                     
                 # train
                 losses = _train_epochs(sess, epoch)

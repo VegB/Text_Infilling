@@ -240,7 +240,8 @@ def load_hyperparams():
         'best_eval_bleu': 0,
         'steps_not_improved': 0,
         'epochs_not_improved': 0,
-        'lr_decay': 0.1,
+        'decay_interval': 20,
+        'lr_decay_rate': 0.1,
         'decay_time': 0
     }
     print('logdir:{}'.format(args.log_dir))
