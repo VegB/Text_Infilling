@@ -52,7 +52,6 @@ def load_hyperparams():
     argparser.add_argument('--warmup_steps', type=int, default=16000)
     argparser.add_argument('--lr_constant', type=float, default=2)
     argparser.add_argument('--max_train_epoch', type=int, default=150)
-    argparser.add_argument('--bleu_interval', type=int, default=150)
     argparser.add_argument('--random_seed', type=int, default=1234)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--beam_width', type=int, default=2)
@@ -61,6 +60,9 @@ def load_hyperparams():
     argparser.add_argument('--save_eval_output', default=1,
         help='save the eval output to file')
     argparser.add_argument('--eval_interval_epoch', type=int, default=1)
+    argparser.add_argument('--bleu_interval', type=int, default=150)
+    argparser.add_argument('--decay_interval', type=float, default=20)
+    argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
     argparser.add_argument('--load_from_pytorch', type=str, default='')
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
@@ -240,8 +242,8 @@ def load_hyperparams():
         'best_eval_bleu': 0,
         'steps_not_improved': 0,
         'epochs_not_improved': 0,
-        'decay_interval': 20,
-        'lr_decay_rate': 0.1,
+        'decay_interval': args.decay_interval,
+        'lr_decay_rate': args.lr_decay_rate,
         'decay_time': 0
     }
     print('logdir:{}'.format(args.log_dir))
