@@ -325,3 +325,116 @@ epoch:110 test_present_rate:0.5 train_bleu:44.16393339633942 template_bleu:41.25
 step:55001 source:(200, 18) loss:3.60875 lr:0.000000
 step:55201 source:(200, 18) loss:3.57466 lr:0.000000
 step:55401 source:(200, 18) loss:3.58491 lr:0.000000
+step:55601 source:(200, 18) loss:3.63562 lr:0.000000
+step:55801 source:(200, 18) loss:3.67701 lr:0.000000
+step:56001 source:(200, 18) loss:3.63264 lr:0.000000
+step:56201 source:(200, 18) loss:3.62925 lr:0.000000
+step:56401 source:(200, 18) loss:3.59263 lr:0.000000
+step:56601 source:(200, 18) loss:3.62305 lr:0.000000
+step:56801 source:(200, 18) loss:3.61677 lr:0.000000
+step:57001 source:(200, 18) loss:3.60336 lr:0.000000
+step:57201 source:(200, 18) loss:3.60133 lr:0.000000
+step:57401 source:(200, 18) loss:3.63844 lr:0.000000
+epoch:115 test_present_rate:0.5 test_bleu:43.982717394828796 template_bleu:41.57375991344452
+epoch:115 test_present_rate:0.5 train_bleu:44.163599610328674 template_bleu:41.17635786533356
+step:57601 source:(200, 18) loss:3.64788 lr:0.000000
+step:57801 source:(200, 18) loss:3.61839 lr:0.000000
+step:58001 source:(200, 18) loss:3.57779 lr:0.000000
+step:58201 source:(200, 18) loss:3.60439 lr:0.000000
+step:58401 source:(200, 18) loss:3.61447 lr:0.000000
+step:58601 source:(200, 18) loss:3.63394 lr:0.000000
+step:58801 source:(200, 18) loss:3.58471 lr:0.000000
+step:59001 source:(200, 18) loss:3.62101 lr:0.000000
+step:59201 source:(200, 18) loss:3.62919 lr:0.000000
+step:59401 source:(200, 18) loss:3.59535 lr:0.000000
+step:59601 source:(200, 18) loss:3.63111 lr:0.000000
+step:59801 source:(200, 18) loss:3.63145 lr:0.000000
+epoch:120 test_present_rate:0.5 test_bleu:44.11337077617645 template_bleu:41.303715109825134
+epoch:120 test_present_rate:0.5 train_bleu:44.18313205242157 template_bleu:41.19609296321869
+step:60001 source:(200, 18) loss:3.59241 lr:0.000000
+step:60201 source:(200, 18) loss:3.56044 lr:0.000000
+step:60401 source:(200, 18) loss:3.62765 lr:0.000000
+step:60601 source:(200, 18) loss:3.65306 lr:0.000000
+step:60801 source:(200, 18) loss:3.66573 lr:0.000000
+step:61001 source:(200, 18) loss:3.59323 lr:0.000000
+step:61201 source:(200, 18) loss:3.63214 lr:0.000000
+step:61401 source:(200, 18) loss:3.60575 lr:0.000000
+step:61601 source:(200, 18) loss:3.61966 lr:0.000000
+step:61801 source:(200, 18) loss:3.61726 lr:0.000000
+step:62001 source:(200, 18) loss:3.55917 lr:0.000000
+step:62201 source:(200, 18) loss:3.58511 lr:0.000000
+step:62401 source:(200, 18) loss:3.59545 lr:0.000000
+epoch:125 test_present_rate:0.5 test_bleu:44.1856324672699 template_bleu:41.221773624420166
+epoch:125 test_present_rate:0.5 train_bleu:44.15974318981171 template_bleu:41.16329550743103
+step:62601 source:(200, 18) loss:3.59212 lr:0.000000
+step:62801 source:(200, 18) loss:3.64031 lr:0.000000
+step:63001 source:(200, 18) loss:3.60253 lr:0.000000
+step:63201 source:(200, 18) loss:3.63154 lr:0.000000
+step:63401 source:(200, 18) loss:3.58612 lr:0.000000
+step:63601 source:(200, 18) loss:3.65032 lr:0.000000
+step:63801 source:(200, 18) loss:3.63288 lr:0.000000
+step:64001 source:(200, 18) loss:3.617 lr:0.000000
+step:64201 source:(200, 18) loss:3.60852 lr:0.000000
+step:64401 source:(200, 18) loss:3.59576 lr:0.000000
+step:64601 source:(200, 18) loss:3.62075 lr:0.000000
+step:64801 source:(200, 18) loss:3.59366 lr:0.000000
+epoch:130 test_present_rate:0.5 test_bleu:44.16029751300812 template_bleu:41.44200682640076
+epoch:130 test_present_rate:0.5 train_bleu:44.242024421691895 template_bleu:41.29619896411896
+step:65001 source:(200, 18) loss:3.65206 lr:0.000000
+step:65201 source:(200, 18) loss:3.62112 lr:0.000000
+step:65401 source:(200, 18) loss:3.59386 lr:0.000000
+step:65601 source:(200, 18) loss:3.59616 lr:0.000000
+step:65801 source:(200, 18) loss:3.65226 lr:0.000000
+step:66001 source:(200, 18) loss:3.57236 lr:0.000000
+step:66201 source:(200, 18) loss:3.58334 lr:0.000000
+step:66401 source:(200, 18) loss:3.60394 lr:0.000000
+step:66601 source:(200, 18) loss:3.64997 lr:0.000000
+step:66801 source:(200, 18) loss:3.61569 lr:0.000000
+step:67001 source:(200, 18) loss:3.63772 lr:0.000000
+step:67201 source:(200, 18) loss:3.62378 lr:0.000000
+step:67401 source:(200, 18) loss:3.58265 lr:0.000000
+epoch:135 test_present_rate:0.5 test_bleu:44.04745399951935 template_bleu:41.41053259372711
+epoch:135 test_present_rate:0.5 train_bleu:44.097700715065 template_bleu:41.17201864719391
+step:67601 source:(200, 18) loss:3.642 lr:0.000000
+step:67801 source:(200, 18) loss:3.64451 lr:0.000000
+step:68001 source:(200, 18) loss:3.61229 lr:0.000000
+step:68201 source:(200, 18) loss:3.63314 lr:0.000000
+step:68401 source:(200, 18) loss:3.59908 lr:0.000000
+step:68601 source:(200, 18) loss:3.65827 lr:0.000000
+step:68801 source:(200, 18) loss:3.61422 lr:0.000000
+step:69001 source:(200, 18) loss:3.59644 lr:0.000000
+step:69201 source:(200, 18) loss:3.57126 lr:0.000000
+step:69401 source:(200, 18) loss:3.59372 lr:0.000000
+step:69601 source:(200, 18) loss:3.65011 lr:0.000000
+step:69801 source:(200, 18) loss:3.63391 lr:0.000000
+epoch:140 test_present_rate:0.5 test_bleu:43.58004629611969 template_bleu:41.05430841445923
+epoch:140 test_present_rate:0.5 train_bleu:44.357290863990784 template_bleu:41.428980231285095
+step:70001 source:(200, 18) loss:3.59671 lr:0.000000
+step:70201 source:(200, 18) loss:3.62939 lr:0.000000
+step:70401 source:(200, 18) loss:3.58788 lr:0.000000
+step:70601 source:(200, 18) loss:3.62324 lr:0.000000
+step:70801 source:(200, 18) loss:3.66178 lr:0.000000
+step:71001 source:(200, 18) loss:3.59368 lr:0.000000
+step:71201 source:(200, 18) loss:3.61081 lr:0.000000
+step:71401 source:(200, 18) loss:3.56953 lr:0.000000
+step:71601 source:(200, 18) loss:3.61186 lr:0.000000
+step:71801 source:(200, 18) loss:3.63036 lr:0.000000
+step:72001 source:(200, 18) loss:3.57947 lr:0.000000
+step:72201 source:(200, 18) loss:3.63763 lr:0.000000
+step:72401 source:(200, 18) loss:3.61589 lr:0.000000
+epoch:145 test_present_rate:0.5 test_bleu:43.55047941207886 template_bleu:41.053611040115356
+epoch:145 test_present_rate:0.5 train_bleu:44.10652816295624 template_bleu:41.182178258895874
+step:72601 source:(200, 18) loss:3.66911 lr:0.000000
+step:72801 source:(200, 18) loss:3.64661 lr:0.000000
+step:73001 source:(200, 18) loss:3.57387 lr:0.000000
+step:73201 source:(200, 18) loss:3.64341 lr:0.000000
+step:73401 source:(200, 18) loss:3.60388 lr:0.000000
+step:73601 source:(200, 18) loss:3.65591 lr:0.000000
+step:73801 source:(200, 18) loss:3.62646 lr:0.000000
+step:74001 source:(200, 18) loss:3.57281 lr:0.000000
+step:74201 source:(200, 18) loss:3.60784 lr:0.000000
+step:74401 source:(200, 18) loss:3.58272 lr:0.000000
+step:74601 source:(200, 18) loss:3.61146 lr:0.000000
+step:74801 source:(200, 18) loss:3.62348 lr:0.000000
+/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
