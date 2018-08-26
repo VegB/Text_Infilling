@@ -145,13 +145,13 @@ def _main(_):
                     rst = 'step:%s source:%s loss:%s lr:%f' % \
                           (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
                     print(rst)
-                if cur_epoch % opt_vars['decay_interval'] == 1:
-                    opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
                 loss_lists.append(loss)
                 cnt += 1
                 if mode is not 'train' and cnt >= 50:
                     break
             except tf.errors.OutOfRangeError:
+                if cur_epoch % opt_vars['decay_interval'] == 1:
+                    opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
                 break
         return loss_lists
 
@@ -308,13 +308,12 @@ def _main(_):
                                 and scores['test_bleu'] > max_test_bleu:
                             max_test_bleu = scores['test_bleu']
                             eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    """train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
+                    """
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
-
-
                     
                 # train
                 losses = _train_epochs(sess, epoch)

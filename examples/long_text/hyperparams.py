@@ -236,7 +236,7 @@ def load_hyperparams():
         'Adam_epsilon': 1e-9,
     }
     opt_vars = {
-        'learning_rate': 0.0016 * args.hidden_dim ** -0.5 * args.present_rate,
+        'learning_rate': 0.016 * args.hidden_dim ** -0.5 * args.present_rate,
         'best_train_loss': 1e100,
         'best_eval_loss': 1e100,
         'best_eval_bleu': 0,
