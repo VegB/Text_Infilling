@@ -1,0 +1,256 @@
+- template: <BOS> why is the <m> answers more often <m> not an
+- expected: <BOS> why is the first response to each question on yahoo answers more often than not an
+- got:      <BOS> why is the bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless answers more often choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices not an
+
+- template: <BOS> <m> like to know how to find <m> canada ?
+- expected: <BOS> i would like to know how to find someones email address that lives in canada ?
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless like to know how to find choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices canada ?
+
+- template: <BOS> how is yr _UNK ? it will <m> as <m>
+- expected: <BOS> how is yr _UNK ? it will be great for me and my _UNK as long
+- got:      <BOS> how is yr _UNK ? it will bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless as choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> do white people want to <m> black and vice <m>
+- expected: <BOS> do white people want to be black and vice _UNK ? ? i know guys who
+- got:      <BOS> do white people want to bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless black and vice choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> theres this boy <m> into sometimes <m> i do ?
+- expected: <BOS> theres this boy that i run into sometimes i like him what should i do ?
+- got:      <BOS> theres this boy bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless into sometimes choices choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] i do ?
+
+- template: <BOS> if nobody <m> world <m> why people say that is
+- expected: <BOS> if nobody knows when is the end of the world , why people say that is
+- got:      <BOS> if nobody bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless world choices choices choices choices choices choices choices ] ] ] ] ] ] ] ] ] why people say that is
+
+- template: <BOS> <m> and the new _UNK ? do they <m> teach
+- expected: <BOS> what is the difference between the old and the new _UNK ? do they actually teach
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless and the new _UNK ? do they bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless teach
+
+- template: <BOS> what should n't u say <m> say a guy <m>
+- expected: <BOS> what should n't u say during a _UNK ? u should n't say a guy should
+- got:      <BOS> what should n't u say bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless say a guy choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> you are my <m> are the present , <m> ?
+- expected: <BOS> you are my past , we are the present , our choices create our future ?
+- got:      <BOS> you are my bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless are the present , choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices ?
+
+- template: <BOS> how do u <m> ? would u rather <m> time
+- expected: <BOS> how do u like 2 _UNK ur time ? would u rather spend money or time
+- got:      <BOS> how do u bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless ? would u rather choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices time
+
+- template: <BOS> what do you think <m> `` <m> is ... ?
+- expected: <BOS> what do you think of this saying ? `` the only good muslim is ... ?
+- got:      <BOS> what do you think bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless `` choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] ] is ... ?
+
+- template: <BOS> is it right to _UNK only <m> . y <m>
+- expected: <BOS> is it right to _UNK only girls . y girls _UNK of them every time .
+- got:      <BOS> is it right to _UNK only bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless . y choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> is it me <m> girl 's <m> `` ch ''
+- expected: <BOS> is it me , or is any girl 's name that begins with `` ch ''
+- got:      <BOS> is it me bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless girl 's choices choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] `` ch ''
+
+- template: <BOS> who <m> the <m> , i did a search ,
+- expected: <BOS> who is the richest asian in the world ? well , i did a search ,
+- got:      <BOS> who bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless the choices choices choices choices choices choices choices ] ] ] ] ] ] ] ] ] , i did a search ,
+
+- template: <BOS> <m> this up ? ? ? ? ? why <m>
+- expected: <BOS> why do i keep this up ? ? ? ? ? why do you think i
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless this up ? ? ? ? ? why bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless
+
+- template: <BOS> spanish again ... ? does anyone know <m> ? <m>
+- expected: <BOS> spanish again ... ? does anyone know any slang words or phrases in spanish ? mexican
+- got:      <BOS> spanish again ... ? does anyone know bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless ? choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> why the _UNK <m> angry & threatening ? it <m>
+- expected: <BOS> why the _UNK god is always angry & threatening ? it is _UNK that portrays god
+- got:      <BOS> why the _UNK bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless angry & threatening ? it choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> why do <m> `` god bless america <m> it says
+- expected: <BOS> why do people keep saying `` god bless america '' when in the bible it says
+- got:      <BOS> why do bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless `` god bless america choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices it says
+
+- template: <BOS> how <m> you ask others not to casually <m> them
+- expected: <BOS> how would you ask others not to casually discard you as meaningless with out insulting them
+- got:      <BOS> how bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless you ask others not to casually choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices them
+
+- template: <BOS> how should this verse <m> we shall cast <m> into
+- expected: <BOS> how should this verse from the koran be viewed ? _UNK we shall cast terror into
+- got:      <BOS> how should this verse bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless we shall cast choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices into
+
+- template: <BOS> what are canadian <m> on my _UNK <m> canadian values
+- expected: <BOS> what are canadian values ? this is a question on my _UNK ideas ? canadian values
+- got:      <BOS> what are canadian bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless on my _UNK choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices canadian values
+
+- template: <BOS> what happens when i reach 2000 <m> prize <m> _UNK
+- expected: <BOS> what happens when i reach 2000 points ? do i get a prize ? _UNK _UNK
+- got:      <BOS> what happens when i reach 2000 bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless prize choices choices choices choices choices choices choices choices choices choices think think think think think think _UNK
+
+- template: <BOS> where can i find a list <m> n't <m> from
+- expected: <BOS> where can i find a list of things american 's ca n't live without ? from
+- got:      <BOS> where can i find a list bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless n't choices choices choices choices choices choices choices choices choices choices think think think think think think from
+
+- template: <BOS> why do n't people accept guys wearing <m> pointing <m>
+- expected: <BOS> why do n't people accept guys wearing speedo swim suits in public ? without pointing ,
+- got:      <BOS> why do n't people accept guys wearing bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless pointing choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> <m> `` world random act of <m> ? ? i
+- expected: <BOS> would you consider a `` world random act of kindness day '' ? ? ? i
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless `` world random act of choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices ? ? i
+
+- template: <BOS> <m> did it come about that men wore <m> answer
+- expected: <BOS> how did it come about that men wore pants and women wore skirts ? the answer
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless did it come about that men wore bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless answer
+
+- template: <BOS> what <m> in the bible <m> n't work , does
+- expected: <BOS> what verse in the bible says , `` a man that does n't work , does
+- got:      <BOS> what bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless in the bible choices choices choices choices choices choices choices choices choices choices logic logic logic logic logic logic n't work , does
+
+- template: <BOS> gay underwear is <m> it not ? men wearing <m>
+- expected: <BOS> gay underwear is _UNK , is it not ? men wearing thongs is wrong , real
+- got:      <BOS> gay underwear is bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless it not ? men wearing choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> why are <m> of nipples ? <m> them on any
+- expected: <BOS> why are the americans ? so frightened of nipples ? they always _UNK them on any
+- got:      <BOS> why are bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless of nipples ? choices choices choices choices choices choices choices choices choices choices choices logic logic logic logic logic them on any
+
+- template: <BOS> why did god <m> and yell _UNK <m> eve tricked
+- expected: <BOS> why did god jump from behind the tree of knowledge and yell _UNK after eve tricked
+- got:      <BOS> why did god bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless and yell _UNK choices choices choices choices choices choices choices choices choices choices choices think think think think think eve tricked
+
+- template: <BOS> is <m> in the bible ? was <m> yes he
+- expected: <BOS> is tom turkey in the bible ? was he _UNK to white people ? yes he
+- got:      <BOS> is bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless in the bible ? was choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices yes he
+
+- template: <BOS> what do you think of the <m> much respect <m>
+- expected: <BOS> what do you think of the religion of wicca ? i have much respect for those
+- got:      <BOS> what do you think of the bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless much respect choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> the virgin <m> , was buried , <m> ? is
+- expected: <BOS> the virgin mary once jesus died , was buried , rose from the dead ? is
+- got:      <BOS> the virgin bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless , was buried , choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices ? is
+
+- template: <BOS> <m> at <m> answers please ethnic cleansing affects us all
+- expected: <BOS> who does ethnic cleansing affect ? at least 3 answers please ethnic cleansing affects us all
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless at choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] ] answers please ethnic cleansing affects us all
+
+- template: <BOS> can anyone <m> me what <m> are _UNK _UNK if
+- expected: <BOS> can anyone tell me what this word is about thanksgiving the letters are _UNK _UNK if
+- got:      <BOS> can anyone bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless me what choices choices choices choices choices choices choices choices choices logic logic logic logic logic logic logic are _UNK _UNK if
+
+- template: <BOS> <m> your opinion please but this is <m> ? some
+- expected: <BOS> i 'd like your opinion please but this is not a gun control question ? some
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless your opinion please but this is choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices ? some
+
+- template: <BOS> if u found love how do u <m> it <m>
+- expected: <BOS> if u found love how do u know it 's for real ? it 's not
+- got:      <BOS> if u found love how do u bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless it choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> my mother is a <m> . she is also <m>
+- expected: <BOS> my mother is a very kind hearted , genuine human being . she is also a
+- got:      <BOS> my mother is a bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless . she is also choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> does god really exists ? <m> if god <m> exists
+- expected: <BOS> does god really exists ? if yes then where is he ? if god really exists
+- got:      <BOS> does god really exists ? bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless if god choices choices choices choices choices choices choices choices choices choices choices think think think think think exists
+
+- template: <BOS> the _UNK has revealed <m> what must i do <m>
+- expected: <BOS> the _UNK has revealed himself . what must i do to appropriately respond ? http :
+- got:      <BOS> the _UNK has revealed bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless what must i do choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> does anyone <m> new england that will <m> 16 year
+- expected: <BOS> does anyone know a ghost hunting team in new england that will accept a 16 year
+- got:      <BOS> does anyone bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless new england that will choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices 16 year
+
+- template: <BOS> are _UNK people actually <m> : _UNK is a <m>
+- expected: <BOS> are _UNK people actually vietnamese ? no : _UNK is a chinese dialect word corresponding to
+- got:      <BOS> are _UNK people actually bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless : _UNK is a choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> to who said god let there <m> it was <m>
+- expected: <BOS> to who said god let there be light ? it was not chuck norris it was
+- got:      <BOS> to who said god let there bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless it was choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> 666 and _UNK , most <m> now to <m> it
+- expected: <BOS> 666 and _UNK , most of these seems now to church hype and control does it
+- got:      <BOS> 666 and _UNK , most bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless now to choices choices choices choices choices choices choices choices choices choices choices think think think think think it
+
+- template: <BOS> who is ryan <m> is _UNK ? _UNK <m> from
+- expected: <BOS> who is ryan jordan and what is _UNK ? _UNK is n't _UNK that thing from
+- got:      <BOS> who is ryan bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless is _UNK ? _UNK choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices from
+
+- template: <BOS> is it fair for the wife <m> ... <m> ?
+- expected: <BOS> is it fair for the wife to pay ... ... ... ... ... ... .. ?
+- got:      <BOS> is it fair for the wife bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless ... choices choices choices choices choices choices choices choices choices choices think think think think think think ?
+
+- template: <BOS> is it customary to <m> up to a bad <m>
+- expected: <BOS> is it customary to say good morning ? o.k i woke up to a bad _UNK
+- got:      <BOS> is it customary to bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless up to a bad choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> <m> hit a woman ? under any circumstances <m> self
+- expected: <BOS> can a man ever hit a woman ? under any circumstances ? excluding matters of self
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless hit a woman ? under any circumstances bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless self
+
+- template: <BOS> who is acting more in a more <m> who <m>
+- expected: <BOS> who is acting more in a more christian like manner ? the athiest who answers a
+- got:      <BOS> who is acting more in a more bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless who choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> does anybody know where <m> can find ... ? <m>
+- expected: <BOS> does anybody know where i can find ... ? hi , is there a website or
+- got:      <BOS> does anybody know where bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless can find ... ? choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> do <m> you believe in _UNK ? explain why <m>
+- expected: <BOS> do you believe in absolute truths ? do you believe in _UNK ? explain why or
+- got:      <BOS> do bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless you believe in _UNK ? explain why bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless
+
+- template: <BOS> <m> _UNK a sin ... . ? ? <m> 10
+- expected: <BOS> is thinking about _UNK a sin ... . ? ? i have seen his last 10
+- got:      <BOS> bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless _UNK a sin ... . ? ? bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless 10
+
+- template: <BOS> do religious people think <m> both <m> . those who
+- expected: <BOS> do religious people think forwards or backwards ? i think in both directions . those who
+- got:      <BOS> do religious people think bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless both choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] ] . those who
+
+- template: <BOS> when you dream of <m> in <m> could they be
+- expected: <BOS> when you dream of people that you never met , in your opinion could they be
+- got:      <BOS> when you dream of bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless in choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] ] could they be
+
+- template: <BOS> what was in the `` ark of <m> before <m>
+- expected: <BOS> what was in the `` ark of the covenant '' before it ws moved to the
+- got:      <BOS> what was in the `` ark of bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless before choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> do you understand what <m> ? our natural <m> impressions
+- expected: <BOS> do you understand what i meant ? our natural obsession to believe . our honest impressions
+- got:      <BOS> do you understand what bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless ? our natural choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices impressions
+
+- template: <BOS> why do <m> ? to show <m> i have won
+- expected: <BOS> why do you were a belt _UNK ? to show the rodeo prizes i have won
+- got:      <BOS> why do bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless ? to show choices choices choices choices choices choices choices choices choices choices choices logic logic logic logic logic i have won
+
+- template: <BOS> how do one <m> whether she is <m> want to
+- expected: <BOS> how do one know whether she is a lesbian or not ? if you want to
+- got:      <BOS> how do one bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless whether she is choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices want to
+
+- template: <BOS> why would someone <m> gothic ? <m> wants to stick
+- expected: <BOS> why would someone want to become gothic ? ? ? he says he wants to stick
+- got:      <BOS> why would someone bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless gothic ? choices choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] wants to stick
+
+- template: <BOS> do you remember the last item you <m> cash <m>
+- expected: <BOS> do you remember the last item you bought by giving cash ( no _UNK card or
+- got:      <BOS> do you remember the last item you bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless cash choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> who was _UNK in the bible ? <m> ? <m>
+- expected: <BOS> who was _UNK in the bible ? i heard she was a stripper ? is that
+- got:      <BOS> who was _UNK in the bible ? bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless ? choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices
+
+- template: <BOS> can <m> me the meaning of _UNK <m> `` ?
+- expected: <BOS> can you tell me the meaning of _UNK as in `` _UNK _UNK ? `` ?
+- got:      <BOS> can bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless me the meaning of _UNK choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices `` ?
+
+- template: <BOS> what 's the difference <m> . and e.g <m> something
+- expected: <BOS> what 's the difference between i.e . and e.g . ? when you are writing something
+- got:      <BOS> what 's the difference bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless . and e.g choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices choices something
+
+- template: <BOS> why ca n't <m> women control <m> do n't know
+- expected: <BOS> why ca n't a good portion of women control their emotions ? i do n't know
+- got:      <BOS> why ca n't bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless bless women control choices choices choices choices choices choices choices choices choices ] ] ] ] ] ] ] do n't know
+
