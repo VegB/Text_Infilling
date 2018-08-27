@@ -67,7 +67,7 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
+    argparser.add_argument('--mask_strategy', type=str, default='fixed')  # equal_length / random
     argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--mask_length', type=int, default=5)
@@ -87,7 +87,7 @@ def load_hyperparams():
     args.test_file = os.path.join(args.data_dir,
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    if args.mask_strategy == 'random':
+    if args.mask_strategy == 'random' or 'fixed':
         log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.hidden{}/'.format(
             args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
             args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)
@@ -95,6 +95,9 @@ def load_hyperparams():
         log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.hidden{}/'.format(
             args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
             args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
+    else:
+        raise TypeError("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length', 'fixed'] " %
+                        args.mask_strategy)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
     batching_scheme = _batching_scheme(
         args.batch_size,
