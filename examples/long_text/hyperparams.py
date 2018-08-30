@@ -69,15 +69,21 @@ def load_hyperparams():
     argparser.add_argument('--pre_encoding', type=str, default='spm')
     argparser.add_argument('--mask_strategy', type=str, default='fixed')  # equal_length / random
     argparser.add_argument('--present_rate', type=float, default=0.2)
+    argparser.add_argument('--lr_factor', type=float, default=0.1)
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--mask_length', type=int, default=5)
     argparser.add_argument('--hidden_dim', type=int, default=512)
+    argparser.add_argument('--partition_strategy', type=str, default='dynamic')  # 'fixed'
+    argparser.add_argument('--fixed_partition_num', type=int, default=1)
     argparser.parse_args(namespace=args)
     
     args.max_decode_len = args.max_seq_length
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
     args.test_present_rates = [args.present_rate]  # [0.2, 0.5, 0.8]
-    args.partition_num = int(math.log(args.max_seq_length))
+    if args.partition_strategy is 'dynamic':
+        args.partition_num = int(math.log(args.max_seq_length))
+    else:
+        args.partition_num = args.fixed_partition_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,
@@ -239,7 +245,7 @@ def load_hyperparams():
         'Adam_epsilon': 1e-9,
     }
     opt_vars = {
-        'learning_rate': args.hidden_dim ** -0.5 * args.present_rate * 0.08, # 0.016
+        'learning_rate': args.hidden_dim ** -0.5 * args.present_rate * args.lr_factor, # 0.016
         'best_train_loss': 1e100,
         'best_eval_loss': 1e100,
         'best_eval_bleu': 0,

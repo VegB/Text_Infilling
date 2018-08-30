@@ -308,11 +308,10 @@ def _main(_):
                                 and scores['test_bleu'] > max_test_bleu:
                             max_test_bleu = scores['test_bleu']
                             eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                    """train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                    """
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
                     
                 # train

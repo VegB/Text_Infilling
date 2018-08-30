@@ -64,16 +64,21 @@ def load_hyperparams():
     argparser.add_argument('--affine_bias', type=int, default=0)
     argparser.add_argument('--eval_criteria', type=str, default='bleu')
     argparser.add_argument('--pre_encoding', type=str, default='spm')
-    argparser.add_argument('--mask_strategy', type=str, default='random')  # equal_length
+    argparser.add_argument('--mask_strategy', type=str, default='fixed')  # equal_length
     argparser.add_argument('--present_rate', type=float, default=0.2)
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--mask_length', type=int, default=5)
     argparser.add_argument('--hidden_dim', type=int, default=512)
+    argparser.add_argument('--partition_strategy', type=str, default='dynamic')  # '    fixed'
+    argparser.add_argument('--fixed_partition_num', type=int, default=1)
     argparser.parse_args(namespace=args)
 
     args.max_decode_len = args.max_seq_length
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
-    args.partition_num = int(math.log(args.max_seq_length))
+    if args.partition_strategy is 'dynamic':
+        args.partition_num = int(math.log(args.max_seq_length))
+    else:
+        args.partition_num = args.fixed_partition_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,
@@ -83,7 +88,7 @@ def load_hyperparams():
     args.test_file = os.path.join(args.data_dir,
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    if args.mask_strategy == 'random':
+    if args.mask_strategy == 'random' or'fixed':
         log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.hidden{}.seq2seq/'.format(
             args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
             args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)

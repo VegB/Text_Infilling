@@ -304,10 +304,9 @@ def _main(_):
                     bleu_scores = _test_epoch(sess, epoch)
                     test_bleu.append(bleu_scores['eval'])
                     tplt_bleu.append(bleu_scores['template'])
-                    """train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     train_bleu.append(train_bleu_scores['eval'])
                     train_tplt_bleu.append(train_bleu_scores['template'])
-                    """
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
 
                 # train
