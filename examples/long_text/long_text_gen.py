@@ -150,7 +150,13 @@ def _main(_):
                 if mode is not 'train' and cnt >= 50:
                     break
             except tf.errors.OutOfRangeError:
-                if cur_epoch % opt_vars['decay_interval'] == 1:
+                avg_loss = np.average(loss_list)
+                if avg_loss < opt_vars['best_train_loss']:
+                    opt_vars['best_train_loss'] = avg_loss
+                    opt_vars['epochs_not_improved'] = 0
+                else:
+                    opt_vars['steps_not_improved'] += 1
+                if opt_vars['steps_not_improved'] >= 1:
                     opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
                 break
         return loss_lists
