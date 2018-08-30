@@ -164,9 +164,12 @@ def _main(_):
                     opt_vars['best_train_loss'] = avg_loss
                     opt_vars['epochs_not_improved'] = 0
                 else:
-                    opt_vars['steps_not_improved'] += 1
-                if opt_vars['steps_not_improved'] >= 1:
+                    opt_vars['epochs_not_improved'] += 1
+                if opt_vars['epochs_not_improved'] >= 3 and opt_vars['decay_time'] <= 3:
                     opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
+                    print("[LR DECAY]: lr decay to %f at epoch %d" %
+                          (opt_vars['learning_rate'], cur_epoch))
+                    opt_vars['decay_time'] += 1
                 break
         return loss_lists[::50]
 
