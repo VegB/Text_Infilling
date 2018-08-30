@@ -95,7 +95,13 @@ def _main(_):
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
-    learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
+    # learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
+    fstep = tf.to_float(global_step)
+    learning_rate = opt_hparams['lr_constant'] \
+                        * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
+                        * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
+                        * args.hidden_dim ** -0.5 \
+                        * args.present_rate
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                        beta1=opt_hparams['Adam_beta1'],
                                        beta2=opt_hparams['Adam_beta2'],
@@ -129,12 +135,12 @@ def _main(_):
                     'template': template_pack,
                     'holes': answer_packs,
                     'step': global_step,
-                    'loss': cetp_loss
+           'lr':learning_rate,         'loss': cetp_loss
                 }
                 if mode is 'train':
                     fetches['train_op'] = train_op
                 feed = {
-                    learning_rate: opt_vars['learning_rate'],
+                    # learning_rate: opt_vars['learning_rate'],
                     tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN if mode is 'train'
                                                 else tf.estimator.ModeKeys.EVAL
                 }
@@ -143,7 +149,7 @@ def _main(_):
                     rtns['template'], rtns['holes'], rtns['loss']
                 if step % 200 == 1 and mode is 'train':
                     rst = 'step:%s source:%s loss:%s lr:%f' % \
-                          (step, template_['text_ids'].shape, loss, opt_vars['learning_rate'])
+                          (step, template_['text_ids'].shape, loss, rtns['lr'])
                     print(rst)
                 loss_lists.append(loss)
                 cnt += 1
