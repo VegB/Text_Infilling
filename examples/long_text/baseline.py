@@ -24,7 +24,6 @@ import sys
 import codecs
 from matplotlib import pyplot as plt
 plt.switch_backend('agg')
-import numpy as np
 import tensorflow as tf
 import texar as tx
 from texar.data import SpecialTokens
@@ -39,11 +38,11 @@ import bleu_tool
 def _main(_):
     hparams = baseline_hyperparams.load_hyperparams()
     train_dataset_hparams, valid_dataset_hparams, test_dataset_hparams, \
-    encoder_hparams, decoder_hparams, opt_hparams, opt_vars, loss_hparams, args = \
+    encoder_hparams, decoder_hparams, opt_hparams, loss_hparams, args = \
         hparams['train_dataset_hparams'], hparams['eval_dataset_hparams'], \
-        hparams['test_dataset_hparams'], hparams['encoder_hparams'], \
-        hparams['decoder_hparams'], hparams['opt_hparams'], \
-        hparams['opt_vars'], hparams['loss_hparams'], hparams['args']
+        hparams['test_dataset_hparams'], \
+        hparams['encoder_hparams'], hparams['decoder_hparams'], \
+        hparams['opt_hparams'], hparams['loss_hparams'], hparams['args']
 
     # Data
     train_data = tx.data.MonoTextData(train_dataset_hparams)
@@ -111,7 +110,15 @@ def _main(_):
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
-    learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
+    fstep = tf.to_float(global_step)
+    if opt_hparams['learning_rate_schedule'] == 'static':
+        learning_rate = 1e-3
+    else:
+        learning_rate = opt_hparams['lr_constant'] \
+                        * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
+                        * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
+                        * args.hidden_dim ** -0.5 \
+                        * args.present_rate
     optimizer = tf.train.AdamOptimizer(
         learning_rate=learning_rate,
         beta1=opt_hparams['Adam_beta1'],
@@ -145,31 +152,18 @@ def _main(_):
                            'holes': answer_packs,
                            'train_op': train_op,
                            'step': global_step,
+                           'lr': learning_rate,
                            'loss': cetp_loss}
-                feed = {
-                    learning_rate: opt_vars['learning_rate'],
-                    tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN
-                }
+                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
                 if step % 200 == 1:
-                    rst = 'step:%s source:%s loss:%s' % \
-                          (step, template_['text_ids'].shape, loss)
+                    rst = 'step:%s source:%s loss:%s lr:%f' % \
+                          (step, template_['text_ids'].shape, loss, rtns['lr'])
                     print(rst)
                 loss_lists.append(loss)
             except tf.errors.OutOfRangeError:
-                avg_loss = np.average(loss_list)
-                if avg_loss < opt_vars['best_train_loss']:
-                    opt_vars['best_train_loss'] = avg_loss
-                    opt_vars['epochs_not_improved'] = 0
-                else:
-                    opt_vars['epochs_not_improved'] += 1
-                if opt_vars['epochs_not_improved'] >= 3 and opt_vars['decay_time'] <= 3:
-                    opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
-                    print("[LR DECAY]: lr decay to %f at epoch %d" %
-                          (opt_vars['learning_rate'], cur_epoch))
-                    opt_vars['decay_time'] += 1
                 break
         return loss_lists[::50]
 

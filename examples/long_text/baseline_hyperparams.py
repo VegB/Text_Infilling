@@ -52,8 +52,6 @@ def load_hyperparams():
     argparser.add_argument('--lr_constant', type=float, default=2)
     argparser.add_argument('--max_train_epoch', type=int, default=150)
     argparser.add_argument('--bleu_interval', type=int, default=150)
-    argparser.add_argument('--decay_interval', type=float, default=20)
-    argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
     argparser.add_argument('--random_seed', type=int, default=1234)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--beam_width', type=int, default=2)
@@ -68,7 +66,6 @@ def load_hyperparams():
     argparser.add_argument('--pre_encoding', type=str, default='spm')
     argparser.add_argument('--mask_strategy', type=str, default='fixed')  # equal_length
     argparser.add_argument('--present_rate', type=float, default=0.2)
-    argparser.add_argument('--lr_factor', type=float, default=0.1)
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--mask_length', type=int, default=5)
     argparser.add_argument('--hidden_dim', type=int, default=512)
@@ -213,17 +210,6 @@ def load_hyperparams():
         'Adam_beta2': 0.997,
         'Adam_epsilon': 1e-9,
     }
-    opt_vars = {
-        'learning_rate': args.hidden_dim ** -0.5 * args.present_rate * args.lr_factor,  # 0.016
-        'best_train_loss': 1e100,
-        'best_eval_loss': 1e100,
-        'best_eval_bleu': 0,
-        'steps_not_improved': 0,
-        'epochs_not_improved': 0,
-        'decay_interval': args.decay_interval,
-        'lr_decay_rate': args.lr_decay_rate,
-        'decay_time': 0
-    }
     print('logdir:{}'.format(args.log_dir))
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
@@ -237,6 +223,5 @@ def load_hyperparams():
         'decoder_hparams': decoder_hparams,
         'loss_hparams': loss_hparams,
         'opt_hparams': opt_hparams,
-        'opt_vars': opt_vars,
         'args': args,
         }
