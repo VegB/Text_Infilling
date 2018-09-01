@@ -493,7 +493,7 @@ def generate_dynamic_mask(inputs, lengths, present_rate, mask_id, boa_id,
                     if mode is 'random':
                         cur_start_pos[bid][0] = np.random.randint(s, e, size=1)[0]
                     elif mode is 'fixed':
-                        cur_start_pos[bid][0] = s + (e - s) / partition_num
+                        cur_start_pos[bid][0] = s + (e - s) / (partition_num + 1)
                     cur_end_pos[bid][0] = cur_start_pos[bid][0] + mask_lengths[bid][idx]
                     cur_answers.append(
                         np.append(inputs[bid][cur_start_pos[bid][0]:cur_end_pos[bid][0]], eoa_id))
