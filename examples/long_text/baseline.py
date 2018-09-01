@@ -202,9 +202,9 @@ def _main(_):
                                                  _id2word_map(filled_templates)
 
                 for template, target, generated in zip(templates, targets, generateds):
-                    template = template.split('<EOS>')[0].strip().split()
-                    target = target.split('<EOS>')[0].strip().split()
-                    got = generated.split('<EOS>')[0].strip().split()
+                    template = template.split('<EOS>')[0].split('<PAD>')[0].strip().split()
+                    target = target.split('<EOS>')[0].split('<PAD>')[0].strip().split()
+                    got = generated.split('<EOS>')[0].split('<PAD>')[0].strip().split()
                     templates_list.append(template)
                     targets_list.append(target)
                     hypothesis_list.append(got)

@@ -136,7 +136,8 @@ def _main(_):
                     'template': template_pack,
                     'holes': answer_packs,
                     'step': global_step,
-           'lr':learning_rate,         'loss': cetp_loss
+                    'lr':learning_rate,
+                    'loss': cetp_loss
                 }
                 if mode is 'train':
                     fetches['train_op'] = train_op
@@ -209,8 +210,8 @@ def _main(_):
                     generateds = _id2word_map(filled_templates)
     
                     for template, generated in zip(templates, generateds):
-                        template = template.split('<EOS>')[0].strip().split()
-                        got = generated.split('<EOS>')[0].strip().split()
+                        template = template.split('<EOS>')[0].split('<PAD>')[0].strip().split()
+                        got = generated.split('<EOS>')[0].split('<PAD>')[0].strip().split()
                         templates_list.append(template)
                         hypotheses_list.append(got)
 
