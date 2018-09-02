@@ -201,8 +201,8 @@ def load_hyperparams():
     }
 
     opt_hparams = {
-        'learning_rate_schedule':
-            'constant.linear_warmup.rsqrt_decay.rsqrt_depth',
+        'learning_rate_schedule': 'static',
+           #  'constant.linear_warmup.rsqrt_decay.rsqrt_depth',
         'lr_constant': args.lr_constant,
         'warmup_steps': args.warmup_steps,
         'max_training_steps': args.max_training_steps,

@@ -95,14 +95,11 @@ def _main(_):
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
-    learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
+    # learning_rate = tf.placeholder(dtype=tf.float32, shape=(), name='learning_rate')
     fstep = tf.to_float(global_step)
-    """learning_rate = opt_hparams['lr_constant'] \
-                        * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
-                        * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
-                        * args.hidden_dim ** -0.5 \
-                        * args.present_rate
-    """
+    learning_rate = opt_hparams['lr_constant'] \
+                    * args.hidden_dim ** -0.5 \
+                    * tf.minimum(fstep ** -0.5, fstep * opt_hparams['warmup_steps'] ** -1.5)
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                        beta1=opt_hparams['Adam_beta1'],
                                        beta2=opt_hparams['Adam_beta2'],
@@ -136,13 +133,13 @@ def _main(_):
                     'template': template_pack,
                     'holes': answer_packs,
                     'step': global_step,
-                    'lr':learning_rate,
+                    'lr': learning_rate,
                     'loss': cetp_loss
                 }
                 if mode is 'train':
                     fetches['train_op'] = train_op
                 feed = {
-                    learning_rate: opt_vars['learning_rate'],
+                    # learning_rate: opt_vars['learning_rate'],
                     tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN if mode is 'train'
                                                 else tf.estimator.ModeKeys.EVAL
                 }
@@ -158,17 +155,17 @@ def _main(_):
                 if mode is not 'train' and cnt >= 50:
                     break
             except tf.errors.OutOfRangeError:
-                avg_loss = np.average(loss_list)
-                if avg_loss < opt_vars['best_train_loss']:
-                    opt_vars['best_train_loss'] = avg_loss
-                    opt_vars['epochs_not_improved'] = 0
-                else:
-                    opt_vars['epochs_not_improved'] += 1
-                if opt_vars['epochs_not_improved'] >= 3 and opt_vars['decay_time'] <= 3:
-                    opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
-                    print("[LR DECAY]: lr decay to %f at epoch %d" %
-                          (opt_vars['learning_rate'], cur_epoch))
-                    opt_vars['decay_time'] += 1
+                # avg_loss = np.average(loss_list)
+                # if avg_loss < opt_vars['best_train_loss']:
+                #     opt_vars['best_train_loss'] = avg_loss
+                #     opt_vars['epochs_not_improved'] = 0
+                # else:
+                #     opt_vars['epochs_not_improved'] += 1
+                # if opt_vars['epochs_not_improved'] >= 3 and opt_vars['decay_time'] <= 3:
+                #     opt_vars['learning_rate'] *= opt_vars['lr_decay_rate']
+                #     print("[LR DECAY]: lr decay to %f at epoch %d" %
+                #           (opt_vars['learning_rate'], cur_epoch))
+                #     opt_vars['decay_time'] += 1
                 break
         return loss_lists
 
@@ -340,3 +337,4 @@ def _main(_):
 
 if __name__ == '__main__':
     tf.app.run(main=_main)
+

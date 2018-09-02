@@ -112,7 +112,7 @@ def _main(_):
     global_step = tf.Variable(0, trainable=False)
     fstep = tf.to_float(global_step)
     if opt_hparams['learning_rate_schedule'] == 'static':
-        learning_rate = 1e-3
+        learning_rate = tf.Variable(1e-3, dtype=tf.float32)
     else:
         learning_rate = opt_hparams['lr_constant'] \
                         * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
@@ -309,7 +309,7 @@ def _main(_):
                     train_bleu.append(train_bleu_scores['eval'])
                     train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
-
+                
                 # train
                 losses = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
