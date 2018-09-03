@@ -28,7 +28,6 @@ import tensorflow as tf
 import texar as tx
 from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
-from texar.utils import utils
 from texar.utils.shapes import shape_list
 
 import baseline_hyperparams
@@ -97,7 +96,6 @@ def _main(_):
             decoding_strategy="train_greedy",
             inputs=dec_input_embedded,
             sequence_length=hole["lengths"]+1)
-
         cur_loss = tx.utils.smoothing_cross_entropy(
             outputs.logits,
             hole['text_ids'][:, 1:],
@@ -106,19 +104,20 @@ def _main(_):
         )
         cetp_loss = cur_loss if cetp_loss is None \
             else tf.concat([cetp_loss, cur_loss], -1)
-
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
-    fstep = tf.to_float(global_step)
-    if opt_hparams['learning_rate_schedule'] == 'static':
-        learning_rate = tf.Variable(1e-3, dtype=tf.float32)
-    else:
+    if args.learning_rate_strategy == 'static':
+        learning_rate = 1e-3
+    elif args.learning_rate_strategy == 'dynamic':
+        fstep = tf.to_float(global_step)
         learning_rate = opt_hparams['lr_constant'] \
-                        * tf.minimum(1.0, (fstep / opt_hparams['warmup_steps'])) \
-                        * tf.rsqrt(tf.maximum(fstep, opt_hparams['warmup_steps'])) \
                         * args.hidden_dim ** -0.5 \
-                        * args.present_rate
+                        * tf.minimum(fstep ** -0.5, fstep * opt_hparams['warmup_steps'] ** -1.5)
+    else:
+        raise ValueError('Unknown learning_rate_strategy: %s, expecting one of '
+                         '[\'static\', \'dynamic\']' % args.learning_rate_strategy)
+
     optimizer = tf.train.AdamOptimizer(
         learning_rate=learning_rate,
         beta1=opt_hparams['Adam_beta1'],
@@ -172,9 +171,9 @@ def _main(_):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
-        if mode is 'test':
+        if mode == 'test':
             iterator.switch_to_test_data(cur_sess)
-        elif mode is 'train':
+        elif mode == 'train':
             iterator.switch_to_train_data(cur_sess)
         else:
             iterator.switch_to_val_data(cur_sess)
@@ -286,22 +285,12 @@ def _main(_):
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
-        """var_list = tf.trainable_variables()
-        with open(args.log_dir + 'var.list', 'w+') as outfile:
-            for var in var_list:
-                outfile.write('var:{} shape:{} dtype:{}\n'.format(\
-                    var.name, var.shape, var.dtype))
-        total_var_num = 0 
-        var_list = sess.run(var_list)
-        for var in var_list:
-            total_var_num += var.size
-        print("Total variable number: ", total_var_num)"""
 
         loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
-                if epoch % args.bleu_interval == 0:
+                if epoch % args.bleu_interval == 0 or epoch == args.max_train_epoch - 1:
                     bleu_scores = _test_epoch(sess, epoch)
                     test_bleu.append(bleu_scores['eval'])
                     tplt_bleu.append(bleu_scores['template'])
@@ -309,7 +298,8 @@ def _main(_):
                     train_bleu.append(train_bleu_scores['eval'])
                     train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
-                
+                    eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
+
                 # train
                 losses = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
@@ -319,3 +309,4 @@ def _main(_):
 
 if __name__ == '__main__':
     tf.app.run(main=_main)
+

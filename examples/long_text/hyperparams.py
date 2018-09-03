@@ -75,12 +75,13 @@ def load_hyperparams():
     argparser.add_argument('--hidden_dim', type=int, default=512)
     argparser.add_argument('--partition_strategy', type=str, default='dynamic')  # 'fixed'
     argparser.add_argument('--fixed_partition_num', type=int, default=1)
+    argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
     argparser.parse_args(namespace=args)
     
     args.max_decode_len = args.max_seq_length
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
     args.test_present_rates = [args.present_rate]  # [0.2, 0.5, 0.8]
-    if args.partition_strategy is 'dynamic':
+    if args.partition_strategy == 'dynamic':
         args.partition_num = int(math.log(args.max_seq_length))
     else:
         args.partition_num = args.fixed_partition_num
@@ -94,13 +95,13 @@ def load_hyperparams():
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
     if args.mask_strategy == 'random' or 'fixed':
-        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.present{}.partition{}.hidden{}/'.format(
+        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.{}_mask.present{}.partition{}.hidden{}/'.format(
             args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-            args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)
+            args.learning_rate_strategy, args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)
     elif args.mask_strategy == 'equal_length':
-        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}.masknum{}.masklen{}.hidden{}/'.format(
+        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.{}_mask.masknum{}.masklen{}.hidden{}/'.format(
             args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-            args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
+            args.learning_rate_strategy, args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
     else:
         raise TypeError("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length', 'fixed'] " %
                         args.mask_strategy)
@@ -235,8 +236,7 @@ def load_hyperparams():
     }
 
     opt_hparams = {
-        'learning_rate_schedule': #'static',
-            'constant.linear_warmup.rsqrt_decay.rsqrt_depth',
+        'learning_rate_schedule': args.learning_rate_strategy,
         'lr_constant': args.lr_constant,
         'warmup_steps': args.warmup_steps,
         'max_training_steps': args.max_training_steps,
@@ -245,7 +245,7 @@ def load_hyperparams():
         'Adam_epsilon': 1e-9,
     }
     opt_vars = {
-        'learning_rate': args.hidden_dim ** -0.5 * args.present_rate * args.lr_factor, # 0.016
+        'learning_rate': args.hidden_dim ** -0.5 * args.present_rate * args.lr_factor,  # 0.016
         'best_train_loss': 1e100,
         'best_eval_loss': 1e100,
         'best_eval_bleu': 0,
@@ -271,3 +271,4 @@ def load_hyperparams():
         'opt_vars': opt_vars,
         'args': args,
         }
+
