@@ -476,3 +476,42 @@ step:71801 source:(400, 17) loss:3.2928 lr:0.000082
 step:72001 source:(400, 17) loss:3.26619 lr:0.000082
 step:72201 source:(400, 17) loss:3.25283 lr:0.000082
 step:72401 source:(400, 17) loss:3.47242 lr:0.000082
+step:72601 source:(400, 17) loss:3.37148 lr:0.000082
+step:72801 source:(400, 17) loss:3.93912 lr:0.000082
+step:73001 source:(400, 17) loss:3.46562 lr:0.000082
+epoch:280 test_present_rate:0.5 test_bleu:52.12370753288269 template_bleu:44.368523359298706
+epoch:280 test_present_rate:0.5 train_bleu:53.98133993148804 template_bleu:44.2195862531662
+step:73201 source:(400, 17) loss:3.38737 lr:0.000082
+step:73401 source:(400, 17) loss:3.27868 lr:0.000082
+step:73601 source:(400, 17) loss:3.22012 lr:0.000081
+step:73801 source:(400, 17) loss:3.3459 lr:0.000081
+step:74001 source:(400, 17) loss:3.24344 lr:0.000081
+step:74201 source:(400, 17) loss:3.26538 lr:0.000081
+epoch:285 test_present_rate:0.5 test_bleu:51.628077030181885 template_bleu:44.368523359298706
+epoch:285 test_present_rate:0.5 train_bleu:53.3983051776886 template_bleu:44.2195862531662
+step:74401 source:(400, 17) loss:3.33678 lr:0.000081
+step:74601 source:(400, 17) loss:3.26134 lr:0.000081
+step:74801 source:(400, 17) loss:3.33421 lr:0.000081
+step:75001 source:(400, 17) loss:3.62207 lr:0.000081
+step:75201 source:(400, 17) loss:3.33474 lr:0.000081
+step:75401 source:(400, 17) loss:3.37828 lr:0.000080
+step:75601 source:(400, 17) loss:3.40671 lr:0.000080
+epoch:290 test_present_rate:0.5 test_bleu:52.19205617904663 template_bleu:44.368523359298706
+epoch:290 test_present_rate:0.5 train_bleu:54.20820713043213 template_bleu:44.2195862531662
+step:75801 source:(400, 17) loss:3.37423 lr:0.000080
+step:76001 source:(400, 17) loss:3.18344 lr:0.000080
+step:76201 source:(400, 17) loss:3.44873 lr:0.000080
+step:76401 source:(400, 17) loss:3.22588 lr:0.000080
+step:76601 source:(400, 17) loss:3.39194 lr:0.000080
+step:76801 source:(400, 17) loss:3.30284 lr:0.000080
+epoch:295 test_present_rate:0.5 test_bleu:52.002209424972534 template_bleu:44.368523359298706
+epoch:295 test_present_rate:0.5 train_bleu:54.20621633529663 template_bleu:44.2195862531662
+step:77001 source:(400, 17) loss:3.23923 lr:0.000080
+step:77201 source:(400, 17) loss:3.30913 lr:0.000080
+step:77401 source:(400, 17) loss:3.35101 lr:0.000079
+step:77601 source:(400, 17) loss:3.30175 lr:0.000079
+step:77801 source:(400, 17) loss:3.3987 lr:0.000079
+step:78001 source:(400, 17) loss:3.33371 lr:0.000079
+step:78201 source:(400, 17) loss:3.25196 lr:0.000079
+/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
