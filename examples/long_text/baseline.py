@@ -108,7 +108,7 @@ def _main(_):
 
     global_step = tf.Variable(0, trainable=False)
     if args.learning_rate_strategy == 'static':
-        learning_rate = 1e-3
+        learning_rate = tf.Variable(1e-3, dtype=tf.float32)
     elif args.learning_rate_strategy == 'dynamic':
         fstep = tf.to_float(global_step)
         learning_rate = opt_hparams['lr_constant'] \

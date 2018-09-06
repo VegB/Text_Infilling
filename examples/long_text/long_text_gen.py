@@ -91,7 +91,7 @@ def _main(_):
             train_data.vocab.size,
             loss_hparams['label_confidence'])
         cetp_loss = cur_loss if cetp_loss is None \
-            else tf.concaxft([cetp_loss, cur_loss], -1)
+            else tf.concat([cetp_loss, cur_loss], -1)
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
