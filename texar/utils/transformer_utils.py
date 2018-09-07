@@ -450,9 +450,7 @@ def generate_dynamic_mask(inputs, lengths, present_rate, mask_id, boa_id,
                     split_positions = [a.size for a in splitted]
                     for i in range(1, partition_num):
                         split_positions[i] += split_positions[i - 1]
-                    split_positions = split_positions[1:]
-                    return np.insert(np.insert(split_positions, 0, 0, axis=0),
-                                     partition_num, masked_num, axis=0)
+                    return np.insert(split_positions, 0, 0, axis=0)
                 else:
                     raise TypeError("Unknown mode %s, expecting one of "
                                     "['random' ,'fixed'] " % mode)
