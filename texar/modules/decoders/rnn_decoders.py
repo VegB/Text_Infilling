@@ -20,6 +20,7 @@ from tensorflow.contrib.seq2seq import tile_batch
 
 from texar.modules.decoders.rnn_decoder_base import RNNDecoderBase
 from texar.utils import utils
+from texar.utils.shapes import shape_list
 
 __all__ = [
     "BasicRNNDecoderOutput",
@@ -337,11 +338,14 @@ class BasicPositionalRNNDecoder(RNNDecoderBase):
             outputs=logits,
             state=cell_state,
             sample_ids=sample_ids)  # look up in embedding -> next_inputs
-        # channels = utils.shape_list(next_inputs_word_embeds)[2]
-        # next_input_pos_embeds = self.position_embedder(1, channels,
-        #                                                self.current_segment_id,  # segment_ids
-        #                                                time)  # offsets
-        next_inputs = next_inputs_word_embeds #+ next_input_pos_embeds
+        batch_size, channels = shape_list(next_inputs_word_embeds)
+        next_input_pos_embeds = self.position_embedder(
+            length=1,
+            channels=channels,
+            segment_ids=tf.cast(tf.fill([batch_size, 1], self.current_segment_id), dtype=tf.int64),
+            offsets=tf.cast(tf.fill([batch_size, 1], time), dtype=tf.int64))
+        next_input_pos_embeds = tf.reshape(next_input_pos_embeds, [batch_size, channels])
+        next_inputs = next_inputs_word_embeds + next_input_pos_embeds
         outputs = BasicRNNDecoderOutput(logits, sample_ids, cell_outputs)
         return (outputs, next_state, next_inputs, finished)
 

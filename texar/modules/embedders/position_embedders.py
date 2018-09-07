@@ -284,7 +284,7 @@ class SinusoidsSegmentalPositionEmbedder(EmbedderBase):
         :param channels: an int
         :param segment_id: [batch_size, length]
         :param segment_offset: [batch_size, length]
-        :return:
+        :return: [batch_size, length, channels]
         """
         # TODO(wanrong): check if segment_ids is of shape [batch_size, length]
         position = tf.to_float(tf.add(tf.multiply(tf.cast(256, tf.int64), segment_ids),
