@@ -629,10 +629,11 @@ def prepare_template(data_batch, args, mask_id, pad_id):
     )
     answer_packs = []
     for idx, (answer, answer_length)in enumerate(zip(answers, answer_lengths)):
+        answer = answer[0]
+        answer_length = answer_length[0]
         mask_len = tf.reduce_max(answer_length)
         answer_segment_ids = generate_prediction_segment_ids(answer, idx * 2 + 1, mask_len)
         answer_offsets = generate_prediction_offsets(answer, mask_len)
-        # answer = tf.reshape(answer, shape=tf.stack([-1, mask_len]))
         answer_packs.append({
             'text_ids': answer,
             'segment_ids': answer_segment_ids,
@@ -703,9 +704,7 @@ def fill_template(template_pack, predictions, eoa_id, pad_id, eos_id):
         :param a: mask_num * batch_size * undefined_len
         :return: batch_size * mask_num * undefined_len
         """
-        rst = []
-        for _ in a[0]:
-            rst.append([])
+        rst = [[] for _ in a[0]]
         for ar in a:
             for idx, sent in enumerate(ar):
                 rst[idx].append(sent)

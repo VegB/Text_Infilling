@@ -73,7 +73,7 @@ def test_prepare_template():
         print(rtns['ori'])
         print(rtns['template'])
         print(rtns['fills'])
-test_prepare_template()
+# test_prepare_template()
 
 
 def test_split_template():
@@ -104,21 +104,43 @@ def test_fill_template():
 
 
 def test_fill_template_with_tensor():
-    text_ids = tf.Variable([[3, 5, 4, 4, 2, 1, 3, 3, 2, 5, 1],
-                            [2, 1, 4, 3, 5, 1, 5, 4, 3, 1, 5]], dtype=tf.int64)
-    length = tf.Variable([11, 11], dtype=tf.int32)
     data_batch = {
-        'text_ids': text_ids,
-        'length': length
+        'source_text': tf.Variable([[b'<BOS>', b'and', b'she', b'sprang', b'off', b'his', b'shoulder', b'and', b'up',
+                                     b'the', b'steps', b'before', b'him', b'<EOS>'],
+                                    [b'<BOS>', b'and', b'they', b'gave', b'hans', b'gifts', b'of', b'gold', b'and',
+                                     b'of', b'silver', b'<EOS>', b'', b'']], dtype=object),
+        'source_length': tf.Variable([14, 12], dtype=tf.int32),
+        'source_text_ids': tf.Variable([[1, 10, 47, 1068, 44, 166, 1990, 10, 287, 49, 1401, 143, 115, 2],
+                                        [1, 10, 19, 48, 1913, 775, 106, 778, 10, 106, 477, 2, 0, 0]]),
+        'templatebyword_text': tf.Variable([[b'<BOS>', b'and', b'she', b'sprang', b'<m>', b'his', b'shoulder', b'and',
+                                             b'<m>', b'<m>', b'steps', b'<m>', b'him', b'<EOS>'],
+                                            [b'<BOS>', b'and', b'they', b'gave', b'<m>', b'hans', b'gifts', b'<m>',
+                                             b'gold', b'and', b'<m>', b'silver', b'<EOS>', b'']], dtype=object),
+        'templatebyword_length': tf.Variable([14, 13], dtype=tf.int32),
+        'templatebyword_text_ids': tf.Variable([[1, 10, 47, 1068, 6, 166, 1990, 10, 6, 6, 1401, 6, 115, 2],
+                                                [1, 10, 19, 48, 6, 1913, 775, 6, 778, 10, 6, 477, 2, 0]]),
+        'answer_text': tf.Variable([[[b'<BOA>', b'off', b'<EOA>', b'<PAD>'],
+                                     [b'<BOA>', b'up', b'the', b'<EOA>'],
+                                     [b'<BOA>', b'before', b'<EOA>', b'<PAD>']],
+                                    [[b'<BOA>', b'<EOA>', b'<PAD>', b''],
+                                     [b'<BOA>', b'of', b'<EOA>', b''],
+                                     [b'<BOA>', b'of', b'<EOA>', b'']]], dtype=object),
+        'answer_length': tf.Variable([[3, 4, 3], [2, 3, 3]], dtype=tf.int32),
+        'answer_text_ids': tf.Variable([[[4, 44, 5, 0],
+                                         [4, 287, 49, 5],
+                                         [4, 143, 5, 0]],
+                                        [[4, 5, 0, 0],
+                                         [4, 106, 5, 0],
+                                         [4, 106, 5, 0]]]),
+        'answer_utterance_cnt': tf.Variable([3, 3], dtype=tf.int32)
     }
     args = load_hyperparams()
-    mask_id = 7
-    boa_id = 8
-    eoa_id = 9
-    eos_id = 10
-    pad_id = 11
-    template_pack, answer_packs = \
-        prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
+    mask_id = 6
+    boa_id = 4
+    eoa_id = 5
+    eos_id = 2
+    pad_id = 0
+    template_pack, answer_packs = prepare_template(data_batch, args, mask_id, pad_id)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -133,13 +155,14 @@ def test_fill_template_with_tensor():
         print(rtns['fills'])
         predictions = []
         for hole in rtns['fills']:
-            predictions.append(hole['text_ids'])
+            predictions.append(hole['text_ids'][:, 1:])
 
         filled = fill_template(template_pack=rtns['template'],
                                predictions=predictions,
                                eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
-
-        print(filled)
-        assert filled == rtns['ori']['text_ids'].tolist()
-# test_fill_template_with_tensor()
+        print("\noriginal:\n", rtns['ori']['source_text_ids'].tolist())
+        print("\ntemplate:\n", rtns['template']['text_ids'].tolist())
+        print("\nfilled:\n", filled)
+        assert filled == rtns['ori']['source_text_ids'].tolist()
+test_fill_template_with_tensor()
 
