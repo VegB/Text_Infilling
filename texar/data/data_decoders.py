@@ -387,7 +387,7 @@ class VarUttTextDataDecoder(data_decoder.DataDecoder):
             token_ids = self._token_to_id_map.lookup(split_sentences)
 
         outputs = {
-            self._text_tensor_name: split_sentences,
+            # self._text_tensor_name: split_sentences,
             self._length_tensor_name: raw_sent_length,
             self._utterance_cnt_tensor_name: tf.shape(sentences)[0],
             self._text_id_tensor_name: token_ids
@@ -401,7 +401,7 @@ class VarUttTextDataDecoder(data_decoder.DataDecoder):
             A list of strings can be passed to :meth:`decode()`.
         """
         return [
-            self._text_tensor_name,
+            # self._text_tensor_name,
             self._length_tensor_name,
             self._text_id_tensor_name,
             self._utterance_cnt_tensor_name
