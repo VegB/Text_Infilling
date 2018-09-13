@@ -2,8 +2,7 @@ import math
 import argparse
 import numpy as np
 import tensorflow as tf
-from texar.utils.transformer_utils import generate_dynamic_mask, generate_equal_length_mask,\
-    prepare_template, _split_template, _merge_segments, fill_template
+from texar.utils.transformer_utils import prepare_template, _split_template, _merge_segments, fill_template
 
 
 class Hyperparams:

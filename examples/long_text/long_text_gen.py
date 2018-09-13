@@ -202,7 +202,7 @@ def _main(_):
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
-                targets_, test_sets_ = rtns['data_batch']['text_ids'], rtns['test_sets']
+                targets_, test_sets_ = rtns['data_batch']['source_text_ids'], rtns['test_sets']
                 targets = _id2word_map(targets_)
                 targets_list.extend([target.split('<EOS>')[0].strip().split() for target in targets])
 
