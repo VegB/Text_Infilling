@@ -47,6 +47,9 @@ class SpecialTokens(object):
     BOS = "<BOS>"
     EOS = "<EOS>"
     UNK = "<UNK>"
+    BOA = "<BOA>"
+    EOA = "<EOA>"
+    mask = "<m>"
 
 
 def _make_defaultdict(keys, values, default_value):
@@ -96,12 +99,18 @@ class Vocab(object):
                  pad_token=SpecialTokens.PAD,
                  bos_token=SpecialTokens.BOS,
                  eos_token=SpecialTokens.EOS,
-                 unk_token=SpecialTokens.UNK):
+                 unk_token=SpecialTokens.UNK,
+                 boa_token=SpecialTokens.BOA,
+                 eoa_token=SpecialTokens.EOA,
+                 mask_token=SpecialTokens.mask):
         self._filename = filename
         self._pad_token = pad_token
         self._bos_token = bos_token
         self._eos_token = eos_token
         self._unk_token = unk_token
+        self._boa_token = boa_token
+        self._eoa_token = eoa_token
+        self._mask_token = mask_token
 
         self._id_to_token_map, self._token_to_id_map, \
         self._id_to_token_map_py, self._token_to_id_map_py = \
@@ -145,7 +154,7 @@ class Vocab(object):
 
         # Places _pad_token at the beginning to make sure it take index 0.
         vocab = [self._pad_token, self._bos_token, self._eos_token,
-                 self._unk_token] + vocab
+                 self._unk_token, self._boa_token, self._eoa_token, self._mask_token] + vocab
         # Must make sure this is consistent with the above line
         unk_token_idx = 3
         vocab_size = len(vocab)
@@ -284,6 +293,32 @@ class Vocab(object):
         of sequence.
         """
         return self.token_to_id_map_py[self._eos_token]
+
+    @property
+    def boa_token(self):
+        """A string of the special token indicating the beginning of sequence.
+        """
+        return self._boa_token
+
+    @property
+    def boa_token_id(self):
+        """The `int` index of the special token indicating the beginning
+        of sequence.
+        """
+        return self.token_to_id_map_py[self._boa_token]
+
+    @property
+    def eoa_token(self):
+        """A string of the special token indicating the end of sequence.
+        """
+        return self._eoa_token
+
+    @property
+    def eoa_token_id(self):
+        """The `int` index of the special token indicating the end
+        of sequence.
+        """
+        return self.token_to_id_map_py[self._eoa_token]
 
     @property
     def unk_token(self):

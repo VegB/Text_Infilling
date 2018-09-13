@@ -44,26 +44,27 @@ def _main(_):
         hparams['loss_hparams'], hparams['args']
 
     # Data
-    train_data = tx.data.MonoTextData(train_dataset_hparams)
-    valid_data = tx.data.MonoTextData(valid_dataset_hparams)
-    test_data = tx.data.MonoTextData(test_dataset_hparams)
+    train_data = tx.data.MultiAlignedData(train_dataset_hparams)
+    valid_data = tx.data.MultiAlignedData(valid_dataset_hparams)
+    test_data = tx.data.MultiAlignedData(test_dataset_hparams)
     iterator = tx.data.TrainTestDataIterator(train=train_data,
                                              val=valid_data,
                                              test=test_data)
     data_batch = iterator.get_next()
-    mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    boa_id = train_data.vocab.token_to_id_map_py['<BOA>']
-    eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
-    eos_id = train_data.vocab.token_to_id_map_py['<EOS>']
-    pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
+    vocab = train_data.vocab('source')
+    mask_id = vocab.token_to_id_map_py['<m>']
+    boa_id = vocab.token_to_id_map_py['<BOA>']
+    eoa_id = vocab.token_to_id_map_py['<EOA>']
+    eos_id = vocab.token_to_id_map_py['<EOS>']
+    pad_id = vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, pad_id)
     train_present_rate = args.present_rate
     test_sets = []
     for rate in args.test_present_rates:
         args.present_rate = rate
         tplt_pack, ans_packs = \
-            tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
+            tx.utils.prepare_template(data_batch, args, mask_id, pad_id)
         test_sets.append({
             'test_present_rate': tf.Variable(rate, dtype=tf.float32, trainable=False),
             'template_pack': tplt_pack,
@@ -73,7 +74,7 @@ def _main(_):
     args.present_rate = train_present_rate
 
     # Model architecture
-    embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
+    embedder = tx.modules.WordEmbedder(vocab_size=vocab.size,
                                        hparams=args.word_embedding_hparams)
     decoder = \
         tx.modules.TemplateTransformerDecoder(embedding=embedder._embedding,
@@ -88,7 +89,7 @@ def _main(_):
         cur_loss = tx.utils.smoothing_cross_entropy(
             logits,
             hole['text_ids'][:, 1:],
-            train_data.vocab.size,
+            vocab.size,
             loss_hparams['label_confidence'])
         cetp_loss = cur_loss if cetp_loss is None \
             else tf.concat([cetp_loss, cur_loss], -1)
@@ -112,12 +113,12 @@ def _main(_):
                                        epsilon=opt_hparams['Adam_epsilon'])
     train_op = optimizer.minimize(cetp_loss, global_step)
 
-    offsets = tx.utils.generate_prediction_offsets(data_batch['text_ids'],
+    offsets = tx.utils.generate_prediction_offsets(data_batch['templatebyword_text_ids'],
                                                    args.max_decode_len + 1)
     for it, test_pack in enumerate(test_sets):
         for idx, _ in enumerate(test_pack['answer_packs']):
             segment_ids = \
-                tx.utils.generate_prediction_segment_ids(data_batch['text_ids'],
+                tx.utils.generate_prediction_segment_ids(data_batch['templatebyword_text_ids'],
                                                          idx * 2 + 1,  # segment id starting from 1
                                                          args.max_decode_len + 1)
             preds = decoder.dynamic_decode(
@@ -179,7 +180,7 @@ def _main(_):
 
     def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
-            return [' '.join([train_data.vocab._id_to_token_map_py[i]
+            return [' '.join([vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
         test_results = [{'test_present_rate': rate, 'templates_list': [], 'hypothesis_list': []}

@@ -140,8 +140,8 @@ class MultiAlignedData(TextDataBase):
                 if not vocabs[vocab_shr]:
                     raise ValueError("Cannot share vocab with dataset %d which "
                                      "does not have a vocab." % vocab_shr)
-                if bos_token == vocabs[vocab_shr].bos_token and \
-                        eos_token == vocabs[vocab_shr].eos_token:
+                if bos_token in [vocabs[vocab_shr].bos_token, vocabs[vocab_shr].boa_token] and \
+                        eos_token in [vocabs[vocab_shr].eos_token, vocabs[vocab_shr].eoa_token]:
                     vocab = vocabs[vocab_shr]
                 else:
                     vocab = Vocab(hparams[vocab_shr]["vocab_file"],
