@@ -108,7 +108,6 @@ def load_hyperparams():
         }
         for mode in ['train', 'test', 'valid']
     }
-
     data_hparams = {
         stage: {
             "num_epochs": 1,
