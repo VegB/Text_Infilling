@@ -82,12 +82,6 @@ def load_hyperparams():
         args.partition_num = args.fixed_partition_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
-    args.train_file = os.path.join(args.data_dir,
-        '{}train{}'.format(args.filename_prefix, args.filename_suffix))
-    args.valid_file = os.path.join(args.data_dir,
-        '{}valid{}'.format(args.filename_prefix, args.filename_suffix))
-    args.test_file = os.path.join(args.data_dir,
-        '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
     if args.mask_strategy == 'random' or'fixed':
         log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.{}_mask.present{}.partition{}.hidden{}.seq2seq/'.format(
@@ -98,62 +92,47 @@ def load_hyperparams():
             args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
             args.learning_rate_strategy, args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
-    batching_scheme = _batching_scheme(
-        args.batch_size,
-        args.max_seq_length,
-        args.min_length_bucket,
-        args.length_bucket_step,
-        drop_long_sequences=True,
-    )
-    print('train_file:{}'.format(args.train_file))
-    print('valid_file:{}'.format(args.valid_file))
-    train_dataset_hparams = {
-        "num_epochs": args.eval_interval_epoch,
-        "seed": args.random_seed,
-        "shuffle": True,
-        "dataset": {
-            "files": args.train_file,
-            "vocab_file": args.vocab_file,
-            "max_seq_length": args.max_seq_length,
-            "bos_token": SpecialTokens.BOS,
-            "eos_token": SpecialTokens.EOS,
-            "length_filter_mode": "truncate",
-        },
-        # 'bucket_boundaries': batching_scheme['boundaries'],
-        # 'bucket_batch_sizes': batching_scheme['batch_sizes'],
-        'batch_size': args.batch_size,
-        'allow_smaller_final_batch': True,
+
+    data_files = {
+        mode: {
+            data_name: args.data_dir + '/' + args.filename_prefix + '%s.%s.txt' % (data_name, mode)
+            for data_name in ['source', 'templatebyword', 'answer', 'start', 'end']
+        }
+        for mode in ['train', 'test', 'valid']
     }
-    eval_dataset_hparams = {
-        "num_epochs": 1,
-        'seed': args.random_seed,
-        'shuffle': False,
-        'dataset': {
-            'files': args.valid_file,
-            'vocab_file': args.vocab_file,
-            "max_seq_length": args.max_seq_length,
-            "bos_token": SpecialTokens.BOS,
-            "eos_token": SpecialTokens.EOS,
-            "length_filter_mode": "truncate",
-        },
-        'batch_size': args.test_batch_size,
-        'allow_smaller_final_batch': True,
+    data_hparams = {
+        stage: {
+            "num_epochs": 1,
+            "shuffle": stage != 'test',
+            "batch_size": args.batch_size,
+            "datasets": [
+                {  # source
+                    "files": [data_files[stage]['source']],
+                    "vocab_file": os.path.join(args.vocab_file),
+                    "max_seq_length": args.max_seq_length,
+                    "bos_token": SpecialTokens.BOS,
+                    "eos_token": SpecialTokens.EOS,
+                    "length_filter_mode": "truncate",
+                    "data_name": "source"
+                },
+                {  # templatebyword
+                    "files": [data_files[stage]['templatebyword']],
+                    "vocab_share_with": 0,
+                    "data_name": "templatebyword"
+                },
+                {  # answer
+                    "files": [data_files[stage]['answer']],
+                    "vocab_share_with": 0,
+                    "bos_token": SpecialTokens.BOA,
+                    "eos_token": SpecialTokens.EOA,
+                    "variable_utterance": True,
+                    "data_name": "answer"
+                }
+            ]
+        }
+        for stage in ['train', 'valid', 'test']
     }
-    test_dataset_hparams = {
-        "num_epochs": 1,
-        "seed": args.random_seed,
-        "shuffle": False,
-        "dataset": {
-            "files": args.test_file,
-            "vocab_file": args.vocab_file,
-            "max_seq_length": args.max_seq_length,
-            "bos_token": SpecialTokens.BOS,
-            "eos_token": SpecialTokens.EOS,
-            "length_filter_mode": "truncate",
-        },
-        'batch_size': args.test_batch_size,
-        'allow_smaller_final_batch': True,
-    }
+
     args.word_embedding_hparams = {
         'name': 'lookup_table',
         'dim': args.hidden_dim,
@@ -216,9 +195,9 @@ def load_hyperparams():
     if not os.path.exists(args.log_dir + 'img/'):
         os.makedirs(args.log_dir + 'img/')
     return {
-        'train_dataset_hparams': train_dataset_hparams,
-        'eval_dataset_hparams': eval_dataset_hparams,
-        'test_dataset_hparams': test_dataset_hparams,
+        'train_dataset_hparams': data_hparams['train'],
+        'eval_dataset_hparams': data_hparams['valid'],
+        'test_dataset_hparams': data_hparams['test'],
         'encoder_hparams': encoder_hparams,
         'decoder_hparams': decoder_hparams,
         'loss_hparams': loss_hparams,

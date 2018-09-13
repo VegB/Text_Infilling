@@ -44,27 +44,28 @@ def _main(_):
         hparams['opt_hparams'], hparams['loss_hparams'], hparams['args']
 
     # Data
-    train_data = tx.data.MonoTextData(train_dataset_hparams)
-    valid_data = tx.data.MonoTextData(valid_dataset_hparams)
-    test_data = tx.data.MonoTextData(test_dataset_hparams)
+    train_data = tx.data.MultiAlignedData(train_dataset_hparams)
+    valid_data = tx.data.MultiAlignedData(valid_dataset_hparams)
+    test_data = tx.data.MultiAlignedData(test_dataset_hparams)
     iterator = tx.data.TrainTestDataIterator(train=train_data,
                                              val=valid_data,
                                              test=test_data)
     data_batch = iterator.get_next()
-    mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    boa_id = train_data.vocab.token_to_id_map_py['<BOA>']
-    eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
-    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
-    pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
+    vocab = train_data.vocab('source')
+    mask_id = vocab.token_to_id_map_py['<m>']
+    boa_id = vocab.token_to_id_map_py['<BOA>']
+    eoa_id = vocab.token_to_id_map_py['<EOA>']
+    eos_id = vocab.token_to_id_map_py[SpecialTokens.EOS]
+    pad_id = vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, pad_id)
 
     # Model architecture
-    embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
+    embedder = tx.modules.WordEmbedder(vocab_size=vocab.size,
                                        hparams=args.word_embedding_hparams)
     position_embedder = position_embedders.SinusoidsSegmentalPositionEmbedder()
     encoder = tx.modules.UnidirectionalRNNEncoder(hparams=encoder_hparams)
-    decoder = tx.modules.BasicPositionalRNNDecoder(vocab_size=train_data.vocab.size,
+    decoder = tx.modules.BasicPositionalRNNDecoder(vocab_size=vocab.size,
                                                    hparams=decoder_hparams,
                                                    position_embedder=position_embedder)
     decoder_initial_state_size = decoder.cell.state_size
@@ -81,7 +82,7 @@ def _main(_):
 
     _, ecdr_states = encoder(
         enc_input_embedded,
-        sequence_length=data_batch["length"])
+        sequence_length=data_batch["source_length"])
 
     dcdr_init_states = connector(ecdr_states)
 
@@ -99,7 +100,7 @@ def _main(_):
         cur_loss = tx.utils.smoothing_cross_entropy(
             outputs.logits,
             hole['text_ids'][:, 1:],
-            train_data.vocab.size,
+            vocab.size,
             loss_hparams['label_confidence'],
         )
         cetp_loss = cur_loss if cetp_loss is None \
@@ -131,7 +132,7 @@ def _main(_):
         decoder.set_segment_id(idx * 2 + 1)
         outputs_infer, _, _ = decoder(
             decoding_strategy="infer_positional",
-            start_tokens=tf.cast(tf.fill([tf.shape(data_batch['text_ids'])[0]], boa_id), tf.int32),
+            start_tokens=tf.cast(tf.fill([tf.shape(data_batch['source_text_ids'])[0]], boa_id), tf.int32),
             end_token=eoa_id,
             embedding=embedder,
             initial_state=dcdr_init_states)
@@ -168,7 +169,7 @@ def _main(_):
 
     def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
-            return [' '.join([train_data.vocab._id_to_token_map_py[i]
+            return [' '.join([vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
         if mode == 'test':
@@ -191,10 +192,12 @@ def _main(_):
                 rtns = cur_sess.run(fetches, feed_dict=feed)
                 real_templates_, templates_, targets_, predictions_ = \
                     rtns['template']['templates'], rtns['template']['text_ids'], \
-                    rtns['data_batch']['text_ids'], rtns['predictions']
+                    rtns['data_batch']['source_text_ids'], rtns['predictions']
 
                 filled_templates = \
-                    tx.utils.fill_template(rtns['template'], predictions_, eoa_id, pad_id, eos_id)
+                    tx.utils.fill_template(template_pack=rtns['template'],
+                                           predictions=rtns['predictions'],
+                                           eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
 
                 templates, targets, generateds = _id2word_map(real_templates_.tolist()), \
                                                  _id2word_map(targets_), \
