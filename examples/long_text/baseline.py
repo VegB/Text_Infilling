@@ -96,7 +96,7 @@ def _main(_):
             initial_state=dcdr_init_states,
             decoding_strategy="train_greedy",
             inputs=dec_input_embedded,
-            sequence_length=hole["lengths"]+1)
+            sequence_length=hole["lengths"]-1)
         cur_loss = tx.utils.smoothing_cross_entropy(
             outputs.logits,
             hole['text_ids'][:, 1:],

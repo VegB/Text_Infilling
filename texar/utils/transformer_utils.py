@@ -438,8 +438,8 @@ def prepare_template(data_batch, args, mask_id, pad_id):
     )
     answer_packs = []
     for idx, (answer, answer_length)in enumerate(zip(answers, answer_lengths)):
-        answer = answer[0]
         answer_length = answer_length[0]
+        answer = answer[0][:, :tf.reduce_max(answer_length)]
         mask_len = shape_list(answer)[1]
         answer_segment_ids = generate_prediction_segment_ids(answer, idx * 2 + 1, mask_len)
         answer_offsets = generate_prediction_offsets(answer, mask_len)
