@@ -394,7 +394,7 @@ def prepare_template(data_batch, args, mask_id, pad_id):
             for idx, template in enumerate(mask_by_word):
                 for i, word in enumerate(template):
                     if word == mask_id:
-                        if start_pos[idx][-1] == i - 1:
+                        if end_pos[idx][-1] == i:
                             end_pos[idx].pop()
                         else:
                             start_pos[idx].append(i)
