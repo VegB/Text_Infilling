@@ -71,26 +71,27 @@ def _main(_):
     decoder_initial_state_size = decoder.cell.state_size
     connector = tx.modules.connectors.ForwardConnector(decoder_initial_state_size)
 
-    template = template_pack['templates']
-    template_word_embeds = embedder(template)
-    template_length = shape_list(template)[1]
-    channels = shape_list(template_word_embeds)[2]
-    template_pos_embeds = position_embedder(template_length, channels,
-                                            template_pack['segment_ids'],
-                                            template_pack['offsets'])
-    enc_input_embedded = template_word_embeds + template_pos_embeds
-
-    _, ecdr_states = encoder(
-        enc_input_embedded,
-        sequence_length=data_batch["source_length"])
-
-    dcdr_init_states = connector(ecdr_states)
-
     cetp_loss = None
+    cur_template_pack = template_pack
     for idx, hole in enumerate(answer_packs):
+        template = cur_template_pack['templates']
+        template_word_embeds = embedder(template)
+        template_length = shape_list(template)[1]
+        channels = shape_list(template_word_embeds)[2]
+        template_pos_embeds = position_embedder(template_length, channels,
+                                                cur_template_pack['segment_ids'],
+                                                cur_template_pack['offsets'])
+        enc_input_embedded = template_word_embeds + template_pos_embeds
+
+        _, ecdr_states = encoder(
+            enc_input_embedded,
+            sequence_length=data_batch["source_length"])
+
+        dcdr_init_states = connector(ecdr_states)
+
         dec_input = hole['text_ids'][:, :-1]
         dec_input_word_embeds = embedder(dec_input)
-        decoder.set_segment_id(idx * 2 + 1)
+        decoder.set_segment_id(1)
         dec_input_embedded = dec_input_word_embeds
         outputs, _, _ = decoder(
             initial_state=dcdr_init_states,
@@ -105,6 +106,9 @@ def _main(_):
         )
         cetp_loss = cur_loss if cetp_loss is None \
             else tf.concat([cetp_loss, cur_loss], -1)
+        cur_template_pack = tx.utils.update_template_pack(cur_template_pack,
+                                                          hole['text_ids'][:, 1:],
+                                                          mask_id, eoa_id, pad_id)
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
@@ -128,8 +132,24 @@ def _main(_):
     train_op = optimizer.minimize(cetp_loss, global_step)
 
     predictions = []
+    cur_test_pack = template_pack
     for idx, hole in enumerate(answer_packs):
-        decoder.set_segment_id(idx * 2 + 1)
+        template = cur_test_pack['templates']
+        template_word_embeds = embedder(template)
+        template_length = shape_list(template)[1]
+        channels = shape_list(template_word_embeds)[2]
+        template_pos_embeds = position_embedder(template_length, channels,
+                                                cur_test_pack['segment_ids'],
+                                                cur_test_pack['offsets'])
+        enc_input_embedded = template_word_embeds + template_pos_embeds
+
+        _, ecdr_states = encoder(
+            enc_input_embedded,
+            sequence_length=data_batch["source_length"])
+
+        dcdr_init_states = connector(ecdr_states)
+
+        decoder.set_segment_id(1)
         outputs_infer, _, _ = decoder(
             decoding_strategy="infer_positional",
             start_tokens=tf.cast(tf.fill([tf.shape(data_batch['source_text_ids'])[0]], boa_id), tf.int32),
@@ -137,6 +157,9 @@ def _main(_):
             embedding=embedder,
             initial_state=dcdr_init_states)
         predictions.append(outputs_infer.sample_id)
+        cur_test_pack = tx.utils.update_template_pack(cur_test_pack,
+                                                      outputs_infer.sample_id,
+                                                      mask_id, eoa_id, pad_id)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
