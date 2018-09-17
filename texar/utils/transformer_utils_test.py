@@ -2,7 +2,8 @@ import math
 import argparse
 import numpy as np
 import tensorflow as tf
-from texar.utils.transformer_utils import prepare_template, _split_template, _merge_segments, fill_template
+from texar.utils.transformer_utils import prepare_template, _split_template, \
+    _merge_segments, fill_template, update_template_pack
 
 
 class Hyperparams:
@@ -163,5 +164,68 @@ def test_fill_template_with_tensor():
         print("\ntemplate:\n", rtns['template']['text_ids'].tolist())
         print("\nfilled:\n", filled)
         assert filled == rtns['ori']['source_text_ids'].tolist()
-test_fill_template_with_tensor()
+# test_fill_template_with_tensor()
 
+
+def test_update_template_pack():
+    data_batch = {
+        'source_text': tf.Variable([[b'<BOS>', b'and', b'she', b'sprang', b'off', b'his', b'shoulder', b'and', b'up',
+                                     b'the', b'steps', b'before', b'him', b'<EOS>'],
+                                    [b'<BOS>', b'and', b'they', b'gave', b'hans', b'gifts', b'of', b'gold', b'and',
+                                     b'of', b'silver', b'<EOS>', b'', b'']], dtype=object),
+        'source_length': tf.Variable([14, 12], dtype=tf.int32),
+        'source_text_ids': tf.Variable([[1, 10, 47, 1068, 44, 166, 1990, 10, 287, 49, 1401, 143, 115, 2],
+                                        [1, 10, 19, 48, 1913, 775, 106, 778, 10, 106, 477, 2, 0, 0]]),
+        'templatebyword_text': tf.Variable([[b'<BOS>', b'and', b'she', b'sprang', b'<m>', b'his', b'shoulder', b'and',
+                                             b'<m>', b'<m>', b'steps', b'<m>', b'him', b'<EOS>'],
+                                            [b'<BOS>', b'and', b'they', b'gave', b'<m>', b'hans', b'gifts', b'<m>',
+                                             b'gold', b'and', b'<m>', b'silver', b'<EOS>', b'']], dtype=object),
+        'templatebyword_length': tf.Variable([14, 13], dtype=tf.int32),
+        'templatebyword_text_ids': tf.Variable([[1, 10, 47, 1068, 6, 166, 1990, 10, 6, 6, 1401, 6, 115, 2],
+                                                [1, 10, 19, 48, 6, 1913, 775, 6, 778, 10, 6, 477, 2, 0]]),
+        'answer_text': tf.Variable([[[b'<BOA>', b'off', b'<EOA>', b'<PAD>'],
+                                     [b'<BOA>', b'up', b'the', b'<EOA>'],
+                                     [b'<BOA>', b'before', b'<EOA>', b'<PAD>']],
+                                    [[b'<BOA>', b'<EOA>', b'<PAD>', b''],
+                                     [b'<BOA>', b'of', b'<EOA>', b''],
+                                     [b'<BOA>', b'of', b'<EOA>', b'']]], dtype=object),
+        'answer_length': tf.Variable([[3, 4, 3], [2, 3, 3]], dtype=tf.int32),
+        'answer_text_ids': tf.Variable([[[4, 44, 5, 0],
+                                         [4, 287, 49, 5],
+                                         [4, 143, 5, 0]],
+                                        [[4, 5, 0, 0],
+                                         [4, 106, 5, 0],
+                                         [4, 106, 5, 0]]]),
+        'answer_utterance_cnt': tf.Variable([3, 3], dtype=tf.int32)
+    }
+    args = load_hyperparams()
+    mask_id = 6
+    boa_id = 4
+    eoa_id = 5
+    eos_id = 2
+    pad_id = 0
+    template_pack, answer_packs = prepare_template(data_batch, args, mask_id, pad_id)
+
+    update_rst = []
+    cur_template_pack = template_pack
+    for hole in answer_packs:
+        cur_template_pack = update_template_pack(cur_template_pack, hole['text_ids'][:, 1:], mask_id, eoa_id, pad_id)
+        update_rst.append(cur_template_pack)
+
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
+        fetches = {
+            'ori': data_batch,
+            'template': template_pack,
+            'fills': answer_packs,
+            'updated': update_rst
+        }
+        rtns = sess.run(fetches)
+        print(rtns['ori'])
+        # print(rtns['updated'][-1])
+        print(rtns['template'])
+        print(rtns['fills'])
+        for i in rtns['updated']:
+            print('\n')
+            print(i)
+test_update_template_pack()

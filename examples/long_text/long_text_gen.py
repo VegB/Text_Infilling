@@ -81,9 +81,10 @@ def _main(_):
                                               hparams=decoder_hparams)
 
     cetp_loss = None
+    cur_template_pack = template_pack
     for hole in answer_packs:
         logits, preds = decoder(decoder_input_pack=hole,
-                                template_input_pack=template_pack,
+                                template_input_pack=cur_template_pack,
                                 encoder_decoder_attention_bias=None,
                                 args=args)
         cur_loss = tx.utils.smoothing_cross_entropy(
@@ -93,6 +94,9 @@ def _main(_):
             loss_hparams['label_confidence'])
         cetp_loss = cur_loss if cetp_loss is None \
             else tf.concat([cetp_loss, cur_loss], -1)
+        cur_template_pack = tx.utils.update_template_pack(cur_template_pack,
+                                                          hole['text_ids'][:, 1:],
+                                                          mask_id, eoa_id, pad_id)
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
@@ -116,19 +120,23 @@ def _main(_):
     offsets = tx.utils.generate_prediction_offsets(data_batch['templatebyword_text_ids'],
                                                    args.max_decode_len + 1)
     for it, test_pack in enumerate(test_sets):
+        cur_test_pack = test_pack['template_pack']
         for idx, _ in enumerate(test_pack['answer_packs']):
             segment_ids = \
                 tx.utils.generate_prediction_segment_ids(data_batch['templatebyword_text_ids'],
-                                                         idx * 2 + 1,  # segment id starting from 1
+                                                         1,  # segment_id will always be 1
                                                          args.max_decode_len + 1)
             preds = decoder.dynamic_decode(
-                template_input_pack=test_pack['template_pack'],
+                template_input_pack=cur_test_pack,
                 encoder_decoder_attention_bias=None,
                 segment_ids=segment_ids,
                 offsets=offsets,
                 bos_id=boa_id,
                 eos_id=eoa_id)
             test_sets[it]['predictions'].append(preds['sampled_ids'][:, 0])
+            cur_test_pack = tx.utils.update_template_pack(cur_test_pack,
+                                                          preds['sampled_ids'][:, 0],
+                                                          mask_id, eoa_id, pad_id)
 
     def _train_epochs(session, cur_epoch, mode='train'):
         iterator.switch_to_train_data(session)
