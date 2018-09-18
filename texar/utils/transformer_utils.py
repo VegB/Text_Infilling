@@ -19,7 +19,8 @@ __all__ = [
     "prepare_template",
     "fill_template",
     "generate_prediction_offsets",
-    "generate_prediction_segment_ids"
+    "generate_prediction_segment_ids",
+    "update_template_pack",
 ]
 
 
@@ -360,6 +361,25 @@ def generate_prediction_segment_ids(inputs, segment_id, max_length):
     return tf.cast(tf.fill([batch_size, tf.cast(max_length, dtype=tf.int32)], segment_id), dtype=tf.int64)
 
 
+def _get_start_end_pos(mask_by_word, mask_id):
+    def _get_start_end_pos_py_func(mask_by_word, mask_id):
+        start_pos, end_pos = [[-2] for i in range(len(mask_by_word))], [[-2] for i in range(len(mask_by_word))]
+        for idx, template in enumerate(mask_by_word):
+            for i, word in enumerate(template):
+                if word == mask_id:
+                    if end_pos[idx][-1] == i:
+                        end_pos[idx].pop()
+                    else:
+                        start_pos[idx].append(i)
+                    end_pos[idx].append(i+1)
+        return np.array(start_pos)[:, 1:].astype(np.int64), np.array(end_pos)[:, 1:].astype(np.int64)
+
+    mask_id = tf.Variable(mask_id, dtype=tf.int64)
+    return tf.py_func(_get_start_end_pos_py_func,
+                      [mask_by_word, mask_id],
+                      [tf.int64, tf.int64])
+
+
 def prepare_template(data_batch, args, mask_id, pad_id):
     """
     data_batch:
@@ -388,24 +408,6 @@ def prepare_template(data_batch, args, mask_id, pad_id):
                                 [  4, 106,   5,   0]]]),
     'answer_utterance_cnt': array([3, 3], dtype=int32)}
     """
-    def _get_start_end_pos(mask_by_word, mask_id):
-        def _get_start_end_pos_py_func(mask_by_word, mask_id):
-            start_pos, end_pos = [[-2] for i in range(len(mask_by_word))], [[-2] for i in range(len(mask_by_word))]
-            for idx, template in enumerate(mask_by_word):
-                for i, word in enumerate(template):
-                    if word == mask_id:
-                        if end_pos[idx][-1] == i:
-                            end_pos[idx].pop()
-                        else:
-                            start_pos[idx].append(i)
-                        end_pos[idx].append(i+1)
-            return np.array(start_pos)[:, 1:].astype(np.int64), np.array(end_pos)[:, 1:].astype(np.int64)
-
-        mask_id = tf.Variable(mask_id, dtype=tf.int64)
-        return tf.py_func(_get_start_end_pos_py_func,
-                          [mask_by_word, mask_id],
-                          [tf.int64, tf.int64])
-
     masked_inputs = data_batch['templatebyword_text_ids']
     masks = tf.where(tf.equal(masked_inputs, mask_id * tf.ones_like(masked_inputs)),
                      tf.ones_like(masked_inputs), tf.zeros_like(masked_inputs))
@@ -441,7 +443,7 @@ def prepare_template(data_batch, args, mask_id, pad_id):
         answer_length = answer_length[0]
         answer = answer[0][:, :tf.reduce_max(answer_length)]
         mask_len = shape_list(answer)[1]
-        answer_segment_ids = generate_prediction_segment_ids(answer, idx * 2 + 1, mask_len)
+        answer_segment_ids = generate_prediction_segment_ids(answer, 1, mask_len)  # each answer pack will always fill in the first segment
         answer_offsets = generate_prediction_offsets(answer, mask_len)
         answer_packs.append({
             'text_ids': answer,
@@ -530,3 +532,52 @@ def fill_template(template_pack, predictions, eoa_id, pad_id, eos_id):
         template_segments = _split_template(template, start_pos, end_pos)
         rst.append(_merge_segments(template_segments, fillings, eoa_id, pad_id, eos_id))
     return rst
+
+
+def update_template_pack(template_pack, filling, mask_id, eoa_id, pad_id):
+    def _fill_segment(masked_by_word_template, filling, start_pos, end_pos, eoa_id, pad_id):
+        def _fill_segment_py_func(masked_by_word_templates, fillings, start_pos, end_pos, eoa_id, pad_id):
+            masked_by_word_templates = masked_by_word_templates.tolist()
+            fillings = fillings.tolist()
+            start_pos = start_pos.tolist()
+            end_pos = end_pos.tolist()
+            rst, length = [], []
+            for template, filling, s, e in zip(masked_by_word_templates, fillings, start_pos, end_pos):
+                try:
+                    end_pos = filling.index(eoa_id)
+                    filling = filling[:end_pos]
+                except ValueError:
+                    pass
+                cur_rst = template[:s] + filling + template[e:]
+                length.append(len(cur_rst))
+                rst.append(cur_rst)
+            rst, _ = _pad_array_list(rst, length, pad_id)
+            return rst
+        return tf.py_func(_fill_segment_py_func,
+                          [masked_by_word_template, filling, start_pos, end_pos, eoa_id, pad_id],
+                          tf.int64)
+
+    eoa_id = tf.Variable(eoa_id, dtype=tf.int64)
+    pad_id = tf.Variable(pad_id, dtype=tf.int64)
+    masked_inputs = _fill_segment(template_pack['text_ids'], filling,
+                                  template_pack['start_positions'][:, 0],
+                                  template_pack['end_positions'][:, 0], eoa_id, pad_id)
+    masks = tf.where(tf.equal(masked_inputs, mask_id * tf.ones_like(masked_inputs)),
+                     tf.ones_like(masked_inputs), tf.zeros_like(masked_inputs))
+    start_positions, end_positions = _get_start_end_pos(masked_inputs, mask_id)
+    templates, template_masks = \
+        _prepare_squeezed_template(masked_inputs, masks, start_positions, end_positions, mask_id, pad_id)
+    template_lengths = tf.fill(tf.shape(template_pack['template_lengths']), tf.shape(templates)[1])
+    template_segment_ids, template_offsets = \
+        parse_segment(template_lengths, template_masks)
+    return_pack = {
+        'text_ids': masked_inputs,
+        'segment_ids': template_segment_ids,
+        'offsets': template_offsets,
+        'templates': templates,
+        'start_positions': start_positions,
+        'end_positions': end_positions,
+        'masks': masks,
+        'template_lengths': template_lengths
+    }
+    return return_pack
