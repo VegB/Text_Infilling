@@ -26,6 +26,7 @@ from matplotlib import pyplot as plt
 plt.switch_backend('agg')
 import tensorflow as tf
 import texar as tx
+import numpy as np
 from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
 from texar.utils.shapes import shape_list
@@ -168,7 +169,7 @@ def _main(_):
 
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
-        loss_lists = []
+        loss_lists, ppl_lists = [], []
         while True:
             try:
                 fetches = {'template': template_pack,
@@ -181,11 +182,13 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                     rtns['template'], rtns['holes'], rtns['loss']
+                ppl = np.exp(loss)
                 if step % 200 == 1:
-                    rst = 'step:%s source:%s loss:%s lr:%f' % \
-                          (step, template_['text_ids'].shape, loss, rtns['lr'])
+                    rst = 'step:%s source:%s loss:%f ppl:%f lr:%f' % \
+                          (step, template_['text_ids'].shape, loss, ppl, rtns['lr'])
                     print(rst)
                 loss_lists.append(loss)
+                ppl_lists.append(ppl)
             except tf.errors.OutOfRangeError:
                 break
         return loss_lists[::50]
@@ -274,12 +277,12 @@ def _main(_):
             'template': template_bleu
         }
 
-    def _draw_train_loss(epoch, loss_list):
+    def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
-        plt.ylabel('training loss till epoch {}'.format(epoch))
+        plt.ylabel('%s till epoch %s' % (mode, epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
-        plt.savefig(args.log_dir + '/img/train_loss_curve.png')
+        plt.savefig(args.log_dir + '/img/%s_curve.png' % mode)
         plt.close('all')
 
     def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
@@ -312,7 +315,7 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], []
+        loss_list, ppl_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
@@ -329,7 +332,8 @@ def _main(_):
                 # train
                 losses = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
-                _draw_train_loss(epoch, loss_list)
+                _draw_train_loss(epoch, loss_list, mode='train_loss')
+                _draw_train_loss(epoch, ppl_list, mode='perplexity')
                 sys.stdout.flush()
 
 

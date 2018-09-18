@@ -140,7 +140,7 @@ def _main(_):
 
     def _train_epochs(session, cur_epoch, mode='train'):
         iterator.switch_to_train_data(session)
-        loss_lists = []
+        loss_lists, ppl_lists = [], []
         cnt = 0
         while True:
             try:
@@ -162,11 +162,13 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                                                 rtns['template'], rtns['holes'], rtns['loss']
+                ppl = np.exp(loss)
                 if step % 200 == 1 and mode == 'train':
-                    rst = 'step:%s source:%s loss:%s lr:%f' % \
-                          (step, template_['text_ids'].shape, loss, rtns['lr'])
+                    rst = 'step:%s source:%s loss:%f ppl:%f lr:%f' % \
+                          (step, template_['text_ids'].shape, loss, ppl, rtns['lr'])
                     print(rst)
                 loss_lists.append(loss)
+                ppl_lists.append(ppl)
                 cnt += 1
                 if mode is not 'train' and cnt >= 50:
                     break
@@ -184,7 +186,7 @@ def _main(_):
                               (opt_vars['learning_rate'], cur_epoch))
                         opt_vars['decay_time'] += 1
                 break
-        return loss_lists
+        return loss_lists, ppl_lists
 
     def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
@@ -272,12 +274,12 @@ def _main(_):
             os.remove(refer_tmp_filename)
         return bleu_score
 
-    def _draw_train_loss(epoch, loss_list):
+    def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
-        plt.ylabel('training loss till epoch {}'.format(epoch))
+        plt.ylabel('%s till epoch %s' % (mode, epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
-        plt.savefig(args.log_dir + '/img/train_loss_curve.png')
+        plt.savefig(args.log_dir + '/img/%s_curve.png' % mode)
         plt.close('all')
 
     def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
@@ -313,8 +315,9 @@ def _main(_):
         sess.run(tf.tables_initializer())
 
         max_test_bleu = -1
-        loss_list, test_bleu, tplt_bleu = [], {rate: [] for rate in args.test_present_rates}, \
-                                          {rate: [] for rate in args.test_present_rates}
+        loss_list, ppl_list = [], []
+        test_bleu, tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
+                               {rate: [] for rate in args.test_present_rates}
         train_bleu, train_tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
                                       {rate: [] for rate in args.test_present_rates}
         if args.running_mode == 'train_and_evaluate':
@@ -337,9 +340,11 @@ def _main(_):
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
  
                 # train
-                losses = _train_epochs(sess, epoch)
+                losses, ppls = _train_epochs(sess, epoch)
                 loss_list.extend(losses[::50])
-                _draw_train_loss(epoch, loss_list)
+                ppl_list.extend(ppls[::50])
+                _draw_train_loss(epoch, loss_list, mode='train_loss')
+                _draw_train_loss(epoch, ppl_list, mode='perplexity')
                 sys.stdout.flush()
 
 
