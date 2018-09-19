@@ -581,3 +581,4 @@ def update_template_pack(template_pack, filling, mask_id, eoa_id, pad_id):
         'template_lengths': template_lengths
     }
     return return_pack
+

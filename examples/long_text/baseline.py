@@ -191,7 +191,7 @@ def _main(_):
                 ppl_lists.append(ppl)
             except tf.errors.OutOfRangeError:
                 break
-        return loss_lists[::50]
+        return loss_lists[::50], ppl_lists[::50]
 
     def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
@@ -330,8 +330,9 @@ def _main(_):
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
 
                 # train
-                losses = _train_epochs(sess, epoch)
+                losses, ppls = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
+                ppl_list.extend(ppls)
                 _draw_train_loss(epoch, loss_list, mode='train_loss')
                 _draw_train_loss(epoch, ppl_list, mode='perplexity')
                 sys.stdout.flush()

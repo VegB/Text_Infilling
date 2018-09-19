@@ -118,11 +118,13 @@ def load_hyperparams():
                 {  # templatebyword
                     "files": [data_files[stage]['templatebyword']],
                     "vocab_share_with": 0,
+                    "max_seq_length": args.max_seq_length,
                     "data_name": "templatebyword"
                 },
                 {  # answer
                     "files": [data_files[stage]['answer']],
                     "vocab_share_with": 0,
+                    "max_seq_length": args.max_seq_length,
                     "bos_token": SpecialTokens.BOA,
                     "eos_token": SpecialTokens.EOA,
                     "variable_utterance": True,
