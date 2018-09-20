@@ -277,6 +277,25 @@ def _main(_):
             'template': template_bleu
         }
 
+    def _test_ppl(cur_sess, cur_epoch):
+        iterator.switch_to_test_data(cur_sess)
+        loss_lists, ppl_lists = [], []
+        while True:
+            try:
+                fetches = {'loss': cetp_loss}
+                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
+                rtns = cur_sess.run(fetches, feed_dict=feed)
+                loss = rtns['loss']
+                ppl = np.exp(loss)
+                loss_lists.append(loss)
+                ppl_lists.append(ppl)
+            except tf.errors.OutOfRangeError:
+                avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
+                rst = "[TEST]: loss=%f, ppl=%f" % (avg_loss, avg_ppl)
+                print(rst)
+                break
+        return avg_ppl
+
     def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
@@ -315,7 +334,11 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        loss_list, ppl_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], [], []
+        # eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
+        # test_ppl = _test_ppl(sess, 0)
+
+        loss_list, ppl_list, test_ppl_list = [], [], []
+        test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
@@ -333,8 +356,11 @@ def _main(_):
                 losses, ppls = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
                 ppl_list.extend(ppls)
+                test_ppl = _test_ppl(sess, epoch)
+                test_ppl_list.append(test_ppl)
                 _draw_train_loss(epoch, loss_list, mode='train_loss')
                 _draw_train_loss(epoch, ppl_list, mode='perplexity')
+                _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
                 sys.stdout.flush()
 
 
