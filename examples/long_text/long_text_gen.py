@@ -80,9 +80,10 @@ def _main(_):
                                               hparams=decoder_hparams)
 
     cetp_loss = None
+    cur_template_pack = template_pack
     for hole in answer_packs:
         logits, preds = decoder(decoder_input_pack=hole,
-                                template_input_pack=template_pack,
+                                template_input_pack=cur_template_pack,
                                 encoder_decoder_attention_bias=None,
                                 args=args)
         cur_loss = tx.utils.smoothing_cross_entropy(
@@ -92,6 +93,9 @@ def _main(_):
             loss_hparams['label_confidence'])
         cetp_loss = cur_loss if cetp_loss is None \
             else tf.concat([cetp_loss, cur_loss], -1)
+        cur_template_pack = tx.utils.update_template_pack(cur_template_pack,
+                                                          hole['text_ids'][:, 1:],
+                                                          mask_id, eoa_id, pad_id)
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
@@ -115,23 +119,27 @@ def _main(_):
     offsets = tx.utils.generate_prediction_offsets(data_batch['text_ids'],
                                                    args.max_decode_len + 1)
     for it, test_pack in enumerate(test_sets):
+        cur_test_pack = test_pack['template_pack']
         for idx, _ in enumerate(test_pack['answer_packs']):
             segment_ids = \
                 tx.utils.generate_prediction_segment_ids(data_batch['text_ids'],
-                                                         idx * 2 + 1,  # segment id starting from 1
+                                                         1,  # segment_id will always be 1
                                                          args.max_decode_len + 1)
             preds = decoder.dynamic_decode(
-                template_input_pack=test_pack['template_pack'],
+                template_input_pack=cur_test_pack,
                 encoder_decoder_attention_bias=None,
                 segment_ids=segment_ids,
                 offsets=offsets,
                 bos_id=boa_id,
                 eos_id=eoa_id)
             test_sets[it]['predictions'].append(preds['sampled_ids'][:, 0])
+            cur_test_pack = tx.utils.update_template_pack(cur_test_pack,
+                                                          preds['sampled_ids'][:, 0],
+                                                          mask_id, eoa_id, pad_id)
 
     def _train_epochs(session, cur_epoch, mode='train'):
         iterator.switch_to_train_data(session)
-        loss_lists = []
+        loss_lists, ppl_lists = [], []
         cnt = 0
         while True:
             try:
@@ -153,11 +161,13 @@ def _main(_):
                 rtns = session.run(fetches, feed_dict=feed)
                 step, template_, holes_, loss = rtns['step'], \
                                                 rtns['template'], rtns['holes'], rtns['loss']
+                ppl = np.exp(loss)
                 if step % 200 == 1 and mode == 'train':
-                    rst = 'step:%s source:%s loss:%s lr:%f' % \
-                          (step, template_['text_ids'].shape, loss, rtns['lr'])
+                    rst = 'step:%s source:%s loss:%f ppl:%f lr:%f' % \
+                          (step, template_['text_ids'].shape, loss, ppl, rtns['lr'])
                     print(rst)
                 loss_lists.append(loss)
+                ppl_lists.append(ppl)
                 cnt += 1
                 if mode is not 'train' and cnt >= 50:
                     break
@@ -175,7 +185,7 @@ def _main(_):
                               (opt_vars['learning_rate'], cur_epoch))
                         opt_vars['decay_time'] += 1
                 break
-        return loss_lists
+        return loss_lists, ppl_lists
 
     def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
@@ -263,12 +273,31 @@ def _main(_):
             os.remove(refer_tmp_filename)
         return bleu_score
 
-    def _draw_train_loss(epoch, loss_list):
+    def _test_ppl(cur_sess, cur_epoch):
+        iterator.switch_to_test_data(cur_sess)
+        loss_lists, ppl_lists = [], []
+        while True:
+            try:
+                fetches = {'loss': cetp_loss}
+                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
+                rtns = cur_sess.run(fetches, feed_dict=feed)
+                loss = rtns['loss']
+                ppl = np.exp(loss)
+                loss_lists.append(loss)
+                ppl_lists.append(ppl)
+            except tf.errors.OutOfRangeError:
+                avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
+                rst = "[TEST]: loss=%f, ppl=%f" % (avg_loss, avg_ppl)
+                print(rst)
+                break
+        return avg_ppl
+
+    def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
-        plt.ylabel('training loss till epoch {}'.format(epoch))
+        plt.ylabel('%s till epoch %s' % (mode, epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
-        plt.savefig(args.log_dir + '/img/train_loss_curve.png')
+        plt.savefig(args.log_dir + '/img/%s_curve.png' % mode)
         plt.close('all')
 
     def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
@@ -303,9 +332,13 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
+        # eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
+        # _test_ppl(sess, 0)
+
         max_test_bleu = -1
-        loss_list, test_bleu, tplt_bleu = [], {rate: [] for rate in args.test_present_rates}, \
-                                          {rate: [] for rate in args.test_present_rates}
+        loss_list, ppl_list, test_ppl_list = [], [], []
+        test_bleu, tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
+                               {rate: [] for rate in args.test_present_rates}
         train_bleu, train_tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
                                       {rate: [] for rate in args.test_present_rates}
         if args.running_mode == 'train_and_evaluate':
@@ -328,12 +361,16 @@ def _main(_):
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
 
                 # train
-                losses = _train_epochs(sess, epoch)
+                losses, ppls = _train_epochs(sess, epoch)
                 loss_list.extend(losses[::50])
-                _draw_train_loss(epoch, loss_list)
+                ppl_list.extend(ppls[::50])
+                test_ppl = _test_ppl(sess, epoch)
+                test_ppl_list.append(test_ppl)
+                _draw_train_loss(epoch, loss_list, mode='train_loss')
+                _draw_train_loss(epoch, ppl_list, mode='perplexity')
+                _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
                 sys.stdout.flush()
 
 
 if __name__ == '__main__':
     tf.app.run(main=_main)
-
