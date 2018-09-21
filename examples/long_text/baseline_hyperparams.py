@@ -72,8 +72,11 @@ def load_hyperparams():
     argparser.add_argument('--partition_strategy', type=str, default='dynamic')  # '    fixed'
     argparser.add_argument('--fixed_partition_num', type=int, default=1)
     argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
+    argparser.add_argument('--gamma_decay', type=float, default=0.5)
+    argparser.add_argument('--lambda_g', type=float, default=0.1)
     argparser.parse_args(namespace=args)
 
+    args.pretrain_epoch = args.max_train_epoch * 0.8
     args.max_decode_len = args.max_seq_length
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
     if args.partition_strategy == 'dynamic':
@@ -197,6 +200,16 @@ def load_hyperparams():
         "max_decoding_length_infer": args.max_seq_length+2,
         "name": "basic_rnn_decoder"
     }
+    classifier_hparams = {
+        'kernel_size': [3, 4, 5],
+        'filters': 128,
+        'other_conv_kwargs': {'padding': 'same'},
+        'dropout_conv': [1],
+        'dropout_rate': 0.5,
+        'num_dense_layers': 0,
+        'num_classes': 1
+    }
+
     loss_hparams = {
         'label_confidence': 0.9,
     }
@@ -210,6 +223,14 @@ def load_hyperparams():
         'Adam_beta2': 0.997,
         'Adam_epsilon': 1e-9,
     }
+    d_opt = {
+        'optimizer': {
+            'type':  'AdamOptimizer',
+            'kwargs': {
+                'learning_rate': 5e-4,
+            },
+        },
+    }
     print('logdir:{}'.format(args.log_dir))
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
@@ -221,8 +242,10 @@ def load_hyperparams():
         'test_dataset_hparams': test_dataset_hparams,
         'encoder_hparams': encoder_hparams,
         'decoder_hparams': decoder_hparams,
+        'classifier_hparams': classifier_hparams,
         'loss_hparams': loss_hparams,
         'opt_hparams': opt_hparams,
+        'd_opt': d_opt,
         'args': args,
         }
 
