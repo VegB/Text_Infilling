@@ -97,7 +97,7 @@ def _main(_):
             initial_state=dcdr_init_states,
             decoding_strategy="train_greedy",
             inputs=dec_input_embedded,
-            sequence_length=hole["lengths"] - 1)
+            sequence_length=hole["lengths"]+1)
         cur_loss = tx.utils.smoothing_cross_entropy(
             outputs.logits,
             hole['text_ids'][:, 1:],
@@ -205,6 +205,7 @@ def _main(_):
             iterator.switch_to_val_data(cur_sess)
         templates_list, targets_list, hypothesis_list = [], [], []
         cnt = 0
+        loss_lists, ppl_lists = [], []
         while True:
             try:
                 fetches = {
@@ -212,12 +213,17 @@ def _main(_):
                     'predictions': predictions,
                     'template': template_pack,
                     'step': global_step,
+                    'loss': cetp_loss
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
                 real_templates_, templates_, targets_, predictions_ = \
                     rtns['template']['templates'], rtns['template']['text_ids'], \
                     rtns['data_batch']['text_ids'], rtns['predictions']
+                loss = rtns['loss']
+                ppl = np.exp(loss)
+                loss_lists.append(loss)
+                ppl_lists.append(ppl)
 
                 filled_templates = \
                     tx.utils.fill_template(template_pack=rtns['template'],
@@ -242,6 +248,7 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
+        avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
         outputs_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.outputs.tmp'. \
             format(cur_epoch, args.beam_width, args.alpha)
         template_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.templates.tmp'. \
@@ -258,7 +265,8 @@ def _main(_):
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
         template_bleu = float(100 * bleu_tool.bleu_wrapper( \
             refer_tmp_filename, template_tmp_filename, case_sensitive=True))
-        print('epoch:{} {}_bleu:{} template_bleu:{}'.format(cur_epoch, mode, eval_bleu, template_bleu))
+        print('epoch:{} {}_bleu:{} template_bleu:{} {}_loss:{} {}_ppl:{} '.
+              format(cur_epoch, mode, eval_bleu, template_bleu, mode, avg_loss, mode, avg_ppl))
         os.remove(outputs_tmp_filename)
         os.remove(template_tmp_filename)
         os.remove(refer_tmp_filename)
@@ -274,26 +282,7 @@ def _main(_):
         return {
             'eval': eval_bleu,
             'template': template_bleu
-        }
-
-    def _test_ppl(cur_sess, cur_epoch):
-        iterator.switch_to_test_data(cur_sess)
-        loss_lists, ppl_lists = [], []
-        while True:
-            try:
-                fetches = {'loss': cetp_loss}
-                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
-                rtns = cur_sess.run(fetches, feed_dict=feed)
-                loss = rtns['loss']
-                ppl = np.exp(loss)
-                loss_lists.append(loss)
-                ppl_lists.append(ppl)
-            except tf.errors.OutOfRangeError:
-                avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
-                rst = "[TEST]: loss=%f, ppl=%f" % (avg_loss, avg_ppl)
-                print(rst)
-                break
-        return avg_ppl
+        }, avg_ppl
 
     def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
@@ -342,10 +331,13 @@ def _main(_):
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
                 if epoch % args.bleu_interval == 0 or epoch == args.max_train_epoch - 1:
-                    bleu_scores = _test_epoch(sess, epoch)
+                    bleu_scores, test_ppl = _test_epoch(sess, epoch)
                     test_bleu.append(bleu_scores['eval'])
                     tplt_bleu.append(bleu_scores['template'])
-                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    test_ppl_list.append(test_ppl)
+                    _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
+
+                    train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
                     train_bleu.append(train_bleu_scores['eval'])
                     train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
@@ -355,11 +347,8 @@ def _main(_):
                 losses, ppls = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
                 ppl_list.extend(ppls)
-                test_ppl = _test_ppl(sess, epoch)
-                test_ppl_list.append(test_ppl)
                 _draw_train_loss(epoch, loss_list, mode='train_loss')
                 _draw_train_loss(epoch, ppl_list, mode='perplexity')
-                _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
                 sys.stdout.flush()
 
 

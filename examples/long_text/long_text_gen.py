@@ -202,18 +202,24 @@ def _main(_):
         else:
             iterator.switch_to_val_data(cur_sess)
         cnt = 0
+        loss_lists, ppl_lists = [], []
         while True:
             try:
                 fetches = {
                     'data_batch': data_batch,
                     'test_sets': test_sets,
                     'step': global_step,
+                    'loss': cetp_loss
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
                 targets_, test_sets_ = rtns['data_batch']['text_ids'], rtns['test_sets']
                 targets = _id2word_map(targets_)
                 targets_list.extend([target.split('<EOS>')[0].strip().split() for target in targets])
+                loss = rtns['loss']
+                ppl = np.exp(loss)
+                loss_lists.append(loss)
+                ppl_lists.append(ppl)
 
                 for it, test_pack in enumerate(test_sets_):
                     templates_list, hypotheses_list = [], []
@@ -238,6 +244,7 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
+        avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
         bleu_score = [{'test_present_rate': rate} for rate in args.test_present_rates]
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
         with codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
@@ -260,8 +267,9 @@ def _main(_):
             os.remove(template_tmp_filename)
 
             if args.save_eval_output and mode is not 'eval':
-                print('epoch:{} test_present_rate:{} {}_bleu:{} template_bleu:{}'
-                      .format(cur_epoch, test_pack['test_present_rate'], mode, test_bleu, template_bleu))
+                print('epoch:{} test_present_rate:{} {}_bleu:{} template_bleu:{} {}_loss:{} {}_ppl:{} '
+                      .format(cur_epoch, test_pack['test_present_rate'], mode, test_bleu, template_bleu,
+                              mode, avg_loss, mode, avg_ppl))
                 result_filename = \
                     args.log_dir + 'epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}' \
                         .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], mode, test_bleu)
@@ -271,26 +279,7 @@ def _main(_):
                         resultfile.write("- expected: " + ' '.join(tgt) + '\n')
                         resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
             os.remove(refer_tmp_filename)
-        return bleu_score
-
-    def _test_ppl(cur_sess, cur_epoch):
-        iterator.switch_to_test_data(cur_sess)
-        loss_lists, ppl_lists = [], []
-        while True:
-            try:
-                fetches = {'loss': cetp_loss}
-                feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
-                rtns = cur_sess.run(fetches, feed_dict=feed)
-                loss = rtns['loss']
-                ppl = np.exp(loss)
-                loss_lists.append(loss)
-                ppl_lists.append(ppl)
-            except tf.errors.OutOfRangeError:
-                avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
-                rst = "[TEST]: loss=%f, ppl=%f" % (avg_loss, avg_ppl)
-                print(rst)
-                break
-        return avg_ppl
+        return bleu_score, avg_ppl
 
     def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
@@ -345,7 +334,9 @@ def _main(_):
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
                 if epoch % args.bleu_interval == 0 or epoch == args.max_train_epoch - 1:
-                    bleu_scores = _test_epoch(sess, epoch)
+                    bleu_scores, test_ppl = _test_epoch(sess, epoch)
+                    test_ppl_list.append(test_ppl)
+                    _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
                     for scores in bleu_scores:
                         test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
@@ -353,7 +344,7 @@ def _main(_):
                                 and scores['test_bleu'] > max_test_bleu:
                             max_test_bleu = scores['test_bleu']
                             eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
+                    train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
@@ -364,11 +355,8 @@ def _main(_):
                 losses, ppls = _train_epochs(sess, epoch)
                 loss_list.extend(losses[::50])
                 ppl_list.extend(ppls[::50])
-                test_ppl = _test_ppl(sess, epoch)
-                test_ppl_list.append(test_ppl)
                 _draw_train_loss(epoch, loss_list, mode='train_loss')
                 _draw_train_loss(epoch, ppl_list, mode='perplexity')
-                _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
                 sys.stdout.flush()
 
 
