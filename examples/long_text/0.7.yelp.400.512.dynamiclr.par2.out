@@ -1,280 +1,45 @@
 train_file:/home/syp/zwr/txtgen/examples/long_text/yelp_data/pos/pos.train.txt
 valid_file:/home/syp/zwr/txtgen/examples/long_text/yelp_data/pos/pos.valid.txt
 logdir:./log_dir/pos.bsize400.epoch150.seqlen16.dynamic_lr.fixed_mask.present0.7.partition2.hidden512/
-epoch:0 test_present_rate:0.7 test_bleu:16.49545133113861 template_bleu:42.23254323005676
-epoch:0 test_present_rate:0.7 train_bleu:16.27078801393509 template_bleu:41.730305552482605
-step:1 source:(400, 17) loss:8.784161 ppl:6529.989258 lr:0.000000
-step:201 source:(400, 17) loss:5.958386 ppl:386.985016 lr:0.000003
-[TEST]: loss=5.500215, ppl=251.860306
-step:401 source:(400, 17) loss:4.986466 ppl:146.418060 lr:0.000005
-[TEST]: loss=4.674512, ppl=110.981262
-step:601 source:(400, 17) loss:4.605673 ppl:100.050278 lr:0.000008
-[TEST]: loss=4.326847, ppl=78.382935
-step:801 source:(400, 17) loss:4.312710 ppl:74.642517 lr:0.000011
-step:1001 source:(400, 17) loss:4.266485 ppl:71.270691 lr:0.000013
-[TEST]: loss=4.180679, ppl=67.828712
-step:1201 source:(400, 17) loss:4.165686 ppl:64.436882 lr:0.000016
-[TEST]: loss=4.119181, ppl=63.955055
-epoch:5 test_present_rate:0.7 test_bleu:50.214165449142456 template_bleu:42.23254323005676
-epoch:5 test_present_rate:0.7 train_bleu:50.076037645339966 template_bleu:41.730305552482605
-step:1401 source:(400, 17) loss:4.134908 ppl:62.483856 lr:0.000019
-[TEST]: loss=4.058154, ppl=60.542850
-step:1601 source:(400, 17) loss:3.992521 ppl:54.191338 lr:0.000021
-step:1801 source:(400, 17) loss:4.000568 ppl:54.629192 lr:0.000024
-[TEST]: loss=4.000111, ppl=57.242641
-step:2001 source:(400, 17) loss:3.995094 ppl:54.330952 lr:0.000027
-[TEST]: loss=3.966061, ppl=55.334347
-step:2201 source:(400, 17) loss:3.929287 ppl:50.870678 lr:0.000029
-[TEST]: loss=3.935709, ppl=53.707020
-step:2401 source:(400, 17) loss:3.919031 ppl:50.351612 lr:0.000032
-step:2601 source:(400, 17) loss:3.853813 ppl:47.172607 lr:0.000034
-[TEST]: loss=3.916637, ppl=52.714458
-epoch:10 test_present_rate:0.7 test_bleu:51.59395933151245 template_bleu:42.23254323005676
-epoch:10 test_present_rate:0.7 train_bleu:51.455509662628174 template_bleu:41.730305552482605
-step:2801 source:(400, 17) loss:3.873499 ppl:48.110451 lr:0.000037
-[TEST]: loss=3.897140, ppl=51.703381
-step:3001 source:(400, 17) loss:3.866738 ppl:47.786266 lr:0.000040
-[TEST]: loss=3.863771, ppl=49.970512
-step:3201 source:(400, 17) loss:3.780540 ppl:43.839687 lr:0.000042
-[TEST]: loss=3.835724, ppl=48.641212
-step:3401 source:(400, 17) loss:3.833066 ppl:46.204002 lr:0.000045
-step:3601 source:(400, 17) loss:3.857577 ppl:47.350475 lr:0.000048
-[TEST]: loss=3.812451, ppl=47.662525
-step:3801 source:(400, 17) loss:3.756483 ppl:42.797634 lr:0.000050
-[TEST]: loss=3.775983, ppl=46.009701
-epoch:15 test_present_rate:0.7 test_bleu:53.04018259048462 template_bleu:42.23254323005676
-epoch:15 test_present_rate:0.7 train_bleu:52.68230438232422 template_bleu:41.730305552482605
-step:4001 source:(400, 17) loss:3.717398 ppl:41.157169 lr:0.000053
-[TEST]: loss=3.668805, ppl=41.333218
-step:4201 source:(400, 17) loss:3.611998 ppl:37.039978 lr:0.000056
-step:4401 source:(400, 17) loss:3.556809 ppl:35.051159 lr:0.000058
-[TEST]: loss=3.564228, ppl=37.318161
-step:4601 source:(400, 17) loss:3.469685 ppl:32.126610 lr:0.000061
-[TEST]: loss=3.492120, ppl=34.719147
-step:4801 source:(400, 17) loss:3.470116 ppl:32.140469 lr:0.000064
-[TEST]: loss=3.432863, ppl=32.805012
-step:5001 source:(400, 17) loss:3.376040 ppl:29.254700 lr:0.000066
-step:5201 source:(400, 17) loss:3.333031 ppl:28.023163 lr:0.000069
-[TEST]: loss=3.375562, ppl=30.987377
-epoch:20 test_present_rate:0.7 test_bleu:58.076709508895874 template_bleu:42.23254323005676
-epoch:20 test_present_rate:0.7 train_bleu:57.834047079086304 template_bleu:41.730305552482605
-step:5401 source:(400, 17) loss:3.300409 ppl:27.123739 lr:0.000072
-[TEST]: loss=3.335196, ppl=29.798691
-step:5601 source:(400, 17) loss:3.264886 ppl:26.177137 lr:0.000074
-[TEST]: loss=3.296224, ppl=28.658680
-step:5801 source:(400, 17) loss:3.242686 ppl:25.602398 lr:0.000077
-step:6001 source:(400, 17) loss:3.199263 ppl:24.514452 lr:0.000080
-[TEST]: loss=3.263163, ppl=27.739170
-step:6201 source:(400, 17) loss:3.228573 ppl:25.243616 lr:0.000082
-[TEST]: loss=3.238242, ppl=27.084793
-step:6401 source:(400, 17) loss:3.126359 ppl:22.790852 lr:0.000085
-[TEST]: loss=3.214975, ppl=26.454771
-epoch:25 test_present_rate:0.7 test_bleu:59.60995554924011 template_bleu:42.23254323005676
-epoch:25 test_present_rate:0.7 train_bleu:59.81209874153137 template_bleu:41.730305552482605
-step:6601 source:(400, 17) loss:3.115869 ppl:22.553011 lr:0.000088
-[TEST]: loss=3.191529, ppl=25.867613
-step:6801 source:(400, 17) loss:3.093685 ppl:22.058222 lr:0.000090
-step:7001 source:(400, 17) loss:3.079052 ppl:21.737795 lr:0.000093
-[TEST]: loss=3.178481, ppl=25.487686
-step:7201 source:(400, 17) loss:3.136608 ppl:23.025640 lr:0.000095
-[TEST]: loss=3.160373, ppl=25.040556
-step:7401 source:(400, 17) loss:3.048839 ppl:21.090836 lr:0.000098
-[TEST]: loss=3.150895, ppl=24.778118
-step:7601 source:(400, 17) loss:2.954096 ppl:19.184374 lr:0.000101
-step:7801 source:(400, 17) loss:2.959720 ppl:19.292576 lr:0.000103
-[TEST]: loss=3.128912, ppl=24.265757
-epoch:30 test_present_rate:0.7 test_bleu:61.052727699279785 template_bleu:42.23254323005676
-epoch:30 test_present_rate:0.7 train_bleu:61.62462830543518 template_bleu:41.730305552482605
-step:8001 source:(400, 17) loss:3.011571 ppl:20.319296 lr:0.000106
-[TEST]: loss=3.110714, ppl=23.852070
-step:8201 source:(400, 17) loss:2.923756 ppl:18.611061 lr:0.000109
-[TEST]: loss=3.101912, ppl=23.609541
-step:8401 source:(400, 17) loss:2.897110 ppl:18.121698 lr:0.000111
-step:8601 source:(400, 17) loss:2.919817 ppl:18.537893 lr:0.000114
-[TEST]: loss=3.089419, ppl=23.300474
-step:8801 source:(400, 17) loss:2.890858 ppl:18.008762 lr:0.000117
-[TEST]: loss=3.083159, ppl=23.144749
-step:9001 source:(400, 17) loss:2.852733 ppl:17.335093 lr:0.000119
-[TEST]: loss=3.072943, ppl=22.922249
-epoch:35 test_present_rate:0.7 test_bleu:62.34022378921509 template_bleu:42.23254323005676
-epoch:35 test_present_rate:0.7 train_bleu:62.858229875564575 template_bleu:41.730305552482605
-step:9201 source:(400, 17) loss:2.926270 ppl:18.657911 lr:0.000122
-[TEST]: loss=3.065459, ppl=22.743950
-step:9401 source:(400, 17) loss:2.811398 ppl:16.633156 lr:0.000125
-step:9601 source:(400, 17) loss:2.788954 ppl:16.264008 lr:0.000127
-[TEST]: loss=3.056870, ppl=22.598972
-step:9801 source:(400, 17) loss:2.786102 ppl:16.217672 lr:0.000130
-[TEST]: loss=3.045049, ppl=22.315550
-step:10001 source:(400, 17) loss:2.833768 ppl:17.009426 lr:0.000133
-[TEST]: loss=3.040758, ppl=22.215628
-step:10201 source:(400, 17) loss:2.791418 ppl:16.304125 lr:0.000131
-step:10401 source:(400, 17) loss:2.685232 ppl:14.661601 lr:0.000130
-[TEST]: loss=3.038262, ppl=22.197939
-epoch:40 test_present_rate:0.7 test_bleu:64.01974558830261 template_bleu:42.23254323005676
-epoch:40 test_present_rate:0.7 train_bleu:64.32497501373291 template_bleu:41.730305552482605
-step:10601 source:(400, 17) loss:2.806535 ppl:16.552469 lr:0.000129
-[TEST]: loss=3.031899, ppl=22.035402
-step:10801 source:(400, 17) loss:2.694599 ppl:14.799582 lr:0.000128
-[TEST]: loss=3.034214, ppl=22.115969
-step:11001 source:(400, 17) loss:2.721482 ppl:15.202833 lr:0.000126
-step:11201 source:(400, 17) loss:2.748686 ppl:15.622088 lr:0.000125
-[TEST]: loss=3.030796, ppl=22.054499
-step:11401 source:(400, 17) loss:2.715342 ppl:15.109781 lr:0.000124
-[TEST]: loss=3.017527, ppl=21.715881
-step:11601 source:(400, 17) loss:2.694171 ppl:14.793246 lr:0.000123
-[TEST]: loss=3.016161, ppl=21.745947
-epoch:45 test_present_rate:0.7 test_bleu:64.55040574073792 template_bleu:42.23254323005676
-epoch:45 test_present_rate:0.7 train_bleu:65.44628143310547 template_bleu:41.730305552482605
-step:11801 source:(400, 17) loss:2.665246 ppl:14.371491 lr:0.000122
-step:12001 source:(400, 17) loss:2.693750 ppl:14.787022 lr:0.000121
-[TEST]: loss=3.010638, ppl=21.622198
-step:12201 source:(400, 17) loss:2.725472 ppl:15.263613 lr:0.000120
-[TEST]: loss=3.005870, ppl=21.541998
-step:12401 source:(400, 17) loss:2.658317 ppl:14.272250 lr:0.000119
-[TEST]: loss=3.006249, ppl=21.555552
-step:12601 source:(400, 17) loss:2.629528 ppl:13.867224 lr:0.000118
-[TEST]: loss=3.006890, ppl=21.562160
-step:12801 source:(400, 17) loss:2.656294 ppl:14.243410 lr:0.000117
-step:13001 source:(400, 17) loss:2.630432 ppl:13.879760 lr:0.000116
-[TEST]: loss=3.006957, ppl=21.551662
-epoch:50 test_present_rate:0.7 test_bleu:64.70471024513245 template_bleu:42.23254323005676
-epoch:50 test_present_rate:0.7 train_bleu:66.57255291938782 template_bleu:41.730305552482605
-step:13201 source:(400, 17) loss:2.582477 ppl:13.229866 lr:0.000115
-[TEST]: loss=3.009799, ppl=21.615812
-step:13401 source:(400, 17) loss:2.555947 ppl:12.883495 lr:0.000115
-[TEST]: loss=3.004752, ppl=21.525127
-step:13601 source:(400, 17) loss:2.600682 ppl:13.472923 lr:0.000114
-step:13801 source:(400, 17) loss:2.637384 ppl:13.976589 lr:0.000113
-[TEST]: loss=3.005843, ppl=21.574499
-step:14001 source:(400, 17) loss:2.594998 ppl:13.396556 lr:0.000112
-[TEST]: loss=3.004658, ppl=21.520584
-step:14201 source:(400, 17) loss:2.596163 ppl:13.412180 lr:0.000111
-[TEST]: loss=2.998760, ppl=21.432951
-epoch:55 test_present_rate:0.7 test_bleu:64.95564579963684 template_bleu:42.23254323005676
-epoch:55 test_present_rate:0.7 train_bleu:67.40885972976685 template_bleu:41.730305552482605
-step:14401 source:(400, 17) loss:2.497803 ppl:12.155764 lr:0.000110
-step:14601 source:(400, 17) loss:2.579195 ppl:13.186519 lr:0.000110
-[TEST]: loss=2.993280, ppl=21.295166
-step:14801 source:(400, 17) loss:2.562341 ppl:12.966135 lr:0.000109
-[TEST]: loss=2.989023, ppl=21.240246
-step:15001 source:(400, 17) loss:2.576928 ppl:13.156664 lr:0.000108
-[TEST]: loss=2.994375, ppl=21.344332
-step:15201 source:(400, 17) loss:2.558376 ppl:12.914827 lr:0.000108
-[TEST]: loss=2.990266, ppl=21.272812
-step:15401 source:(400, 17) loss:2.551605 ppl:12.827679 lr:0.000107
-step:15601 source:(400, 17) loss:2.525625 ppl:12.498698 lr:0.000106
-[TEST]: loss=2.994099, ppl=21.402029
-epoch:60 test_present_rate:0.7 test_bleu:64.99754786491394 template_bleu:42.23254323005676
-epoch:60 test_present_rate:0.7 train_bleu:68.2251513004303 template_bleu:41.730305552482605
-step:15801 source:(400, 17) loss:2.542772 ppl:12.714863 lr:0.000105
-[TEST]: loss=2.995127, ppl=21.350239
-step:16001 source:(400, 17) loss:2.557246 ppl:12.900244 lr:0.000105
-[TEST]: loss=2.998048, ppl=21.501886
-step:16201 source:(400, 17) loss:2.539478 ppl:12.673058 lr:0.000104
-step:16401 source:(400, 17) loss:2.506725 ppl:12.264701 lr:0.000104
-[TEST]: loss=2.992888, ppl=21.355742
-step:16601 source:(400, 17) loss:2.489216 ppl:12.051825 lr:0.000103
-[TEST]: loss=2.997033, ppl=21.459263
-step:16801 source:(400, 17) loss:2.522564 ppl:12.460501 lr:0.000102
-[TEST]: loss=2.992666, ppl=21.359966
-epoch:65 test_present_rate:0.7 test_bleu:65.30909538269043 template_bleu:42.23254323005676
-epoch:65 test_present_rate:0.7 train_bleu:68.88145804405212 template_bleu:41.730305552482605
-step:17001 source:(400, 17) loss:2.481994 ppl:11.965098 lr:0.000102
-step:17201 source:(400, 17) loss:2.517962 ppl:12.403287 lr:0.000101
-[TEST]: loss=3.006205, ppl=21.728117
-step:17401 source:(400, 17) loss:2.458406 ppl:11.686166 lr:0.000101
-[TEST]: loss=3.007525, ppl=21.755108
-step:17601 source:(400, 17) loss:2.406405 ppl:11.094004 lr:0.000100
-[TEST]: loss=3.024733, ppl=22.161507
-step:17801 source:(400, 17) loss:2.493750 ppl:12.106589 lr:0.000099
-step:18001 source:(400, 17) loss:2.499738 ppl:12.179308 lr:0.000099
-[TEST]: loss=3.010683, ppl=21.853294
-step:18201 source:(400, 17) loss:2.518091 ppl:12.404893 lr:0.000098
-[TEST]: loss=2.989155, ppl=21.391424
-epoch:70 test_present_rate:0.7 test_bleu:65.50648808479309 template_bleu:42.23254323005676
-epoch:70 test_present_rate:0.7 train_bleu:69.53830122947693 template_bleu:41.730305552482605
-step:18401 source:(400, 17) loss:2.469885 ppl:11.821086 lr:0.000098
-[TEST]: loss=3.080403, ppl=23.543201
-step:18601 source:(400, 17) loss:2.487890 ppl:12.035856 lr:0.000097
-[TEST]: loss=2.998489, ppl=21.584681
-step:18801 source:(400, 17) loss:2.449844 ppl:11.586540 lr:0.000097
-step:19001 source:(400, 17) loss:2.465847 ppl:11.773453 lr:0.000096
-[TEST]: loss=3.063462, ppl=23.181385
-step:19201 source:(400, 17) loss:2.378772 ppl:10.791643 lr:0.000096
-[TEST]: loss=3.076248, ppl=23.558933
-step:19401 source:(400, 17) loss:2.426774 ppl:11.322292 lr:0.000095
-[TEST]: loss=3.094338, ppl=24.068226
-epoch:75 test_present_rate:0.7 test_bleu:37.14880645275116 template_bleu:42.23254323005676
-epoch:75 test_present_rate:0.7 train_bleu:33.3361029624939 template_bleu:41.730305552482605
-step:19601 source:(400, 17) loss:2.430026 ppl:11.359173 lr:0.000095
-step:19801 source:(400, 17) loss:2.396252 ppl:10.981943 lr:0.000094
-[TEST]: loss=3.109175, ppl=24.272652
-step:20001 source:(400, 17) loss:2.405751 ppl:11.086753 lr:0.000094
-[TEST]: loss=2.991587, ppl=21.483376
-step:20201 source:(400, 17) loss:2.416966 ppl:11.211796 lr:0.000093
-[TEST]: loss=3.291400, ppl=29.348831
-step:20401 source:(400, 17) loss:2.457219 ppl:11.672307 lr:0.000093
-step:20601 source:(400, 17) loss:2.465748 ppl:11.772280 lr:0.000092
-[TEST]: loss=3.568811, ppl=39.499874
-step:20801 source:(400, 17) loss:2.416851 ppl:11.210503 lr:0.000092
-[TEST]: loss=3.688501, ppl=44.386330
-epoch:80 test_present_rate:0.7 test_bleu:16.956691443920135 template_bleu:42.23254323005676
-epoch:80 test_present_rate:0.7 train_bleu:17.776232957839966 template_bleu:41.730305552482605
-step:21001 source:(400, 17) loss:2.404279 ppl:11.070451 lr:0.000091
-[TEST]: loss=3.755879, ppl=47.048187
-step:21201 source:(400, 17) loss:2.387750 ppl:10.888968 lr:0.000091
-step:21401 source:(400, 17) loss:2.330953 ppl:10.287738 lr:0.000091
-[TEST]: loss=3.162958, ppl=25.661850
-step:21601 source:(400, 17) loss:2.428686 ppl:11.343970 lr:0.000090
-[TEST]: loss=3.870829, ppl=51.362373
-step:21801 source:(400, 17) loss:2.371581 ppl:10.714322 lr:0.000090
-[TEST]: loss=3.128655, ppl=24.787439
-step:22001 source:(400, 17) loss:2.391207 ppl:10.926680 lr:0.000089
-[TEST]: loss=3.599462, ppl=39.899212
-epoch:85 test_present_rate:0.7 test_bleu:17.756637930870056 template_bleu:42.23254323005676
-epoch:85 test_present_rate:0.7 train_bleu:19.039717316627502 template_bleu:41.730305552482605
-step:22201 source:(400, 17) loss:2.365818 ppl:10.652747 lr:0.000089
-step:22401 source:(400, 17) loss:2.404531 ppl:11.073236 lr:0.000089
-[TEST]: loss=3.794748, ppl=48.858692
-step:22601 source:(400, 17) loss:2.387284 ppl:10.883888 lr:0.000088
-[TEST]: loss=3.496652, ppl=35.851208
-step:22801 source:(400, 17) loss:2.362345 ppl:10.615813 lr:0.000088
-[TEST]: loss=3.067709, ppl=23.319313
-step:23001 source:(400, 17) loss:2.303935 ppl:10.013506 lr:0.000087
-step:23201 source:(400, 17) loss:2.369063 ppl:10.687370 lr:0.000087
-[TEST]: loss=3.663202, ppl=42.467060
-step:23401 source:(400, 17) loss:2.392604 ppl:10.941948 lr:0.000087
-[TEST]: loss=3.460573, ppl=35.291538
-epoch:90 test_present_rate:0.7 test_bleu:19.744302332401276 template_bleu:42.23254323005676
-epoch:90 test_present_rate:0.7 train_bleu:20.818720757961273 template_bleu:41.730305552482605
-step:23601 source:(400, 17) loss:2.398169 ppl:11.003012 lr:0.000086
-[TEST]: loss=3.542986, ppl=37.910225
-step:23801 source:(400, 17) loss:2.307362 ppl:10.047884 lr:0.000086
-step:24001 source:(400, 17) loss:2.403008 ppl:11.056389 lr:0.000086
-[TEST]: loss=3.383140, ppl=31.754412
-step:24201 source:(400, 17) loss:2.335258 ppl:10.332126 lr:0.000085
-[TEST]: loss=3.365218, ppl=31.904287
-step:24401 source:(400, 17) loss:2.338337 ppl:10.363984 lr:0.000085
-[TEST]: loss=3.019423, ppl=22.194426
-step:24601 source:(400, 17) loss:2.311889 ppl:10.093475 lr:0.000085
-[TEST]: loss=3.524035, ppl=37.070232
-epoch:95 test_present_rate:0.7 test_bleu:23.36089164018631 template_bleu:42.23254323005676
-epoch:95 test_present_rate:0.7 train_bleu:24.138090014457703 template_bleu:41.730305552482605
-step:24801 source:(400, 17) loss:2.255543 ppl:9.540475 lr:0.000084
-step:25001 source:(400, 17) loss:2.353200 ppl:10.519182 lr:0.000084
-[TEST]: loss=3.573642, ppl=38.846573
-step:25201 source:(400, 17) loss:2.327794 ppl:10.255292 lr:0.000084
-[TEST]: loss=4.274168, ppl=76.512398
-step:25401 source:(400, 17) loss:2.278677 ppl:9.763759 lr:0.000083
-[TEST]: loss=3.888336, ppl=53.547195
-step:25601 source:(400, 17) loss:2.297530 ppl:9.949581 lr:0.000083
-step:25801 source:(400, 17) loss:2.341686 ppl:10.398757 lr:0.000083
-[TEST]: loss=3.927859, ppl=53.914986
-step:26001 source:(400, 17) loss:2.280591 ppl:9.782462 lr:0.000082
-[TEST]: loss=3.898513, ppl=53.099697
+epoch:70 test_present_rate:0.7 test_bleu:65.70523381233215 template_bleu:42.23254323005676 test_loss:2.9785003662109375 test_ppl:21.028303146362305 
+step:18401 source:(400, 17) loss:2.489362 ppl:12.053580 lr:0.000098
+step:18601 source:(400, 17) loss:2.495191 ppl:12.124053 lr:0.000097
+step:18801 source:(400, 17) loss:2.441997 ppl:11.495971 lr:0.000097
+step:19001 source:(400, 17) loss:2.436237 ppl:11.429950 lr:0.000096
+step:19201 source:(400, 17) loss:2.375521 ppl:10.756613 lr:0.000096
+step:19401 source:(400, 17) loss:2.393157 ppl:10.947997 lr:0.000095
+epoch:75 test_present_rate:0.7 test_bleu:65.13721942901611 template_bleu:42.23254323005676 test_loss:3.0584521293640137 test_ppl:23.04166030883789 
+step:19601 source:(400, 17) loss:2.444397 ppl:11.523604 lr:0.000095
+step:19801 source:(400, 17) loss:2.392871 ppl:10.944871 lr:0.000094
+step:20001 source:(400, 17) loss:2.399194 ppl:11.014293 lr:0.000094
+step:20201 source:(400, 17) loss:2.423781 ppl:11.288460 lr:0.000093
+step:20401 source:(400, 17) loss:2.466402 ppl:11.779989 lr:0.000093
+step:20601 source:(400, 17) loss:2.477951 ppl:11.916825 lr:0.000092
+step:20801 source:(400, 17) loss:2.418604 ppl:11.230170 lr:0.000092
+epoch:80 test_present_rate:0.7 test_bleu:65.91449975967407 template_bleu:42.23254323005676 test_loss:3.01364803314209 test_ppl:21.777631759643555 
+step:21001 source:(400, 17) loss:2.390376 ppl:10.917599 lr:0.000091
+step:21201 source:(400, 17) loss:2.364273 ppl:10.636299 lr:0.000091
+step:21401 source:(400, 17) loss:2.349774 ppl:10.483202 lr:0.000091
+step:21601 source:(400, 17) loss:2.412266 ppl:11.159220 lr:0.000090
+step:21801 source:(400, 17) loss:2.378628 ppl:10.790087 lr:0.000090
+step:22001 source:(400, 17) loss:2.398109 ppl:11.002354 lr:0.000089
+epoch:85 test_present_rate:0.7 test_bleu:62.50815391540527 template_bleu:42.23254323005676 test_loss:3.055497646331787 test_ppl:22.77678680419922 
+step:22201 source:(400, 17) loss:2.356718 ppl:10.556252 lr:0.000089
+step:22401 source:(400, 17) loss:2.362824 ppl:10.620899 lr:0.000089
+step:22601 source:(400, 17) loss:2.393598 ppl:10.952829 lr:0.000088
+step:22801 source:(400, 17) loss:2.349509 ppl:10.480420 lr:0.000088
+step:23001 source:(400, 17) loss:2.289860 ppl:9.873560 lr:0.000087
+step:23201 source:(400, 17) loss:2.377020 ppl:10.772756 lr:0.000087
+step:23401 source:(400, 17) loss:2.376614 ppl:10.768383 lr:0.000087
+epoch:90 test_present_rate:0.7 test_bleu:58.47929120063782 template_bleu:42.23254323005676 test_loss:3.0793426036834717 test_ppl:23.45099449157715 
+step:23601 source:(400, 17) loss:2.382965 ppl:10.836987 lr:0.000086
+step:23801 source:(400, 17) loss:2.304692 ppl:10.021090 lr:0.000086
+step:24001 source:(400, 17) loss:2.404425 ppl:11.072061 lr:0.000086
+step:24201 source:(400, 17) loss:2.316449 ppl:10.139606 lr:0.000085
+step:24401 source:(400, 17) loss:2.320612 ppl:10.181906 lr:0.000085
+step:24601 source:(400, 17) loss:2.294091 ppl:9.915421 lr:0.000085
 /home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
   return f(*args, **kwds)
-epoch:100 test_present_rate:0.7 test_bleu:14.96206521987915 template_bleu:42.23254323005676
 Traceback (most recent call last):
   File "/home/syp/miniconda2/envs/newtf/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1323, in _do_call
     return fn(*args)
@@ -284,18 +49,18 @@ Traceback (most recent call last):
     c_api.TF_GetCode(self.status.status))
 tensorflow.python.framework.errors_impl.UnknownError: IndexError: too many indices for array
 	 [[Node: PyFunc_20 = PyFunc[Tin=[DT_INT64, DT_INT64], Tout=[DT_INT64, DT_INT64], token="pyfunc_20", _device="/job:localhost/replica:0/task:0/device:CPU:0"](PyFunc_19, Variable_20/read)]]
-	 [[Node: decoder_4/while/layer_5/encdec_attention/multihead_attention/output_transform/Tensordot/Gather/_1203 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_8464_decoder_4/while/layer_5/encdec_attention/multihead_attention/output_transform/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopdecoder_4/while/layer_5/self_attention/multihead_attention/dropout/cond/pred_id/_124)]]
+	 [[Node: decoder_4/while/layer_0/self_attention/multihead_attention/q/Tensordot/Gather/_2551 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_11842_decoder_4/while/layer_0/self_attention/multihead_attention/q/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopdecoder_4/while/layer_5/self_attention/multihead_attention/dropout/cond/pred_id/_884)]]
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "long_text_gen.py", line 376, in <module>
+  File "long_text_gen.py", line 365, in <module>
     tf.app.run(main=_main)
   File "/home/syp/miniconda2/envs/newtf/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
     _sys.exit(main(_sys.argv[:1] + flags_passthrough))
-  File "long_text_gen.py", line 356, in _main
-    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
-  File "long_text_gen.py", line 213, in _test_epoch
+  File "long_text_gen.py", line 337, in _main
+    bleu_scores, test_ppl = _test_epoch(sess, epoch)
+  File "long_text_gen.py", line 215, in _test_epoch
     rtns = cur_sess.run(fetches, feed_dict=feed)
   File "/home/syp/miniconda2/envs/newtf/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
     run_metadata_ptr)
@@ -307,10 +72,10 @@ Traceback (most recent call last):
     raise type(e)(node_def, op, message)
 tensorflow.python.framework.errors_impl.UnknownError: IndexError: too many indices for array
 	 [[Node: PyFunc_20 = PyFunc[Tin=[DT_INT64, DT_INT64], Tout=[DT_INT64, DT_INT64], token="pyfunc_20", _device="/job:localhost/replica:0/task:0/device:CPU:0"](PyFunc_19, Variable_20/read)]]
-	 [[Node: decoder_4/while/layer_5/encdec_attention/multihead_attention/output_transform/Tensordot/Gather/_1203 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_8464_decoder_4/while/layer_5/encdec_attention/multihead_attention/output_transform/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopdecoder_4/while/layer_5/self_attention/multihead_attention/dropout/cond/pred_id/_124)]]
+	 [[Node: decoder_4/while/layer_0/self_attention/multihead_attention/q/Tensordot/Gather/_2551 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_11842_decoder_4/while/layer_0/self_attention/multihead_attention/q/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopdecoder_4/while/layer_5/self_attention/multihead_attention/dropout/cond/pred_id/_884)]]
 
 Caused by op 'PyFunc_20', defined at:
-  File "long_text_gen.py", line 376, in <module>
+  File "long_text_gen.py", line 365, in <module>
     tf.app.run(main=_main)
   File "/home/syp/miniconda2/envs/newtf/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
     _sys.exit(main(_sys.argv[:1] + flags_passthrough))
@@ -333,5 +98,5 @@ Caused by op 'PyFunc_20', defined at:
 
 UnknownError (see above for traceback): IndexError: too many indices for array
 	 [[Node: PyFunc_20 = PyFunc[Tin=[DT_INT64, DT_INT64], Tout=[DT_INT64, DT_INT64], token="pyfunc_20", _device="/job:localhost/replica:0/task:0/device:CPU:0"](PyFunc_19, Variable_20/read)]]
-	 [[Node: decoder_4/while/layer_5/encdec_attention/multihead_attention/output_transform/Tensordot/Gather/_1203 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_8464_decoder_4/while/layer_5/encdec_attention/multihead_attention/output_transform/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopdecoder_4/while/layer_5/self_attention/multihead_attention/dropout/cond/pred_id/_124)]]
+	 [[Node: decoder_4/while/layer_0/self_attention/multihead_attention/q/Tensordot/Gather/_2551 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_11842_decoder_4/while/layer_0/self_attention/multihead_attention/q/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopdecoder_4/while/layer_5/self_attention/multihead_attention/dropout/cond/pred_id/_884)]]
 
