@@ -407,7 +407,7 @@ def _main(_):
                     train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
-                 
+
                 # Anneals the gumbel-softmax temperature
                 if epoch > args.pretrain_epoch:
                     gamma_ = max(0.001, gamma_ * args.gamma_decay)
