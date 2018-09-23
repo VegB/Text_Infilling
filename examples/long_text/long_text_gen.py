@@ -321,7 +321,7 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        # eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
+        eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
         # _test_ppl(sess, 0)
 
         max_test_bleu = -1
@@ -331,7 +331,7 @@ def _main(_):
         train_bleu, train_tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
                                       {rate: [] for rate in args.test_present_rates}
         if args.running_mode == 'train_and_evaluate':
-            for epoch in range(args.max_train_epoch):
+            for epoch in range(70, args.max_train_epoch):
                 # bleu on test set and train set
                 if epoch % args.bleu_interval == 0 or epoch == args.max_train_epoch - 1:
                     bleu_scores, test_ppl = _test_epoch(sess, epoch)
@@ -344,11 +344,12 @@ def _main(_):
                                 and scores['test_bleu'] > max_test_bleu:
                             max_test_bleu = scores['test_bleu']
                             eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                    train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
+                    """train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
                     for scores in train_bleu_scores:
                         train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
                         train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
+                    """
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
 
                 # train
