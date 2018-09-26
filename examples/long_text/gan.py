@@ -382,7 +382,7 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        # eval_saver.restore(sess, args.log_dir + 'pretrained-model.ckpt')
+        eval_saver.restore(sess, args.log_dir + 'pretrained-model.ckpt')
         # test_ppl = _test_ppl(sess, 0)
 
         iterator.initialize_dataset(sess)
@@ -391,7 +391,7 @@ def _main(_):
         test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], []
         gamma_, lambda_g_ = 1., 0.
         if args.running_mode == 'train_and_evaluate':
-            for epoch in range(args.max_train_epoch):
+            for epoch in range(70, args.max_train_epoch):
                 # Anneals the gumbel-softmax temperature
                 if epoch > args.pretrain_epoch:
                     gamma_ = max(0.001, gamma_ * args.gamma_decay)
