@@ -413,7 +413,7 @@ def _main(_):
                     train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
-                 
+                
                 # train
                 iterator.restart_dataset(sess, ['train_g', 'train_d'])
                 losses, ppls = _train_epochs(sess, epoch, gamma_, lambda_g_)
