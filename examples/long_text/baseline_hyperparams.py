@@ -78,7 +78,7 @@ def load_hyperparams():
     argparser.parse_args(namespace=args)
 
     args.pretrain_epoch = args.max_train_epoch * 0.8
-    args.max_decode_len = args.max_seq_length
+    args.max_decode_len = args.max_seq_length / 2  # modified here
     args.max_partition_num = int((args.max_seq_length + 1) / 2)
     if args.partition_strategy == 'dynamic':
         args.partition_num = int(math.log(args.max_seq_length))
