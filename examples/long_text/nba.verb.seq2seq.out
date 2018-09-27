@@ -1,0 +1,49 @@
+logdir:./log_dir/nba.lm.bsize500.epoch150.seqlen17.dynamic_lr.fixed_mask.present0.2.partition3.hidden400.seq2seq/
+epoch:0 test_bleu:2.36921571195 template_bleu:15.0691911578 test_loss:3.74384975433 test_ppl:42.2633972168
+step:1 source:(500, 18) loss:3.649991 ppl:38.474319 lr:0.000000
+step:201 source:(500, 19) loss:3.600081 ppl:36.601196 lr:0.000003
+step:401 source:(500, 18) loss:2.664404 ppl:14.359387 lr:0.000006
+epoch:10 test_bleu:13.1827816367 template_bleu:15.0691911578 test_loss:2.6392250061 test_ppl:14.0023603439
+step:601 source:(500, 19) loss:2.565636 ppl:13.008935 lr:0.000009
+step:801 source:(500, 19) loss:2.535489 ppl:12.622597 lr:0.000012
+epoch:20 test_bleu:27.4120181799 template_bleu:15.0691911578 test_loss:2.50804233551 test_ppl:12.2808647156
+step:1001 source:(500, 18) loss:2.552830 ppl:12.843393 lr:0.000015
+step:1201 source:(500, 18) loss:2.524005 ppl:12.478476 lr:0.000018
+epoch:30 test_bleu:27.5340825319 template_bleu:15.0691911578 test_loss:2.48192834854 test_ppl:11.9643135071
+step:1401 source:(500, 18) loss:2.460260 ppl:11.707854 lr:0.000021
+step:1601 source:(500, 18) loss:2.596643 ppl:13.418619 lr:0.000024
+epoch:40 test_bleu:27.4608254433 template_bleu:15.0691911578 test_loss:2.48539066315 test_ppl:12.0058097839
+step:1801 source:(500, 19) loss:2.472413 ppl:11.851007 lr:0.000027
+step:2001 source:(500, 19) loss:2.404482 ppl:11.072698 lr:0.000030
+epoch:50 test_bleu:27.704384923 template_bleu:15.0691911578 test_loss:2.46617031097 test_ppl:11.777258873
+step:2201 source:(500, 18) loss:2.526105 ppl:12.504704 lr:0.000033
+step:2401 source:(500, 19) loss:2.400138 ppl:11.024699 lr:0.000036
+epoch:60 test_bleu:27.679631114 template_bleu:15.0691911578 test_loss:2.46374392509 test_ppl:11.7487258911
+step:2601 source:(500, 19) loss:2.521848 ppl:12.451583 lr:0.000039
+step:2801 source:(500, 18) loss:2.504042 ppl:12.231837 lr:0.000042
+epoch:70 test_bleu:27.4484008551 template_bleu:15.0691911578 test_loss:2.47476601601 test_ppl:11.8789310455
+step:3001 source:(500, 18) loss:2.478475 ppl:11.923063 lr:0.000045
+step:3201 source:(500, 18) loss:2.559171 ppl:12.925095 lr:0.000048
+epoch:80 test_bleu:28.1918048859 template_bleu:15.0691911578 test_loss:2.44451975822 test_ppl:11.5250263214
+step:3401 source:(500, 18) loss:2.384472 ppl:10.853327 lr:0.000051
+step:3601 source:(500, 18) loss:2.481095 ppl:11.954351 lr:0.000054
+epoch:90 test_bleu:29.1217803955 template_bleu:15.0691911578 test_loss:2.43610262871 test_ppl:11.4284181595
+step:3801 source:(500, 18) loss:2.451938 ppl:11.610831 lr:0.000057
+step:4001 source:(500, 18) loss:2.405365 ppl:11.082472 lr:0.000060
+epoch:100 test_bleu:27.7654618025 template_bleu:15.0691911578 test_loss:2.43151807785 test_ppl:11.3761520386
+step:4201 source:(500, 19) loss:2.394757 ppl:10.965536 lr:0.000063
+step:4401 source:(500, 18) loss:2.406626 ppl:11.096456 lr:0.000066
+step:4601 source:(500, 18) loss:2.441422 ppl:11.489362 lr:0.000069
+epoch:110 test_bleu:24.8196572065 template_bleu:15.0691911578 test_loss:2.41954421997 test_ppl:11.2407484055
+step:4801 source:(500, 19) loss:2.389685 ppl:10.910056 lr:0.000072
+step:5001 source:(500, 18) loss:2.407895 ppl:11.110544 lr:0.000075
+epoch:120 test_bleu:28.534257412 template_bleu:15.0691911578 test_loss:2.39961385727 test_ppl:11.0189399719
+step:5201 source:(500, 18) loss:2.426793 ppl:11.322511 lr:0.000078
+step:5401 source:(500, 18) loss:2.319987 ppl:10.175545 lr:0.000081
+epoch:130 test_bleu:30.1531404257 template_bleu:15.0691911578 test_loss:2.36501741409 test_ppl:10.6442232132
+step:5601 source:(500, 18) loss:2.389557 ppl:10.908659 lr:0.000084
+step:5801 source:(500, 18) loss:2.349680 ppl:10.482217 lr:0.000087
+epoch:140 test_bleu:30.5347323418 template_bleu:15.0691911578 test_loss:2.35823249817 test_ppl:10.572271347
+step:6001 source:(500, 19) loss:2.369708 ppl:10.694272 lr:0.000090
+step:6201 source:(500, 18) loss:2.367909 ppl:10.675047 lr:0.000093
+epoch:149 test_bleu:30.6569099426 template_bleu:15.0691911578 test_loss:2.33246517181 test_ppl:10.3033266068
