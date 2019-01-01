@@ -19,14 +19,15 @@ from __future__ import print_function
 # pylint: disable=invalid-name, no-member, too-many-locals
 
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR
 import sys
 import codecs
 from matplotlib import pyplot as plt
+
 plt.switch_backend('agg')
 import tensorflow as tf
 import texar as tx
-import numpy as np
 from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
 from texar.utils.shapes import shape_list
@@ -45,70 +46,67 @@ def _main(_):
         hparams['opt_hparams'], hparams['loss_hparams'], hparams['args']
 
     # Data
-    train_data = tx.data.MonoTextData(train_dataset_hparams)
-    valid_data = tx.data.MonoTextData(valid_dataset_hparams)
-    test_data = tx.data.MonoTextData(test_dataset_hparams)
+    train_data = tx.data.MultiAlignedData(train_dataset_hparams)
+    valid_data = tx.data.MultiAlignedData(valid_dataset_hparams)
+    test_data = tx.data.MultiAlignedData(test_dataset_hparams)
     iterator = tx.data.TrainTestDataIterator(train=train_data,
                                              val=valid_data,
                                              test=test_data)
     data_batch = iterator.get_next()
-    mask_id = train_data.vocab.token_to_id_map_py['<m>']
-    boa_id = train_data.vocab.token_to_id_map_py['<BOA>']
-    eoa_id = train_data.vocab.token_to_id_map_py['<EOA>']
-    eos_id = train_data.vocab.token_to_id_map_py[SpecialTokens.EOS]
-    pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
+    vocab = train_data.vocab('source')
+    mask_id = vocab.token_to_id_map_py['<m>']
+    boa_id = vocab.token_to_id_map_py['<BOA>']
+    eoa_id = vocab.token_to_id_map_py['<EOA>']
+    eos_id = vocab.token_to_id_map_py[SpecialTokens.EOS]
+    pad_id = vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
-        tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
+        tx.utils.prepare_template(data_batch, args, mask_id, pad_id)
 
     # Model architecture
-    embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
+    embedder = tx.modules.WordEmbedder(vocab_size=vocab.size,
                                        hparams=args.word_embedding_hparams)
     position_embedder = position_embedders.SinusoidsSegmentalPositionEmbedder()
     encoder = tx.modules.UnidirectionalRNNEncoder(hparams=encoder_hparams)
-    decoder = tx.modules.BasicPositionalRNNDecoder(vocab_size=train_data.vocab.size,
+    decoder = tx.modules.BasicPositionalRNNDecoder(vocab_size=vocab.size,
                                                    hparams=decoder_hparams,
                                                    position_embedder=position_embedder)
     decoder_initial_state_size = decoder.cell.state_size
     connector = tx.modules.connectors.ForwardConnector(decoder_initial_state_size)
 
+    template = template_pack['templates']
+    template_word_embeds = embedder(template)
+    template_length = shape_list(template)[1]
+    channels = shape_list(template_word_embeds)[2]
+    template_pos_embeds = position_embedder(template_length, channels,
+                                            template_pack['segment_ids'],
+                                            template_pack['offsets'])
+    enc_input_embedded = template_word_embeds + template_pos_embeds
+
+    _, ecdr_states = encoder(
+        enc_input_embedded,
+        sequence_length=data_batch["source_length"])
+
+    dcdr_init_states = connector(ecdr_states)
+
     cetp_loss = None
-    cur_template_pack = template_pack
     for idx, hole in enumerate(answer_packs):
-        template = cur_template_pack['templates']
-        template_word_embeds = embedder(template)
-        template_length = shape_list(template)[1]
-        channels = shape_list(template_word_embeds)[2]
-        template_pos_embeds = position_embedder(template_length, channels,
-                                                cur_template_pack['segment_ids'],
-                                                cur_template_pack['offsets'])
-        enc_input_embedded = template_word_embeds + template_pos_embeds
-
-        _, ecdr_states = encoder(
-            enc_input_embedded,
-            sequence_length=data_batch["length"])
-
-        dcdr_init_states = connector(ecdr_states)
-
         dec_input = hole['text_ids'][:, :-1]
         dec_input_word_embeds = embedder(dec_input)
-        decoder.set_segment_id(1)
+        decoder.set_segment_id(idx * 2 + 1)
         dec_input_embedded = dec_input_word_embeds
         outputs, _, _ = decoder(
             initial_state=dcdr_init_states,
             decoding_strategy="train_greedy",
             inputs=dec_input_embedded,
-            sequence_length=hole["lengths"]+1)
+            sequence_length=hole["lengths"] - 1)
         cur_loss = tx.utils.smoothing_cross_entropy(
             outputs.logits,
             hole['text_ids'][:, 1:],
-            train_data.vocab.size,
+            vocab.size,
             loss_hparams['label_confidence'],
         )
         cetp_loss = cur_loss if cetp_loss is None \
             else tf.concat([cetp_loss, cur_loss], -1)
-        cur_template_pack = tx.utils.update_template_pack(cur_template_pack,
-                                                          hole['text_ids'][:, 1:],
-                                                          mask_id, eoa_id, pad_id)
     cetp_loss = tf.reduce_mean(cetp_loss)
 
     global_step = tf.Variable(0, trainable=False)
@@ -132,34 +130,15 @@ def _main(_):
     train_op = optimizer.minimize(cetp_loss, global_step)
 
     predictions = []
-    cur_test_pack = template_pack
     for idx, hole in enumerate(answer_packs):
-        template = cur_test_pack['templates']
-        template_word_embeds = embedder(template)
-        template_length = shape_list(template)[1]
-        channels = shape_list(template_word_embeds)[2]
-        template_pos_embeds = position_embedder(template_length, channels,
-                                                cur_test_pack['segment_ids'],
-                                                cur_test_pack['offsets'])
-        enc_input_embedded = template_word_embeds + template_pos_embeds
-
-        _, ecdr_states = encoder(
-            enc_input_embedded,
-            sequence_length=data_batch["length"])
-
-        dcdr_init_states = connector(ecdr_states)
-
-        decoder.set_segment_id(1)
+        decoder.set_segment_id(idx * 2 + 1)
         outputs_infer, _, _ = decoder(
             decoding_strategy="infer_positional",
-            start_tokens=tf.cast(tf.fill([tf.shape(data_batch['text_ids'])[0]], boa_id), tf.int32),
+            start_tokens=tf.cast(tf.fill([tf.shape(data_batch['source_text_ids'])[0]], boa_id), tf.int32),
             end_token=eoa_id,
             embedding=embedder,
             initial_state=dcdr_init_states)
         predictions.append(outputs_infer.sample_id)
-        cur_test_pack = tx.utils.update_template_pack(cur_test_pack,
-                                                      outputs_infer.sample_id,
-                                                      mask_id, eoa_id, pad_id)
 
     eval_saver = tf.train.Saver(max_to_keep=5)
 
@@ -168,7 +147,7 @@ def _main(_):
 
     def _train_epochs(session, cur_epoch):
         iterator.switch_to_train_data(session)
-        loss_lists, ppl_lists = [], []
+        loss_lists = []
         while True:
             try:
                 fetches = {'template': template_pack,
@@ -179,22 +158,20 @@ def _main(_):
                            'loss': cetp_loss}
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.TRAIN}
                 rtns = session.run(fetches, feed_dict=feed)
-                step, template_, holes_, loss = rtns['step'], rtns['template'], \
-                                                rtns['holes'], rtns['loss']
-                ppl = np.exp(loss)
+                step, template_, holes_, loss = rtns['step'], \
+                                                rtns['template'], rtns['holes'], rtns['loss']
                 if step % 200 == 1:
-                    rst = 'step:%s source:%s loss:%f ppl:%f lr:%f' % \
-                          (step, template_['text_ids'].shape, loss, ppl, rtns['lr'])
+                    rst = 'step:%s source:%s loss:%s lr:%f' % \
+                          (step, template_['text_ids'].shape, loss, rtns['lr'])
                     print(rst)
                 loss_lists.append(loss)
-                ppl_lists.append(ppl)
             except tf.errors.OutOfRangeError:
                 break
-        return loss_lists[::50], ppl_lists[::50]
+        return loss_lists[::50]
 
     def _test_epoch(cur_sess, cur_epoch, mode='test'):
         def _id2word_map(id_arrays):
-            return [' '.join([train_data.vocab._id_to_token_map_py[i]
+            return [' '.join([vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
         if mode == 'test':
@@ -205,7 +182,6 @@ def _main(_):
             iterator.switch_to_val_data(cur_sess)
         templates_list, targets_list, hypothesis_list = [], [], []
         cnt = 0
-        loss_lists, ppl_lists = [], []
         while True:
             try:
                 fetches = {
@@ -213,17 +189,12 @@ def _main(_):
                     'predictions': predictions,
                     'template': template_pack,
                     'step': global_step,
-                    'loss': cetp_loss
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
                 real_templates_, templates_, targets_, predictions_ = \
                     rtns['template']['templates'], rtns['template']['text_ids'], \
-                    rtns['data_batch']['text_ids'], rtns['predictions']
-                loss = rtns['loss']
-                ppl = np.exp(loss)
-                loss_lists.append(loss)
-                ppl_lists.append(ppl)
+                    rtns['data_batch']['source_text_ids'], rtns['predictions']
 
                 filled_templates = \
                     tx.utils.fill_template(template_pack=rtns['template'],
@@ -248,7 +219,6 @@ def _main(_):
             except tf.errors.OutOfRangeError:
                 break
 
-        avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
         outputs_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.outputs.tmp'. \
             format(cur_epoch, args.beam_width, args.alpha)
         template_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.templates.tmp'. \
@@ -265,8 +235,7 @@ def _main(_):
             refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
         template_bleu = float(100 * bleu_tool.bleu_wrapper( \
             refer_tmp_filename, template_tmp_filename, case_sensitive=True))
-        print('epoch:{} {}_bleu:{} template_bleu:{} {}_loss:{} {}_ppl:{} '.
-              format(cur_epoch, mode, eval_bleu, template_bleu, mode, avg_loss, mode, avg_ppl))
+        print('epoch:{} {}_bleu:{} template_bleu:{}'.format(cur_epoch, mode, eval_bleu, template_bleu))
         os.remove(outputs_tmp_filename)
         os.remove(template_tmp_filename)
         os.remove(refer_tmp_filename)
@@ -282,14 +251,14 @@ def _main(_):
         return {
             'eval': eval_bleu,
             'template': template_bleu
-        }, avg_ppl
+        }
 
-    def _draw_train_loss(epoch, loss_list, mode):
+    def _draw_train_loss(epoch, loss_list):
         plt.figure(figsize=(14, 10))
         plt.plot(loss_list, '--', linewidth=1, label='loss trend')
-        plt.ylabel('%s till epoch %s' % (mode, epoch))
+        plt.ylabel('training loss till epoch {}'.format(epoch))
         plt.xlabel('every 50 steps, present_rate=%f' % args.present_rate)
-        plt.savefig(args.log_dir + '/img/%s_curve.png' % mode)
+        plt.savefig(args.log_dir + '/img/train_loss_curve.png')
         plt.close('all')
 
     def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
@@ -322,33 +291,24 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        # eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
-        # test_ppl = _test_ppl(sess, 0)
-
-        loss_list, ppl_list, test_ppl_list = [], [], []
-        test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], []
+        loss_list, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], [], []
         if args.running_mode == 'train_and_evaluate':
             for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
                 if epoch % args.bleu_interval == 0 or epoch == args.max_train_epoch - 1:
-                    bleu_scores, test_ppl = _test_epoch(sess, epoch)
+                    bleu_scores = _test_epoch(sess, epoch)
                     test_bleu.append(bleu_scores['eval'])
                     tplt_bleu.append(bleu_scores['template'])
-                    test_ppl_list.append(test_ppl)
-                    _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
-
-                    train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
+                    train_bleu_scores = _test_epoch(sess, epoch, mode='train')
                     train_bleu.append(train_bleu_scores['eval'])
                     train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
 
                 # train
-                losses, ppls = _train_epochs(sess, epoch)
+                losses = _train_epochs(sess, epoch)
                 loss_list.extend(losses)
-                ppl_list.extend(ppls)
-                _draw_train_loss(epoch, loss_list, mode='train_loss')
-                _draw_train_loss(epoch, ppl_list, mode='perplexity')
+                _draw_train_loss(epoch, loss_list)
                 sys.stdout.flush()
 
 
