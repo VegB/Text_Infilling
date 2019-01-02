@@ -26,7 +26,7 @@ def load_hyperparams():
     argparser = argparse.ArgumentParser()
     argparser.add_argument('--mask_num', type=int, default=3)
     argparser.add_argument('--blank_num', type=int, default=1)
-    argparser.add_argument('--batch_size', type=int, default=64)  # 4096
+    argparser.add_argument('--batch_size', type=int, default=150)  # 4096
     argparser.add_argument('--max_seq_length', type=int, default=20)  #256
     argparser.add_argument('--hidden_dim', type=int, default=512)
     argparser.add_argument('--running_mode', type=str,
@@ -34,8 +34,8 @@ def load_hyperparams():
                            help='can also be test mode')
     argparser.add_argument('--max_training_steps', type=int, default=2500000)
     argparser.add_argument('--warmup_steps', type=int, default=16000)
-    argparser.add_argument('--max_train_epoch', type=int, default=150)
-    argparser.add_argument('--bleu_interval', type=int, default=5)
+    argparser.add_argument('--max_train_epoch', type=int, default=350)
+    argparser.add_argument('--bleu_interval', type=int, default=10)
     argparser.add_argument('--decay_interval', type=float, default=20)
     argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--filename_prefix', type=str, default='yahoo.')
@@ -43,7 +43,7 @@ def load_hyperparams():
                            default='./yahoo_data/')
     argparser.add_argument('--save_eval_output', default=1,
         help='save the eval output to file')
-    argparser.add_argument('--lr_constant', type=float, default=2)
+    argparser.add_argument('--lr_constant', type=float, default=0.3)
     argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
     argparser.add_argument('--lr_factor', type=float, default=0.1)
     argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
