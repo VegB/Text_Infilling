@@ -1,66 +1,44 @@
-# Open library of text generation #
+# Source Code and Dataset for Text Infilling
 
-# Install
+This repository contains the source code and dataset for [Text Infilling](). 
+The implementation is based on [Texar](https://github.com/asyml/texar).
 
-  * Run the following: 
-    ```bash
-    pip install [--user] -e .    
-    ```
 
-  * After installation, the library is ready to use. E.g., 
-    - Run the example code in `./examples`:
-      ```bash
-      python ./examples/language_model.py
-      ```
-    - Run unit tests, e.g.,
-      ```bash
-      python ./texar/modules/encoders/rnn_encoders_test.py
-      ```
 
-# Code style
 
-  * Follow [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
-    
-    - E.g., Maximum line length is *80 characters*.
+## Repository Structure
 
-  * Use [Pylint](https://www.pylint.org) for automatic code style check
+This repository contains two branches:
 
-    - [Pylint intro (in Chinese)](https://www.ibm.com/developerworks/cn/linux/l-cn-pylint/index.html)
+- `master` branch
+  - This branch contain the code for conducting the experiments of  *Varying Mask Rates and #Blanks*. 
+- `ShowCases` branch
+  - This branch is used for *Preposition Infilling* and *Long Content Infilling*. 
 
-    - Setup Pylint in your IDE, or use the cmd like this: 
-      ``` bash
-      pylint --reports=n --include-ids=y --rcfile=.pylintrc foo.py
-      ```
-  * Follow [Google Python DocString style](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) 
-  for code comments. 
 
-    - [Pytorch documentation](http://pytorch.org/docs/master/nn.html#parameters) 
-    gives a great example of writing docstrings
 
-## View Documentation
-TxtGen uses [Sphinx](http://www.sphinx-doc.org/en/stable/index.html)
-to automatically generate beautiful documentations. 
+## Install
 
-Install Sphinx:
+Run the following lines to download the code and install Texar:
+```bash
+git clone https://github.com/VegB/Text_Infilling
+cd Text_Infilling
+pip install [--user] -e .    
+```
 
-    apt-get install python-sphinx
 
-Generate HTML:
 
-    cd ./docs
-    make html
+## Experiment Instructions
 
-View HTML
+After installation, you may follow the instructions to conduct experiments for Text Infilling:
 
-    open ./docs/_build/index.html
+- [Instructions for Varying Mask Rates and #Blanks](https://github.com/VegB/Text_Infilling/tree/master/text_infilling)
+- [Instructions for Infilling Showcases](https://github.com/VegB/Text_Infilling/tree/ShowCases/text_infilling)
 
-# Reference libraries
 
-  * [seq2seq](https://github.com/google/seq2seq)
 
-  * [tensorforce](https://github.com/reinforceio/tensorforce)
+## Requirements
 
-  * [sonnet](https://github.com/deepmind/sonnet)
-
-  * [tensorflow](https://github.com/tensorflow/tensorflow)
-
+- Python 3
+- Tensorflow >= 1.7.0
+- Texar
