@@ -59,7 +59,7 @@ def load_hyperparams():
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.partition{}.hidden{}/'.format(
+    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.partition{}.hidden{}.self_attn/'.format(
         args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
         args.learning_rate_strategy, args.blank_num, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
