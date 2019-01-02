@@ -36,7 +36,7 @@ import bleu_tool
 
 
 def _main(_):
-    hparams = baseline_hyperparams.load_hyperparams()
+    hparams = gan_hyperparams.load_hyperparams()
     train_dataset_hparams, valid_dataset_hparams, test_dataset_hparams, encoder_hparams, \
     decoder_hparams, classifier_hparams, opt_hparams, loss_hparams, d_opt_hparams, args = \
         hparams['train_dataset_hparams'], hparams['eval_dataset_hparams'], \
