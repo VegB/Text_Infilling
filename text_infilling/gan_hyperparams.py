@@ -52,13 +52,11 @@ def load_hyperparams():
     argparser.add_argument('--beam_width', type=int, default=2)
     argparser.add_argument('--gamma_decay', type=float, default=0.5)
     argparser.add_argument('--lambda_g', type=float, default=0.0001)
-    argparser.add_argument('--mode', type=str, default="seq2seq")
     argparser.parse_args(namespace=args)
 
     args.present_rate = 1 - args.mask_rate
     args.pretrain_epoch = args.max_train_epoch * 0.8
     args.max_decode_len = args.max_seq_length
-    args.partition_num = args.blank_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,
@@ -68,9 +66,9 @@ def load_hyperparams():
     args.test_file = os.path.join(args.data_dir,
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.present{}.partition{}.hidden{}.{}/'.format(
+    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.present{}.partition{}.hidden{}.gan/'.format(
         args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-        args.learning_rate_strategy, args.present_rate, args.partition_num, args.hidden_dim, args.mode)
+        args.learning_rate_strategy, args.present_rate, args.blank_num, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
     print('train_file:{}'.format(args.train_file))
     print('valid_file:{}'.format(args.valid_file))
@@ -210,4 +208,3 @@ def load_hyperparams():
         'd_opt': d_opt,
         'args': args,
         }
-

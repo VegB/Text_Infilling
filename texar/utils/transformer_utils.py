@@ -579,7 +579,7 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
     masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks,\
         start_positions, end_positions = \
         generate_dynamic_mask(inputs, lengths, args.present_rate, mask_id, boa_id,
-                              eoa_id, pad_id, args.partition_num)
+                              eoa_id, pad_id, args.blank_num)
 
     template_lengths = tf.fill(tf.shape(lengths), tf.shape(templates)[1])
     template_segment_ids, template_offsets = \

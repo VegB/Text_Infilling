@@ -31,7 +31,7 @@ from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
 from texar.utils.shapes import shape_list
 
-import baseline_hyperparams
+import gan_hyperparams
 import bleu_tool
 
 
