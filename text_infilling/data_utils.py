@@ -1,5 +1,8 @@
 import tensorflow as tf
 import numpy as np
+import texar as tx
+import os
+
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -87,3 +90,18 @@ def transform_input_with_is_missing_token(inputs, targets_present, mask_id):
     transformed_input = tf.where(tf.equal(inputs_present, tf.ones_like(inputs)),
                                  inputs, input_missing)
     return transformed_input
+
+
+def prepare_data():
+    """Downloads the PTB or COCO dataset
+    """
+    yelp_url = 'https://VegB.github.io/downloads/yelp.tgz'
+    data_path = 'yelp_data/'
+
+    if not tf.gfile.Exists(data_path):
+        tx.data.maybe_download(yelp_url, './', extract=True)
+        os.remove('yelp.tgz')
+
+
+if __name__ == '__main__':
+    prepare_data()
