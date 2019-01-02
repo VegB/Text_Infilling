@@ -31,12 +31,12 @@ from texar.data import SpecialTokens
 from texar.modules.embedders import position_embedders
 from texar.utils.shapes import shape_list
 
-import baseline_hyperparams
+import gan_hyperparams
 import bleu_tool
 
 
 def _main(_):
-    hparams = baseline_hyperparams.load_hyperparams()
+    hparams = gan_hyperparams.load_hyperparams()
     train_dataset_hparams, valid_dataset_hparams, test_dataset_hparams, encoder_hparams, \
     decoder_hparams, classifier_hparams, opt_hparams, loss_hparams, d_opt_hparams, args = \
         hparams['train_dataset_hparams'], hparams['eval_dataset_hparams'], \

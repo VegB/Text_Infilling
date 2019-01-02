@@ -24,10 +24,9 @@ def load_hyperparams():
     # pylint: disable=too-many-statements
     args = Hyperparams()
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--blank_num', type=int, default=1)
-    argparser.add_argument('--batch_size', type=int, default=150)  # 4096
-    argparser.add_argument('--max_seq_length', type=int, default=20)  #256
+    argparser.add_argument('--blank_num', type=int, default=3)
+    argparser.add_argument('--batch_size', type=int, default=150)
+    argparser.add_argument('--max_seq_length', type=int, default=20)
     argparser.add_argument('--hidden_dim', type=int, default=512)
     argparser.add_argument('--running_mode', type=str,
                            default='train_and_evaluate',
@@ -54,18 +53,16 @@ def load_hyperparams():
     argparser.add_argument('--beam_width', type=int, default=2)
     argparser.add_argument('--gamma_decay', type=float, default=0.5)
     argparser.add_argument('--lambda_g', type=float, default=0.1)
-    argparser.add_argument('--mode', type=str, default="seq2seq")
     argparser.parse_args(namespace=args)
 
     args.pretrain_epoch = args.max_train_epoch * 0.8
     args.max_decode_len = args.max_seq_length / 2  # modified here
-    args.partition_num = args.blank_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.partition{}.hidden{}.{}/'.format(
+    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.partition{}.hidden{}.gan/'.format(
         args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-        args.learning_rate_strategy, args.partition_num, args.hidden_dim, args.mode)
+        args.learning_rate_strategy, args.blank_num, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
 
     data_files = {
@@ -200,4 +197,3 @@ def load_hyperparams():
         'd_opt': d_opt,
         'args': args,
         }
-

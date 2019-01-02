@@ -430,13 +430,13 @@ def prepare_template(data_batch, args, mask_id, pad_id):
 
     answers = tf.dynamic_partition(
         data=tf.transpose(data_batch['answer_text_ids'], perm=[1, 0, 2]),
-        partitions=list(range(args.partition_num)),
-        num_partitions=args.partition_num
+        partitions=list(range(args.blank_num)),
+        num_partitions=args.blank_num
     )
     answer_lengths = tf.dynamic_partition(
         tf.transpose(data_batch['answer_length'], perm=[1, 0]),
-        partitions=list(range(args.partition_num)),
-        num_partitions=args.partition_num
+        partitions=list(range(args.blank_num)),
+        num_partitions=args.blank_num
     )
     answer_packs = []
     for idx, (answer, answer_length)in enumerate(zip(answers, answer_lengths)):

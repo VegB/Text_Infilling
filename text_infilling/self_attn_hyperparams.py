@@ -25,8 +25,7 @@ def load_hyperparams():
     # pylint: disable=too-many-statements
     args = Hyperparams()
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--blank_num', type=int, default=1)
+    argparser.add_argument('--blank_num', type=int, default=3)
     argparser.add_argument('--batch_size', type=int, default=150)  # 4096
     argparser.add_argument('--max_seq_length', type=int, default=20)  #256
     argparser.add_argument('--hidden_dim', type=int, default=512)
@@ -57,13 +56,12 @@ def load_hyperparams():
     argparser.parse_args(namespace=args)
     
     args.max_decode_len = args.max_seq_length
-    args.partition_num = args.blank_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
     log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.partition{}.hidden{}/'.format(
         args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-        args.learning_rate_strategy, args.partition_num, args.hidden_dim)
+        args.learning_rate_strategy, args.blank_num, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
 
     data_files = {

@@ -30,12 +30,12 @@ from matplotlib import pyplot as plt
 
 plt.switch_backend('agg')
 
-import hyperparams
+import self_attn_hyperparams
 import bleu_tool
 
 
 def _main(_):
-    hparams = hyperparams.load_hyperparams()
+    hparams = self_attn_hyperparams.load_hyperparams()
     train_dataset_hparams, valid_dataset_hparams, test_dataset_hparams, \
     decoder_hparams, opt_hparams, opt_vars, loss_hparams, args = \
         hparams['train_dataset_hparams'], hparams['eval_dataset_hparams'], \
