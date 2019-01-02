@@ -424,7 +424,7 @@ def generate_equal_length_mask(inputs, lengths, mask_num, mask_len, mask_id, eoa
 
 
 def generate_dynamic_mask(inputs, lengths, present_rate, mask_id, boa_id,
-                          eoa_id, pad_id, partition_num, mode='random'):
+                          eoa_id, pad_id, partition_num):
     def _fill_mask(inputs, lengths, present_rate, eoa_id, pad_id, partition_num):
         """
         The input batch has the same mask pattern, randoms through max_seq_length in lengths.
@@ -440,21 +440,12 @@ def generate_dynamic_mask(inputs, lengths, present_rate, mask_id, boa_id,
                 # split masked_num into partition_num segments
                 if masked_num <= 1:
                     return [1] * (partition_num - 1)
-                if mode is 'random':
-                    split_positions = np.random.choice(range(1, masked_num),
-                                                       partition_num - 1,
-                                                       replace=(masked_num < partition_num))
-                    return np.sort(np.insert(np.insert(split_positions, 0, 0, axis=0),
-                                             partition_num, masked_num, axis=0))
-                elif mode is 'fixed':
-                    splitted = np.array_split(range(masked_num), partition_num)
-                    split_positions = [a.size for a in splitted]
-                    for i in range(1, partition_num):
-                        split_positions[i] += split_positions[i - 1]
-                    return np.insert(split_positions, 0, 0, axis=0)
-                else:
-                    raise TypeError("Unknown mode %s, expecting one of "
-                                    "['random' ,'fixed'] " % mode)
+
+                splitted = np.array_split(range(masked_num), partition_num)
+                split_positions = [a.size for a in splitted]
+                for i in range(1, partition_num):
+                    split_positions[i] += split_positions[i - 1]
+                return np.insert(split_positions, 0, 0, axis=0)
 
             batch_size = inputs.shape[0]
             masked_nums = ((lengths - 2) * (1 - present_rate)).astype(np.int64)  # [batch_size]
@@ -489,10 +480,7 @@ def generate_dynamic_mask(inputs, lengths, present_rate, mask_id, boa_id,
                 for bid in range(batch_size):
                     s = end_positions[bid][idx] + 1
                     e = lengths[bid] - left_len[bid][idx] + 1
-                    if mode is 'random':
-                        cur_start_pos[bid][0] = np.random.randint(s, e, size=1)[0]
-                    elif mode is 'fixed':
-                        cur_start_pos[bid][0] = s + (e - s) / (partition_num + 1)
+                    cur_start_pos[bid][0] = s + (e - s) / (partition_num + 1)
                     cur_end_pos[bid][0] = cur_start_pos[bid][0] + mask_lengths[bid][idx]
                     cur_answers.append(
                         np.append(inputs[bid][cur_start_pos[bid][0]:cur_end_pos[bid][0]], eoa_id))
@@ -588,18 +576,10 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
     """
     inputs = data_batch['text_ids']
     lengths = data_batch['length']
-    if args.mask_strategy == 'equal_length':
-        masks, answers, templates, template_masks = \
-            generate_equal_length_mask(inputs, lengths, args.mask_num,
-                                       args.mask_length, mask_id, boa_id, eoa_id)
-    elif args.mask_strategy == 'random' or 'fixed':
-        masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks,\
-            start_positions, end_positions = \
-            generate_dynamic_mask(inputs, lengths, args.present_rate, mask_id, boa_id,
-                                  eoa_id, pad_id, args.partition_num, mode=args.mask_strategy)
-    else:
-        raise TypeError("Unknown mask_strategy %s, expecting one of "
-                        "['random' ,'equal_length', 'fixed'] " % args.mask_strategy)
+    masks, answers, after_pad_ans_lens, true_ans_lens, templates, template_masks,\
+        start_positions, end_positions = \
+        generate_dynamic_mask(inputs, lengths, args.present_rate, mask_id, boa_id,
+                              eoa_id, pad_id, args.partition_num)
 
     template_lengths = tf.fill(tf.shape(lengths), tf.shape(templates)[1])
     template_segment_ids, template_offsets = \
@@ -620,10 +600,7 @@ def prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id):
 
     answer_packs = []
     for idx, answer in enumerate(answers):
-        if args.mask_strategy == 'equal_length':
-            mask_len = args.mask_length
-        elif args.mask_strategy == 'random' or 'fixed':
-            mask_len = after_pad_ans_lens[idx] + 2  # has <eoa> and <boa>
+        mask_len = after_pad_ans_lens[idx] + 2  # has <eoa> and <boa>
         answer_segment_ids = generate_prediction_segment_ids(answer, idx * 2 + 1, mask_len)
         answer_offsets = generate_prediction_offsets(answer, mask_len)
         answer = tf.reshape(answer, shape=tf.stack([-1, mask_len]))

@@ -58,19 +58,6 @@ def _main(_):
     pad_id = train_data.vocab.token_to_id_map_py['<PAD>']
     template_pack, answer_packs = \
         tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
-    train_present_rate = args.present_rate
-    test_sets = []
-    for rate in args.test_present_rates:
-        args.present_rate = rate
-        tplt_pack, ans_packs = \
-            tx.utils.prepare_template(data_batch, args, mask_id, boa_id, eoa_id, pad_id)
-        test_sets.append({
-            'test_present_rate': tf.Variable(rate, dtype=tf.float32, trainable=False),
-            'template_pack': tplt_pack,
-            'answer_packs': ans_packs,
-            'predictions': []
-        })
-    args.present_rate = train_present_rate
 
     # Model architecture
     embedder = tx.modules.WordEmbedder(vocab_size=train_data.vocab.size,
@@ -118,24 +105,24 @@ def _main(_):
 
     offsets = tx.utils.generate_prediction_offsets(data_batch['text_ids'],
                                                    args.max_decode_len + 1)
-    for it, test_pack in enumerate(test_sets):
-        cur_test_pack = test_pack['template_pack']
-        for idx, _ in enumerate(test_pack['answer_packs']):
-            segment_ids = \
-                tx.utils.generate_prediction_segment_ids(data_batch['text_ids'],
-                                                         1,  # segment_id will always be 1
-                                                         args.max_decode_len + 1)
-            preds = decoder.dynamic_decode(
-                template_input_pack=cur_test_pack,
-                encoder_decoder_attention_bias=None,
-                segment_ids=segment_ids,
-                offsets=offsets,
-                bos_id=boa_id,
-                eos_id=eoa_id)
-            test_sets[it]['predictions'].append(preds['sampled_ids'][:, 0])
-            cur_test_pack = tx.utils.update_template_pack(cur_test_pack,
-                                                          preds['sampled_ids'][:, 0],
-                                                          mask_id, eoa_id, pad_id)
+    predictions = []
+    cur_test_pack = template_pack
+    for idx, hole in enumerate(answer_packs):
+        segment_ids = \
+            tx.utils.generate_prediction_segment_ids(data_batch['text_ids'],
+                                                     1,  # segment_id will always be 1
+                                                     args.max_decode_len + 1)
+        preds = decoder.dynamic_decode(
+            template_input_pack=cur_test_pack,
+            encoder_decoder_attention_bias=None,
+            segment_ids=segment_ids,
+            offsets=offsets,
+            bos_id=boa_id,
+            eos_id=eoa_id)
+        predictions.append(preds['sampled_ids'][:, 0])
+        cur_test_pack = tx.utils.update_template_pack(cur_test_pack,
+                                                      preds['sampled_ids'][:, 0],
+                                                      mask_id, eoa_id, pad_id)
 
     def _train_epochs(session, cur_epoch, mode='train'):
         iterator.switch_to_train_data(session)
@@ -192,52 +179,51 @@ def _main(_):
             return [' '.join([train_data.vocab._id_to_token_map_py[i]
                               for i in sent]) for sent in id_arrays]
 
-        test_results = [{'test_present_rate': rate, 'templates_list': [], 'hypothesis_list': []}
-                        for rate in args.test_present_rates]
-        targets_list = []
         if mode == 'test':
             iterator.switch_to_test_data(cur_sess)
         elif mode == 'train':
             iterator.switch_to_train_data(cur_sess)
         else:
             iterator.switch_to_val_data(cur_sess)
+        templates_list, targets_list, hypothesis_list = [], [], []
         cnt = 0
         loss_lists, ppl_lists = [], []
         while True:
             try:
                 fetches = {
                     'data_batch': data_batch,
-                    'test_sets': test_sets,
+                    'predictions': predictions,
+                    'template': template_pack,
                     'step': global_step,
                     'loss': cetp_loss
                 }
                 feed = {tx.context.global_mode(): tf.estimator.ModeKeys.EVAL}
                 rtns = cur_sess.run(fetches, feed_dict=feed)
-                targets_, test_sets_ = rtns['data_batch']['text_ids'], rtns['test_sets']
-                targets = _id2word_map(targets_)
-                targets_list.extend([target.split('<EOS>')[0].strip().split() for target in targets])
+                real_templates_, templates_, targets_, predictions_ = \
+                    rtns['template']['templates'], rtns['template']['text_ids'], \
+                    rtns['data_batch']['text_ids'], rtns['predictions']
                 loss = rtns['loss']
                 ppl = np.exp(loss)
                 loss_lists.append(loss)
                 ppl_lists.append(ppl)
 
-                for it, test_pack in enumerate(test_sets_):
-                    templates_list, hypotheses_list = [], []
-                    filled_templates = \
-                        tx.utils.fill_template(template_pack=test_pack['template_pack'],
-                                               predictions=test_pack['predictions'],
-                                               eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
-                    templates = _id2word_map(test_pack['template_pack']['templates'].tolist())
-                    generateds = _id2word_map(filled_templates)
+                filled_templates = \
+                    tx.utils.fill_template(template_pack=rtns['template'],
+                                           predictions=rtns['predictions'],
+                                           eoa_id=eoa_id, pad_id=pad_id, eos_id=eos_id)
 
-                    for template, generated in zip(templates, generateds):
-                        template = template.split('<EOS>')[0].split('<PAD>')[0].strip().split()
-                        got = generated.split('<EOS>')[0].split('<PAD>')[0].strip().split()
-                        templates_list.append(template)
-                        hypotheses_list.append(got)
+                templates, targets, generateds = _id2word_map(real_templates_.tolist()), \
+                                                 _id2word_map(targets_), \
+                                                 _id2word_map(filled_templates)
 
-                    test_results[it]['templates_list'].extend(templates_list)
-                    test_results[it]['hypothesis_list'].extend(hypotheses_list)
+                for template, target, generated in zip(templates, targets, generateds):
+                    template = template.split('<EOS>')[0].split('<PAD>')[0].strip().split()
+                    target = target.split('<EOS>')[0].split('<PAD>')[0].strip().split()
+                    got = generated.split('<EOS>')[0].split('<PAD>')[0].strip().split()
+                    templates_list.append(template)
+                    targets_list.append(target)
+                    hypothesis_list.append(got)
+
                 cnt += 1
                 if mode is not 'test' and cnt >= 60:
                     break
@@ -245,41 +231,40 @@ def _main(_):
                 break
 
         avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
-        bleu_score = [{'test_present_rate': rate} for rate in args.test_present_rates]
+        outputs_tmp_filename = args.log_dir + 'epoch{}.beam{}.outputs.tmp'. \
+            format(cur_epoch, args.beam_width)
+        template_tmp_filename = args.log_dir + 'epoch{}.beam{}.templates.tmp'. \
+            format(cur_epoch, args.beam_width)
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
-        with codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
-            tmpreffile.write('\n'.join([' '.join(tgt) for tgt in targets_list]))
-        for it, test_pack in enumerate(test_results):
-            outputs_tmp_filename = args.log_dir + 'epoch{}.outputs.tmp'.format(cur_epoch)
-            template_tmp_filename = args.log_dir + 'epoch{}.templates.tmp'.format(cur_epoch)
-            with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
-                    codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile:
-                for hyp, tplt in zip(test_pack['hypothesis_list'], test_pack['templates_list']):
-                    tmpfile.write(' '.join(hyp) + '\n')
-                    tmptpltfile.write(' '.join(tplt) + '\n')
-            test_bleu = float(100 * bleu_tool.bleu_wrapper(
-                refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
-            template_bleu = float(100 * bleu_tool.bleu_wrapper(
-                refer_tmp_filename, template_tmp_filename, case_sensitive=True))
-            bleu_score[it]['test_bleu'] = test_bleu
-            bleu_score[it]['template_bleu'] = template_bleu
-            os.remove(outputs_tmp_filename)
-            os.remove(template_tmp_filename)
-
-            if args.save_eval_output and mode is not 'eval':
-                print('epoch:{} test_present_rate:{} {}_bleu:{} template_bleu:{} {}_loss:{} {}_ppl:{} '
-                      .format(cur_epoch, test_pack['test_present_rate'], mode, test_bleu, template_bleu,
-                              mode, avg_loss, mode, avg_ppl))
-                result_filename = \
-                    args.log_dir + 'epoch{}.train_present{}.test_present{}.{}.results.bleu{:.3f}' \
-                        .format(cur_epoch, args.present_rate, test_pack['test_present_rate'], mode, test_bleu)
-                with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
-                    for tmplt, tgt, hyp in zip(test_pack['templates_list'], targets_list, test_pack['hypothesis_list']):
-                        resultfile.write("- template: " + ' '.join(tmplt) + '\n')
-                        resultfile.write("- expected: " + ' '.join(tgt) + '\n')
-                        resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
-            os.remove(refer_tmp_filename)
-        return bleu_score, avg_ppl
+        with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
+                codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile, \
+                codecs.open(refer_tmp_filename, 'w+', 'utf-8') as tmpreffile:
+            for hyp, tplt, tgt in zip(hypothesis_list, templates_list, targets_list):
+                tmpfile.write(' '.join(hyp) + '\n')
+                tmptpltfile.write(' '.join(tplt) + '\n')
+                tmpreffile.write(' '.join(tgt) + '\n')
+        eval_bleu = float(100 * bleu_tool.bleu_wrapper(
+            refer_tmp_filename, outputs_tmp_filename, case_sensitive=True))
+        template_bleu = float(100 * bleu_tool.bleu_wrapper(
+            refer_tmp_filename, template_tmp_filename, case_sensitive=True))
+        print('epoch:{} {}_bleu:{} template_bleu:{} {}_loss:{} {}_ppl:{} '.
+              format(cur_epoch, mode, eval_bleu, template_bleu, mode, avg_loss, mode, avg_ppl))
+        os.remove(outputs_tmp_filename)
+        os.remove(template_tmp_filename)
+        os.remove(refer_tmp_filename)
+        if args.save_eval_output:
+            result_filename = \
+                args.log_dir + 'epoch{}.beam{}.{}.results.bleu{:.3f}' \
+                    .format(cur_epoch, args.beam_width, mode, eval_bleu)
+            with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
+                for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
+                    resultfile.write("- template: " + ' '.join(tmplt) + '\n')
+                    resultfile.write("- expected: " + ' '.join(tgt) + '\n')
+                    resultfile.write('- got:      ' + ' '.join(hyp) + '\n\n')
+        return {
+            'eval': eval_bleu,
+            'template': template_bleu
+        }, avg_ppl
 
     def _draw_train_loss(epoch, loss_list, mode):
         plt.figure(figsize=(14, 10))
@@ -292,23 +277,21 @@ def _main(_):
     def _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu):
         plt.figure(figsize=(14, 10))
         legends = []
-        for rate in args.test_present_rates:
-            plt.plot(test_bleu[rate], '--', linewidth=1, label='test bleu, test pr=%f' % rate)
-            plt.plot(tplt_bleu[rate], '--', linewidth=1, label='template bleu, test pr=%f' % rate)
-            legends.extend(['test bleu, test pr=%f' % rate, 'template bleu, test pr=%f' % rate])
+        plt.plot(test_bleu, '--', linewidth=1, label='test bleu')
+        plt.plot(tplt_bleu, '--', linewidth=1, label='template bleu')
+        legends.extend(['test bleu', 'template bleu'])
         plt.ylabel('bleu till epoch {}'.format(epoch))
-        plt.xlabel('every epoch, train present rate=%f' % args.present_rate)
+        plt.xlabel('every epoch')
         plt.legend(legends, loc='upper left')
         plt.savefig(args.log_dir + '/img/bleu.png')
 
         plt.figure(figsize=(14, 10))
         legends = []
-        for rate in args.test_present_rates:
-            plt.plot(train_bleu[rate], '--', linewidth=1, label='train bleu, test pr=%f' % rate)
-            plt.plot(train_tplt_bleu[rate], '--', linewidth=1, label='train template bleu, test pr=%f' % rate)
-            legends.extend(['train bleu, test pr=%f' % rate, 'train template bleu, test pr=%f' % rate])
+        plt.plot(train_bleu, '--', linewidth=1, label='train bleu')
+        plt.plot(train_tplt_bleu, '--', linewidth=1, label='train template bleu')
+        legends.extend(['train bleu', 'train template bleu'])
         plt.ylabel('bleu till epoch {}'.format(epoch))
-        plt.xlabel('every epoch, train present rate=%f' % args.present_rate)
+        plt.xlabel('every epoch')
         plt.legend(legends, loc='upper left')
         plt.savefig(args.log_dir + '/img/train_bleu.png')
         plt.close('all')
@@ -321,41 +304,28 @@ def _main(_):
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
 
-        eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
-        # _test_ppl(sess, 0)
-
-        max_test_bleu = -1
         loss_list, ppl_list, test_ppl_list = [], [], []
-        test_bleu, tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
-                               {rate: [] for rate in args.test_present_rates}
-        train_bleu, train_tplt_bleu = {rate: [] for rate in args.test_present_rates}, \
-                                      {rate: [] for rate in args.test_present_rates}
+        test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], []
         if args.running_mode == 'train_and_evaluate':
-            for epoch in range(70, args.max_train_epoch):
+            for epoch in range(args.max_train_epoch):
                 # bleu on test set and train set
                 if epoch % args.bleu_interval == 0 or epoch == args.max_train_epoch - 1:
                     bleu_scores, test_ppl = _test_epoch(sess, epoch)
+                    test_bleu.append(bleu_scores['eval'])
+                    tplt_bleu.append(bleu_scores['template'])
                     test_ppl_list.append(test_ppl)
                     _draw_train_loss(epoch, test_ppl_list, mode='test_perplexity')
-                    for scores in bleu_scores:
-                        test_bleu[scores['test_present_rate']].append(scores['test_bleu'])
-                        tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
-                        if scores['test_present_rate'] == args.present_rate \
-                                and scores['test_bleu'] > max_test_bleu:
-                            max_test_bleu = scores['test_bleu']
-                            eval_saver.save(sess, args.log_dir + 'my-model-highest_bleu.ckpt')
-                    """train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
-                    for scores in train_bleu_scores:
-                        train_bleu[scores['test_present_rate']].append(scores['test_bleu'])
-                        train_tplt_bleu[scores['test_present_rate']].append(scores['template_bleu'])
+
+                    train_bleu_scores, _ = _test_epoch(sess, epoch, mode='train')
+                    train_bleu.append(train_bleu_scores['eval'])
+                    train_tplt_bleu.append(train_bleu_scores['template'])
                     _draw_bleu(epoch, test_bleu, tplt_bleu, train_bleu, train_tplt_bleu)
-                    """
                     eval_saver.save(sess, args.log_dir + 'my-model-latest.ckpt')
 
                 # train
                 losses, ppls = _train_epochs(sess, epoch)
-                loss_list.extend(losses[::50])
-                ppl_list.extend(ppls[::50])
+                loss_list.extend(losses)
+                ppl_list.extend(ppls)
                 _draw_train_loss(epoch, loss_list, mode='train_loss')
                 _draw_train_loss(epoch, ppl_list, mode='perplexity')
                 sys.stdout.flush()

@@ -1,78 +1,86 @@
-# Texar Examples #
+# Instructions for Varying Mask Rates and #Blanks #
 
-Rich examples are included to demonstrate the use of Texar. The implementations of cutting-edge models/algorithms also provide references for reproducibility and comparisons. 
+This set of experiments study the impact of the mask rate (percentage of masked tokens) and the number of blanks on model performance. The mask positions and lengths are selected randomly according to the desired mask rate and #blanks. 
 
-More examples are continuously added...
 
-## Examples by Models/Algorithms ##
 
-### RNN / Seq2seq ###
+The Yelp review corpus is used for training and testing:
 
-* [language_model_ptb](./language_model_ptb): Basic RNN language model
-* [seq2seq_attn](./seq2seq_attn): Attentional seq2seq
-* [seq2seq_configs](./seq2seq_configs): Seq2seq implemented with Texar model template.
-* [seq2seq_rl](./seq2seq_rl): Attentional seq2seq trained with policy gradient.
-* [hierarchical_dialog](./hierarchical_dialog): Hierarchical recurrent encoder-decoder model for conversation response generation.
-* [torchtext](./torchtext): Use of torchtext data loader
+- Training/testing dataset: 104K/1K sentences
+- Vocabulary size: 9K
 
-### Transformer (Self-attention) ###
 
-* [transformer](./transformer): Transformer for machine translation
-* [vae_text](./vae_text): VAE with a transformer decoder for improved language modeling 
 
-### Variational Autoencoder (VAE) ###
+## Usage
 
-* [vae_text](./vae_text): VAE language model
+### Dataset
 
-### GANs / Discriminiator-supervision ###
+Download the dataset with the following command:
 
-* [seqGAN](./seqgan): GANs for text generation
-* [text_style_transfer](./text_style_transfer): Discriminator supervision for controlled text generation
+```bash
+python data_utils.py
+```
 
-### Reinforcement Learning ###
+Yelp data will be download and stored in `yelp_data/`.
 
-* [seq2seq_rl](./seq2seq_rl): Attentional seq2seq trained with policy gradient.
-* [seqGAN](./seqgan): Policy gradient for sequence generation
-* [rl_gym](./rl_gym): Various RL algoritms for games
 
-### Memory Network ###
+### Train and Test the model
 
-* [memory_network_lm](./memory_network_lm): End-to-end memory network for language modeling
+Training can be performed with the following command:
 
-### Classifier / Predictions ##  
+```bash
+python [MODEL].py --mask_rate [MASK_RATE] --blank_num [BLANK_NUM] --filename_prefix 'pos.' --data_dir './yelp_data/pos/'
+```
 
-* [sentence_classifier](./sentence_classifier): Basic CNN-based sentence classifier
+Here:
 
----
+- `MODEL` is the model to train. May be `self_attn`, `seq2seq` or `gan`.
+- `MASK_RATE` specifies the portion of words masked out in the template.` 
+- `BLANK_NUM` specifies the number of blanks in the template.
 
-## Examples by Tasks
 
-### Language Modeling ###
 
-* [language_model_ptb](./language_model_ptb)
-* [vae_text](./vae_text)
-* [seqGAN](./seqgan)
-* [memory_network_lm](./memory_network_lm)
+## Results
 
-### Machine Translation ###
+### Evaluation Results
 
-* [seq2seq_attn](./seq2seq_attn)
-* [seq2seq_configs](./seq2seq_configs)
-* [seq2seq_rl](./seq2seq_rl)
-* [transformer](./transformer)
+The following table displays the quantitative and human evaluations results when removing 30%, 40% and 50% of the tokens in the template. With the same mask rate, we test the generation process with templates containing one or two blanks.
 
-### Dialog ###
+| Mask Rate     | #Blanks     | Metric     | Template     | Seq2Seq     | GAN     | Self-attn     |
+| ------------- | ----------- | ---------- | ------------ | ----------- | ------- | ------------- |
+| 30%           | 1           | BLEU       | 63.916       | 69.097      | 68.470  | **71.104**    |
+| 30%           | 1           | Perplexity | -            | 107.480     | 144.127 | **38.304**    |
+| 30%           | 1           | Human Eval | -            | 1.950       | 1.775   | **2.275**     |
+| 30%           | 2           | BLEU       | 42.233       | 67.174      | 64.337  | **65.914**    |
+| 30%           | 2           | Perplexity | -            | 43.044      | 36.704  | **21.028**    |
+| 30%           | 2           | Human Eval | -            | 1.838       | 1.975   | **2.188**     |
+| **Mask Rate** | **#Blanks** | **Metric** | **Template** | **Seq2Seq** | **GAN** | **Self-attn** |
+| 40%           | 1           | BLEU       | 56.838       | 61.309      | 61.778  | **63.543**    |
+| 40%           | 1           | Perplexity | -            | 202.714     | 230.569 | **44.864**    |
+| 40%           | 1           | Human Eval | -            | **2.075**   | 1.865   | 2.055         |
+| 40%           | 2           | BLEU       | 38.279       | 55.460      | 55.326  | **59.192**    |
+| 40%           | 2           | Perplexity | -            | 59.877      | 70.195  | **25.914**    |
+| 40%           | 2           | Human Eval | -            | 2.005       | 1.900   | **2.045**     |
+| **Mask Rate** | **#Blanks** | **Metric** | **Template** | **Seq2Seq** | **GAN** | **Self-attn** |
+| 50%           | 1           | BLEU       | 44.369       | 48.865      | 48.861  | **51.55**     |
+| 50%           | 1           | Perplexity | -            | 244.862     | 287.415 | **43.688**    |
+| 50%           | 1           | Human Eval | -            | 1.838       | 1.975   | **2.412**     |
+| 50%           | 2           | BLEU       | 32.498       | 42.613      | 42.535  | **44.418**    |
+| 50%           | 2           | Perplexity | -            | 99.421      | 107.558 | **32.397**    |
+| 50%           | 2           | Human Eval | -            | 1.875       | 1.913   | **2.238**     |
 
-* [hierarchical_dialog](./hierarchical_dialog)
 
-### Text Style Transfer ###
 
-* [text_style_transfer](./text_style_transfer)
+### Infilling Results
 
-### Classification ###
+An example model outputs on a Yelp test case, where the template contains two blanks and 40% of the tokens are masked out:
 
-* [sentence_classifier](./sentence_classifier)
+| Template     | I live \_\_m\_\_ and I was _\_m\_\_ chinese food .           |
+| ------------ | ------------------------------------------------------------ |
+| Ground Truth | i live <u>right down the street</u> and i <u>was craving some good</u> chinese food . |
+| Seq2seq      | i live <u>at a ten times</u> and i was <u>at appreciated by</u> chinese food . |
+| GAN          | i live <u>right of the app</u> and i was <u>looking for chinese food .</u> |
+| Self-attn    | i live <u>in the neighborhood area</u> and i was <u>impressed with the chinese food .</u> |
 
-### Games ###
 
-* [rl_gym](./rl_gym)
+

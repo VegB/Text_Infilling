@@ -249,10 +249,10 @@ def _main(_):
                 break
 
         avg_loss, avg_ppl = np.mean(loss_lists), np.mean(ppl_lists)
-        outputs_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.outputs.tmp'. \
-            format(cur_epoch, args.beam_width, args.alpha)
-        template_tmp_filename = args.log_dir + 'epoch{}.beam{}alpha{}.templates.tmp'. \
-            format(cur_epoch, args.beam_width, args.alpha)
+        outputs_tmp_filename = args.log_dir + 'epoch{}.beam{}.outputs.tmp'. \
+            format(cur_epoch, args.beam_width)
+        template_tmp_filename = args.log_dir + 'epoch{}.beam{}.templates.tmp'. \
+            format(cur_epoch, args.beam_width)
         refer_tmp_filename = os.path.join(args.log_dir, 'eval_reference.tmp')
         with codecs.open(outputs_tmp_filename, 'w+', 'utf-8') as tmpfile, \
                 codecs.open(template_tmp_filename, 'w+', 'utf-8') as tmptpltfile, \
@@ -272,8 +272,8 @@ def _main(_):
         os.remove(refer_tmp_filename)
         if args.save_eval_output:
             result_filename = \
-                args.log_dir + 'epoch{}.beam{}alpha{}.{}.results.bleu{:.3f}' \
-                    .format(cur_epoch, args.beam_width, args.alpha, mode, eval_bleu)
+                args.log_dir + 'epoch{}.beam{}.{}.results.bleu{:.3f}' \
+                    .format(cur_epoch, args.beam_width, mode, eval_bleu)
             with codecs.open(result_filename, 'w+', 'utf-8') as resultfile:
                 for tmplt, tgt, hyp in zip(templates_list, targets_list, hypothesis_list):
                     resultfile.write("- template: " + ' '.join(tmplt) + '\n')
@@ -321,9 +321,6 @@ def _main(_):
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
         sess.run(tf.tables_initializer())
-
-        # eval_saver.restore(sess, args.log_dir + 'my-model-latest.ckpt')
-        # test_ppl = _test_ppl(sess, 0)
 
         loss_list, ppl_list, test_ppl_list = [], [], []
         test_bleu, tplt_bleu, train_bleu, train_tplt_bleu = [], [], [], []

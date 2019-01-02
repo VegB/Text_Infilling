@@ -5,9 +5,7 @@ configurate the hyperparameters, based on command line arguments.
 import argparse
 import copy
 import os
-import math
 
-from texar.utils.transformer_utils import _batching_scheme
 from texar.data import SpecialTokens
 
 
@@ -27,64 +25,41 @@ def load_hyperparams():
     # pylint: disable=too-many-statements
     args = Hyperparams()
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('--max_seq_length', type=int, default=16)  #256
+    argparser.add_argument('--mask_rate', type=float, default=0.5)
+    argparser.add_argument('--blank_num', type=int, default=1)
+    argparser.add_argument('--batch_size', type=int, default=400)
+    argparser.add_argument('--test_batch_size', type=int, default=10)
+    argparser.add_argument('--max_seq_length', type=int, default=16)
+    argparser.add_argument('--hidden_dim', type=int, default=512)
     argparser.add_argument('--running_mode', type=str,
                            default='train_and_evaluate',
                            help='can also be test mode')
+    argparser.add_argument('--max_training_steps', type=int, default=2500000)
+    argparser.add_argument('--warmup_steps', type=int, default=10000)
+    argparser.add_argument('--max_train_epoch', type=int, default=150)
+    argparser.add_argument('--bleu_interval', type=int, default=5)
+    argparser.add_argument('--decay_interval', type=float, default=20)
+    argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--filename_prefix', type=str, default='yahoo.')
-    argparser.add_argument('--debug', type=int, default=0)
-    argparser.add_argument('--draw_for_debug', type=int, default=1)
-    argparser.add_argument('--average_model', type=int, default=0,
-                           help='currently not supported')
-    argparser.add_argument('--model_dir', type=str, default='default')
-    argparser.add_argument('--model_filename', type=str, default='')
-    argparser.add_argument('--verbose', type=int, default=0)
+    argparser.add_argument('--data_dir', type=str,
+                           default='./yahoo_data/')
+    argparser.add_argument('--save_eval_output', default=1,
+                           help='save the eval output to file')
+    argparser.add_argument('--lr_constant', type=float, default=0.3)
+    argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
+    argparser.add_argument('--lr_factor', type=float, default=0.1)
+    argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
     argparser.add_argument('--zero_pad', type=int, default=0)
     argparser.add_argument('--bos_pad', type=int, default=0,
                            help='use all-zero embedding for bos')
-    argparser.add_argument('--data_dir', type=str,
-                           default='./yahoo_data/')
-    argparser.add_argument('--batch_size', type=int, default=64)  # 4096
-    argparser.add_argument('--test_batch_size', type=int, default=10)
-    argparser.add_argument('--min_length_bucket', type=int, default=9)
-    argparser.add_argument('--length_bucket_step', type=float, default=1.1)
-    argparser.add_argument('--max_training_steps', type=int, default=2500000)
-    argparser.add_argument('--warmup_steps', type=int, default=16000)
-    argparser.add_argument('--lr_constant', type=float, default=2)
-    argparser.add_argument('--max_train_epoch', type=int, default=150)
     argparser.add_argument('--random_seed', type=int, default=1234)
-    argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--beam_width', type=int, default=2)
-    argparser.add_argument('--alpha', type=float, default=0.6,
-        help=' length_penalty=(5+len(decode)/6) ^ -\alpha')
-    argparser.add_argument('--save_eval_output', default=1,
-        help='save the eval output to file')
-    argparser.add_argument('--eval_interval_epoch', type=int, default=1)
-    argparser.add_argument('--bleu_interval', type=int, default=150)
-    argparser.add_argument('--decay_interval', type=float, default=20)
-    argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
-    argparser.add_argument('--load_from_pytorch', type=str, default='')
     argparser.add_argument('--affine_bias', type=int, default=0)
-    argparser.add_argument('--eval_criteria', type=str, default='bleu')
-    argparser.add_argument('--pre_encoding', type=str, default='spm')
-    argparser.add_argument('--mask_strategy', type=str, default='fixed')  # equal_length / random
-    argparser.add_argument('--present_rate', type=float, default=0.2)
-    argparser.add_argument('--lr_factor', type=float, default=0.1)
-    argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--mask_length', type=int, default=5)
-    argparser.add_argument('--hidden_dim', type=int, default=512)
-    argparser.add_argument('--partition_strategy', type=str, default='dynamic')  # 'fixed'
-    argparser.add_argument('--fixed_partition_num', type=int, default=1)
-    argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
     argparser.parse_args(namespace=args)
-    
+
+    args.present_rate = 1 - args.mask_rate
     args.max_decode_len = args.max_seq_length
-    args.max_partition_num = int((args.max_seq_length + 1) / 2)
-    args.test_present_rates = [args.present_rate]  # [0.2, 0.5, 0.8]
-    if args.partition_strategy == 'dynamic':
-        args.partition_num = int(math.log(args.max_seq_length))
-    else:
-        args.partition_num = args.fixed_partition_num
+    args.partition_num = args.blank_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.train_file = os.path.join(args.data_dir,
@@ -94,29 +69,14 @@ def load_hyperparams():
     args.test_file = os.path.join(args.data_dir,
         '{}test{}'.format(args.filename_prefix, args.filename_suffix))
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    if args.mask_strategy == 'random' or 'fixed':
-        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.{}_mask.present{}.partition{}.hidden{}/'.format(
-            args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-            args.learning_rate_strategy, args.mask_strategy, args.present_rate, args.partition_num, args.hidden_dim)
-    elif args.mask_strategy == 'equal_length':
-        log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.{}_mask.masknum{}.masklen{}.hidden{}/'.format(
-            args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-            args.learning_rate_strategy, args.mask_strategy, args.mask_num, args.mask_len, args.hidden_dim)
-    else:
-        raise TypeError("Unknown mask_strategy %s, expecting one of ['random' ,'equal_length', 'fixed'] " %
-                        args.mask_strategy)
+    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.present{}.partition{}.hidden{}/'.format(
+        args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
+        args.learning_rate_strategy, args.present_rate, args.partition_num, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
-    batching_scheme = _batching_scheme(
-        args.batch_size,
-        args.max_seq_length,
-        args.min_length_bucket,
-        args.length_bucket_step,
-        drop_long_sequences=True,
-    )
     print('train_file:{}'.format(args.train_file))
     print('valid_file:{}'.format(args.valid_file))
     train_dataset_hparams = {
-        "num_epochs": args.eval_interval_epoch,
+        "num_epochs": 1,
         "seed": args.random_seed,
         "shuffle": True,
         "dataset": {
@@ -127,8 +87,6 @@ def load_hyperparams():
             "eos_token": SpecialTokens.EOS,
             "length_filter_mode": "truncate",
         },
-        # 'bucket_boundaries': batching_scheme['boundaries'],
-        # 'bucket_batch_sizes': batching_scheme['batch_sizes'],
         'batch_size': args.batch_size,
         'allow_smaller_final_batch': True,
     }
