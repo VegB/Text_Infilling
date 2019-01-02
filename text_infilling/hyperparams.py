@@ -25,53 +25,45 @@ def load_hyperparams():
     # pylint: disable=too-many-statements
     args = Hyperparams()
     argparser = argparse.ArgumentParser()
-    argparser.add_argument('--max_seq_length', type=int, default=16)  #256
+    argparser.add_argument('--mask_num', type=int, default=3)
+    argparser.add_argument('--blank_num', type=int, default=1)
+    argparser.add_argument('--batch_size', type=int, default=64)  # 4096
+    argparser.add_argument('--max_seq_length', type=int, default=20)  #256
+    argparser.add_argument('--hidden_dim', type=int, default=512)
     argparser.add_argument('--running_mode', type=str,
                            default='train_and_evaluate',
                            help='can also be test mode')
+    argparser.add_argument('--max_training_steps', type=int, default=2500000)
+    argparser.add_argument('--warmup_steps', type=int, default=16000)
+    argparser.add_argument('--max_train_epoch', type=int, default=150)
+    argparser.add_argument('--bleu_interval', type=int, default=5)
+    argparser.add_argument('--decay_interval', type=float, default=20)
+    argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--filename_prefix', type=str, default='yahoo.')
     argparser.add_argument('--data_dir', type=str,
                            default='./yahoo_data/')
+    argparser.add_argument('--save_eval_output', default=1,
+        help='save the eval output to file')
+    argparser.add_argument('--lr_constant', type=float, default=2)
+    argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
+    argparser.add_argument('--lr_factor', type=float, default=0.1)
+    argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
     argparser.add_argument('--zero_pad', type=int, default=0)
     argparser.add_argument('--bos_pad', type=int, default=0,
                            help='use all-zero embedding for bos')
-    argparser.add_argument('--batch_size', type=int, default=64)  # 4096
-    argparser.add_argument('--min_length_bucket', type=int, default=9)
-    argparser.add_argument('--length_bucket_step', type=float, default=1.1)
-    argparser.add_argument('--max_training_steps', type=int, default=2500000)
-    argparser.add_argument('--warmup_steps', type=int, default=16000)
-    argparser.add_argument('--lr_constant', type=float, default=2)
-    argparser.add_argument('--max_train_epoch', type=int, default=150)
     argparser.add_argument('--random_seed', type=int, default=1234)
-    argparser.add_argument('--log_disk_dir', type=str, default='./')
     argparser.add_argument('--beam_width', type=int, default=2)
-    argparser.add_argument('--alpha', type=float, default=0.6,
-        help=' length_penalty=(5+len(decode)/6) ^ -\alpha')
-    argparser.add_argument('--save_eval_output', default=1,
-        help='save the eval output to file')
-    argparser.add_argument('--eval_interval_epoch', type=int, default=1)
-    argparser.add_argument('--bleu_interval', type=int, default=5)
-    argparser.add_argument('--decay_interval', type=float, default=20)
-    argparser.add_argument('--lr_decay_rate', type=float, default=0.1)
     argparser.add_argument('--affine_bias', type=int, default=0)
-    argparser.add_argument('--mask_rate', type=float, default=0.5)
-    argparser.add_argument('--lr_factor', type=float, default=0.1)
-    argparser.add_argument('--mask_num', type=int, default=3)
-    argparser.add_argument('--hidden_dim', type=int, default=512)
-    argparser.add_argument('--blank_num', type=int, default=1)
-    argparser.add_argument('--learning_rate_strategy', type=str, default='dynamic')  # 'static'
     argparser.parse_args(namespace=args)
     
     args.max_decode_len = args.max_seq_length
-    args.present_rate = args.mask_rate
-    args.test_present_rates = [args.present_rate]
     args.partition_num = args.blank_num
     args.data_dir = os.path.abspath(args.data_dir)
     args.filename_suffix = '.txt'
     args.vocab_file = os.path.join(args.data_dir, 'vocab.txt')
-    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.present{}.partition{}.hidden{}/'.format(
+    log_params_dir = 'log_dir/{}bsize{}.epoch{}.seqlen{}.{}_lr.partition{}.hidden{}/'.format(
         args.filename_prefix, args.batch_size, args.max_train_epoch, args.max_seq_length,
-        args.learning_rate_strategy, args.present_rate, args.partition_num, args.hidden_dim)
+        args.learning_rate_strategy, args.partition_num, args.hidden_dim)
     args.log_dir = os.path.join(args.log_disk_dir, log_params_dir)
 
     data_files = {
@@ -199,7 +191,7 @@ def load_hyperparams():
         'Adam_epsilon': 1e-9,
     }
     opt_vars = {
-        'learning_rate': args.hidden_dim ** -0.5 * args.present_rate * args.lr_factor,  # 0.016
+        'learning_rate': args.hidden_dim ** -0.5 * 0.2 * args.lr_factor,  # 0.016
         'best_train_loss': 1e100,
         'best_eval_loss': 1e100,
         'best_eval_bleu': 0,
