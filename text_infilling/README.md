@@ -16,7 +16,7 @@ Experiments are performed on two datasets:
 
 Download the dataset with the following command:
 
-```python
+```bash
 python data_utils.py --dataset 'grimm_prep'
 ```
 
@@ -29,7 +29,7 @@ The dataset will be stored in `grimm_prep_data/`.
 
 Training can be performed with the following command:
 
-```python
+```bash
 python [MODEL].py --filename_prefix 'grimm.prep.' --data_dir './grimm_prep_data/'
 ```
 
@@ -56,7 +56,7 @@ An example from the Grimm's Fairy Tales data where prepositions are masked out:
 
 Download the dataset with the following command:
 
-```python
+```bash
 python data_utils.py --dataset [DATASET]
 ```
 
@@ -66,7 +66,7 @@ Here the `DATASET` flag may be `grimm_lm` or `nba_lm`.
 
 ### Train and Test the model
 
-```python
+```bash
 python [MODEL].py --filename_prefix '[DATASET].lm.' --data_dir './[DATASET]_lm_data/'
 ```
 
@@ -79,7 +79,7 @@ Here:
 
 ### Infilling Results
 
-An example for language models with anchor words on Grimm Tales.
+An example for language models with anchor words on Grimm Tales:
 
 
 
@@ -92,7 +92,7 @@ An example for language models with anchor words on Grimm Tales.
 
 
 
-An example of the NBA reports for language models with anchor words.
+An example of the NBA reports for language models with anchor words:
 
 | Template     | _\_m\_\_ Toronto_Raptors _\_m\_\_ 114-110 _\_m\_\_           |
 | ------------ | ------------------------------------------------------------ |
