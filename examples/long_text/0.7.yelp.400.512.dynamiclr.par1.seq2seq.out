@@ -1,0 +1,413 @@
+train_file:/home/syp/zwr/txtgen/examples/long_text/yelp_data/pos/pos.train.txt
+valid_file:/home/syp/zwr/txtgen/examples/long_text/yelp_data/pos/pos.valid.txt
+logdir:./log_dir/pos.bsize400.epoch150.seqlen16.dynamic_lr.fixed_mask.present0.7.partition1.hidden512.seq2seq/
+epoch:0 test_bleu:31.306660175323486 template_bleu:63.916170597076416
+epoch:0 train_bleu:31.02254867553711 template_bleu:63.75228762626648
+step:1 source:(400, 17) loss:7.966007 ppl:2881.328613 lr:0.000000
+step:201 source:(400, 17) loss:5.050611 ppl:156.117905 lr:0.000009
+[TEST]: loss=4.767405, ppl=122.411804
+step:401 source:(400, 17) loss:4.692011 ppl:109.072342 lr:0.000018
+[TEST]: loss=4.659118, ppl=110.223480
+step:601 source:(400, 17) loss:4.691563 ppl:109.023415 lr:0.000027
+[TEST]: loss=4.638307, ppl=108.244675
+step:801 source:(400, 17) loss:4.635522 ppl:103.081703 lr:0.000035
+step:1001 source:(400, 17) loss:4.699711 ppl:109.915436 lr:0.000044
+[TEST]: loss=4.633861, ppl=107.819855
+step:1201 source:(400, 17) loss:4.636907 ppl:103.224541 lr:0.000053
+[TEST]: loss=4.629665, ppl=107.390038
+epoch:5 test_bleu:65.30001163482666 template_bleu:63.916170597076416
+epoch:5 train_bleu:65.23215174674988 template_bleu:63.75228762626648
+step:1401 source:(400, 17) loss:4.666258 ppl:106.299263 lr:0.000062
+[TEST]: loss=4.621814, ppl=106.534569
+step:1601 source:(400, 17) loss:4.484097 ppl:88.596954 lr:0.000071
+step:1801 source:(400, 17) loss:4.598489 ppl:99.334091 lr:0.000080
+[TEST]: loss=4.610223, ppl=105.363869
+step:2001 source:(400, 17) loss:4.646860 ppl:104.257065 lr:0.000088
+[TEST]: loss=4.585487, ppl=103.140984
+step:2201 source:(400, 17) loss:4.553022 ppl:94.918854 lr:0.000097
+[TEST]: loss=4.501942, ppl=95.180557
+step:2401 source:(400, 17) loss:4.433363 ppl:84.214188 lr:0.000106
+step:2601 source:(400, 17) loss:4.454401 ppl:86.004662 lr:0.000115
+[TEST]: loss=4.419225, ppl=87.875099
+epoch:10 test_bleu:66.03614091873169 template_bleu:63.916170597076416
+epoch:10 train_bleu:65.80617427825928 template_bleu:63.75228762626648
+step:2801 source:(400, 17) loss:4.340965 ppl:76.781616 lr:0.000124
+[TEST]: loss=4.323989, ppl=79.922325
+step:3001 source:(400, 17) loss:4.189124 ppl:65.964989 lr:0.000133
+[TEST]: loss=4.201127, ppl=71.186584
+step:3201 source:(400, 17) loss:4.083027 ppl:59.324795 lr:0.000141
+[TEST]: loss=4.113301, ppl=65.444611
+step:3401 source:(400, 17) loss:4.081198 ppl:59.216354 lr:0.000150
+step:3601 source:(400, 17) loss:4.019907 ppl:55.695900 lr:0.000159
+[TEST]: loss=4.023374, ppl=59.851734
+step:3801 source:(400, 17) loss:3.896686 ppl:49.239006 lr:0.000168
+[TEST]: loss=3.951118, ppl=55.701401
+epoch:15 test_bleu:67.88365840911865 template_bleu:63.916170597076416
+epoch:15 train_bleu:67.44818091392517 template_bleu:63.75228762626648
+step:4001 source:(400, 17) loss:3.903210 ppl:49.561306 lr:0.000177
+[TEST]: loss=3.893133, ppl=52.583527
+step:4201 source:(400, 17) loss:3.765114 ppl:43.168610 lr:0.000186
+step:4401 source:(400, 17) loss:3.733353 ppl:41.819099 lr:0.000194
+[TEST]: loss=3.870388, ppl=51.449081
+step:4601 source:(400, 17) loss:3.612268 ppl:37.049988 lr:0.000203
+[TEST]: loss=3.865140, ppl=51.189735
+step:4801 source:(400, 17) loss:3.648928 ppl:38.433441 lr:0.000212
+[TEST]: loss=3.824157, ppl=49.069382
+step:5001 source:(400, 17) loss:3.578581 ppl:35.822666 lr:0.000221
+step:5201 source:(400, 17) loss:3.530521 ppl:34.141747 lr:0.000230
+[TEST]: loss=3.801304, ppl=48.201469
+epoch:20 test_bleu:68.6840295791626 template_bleu:63.916170597076416
+epoch:20 train_bleu:68.3985710144043 template_bleu:63.75228762626648
+step:5401 source:(400, 17) loss:3.546847 ppl:34.703728 lr:0.000239
+[TEST]: loss=3.774051, ppl=46.946587
+step:5601 source:(400, 17) loss:3.470280 ppl:32.145748 lr:0.000247
+[TEST]: loss=3.763766, ppl=46.504650
+step:5801 source:(400, 17) loss:3.496467 ppl:32.998650 lr:0.000256
+step:6001 source:(400, 17) loss:3.372937 ppl:29.164055 lr:0.000265
+[TEST]: loss=3.781031, ppl=47.517147
+step:6201 source:(400, 17) loss:3.352932 ppl:28.586426 lr:0.000274
+[TEST]: loss=3.768238, ppl=46.986954
+step:6401 source:(400, 17) loss:3.278886 ppl:26.546192 lr:0.000283
+[TEST]: loss=3.786950, ppl=48.014320
+epoch:25 test_bleu:68.99212598800659 template_bleu:63.916170597076416
+epoch:25 train_bleu:69.34032440185547 template_bleu:63.75228762626648
+step:6601 source:(400, 17) loss:3.307031 ppl:27.303930 lr:0.000292
+[TEST]: loss=3.813776, ppl=49.536938
+step:6801 source:(400, 17) loss:3.375334 ppl:29.234034 lr:0.000301
+step:7001 source:(400, 17) loss:3.204839 ppl:24.651525 lr:0.000309
+[TEST]: loss=3.809135, ppl=49.314632
+step:7201 source:(400, 17) loss:3.246377 ppl:25.697071 lr:0.000318
+[TEST]: loss=3.786411, ppl=48.137264
+step:7401 source:(400, 17) loss:3.187032 ppl:24.216434 lr:0.000327
+[TEST]: loss=3.797935, ppl=48.910046
+step:7601 source:(400, 17) loss:3.139136 ppl:23.083910 lr:0.000336
+step:7801 source:(400, 17) loss:3.145315 ppl:23.226995 lr:0.000345
+[TEST]: loss=3.815812, ppl=49.831173
+epoch:30 test_bleu:68.90049576759338 template_bleu:63.916170597076416
+epoch:30 train_bleu:70.27764320373535 template_bleu:63.75228762626648
+step:8001 source:(400, 17) loss:3.115223 ppl:22.538448 lr:0.000354
+[TEST]: loss=3.830098, ppl=50.745499
+step:8201 source:(400, 17) loss:3.048084 ppl:21.074917 lr:0.000362
+[TEST]: loss=3.851654, ppl=52.406368
+step:8401 source:(400, 17) loss:3.010350 ppl:20.294502 lr:0.000371
+step:8601 source:(400, 17) loss:3.020593 ppl:20.503441 lr:0.000380
+[TEST]: loss=3.862448, ppl=52.937984
+step:8801 source:(400, 17) loss:3.029858 ppl:20.694302 lr:0.000389
+[TEST]: loss=3.900684, ppl=55.178135
+step:9001 source:(400, 17) loss:2.862741 ppl:17.509447 lr:0.000398
+[TEST]: loss=3.966479, ppl=58.957069
+epoch:35 test_bleu:69.11405324935913 template_bleu:63.916170597076416
+epoch:35 train_bleu:71.50945663452148 template_bleu:63.75228762626648
+step:9201 source:(400, 17) loss:2.959523 ppl:19.288773 lr:0.000407
+[TEST]: loss=3.985533, ppl=60.390034
+step:9401 source:(400, 17) loss:2.863674 ppl:17.525806 lr:0.000415
+step:9601 source:(400, 17) loss:2.784298 ppl:16.188456 lr:0.000424
+[TEST]: loss=3.937160, ppl=57.548779
+step:9801 source:(400, 17) loss:2.685939 ppl:14.671973 lr:0.000433
+[TEST]: loss=4.051630, ppl=65.333839
+step:10001 source:(400, 17) loss:2.670128 ppl:14.441815 lr:0.000442
+[TEST]: loss=4.023560, ppl=63.457272
+step:10201 source:(400, 17) loss:2.879708 ppl:17.809072 lr:0.000438
+step:10401 source:(400, 17) loss:2.593798 ppl:13.380493 lr:0.000433
+[TEST]: loss=3.998410, ppl=61.789078
+epoch:40 test_bleu:68.86990666389465 template_bleu:63.916170597076416
+epoch:40 train_bleu:72.45522737503052 template_bleu:63.75228762626648
+step:10601 source:(400, 17) loss:2.639440 ppl:14.005353 lr:0.000429
+[TEST]: loss=4.000905, ppl=61.755836
+step:10801 source:(400, 17) loss:2.701892 ppl:14.907913 lr:0.000425
+[TEST]: loss=4.055519, ppl=65.879265
+step:11001 source:(400, 17) loss:2.523282 ppl:12.469452 lr:0.000421
+step:11201 source:(400, 17) loss:2.390767 ppl:10.921869 lr:0.000418
+[TEST]: loss=4.079716, ppl=67.705994
+step:11401 source:(400, 17) loss:2.374071 ppl:10.741034 lr:0.000414
+[TEST]: loss=4.158401, ppl=73.868561
+step:11601 source:(400, 17) loss:2.330546 ppl:10.283554 lr:0.000410
+[TEST]: loss=4.217591, ppl=78.991142
+epoch:45 test_bleu:69.04147863388062 template_bleu:63.916170597076416
+epoch:45 train_bleu:73.07761311531067 template_bleu:63.75228762626648
+step:11801 source:(400, 17) loss:2.239486 ppl:9.388499 lr:0.000407
+step:12001 source:(400, 17) loss:2.261827 ppl:9.600611 lr:0.000403
+[TEST]: loss=4.255276, ppl=82.243614
+step:12201 source:(400, 17) loss:2.250633 ppl:9.493746 lr:0.000400
+[TEST]: loss=4.269826, ppl=82.798225
+step:12401 source:(400, 17) loss:2.211673 ppl:9.130982 lr:0.000397
+[TEST]: loss=4.329203, ppl=87.372246
+step:12601 source:(400, 17) loss:2.243920 ppl:9.430228 lr:0.000394
+[TEST]: loss=4.351694, ppl=90.662819
+step:12801 source:(400, 17) loss:2.137785 ppl:8.480630 lr:0.000391
+step:13001 source:(400, 17) loss:2.123933 ppl:8.363969 lr:0.000388
+[TEST]: loss=4.352316, ppl=90.464119
+epoch:50 test_bleu:68.87878179550171 template_bleu:63.916170597076416
+epoch:50 train_bleu:76.83184146881104 template_bleu:63.75228762626648
+step:13201 source:(400, 17) loss:2.054637 ppl:7.804008 lr:0.000385
+[TEST]: loss=4.443374, ppl=101.372360
+step:13401 source:(400, 17) loss:2.058348 ppl:7.833018 lr:0.000382
+[TEST]: loss=4.442240, ppl=100.458649
+step:13601 source:(400, 17) loss:1.991027 ppl:7.323051 lr:0.000379
+step:13801 source:(400, 17) loss:2.014111 ppl:7.494064 lr:0.000376
+[TEST]: loss=4.475740, ppl=104.182343
+step:14001 source:(400, 17) loss:1.931591 ppl:6.900480 lr:0.000374
+[TEST]: loss=4.583437, ppl=118.633293
+step:14201 source:(400, 17) loss:1.880515 ppl:6.556884 lr:0.000371
+[TEST]: loss=4.555563, ppl=116.041367
+epoch:55 test_bleu:68.7651515007019 template_bleu:63.916170597076416
+epoch:55 train_bleu:80.54054379463196 template_bleu:63.75228762626648
+step:14401 source:(400, 17) loss:1.947450 ppl:7.010787 lr:0.000368
+step:14601 source:(400, 17) loss:1.899103 ppl:6.679903 lr:0.000366
+[TEST]: loss=4.541191, ppl=111.847061
+step:14801 source:(400, 17) loss:1.862145 ppl:6.437529 lr:0.000363
+[TEST]: loss=4.529770, ppl=111.119797
+step:15001 source:(400, 17) loss:1.840304 ppl:6.298452 lr:0.000361
+[TEST]: loss=4.576738, ppl=116.237541
+step:15201 source:(400, 17) loss:1.858826 ppl:6.416197 lr:0.000358
+[TEST]: loss=4.584779, ppl=114.210213
+step:15401 source:(400, 17) loss:1.825139 ppl:6.203658 lr:0.000356
+step:15601 source:(400, 17) loss:1.799695 ppl:6.047803 lr:0.000354
+[TEST]: loss=4.657661, ppl=123.398193
+epoch:60 test_bleu:68.59718561172485 template_bleu:63.916170597076416
+epoch:60 train_bleu:86.22339963912964 template_bleu:63.75228762626648
+step:15801 source:(400, 17) loss:1.796501 ppl:6.028517 lr:0.000352
+[TEST]: loss=4.650561, ppl=124.705536
+step:16001 source:(400, 17) loss:1.821500 ppl:6.181120 lr:0.000349
+[TEST]: loss=4.628567, ppl=123.332840
+step:16201 source:(400, 17) loss:1.786930 ppl:5.971096 lr:0.000347
+step:16401 source:(400, 17) loss:1.803397 ppl:6.070230 lr:0.000345
+[TEST]: loss=4.646142, ppl=124.183487
+step:16601 source:(400, 17) loss:1.742615 ppl:5.712259 lr:0.000343
+[TEST]: loss=4.695215, ppl=131.532455
+step:16801 source:(400, 17) loss:1.712196 ppl:5.541114 lr:0.000341
+[TEST]: loss=4.678941, ppl=129.069489
+epoch:65 test_bleu:68.58516931533813 template_bleu:63.916170597076416
+epoch:65 train_bleu:87.45981454849243 template_bleu:63.75228762626648
+step:17001 source:(400, 17) loss:1.735551 ppl:5.672051 lr:0.000339
+step:17201 source:(400, 17) loss:1.709354 ppl:5.525391 lr:0.000337
+[TEST]: loss=4.702668, ppl=133.558197
+step:17401 source:(400, 17) loss:1.675429 ppl:5.341084 lr:0.000335
+[TEST]: loss=4.707316, ppl=132.253128
+step:17601 source:(400, 17) loss:1.692495 ppl:5.433019 lr:0.000333
+[TEST]: loss=4.709978, ppl=134.217056
+step:17801 source:(400, 17) loss:1.727388 ppl:5.625940 lr:0.000331
+step:18001 source:(400, 17) loss:1.716551 ppl:5.565299 lr:0.000329
+[TEST]: loss=4.704322, ppl=132.635834
+step:18201 source:(400, 17) loss:1.688472 ppl:5.411207 lr:0.000328
+[TEST]: loss=4.647696, ppl=124.254082
+epoch:70 test_bleu:68.92272233963013 template_bleu:63.916170597076416
+epoch:70 train_bleu:90.89542031288147 template_bleu:63.75228762626648
+step:18401 source:(400, 17) loss:1.659875 ppl:5.258655 lr:0.000326
+[TEST]: loss=4.645747, ppl=123.530823
+step:18601 source:(400, 17) loss:1.696140 ppl:5.452861 lr:0.000324
+[TEST]: loss=4.636299, ppl=123.649696
+step:18801 source:(400, 17) loss:1.666726 ppl:5.294806 lr:0.000322
+step:19001 source:(400, 17) loss:1.634944 ppl:5.129172 lr:0.000321
+[TEST]: loss=4.636852, ppl=124.314392
+step:19201 source:(400, 17) loss:1.617144 ppl:5.038678 lr:0.000319
+[TEST]: loss=4.625527, ppl=122.444290
+step:19401 source:(400, 17) loss:1.622309 ppl:5.064773 lr:0.000317
+[TEST]: loss=4.646109, ppl=125.452248
+epoch:75 test_bleu:69.0822184085846 template_bleu:63.916170597076416
+epoch:75 train_bleu:91.85369610786438 template_bleu:63.75228762626648
+step:19601 source:(400, 17) loss:1.601931 ppl:4.962608 lr:0.000316
+step:19801 source:(400, 17) loss:1.597669 ppl:4.941499 lr:0.000314
+[TEST]: loss=4.814886, ppl=151.907089
+step:20001 source:(400, 17) loss:1.622516 ppl:5.065821 lr:0.000312
+[TEST]: loss=4.943750, ppl=173.936386
+step:20201 source:(400, 17) loss:1.597948 ppl:4.942880 lr:0.000311
+[TEST]: loss=4.846779, ppl=156.199280
+step:20401 source:(400, 17) loss:1.603366 ppl:4.969731 lr:0.000309
+step:20601 source:(400, 17) loss:1.613824 ppl:5.021979 lr:0.000308
+[TEST]: loss=4.792500, ppl=146.133652
+step:20801 source:(400, 17) loss:1.570065 ppl:4.806960 lr:0.000306
+[TEST]: loss=4.868184, ppl=157.830658
+epoch:80 test_bleu:68.59373450279236 template_bleu:63.916170597076416
+epoch:80 train_bleu:91.8971061706543 template_bleu:63.75228762626648
+step:21001 source:(400, 17) loss:1.580505 ppl:4.857407 lr:0.000305
+[TEST]: loss=4.822006, ppl=150.846313
+step:21201 source:(400, 17) loss:1.591232 ppl:4.909795 lr:0.000304
+step:21401 source:(400, 17) loss:1.587458 ppl:4.891298 lr:0.000302
+[TEST]: loss=4.681059, ppl=129.436401
+step:21601 source:(400, 17) loss:1.556127 ppl:4.740427 lr:0.000301
+[TEST]: loss=4.616112, ppl=122.348328
+step:21801 source:(400, 17) loss:1.559385 ppl:4.755898 lr:0.000299
+[TEST]: loss=4.682809, ppl=129.039856
+step:22001 source:(400, 17) loss:1.575412 ppl:4.832731 lr:0.000298
+[TEST]: loss=4.815611, ppl=148.972260
+epoch:85 test_bleu:68.78994107246399 template_bleu:63.916170597076416
+epoch:85 train_bleu:92.0444905757904 template_bleu:63.75228762626648
+step:22201 source:(400, 17) loss:1.551528 ppl:4.718675 lr:0.000297
+step:22401 source:(400, 17) loss:1.538860 ppl:4.659277 lr:0.000295
+[TEST]: loss=4.837289, ppl=152.841782
+step:22601 source:(400, 17) loss:1.562062 ppl:4.768645 lr:0.000294
+[TEST]: loss=4.761801, ppl=140.376495
+step:22801 source:(400, 17) loss:1.571797 ppl:4.815293 lr:0.000293
+[TEST]: loss=4.729939, ppl=135.535309
+step:23001 source:(400, 17) loss:1.546622 ppl:4.695582 lr:0.000291
+step:23201 source:(400, 17) loss:1.535617 ppl:4.644191 lr:0.000290
+[TEST]: loss=4.702571, ppl=131.653931
+step:23401 source:(400, 17) loss:1.581673 ppl:4.863086 lr:0.000289
+[TEST]: loss=4.783510, ppl=144.434448
+epoch:90 test_bleu:68.66406798362732 template_bleu:63.916170597076416
+epoch:90 train_bleu:93.0956482887268 template_bleu:63.75228762626648
+step:23601 source:(400, 17) loss:1.535670 ppl:4.644438 lr:0.000288
+[TEST]: loss=4.852223, ppl=153.885818
+step:23801 source:(400, 17) loss:1.548108 ppl:4.702566 lr:0.000286
+step:24001 source:(400, 17) loss:1.531265 ppl:4.624023 lr:0.000285
+[TEST]: loss=4.778189, ppl=142.238083
+step:24201 source:(400, 17) loss:1.553165 ppl:4.726408 lr:0.000284
+[TEST]: loss=4.790507, ppl=143.048447
+step:24401 source:(400, 17) loss:1.536415 ppl:4.647895 lr:0.000283
+[TEST]: loss=4.892647, ppl=160.325043
+step:24601 source:(400, 17) loss:1.535105 ppl:4.641815 lr:0.000282
+[TEST]: loss=4.819389, ppl=151.671722
+epoch:95 test_bleu:68.93581748008728 template_bleu:63.916170597076416
+epoch:95 train_bleu:93.6683714389801 template_bleu:63.75228762626648
+step:24801 source:(400, 17) loss:1.544080 ppl:4.683662 lr:0.000281
+step:25001 source:(400, 17) loss:1.566876 ppl:4.791654 lr:0.000280
+[TEST]: loss=4.666436, ppl=128.422943
+step:25201 source:(400, 17) loss:1.533967 ppl:4.636534 lr:0.000278
+[TEST]: loss=4.689554, ppl=128.196960
+step:25401 source:(400, 17) loss:1.531377 ppl:4.624539 lr:0.000277
+[TEST]: loss=4.735824, ppl=135.674072
+step:25601 source:(400, 17) loss:1.526728 ppl:4.603093 lr:0.000276
+step:25801 source:(400, 17) loss:1.539181 ppl:4.660770 lr:0.000275
+[TEST]: loss=4.740075, ppl=137.467896
+step:26001 source:(400, 17) loss:1.500821 ppl:4.485369 lr:0.000274
+[TEST]: loss=4.818476, ppl=150.412918
+epoch:100 test_bleu:68.6947762966156 template_bleu:63.916170597076416
+epoch:100 train_bleu:93.66526007652283 template_bleu:63.75228762626648
+step:26201 source:(400, 17) loss:1.512473 ppl:4.537941 lr:0.000273
+[TEST]: loss=4.860895, ppl=154.609207
+step:26401 source:(400, 17) loss:1.523687 ppl:4.589116 lr:0.000272
+step:26601 source:(400, 17) loss:1.509173 ppl:4.522987 lr:0.000271
+[TEST]: loss=4.914062, ppl=166.409546
+step:26801 source:(400, 17) loss:1.509346 ppl:4.523774 lr:0.000270
+[TEST]: loss=4.878195, ppl=160.103317
+step:27001 source:(400, 17) loss:1.506260 ppl:4.509831 lr:0.000269
+[TEST]: loss=4.826677, ppl=150.203934
+step:27201 source:(400, 17) loss:1.524117 ppl:4.591089 lr:0.000268
+step:27401 source:(400, 17) loss:1.522904 ppl:4.585521 lr:0.000267
+[TEST]: loss=4.738767, ppl=136.740036
+epoch:105 test_bleu:68.79226565361023 template_bleu:63.916170597076416
+epoch:105 train_bleu:92.5092339515686 template_bleu:63.75228762626648
+step:27601 source:(400, 17) loss:1.496275 ppl:4.465024 lr:0.000266
+[TEST]: loss=4.666757, ppl=127.059853
+step:27801 source:(400, 17) loss:1.496176 ppl:4.464583 lr:0.000265
+[TEST]: loss=4.658963, ppl=126.865326
+step:28001 source:(400, 17) loss:1.510649 ppl:4.529668 lr:0.000264
+[TEST]: loss=4.607005, ppl=118.882500
+step:28201 source:(400, 17) loss:1.520087 ppl:4.572622 lr:0.000263
+step:28401 source:(400, 17) loss:1.477690 ppl:4.382809 lr:0.000262
+[TEST]: loss=4.580904, ppl=114.809509
+step:28601 source:(400, 17) loss:1.480748 ppl:4.396235 lr:0.000261
+[TEST]: loss=4.565222, ppl=111.490128
+epoch:110 test_bleu:68.81353855133057 template_bleu:63.916170597076416
+epoch:110 train_bleu:94.24964189529419 template_bleu:63.75228762626648
+step:28801 source:(400, 17) loss:1.486873 ppl:4.423244 lr:0.000260
+[TEST]: loss=4.618883, ppl=117.807274
+step:29001 source:(400, 17) loss:1.492977 ppl:4.450324 lr:0.000260
+step:29201 source:(400, 17) loss:1.474667 ppl:4.369580 lr:0.000259
+[TEST]: loss=4.669824, ppl=124.685059
+step:29401 source:(400, 17) loss:1.487294 ppl:4.425104 lr:0.000258
+[TEST]: loss=4.732865, ppl=133.142944
+step:29601 source:(400, 17) loss:1.500717 ppl:4.484904 lr:0.000257
+[TEST]: loss=4.773479, ppl=138.661560
+step:29801 source:(400, 17) loss:1.491292 ppl:4.442831 lr:0.000256
+step:30001 source:(400, 17) loss:1.472040 ppl:4.358116 lr:0.000255
+[TEST]: loss=4.770758, ppl=139.887070
+epoch:115 test_bleu:68.7961220741272 template_bleu:63.916170597076416
+epoch:115 train_bleu:95.12745141983032 template_bleu:63.75228762626648
+step:30201 source:(400, 17) loss:1.481818 ppl:4.400938 lr:0.000254
+[TEST]: loss=4.783320, ppl=139.755814
+step:30401 source:(400, 17) loss:1.489141 ppl:4.433287 lr:0.000253
+[TEST]: loss=4.750652, ppl=137.333939
+step:30601 source:(400, 17) loss:1.496432 ppl:4.465726 lr:0.000253
+[TEST]: loss=4.723001, ppl=133.324554
+step:30801 source:(400, 17) loss:1.494868 ppl:4.458749 lr:0.000252
+step:31001 source:(400, 17) loss:1.471005 ppl:4.353610 lr:0.000251
+[TEST]: loss=4.717003, ppl=131.424683
+step:31201 source:(400, 17) loss:1.473644 ppl:4.365112 lr:0.000250
+[TEST]: loss=4.742836, ppl=134.629181
+epoch:120 test_bleu:68.9342737197876 template_bleu:63.916170597076416
+epoch:120 train_bleu:95.58812379837036 template_bleu:63.75228762626648
+step:31401 source:(400, 17) loss:1.508082 ppl:4.518058 lr:0.000249
+[TEST]: loss=4.766802, ppl=139.594025
+step:31601 source:(400, 17) loss:1.478873 ppl:4.387999 lr:0.000249
+step:31801 source:(400, 17) loss:1.467563 ppl:4.338650 lr:0.000248
+[TEST]: loss=4.744374, ppl=138.578247
+step:32001 source:(400, 17) loss:1.463355 ppl:4.320432 lr:0.000247
+[TEST]: loss=4.690290, ppl=130.182480
+step:32201 source:(400, 17) loss:1.475442 ppl:4.372967 lr:0.000246
+[TEST]: loss=4.682654, ppl=127.581749
+step:32401 source:(400, 17) loss:1.477558 ppl:4.382232 lr:0.000246
+step:32601 source:(400, 17) loss:1.458729 ppl:4.300491 lr:0.000245
+[TEST]: loss=4.711220, ppl=130.967468
+epoch:125 test_bleu:68.78060698509216 template_bleu:63.916170597076416
+epoch:125 train_bleu:95.01669406890869 template_bleu:63.75228762626648
+step:32801 source:(400, 17) loss:1.468708 ppl:4.343618 lr:0.000244
+[TEST]: loss=4.720297, ppl=133.266342
+step:33001 source:(400, 17) loss:1.480280 ppl:4.394177 lr:0.000243
+[TEST]: loss=4.737608, ppl=132.637497
+step:33201 source:(400, 17) loss:1.496852 ppl:4.467602 lr:0.000243
+step:33401 source:(400, 17) loss:1.456706 ppl:4.291798 lr:0.000242
+[TEST]: loss=4.758135, ppl=137.135971
+step:33601 source:(400, 17) loss:1.464530 ppl:4.325511 lr:0.000241
+[TEST]: loss=4.788132, ppl=142.015045
+step:33801 source:(400, 17) loss:1.476517 ppl:4.377671 lr:0.000240
+[TEST]: loss=4.771522, ppl=139.356567
+epoch:130 test_bleu:68.46563816070557 template_bleu:63.916170597076416
+epoch:130 train_bleu:94.64881420135498 template_bleu:63.75228762626648
+step:34001 source:(400, 17) loss:1.478347 ppl:4.385689 lr:0.000240
+[TEST]: loss=4.691377, ppl=128.406799
+step:34201 source:(400, 17) loss:1.458029 ppl:4.297482 lr:0.000239
+step:34401 source:(400, 17) loss:1.453600 ppl:4.278489 lr:0.000238
+[TEST]: loss=4.657958, ppl=123.989540
+step:34601 source:(400, 17) loss:1.474937 ppl:4.370759 lr:0.000238
+[TEST]: loss=4.655592, ppl=122.039093
+step:34801 source:(400, 17) loss:1.466167 ppl:4.332598 lr:0.000237
+[TEST]: loss=4.697491, ppl=127.393440
+step:35001 source:(400, 17) loss:1.458879 ppl:4.301136 lr:0.000236
+step:35201 source:(400, 17) loss:1.448382 ppl:4.256221 lr:0.000236
+[TEST]: loss=4.699812, ppl=128.088318
+epoch:135 test_bleu:68.98448467254639 template_bleu:63.916170597076416
+epoch:135 train_bleu:96.90227508544922 template_bleu:63.75228762626648
+step:35401 source:(400, 17) loss:1.466350 ppl:4.333390 lr:0.000235
+[TEST]: loss=4.673872, ppl=125.772415
+step:35601 source:(400, 17) loss:1.457445 ppl:4.294973 lr:0.000234
+[TEST]: loss=4.653894, ppl=123.773529
+step:35801 source:(400, 17) loss:1.456771 ppl:4.292077 lr:0.000234
+step:36001 source:(400, 17) loss:1.452907 ppl:4.275525 lr:0.000233
+[TEST]: loss=4.648954, ppl=122.983177
+step:36201 source:(400, 17) loss:1.461041 ppl:4.310445 lr:0.000232
+[TEST]: loss=4.652096, ppl=123.793625
+step:36401 source:(400, 17) loss:1.487494 ppl:4.425989 lr:0.000232
+[TEST]: loss=4.636029, ppl=120.998924
+epoch:140 test_bleu:68.9939022064209 template_bleu:63.916170597076416
+epoch:140 train_bleu:95.78438997268677 template_bleu:63.75228762626648
+step:36601 source:(400, 17) loss:1.461545 ppl:4.312618 lr:0.000231
+step:36801 source:(86, 17) loss:1.448607 ppl:4.257179 lr:0.000230
+[TEST]: loss=4.635561, ppl=120.406715
+step:37001 source:(400, 17) loss:1.445691 ppl:4.244783 lr:0.000230
+[TEST]: loss=4.656661, ppl=121.405075
+step:37201 source:(400, 17) loss:1.471882 ppl:4.357426 lr:0.000229
+[TEST]: loss=4.646153, ppl=120.160576
+step:37401 source:(400, 17) loss:1.452950 ppl:4.275708 lr:0.000229
+[TEST]: loss=4.655462, ppl=122.844002
+step:37601 source:(400, 17) loss:1.443349 ppl:4.234856 lr:0.000228
+step:37801 source:(400, 17) loss:1.447953 ppl:4.254399 lr:0.000227
+[TEST]: loss=4.701128, ppl=128.958191
+epoch:145 test_bleu:68.90187859535217 template_bleu:63.916170597076416
+epoch:145 train_bleu:96.1775541305542 template_bleu:63.75228762626648
+step:38001 source:(400, 17) loss:1.456687 ppl:4.291719 lr:0.000227
+[TEST]: loss=4.767894, ppl=139.217789
+step:38201 source:(400, 17) loss:1.473284 ppl:4.363540 lr:0.000226
+[TEST]: loss=4.762933, ppl=137.635895
+step:38401 source:(400, 17) loss:1.449384 ppl:4.260488 lr:0.000226
+step:38601 source:(400, 17) loss:1.474668 ppl:4.369585 lr:0.000225
+[TEST]: loss=4.680197, ppl=124.875702
+step:38801 source:(400, 17) loss:1.458518 ppl:4.299583 lr:0.000224
+[TEST]: loss=4.598880, ppl=115.710297
+epoch:149 test_bleu:69.09667253494263 template_bleu:63.916170597076416
+epoch:149 train_bleu:96.09165787696838 template_bleu:63.75228762626648
+step:39001 source:(400, 17) loss:1.458149 ppl:4.297997 lr:0.000224
+[TEST]: loss=4.520634, ppl=107.480042
+/home/syp/miniconda2/envs/newtf/lib/python3.6/importlib/_bootstrap.py:205: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
