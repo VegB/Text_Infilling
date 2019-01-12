@@ -1,6 +1,6 @@
 # Source Code and Dataset for Text Infilling
 
-This repository contains the source code and dataset for [Text Infilling](). 
+This repository contains the source code and dataset for [Text Infilling](https://arxiv.org/abs/1901.00158). 
 The implementation is based on [Texar](https://github.com/asyml/texar).
 
 
